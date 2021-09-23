@@ -1,0 +1,112 @@
+---
+toc:
+  properties:
+    subcollection: devsecops
+    category: dev_ops
+    audience: service
+    href: /docs/devsecops
+    console-page: "/devops/create"
+    product-page: "https://www.ibm.com/cloud/continuous-delivery"
+    path: devsecops
+    label: DevSecOps
+
+  entries: 
+  - navgroup: 
+      id: learn
+      topics:
+      - link:
+          label: What is DevSecOps?
+          href: https://www.ibm.com/cloud/learn/devsecops
+      - devsecops_intro.md
+      - devsecops-arch.md
+      - devsecops-pipelines.md
+      - topicgroup: 
+          label: DevSecOps practices
+          topics:
+          - devsecops-change-mgmt.md
+          - devsecops-peer-review.md
+          - devsecops-cos-bucket-evidence.md
+
+  - navgroup: 
+      id: tutorial
+      topics: 
+      - /apps/apps-tutorial-apps-devsecops
+      - devsecops-tutorial.md
+
+  - navgroup: 
+      id: howto
+      topics:
+      - devsecops-tekton-ci-compliance.md
+      - devsecops-tekton-cd-compliance.md
+      - devsecops-image-signing.md
+      - devsecops-cos-configure.md
+      - devsecops-pipelines-add-steps.md
+      - devsecops-apps-byoa.md
+      - devsecops-pipelines-setup-scripts.md
+      - devsecops-stage-results.md
+      - devsecops-build-docker-images.md
+      - devsecops-pipelines-add-triggers.md
+      - topicgroup: 
+          label: Configuring Git repos
+          topics: 
+          - devsecops-config-github.md
+          - devsecops-manage-change-requests.md
+      - topicgroup: 
+          label: Working with Git repos
+          topics: 
+          - devsecops-promote-branches.md
+          - devsecops-redeploy-staging.md
+          - devsecops-apps-rollback.md
+      - devsecops-set-pr-status.md
+      - devsecops-approve-cr.md
+      - devsecops-webhook-payloads.md
+      - devsecops-automate-changemgmt.md
+      - devsecops-toolchains-secrets.md
+      - devsecops-multiple-apps.md
+      - devsecops-scc-toolchains.md
+      - topicgroup: 
+          label: Tool integrations
+          topics: 
+          - /ContinuousDelivery/ContinuousDelivery-scc
+          - /ContinuousDelivery/ContinuousDelivery-sonarqube
+      - topicgroup: 
+          label: Enhancing security
+          topics: 
+          - devsecops_security_compliance.md
+          - devsecops_data_security.md
+
+  - navgroup:
+      id: reference
+      topics: 
+      - devsecops-iam-permissions.md
+      - devsecops-pipelines-status.md
+      - devsecops-pr-pipeline.md
+      - devsecops-cd-pipeline.md
+      - devsecops-ci-pipeline.md
+      - devsecops-promotion-pipeline.md
+      - devsecops-pipelines-parm.md
+      - devsecops-pipelines-hosts.md
+      - devsecops-triggers.md
+      - devsecops-evidence.md
+      - devsecops-inventory.md
+      - devsecops-custom-scripts.md
+      - topicgroup:
+          label: Command reference
+          topics:
+          - devsecops-pipelinectl.md
+          - devsecops-cocoa-cli.md
+      - devsecops_at_events.md
+      - devsecops-responsibilities.md
+      - topicgroup:
+          label: Related links
+          topics:
+          - link:
+              label: IBM Cloud Garage Method
+              href: https://www.ibm.com/cloud/garage
+
+  - navgroup:
+      id: help
+      topics: 
+      - support.md
+      - faq.md
+      - troubleshoot.md
