@@ -95,8 +95,6 @@ toc:
           topics:
           - devsecops-pipelinectl.md
           - devsecops-cocoa-cli.md
-      - devsecops_at_events.md
-      - devsecops-responsibilities.md
       - topicgroup:
           label: Related links
           topics:
