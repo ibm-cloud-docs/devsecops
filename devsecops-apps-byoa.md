@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-16"
+lastupdated: "2021-09-30"
 
 keywords: DevSecOps
 
@@ -75,6 +75,7 @@ test:
     #npm test
     source test/test.sh
 ```
+
  * **containerize**: Define this stage to build and containerize your app.
 
  ```
@@ -92,6 +93,7 @@ containerize:
     source scripts/build_setup.sh
     source scripts/build.sh
 ```
+
  * **deploy**: Define this stage to deploy your app on the target environment.
 
  ```
@@ -143,6 +145,17 @@ release:
   script: |
     #!/usr/bin/env bash
     source scripts/release.sh
+```
+
+ * **scan-artifact**: Define this stage to perform a scan for vulnerabilities in the generated artifacts.
+
+ ```
+scan-artifact:
+   abort_on_failure: false
+   image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.6@sha256:7f588468622a981f89cf5e1212aaf75fface9da6169b5345ca52ab63d8215907
+   script: |
+     #!/usr/bin/env bash
+     source scripts/va_scan.sh
 ```
 
 For more information about the steps and stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
