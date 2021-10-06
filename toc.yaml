@@ -2,6 +2,7 @@
 toc:
   properties:
     subcollection: devsecops
+    version: 2
     category: dev_ops
     audience: service
     href: /docs/devsecops
@@ -106,5 +107,3 @@ toc:
       id: help
       topics: 
       - support.md
-      - faq.md
-      - troubleshoot.md

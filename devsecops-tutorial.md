@@ -132,7 +132,7 @@ Start the CI toolchain configuration by using one of the following options:
 
 * Click the following **Create toolchain** button.
 
-  [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-ci-toolchain&env_id=ibm:yp:us-south){: external}
+   [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-ci-toolchain&env_id=ibm:yp:us-south){:  external}
 
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI-Develop with DevSecOps practices**.
 
@@ -164,6 +164,8 @@ The Application step that refers to the application source code repository is sh
 ![DevSecOps application repository](images/devsecops-ci-app-repo.png)
 
 The recommended options are displayed by default, but you can click the **Advanced Options** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application as IBM-hosted GRIT Repository.
+
+Enter the name of the IBM-hosted GRIT repository that was created by the toolchain as your application repository.
 
 The region of the repository remains the same as the region of the toolchain.
 
@@ -241,15 +243,15 @@ The toolchain comes with an integrated Tekton pipeline to automate continuous bu
 Configure the target Kubernetes cluster where the application will be deployed. Once the application passes the build, test and scan phase the pipeline deploys the built application image to target Kubernetes cluster. This deployment is then ready for acceptance test or integration test.
 
 * **App name:**
-  The name of the application.
-  * Default: hello-compliance-app
+   The name of the application.
+   * Default: hello-compliance-app
 
 * **IBM Cloud API Key:**
-  The API key is used to interact with the ibmcloud CLI tool in several tasks.
-  * Preferred: An existing key can be imported from an existing Key Protect Instance by clicking the key icon.
-  * An existing key can be copy and pasted.
-  * A new key can be created from here by clicking the **New +**.
-  * Generate a new api-key if you don’t have one or copy an existing key to the field.
+   The API key is used to interact with the ibmcloud CLI tool in several tasks.
+   * Preferred: An existing key can be imported from an existing Key Protect Instance by clicking the key icon.
+   * An existing key can be copy and pasted.
+   * A new key can be created from here by clicking the **New +**.
+   * Generate a new api-key if you don’t have one or copy an existing key to the field.
 
 The newly generated API key can be immediately saved to an existing Key Protect instance.
 {: tip}
@@ -276,7 +278,8 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 ### Optional tools
 {: #devsecops-ci-tool-integration-optional-tools}
 
-**Slack**
+#### Slack
+{: #devsecops-ci-tool-integration-optional-slack}
 
 If you want to receive notifications about your PR/CI Pipeline events, you can configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) during the setup from the toolchain template, or you can add the Slack Tool later.
 
@@ -284,11 +287,13 @@ In order for a Slack channel to receive notifications from your tools, you need 
 
 ![DevSecOps Slack](images/devsecops-slack-config.png)
 
-**Orion WebIDE**
+#### Orion WebIDE
+{: #devsecops-ci-tool-integration-optional-webide}
 
 The Eclipse [Orion Web IDE](/docs/ContinuousDelivery?topic=ContinuousDelivery-web_ide) is a browser-based development environment where you can develop for the web in JavaScript, HTML, and CSS with the help of content assist, code completion, and error checking. 
 
-**Delivery Pipeline Private Worker**
+#### Delivery Pipeline Private Worker
+{: #devsecops-ci-tool-integration-optional-private-worker}
 
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
 
@@ -319,9 +324,9 @@ It contains two pipelines:
 {: #devsecops-ci-toolchain-pr-pipeline-run}
 
 To start the PR pipeline, you should create a merge request in your application repository. To achieve this, do the following:
-1. On the CI toolchain page, click the application repository tile. By default it gets created with a name compliance-app-<timestamp>
-1. Create a branch from master
-1. Update some code like in app or readme file and Save changes.
+1. On the CI toolchain page, click the application repository tile. By default it gets created with a name `compliance-app-<timestamp>`.
+1. Create a branch from master.
+1. Update some code like in app or readme file and save changes.
 1. Submit merge request.
 1. Back on the CI toolchain page, click the `pr-pipeline` tile. Observe: the PR pipeline has been initiated.
 
@@ -449,7 +454,7 @@ Start the CD toolchain configuration by using one of the following options:
 
 * Click the following **Create toolchain** button.
 
-  [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-cd-toolchain&env_id=ibm:yp:us-south){: external}
+   [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-cd-toolchain&env_id=ibm:yp:us-south){: external}
 
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CD-Develop with DevSecOps practices**.
 
@@ -481,9 +486,9 @@ If you want to set up your CI toolchain from scratch, configure these repositori
 **Inventory**: Change management is tracked in this repository. After each successful CI Pipeline run, CD pipeline creates a new branch that is named as the created CR number, and merges it to master after deployment is concluded. To fetch the respective URL, go to the CI Pipeline, select the respective tool card. Click the tool card menu, select "Configure" and copy the url under `Repository URL`
 
 Example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-inventory`
-* **Issues**: Issues about incidents that happen during the build and deployment process are stored here. For example: https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-issues
-* **Evidence**: All raw compliance evidence that belongs to the application is collected here. For example: https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-evidence
-* **Toolchain**: The tekton pipeline definitions (pipelines), triggers, listeners, and so on, are stored in this repository. For example: https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-toolchain
+* **Issues**: Issues about incidents that happen during the build and deployment process are stored here. For example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-issues`.
+* **Evidence**: All raw compliance evidence that belongs to the application is collected here. For example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-evidence`.
+* **Toolchain**: The tekton pipeline definitions (pipelines), triggers, listeners, and so on, are stored in this repository. For example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-toolchain`.
 
 After you capture the names of repositories from CI Toolchain, proceed with the Guided Setup to begin CD Toolchain creation. During the setup process, for each repository you may either provide url to an existing IBM hosted Git Repos and Issue Tracking (GRIT) repository that is created for your CI Toolchain or choose to create a new repository. Currently, the toolchain supports creating only GRIT repositories.
 
@@ -696,15 +701,15 @@ The individual toolchain integrations can be configured also after the pipeline 
 
 ![DevSecOps Promotion Pipeline](images/devsecops-cd-explore-manual-promotion-trigger.png)
 
-After the `Promotion Pipeline` finishes successfully, the `promote` Task should provide you a link to the `Pull Request` in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment> `
+After the `Promotion Pipeline` finishes successfully, the `promote` Task should provide you a link to the `Pull Request` in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment>`.
 
 1. Open the `Pull Request` in your browser with the link provided in the log. Complete the details in the following sections:
-  * **Priority**: (mandatory) One of Critical, High, Moderate, Low, Planning
-  * **Change Request assignee**: (mandatory) email-id of the assignee
-  * **Additional Description**: Description about the changes in the application
-  * **Purpose**: Purpose of the changes that are made to the application
-  * **Explanation of Impact**: Impact of the change to the application behavior or environment
-  * **Backout Plan**: Steps to backout in case of deployment failure
+   * **Priority**: (mandatory) One of Critical, High, Moderate, Low, Planning
+   * **Change Request assignee**: (mandatory) email-id of the assignee
+   * **Additional Description**: Description about the changes in the application
+   * **Purpose**: Purpose of the changes that are made to the application
+   * **Explanation of Impact**: Impact of the change to the application behavior or environment
+   * **Backout Plan**: Steps to backout in case of deployment failure
 1. Complete the fields in the `Pull Request` and `save`.
 1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to continue with deployment
 1. Merge the `Pull Request` from the GRIT.

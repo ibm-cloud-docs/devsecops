@@ -36,7 +36,7 @@ subcollection: devsecops
 * Check for outages on the [status page](https://cloud.ibm.com/status){: external}
 * Run the pipeline again.
 
-  ![Run the pipeline again](images/rerun.png)
+   ![Run the pipeline again](images/rerun.png)
 
 ## Issues related to the IBM environment
 {: #troubleshoot-ibm-env}

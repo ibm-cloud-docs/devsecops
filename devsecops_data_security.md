@@ -52,9 +52,9 @@ To keep your credentials secure, make sure that you follow this guidance:
    * [Classic pipeline secure environment properties](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about)
    * [Tekton pipeline secure environment properties](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines)
    * [{{site.data.keyword.keymanagementservicefull}}](/docs/key-protect?topic=key-protect-getting-started-tutorial)
-   * [HashiCorp Vault](https://www.vaultproject.io/){:external}
+   * [HashiCorp Vault](https://www.vaultproject.io/){: external}
    
-For more information about secure DevOps best practices, see [DevOps Security](https://www.ibm.com/cloud/learn/devops-a-complete-guide?mhsrc=ibmsearch_a&mhq=Secure%20DevOps#toc-security-j2-0639C){:external}.
+For more information about secure DevOps best practices, see [DevOps Security](https://www.ibm.com/cloud/learn/devops-a-complete-guide?mhsrc=ibmsearch_a&mhq=Secure%20DevOps#toc-security-j2-0639C){: external}.
 
 ## Protecting your data when you use third-party tool integrations
 {: #cd_secure_integrations}
@@ -106,10 +106,10 @@ By default, {{site.data.keyword.gitrepos}} notifies project members by way of em
 
 1. From the project sidebar, click **Settings**.
 1. Click **Integrations** to work with your project's integrations with other applications.
-2. Click **Webhooks** to work with your project's webhooks to other systems.
-3. Click **Access Tokens** to work with access tokens that might grant access to your project.
-4. Expand **Deploy Tokens** to work with the deploy tokens that might grant access to your project.
-5. Expand **Deploy Keys** to work with deploy keys that might grant access to your project.
+1. Click **Webhooks** to work with your project's webhooks to other systems.
+1. Click **Access Tokens** to work with access tokens that might grant access to your project.
+1. Expand **Deploy Tokens** to work with the deploy tokens that might grant access to your project.
+1. Expand **Deploy Keys** to work with deploy keys that might grant access to your project.
 
 To learn more about working with {{site.data.keyword.gitrepos}}, see [{{site.data.keyword.gitrepos}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-git_working).
 

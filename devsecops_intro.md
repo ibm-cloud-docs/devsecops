@@ -25,7 +25,7 @@ subcollection: devsecops
 {: #devsecops_intro}
 
 [DevSecOps](https://www.ibm.com/cloud/learn/devsecops){: external} is an evolution of Agile and DevOps, integrating secure development best practices as early as possible in the software delivery lifecycle (also known as "shift left"). This approach prevents security problems from reaching production systems and failing corporate audits.
-{:shortdesc}
+{: shortdesc}
 
 DevSecOps requires automating security and compliance controls as part of continuous integration and continuous delivery processes. Evidence of these controls is also collected to demonstrate to auditors that every change in history meets the necessary controls. 
 

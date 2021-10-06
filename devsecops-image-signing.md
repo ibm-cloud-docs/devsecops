@@ -40,24 +40,24 @@ Download and install the [GPG command-line tools](https://www.gnupg.org/download
  * Download and install [Mac GPG](https://gpgtools.org/){: external}
  * Verify the version of the installed GPG. From the Terminal command prompt, run the following command:
 
-  ```
-  $ gpg --version
-  gpg (GnuPG) 2.3.1
-  libgcrypt 1.9.3
-  Copyright (C) 2021 Free Software Foundation, Inc.
-  ```
-  * For versions of gpg lower than 2.3.1, it may not be possible to use the `--passphrase=''` option. In this case, the  password can be omitted in the following dialog by hitting enter when prompted.
+   ```bash
+   $ gpg --version
+   gpg (GnuPG) 2.3.1
+   libgcrypt 1.9.3
+   Copyright (C) 2021 Free Software Foundation, Inc.
+   ```
+   * For versions of gpg lower than 2.3.1, it may not be possible to use the `--passphrase=''` option. In this case, the   password can be omitted in the following dialog by hitting enter when prompted.
 
 ### Windows  
  * Download and install [GitBash](https://gitforwindows.org/){: external} (required for `base64` encoding)
  * Verify the version of the installed GPG. From the Git bash command prompt, run the following command:
 
-  ```
-  $ gpg --version
-  gpg (GnuPG) 2.2.27
-  libgcrypt 1.8.7
-  Copyright (C) 2021 g10 Code GmbH
-  ```
+   ```bash
+   $ gpg --version
+   gpg (GnuPG) 2.2.27
+   libgcrypt 1.8.7
+   Copyright (C) 2021 g10 Code GmbH
+   ```
 
 ## Generate a GPG key
 {: #cd-devsecops-gpg-generate}
@@ -69,9 +69,9 @@ Leave the passphrase and repeat field empty if the generate-key commands open a 
 {: #cd-devsecops-gpg-linux}
 
 From your shell prompt, run:
-  ```
-  gpg --pinentry-mode loopback --passphrase='' --generate-key
-  ```
+   ```bash
+   gpg --pinentry-mode loopback --passphrase='' --generate-key
+   ```
 
  * Enter `Real name`
  * Enter `Email address`
@@ -85,9 +85,9 @@ From your shell prompt, run:
 {: #cd-devsecops-gpg-version}
 
 From the Git bash command prompt, run:
-  ```
-  gpg --pinentry-mode loopback --passphrase='' --generate-key
-  ```
+   ```bash
+   gpg --pinentry-mode loopback --passphrase='' --generate-key
+   ```
 
  * Enter `Real name`: your name
  * Enter `Email address`: you email address
@@ -98,9 +98,9 @@ From the Git bash command prompt, run:
 {: #cd-devsecops-gpg-version2}
 
 From the Git bash command prompt, run:
-  ```
-  gpg --gen-key
-  ```
+   ```bash
+   gpg --gen-key
+   ```
 
  * `kind of key`: select Default option `(1) RSA and RSA (default)`
  * `keysize`: keep default (2048)
@@ -115,28 +115,28 @@ From the Git bash command prompt, run:
 {: #cd-devsecops-gpg-verify}
 
 Verify that the gpg key was created. From the command prompt, run:
-  ```
-  gpg --list-keys
-  ```
+   ```bash
+   gpg --list-keys
+   ```
 
 Ensure that your key is listed. Example output on Windows:
-  ```
-  $ gpg --list-keys
-  /c/Users/FredSmith/.gnupg/pubring.gpg
-  -------------------------------------
-  pub   2048R/1BB354B5 2021-06-08
-  uid   Fred Smith <fred@company.com>
-  sub   2048R/F91C39A6 2021-06-08
-  ```
-  {: screen}
+   ```bash
+   $ gpg --list-keys
+   /c/Users/FredSmith/.gnupg/pubring.gpg
+   -------------------------------------
+   pub   2048R/1BB354B5 2021-06-08
+   uid   Fred Smith <fred@company.com>
+   sub   2048R/F91C39A6 2021-06-08
+   ```
+   {: screen}
 
 ## Export the key
 {: #cd-devsecops-gpg-export}
 
 This step is optional. Run this command to ensure that the gpg key can be exported. 
-  ```
-  gpg --export-secret-key <Email Address>
-  ```
+   ```bash
+   gpg --export-secret-key <Email Address>
+   ```
 
 The raw key exported here must not be copied directly. It is strongly recommended to securely store the key generated in this step in your {{site.data.keyword.keymanagementserviceshort}} instance or {{site.data.keyword.secrets-manager_short}} instance. See the next sections for more details.
 {: important}
@@ -163,21 +163,21 @@ Export and copy the GPG key to the clipboard.
 #### OS X 
 {: #cd-devsecops-gpg-copy-osx}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64 | base64 | pbcopy
 ```
 
 #### Windows
 {: #cd-devsecops-gpg-copy-windows}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64 -w0 | base64 -w0 | clip
 ```
 
 #### Linux
 {: #cd-devsecops-gpg-copy-linux}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64 | base64
 ```
 
@@ -187,8 +187,9 @@ gpg --export-secret-key <Email Address> | base64 | base64
 4. Select `Select a key type` as **Standard Key**
 5. Give appropriate name in the `Key name` field. The stored GPG key can be retrieved later by this name.
 6. Copy the key as exported earlier in the `Key material` field.
-    Ensure that while copying the key and pasting it in `Key material` field, there is no extra line at the end of the key.
-    {: note}
+      Ensure that while copying the key and pasting it in `Key material` field, there is no extra line at the end of the key.
+      {: note}
+
 7. Select the `Choose a key ring` option as default. 
 8. Add the key to your key protect by clicking `Add key` icon at the bottom.
 
@@ -208,37 +209,38 @@ Export and copy the GPG key to the clipboard.
 #### OS X
 {: #cd-devsecops-gpg-export-osx}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64 | pbcopy
 ```
 
 #### Windows
 {: #cd-devsecops-gpg-export-windows}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64 -w0 | clip
 ```
 
 #### Linux
 {: #cd-devsecops-gpg-export-linux}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64
 ```
 
 1. In your {{site.data.keyword.cloud_notm}} console, select the {{site.data.keyword.secrets-manager_short}} instance where you want to store GPG Key generated from the previous steps.
-2. Click on the `Add +` icon on the top right to add new key to the instance.
-3. Select `Other secret type` option
+1. Click on the `Add +` icon on the top right to add new key to the instance.
+1. Select `Other secret type` option
 
 | ![Save key to {{site.data.keyword.secrets-manager_short}} - Step 1](/images/devsecops_set-up_store_secret_manager_1.png) |
 | :--: |
 
-4. Select `Select a key type` as **Standard Key**
-5. Give appropriate name in the `Name` field. The stored GPG key can be retreived later by this name.
-6. Choose the option as `Secret value` and paste the key as exported earlier in the `Secret Value` field.
+1. Select `Select a key type` as **Standard Key**
+1. Give appropriate name in the `Name` field. The stored GPG key can be retreived later by this name.
+1. Choose the option as `Secret value` and paste the key as exported earlier in the `Secret Value` field.
     Ensure that while copying the key and pasting it in `Secret value` field, there is no extra line at the end of the key.
     {: note}
-7. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking `Add` icon at the bottom.
+
+1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking `Add` icon at the bottom.
 
 | ![Save key to {{site.data.keyword.secrets-manager_short}} - Step 2](/images/devsecops_set-up_store_secret_manager_2.png) |
 | :--: |
@@ -247,6 +249,7 @@ For more information about {{site.data.keyword.secrets-manager_short}}, see [Get
 
 ### Export the private key and store it directly in the CI pipeline
 {: #cd-devsecops-gpg-private-key}
+
 This approach is not recommended and should be used only for experimentation purpose. Use `keyprotect` or `secrets manager` for storing the keys.
 
 Single `base64` encoding of the GPG key is required before storing it as a secured pipeline property. 
@@ -258,13 +261,13 @@ Securely store the GPG key in a {{site.data.keyword.keymanagementserviceshort}} 
 #### OS X / Linux
 {: #cd-devsecops-gpg-store-osx}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64
 ```
 
 #### Windows
 {: #cd-devsecops-gpg-store-windows}
 
-```
+```bash
 gpg --export-secret-key <Email Address> | base64 -w0
 ```

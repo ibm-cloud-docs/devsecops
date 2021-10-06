@@ -27,7 +27,7 @@ subcollection: devsecops
 {: #cd-devsecops-evidence}
 
 Collecting evidence is one of the essential aspects of the DevSecOps reference architecture. Compliance evidence creates the audit trail that auditors look for during a compliance audit. One of the goals of DevSecOps is automated evidence generation and storage in auditable evidence lockers.
-{:shortdesc}
+{: shortdesc}
 
 ## Evidence format
 {: #cd-devsecops-evidence-format}

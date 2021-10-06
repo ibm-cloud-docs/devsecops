@@ -28,7 +28,7 @@ subcollection: devsecops
 {: cd-devsecops-pipelinectl}
 
 `pipelinectl` is a lightweight key-value store that can be used in [Tekton](https://tekton.dev/){: external} pipelines to share data between tasks and the compliance automation scripts.
-{:shortdesc}
+{: shortdesc}
 
 For more information about where this tool is used, see [Setting up your pipeline scripts](/docs/devsecops?topic=devsecops-cd-devsecops-setup-pipeline-scripts).
 

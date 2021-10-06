@@ -67,7 +67,7 @@ Start the CI toolchain configuration by using one of the following options:
 
 * Click the following **Create toolchain** button.
 
-  [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-ci-toolchain&env_id=ibm:yp:us-south){: external}
+   [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-ci-toolchain&env_id=ibm:yp:us-south){: external}
 
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI-Develop with DevSecOps practices**.
 
@@ -324,10 +324,10 @@ If you add your own SonarQube instance, the static scan will run on this instanc
 
  **Create toolchain:**
 
-  - Click the create button at the bottom of the **Summary** step, and wait for the toolchain to be created.
+   - Click the create button at the bottom of the **Summary** step, and wait for the toolchain to be created.
 
-  You can configure the individual toolchain integrations after the pipeline is created.
-  {: tip}
+   You can configure the individual toolchain integrations after the pipeline is created.
+   {: tip}
 
 | ![Summary](images/devsecops_set-up_summary_page.png) |
 | :--: |

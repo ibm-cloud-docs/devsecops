@@ -27,7 +27,7 @@ subcollection: devsecops
 {: #cd-devsecops-triggers}
 
 DevSecops continuous integration and continuous delivery pipelines provide a set of default triggers.
-{:shortdesc}
+{: shortdesc}
 
 |Pipeline |Name	|Description |State |
 |:----------|:------------------------------|:------------------|:----------|

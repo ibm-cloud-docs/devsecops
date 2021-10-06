@@ -27,10 +27,10 @@ subcollection: devsecops
 {: #responsibilities-cd}
 
 Learn about the management responsibilities and terms and conditions that you have when you use {{site.data.keyword.contdelivery_full}}. For a high-level view of the service types in {{site.data.keyword.cloud}} and the breakdown of responsibilities between the customer and {{site.data.keyword.IBM_notm}} for each type, see [Shared responsibilities for {{site.data.keyword.cloud_notm}} offerings](/docs/overview?topic=overview-shared-responsibilities).
-{:shortdesc}
+{: shortdesc}
 
 You can integrate third-party tools (such as Public GitHub), or tools that you manage (such as a private Tekton worker that is running on your infrastructure), into {{site.data.keyword.contdelivery_short}} toolchains. However, IBM’s management responsibilities do not extend to any tools that are managed by you or by third-parties.
-{:important}
+{: important}
 
 Review the following sections for the specific responsibilities for you and for {{site.data.keyword.IBM_notm}} when you use {{site.data.keyword.contdelivery_short}}. For the overall terms of use, see [{{site.data.keyword.cloud_notm}} Terms and Notices](/docs/overview/terms-of-use?topic=overview-terms).
 
@@ -80,7 +80,7 @@ Security and regulation compliance includes tasks such as security controls impl
 
 | Task | IBM responsibilities | Your responsibilities |
 |----------|-----------------------|--------|
-|Meet security and compliance objectives.| Provide a secure {{site.data.keyword.contdelivery_short}} service that complies with key standards. For more information about data security, see [How do I know that my data is safe?](/docs/overview/terms-of-use?topic=overview-security)  | Secure your workloads and data. To learn more about securing your cloud apps, see [Security to safeguard and monitor your cloud apps](https://www.ibm.com/cloud/garage/architectures/securityArchitecture){:external}. To learn more about securing your data while you are using the {{site.data.keyword.contdelivery_short}} service, see [Securing your data](/docs/services/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security). |
+|Meet security and compliance objectives.| Provide a secure {{site.data.keyword.contdelivery_short}} service that complies with key standards. For more information about data security, see [How do I know that my data is safe?](/docs/overview/terms-of-use?topic=overview-security)  | Secure your workloads and data. To learn more about securing your cloud apps, see [Security to safeguard and monitor your cloud apps](https://www.ibm.com/cloud/garage/architectures/securityArchitecture){: external}. To learn more about securing your data while you are using the {{site.data.keyword.contdelivery_short}} service, see [Securing your data](/docs/services/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security). |
 {: caption="Table 4. Responsibilites for security and regulation compliance" caption-side="top"}
 
 ## Disaster recovery
@@ -89,7 +89,7 @@ Security and regulation compliance includes tasks such as security controls impl
 Disaster recovery includes tasks such as providing dependencies on disaster recovery sites, provision disaster recovery environments, data and configuration backup, replicating data and configuration to the disaster recovery environment, and failover on disaster events.
 
 IBM is responsible for maintaining backups and high availability of the {{site.data.keyword.contdelivery_short}} service in each supported region. However, because {{site.data.keyword.contdelivery_short}} toolchains are region-dependent, automated global failover is not supported. If a regional disaster occurs, the recovery time for toolchains depends on the recovery time for the region. You can implement manual failover to another region by creating and maintaining copies of your toolchains and Git repos that have idle pipelines, in another {{site.data.keyword.cloud_notm}} region.
-{:important}
+{: important}
 
 | Task | IBM responsibilities | Your responsibilities |
 |----------|-----------------------|--------|
@@ -116,17 +116,17 @@ To mirror a {{site.data.keyword.gitrepos}} repo, complete the following steps:
 1. [Create a personal access token](https://us-south.git.cloud.ibm.com/help/user/profile/personal_access_tokens.md#creating-a-personal-access-token){: external} with the `write_repository` scope in the target region. Save a copy of this token.
 1. Use [Push mirroring](https://us-south.git.cloud.ibm.com/help/user/project/repository/repository_mirroring.md#pushing-to-a-remote-repository-core){: external} to push the source repo to the target repo:     
 
-  a. From the source repo, select **Settings** > **Repository**.
+   a. From the source repo, select **Settings** > **Repository**.
 
-  b. In **Mirror repository** section of the Repository page, type the URL of the target repo.
+   b. In **Mirror repository** section of the Repository page, type the URL of the target repo.
 
-  c. Select **Push** to specify the direction of the mirror.
+   c. Select **Push** to specify the direction of the mirror.
 
-  d. Select **Password** to use the password authentication method.
+   d. Select **Password** to use the password authentication method.
 
-  e. Type the personal access token that you created in step 2.
+   e. Type the personal access token that you created in step 2.
 
-  f. Click **Mirror repository** to start the mirroring process. It might take up to five minutes for the process to start.
+   f. Click **Mirror repository** to start the mirroring process. It might take up to five minutes for the process to start.
   
 1. In the target region, locate the mirror of your repo to verify that it was successfully mirrored.
   
@@ -148,38 +148,38 @@ To save and restore a toolchain, complete the following steps:
 1. [Create a temporary blank GitLab project](https://us-south.git.cloud.ibm.com/help/gitlab-basics/create-project.md#blank-projects){: external} in the target region.
 1. Type the following commands to initialize the temporary directory for Git operations and push the contents to the temporary GitLab project:     
 
-  a. git init
-
-  b. git add --all
-
-  c. git remote add origin *target repository url*
-
-  d. git commit -m "add template yaml files"
-
-  e. git push -u origin --all
+   a. git init
+ 
+   b. git add --all
+ 
+   c. git remote add origin *target repository url*
+ 
+   d. git commit -m "add template yaml files"
+ 
+   e. git push -u origin --all
 
 1. [Create a personal access token](https://us-south.git.cloud.ibm.com/help/user/profile/personal_access_tokens.md#creating-a-personal-access-token){: external} in the target region with the `api`, `read_user`, `read_api`, `read_repository`, and `write_repository` scope.
 1. Create a toolchain in the target region by constructing a URL and pasting it into your browser:     
 
-  a. Construct a target toolchain URL that contains the temporary repo, personal access token, and target region: 
+   a. Construct a target toolchain URL that contains the temporary repo, personal access token, and target region: 
   
-  ```
-  https://cloud.ibm.com/devops/setup/deploy?repository=<temporary repository>&repository_token=<personal-access-token>&env_id=ibm:yp:<target region>
-  ```
-  For example, `https://cloud.ibm.com/devops/setup/deploy?repository=https://us-east.git.cloud.ibm.com/user/temp-repo&repository_token=aG7junk9dafiiT6w6&env_id=ibm:yp:us-east`.
+    ```bash
+    https://cloud.ibm.com/devops/setup/deploy?repository=<temporary repository>&repository_token=<personal-access-token>& env_id=ibm:yp:<target region>
+    ```
+    For example, `https://cloud.ibm.com/devops/setup/deploy?repository=https://us-east.git.cloud.ibm.com/user/temp-repo& repository_token=aG7junk9dafiiT6w6&env_id=ibm:yp:us-east`.
 
-  b. Replace the source repo URL with the target repo URL that you created when mirroring your Git repos.
+   b. Replace the source repo URL with the target repo URL that you created when mirroring your Git repos.
 
-  c. Click **Create**. Because you didn't update your secrets, your pipeline runs but does not succeed.     
+   c. Click **Create**. Because you didn't update your secrets, your pipeline runs but does not succeed.     
 
 1. [Revoke the personal access token](https://us-south.git.cloud.ibm.com/help/user/profile/personal_access_tokens.md#creating-a-personal-access-token){: external} that you created in step 6.
 1. [Configure pipeline secrets](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#environment_properties) by adding the secure property values that are required by your pipeline.
 1. [Run your target pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#deliverypipeline_stages) to make sure that they are working.
 1. If you are mirroring repos, disable commit triggers so that your target pipelines don't run when a change is mirrored from the target repo to the source repo:     
 
-  a. Select the **Run jobs only when this stage is run manually** option for the [Input stage](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#deliverypipeline_stages) of your pipeline.
+   a. Select the **Run jobs only when this stage is run manually** option for the [Input stage](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#deliverypipeline_stages) of your pipeline.
 
-  b. Verify that your pipelines can be [started manually](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#deliverypipeline_stages).  
+   b. Verify that your pipelines can be [started manually](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about#deliverypipeline_stages).  
   
 #### Using your backup toolchain
 {: #use_backup_toolchain}

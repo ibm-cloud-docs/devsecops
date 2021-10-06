@@ -36,21 +36,21 @@ To promote code changes from the source (master) branch to the target (staging, 
 
 1. The continuous integration pipelines populate the source (master) branch with [inventory entries](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt). Use the continuous delivery promotion pipeline to promote this content from your source (master) branch to the target (staging or prod) branch.
 
-  * From the continuous delivery pipeline dashboard, click **Run Pipeline**. 
-  * Select **Manual Promotion Trigger**.
-  * Click **Run**. The pipeline-run creates a merge request to promote your code changes from the source branch to the target branch.
-
-  ![Manual Promotion Trigger](images/manual-promotion-trigger.png)
+   * From the continuous delivery pipeline dashboard, click **Run Pipeline**. 
+   * Select **Manual Promotion Trigger**.
+   * Click **Run**. The pipeline-run creates a merge request to promote your code changes from the source branch to the target  branch.
+ 
+   ![Manual Promotion Trigger](images/manual-promotion-trigger.png)
 
 1. Approve and merge the pull request.
 
-  * Click the pipeline-run and check the execution log of the promotion pipeline.
-
-  ![MR execution log](images/pr-exec-log.png)
-
-  * Locate the URL of the merge request and open the merge request.
-  * Populate the required fields (Priority, Change Request assignee, Additional Description, and other fields).
-  * Merge the merge request to promote your changes from the source branch to the target branch.
+   * Click the pipeline-run and check the execution log of the promotion pipeline.
+ 
+   ![MR execution log](images/pr-exec-log.png)
+ 
+   * Locate the URL of the merge request and open the merge request.
+   * Populate the required fields (Priority, Change Request assignee, Additional Description, and other fields).
+   * Merge the merge request to promote your changes from the source branch to the target branch.
 
 Now that your changes are promoted to the target branch, you can deploy them by using the [continuous delivery pipeline](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-cd-toolchain-cd-pipeline-run).
 

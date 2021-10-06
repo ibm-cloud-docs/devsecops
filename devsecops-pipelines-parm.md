@@ -27,7 +27,7 @@ subcollection: devsecops
 {: #cd-devsecops-pipeline-parm}
 
 Parameters are provided, out of the box, for pull request, continuous integration, and continuous delivery pipelines.
-{:shortdesc}
+{: shortdesc}
 
 You can add parameters to the pipelines on the pipeline UI, and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 {: tip}

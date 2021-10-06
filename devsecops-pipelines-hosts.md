@@ -27,7 +27,7 @@ subcollection: devsecops
 {: #cd-devsecops-pipeline-hosts}
 
 You can access hosts from the following types of pipelines: pull request, continuous integration, promotion, and continuous delivery.
-{:shortdesc}
+{: shortdesc}
 
 ## Pull request pipelines
 {: #pr-pipeline-hosts}
