@@ -6,7 +6,7 @@ lastupdated: "2021-08-31"
 
 keywords: DevSecOps
 
-subcollection: ContinuousDelivery
+subcollection: devsecops
 
 ---
 
