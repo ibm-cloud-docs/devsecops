@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-07"
 
 keywords: DevSecOps
 
@@ -101,11 +101,11 @@ The following table lists and describes the continuous integration parameters fo
 |registry-namespace		|text		|The container registry namespace for the image.	|Required			|
 |registry-region		|text		|The {{site.data.keyword.cloud}} region for the image registry.	|Required			|
 |repository-integration		|text		|The integration name for the repo.	|Optional			|
+|signing-key		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |slack-notifications		|text		|The switch that turns the Slack integration on or off.	|Optional			|
 |sonarqube		|tool integration		|The Sonarqube tool integration.	|Optional			|
 |static-scan-retry-count		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
 |static-scan-retry-sleep		|text		|The amount of wait time per retry iteration.	|Optional			|
-|vault-secret		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |va-scan-retry-count		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |va-scan-retry-sleep	|text		|The number of wait times per retry iteration.	|Optional			|
 |version		|text		|The version of the app to deploy.	|Required			|
