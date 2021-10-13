@@ -163,4 +163,4 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
            source scripts/va_scan.sh
       ```
 
-For more information about the steps and stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information about the stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
