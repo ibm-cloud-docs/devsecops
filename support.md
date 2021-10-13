@@ -29,12 +29,12 @@ The DevSecOps team actively monitors our Slack channel for questions about the D
 ## Support tickets
 {: #devsecops-support-tickets}
 
-If you have a more serious issue or encounter problems with the {{site.data.keyword.contdelivery_short}} service, open a support ticket.   
+If you have a more serious issue or encounter problems with DevSecOps, do the following:   
 
 1. Log in to {{site.data.keyword.cloud_notm}}.
 1. From the {{site.data.keyword.cloud_notm}} console, click **Support**.
 
-For more information about opening an {{site.data.keyword.cloud_notm}} support ticket, or about support levels and ticket severities, see [Support plans](/docs/get-support?topic=get-support-support-plans).
+For more information about support levels, see [Support plans](/docs/get-support?topic=get-support-support-plans).
 
 ## Support for {{site.data.keyword.cloud_notm}}
 {: #devsecops-support-ibmcloud}
