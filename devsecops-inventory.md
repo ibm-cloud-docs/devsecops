@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -68,7 +68,7 @@ Use the following entry names for a service:
 
 The content is implemented in the inventory by using the following structure:
 
-```
+```text
 /
 ├── auth
 │   ├── service
@@ -87,7 +87,7 @@ The content is implemented in the inventory by using the following structure:
 
 Although the `Entry` type represents the schema of the Inventory Entry by using typescript syntax, you can convert it to use JSON schema.
 
-```
+```bash
 interface Entry {
   repository_url: string;
   artifact: string;
@@ -115,7 +115,7 @@ interface Entry {
 ### Example
 {: #entry-format-example}
 
-```
+```bash
 {
   "repository_url": "https://github.com/test-org/compliance-app-20201211",
   "artifact": "us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0",
@@ -216,128 +216,128 @@ The Inventory contains some basic operations that run by using the CLI or by usi
 
 1. Create a promotion pull request from master to the target branch in staging. 
 
-```
-cocoa inventory promote \
-  --source="master" \
-  --target="staging" \
-  --priority="moderate" \
-  --assigned-to="assignee@ibm.com" \
-  --description="Change description" \
-  --purpose="Change purpose" \
-  --impact="Change impact" \
-  --backout-plan="Details on backout and rollback")
-```
-{: codeblock}
+   ```bash
+   cocoa inventory promote \
+     --source="master" \
+     --target="staging" \
+     --priority="moderate" \
+     --assigned-to="assignee@ibm.com" \
+     --description="Change description" \
+     --purpose="Change purpose" \
+     --impact="Change impact" \
+     --backout-plan="Details on backout and rollback")
+   ```
+   {: codeblock}
 
-2. Conclude a deployment by moving the `target_latest` tag to the same commit as the `pipeline-run-id` tag.
+1. Conclude a deployment by moving the `target_latest` tag to the same commit as the `pipeline-run-id` tag.
 
-```
-cocoa inventory label move \
-  --to-label="${PIPELINE_RUN_ID}" \
-  "target_latest"
-```
-{: codeblock}
+   ```bash
+   cocoa inventory label move \
+     --to-label="${PIPELINE_RUN_ID}" \
+     "target_latest"
+   ```
+   {: codeblock}
 
 ### Git and GitHub CLI
 {: #inventory-git-gh-cli}
 
 1. Create a promotion pull request from master to the target branch in staging.
 
-```
-promote() {
+   ```bash
+   promote() {
+   
+     if [ -z $1 ] || [ -z $2 ]; then
+       echo "Missing source and target"
+       exit 1
+     fi
+   
+     local source="$1"
+     local target="$2"
+   
+     if ! git show-ref "refs/remotes/origin/$target"; then
+       # Create a new target branch, from the beginning of master
+       git checkout master
+       git checkout -b "$target" $(git rev-list --max-parents=0 HEAD)
+       git_push
+     fi
+   
+     git checkout "$source"
+     git pull --rebase
+   
+     # Create a promotion branch for the PR
+     # this can be discarded after the Promotion PR merge
+     git checkout -b "promote-$source-to-$target"
+     git push --set-upstream origin "promote-$source-to-$target"
+   
+     # Create PR from promotion branch to target branch
+     gh pr create \
+       --base "$target" \
+       --head "promote-$source-to-$target" \
+       --title "Promote $source to $target" \
+       --body "" \
+       --repo "https://github.com/org/inventory-repository"
+   
+     # promotion branch can be deleted once the PR was merged
+   }
+   
+   $ promote master staging
+   ```
+   {: codeblock}
 
-  if [ -z $1 ] || [ -z $2 ]; then
-    echo "Missing source and target"
-    exit 1
-  fi
+1. Conclude a deployment by moving the `target-latest` tag to the same commit as the `pipeline-run-id` tag.
 
-  local source="$1"
-  local target="$2"
+   ```bash
+   conclude () {
+     local target="$1"
+     local tag="$2"
+   
+     latest="$1-latest"
+   
+     # remove the latest tag
+     git push origin ":refs/tags/$latest"
+     # find the commit hash of the target tag
+     sha=$(git rev-list -n 1 $tag)
+     
+     # add the latest tag to the same commit of the target tag
+     git tag -fa "$latest" -m "" $sha
+     git push --tags --force
+   }
+   
+   $ conclude staging pipeline-run-fe33b05c
+   ```
+   {: codeblock}
 
-  if ! git show-ref "refs/remotes/origin/$target"; then
-    # Create a new target branch, from the beginning of master
-    git checkout master
-    git checkout -b "$target" $(git rev-list --max-parents=0 HEAD)
-    git_push
-  fi
+1. Revert staging to an earlier state by using Git and the GitHub CLI. 
 
-  git checkout "$source"
-  git pull --rebase
-
-  # Create a promotion branch for the PR
-  # this can be discarded after the Promotion PR merge
-  git checkout -b "promote-$source-to-$target"
-  git push --set-upstream origin "promote-$source-to-$target"
-
-  # Create PR from promotion branch to target branch
-  gh pr create \
-    --base "$target" \
-    --head "promote-$source-to-$target" \
-    --title "Promote $source to $target" \
-    --body "" \
-    --repo "https://github.com/org/inventory-repository"
-
-  # promotion branch can be deleted once the PR was merged
-}
-
-$ promote master staging
-```
-{: codeblock}
-
-2. Conclude a deployment by moving the `target-latest` tag to the same commit as the `pipeline-run-id` tag.
-
-```
-conclude () {
-  local target="$1"
-  local tag="$2"
-
-  latest="$1-latest"
-
-  # remove the latest tag
-  git push origin ":refs/tags/$latest"
-  # find the commit hash of the target tag
-  sha=$(git rev-list -n 1 $tag)
-  
-  # add the latest tag to the same commit of the target tag
-  git tag -fa "$latest" -m "" $sha
-  git push --tags --force
-}
-
-$ conclude staging pipeline-run-fe33b05c
-```
-{: codeblock}
-
-3. Revert staging to an earlier state by using Git and the GitHub CLI. 
-
-```
-revert () {
-  local branch="$1"
-  local commit="$2"
-  
-  # create a revert branch from the target branch
-  git checkout "$branch"
-  git pull --rebase
-  git checkout -b "$branch-revert"
-
-  # revert commits since the target commit, then commit and push
-  git revert -n $(git rev-list --no-merges HEAD...$commit)
-  git commit -m "revert $branch to $commit"
-  git push --set-upstream origin "$branch-revert"
-
-  # create PR from revert branch to the target branch
-  gh pr create \
-    --base "$branch" \
-    --head "$branch-revert" \
-    --title "Revert $branch to $commit" \
-    --body "" \
-    --repo "$REPO"
-
-  # revert branch can be deleted once the PR was merged
-}
-
-$ revert staging ba3b8e5ed3320e6b4981077e1a1627f08de4f511
-```
-{: codeblock}
+   ```bash
+   revert () {
+     local branch="$1"
+     local commit="$2"
+     
+     # create a revert branch from the target branch
+     git checkout "$branch"
+     git pull --rebase
+     git checkout -b "$branch-revert"
+   
+     # revert commits since the target commit, then commit and push
+     git revert -n $(git rev-list --no-merges HEAD...$commit)
+     git commit -m "revert $branch to $commit"
+     git push --set-upstream origin "$branch-revert"
+   
+     # create PR from revert branch to the target branch
+     gh pr create \
+       --base "$branch" \
+       --head "$branch-revert" \
+       --title "Revert $branch to $commit" \
+       --body "" \
+       --repo "$REPO"
+   
+     # revert branch can be deleted once the PR was merged
+   }
+   
+   $ revert staging ba3b8e5ed3320e6b4981077e1a1627f08de4f511
+   ```
+   {: codeblock}
 
 ## Common use cases for working with Git repos
 {: #common-use-cases}

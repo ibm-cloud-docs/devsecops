@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps
 
@@ -50,7 +50,7 @@ It is recommended that you set up a dedicated {{site.data.keyword.cos_short}} in
 
 {{site.data.keyword.cos_short}} object names consist of the following components:
 
-```
+```bash
 {NAMESPACE} / {PIPELINE_RUN_ID} / {TYPE} / {FILE_NAME} _ {HASH}
 ```
 {: codeblock}
@@ -58,7 +58,7 @@ It is recommended that you set up a dedicated {{site.data.keyword.cos_short}} in
 ###  Examples:
 {: #cd-devsecops-cos-bucket-content-example}
 
-```
+```bash
 ci/48decaa9-9042-498f-b58d-3577e0ac0158/evidences/build-vulnerability-advisor.json_362c06afa88b3f304878f0d0979e834f
 
 ci/48decaa9-9042-498f-b58d-3577e0ac0158/artifacts/app-image-va-report.json_b3f30487f0d0979e834f362c06afaaa8

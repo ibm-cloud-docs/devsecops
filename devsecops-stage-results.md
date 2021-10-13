@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-06-18"
+lastupdated: "2021-10-13"
 
 keywords: DevSecOps
 
@@ -31,29 +31,28 @@ You can use the Stage Results API to access the results of specific stages and c
 
 1. Type `get_data result` to print which stages have saved results:
 
- ```
-$ get_data result
-test
-detect-secrets
-branch-protection
-```
+   ```bash
+   $ get_data result
+   test
+   detect-secrets
+   branch-protection
+   ```
 
 1. Type `get_data result <stage-name>` to print the result for a specific stage:
 
- ```
-$ get_data result detect-secrets
-success
-$ get_data result test
-failure
-```
+   ```bash
+   $ get_data result detect-secrets
+   success
+   $ get_data result test
+   failure
+   ```
 
 1. Iterate through the saved results:
 
- ```
-#!/usr/bin/env bash
-while read -r stage; do
-    result=$(get_data result $stage)
-    echo "The result of $stage stage is: $result"
-done < <(get_data result)
-```
-
+   ```bash
+   #!/usr/bin/env bash
+   while read -r stage; do
+       result=$(get_data result $stage)
+       echo "The result of $stage stage is: $result"
+   done < <(get_data result)
+   ```

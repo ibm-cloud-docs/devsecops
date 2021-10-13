@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-06-30"
+lastupdated: "2021-10-13"
 
 keywords: DevSecOps
 
@@ -34,19 +34,19 @@ The current implementation is tested on GitHub. For a list of available values, 
 
 1. Specify the following environment variables:
 
- ```
-GHE_TOKEN=    # Github token
-GHE_ORG=      # Github organization/username
-GHE_REPO=     # Github repository
-GHE_COMMIT=   # Github commit hash
-```
+   ```bash
+   GHE_TOKEN=    # Github token
+   GHE_ORG=      # Github organization/username
+   GHE_REPO=     # Github repository
+   GHE_COMMIT=   # Github commit hash
+   ```
 
-1. Running the following command to set the pull request status:
+1. Run the following command to set the pull request status:
 
- ```
-$ cocoa set-status \
- --state="pending" \
- --targetURL="https://cloud.ibm.com/devops/pipelines/tekton/some-toolchain/runs/some-pipelinerun/lint/lint?env_id=ibm:yp:us-south" \
- --context="tekton/lint" \
- --description="Tekton linter is running."
- ```
+   ```bash
+   $ cocoa set-status \
+    --state="pending" \
+    --targetURL="https://cloud.ibm.com/devops/pipelines/tekton/some-toolchain/runs/some-pipelinerun/lint/lint?   env_id=ibm:yp:us-south" \
+    --context="tekton/lint" \
+    --description="Tekton linter is running."
+   ```

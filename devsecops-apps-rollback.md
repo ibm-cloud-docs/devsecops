@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-08-31"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps
 
@@ -33,7 +33,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
 
 1. List the tags to identify the commit ID to roll back to. The following command rolls back to tags 8 - commit.  
  
-   ```
+   ```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git show-ref --tags
       09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/1
@@ -51,7 +51,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
      
 1. Revert to the expected point in the inventory. The following command lists the commit IDs to revert, for informational purposes only.
      
-   ```
+   ```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
       67cc8babdff3e09c1f0e632f897798c1b5424f38
@@ -62,14 +62,14 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
      
 1. The following command reverts in the inventory.
      
-   ```
+   ```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
    ```
      
 1. Commit the new state of the inventory.
 
-   ```
+   ```bash
      # /c/usr/devsecops/compliance-inventory (master|REVERTING)
      $ git commit -m "revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8"
       [master af82538] revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
@@ -79,7 +79,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
  
 1. Push to the master branch.
     
-   ```
+   ```bash
     # /c/usr/devsecops/compliance-inventory (master)
     $ git push --set-upstream origin master
       Enumerating objects: 7, done.

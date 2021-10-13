@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-06-18"
+lastupdated: "2021-10-13"
 
 keywords: DevSecOps
 
@@ -32,7 +32,7 @@ Your scripts can access the full trigger webhook payload that started the curren
 The following code snippet shows how to access the webhook trigger payload and provide or override a variable in the pipeline.
 It reads the author of the recent commit that triggered the pipeline and saves it for the toolchain to use later.
 
-```
+```bash
 AUTHOR_EMAIL="$(echo "${TRIGGER_PAYLOAD}" | jq '.head_commit.author.email')"
 
 set_env author-email $AUTHOR_EMAIL
@@ -42,4 +42,3 @@ set_env author-email $AUTHOR_EMAIL
 #
 get_env author-email
 ```
-

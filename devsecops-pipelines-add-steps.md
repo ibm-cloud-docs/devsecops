@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-07-05"
+lastupdated: "2021-10-13"
 
 keywords: DevSecOps
 
@@ -45,10 +45,10 @@ The default app repo cloned by the pipeline internally and added to the pipeline
 
 If you want to use more repos, clone them in the setup stage and use the same `save_repo` interface to add them to the pipeline.
 
-### Example:
+### Example
 {: #cd-devsecops-add-pipeline-setupexample}
 
-```
+```bash
 #
 # your scripts cloning the repositories
 #
@@ -80,12 +80,14 @@ Paths saved by using `save_repo` must be relative to the workspace path.
 You don't need to install the `pipelinectl` tool for your scripts or base images, the reference pipeline provides the binaries for the context of your script.
 
 ## Test
+{: #cd-devsecops-add-pipeline-test}
 
 This stage is where you run your tests on your code repos. You can access your repos added in the setup stage using the `list_repos` and `load_repo` pipelinectl interfaces.
 
-Example:
+### Example
+{: #cd-devsecops-add-pipeline-test-example}
 
-```
+```bash
 exit_code=0
 
 #
@@ -120,12 +122,13 @@ exit $exit_code
 
 The unit-test compliance control is determined by the exit code of the stage script itself. If your tests pass, exit with 0, if not, return a non-zero exit code at the end.
 
-#### Saving results
+### Saving results
+{: #cd-devsecops-add-pipeline-save-results}
 
 Your tests might generate some report artifacts, such as a test results JSON or XML. To attach those to the created compliance evidence as evidence artifacts, use the save_result pipelinectl interface in this stage.
 
 
-```
+```bash
 #
 # run tests with some test suite runner, and save output to results.json
 #
@@ -144,7 +147,7 @@ Using the `save_result` pipelinectl interface ensures that the pipeline finds yo
 
 Example evidence created for the unit tests while using `save_result`:
 
-```
+```bash
 {
   "evidence_type_id": "com.ibm.unit_tests",
   "evidence_type_version": "1.0.0",
@@ -174,14 +177,16 @@ Example evidence created for the unit tests while using `save_result`:
 ```
 
 ## Build or containerize
+{: #cd-devsecops-add-pipeline-build}
 
 In this stage you can build your artifacts. The pipeline provides some default features for docker image type artifacts, but you're able to build any kind of artifacts here. What is important, is to save the created artifacts for the pipeline, so later it can run scans on it, or use them in your release stage.
 
 To provide information on your built artifacts, use the `save_artifact` pipelinectl interface.
 
-Example:
+### Example
+{: #cd-devsecops-add-pipeline-build-example}
 
-```
+```{: #cd-devsecops-add-pipeline-test-example}
 #
 # your scripts building the artifact
 #
@@ -208,16 +213,18 @@ The preferred format for image name is `image-URL:build-tag`, for example, `wcp-
 
 If you build Docker images, use the `save_artifact` interface to send those images for the default built-in image signing and CR VA scanning tasks.
 
-#### Release
+## Release
+{: #cd-devsecops-add-pipeline-release}
 
 At the end of the pipeline, the built artifacts must be added to the inventory, so they can be promoted to deployment.
 The release stage provides flexibility if you want to add other artifacts to the inventory, such as Helm charts.
 
 In this stage, you can use the CLI `cocoa inventory add` command, and the data from `pipelinectl` commands, to create the inventory entries.
 
-Example:
+### Example
+{: #cd-devsecops-add-pipeline-release-example}
 
-```
+```bash
 #
 # `list_artifacts` returns the list of the reference names of saved artifacts
 #
@@ -243,12 +250,13 @@ done
 
 To use the CLI, you must install it in your scripts, or use a base image that has the CLI pre-installed.
 
-## Further information
+## Related information
+{: #cd-devsecops-add-pipeline-related}
 
-    Documentation on stages for user-defined scripts
-    API documentation for pipelinectl
-    Example test script
-    Example build scripts
-    Example release script
-    The default built-in image signing script
-    The default built-in VA scan checker script
+   * Documentation on stages for user-defined scripts
+   * API documentation for pipelinectl
+   * Example test script
+   * Example build scripts
+   * Example release script
+   * The default built-in image signing script
+   * The default built-in VA scan checker script

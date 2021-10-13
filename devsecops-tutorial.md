@@ -246,7 +246,7 @@ Configure the target Kubernetes cluster where the application will be deployed. 
    The name of the application.
    * Default: hello-compliance-app
 
-* **IBM Cloud API Key:**
+* **{{site.data.keyword.cloud_notm}} API Key:**
    The API key is used to interact with the ibmcloud CLI tool in several tasks.
    * Preferred: An existing key can be imported from an existing Key Protect Instance by clicking the key icon.
    * An existing key can be copy and pasted.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-13"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -390,16 +390,21 @@ You can configure the individual toolchain integrations after the pipeline is cr
 ## Run the CD pipeline
 {: #cd-devsecops-tekton-cd-run-pipeline}
 
-**Run Promotion Pipeline**
+### Run Promotion Pipeline
+{: #cd-devsecops-tekton-cd-run-promotion-pipeline}
 
-- Make sure CI Pipeline ran successfully before running the `Promotion Pipeline`.
-- The Promotion Pipeline creates a `Pull Request` with the content of the inventory on the Inventory Source Environment (eg: `master`) branch targeting the Inventory Target Environment branch (eg: `staging` or `prod`). An intermediary branch for the PR is created which can be discarded after the PR has been merged. 
+1. Make sure CI Pipeline ran successfully before running the `Promotion Pipeline`.
+1. The Promotion Pipeline creates a `Pull Request` with the content of the inventory on the Inventory Source Environment (eg: `master`) branch targeting the Inventory Target Environment branch (eg: `staging` or `prod`). An intermediary branch for the PR is created which can be discarded after the PR has been merged. 
 
-| ![Running the promotion pipeline](images/run-promotion-pipeline.png) |
-| :--: |
+   | ![Running the promotion pipeline](images/run-promotion-pipeline.png) |
 
-- Once the `Promotion Pipeline` finishes successfully, the `promote` Task should provide you a link to the aforementioned `Pull Request` in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment> `
-- Open the `Pull Request` in your browser with the link provided in the log. Fill details in appropriate sections as below:
+1. After the `Promotion Pipeline` finishes successfully, the `promote` task provides you with a link to the aforementioned `Pull Request` in the Inventory Repository. The pull request name is in the following format:
+
+   ```text
+   promote <Inventory Source Environment> to <Inventory Target Environment>
+   ```
+
+1. Open the `Pull Request` in your browser with the link provided in the log. Fill details in appropriate sections as follows:
     - **Priority**: (mandatory) One of Critical, High, Moderate, Low, Planning
     - **Change Request assignee**: (mandatory) email-id of the assignee
     - **Additional Description**: Description about the changes in the application 
@@ -407,17 +412,19 @@ You can configure the individual toolchain integrations after the pipeline is cr
     - **Explanation of Impact**: Impact of the change to the application behavior or environment
     - **Backout Plan**: Steps to backout incase of deployment failure
 
-- Complete the fields in the `Pull Request` and save. 
-- Merge the `Pull Request` from the GRIT.
+1. Complete the fields in the `Pull Request` and save. 
+
+1. Merge the `Pull Request` from the GRIT.
 
 The details of the `Pull Request` will be used by the CD Pipeline to create a Change Request in Change Request Managment repository during the CD Pipeline Run.
 
-**Run CD Pipeline**
+Run CD Pipeline
+{: #cd-devsecops-tekton-cd-run-cd-pipeline}
 
 There are two ways to start a CD pipeline:
 
 1. Trigger the CD pipeline manually.
-2. Automtically after every `Merge` action in Inventory Repository.
+1. Automtically after every `Merge` action in Inventory Repository.
 
 After the merge you have to manually trigger the run of `CD Pipeline`. There is a GRIT Trigger set up to trigger automatic CD Pipeline, but is disabled by default and can be enabled after the first promotion.
 

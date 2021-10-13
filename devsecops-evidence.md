@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps, compliance evidence
 
@@ -35,7 +35,7 @@ Collecting evidence is one of the essential aspects of the DevSecOps reference a
 The `Evidence` type represents the schema of the evidence. Although the schema uses typescript syntax, you can convert it to use JSON schema.
 
 
-```
+```bash
 interface Evidence {
   evidence_type_id: string;      // name of the evidence
   evidence_type_version: string; // version of the evidence schema
@@ -65,7 +65,7 @@ interface Artifact {
 
 Some of the fields in the schema are specific to toolchains and Tekton pipelines:
 
-```
+```bash
 toolchain_crn: string;
   pipeline_id: string;
   pipeline_run_id: string;
@@ -78,7 +78,7 @@ This schema is saved to the evidence locker by using JSON format. The evidence f
 ### Example
 {: #cd-devsecops-format-example}
 
-```
+```bash
 {
   "evidence_type_id": "com.ibm.unit_tests",
   "evidence_type_version": "1.0.0",
@@ -116,7 +116,7 @@ The DevSecOps pipeline creates an evidence summary document. This document is ba
 
 The format and fields of the evidence summary document are specified by using the typescript syntax:
 
-```
+```bash
 interface Summary {
   version: '1.0';                // schema version
   date: string;                  // ISO-8601, UTC, ie. YYYY-MM-DDThh:mm:ssZ
@@ -130,7 +130,7 @@ interface Summary {
 ### Example
 {: #cd-devsecops-summary-example}
 
-```
+```bash
 {
   "date": "23-43-2020 UTC",
   "version": "1.0",

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps
 
@@ -34,7 +34,7 @@ You can build all of the Docker images in the `containerize` stage that you need
 
 You can add image artifacts by using the `pipelinectl` interface. In the containerize stage, add the images as artifacts to the pipeline:
 
-```
+```bash
 save_artifact <image-alias> type=image "name=${IMAGE}" "digest=${DIGEST}" [<prop>=<value>]
 ```
 
@@ -48,7 +48,7 @@ The **type**, **name**, and **digest** fields  are required!
 ### Example
 {: #cd-devsecops-artifacts-example}
 
-```
+```bash
 save_artifact service type=image \
   name="${SERVICE_IMAGE}" \
   digest="${SERVICE_IMAGE_DIGEST}" \
@@ -67,15 +67,15 @@ By using this interface, the default built-in GPG Image signing will be able to 
 
 At the end of the pipeline in the release stage, you can access these artifacts using the pipelinectl interface:
 
-```
+```text
 list_artifacts
 load_artifact <image-alias> <property>
 ```
 {: screen}
 
-`list_artifacts` lists the image aliases available. <property> is any property you or the pipeline added previously. Using these together you can iterate over your artifacts, for example:
+`list_artifacts` lists the image aliases available, where `<property>` is any property that you or the pipeline added previously. Using these together you can iterate over your artifacts, for example:
 
-```
+```text
 list_artifacts | while IFS= read -r artifact; do
 
   $image=$(load_artifact "$artifact" name)
@@ -91,13 +91,8 @@ done
 The `signature` property is added by the default built-in GPG Image signing task.
 {: tip}
 
-
-
 For more information, check out the following documentation:
 
 * [Documentation on stages for user-defined scripts](/docs/devsecops?topic=devsecops-custom-scripts)
 * [API documentation for pipelinectl](/docs/devsecops?topic=devsecops-cd-devsecops-pipelinectl)
-* [The default built-in GPG Image sign script](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/sign_image.sh)
-
-
-
+* [The default built-in GPG Image sign script](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/sign_image.sh){: external}

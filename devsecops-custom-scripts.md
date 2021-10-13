@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-16"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps
 
@@ -84,13 +84,13 @@ These settings are not pipeline parameters, they must be part of your `.pipeline
 
 * `script`: The script to run in the stage. Because this field is used as a script file make sure that the contents act like a script file in the base image that you provided. You can include other scripts next to this configuration file, and refer to them from this entry point. For example:
 
-```
-test:
-  script: |
-    #!/bin/sh
-    scripts/lint.sh
-    scripts/unit-test.sh
-```
+```bash
+   test:
+     script: |
+       #!/bin/sh
+       scripts/lint.sh
+       scripts/unit-test.sh
+   ```
 
 * `dind`: Specify whether to enable `docker-in-docker` for the script context. The default setting is `false`.
 
@@ -112,7 +112,7 @@ test:
 #### Example configuration
 {: #cd-devsecops-scripts-sample-config}
 
-```
+```bash
 version: '1' # fixed, this value is used to track schema changes
 
 # `setup` runs right after the app repo is cloned
@@ -174,6 +174,7 @@ acceptance-test:
     #!/bin/sh
     ...
 ```
+
 To view the `.pipeline-config.yaml` configuration file that is used by default for the example app in the reference pipeline template, see the [configuration for pull requests and continuous integration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml"){: external} and the [configuration for continuous delivery](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment/-/blob/master/.pipeline-config.yaml"){: external}.
 
 ## Secrets, parameters, and properties
@@ -189,14 +190,14 @@ You do not need to install the pipelinectl tool for your scripts or base images,
 
 Environment properties and secrets (defined on the pipeline UI) are accessible through `pipelinectl`:
 
-```
+```bash
 # if you set my_config_value on the UI, it's accessible via `get_env`
 my_config_value=$(get_env my_config_value)
 ```
 
 You can set other variables by using `set_env`:
 
-```
+```bash
 set_env my_config_value "some value"
 
 # later on, even in another stage
@@ -218,8 +219,7 @@ You can create an Artifactory auth credential for your own build by adding the r
 
 When these parameters are available in the pipeline, you can access them in the user scripts and create a Docker auth JSON file. For example:
 
-```
-
+```bash
 kubectl create secret docker-registry regcred \
   --o json \
   --dry-run=client \
@@ -334,7 +334,7 @@ The following tasks and stages are available:
 
 #### Example usage
 
-```
+```bash
 # List saved stage results
 $ get_data result
 detect-secrets

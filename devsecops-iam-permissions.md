@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-06-29"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps, COS, secure toolchain, compliance
 

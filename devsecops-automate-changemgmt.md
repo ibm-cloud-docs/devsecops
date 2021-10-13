@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-10-12"
 
 keywords: DevSecOps, automate change management, change management
 
@@ -121,21 +121,22 @@ The content of the Description and Plan section is organized in the following wa
     
 * **CHANGE LOG**: The list of all of the commit IDs and the description that is included in the code level to be deployed.
 
-```
-Git changelog for mymicroservice:
+   ```text
+   Git changelog for mymicroservice:
+   
+   Git changelog of artifact '"uk.icr.io/mycontainerregistrynamespace/   mymicroservice:devsecops-pipeline4@sha256:733e74a13ad26d77a741204bcdc9c5f8f77023b26620ddaa7842d29b600014a0"'  
+   
+   COMMITS:
+   94de4256c346c00fee9fd5f7bbfb114ed4da7c81 - implemented myfunction
+   ```
+   {: screen}
 
-Git changelog of artifact '"uk.icr.io/mycontainerregistrynamespace/mymicroservice:devsecops-pipeline4@sha256:733e74a13ad26d77a741204bcdc9c5f8f77023b26620ddaa7842d29b600014a0"'  
+* **PULL REQUESTS**:
 
-COMMITS:
-94de4256c346c00fee9fd5f7bbfb114ed4da7c81 - implemented myfunction
-```
-{: screen}
-
-* **PULL REQUESTS**: 
-```
-mymicroservicerepo: <PR #> - (Merge pull request #15 implemented myfunction)
-```
-{: screen}
+   ```text
+   mymicroservicerepo: <PR #> - (Merge pull request #15 implemented myfunction)
+   ```
+   {: screen}
 
 * **TEST AND SCANS RESULTS**: No issues are found if no failures are reported in the evidence summary or the list of failed IDs. For example,: `com.ibm.cloud.image_vulnerability_scan: failed; com.ibm.unit_tests: failed)`, with the abstract of the issues opened so that the approver can view details about what is failing.
 
