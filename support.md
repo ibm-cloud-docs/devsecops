@@ -22,12 +22,9 @@ subcollection: devsecops
 
 Get help fast directly from the {{site.data.keyword.cloud_notm}} development teams and other users.
 
-The DevSecOps team actively monitors our Slack channel for questions about the DevSecOps, {{site.data.keyword.contdelivery_short}} services and toolchains.
+The DevSecOps team actively monitors our Slack channel for questions about the DevSecOps, {{site.data.keyword.contdelivery_short}} services, and toolchains.
 
-| Get Help | Ask Us a Question |
-|----------|---------|
-| Reach out to us on our Slack channel | <a class="xref" href="https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/" target="_blank" title="(Opens in a new tab or window)"><img class="image" src="images/slack_us.png" width="148" style="width:148px; border-style: none" alt="Slack us"/></a> |
-{: caption="Help and support for DevSecOps" caption-side="top"}
+[![Reach out to us on our Slack channel.](images/slack_us.png "Slack us")](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}
 
 ## Support tickets
 {: #devsecops-support-tickets}
