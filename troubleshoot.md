@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-03"
+lastupdated: "2021-10-13"
 
 keywords: troubleshoot, DevSecOps
 
@@ -47,7 +47,7 @@ subcollection: devsecops
 
 ![Storage quota error](images/exceeded-quota.png)
 
-IBM Cloud registry offers a limited quota, pushing too many images it can be exceeded.
+{{site.data.keyword.cloud_notm}} registry offers a limited quota, pushing too many images it can be exceeded.
 
 Go to images, delete some and rerun the pipeline.
 You can check your quota limits and usage by issuing ibmcloud cr quota command.
@@ -111,15 +111,16 @@ For more information, check out the [kubectl documentation on creating a secret]
 
 If your image signing tasks fails, refer to the [image signing documentation](/docs/devsecops?topic=devsecops-cd-devsecops-image-signing) to verify that the signing key was correctly generated and stored.
 
-## Troubleshooting Continuous Delivery
-For more general issues related to the Continuous Delivery service, refer to the {{site.data.keyword.deliverypipeline}} [troubleshooting page](/docs/ContinuousDelivery?topic=ContinuousDelivery-troubleshoot_delivery_pipeline)
+## Troubleshooting {{site.data.keyword.contdelivery_short}}
+{: #troubleshoot-cd-related}
+
+For more general issues related to the {{site.data.keyword.contdelivery_short}} service, see the {{site.data.keyword.deliverypipeline}} [troubleshooting page](/docs/ContinuousDelivery?topic=ContinuousDelivery-troubleshoot_delivery_pipeline).
 
 ## Getting help from the community
-Not finding your answer, solution? Get help fast directly from the IBM Cloud development teams and other users.
+{: #troubleshoot-devsecops-community}
 
-The DevSecOps team actively monitors our Slack channel for questions about the DevSecOps, {{site.data.keyword.contdelivery_short}} services and toolchains.
+Not finding your answer, solution? Get help fast directly from the {{site.data.keyword.cloud_notm}} development teams and other users.
 
-| Get Help | Ask Us a Question |
-|----------|---------|
-| Reach out to us on our Slack channel | <a class="xref" href="https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/" target="_blank" title="(Opens in a new tab or window)"><img class="image" src="images/slack_us.png" width="148" style="width:148px; border-style: none" alt="Slack us"/></a> |
-{: caption="Help and support for {{site.data.keyword.contdelivery_short}}" caption-side="top"}
+The DevSecOps team actively monitors our Slack channel for questions about the DevSecOps, {{site.data.keyword.contdelivery_short}} services, and toolchains.
+
+[![Reach out to us on our Slack channel.](images/slack_us.png "Slack us")](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}
