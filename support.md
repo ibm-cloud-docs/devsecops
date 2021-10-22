@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2015, 2021
+  years: 2021
 lastupdated: "2021-10-22"
 
-keywords: getting help, getting support, DevSecOps
+keywords: getting help, getting support, DevSecOps, continuous delivery, devops
 
 subcollection: devsecops
 
