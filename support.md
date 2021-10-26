@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-22"
+lastupdated: "2021-10-26"
 
 keywords: getting help, getting support, DevSecOps, continuous delivery, devops
 
@@ -25,6 +25,6 @@ If you have problems or questions when using {{site.data.keyword.cloud_notm}} De
 ## Getting help by using Slack
 {: #gettinghelp-slack}
 
-Get help fast directly from the {{site.data.keyword.cloud_notm}} development teams and other users. The DevSecOps team actively monitors our [Slack channel](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external} for questions about the DevSecOps, {{site.data.keyword.contdelivery_short}} services, and toolchains.
+Get help fast directly from the {{site.data.keyword.cloud_notm}} development teams and other users. The DevSecOps team actively monitors our [Slack channel](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external} for questions about DevSecOps, {{site.data.keyword.contdelivery_short}} services, and toolchains.
 
 [![Reach out to us on our Slack channel.](images/slack_us.png "Slack us")](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}
