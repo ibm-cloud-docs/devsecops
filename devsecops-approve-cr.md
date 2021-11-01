@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: [{CURRENT_YEAR}]
-lastupdated: "[{LAST_UPDATED_DATE}]"
+  years:  2021
+lastupdated: "2021-09-15"
 
 keywords: DevSecOps
 
@@ -10,7 +10,18 @@ subcollection: devsecops
 
 ---
 
-[{METADATA_ATTRIBUTES}]
+{:shortdesc: .shortdesc}
+{:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:download: .download}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Manually approving change requests
 {: #cd-devsecops-approve-cr}
