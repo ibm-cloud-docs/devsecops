@@ -11,13 +11,14 @@ subcollection: devsecops
 ---
 
 {:shortdesc: .shortdesc}
-{:screen: .screen}
-{:pre: .pre}
-{:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
 {:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
 {:tip: .tip}
+{:note: .note}
+{:important: .important}
 {:download: .download}
-
 
 # Managing security and compliance with {{site.data.keyword.contdelivery_short}}
 {: #cd-manage-security-compliance}
