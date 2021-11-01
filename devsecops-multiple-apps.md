@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021
-lastupdated: 2021-10-12"
+lastupdated: "2021-10-12"
 
-keywords: DevSecOps, CI toolchain with multiple apps, set up multiple apps on one toolchain, multiple apps toolchain
+keywords: DevSecOps, CI toolchain with multiple apps, multiple apps toolchain
 
 subcollection: devsecops
 
