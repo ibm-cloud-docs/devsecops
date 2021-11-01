@@ -136,7 +136,7 @@ Start the CI toolchain configuration by using one of the following options:
 
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI-Develop with DevSecOps practices**.
 
-## Set up the toolchain name and region
+## Set up the CI toolchain name and region
 {: #devsecops-ci-toolchain-name-region}
 {: step}
 
@@ -147,7 +147,7 @@ The toolchain region can differ from cluster and registry region.
 
 ![DevSecOps CI toolchain name and region](images/devsecops-ci-toolchain-name-region.png)
 
-## Set up tool integrations
+## Set up CI tool integrations
 {: #devsecops-ci-tool-integrations}
 {: step}
 
@@ -458,7 +458,7 @@ Start the CD toolchain configuration by using one of the following options:
 
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CD-Develop with DevSecOps practices**.
 
-## Set up the toolchain name and region
+## Set up the CD toolchain name and region
 {: #devsecops-cd-toolchain-name-region}
 {: step}
 
@@ -469,7 +469,7 @@ The toolchain region can differ from cluster and registry region.
 
 ![DevSecOps CD toolchain name and region](images/devsecops-cd-name-region.png)
 
-## Set up tool integrations
+## Set up CD tool integrations
 {: #devsecops-cd-tool-integrations}
 {: step}
 
