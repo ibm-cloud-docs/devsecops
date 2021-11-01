@@ -1,7 +1,7 @@
 ---
 
-Copyright:
- years: 2021
+copyright:
+  years:  2021
 lastupdated: "2021-09-15"
 
 keywords: IBM Cloud DevOps, DevSecOps
