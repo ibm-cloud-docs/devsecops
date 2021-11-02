@@ -273,6 +273,8 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 ![DevSecOps Image Signing](images/devsecops-ci-image-signing.png)
 
 ### DevOps Insights
+{: #devsecops-ci-tool-integration-insights}
+
 [IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights, the CI pipeline will automatically use the insights instance included in the toolchain.  DevOps Insights aggregates code, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
 
 ### Optional tools
@@ -378,6 +380,8 @@ To evaluate if you have any failures in your pipeline run, you need to check the
 {: note}
 
 ### Viewing the running application
+{: #devsecops-ci-toolchain-ci-running-app}
+
 After a successful CI pipeline run, the sample application is deployed on your Kubernetes cluster, and is running in the dev namespace.
 
 The app url can be found at the end of the log of the `run stage` step of `deploy-dev` task of the CI Pipeline run. Use that url to verify that the app is running.
