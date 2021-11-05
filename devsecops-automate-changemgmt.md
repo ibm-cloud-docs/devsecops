@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-12"
+lastupdated: "2021-11-05"
 
 keywords: DevSecOps, automate change management, change management
 
@@ -26,10 +26,8 @@ subcollection: devsecops
 # Automating change management
 {: #cd-devsecops-automate-changemgmt}
 
-Change management automation is one of the crucial parts of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can track the compliance aspects of deployments. Every deployment must follow the [{{site.data.keyword.cloud_notm}} Change Management Policy](https://ibm.ent.box.com/s/z0nklp949ztsjm4vqn0gvo5k4bjx8eya){: external}.
+Change management automation is one of the crucial parts of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can track the compliance aspects of deployments.
 {: shortdesc}
-
-<!-- Does this first link need to be changed or can anyone access that box link?-->
 
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a certain build and deployment of the artifacts. So, for each deployed artifact, we should be able to tell, if its build or test deployment had incidents or not. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
@@ -41,24 +39,6 @@ In this document you can find answers to the following questions regarding chang
 * What is deployment readiness?
 * What data is included in a change request?
 * How can I use an existing change request ID in the CD pipeline?
-
-
-<!-- I expect this next heading section needs to be removed bc it's internal only? -->
-
-## Connection between evidence, inventory, and change management
-{: #connection-evidence-inventory-change}
-
-![Connection between evidence, inventory, and change management](images/change-management-data-flow.svg "Flow diagram showing the relationship between evidence, inventory, and change management"){: caption="Figure 1. Connection between evidence, inventory, and change management" caption-side="bottom"}
-
-1. CI runs build artifacts and leave evidence behind about what happened during the creation of those artifacts.
-2. CI runs create entries about the created artifacts in the inventory.
-3. Built artifacts in the Inventory are [promoted](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) to deployment environments, like staging or pre-production.
-4. Change management automation uses data from the inventory, the evidence locker, and the promotion PR to create the change request
-deployments, also leaving evidence behind about acceptance tests for example. Successfully deployed and tested artifacts are further promoted to production environments, like production.
-
-Every deployment to every environment and region needs to file a change request to the change management system Git Repos and issue tracking. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
-
-
 
 ##  Change request fields in promotion pull requests
 {: #cd-devsecops-change-fields}
