@@ -37,6 +37,8 @@ Managing credentials like these must be done securely and in compliance with bes
 
 The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable easy selection of vaulted secrets by using Secrets Integrations for HashiCorp Vault and {{site.data.keyword.keymanagementservicelong}}. By using the Secrets Picker dialog, a toolchain or pipeline editor can easily select named secrets from a bound secrets integration that will then be resolved by reference within the toolchain and pipeline. After a secret is chosen, a canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is `{vault::integration-name.secret-name}`. This long form canonical reference is used by the front-end user interface components and importantly, the resolved value of the actual secret is never exposed to a user or permitted service.
 
+In addition to manually selecting chosen secrets on a one-by-one basis from any bound secrets integrations in a toolchain, the option of using a `Secret Hint` is also available.  This enables a toolchain template to be predefined with suggested secrets names (aka `Hints`) that are a short form secret reference.  The format of a secret hint is `{vault::secret-name}` whereby no secret integration name is actually included.  This provides flexibility to the toolchain author in that all required secret names can be prepopulated into a `toolchain.yml` and then these will be automatically resolved against whatever secrets integrations are configured for the toolchain.
+
 The secrets used in both CI and CD are outlined as follows:
 
 A `Hint` is a suggested default name that is automatically resolved against the first matching secret with the same name across any of the available secrets integrations that are bound to the toolchain.
@@ -45,17 +47,19 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 ## DevSecOps Pipeline Secrets
 {: #devsecops-pipeline-secrets}
 
-| Secret |  Information | 
-|---------|------------|
-| {{site.data.keyword.cloud_notm}} API key | **Required: CI & CD** Used to authenticate with IBM public cloud and perform a wide range of operations |
-| {{site.data.keyword.IBM_notm}} Image Signing Key | **Required: CI only** This is the certificate that is used to sign images built by the CI pipeline |
-| {{site.data.keyword.cos_full_notm}} Writer API Key |  **Optional: CI & CD** Used to authenticate with IBM Cloud Object Storage service - This key must have writer permission | 
-| {{site.data.keyword.IBM_notm}} Private Worker Service API Key | **(Optional): CI only** A Service ID API Key used to run delivery pipeline workloads on a Tekton Private Worker Service |
-| GRIT Access Token | **Optional: CI & CD** Used to authenticate with GRIT and provide access to the repositories |
-| Slack Web Hook | **Optional: CI & CD** This webhook is required if you choose to use the Slack tool integration to post toolchain status notifications |
-| HashiCorp Vault Role ID | **Optional: CI & CD** Used to authenticate with the Hashicorp vault server | 
-| HashiCorp Vault Secret ID | **Optional: CI & CD** Used to authenticate with the Hashicorp vault server |
-| SonarQube password or authentication token | **Optional: CI** Used to authenticate with the SonarQube source code analyzer |
+| **Secret**                | **Hint**                 | **Information**    |
+| -------------             | -------------            | -------------      |
+| {{site.data.keyword.cloud_notm}} API Key         | `ibmcloud-api-key`       | **Required: CI & CD** _Used to authenticate with IBM Public Cloud and perform a wide range of operations_ |
+| {{site.data.keyword.IBM_notm}} Image Signing Certificate      | `ciso-signing-cert`          | **Required: CI only** _This is the certificate used to sign images built by the CI pipeline_ |
+| {{site.data.keyword.IBM_notm}} Private Worker Service API Key    | `private-worker-service-api-key`  | **Required: CI only** _A Service ID API Key Used to run delivery pipeline workloads on a Tekton Private Worker Service_|
+| Github Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with Github and provide access to the repositories_ |
+| Artifactory API token.    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
+| Slack Web Hook.           | `slack-webhook`          | **Optional: CI & CD** _This webhook is required if you choose to use the Slack tool integration to post toolchain status notifications_ |
+| ServiceNow API Token.     | `servicenow-token`       | **Required: CD only** _Used to access Service Now for change management operations_ |
+| HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
+| HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
+| {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with IBM Cloud Object Storage service - This key must have `writer` permission_ |
+| SonarQube password or authentication token | `sonarqube-password`              | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
 
 {: caption="Table 1. DevSecOps Secrets" caption-side="top"}
 
@@ -69,7 +73,7 @@ If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` 
 
 When you create an instance of the CI or CD toolchain, you will see a Hashicorp tool integration like the following example:
 
-![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 1. HashiCorp Vault Tool Integration" caption-side="bottom"}
+![HashiCorp Vault Tool Integration form with required fields and example values](https://user-images.githubusercontent.com/4552866/140911200-775ecc6c-db98-4d30-99e1-8df270252636.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 1. HashiCorp Vault Tool Integration" caption-side="bottom"}
 
 <!-- Next 3 links need new targets or to be removed -->
 
