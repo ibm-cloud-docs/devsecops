@@ -25,7 +25,7 @@ subcollection: devsecops
 {:support: data-reuse='support'}
 
 # Custom scripts
-{: /docs/devsecops?topic=devsecops-custom-scripts}
+{: #custom-scripts}
 
 Custom scripts are extension points in the pipeline where adopters, teams, and users can provide scripts to run custom tasks that are required by their continuous integration and continuous delivery strategies.
 {: shortdesc}
