@@ -73,7 +73,7 @@ If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` 
 
 When you create an instance of the CI or CD toolchain, you see a Hashicorp tool integration like the following example:
 
-![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int2.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 1. HashiCorp Vault Tool Integration" caption-side="bottom"}
+![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 1. HashiCorp Vault Tool Integration" caption-side="bottom"}
 
 To use Hashicorp, you must provide the following information:
 
