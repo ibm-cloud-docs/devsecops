@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-12"
+lastupdated: "2021-11-15"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains
 
