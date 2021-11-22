@@ -638,7 +638,7 @@ The default behavior of the toolchain is to `Use default GRIT change request man
 
 In case you have an existing Change Request repository from an existing CD Toolchain, use the `Advanced Options` toggle button to configure the same for this pipeline.
 
-![Change Request Management](images/devsecops-cd-change-request-mgmt.png){: caption="hange Request Management" caption-side="bottom"}
+![Change Request Management](images/devsecops-cd-change-request-mgmt.png){: caption="Change Request Management" caption-side="bottom"}
 
 ### Link to existing DevOps Insights Toolchain
 
