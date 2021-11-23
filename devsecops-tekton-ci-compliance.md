@@ -434,7 +434,7 @@ After a successful CI pipeline run, the sample application is deployed on your K
 
 The app url can be found at the end of the log of the `run stage` step of `deploy-dev` task of the CI Pipeline run. Use that url to verify that the app is running.
 
-![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="[DevSecOps CI sample app" caption-side="bottom"}
+![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="DevSecOps CI sample app" caption-side="bottom"}
 
 ## Configure Pipeline
 {: #cd-devsecops-config-pipeline-ci}

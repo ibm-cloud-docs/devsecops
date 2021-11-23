@@ -91,7 +91,7 @@ The DevOps Insights integration in the toolchain enables analysis of historical 
 
 The target cluster is configured during toolchain setup (by using an {{site.data.keyword.cloud_notm}} API key and cluster name). You can later change these settings by altering the Delivery Pipeline configuration. Any code merged to the target Git repository branch is automatically built, validated, and deployed into the Kubernetes cluster.
 
-![DevSecOps Continuous Integration toolchain](images/devsecops-ci-toolchain-diagram.png){: caption="[DevSecOps Continuous Integration toolchain" caption-side="bottom"}
+![DevSecOps Continuous Integration toolchain](images/devsecops-ci-toolchain-diagram.png){: caption="DevSecOps Continuous Integration toolchain" caption-side="bottom"}
 
 The CI toolchain implements the following best practices:
 
@@ -386,7 +386,7 @@ After a successful CI pipeline run, the sample application is deployed on your K
 
 The app url can be found at the end of the log of the `run stage` step of `deploy-dev` task of the CI Pipeline run. Use that url to verify that the app is running.
 
-![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="[DevSecOps CI sample app" caption-side="bottom"}
+![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="DevSecOps CI sample app" caption-side="bottom"}
 
 ### Pipeline configuration
 {: #devsecops-ci-tool-integration-pipeline-config}
@@ -512,7 +512,7 @@ The default behavior of the toolchain is to Use existing issues repository to li
 
 **Repository URL**: URL of the Issues Repository configured in your CI Toolchain as captured in the previous step.
 
-![DevSecOps issues repository](images/devsecops-cd-issues-repo.png){: caption="[DevSecOps issues repository" caption-side="bottom"}
+![DevSecOps issues repository](images/devsecops-cd-issues-repo.png){: DevSecOps issues repository" caption-side="bottom"}
 
 ### Pipeline Configuration
 {: #devsecops-cd-tool-integration-pipeline-config}
@@ -729,7 +729,7 @@ You can start a CD pipeline in either of the following ways:
 
 ![DevSecOps CD Pipeline Manual Promotion](images/devsecops-cd-explore-manual-pipeline-trigger.png){: caption="DevSecOps CD Pipeline Manual Promotion" caption-side="bottom"}
 
-![DevSecOps CD Pipeline Automatic Promotion](images/devsecops-cd-explore-automatic-trigger.png){: caption="[DevSecOps CD Pipeline Automatic Promotion" caption-side="bottom"}
+![DevSecOps CD Pipeline Automatic Promotion](images/devsecops-cd-explore-automatic-trigger.png){: caption="DevSecOps CD Pipeline Automatic Promotion" caption-side="bottom"}
 
 You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD pipeline` doesn't deploy anything new.
 {: tip}

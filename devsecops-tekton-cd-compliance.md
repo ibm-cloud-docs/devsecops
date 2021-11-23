@@ -454,7 +454,7 @@ You can start a CD pipeline in either of the following ways:
 
 ![DevSecOps CD Pipeline Manual Promotion](images/devsecops-cd-explore-manual-pipeline-trigger.png){: caption="DevSecOps CD Pipeline Manual Promotion" caption-side="bottom"}
 
-![DevSecOps CD Pipeline Automatic Promotion](images/devsecops-cd-explore-automatic-trigger.png){: caption="[DevSecOps CD Pipeline Automatic Promotion" caption-side="bottom"}
+![DevSecOps CD Pipeline Automatic Promotion](images/devsecops-cd-explore-automatic-trigger.png){: caption="DevSecOps CD Pipeline Automatic Promotion" caption-side="bottom"}
 
 You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD pipeline` doesn't deploy anything new.
 {: tip}
