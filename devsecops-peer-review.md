@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-07-07"
+lastupdated: "2021-12-13"
 
 keywords: DevSecOps
 
@@ -37,17 +37,26 @@ The code repository (repo) must have at least two members, one member that has a
 
 The pipeline collects peer review compliance data during builds and deployments to create the audit trail from code pull request merges to change requests.
 
- ![Data collection](images/data-collection.svg)
+ ![Data collection](images/data-collection.svg){: caption="Data collection" caption-side="bottom"}
  
 ## Data that is collected in continuous integration build runs 
 {: #cd-devsecops-ci-data}
 
-This data collection contains a list of all of the pull request that  were merged in app repos since the last build.
+This data collection contains a list of all of the pull requests that were merged in app repos since the last build.
 
 Pull request data is collected directly from the app repos. Data for each pull request that is related to commits between the repo commit that triggered the previous build and the currently available commit is collected. These commits are stored in the inventory entries.
 
 Commits that do not contain a pull request create a compliance incident issue in the following releases of the pipeline. You cannot commit directly to the main branches.
 {: important}
+
+A compliance incident typically holds the following information:
+* The pull request URL
+* Application repository
+* Author of the pull request
+* Developer who merged the pull request
+* Timestamp of the merge activity
+
+ ![Pull Request incident content](images/devsecops-pr-incident-issue.png){: caption="Pull Request incident content" caption-side="bottom"}
 
 Collected data is saved as an evidence artifact, which is uploaded to the evidence locker, and then referred to in the evidence itself. The final evidence result is determined by the approved pull requests. Unapproved, but merged pull requests fail this type of evidence.
 
@@ -73,7 +82,17 @@ The following data is included in the automatically generated change request:
 * List of pull requests in code repos that are related to this release. This data includes the pull request title and URL.
 * List of pull request incidents that are not remediated. This data includes the pull request number and URL, and the incident URL.
 
-Non-remediated pull request incidents impact the deployment readiness of the change request. If any pull request incidents are found, they are considered vulnerabilities and the change request must be reviewed and approved manually.
+Nonremediated pull request incidents impact the deployment readiness of the change request. If any pull request incidents are found, they are considered vulnerabilities and the change request must be reviewed and approved manually.
+{: important}
+
+![Change request content](images/devsecops-pr-incident-change-request-content.png){: caption="Change request content" caption-side="bottom"}
+
+## Opting out of peer review
+{: #cd-devsecops-optout}
+
+In some exceptional cases, you might need to merge your changes without a peer review. To enable that option, set the `opt_out_pr_collection` environment variable with any nonzero textual value.
+
+Use this option with caution, and be sure to have your changes reviewed later.
 {: important}
 
 ## Pull request incident remediation
@@ -82,8 +101,8 @@ Non-remediated pull request incidents impact the deployment readiness of the cha
 Pull request incidents are considered vulnerabilities because they indicate that unchecked code is contained in the released artifacts. To remediate these incidents, complete the following steps:
 
 1. Retroactively review the merged change.
-2. Create an issue about how to fix any existing problems with the code.
-3. Close the pull request incident issue.
+1. Create an issue about how to fix any existing problems with the code.
+1. Close the pull request incident issue.
 
 The author of the pull request and the person who closes the pull request incident issue cannot be the same person.
-{: tip}
+{: important}
