@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-19"
+lastupdated: "2021-12-13"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -19,12 +19,17 @@ subcollection: devsecops
 {:tip: .tip}
 {:note: .note}
 {:important: .important}
+{:video: .video}
 {:download: .download}
 {:help: data-hd-content-type='help'}
+{:term: .term}
 {:support: data-reuse='support'}
 
-# Setting up Tekton continuous integration pipelines with compliance
+# Setting up Tekton continuous integration pipelines with DevSecOps
 {: #cd-devsecops-tekton-ci-compliance}
+
+Complete these steps to set up the Tekton continuous integration pipelines with compliance. Recommended configuration options guide you through the steps to create your toolchain.
+{: shortdesc}
 
 ## Before you begin
 {: #cd-devsecops-tekton-ci-prereq}
@@ -39,25 +44,25 @@ subcollection: devsecops
 ## Guided setup overview for the CI toolchain
 {: #cd-devsecops-tekton-ci-guided}
 
-Any of the methods in this documentation takes you to the guided setup experience. You are guided through the toolchain setup process in a logical order, and you are presented with the recommended configuration options that are needed to create your toolchain.
-
-A progress indicator shows the steps to complete the configuration. You can use the progress indicator to navigate to a previous step with a mouse click. The configuration options for the current step are displayed in the main area of the page.
-
-You can also view the following video tutorial that demonstrates the setup process:
+View the following video tutorial to get an overview of the setup process:
 
 ![Getting Started with DevSecOps in IBM Cloud - Part 1 - Continuous Integration Toolchain](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-1){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
 
 ![DevSecOps Continuous Integration toolchain welcome page](images/devsecops-ci-welcome-page.png){: caption="DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
 
+A progress indicator shows your progress in completing the configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
+
+The configuration options for the current step are displayed in the main area of the page.
+
 To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
 
-Some steps include an **Advanced Options** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Advanced Options** toggle to reveal all options for the underlying integration.
+Some steps might have an **Advanced Options** toggle at the top of the page. These steps present you with the minimum recommended configuration. However, advanced users that need fine-grained control can click the **Advanced Options** toggle to see all options for the underlying integration.
 
-![DevSecOps Advanced options toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced options toggle" caption-side="bottom"}
+![DevSecOps advanced options toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps advanced options toggle" caption-side="bottom"}
 
-After all the steps are successfully completed, you create the toolchain by clicking **Create** on the Summary step.
+After you successfully complete all of the steps, click **Create** to create the toolchain.
 
-You can always go back to previous steps in the guided installer. The toolchain installer retains all the configuration settings from the successive steps.
+You can return to previous steps in the guided installer. The toolchain installer retains all of the configurations that you completed.
 {: tip}
 
 ## Start the CI toolchain setup
@@ -440,8 +445,6 @@ The app url can be found at the end of the log of the `run stage` step of `deplo
 {: #cd-devsecops-config-pipeline-ci}
 
 You can add a `commit-id` text property (click `Add property` button and select `"Text property"`), if you trigger the pipeline manually. If no `commit-id` is supplied, the Pipeline will take the latest commit ID from the master branch of your app.
-
-<!-- TBD: Readme needed after implementing the automated versioning -->
 
 For example:
 
