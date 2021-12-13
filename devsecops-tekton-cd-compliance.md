@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-19"
+lastupdated: "2021-12-13"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -22,10 +22,14 @@ subcollection: devsecops
 {:video: .video}
 {:download: .download}
 {:help: data-hd-content-type='help'}
+{:term: .term}
 {:support: data-reuse='support'}
 
-# Setting up Tekton continuous delivery pipelines with compliance
+# Setting up Tekton continuous delivery pipelines with DevSecOps
 {: #cd-devsecops-tekton-cd-compliance}
+
+Complete these steps to set up the Tekton continuous delivery pipelines with compliance. Recommended configuration options guide you through the steps to create your toolchain.
+{: shortdesc}
 
 ## Before you begin
 {: #cd-devsecops-tekton-cd-prereq}
@@ -39,23 +43,25 @@ subcollection: devsecops
 ## Guided setup overview for the CD toolchain
 {: #cd-devsecops-tekton-cd-guided}
 
-Either of the two methods described in this document takes you to the guided setup experience. This setup guides you through the toolchain setup process in a logical order while presenting the recommended configuration options that are required to create your toolchain. You can also view the following video tutorial that demonstrates the setup process:
+View the following video tutorial to get an overview of the setup process:
 
 ![Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Delivery Toolchain](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-2){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
 
-A progress indicator is presented in the left margin showing the steps needed to complete the configuration and allowing navigation to a previous step with a mouse click. The configuration options for the current step are presented to the right of the progress indicator in the main area of the page.
-
 ![DevSecOps Continuous Delivery toolchain welcome page](images/devsecops-cd-welcome.png){: caption="DevSecOps Continuous Delivery toolchain welcome page" caption-side="bottom"}
 
-To advance to the next step click the **Continue** button at the bottom of the current step. You can only advance to the next step when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking the **Back** button.
+A progress indicator shows your progress in completing the configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
-Some steps may have an **Advanced Options** toggle at the top of the page. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Advanced Options** toggle to reveal all options for the underlying integration.
+The configuration options for the current step are displayed in the main area of the page.
+
+To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
+
+Some steps might have an **Advanced Options** toggle at the top of the page. These steps present you with the minimum recommended configuration. However, advanced users that need fine-grained control can click the **Advanced Options** toggle to see all options for the underlying integration.
 
 ![DevSecOps advanced options toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps advanced options toggle" caption-side="bottom"}
 
 After you successfully complete all of the steps, click **Create** to create the toolchain.
 
-You can return to previous steps in the guided installer. The toolchain installer retains all of the configurations that you completed in the successive stages.
+You can return to previous steps in the guided installer. The toolchain installer retains all of the configurations that you completed.
 {: tip}
 
 ## Start the CD toolchain setup
