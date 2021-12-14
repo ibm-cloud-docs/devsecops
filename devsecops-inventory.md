@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-12"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -146,42 +146,42 @@ The inventory contains several branches other than the `master` branch. These br
 
 The `master` branch is populated from continuous integration builds. The last commit in the target (in this case named `staging`) contains a tag that shows that it was the last concluded deployment.
 
-![Continuous integration writes to inventory](images/inventory-1.svg "Flow diagram that shows how the master branch is populated")
+![Continuous integration writes to inventory](images/inventory-1.svg ){: caption="Continuous integration writes to inventory" caption-side="bottom"}
 
 ### Promotion
 {: #inventory-promotion}
 
 A pull request is created when you promote to a target branch happens. Pull request contents populate the Change Request fields. After the pull request is reviewed, you can merge it.
 
-![Promoting a target branch by using a PR](images/inventory-2.svg "Flow diagram that shows how a promotion is done by using a PR")
+![Promoting a target branch by using a PR](images/inventory-2.svg){: caption="Promoting a target branch by using a PR" caption-side="bottom"}
 
 ### Delta and deployment
 {: #inventory-delta-deployment}
 
 After the promotion pull request is merged, the Deployment pipeline can start. The Deployment delta is the difference between the contents of the last concluded deployment and the current deployment. The Deployment delta lists the inventory items that are being deployed.
 
-![Deployment pipeline flow showing deployment delta details](images/inventory-3.svg "Deployment pipeline flow showing deployment delta details")
+![Deployment pipeline flow showing deployment delta details](images/inventory-3.svg){: caption="Deployment pipeline flow showing deployment delta details" caption-side="bottom"}
 
 ### Conclude
 {: #inventory-conclude}
 
 When the deployment finishes, you can move the `latest` tag ahead.
 
-![Deployment completes](images/inventory-4.svg "Deployment completes")
+![Deployment completes](images/inventory-4.svg){: caption="Deployment completes" caption-side="bottom"}
 
 ### Promote to further environments
 {: #promote-further-envs}
 
 You can promote and deploy from any branch to another one.
 
-![Promotion using a PR from staging to prod branch](images/inventory-5.svg "Promotion using a PR from staging to prod branch")
+![Promotion using a PR from staging to prod branch](images/inventory-5.svg){: caption="Promotion using a PR from staging to prod branch" caption-side="bottom"}
 
 ### Inventory landscape
 {: #inventory-landscape}
 
 The current deployed state contains the content to deploy to an environment. Every promoted commit in the target branches contains the relevant Pipeline Run ID and Change Request ID as a tag. Some commits can have multiple tags, for example, when you are retrying a failed deployment or deploying again. The Inventory holds every piece of information to replay the deployments.
 
-![Deployment flow diagram with tags](images/inventory-6.svg "Deployment flow diagram with tags")
+![Deployment flow diagram with tags](images/inventory-6.svg){: caption="Deployment flow diagram with tags" caption-side="bottom"}
 
 #### Use of tags
 {: #inventory-tags}
@@ -202,7 +202,7 @@ You do not need to set up a different branch for each region, such as `prod-us-s
 
 In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`.  Each continuous delivery pipeline that is responsible for each region can use those tags to deploy.
 
-![Prod branch with multiple latest tags per region](images/inventory-7.svg "Prod branch with multiple latest tags per region")
+![Prod branch with multiple latest tags per region](images/inventory-7.svg){: caption="Prod branch with multiple latest tags per region" caption-side="bottom"}
 
 As an example scenario, a set of changes that you plan to deploy everywhere might be released to a single region first, and then gradually deployed to other regions by using continuous delivery pipelines to target those regions.
 

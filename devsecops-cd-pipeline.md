@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-16"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps
 
@@ -82,7 +82,7 @@ In the deploy stage, the pipeline deploys the built artifacts into an environmen
 
 * Variables from the pipeline UI (`get_env`)
 
- ![Target environment](images/target-environment.png)
+ ![Edit property](images/target-environment.png){: caption="Edit property" caption-side="bottom"}
 
 * [Pipeline trigger webhook](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads)
 

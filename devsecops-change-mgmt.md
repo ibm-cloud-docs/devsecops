@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-07-07"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps
 
@@ -37,7 +37,7 @@ The pipelines collect evidence from each part of the build and deployment lifecy
 
 The following diagram shows the data flow and connection between evidence, inventory, and change management.
 
- ![Data flow](images/data-flow.svg)
+ ![Data flow](images/data-flow.svg){: caption="Data flow" caption-side="bottom"}
  
  1. Continuous integration runs build artifacts and leaves behind evidence about what happened during the creation of those artifacts.
 

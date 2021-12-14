@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-13"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps
 
@@ -253,10 +253,10 @@ To use the CLI, you must install it in your scripts, or use a base image that ha
 ## Related information
 {: #cd-devsecops-add-pipeline-related}
 
-   * Documentation on stages for user-defined scripts
-   * API documentation for pipelinectl
-   * Example test script
-   * Example build scripts
-   * Example release script
-   * The default built-in image signing script
-   * The default built-in VA scan checker script
+* Documentation on stages for user-defined scripts
+* API documentation for pipelinectl
+* Example test script
+* Example build scripts
+* Example release script
+* The default built-in image signing script
+* The default built-in VA scan checker script

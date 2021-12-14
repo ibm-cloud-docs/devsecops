@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-15"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps
 
@@ -40,13 +40,13 @@ To promote code changes from the source (master) branch to the target (staging, 
    * Select **Manual Promotion Trigger**.
    * Click **Run**. The pipeline-run creates a merge request to promote your code changes from the source branch to the target  branch.
  
-   ![Manual Promotion Trigger](images/manual-promotion-trigger.png)
+   ![Manual Promotion Trigger](images/manual-promotion-trigger.png){: caption="Manual Promotion Trigger" caption-side="bottom"}
 
 1. Approve and merge the pull request.
 
    * Click the pipeline-run and check the execution log of the promotion pipeline.
  
-   ![MR execution log](images/pr-exec-log.png)
+   ![MR execution log](images/pr-exec-log.png){: caption="MR execution log" caption-side="bottom"}
  
    * Locate the URL of the merge request and open the merge request.
    * Populate the required fields (Priority, Change Request assignee, Additional Description, and other fields).
@@ -59,7 +59,7 @@ Now that your changes are promoted to the target branch, you can deploy them by 
 
 The source and target environments are defined at the continuous delivery pipeline level.
 
-![Continuous delivery pipeline properties](images/cd-env-props.png)
+![Continuous delivery pipeline properties](images/cd-env-props.png){: caption="Continuous delivery pipeline properties" caption-side="bottom"}
 
 Depending on the continuous delivery pipeline [trigger settings](/docs/devsecops?topic=devsecops-cd-devsecops-devsecops-triggers), the pipeline is either automatically triggered after a merge request is merged or the pipeline is merged manually. To manually merge the pipeline, click **Run Pipeline** and choose the trigger to run.
  
@@ -67,6 +67,6 @@ The pipeline starts and tags the current commit in the inventory repo with the P
 
 The pipeline attempts to deploy the content. During the deployment, the change request ID is attached to the commit that the pipeline works with as a tag. A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you promoted.
 
-![GRIT repo tags](images/grit-repo-tags.png)
+![GRIT repo tags](images/grit-repo-tags.png){: caption="GRIT repo tags" caption-side="bottom"}
 
 For more information about the inventory workflow, see [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines#cd-devsecops-pipelines-inventory-workflow).

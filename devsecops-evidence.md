@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-12"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps, compliance evidence
 
@@ -979,7 +979,7 @@ Evidence differs from artifacts that are created by pipeline stage steps, such a
 
 Any generic test, check, or scan can produce evidence within a pipeline stage by using the steps within DevSecOps tools or pipelines that are shown in the following image. The DevSecOps tools must be able to receive the result of the task, to create the evidence, and then store it in the evidence locker.
 
- ![Evidence creation](images/evidence-creation.png)
+ ![Evidence creation](images/evidence-creation.png){: caption="Evidence creation" caption-side="bottom"}
  
 The evidence format contains the result of the task (passing or failing), links to the created artifacts, and links to any incident issue that is created based on the Task result.
 
@@ -996,7 +996,7 @@ The DevOps architecture divides these flows into four stages by distinguishing b
 
 Evidence is collected from the steps in each stage by using the same process that is used to [create evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence). The following image shows the current steps in the reference pipelines that produce evidence.
 
- ![Evidence collection](images/CI-CD-evidence.png)
+ ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
 
 ### Code stage
 {: #cd-devsecops-collection-code}
@@ -1038,7 +1038,7 @@ Although it does not contain the data retention capabilities of Cloud Object Sto
 
 The folder and file structure of the Git evidence locker is similar to the Cloud Object Storage implementation:
 
- ![Git evidence locker structure](images/git-structure.png)
+ ![Git evidence locker structure](images/git-structure.png){: caption="Git evidence locker structure" caption-side="bottom"}
 
 ### {{site.data.keyword.cos_full_notm}}
 {: #cd-devsecops-lockers-cos}
@@ -1050,7 +1050,7 @@ For more information about {{site.data.keyword.cos_short}} buckets, see [{{site.
 
 The following diagram shows how the evidence is handled and flows through the stages of continuous integration and continuous delivery.
 
- ![Evidence flow](images/evidence-flow.png)
+ ![Evidence flow](images/evidence-flow.png){: caption="Evidence flow" caption-side="bottom"}
  
  Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-13"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -61,9 +61,9 @@ Command line options can take various types of input values, such as numbers, st
 {: #pull-request-status}
 
 Checks a given Pull Request's status and the repositories settings.
- - **Branch Protection:** Rules to disable force pushing, prevent branches from being deleted, and optionally require status checks before merging.
- - **Commit Status Check:** External services to mark commits with an `error`, `failure`, `pending`, or `success` state, which is then reflected in pull requests involving those commits.
- - **Check Runs:** Apps that perform continuous integration, code linting, or code scanning services and provide detailed feedback on commits.
+- **Branch Protection:** Rules to disable force pushing, prevent branches from being deleted, and optionally require status checks before merging.
+- **Commit Status Check:** External services to mark commits with an `error`, `failure`, `pending`, or `success` state, which is then reflected in pull requests involving those commits.
+- **Check Runs:** Apps that perform continuous integration, code linting, or code scanning services and provide detailed feedback on commits.
 
 Required environment variables:
 
@@ -506,7 +506,7 @@ cocoa change-request task get "CHGXXXXXXX" "CTASKXXXXXXX" --provider=gitlab
 {: pre}
 
 ### cocoa change-request task list
-{: change-request-task-list}
+{: #change-request-task-list}
 
 Lists Change Tasks for a given Change Request.
 
@@ -685,7 +685,7 @@ cocoa evidence upload --backend=git --artifact <url> <hash>  --artifact <url> <h
 {: note}
 
 ### cocoa evidence summarize
-{: evidence-summaries}
+{: #evidence-summaries}
 
 Queries evidences from the Evidence Locker and generates an Evidence Summary from their contents. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}} or GitHub. Currently `git` and `cos` is supported as backend. Different lockers require different parameters to be provided.
 

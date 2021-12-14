@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-12"
+lastupdated: "2021-12-08"
 
 keywords: DevSecOps
 
@@ -33,15 +33,15 @@ Create your DevSecOps toolchain by using the default sample app that is provided
 
 Add a `.pipeline-config.yaml` configuration file that contains the following properties that are required by each stage: 
 
-   * **image**: The Docker image name that is used to run the stage. For example, use the following code to sign your images:
+* **image**: The Docker image name that is used to run the stage. For example, use the following code to sign your images:
 
       ```bash
        image: icr.io/continuous-delivery/pipeline/image-signing:1.0.   0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
       ```
 
-   * **abort_on_failure**: Set this property to `true` to stop the pipeline run if the stage fails.
+* **abort_on_failure**: Set this property to `true` to stop the pipeline run if the stage fails.
 
-   * **script**: The script that performs the actions that are required in the stage. Create the scripts in the script directory within the app repository (repo), and call the scripts from this location. For example, the following code snippet shows the content of the `script` section when you want to sign the images:
+* **script**: The script that performs the actions that are required in the stage. Create the scripts in the script directory within the app repository (repo), and call the scripts from this location. For example, the following code snippet shows the content of the `script` section when you want to sign the images:
 
       ```bash
       script: |
@@ -52,9 +52,9 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
          source scripts/sign_image.sh
       ```
 
-   * **dind**: Set this property to `true` if you want to enable `docker` functionality in the running pipeline. After you determine which parameters are required in the step, you can define various steps in the pipeline.
+* **dind**: Set this property to `true` if you want to enable `docker` functionality in the running pipeline. After you determine which parameters are required in the step, you can define various steps in the pipeline.
 
-   * **setup**: Define this stage to run the pre-setup scripts.
+* **setup**: Define this stage to run the pre-setup scripts.
 
       ```bash
       setup:
@@ -64,7 +64,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
         echo "Please insert any required pre-build tasks in this stage."
       ```
    
-   * **test**: Define this stage to run the test cases of the app.
+* **test**: Define this stage to run the test cases of the app.
 
       ```bash
       test:
@@ -78,7 +78,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
          source test/test.sh
       ```
 
-   * **containerize**: Define this stage to build and containerize your app.
+* **containerize**: Define this stage to build and containerize your app.
 
       ```bash
       containerize:
@@ -96,7 +96,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
           source scripts/build.sh
       ```
 
-   * **deploy**: Define this stage to deploy your app on the target environment.
+* **deploy**: Define this stage to deploy your app on the target environment.
 
       ```bash
       deploy:
@@ -113,7 +113,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
           source scripts/deploy.sh
       ```
 
-   * **sign-artifact**: Define this stage to sign your built images.
+* **sign-artifact**: Define this stage to sign your built images.
 
       ```bash
       sign-artifact:
@@ -127,7 +127,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
             source scripts/sign_image.sh
       ```
 
-   * **acceptance-test**: Define this stage run your acceptance test after deployment.
+* **acceptance-test**: Define this stage run your acceptance test after deployment.
 
       ```bash
       acceptance-test:
@@ -141,7 +141,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
           go run acceptance-test/acceptance-test.test.go
       ```
 
-   * **release**: Define this stage to upload evidence and artifacts that are generated from the previous stages.
+* **release**: Define this stage to upload evidence and artifacts that are generated from the previous stages.
 
       ```bash
       release:
@@ -152,7 +152,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
           source scripts/release.sh
       ```
 
-   * **scan-artifact**: Define this stage to perform a scan for vulnerabilities in the generated artifacts.
+* **scan-artifact**: Define this stage to perform a scan for vulnerabilities in the generated artifacts.
 
       ```bash
       scan-artifact:
