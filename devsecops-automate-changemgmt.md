@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-05"
+lastupdated: "2021-12-08"
 
-keywords: DevSecOps, automate change management, change management
+keywords: DevSecOps, automate change management, change management, ibm cloud
 
 subcollection: devsecops
 
@@ -31,7 +31,7 @@ Change management automation is one of the crucial parts of the DevSecOps pipeli
 
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a certain build and deployment of the artifacts. So, for each deployed artifact, we should be able to tell, if its build or test deployment had incidents or not. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
-In this document you can find answers to the following questions regarding change management automation:
+In this document, you can find answers to the following questions regarding change management automation:
 
 * How are evidence, inventory, and change management connected?
 * What are the change request fields in a promotion pull request?
@@ -40,12 +40,24 @@ In this document you can find answers to the following questions regarding chang
 * What data is included in a change request?
 * How can I use an existing change request ID in the CD pipeline?
 
+## Connection between evidence, inventory, and change management
+{: #connection-evidence-inventory-change}
+
+![Connection between evidence, inventory, and change management](images/change-management-data-flow.svg "Flow diagram showing the relationship between evidence, inventory, and change management"){: caption="Figure 1. Connection between evidence, inventory, and change management" caption-side="bottom"}
+
+1. CI runs build artifacts and leave evidence behind about what happened during the creation of those artifacts.
+2. CI runs create entries about the created artifacts in the inventory.
+3. Built artifacts in the Inventory are [promoted](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) to deployment environments, like staging or pre-production.
+4. Change management automation uses data from the inventory, the evidence locker, and the promotion PR to create the change request deployments, also leaving evidence behind about acceptance tests for example. Successfully deployed and tested artifacts are further promoted to production environments, like production.
+
+Every deployment to every environment and region needs to file a change request to the change management system Git Repos and issue tracking. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
+
 ##  Change request fields in promotion pull requests
 {: #cd-devsecops-change-fields}
 
 You can use the pull request template that is provided in the inventory for promotion pull requests to populate the change request fields. Because you cannot automatically populate these fields, you must manually populate them to promote changes. By manually populating these fields, you trigger the deployment and continue automatic data collection for the rest of the change request.
 
- ![Promotion pull request](images/promotion-pr.png)
+ ![Promotion pull request](images/promotion-pr.png){: caption="Figure 2. Promotion pull request" caption-side="bottom"}
  
  
 The promotion pull request template contains the following fields:
@@ -150,6 +162,6 @@ In specific scenarios, you do not want to use automated change management, and c
 
 You can start the DevSecOps reference continuous delivery pipeline by using a pre-approved change request and entering the change request ID for the **change-request-id** property.
 
- ![Pre-approved change request](images/pre-approved-cr.png)
+ ![Pre-approved change request](images/pre-approved-cr.png){: caption="Figure 3. Pre-approved change request" caption-side="bottom"}
 
 If the **change-request-id** property is set, the pipeline skips data collection for the change request and moves ahead to check the approval state of the change request. If the **change-request-id** is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline.
