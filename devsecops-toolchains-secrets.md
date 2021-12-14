@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-15"
+lastupdated: "2021-12-13"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains
 
@@ -50,7 +50,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | **Secret**                | **Hint**                 | **Information**    |
 | -------------             | -------------            | -------------      |
 | {{site.data.keyword.cloud_notm}} API Key         | `ibmcloud-api-key`       | **Required: CI & CD** _Used to authenticate with IBM Public Cloud and perform a wide range of operations_ |
-| {{site.data.keyword.IBM_notm}} Image Signing Certificate      | `ciso-signing-cert`          | **Required: CI only** _This is the certificate that is used to sign images built by the CI pipeline_ |
+| {{site.data.keyword.IBM_notm}} Image Signing Certificate      | `signing_key`          | **Required: CI only** _This is the certificate that is used to sign images built by the CI pipeline_ |
 | {{site.data.keyword.IBM_notm}} Private Worker Service API Key    | `private-worker-service-api-key`  | **Required: CI only** _A Service ID API Key Used to run delivery pipeline workloads on a Tekton Private Worker Service_|
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
 | Artifactory API token.    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
@@ -60,7 +60,6 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with IBM Cloud Object Storage service - This key must have `writer` permission_ |
 | SonarQube password or authentication token | `sonarqube-password`              | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
-
 {: caption="Table 1. DevSecOps Secrets" caption-side="top"}
 
 While you are using Hashicorp vault service, ensure that the vault service uses [approle authentication](https://www.vaultproject.io/docs/auth/approle){: external} method. When you use the approle authentication method, you need `role-id` and `secret-id` to successfully integrate Hashicorp server with the toolchain. Because `role-id` and `secret-id` are secrets in themselves, it is recommended to store them by using a [{{site.data.keyword.keymanagementservicelong_notm}} tool integration](/docs/ContinuousDelivery?topic=ContinuousDelivery-keyprotect) so that they can be securely retrieved and applied in the toolchain workflow. All other toolchain secrets should be stored and retrieved by using Hashicorp.
