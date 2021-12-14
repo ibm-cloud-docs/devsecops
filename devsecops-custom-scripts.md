@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-12"
+lastupdated: "2021-12-13"
 
 keywords: DevSecOps
 
@@ -46,15 +46,16 @@ Stages in pull request, continuous integration, and continuous delivery pipeline
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
 
- * `setup`: Run scripts to complete setup tasks such as setting up an environment for a pipeline run, installing dependencies, and checking environments.
- * `test`: Run unit tests, include all of your tests that run on your codebase, and pre-deploy time.
- * `static-scan`: Run a static code analyzer tool.
- * `containerize`: Create the artifacts that are required by your app, such as Docker images, RPMs, and Java Archive (JARS) files.
- * `scan-artifact`: Scan the artifacts, for example, by using Container Registry Vulnerability Advisor for Docker images.
- * `sign-artifact`: Sign the artifacts.
- * `release`: Add artifacts to the inventory by marking them available for deployment.
- * `deploy`: Deploy artifacts to an environment such as test and dev or staging and prod.
- * `acceptance-test`: Run tests on deployed artifacts. You can also include your post-deployment tests in this stage.
+* `setup`: Run scripts to complete setup tasks such as setting up an environment for a pipeline run, installing dependencies, and checking environments.
+* `test`: Run unit tests, include all of your tests that run on your codebase, and pre-deploy time.
+* `static-scan`: Run a static code analyzer tool.
+* `dynamic-scan`: Run dynamic scan on the application.
+* `containerize`: Create the artifacts that are required by your app, such as Docker images, RPMs, and Java Archive (JARS) files.
+* `scan-artifact`: Scan the artifacts, for example, by using Container Registry Vulnerability Advisor for Docker images.
+* `sign-artifact`: Sign the artifacts.
+* `release`: Add artifacts to the inventory by marking them available for deployment.
+* `deploy`: Deploy artifacts to an environment such as test and dev or staging and prod.
+* `acceptance-test`: Run tests on deployed artifacts. You can also include your post-deployment tests in this stage.
 
 ## Configuration in `pipeline-config.yaml`
 {: #cd-devsecops-scripts-config}
@@ -64,13 +65,13 @@ You can use a `.pipeline-config.yaml` configuration file to extend pipeline beha
 ### File location
 {: #cd-devsecops-scripts-location}
 
-For pull request and continuous integration pipelines, store the `.pipeline-config.yaml` configuration file in an app repo in the same manner as the `.travis.yml`, or `Jenkinsfile` files. For continuous delivery pipelines, store this file in a dedicated repo. 
+For pull request and continuous integration pipelines, store the `.pipeline-config.yaml` configuration file in an app repo in the same manner as the `.travis.yml`, or `Jenkinsfile` files. For continuous delivery pipelines, store this file in a dedicated repo.
 
 For all pipelines, you can customize the location and source of the `.pipeline-config.yaml` file with the following pipeline UI parameters:
 
 * `pipeline-config` to set the path of the configuration file. The default value is `.pipeline-config.yaml`.
 * `pipeline-config-repo` to set the repo to pull the configuration and scripts from. The default value is the continuous integration app repo.
-* `pipeline-config-branch` to use as the branch for the configuration in the config repo. The default value is the continuous integration app repo branch, and the master branch in continuous delivery.
+* `pipeline-config-branch` to use as the branch for the configuration in the config repo. The default value is the continuous integration app repo branch, and the `master` branch in continuous delivery.
 
 ### Configuration parameters
 {: #cd-devsecops-scripts-configparm}
@@ -107,7 +108,7 @@ These settings are not pipeline parameters, they must be part of your `.pipeline
 
     * `secret-name`: The direct Secret name syntax. The stage runner tries to access and mount the Secret named `secret-name`.
 
-    * `$prop-name`: The indirect Secret name syntax. The Secret name is located in the environment-properties configmap, that contains every environment value that is set on the pipeline UI. For example, if the environment-properties configmap contains the `my-secret entry` property, `my-secret` is used for `$prop`.
+    * `$prop-name`: The indirect Secret name syntax. The Secret name is located in the environment-properties configmap that contains every environment value that is set on the pipeline UI. For example, if the environment-properties configmap contains the `my-secret entry` property, `my-secret` is used for `$prop`.
 
 #### Example configuration
 {: #cd-devsecops-scripts-sample-config}
@@ -144,7 +145,7 @@ setup:
 
 # `test` runs after `setup`, but before building the docker image
 test:
-  image: ibmcom/pipeline-base-image:2.7 
+  image: ibmcom/pipeline-base-image:2.7
   script: |
     #!/bin/sh
     ...
@@ -159,7 +160,7 @@ static-scan:
 
 # `deploy` runs after building the docker image
 deploy:
-  image: ibmcom/pipeline-base-image:2.7 
+  image: ibmcom/pipeline-base-image:2.7
 
   # the script has access to the built docker image, which is available at `/config/image`
   script: |
@@ -167,9 +168,16 @@ deploy:
 
     cat /config/image
 
+# `dynamic-scan` runs after `deploy`, but before the acceptance test run
+dynamic-scan:
+  image: ibmcom/pipeline-base-image:2.12
+  script: |
+    #!/bin/sh
+    ...
+
 # `acceptance-test` runs after `deploy`
 acceptance-test:
-  image: ibmcom/pipeline-base-image:2.7 
+  image: ibmcom/pipeline-base-image:2.7
   script: |
     #!/bin/sh
     ...
@@ -235,9 +243,9 @@ kubectl create secret docker-registry regcred \
 ### Parameters for custom scripts
 {: #cd-devsecops-scripts-parm}
 
-Besides the pipeline environment variables and secrets, these parameter values are provided for user script stages.
+In addition to the pipeline environment variables and secrets, these parameter values are provided for user script stages.
 
-You can access repos, artifacts, files, and env variables by using the `pipelinectl` command in the user scripts. Use the following methods: `list_repos`, `load_repo`, `load_artifact`, `list_artifacts`, and `get_env`. 
+You can access repos, artifacts, files, and env variables by using the `pipelinectl` command in the user scripts. Use the following methods: `list_repos`, `load_repo`, `load_artifact`, `list_artifacts`, and `get_env`.
 
 #### `pipelinectl`
 {: #cd-devsecops-scripts-pipelinectl}
@@ -249,7 +257,6 @@ You can access repos, artifacts, files, and env variables by using the `pipeline
 
 To support user script compatibility with an earlier version, these values are copied to `/config/`. Because the availability of these files depends on the pipeline context, make sure that they are available before you use their value.
 
-
 | Path | Description |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | `/config/api-key` | The value of `ibmcloud-api-key` copied, for script compatibility with an earlier version.|
@@ -258,11 +265,11 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/deployment-delta-path` | The path to the JSON file that contains the deployment delta. |
 | `/config/inventory-path` | The path to the inventory repo content. |
 | `/config/git-branch` | The current, checked out Git branch of the app repo. |
-| `/config/git-commit` | The  latest Git commit of the checked out app repo. |
+| `/config/git-commit` | The latest Git commit of the checked out app repo. |
 | `/config/repository-url` | The app repo URL. |
 | `/config/inventory-url` | The inventory repo URL. |
-| `/config/image` | The built Docker image artifact, that contains the registry, namespace, name, and digest of the image. |
-| `/config/artifact` | The built Docker image artifact, that contains the registry, namespace, name, and digest of the image. |
+| `/config/image` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
+| `/config/artifact` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/signature` | The image artifact signature. |
 {: caption="Table 1. `/config/` Values" caption-side="top"}
 
@@ -272,7 +279,7 @@ These values are phased out and replaced by the stage I/O interface by way of pi
 #### Environment variables
 {: #cd-devsecops-scripts-envvar}
 
-Default ENV variables for the context of custom script stages, provided by the pipeline:
+The following table includes the default ENV variables for the context of custom script stages that are provided by the pipeline:
 
 | Path | Description |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
@@ -307,13 +314,14 @@ Because these custom scripts operate in the same workspace, you can pass data be
 ## Stage output
 {: #cd-devsecops-scripts-stageoutput}
 
-Data expected to be available by other stages on the workspace, so make sure to create them using the [`pipelinectl` commands](/docs/devsecops?topic=devsecops-pipelinectl). To make the required outputs available to the other stages and scripts in the pipeline, use pipelinectl's save methods, like save_repo, save_artifact, save_result and set_env. 
+Data expected to be available by other stages on the workspace, so make sure to create them using the [`pipelinectl` commands](/docs/devsecops?topic=devsecops-pipelinectl). To make the required outputs available to the other stages and scripts in the pipeline, use pipelinectl's save methods, such as save_repo, save_artifact, save_result and set_env.
 
 |Source stage |Description	|`Pipelinectl` method |Required |
 |:----------|:------------------------------|:------------------|:----------|
 |`setup` 		|You can add more repos to the pipeline compliance checks and static code scan		|`save_repo`		|No		|
 |`test`		|To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage.		|`save_result`			|No		|
 |`static-scan`		|To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`		|No		|
+|`dynamic-scan`		|To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`		|No		|
 |`containerize`		|[Add artifact names and digests to the pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).		|`save_artifact`		|Yes		|
 |`sign-artifact` 		|Add the image signature from the GPG signing output.   	|`save_artifact`			|Yes		|
 |`acceptance-test` 		|To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`			|No		|
@@ -333,6 +341,7 @@ The following tasks and stages are available:
 * **Continuous delivery pipeline stages**: set up, deploy, acceptance-test, create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request. The create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request stages are not custom stages. They are provided by the pipelines by default.
 
 #### Example usage
+{: #devsecops-scripts-resultsapi-example}
 
 ```bash
 # List saved stage results
