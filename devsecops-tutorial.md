@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021
-lastupdated: "2021-11-15"
+lastupdated: "2021-12-13"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
 
@@ -25,6 +25,7 @@ completion-time: 2h
 {:important: .important}
 {:download: .download}
 {:external: target="_blank" .external}
+{:term: .term}
 {:step: data-tutorial-type='step'}
 
 # Deploy a secure app with DevSecOps best practices
@@ -39,7 +40,7 @@ Use this tutorial to learn how to master DevSecOps best practices by using a com
 ## Overview
 {: #devsecops-tutorial-overview}
 
-[DevSecOps](https://www.ibm.com/cloud/learn/devsecops){: external} integrates a set of security and compliance controls into the [DevOps](https://www.ibm.com/cloud/learn/devops-a-complete-guide){: external} processes. This integration allows organizations to deliver rapidly and often, while maintaining a strong security posture and continuous state of audit-readiness. Additionally, DevSecOps makes application and infrastructure security a shared responsibility of development, security, and IT operations teams, rather than the sole responsibility of a security silo.
+[DevSecOps](#x9892260){: term} integrates a set of security and compliance controls into the [DevOps](https://www.ibm.com/cloud/learn/devops-a-complete-guide){: external} processes. This integration allows organizations to deliver rapidly and often, while maintaining a strong security posture and continuous state of audit-readiness. Additionally, DevSecOps makes application and infrastructure security a shared responsibility of development, security, and IT operations teams, rather than the sole responsibility of a security silo.
 
 This tutorial provides information about the design, configuration, and uses of the CI/CD reference implementation by using {{site.data.keyword.cloud_notm}} Continuous Delivery with Tekton Pipelines. This tutorial steps you through the creation of Continuous Integration (CI) and Continuous Delivery (CD) toolchains by using toolchain templates. As illustrated in the following diagram, the CI and CD templates help you create two toolchains (CI and CD) along with their respective pipelines to build and deploy a sample app's code to a {{site.data.keyword.containerlong}} cluster.
 
@@ -277,6 +278,15 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 
 [IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights, the CI pipeline will automatically use the insights instance included in the toolchain.  DevOps Insights aggregates code, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
 
+### SonarQube
+{: #devsecops-ci-tool-integration-sonarqube}
+
+Configure SonarQube as the static code analysis tool for the toolchain. SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. The static code analyzers detect tricky bugs, such as null-pointer dereferences, logic errors, and resource leaks for multiple programming languages.
+
+With **Default Configuration**, the pipeline provisions a new SonarQube instance in the Kubernetes cluster that is configured in the **Deploy** step. This instance is provisioned during the first pipeline run and remains available to all the subsequent pipeline runs.
+
+If you want the toolchain to use an existing SonarQube Instance that you have provisioned on another host, use the **Custom Configuration** option.
+
 ### Optional tools
 {: #devsecops-ci-tool-integration-optional-tools}
 
@@ -380,7 +390,7 @@ To evaluate if you have any failures in your pipeline run, you need to check the
 {: note}
 
 ### Viewing the running application
-{: #devsecops-ci-toolchain-ci-running-app}
+{: #devsecops-ci-toolchain-view-app}
 
 After a successful CI pipeline run, the sample application is deployed on your Kubernetes cluster, and is running in the dev namespace.
 
@@ -389,7 +399,7 @@ The app url can be found at the end of the log of the `run stage` step of `deplo
 ![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="DevSecOps CI sample app" caption-side="bottom"}
 
 ### Pipeline configuration
-{: #devsecops-ci-tool-integration-pipeline-config}
+{: #devsecops-ci-toolchain-pipeline-config}
 
 The repository contains custom scripts to carry out pipeline tasks in the CI Pipelines (.pipeline-config.yaml). Refer to [hello-compliance-deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) sample repository that contains some default configuration and scripts.
 
@@ -398,6 +408,8 @@ By default, the setup Clone deployment configuration from the sample repository.
 More detailed information on customizing the CI pipelines can be found [here](/docs/devsecops?topic=devsecops-custom-scripts). 
 
 ### Wrapping up
+{: #devsecops-ci-toolchain-done}
+
 Congratulations!
 
 By completing the CI part of this tutorial, you:
@@ -512,7 +524,7 @@ The default behavior of the toolchain is to Use existing issues repository to li
 
 **Repository URL**: URL of the Issues Repository configured in your CI Toolchain as captured in the previous step.
 
-![DevSecOps issues repository](images/devsecops-cd-issues-repo.png){: DevSecOps issues repository" caption-side="bottom"}
+![DevSecOps issues repository](images/devsecops-cd-issues-repo.png){: caption DevSecOps issues repository" caption-side="bottom"}
 
 ### Pipeline Configuration
 {: #devsecops-cd-tool-integration-pipeline-config}
@@ -641,6 +653,7 @@ In case you have an existing Change Request repository from an existing CD Toolc
 ![Change Request Management](images/devsecops-cd-change-request-mgmt.png){: caption="Change Request Management" caption-side="bottom"}
 
 ### Link to existing DevOps Insights Toolchain
+{: #devsecops-cd-tool-integration-insights}
 
 We already created an instance of DevOps Insights during the CI toolchain creation. The same needs to be referred to in the CD toolchain. After each compliance check evidence is published into it. The toolchain publishes the deployment records to DevOps insights. You can link DevOps Insights integration from CI toolchain by providing the Integration ID to consolidate all the deployment data in single DevOps Insight Instance.
 
@@ -659,6 +672,8 @@ You can also set a target environment for the DOI interactions. This parameter i
 {: #devsecops-cd-tool-integration-optional-tools}
 
 #### Slack
+{: #devsecops-cd-tool-integration-slack}
+
 If you want to receive notifications about your PR/CI Pipeline events, you can configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) during the setup from the toolchain template, or you can add the Slack Tool later.
 
 In order for a Slack channel to receive notifications from your tools, you need a Slack webhook URL. To get a webhook URL, see the Incoming Webhooks section of the [Slack API website](https://api.slack.com/messaging/webhooks){: external}.
@@ -670,6 +685,8 @@ After you create your toolchain, you can toggle sending notifications with the s
 ![DevSecOps Slack toggle](images/devsecops-slack-toggle.png){: caption="DevSecOps Slack toggle" caption-side="bottom"}
 
 #### Security and Compliance
+{: #devsecops-cd-tool-integration-scc}
+
 To integrate the toolchain with the Security and Compliance Service, you need to provide a project name and the evidence locker repository name for the Security and Compliance data collector.
 
 ![DevSecOps Security and Compliance](images/devsecops-cd-scc-disabled.png){: caption="DevSecOps Security and Compliance" caption-side="bottom"}
