@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-12-13"
+lastupdated: "2021-12-16"
 
 keywords: DevSecOps
 
@@ -271,7 +271,7 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/image` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/artifact` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/signature` | The image artifact signature. |
-{: caption="Table 1. `/config/` Values" caption-side="top"}
+{: caption="Table 1. /config/ Values" caption-side="top"}
 
 These values are phased out and replaced by the stage I/O interface by way of pipelinectl.
 {: deprecated}
