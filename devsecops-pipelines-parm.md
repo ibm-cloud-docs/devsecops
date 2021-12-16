@@ -47,6 +47,8 @@ The following table lists and describes the pull request parameters for pipeline
 |cra-exclude-devdependencies		|text		|Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The  default value is `false`.	|Optional			|
 |cra-exclude-scopes		|text		|Specifies which scopes to use to exclude dependencies from scanning. This parameter value is  empty by default. Valid values include test and compile.	|Optional			|
 |git-token		|SECRET		|The Git repository (repo) access token.	|Optional			|
+|github-token		|SECRET		|The Github repository (repo) access token.	|Optional			|
+|grit-token		|SECRET		|The Git Repo and Issue Tracking(repo) access token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Optional			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
@@ -89,7 +91,9 @@ The following table lists and describes the continuous integration parameters fo
 |doi-environment		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
 |doi-logicalappname		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			|
 |doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
-|git-token		|SECRET		|The Git repo access token.	|Optional			|
+|git-token		|SECRET		|The Git repository (repo) access token.	|Optional			|
+|github-token		|SECRET		|The Github repository (repo) access token.	|Optional			|
+|grit-token		|SECRET		|The Git Repo and Issue Tracking(repo) access token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
@@ -138,7 +142,10 @@ The following table lists and describes the continuous delivery parameters for p
 |doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |emergency-label		|text		|Identifies the pull request as an emergency.	|Optional			|
 |force-redeploy    |text   |Forces the deployment or redeployment of the app even if the last deployment does not contain a delta in the inventory. Set this parameter to `true` to force a deployment of the app as if it is the first deployment on the specified target environment. By default, this parameter is set to `false`. |Optional |
-|git-token		|SECRET		|The Git repo access token.	|Optional			|
+|git-token		|SECRET		|The Git repository (repo) access token.	|Optional			|
+|github-token		|SECRET		|The Github repository (repo) access token.	|Optional			|
+|grit-token		|SECRET		|The Git Repo and Issue Tracking(repo) access token.	|Optional			|
+|artifact-token		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
