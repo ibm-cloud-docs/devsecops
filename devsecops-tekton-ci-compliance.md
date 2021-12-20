@@ -36,7 +36,7 @@ Complete these steps to set up the Tekton continuous integration pipelines with 
 
 * [Create a Kubernetes cluster](/docs/containers?topic=containers-getting-started) on IBM Cloud Kubernetes Service to deploy your application.
 * [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/containers?topic=containers-getting-started) on your operating system to interact with {{site.data.keyword.cloud_notm}} resources.
-* [Create an image signing key](/docs/devsecops?topic=devsecops-cd-devsecops-image-signing) with proper encoding to sign your application docker images.
+* [Create an image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with proper encoding to sign your application docker images.
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure them.
 * Optional. [COS Bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
 * [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
@@ -274,7 +274,7 @@ Using the API key that is either created, retrieved from a vault, or manually en
 ### Image signing
 {: #cd-devsecops-image-signing-ci}
 
-Any images built by this toolchain and recorded in the inventory must be signed before they can be deployed to production. The pipeline uses [Skopeo](https://github.com/containers/skopeo) as default tool to provide Image signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-cd-devsecops-image-signing).
+Any images built by this toolchain and recorded in the inventory must be signed before they can be deployed to production. The pipeline uses [Skopeo](https://github.com/containers/skopeo) as default tool to provide Image signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 
 Ensure that the key follows the appropriate encoding as required by the chosen tool to store secrets.
 {: note}
