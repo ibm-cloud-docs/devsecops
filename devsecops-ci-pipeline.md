@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-12-13"
+lastupdated: "2021-12-20"
 
 keywords: DevSecOps
 
@@ -109,12 +109,24 @@ The Deploy stage deploys built artifacts into a dev environment. You can provide
 
 The Dynamic scan stage runs a dynamic application security testing tool for finding vulnerabilities in the deployed application.
 
+By default, the pipeline provides support to run OWASP ZAP Scan. ZAP is an open source web application security scanner that provides several features to scan applications for common vulnerabilities. It performs both API and UI dynamic scans, both of which are required for the sample hello-compliance-app.
+
+### ZAP API Scan
+{: #devsecops-zap-api-scan}
+
+API scans work by providing a Swagger file that describes the API exposed by the app along with a few other inputs like the API key to use to authenticate with API. The scanner will systematically scan all the endpoints and produce a report.
+
+### ZAP UI Scan
+{: #devsecops-zap-ui-scan}
+
+UI scans work similarly to API scans, but instead of providing a Swagger file, you provide a UI test script. This test script needs to be copied inside the ZAP scanner container and be run after the ZAP proxy is running before running the scan. The test script should start a headless browser that is configured to proxy through the ZAP scanner's proxy, and run a UI test that hits the UI endpoints. The ZAP proxy records the traffic and discovers the endpoints to scan. Then, the scan runs, produces a report, and generates issues in the same way as the API scan.
+
 * Add your own dynamic scan code to the dynamic-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
 ## Release to inventory
 {: #devsecops-ci-pipeline-inventoryrel}
 
-Use the release to inventory user script stage to add artifacts to the inventory by using the `cocoa inventory add` CLI command. For more information about the command, see the [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#inventory-add) topic.
+Use the release to inventory user script stage to add artifacts to the inventory by using the `cocoa inventory add` CLI command. For more information about the command, see the topic for [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#inventory-add).
 
 You can use the `pipelinectl` interface to access your repos and artifacts by using the `list_repos`, `load_repo`, `list_artifacts`, and `load_artifact` commands. For more information about the commands, see the [pipelinectl](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) documentation.
 
