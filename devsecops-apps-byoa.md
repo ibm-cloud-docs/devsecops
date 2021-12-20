@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-12-08"
+lastupdated: "2021-12-20"
 
 keywords: DevSecOps
 
@@ -31,136 +31,216 @@ You can bring your own application to a DevSecOps toolchain for continuous integ
 
 Create your DevSecOps toolchain by using the default sample app that is provided. This sample app hosts a Node.js server that provides a static web page. The source code of the sample app contains a `.pipeline-config.yaml` file. The `.pipeline-config.yaml` file is the core configuration file that is used by continuous integration and continuous delivery toolchains for all of the stages in the pipeline run process.
 
-Add a `.pipeline-config.yaml` configuration file that contains the following properties that are required by each stage: 
+Add a `.pipeline-config.yaml` configuration file that contains the following properties that are required by each stage:
 
-* **image**: The Docker image name that is used to run the stage. For example, use the following code to sign your images:
+## image
+{: #byoa-image}
 
-      ```bash
-       image: icr.io/continuous-delivery/pipeline/image-signing:1.0.   0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
-      ```
+The Docker image name that is used to run the stage. For example, use the following code to sign your images:
 
-* **abort_on_failure**: Set this property to `true` to stop the pipeline run if the stage fails.
+```bash
+image: icr.io/continuous-delivery/pipeline/image-signing:1.0.   0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
+```
+{: codeblock}
 
-* **script**: The script that performs the actions that are required in the stage. Create the scripts in the script directory within the app repository (repo), and call the scripts from this location. For example, the following code snippet shows the content of the `script` section when you want to sign the images:
+## abort_on_failure
+{: #byoa-abort-failure}
 
-      ```bash
-      script: |
-         #!/usr/bin/env bash
-         STAGE_DIND="true"
-         STAGE_ABORT_ON_FAILURE="false"
-         STAGE_IMAGE_PULL_POLICY="IfNotPresent"
-         source scripts/sign_image.sh
-      ```
+Set this property to `true` to stop the pipeline run if the stage fails.
 
-* **dind**: Set this property to `true` if you want to enable `docker` functionality in the running pipeline. After you determine which parameters are required in the step, you can define various steps in the pipeline.
+## script**
+{: #byoa-script}
 
-* **setup**: Define this stage to run the pre-setup scripts.
+The script that performs the actions that are required in the stage. Create the scripts in the script directory within the app repository (repo), and call the scripts from this location. For example, the following code snippet shows the content of the `script` section when you want to sign the images:
 
-      ```bash
-      setup:
-        image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
-        script: |
-        #!/usr/bin/env bash
-        echo "Please insert any required pre-build tasks in this stage."
-      ```
-   
-* **test**: Define this stage to run the test cases of the app.
+```bash
+   script: |
+      #!/usr/bin/env bash
+      STAGE_DIND="true"
+      STAGE_ABORT_ON_FAILURE="false"
+      STAGE_IMAGE_PULL_POLICY="IfNotPresent"
+      source scripts/sign_image.sh
+```
+{: codeblock}
 
-      ```bash
-      test:
-       abort_on_failure: false
+## dind
+{: #byoa-dind}
+
+Set this property to `true` if you want to enable `docker` functions in the running pipeline. After you determine which parameters are required in the step, you can define various steps in the pipeline.
+
+## setup
+{: #byoa-setup}
+
+Define this stage to run the pre-setup scripts.
+
+```bash
+   setup:
       image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
       script: |
-         #!/usr/bin/env bash
-         cd ../"$(load_repo app-repo path)"
-         #npm ci
-         #npm test
-         source test/test.sh
-      ```
+      #!/usr/bin/env bash
+      echo "Please insert any required pre-build tasks in this stage."
+```
+{: codeblock}
 
-* **containerize**: Define this stage to build and containerize your app.
+## test
+{: #byoa-test}
 
-      ```bash
-      containerize:
-        dind: true
-        image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
-        script: |
-          #!/usr/bin/env bash
+Define this stage to run the test cases of the app.
+
+```bash
+   test:
+      abort_on_failure: false
+   image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
+   script: |
+      #!/usr/bin/env bash
+      cd ../"$(load_repo app-repo path)"
+      #npm ci
+      #npm test
+      source test/test.sh
+```
+{: codeblock}
+
+## static-scan
+{: #byoa-static-scan}
+
+Define this stage to run static scan on the code.
       
-          if [[ "$PIPELINE_DEBUG" == 1 ]]; then
-            trap env EXIT
-            env
-            set -x
-          fi
-          source scripts/build_setup.sh
-          source scripts/build.sh
-      ```
+```bash
+   static-scan:
+      dind: true
+      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
+      script: |
+      #!/usr/bin/env bash
+      echo "Please insert script to invoke/execute static scan tool like SonarQube on the application source code."
+```
+{: codeblock}
 
-* **deploy**: Define this stage to deploy your app on the target environment.
+## containerize
+{: #byoa-containerize}
 
-      ```bash
-      deploy:
-        image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
-        script: |
-          #!/usr/bin/env bash
-      
-          if [[ "$PIPELINE_DEBUG" == 1 ]]; then
-            trap env EXIT
-            env
-            set -x
-          fi
-          source scripts/deploy_setup.sh
-          source scripts/deploy.sh
-      ```
+Define this stage to build and containerize your app.
 
-* **sign-artifact**: Define this stage to sign your built images.
+```bash
+   containerize:
+      dind: true
+      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
+      script: |
+      #!/usr/bin/env bash
 
-      ```bash
-      sign-artifact:
-        abort_on_failure: false
-        image: icr.io/continuous-delivery/pipeline/image-signing:1.0.      0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
-        script: |
-            #!/usr/bin/env bash
-            STAGE_DIND="true"
-            STAGE_ABORT_ON_FAILURE="false"
-            STAGE_IMAGE_PULL_POLICY="IfNotPresent"
-            source scripts/sign_image.sh
-      ```
+      if [[ "$PIPELINE_DEBUG" == 1 ]]; then
+      trap env EXIT
+      env
+      set -x
+      fi
+      source scripts/build_setup.sh
+      source scripts/build.sh
+```
+{: codeblock}
 
-* **acceptance-test**: Define this stage run your acceptance test after deployment.
+## deploy
+{: #byoa-deploy}
 
-      ```bash
-      acceptance-test:
-        abort_on_failure: false
-        image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
-        script: |
-          #!/usr/bin/env bash
-          export APP_URL=$(cat ../app-url)
-          source scripts/setup_go.sh
-          echo "APP_URL :- ${APP_URL}"
-          go run acceptance-test/acceptance-test.test.go
-      ```
+Define this stage to deploy your app on the target environment.
 
-* **release**: Define this stage to upload evidence and artifacts that are generated from the previous stages.
+```bash
+   deploy:
+      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
+      script: |
+      #!/usr/bin/env bash
 
-      ```bash
-      release:
-        abort_on_failure: false
-        image: icr.io/continuous-delivery/toolchains/devsecops/compliance-baseimage:2.26.      1@sha256:a780174a64474187b01b5e40a1721d8307f02897ac6f3eba2d482d4f4926edf1
-        script: |
-          #!/usr/bin/env bash
-          source scripts/release.sh
-      ```
+      if [[ "$PIPELINE_DEBUG" == 1 ]]; then
+      trap env EXIT
+      env
+      set -x
+      fi
+      source scripts/deploy_setup.sh
+      source scripts/deploy.sh
+```
+{: codeblock}
 
-* **scan-artifact**: Define this stage to perform a scan for vulnerabilities in the generated artifacts.
+## sign-artifact
+{: #byoa-sign-artifact}
 
-      ```bash
-      scan-artifact:
-         abort_on_failure: false
-         image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      6@sha256:7f588468622a981f89cf5e1212aaf75fface9da6169b5345ca52ab63d8215907
-         script: |
-           #!/usr/bin/env bash
-           source scripts/va_scan.sh
-      ```
+Define this stage to sign your built images.
+
+```bash
+   sign-artifact:
+      abort_on_failure: false
+      image: icr.io/continuous-delivery/pipeline/image-signing:1.0.      0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
+      script: |
+      #!/usr/bin/env bash
+      STAGE_DIND="true"
+      STAGE_ABORT_ON_FAILURE="false"
+      STAGE_IMAGE_PULL_POLICY="IfNotPresent"
+      source scripts/sign_image.sh
+```
+{: codeblock}
+
+## acceptance-test
+{: #byoa-acceptance-test}
+
+Define this stage run your acceptance test after deployment.
+
+```bash
+   acceptance-test:
+      abort_on_failure: false
+      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
+      script: |
+      #!/usr/bin/env bash
+      export APP_URL=$(cat ../app-url)
+      source scripts/setup_go.sh
+      echo "APP_URL :- ${APP_URL}"
+      go run acceptance-test/acceptance-test.test.go
+```
+{: codeblock}
+
+## release
+{: #byoa-release}
+
+Define this stage to upload evidence and artifacts that are generated from the previous stages.
+
+```bash
+   release:
+      abort_on_failure: false
+      image: icr.io/continuous-delivery/toolchains/devsecops/compliance-baseimage:2.26.      1@sha256:a780174a64474187b01b5e40a1721d8307f02897ac6f3eba2d482d4f4926edf1
+      script: |
+      #!/usr/bin/env bash
+      source scripts/release.sh
+```
+{: codeblock}
+
+## scan-artifact
+{: #byoa-scan-artifact}
+
+Define this stage to perform a scan for vulnerabilities in the generated artifacts.
+
+```bash
+   scan-artifact:
+      abort_on_failure: false
+      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.      6@sha256:7f588468622a981f89cf5e1212aaf75fface9da6169b5345ca52ab63d8215907
+      script: |
+      #!/usr/bin/env bash
+      source scripts/va_scan.sh
+```
+{: codeblock}
+
+## dynamic-scan
+{: #byoa-dynamic-scan}
+
+Define this stage to run dynamic scan on the deployed application.
+
+```bash      
+   dynamic-scan:
+      dind: true
+      abort_on_failure: false
+      image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.12@sha256:ff4053b0bca784d6d105fee1d008cfb20db206011453071e86b69ca3fde706a4
+      script: |
+      #!/usr/bin/env bash
+      echo "Please insert script to invoke/execute dynamic scan tool like OWASP ZAP on the built and deployed application."
+```
+{: codeblock}
+
+Related information
+{: #byoa-related}
 
 For more information about the stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
