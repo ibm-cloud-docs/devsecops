@@ -48,7 +48,7 @@ image: icr.io/continuous-delivery/pipeline/image-signing:1.0.   0@sha256:e9d8e35
 
 Set this property to `true` to stop the pipeline run if the stage fails.
 
-## script**
+## script
 {: #byoa-script}
 
 The script that performs the actions that are required in the stage. Create the scripts in the script directory within the app repository (repo), and call the scripts from this location. For example, the following code snippet shows the content of the `script` section when you want to sign the images:
@@ -240,7 +240,7 @@ Define this stage to run dynamic scan on the deployed application.
 ```
 {: codeblock}
 
-Related information
+## Related information
 {: #byoa-related}
 
 For more information about the stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
