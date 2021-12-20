@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021
-lastupdated: "2021-12-13"
+lastupdated: "2021-12-20"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
 
@@ -54,7 +54,7 @@ By default, the toolchain uses a sample Node.js "Hello World" app, but you can a
 {: #devsecops-tutorial-overview-pipelines}
 
 * **Pull Request (PR) Pipeline:** This pipeline is triggered when a merge or pull request is created in the Application Source Code Repository. Typically, this request is manually created by the application source code developer to merge changes from their development branch to the master branch or any other branch. The PR Pipeline runs the Unit Test and Static Scans on the Application Source Code.
-* **Continuous Integration (CI) Pipeline:** This pipeline is triggered when a change is merged to the master branch of the Application Source Code repository. The CI Pipeline runs the Unit Test, Code Coverage, Static Scans on the Application Source Code, CIS check, and Bill Of Materials (BOM) check. The CI Pipeline also generates the binary build artifact and a signature and uploads them to the IBM Container Registry as configured in the toolchain. And the CI Pipeline generates the metadata of the build artifacts and stores it in the Inventory repository. 
+* **Continuous Integration (CI) Pipeline:** This pipeline is triggered when a change is merged to the master branch of the Application Source Code repository. The CI Pipeline runs the Unit Test, Code Coverage, Static Scans, and Dynamic Scans on the Application Source Code, CIS check, and Bill Of Materials (BOM) check. The CI Pipeline also generates the binary build artifact and a signature and uploads them to the IBM Container Registry as configured in the toolchain. And the CI Pipeline generates the metadata of the build artifacts and stores it in the Inventory repository.
 * **Promotion (CD) Pipeline:** Manually running the Promotion Pipeline creates a new Merge / Pull request to push the latest code changes from the source (master) branch to the target branch (prod or stage) of your inventory repository. Merging this MR/PR triggers the CD pipeline.
 * **Continuous Deployment (CD) Pipeline:** The CD Pipeline is responsible for approval and deployment of the build artifacts to the deployment environment. The pipeline verifies the successful deployment of the application by running the health check. This pipeline must be manually triggered after you merge the Merge / Pull request created by the Promotion Pipeline. 
 
