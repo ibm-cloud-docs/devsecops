@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021
-lastupdated: "2021-12-20"
+lastupdated: "2021-12-21"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
 
@@ -160,7 +160,10 @@ For each repository, you can either clone the repository that's provided as a sa
 ### Application
 {: #devsecops-ci-tool-integration-application}
 
-The Application step that refers to the application source code repository is shown in the following image. 
+The Application step that refers to the application source code repository is shown in the following image.
+
+For the application source code repository, you can choose either GitHub or the IBM-hosted Git Repos and Issue Tracking (GRIT) repository from the list of source providers. For consistency, this tutorial refers to Git Repos and Issue Tracking (GRIT).
+{: note}
 
 ![DevSecOps application repository](images/devsecops-ci-app-repo.png){: caption="DevSecOps application repository" caption-side="bottom"}
 
@@ -529,7 +532,10 @@ The default behavior of the toolchain is to Use existing issues repository to li
 ### Pipeline Configuration
 {: #devsecops-cd-tool-integration-pipeline-config}
 
-The repository contains custom scripts to carry out pipeline tasks in the CD Pipeline (.pipeline-config.yaml). Refer to [hello-compliance-deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) sample repository that contains some default configuration and scripts.
+The repository contains custom scripts to carry out pipeline tasks in the CD Pipeline (.pipeline-config.yaml). For more information, see the [hello-compliance-deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) sample repository that contains some default configuration and scripts.
+
+For the repository, you can choose either GitHub or the IBM-hosted Git Repos and Issue Tracking (GRIT) repository from the list of source providers. For consistency, this tutorial refers to Git Repos and Issue Tracking (GRIT).
+{: note}
 
 By default, the setup Clone deployment configuration from the sample repository. After the repository is cloned, you can customize configurations and scripts for pipeline runs.
 
