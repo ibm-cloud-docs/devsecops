@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-12-13"
+lastupdated: "2021-12-20"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains
 
@@ -50,7 +50,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | **Secret**                | **Hint**                 | **Information**    |
 | -------------             | -------------            | -------------      |
 | {{site.data.keyword.cloud_notm}} API Key         | `ibmcloud-api-key`       | **Required: CI & CD** _Used to authenticate with IBM Public Cloud and perform a wide range of operations_ |
-| {{site.data.keyword.IBM_notm}} Image Signing Certificate      | `signing_key`          | **Required: CI only** _This is the certificate that is used to sign images built by the CI pipeline_ |
+| GPG Private Key          | `signing_key`          | **Required: CI only** _This is the certificate that is used to sign images built by the CI pipeline_ |
 | {{site.data.keyword.IBM_notm}} Private Worker Service API Key    | `private-worker-service-api-key`  | **Required: CI only** _A Service ID API Key Used to run delivery pipeline workloads on a Tekton Private Worker Service_|
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
 | Artifactory API token.    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
