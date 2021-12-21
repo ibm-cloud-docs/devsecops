@@ -4,7 +4,7 @@ copyright:
   years: 2021
 lastupdated: "2021-12-20"
 
-keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains
+keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
 subcollection: devsecops
 
@@ -49,7 +49,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 
 | **Secret**                | **Hint**                 | **Information**    |
 | -------------             | -------------            | -------------      |
-| {{site.data.keyword.cloud_notm}} API Key         | `ibmcloud-api-key`       | **Required: CI & CD** _Used to authenticate with IBM Public Cloud and perform a wide range of operations_ |
+| {{site.data.keyword.cloud_notm}} API Key         | `ibmcloud-api-key`       | **Required: CI & CD** _Used to authenticate with IBM public cloud and perform a wide range of operations_ |
 | GPG Private Key          | `signing_key`          | **Required: CI only** _This is the certificate that is used to sign images built by the CI pipeline_ |
 | {{site.data.keyword.IBM_notm}} Private Worker Service API Key    | `private-worker-service-api-key`  | **Required: CI only** _A Service ID API Key Used to run delivery pipeline workloads on a Tekton Private Worker Service_|
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
@@ -58,7 +58,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | ServiceNow API Token.     | `servicenow-token`       | **Required: CD only** _Used to access Service Now for change management operations_ |
 | HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
 | HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
-| {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with IBM Cloud Object Storage service - This key must have `writer` permission_ |
+| {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
 | SonarQube password or authentication token | `sonarqube-password`              | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
 {: caption="Table 1. DevSecOps Secrets" caption-side="top"}
 
@@ -67,12 +67,18 @@ While you are using Hashicorp vault service, ensure that the vault service uses 
 If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` is used to retrieve the GRIT Access Token by default. However, if `ibmcloud-api-key` does not have access to `git`, `git-token` must be set.
 {: note}
 
-### Configuring the Secrets Stores
+### Configuring the secrets stores
 {: #configure-secret-stores}
 
-When you create an instance of the CI or CD toolchain, you see a Hashicorp tool integration like the following example:
+With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you protect your sensitive data and centralize your secrets. You can choose between the vault integrations depending on your requirements as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation provides information about prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select them from various vault integrations that are attached to the toolchain.
 
-![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 1. HashiCorp Vault Tool Integration" caption-side="bottom"}
+Use [{{site.data.keyword.secrets-manager_full}}](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain.
+
+![{{site.data.keyword.secrets-manager_short}} tool integration form](images/devsecops-secrets-manager.png){: caption="Figure 1. IBM Secrets Manager Tool Integration" caption-side="bottom"}
+
+The templates also come with a Hashicorp tool integration like the following example:
+
+![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 2. HashiCorp Vault Tool Integration" caption-side="bottom"}
 
 To use Hashicorp, you must provide the following information:
 
@@ -84,9 +90,9 @@ To use Hashicorp, you must provide the following information:
 * **Role ID**: Identifier that selects the AppRole against which the other credentials are evaluated.
 * **Secret ID**: Credential that is required by default for any login (with secret_id) and is intended to always be secret.
 
-The templates also come with a Key Protect tool integration:
+The templates also come with an {{site.data.keyword.keymanagementservicefull}} tool integration:
 
-![IBM Key Protect Tool Integration form with required fields and example values](images/kp-int.png "IBM Key Protect Tool Integration form with required fields and example values"){: caption="Figure 2. IBM Key Protect Tool Integration" caption-side="bottom"}
+![{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values](images/kp-int.png "{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values"){: caption="Figure 3. IBM Key Protect tool integration" caption-side="bottom"}
 
 If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the `role id` and `secret id` fields in the Hashicorp tool card, and use the picker to apply the secrets to those fields.
 
