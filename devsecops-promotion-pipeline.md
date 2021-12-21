@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-12-08"
+lastupdated: "2021-12-21"
 
-keywords: DevSecOps
+keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
 
@@ -34,7 +34,9 @@ The promotion pipeline promotes inventory entries from one environment to anothe
 
 1. Get inputs for the promotion and the promotion pull/merge request.
 2. Promote the inventory entries from the source environment to the target environment.
-3. Create the promotion pull/merge request.
+3. Create the promotion pull/merge request. Edit the pull/merge request to indicate which changes to perform. Watch for optional and mandatory fields.
+4. Merge the pull/merge request.
+5. Send a Slack notification if the feature is turned on.
 
 ## Running the promotion pipeline
 {: #cd-devsecops-promotion-pipelinerun}
@@ -43,7 +45,7 @@ Use the manual promotion trigger to run the promotion pipeline. If the source (m
 
 To modify the default values of the promotion pull/merge request, or to promote from an alternative source to target, users can modify the [inputs](#cd-devsecops-promotion-pipelineinputs) from the Pipeline Environment Variables UI.
 
-Before you run the continuous delivery pipeline, make sure that the promotion pull/merge request is merged.
+Before you run the continuous delivery pipeline, make sure that the promotion pull/merge request is merged. You can find the pull/merge request URL in the pipeline logs.
 {: tip}
 
 For more information about the inventory and promotion process, see [Inventory promotion](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
