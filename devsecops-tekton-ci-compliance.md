@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-12-13"
+lastupdated: "2021-12-28"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -335,10 +335,14 @@ The Eclipse [Orion Web IDE](/docs/ContinuousDelivery?topic=ContinuousDelivery-we
 
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
 
-#### SonarQube (Beta Release)
+#### SonarQube
 {: #cd-devsecops-sonar-ci}
 
-If you add your own SonarQube instance, the static scan will run on this instance with your rules and quality gate. 
+Configure SonarQube as the static code analysis tool for the toolchain. SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. The static code analyzers detect tricky bugs, such as null-pointer dereferences, logic errors, and resource leaks for multiple programming languages.
+
+With **Default Configuration**, the pipeline provisions a new SonarQube instance in the Kubernetes cluster that is configured in the **Deploy** step. This instance is provisioned during the first pipeline run and remains available to all the subsequent pipeline runs.
+
+If you want the toolchain to use an existing SonarQube Instance that you have provisioned on another host, use the **Custom Configuration** option.
 
 ![SonarQube tool](images/devsecops_set-up_sonarqube_orig.png){: caption="SonarQube tool" caption-side="bottom"}
 
