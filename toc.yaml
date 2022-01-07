@@ -58,9 +58,9 @@ toc:
           - devsecops-redeploy-staging.md
           - devsecops-apps-rollback.md
       - devsecops-set-pr-status.md
+      - devsecops-automate-changemgmt.md
       - devsecops-approve-cr.md
       - devsecops-webhook-payloads.md
-      - devsecops-automate-changemgmt.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
       - devsecops-scc-toolchains.md
