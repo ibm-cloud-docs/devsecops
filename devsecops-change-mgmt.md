@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-01-07"
 
 keywords: DevSecOps
 
@@ -50,3 +50,5 @@ The following diagram shows the data flow and connection between evidence, inven
 Deployments also leave evidence behind such as acceptance tests. Successfully deployed and tested artifacts are further promoted to production environments, such as `prod`.
 
 Every deployment to every environment and region must file a separate change request to the Change Management repo. Change management automation helps you to create these change requests based on all of the evidence and information that is collected from the pipelines.
+
+For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
