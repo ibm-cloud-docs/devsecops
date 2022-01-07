@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-01-07"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -40,6 +40,8 @@ In this document, you can find answers to the following questions regarding chan
 * What data is included in a change request?
 * How can I use an existing change request ID in the CD pipeline?
 
+For more information, see [Automated change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+
 ## Connection between evidence, inventory, and change management
 {: #connection-evidence-inventory-change}
 
@@ -52,13 +54,12 @@ In this document, you can find answers to the following questions regarding chan
 
 Every deployment to every environment and region needs to file a change request to the change management system Git Repos and issue tracking. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
 
-##  Change request fields in promotion pull requests
+## Change the request fields in promotion pull requests
 {: #cd-devsecops-change-fields}
 
 You can use the pull request template that is provided in the inventory for promotion pull requests to populate the change request fields. Because you cannot automatically populate these fields, you must manually populate them to promote changes. By manually populating these fields, you trigger the deployment and continue automatic data collection for the rest of the change request.
 
  ![Promotion pull request](images/promotion-pr.png){: caption="Figure 2. Promotion pull request" caption-side="bottom"}
- 
  
 The promotion pull request template contains the following fields:
 
@@ -69,7 +70,7 @@ The promotion pull request template contains the following fields:
 * **Explanation of Impact**: Describes the possible impact of the change.
 * **Backout Plan**: Explains a rollback or backout plan.
 
-### Change type
+### Types of change
 {: #cd-devsecops-change-type}
 
 Change Request Management supports two types of change: Emergency or Regular.
