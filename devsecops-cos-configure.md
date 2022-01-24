@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-09-15"
+  years: 2021, 2022
+lastupdated: "2022-01-24"
 
 keywords: DevSecOps, COS, secure toolchain, compliance
 
@@ -37,47 +37,48 @@ Create a [{{site.data.keyword.cos_short}} instance](https://cloud.ibm.com/catalo
 ## Create a {{site.data.keyword.cos_short}} bucket
 {: #cd-devsecops-cos-bucket-create}
 
-In {{site.data.keyword.cos_short}}, files are grouped in buckets. (You could think of buckets like directories, except there are no subdirectories in buckets.) 
+In {{site.data.keyword.cos_short}}, files are grouped in buckets. You might think of buckets like directories, except that no subdirectories are in buckets.
 
-1. In the {{site.data.keyword.cos_short}} GUI, click **Buckets**.
+1. In {{site.data.keyword.cos_short}}, click **Buckets**.
 2. Click **Create bucket**.
-3. Give the bucket a name that is unique and helpful for remembering what the bucket is being used for (over time, you might create many buckets!)
-4. Set Resiliency to "Regional." In general, regional resiliency will have the best performance with the lowest cost. However if the ability to survive a regional outage is essential to you, set the resiliency to "Cross Region."
-5. For best performance, set Location to the same location as your Toolchain location.
-6. Usually, the default for Storage class is suitable for use and usually, you won't need to use **ADVANCED CONFIGURATION**.
+3. Choose the **Customize your bucket** option.
+4. Give the bucket a unique, memorable name to help you remember what the bucket is for. Over time, you might create many buckets.
+5. Set Resiliency to "Regional." In general, regional resiliency has the best performance with the lowest cost. However, if the ability to survive a regional outage is essential, set the resiliency to "Cross Region."
+6. For best performance, set "Location" to the same location as your toolchain location.
+7. Usually, the default for Storage class is suitable for use, so you don't need to use **ADVANCED CONFIGURATION**.
 
 ## Create a service credential
 {: #cd-devsecops-cos-service-credential}
 
-1. In the {{site.data.keyword.cos_short}} GUI, click **Service Credential**.
+1. In {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **New Credential**.
 3. Provide the details:
    *  **Name:** Name of the credential
-   *  **Role:** Role for the credential. (**writer** role is suggested for uploading the file)
+   *  **Role:** Role for the credential. The **writer** role is suggested for uploading the file.
 
 ## Provide bucket access to the service credential
 {: #cd-devsecops-cos-bucket-access}
 
-1. In the {{site.data.keyword.cos_short}} GUI, click **Buckets**.
-2. Select the bucket which was created in earlier step.
-3. Click on the **Access policies** and select the **Service IDs** option
-4. Now select the service credential which was created in earlier step and select the **writer** role.
-5. Now click in the **Create Access Policy** Button.
+1. In {{site.data.keyword.cos_short}}, click **Buckets**.
+2. Select the bucket that was created in the previous step.
+3. Click **Access policies**, and select the **Service IDs** option
+4. Select the service credential that was created in the previous step, and select the **writer** role.
+5. Click **Create Access Policy**.
 
 ## Copy the API Key of the service credential
 {: #cd-devsecops-cos-apikey-copy}
 
-1. In the {{site.data.keyword.cos_short}} GUI, click **Service Credential**.
-2. Now click on the **expand** the service credential. This will show you the **apikey**. 
-3. Note down the *apikey*
+1. In {{site.data.keyword.cos_short}}, click **Service Credential**.
+2. Click **expand** the service credential to view the **apikey**. 
+3. Note the *apikey* because you need it later.
 
 ## Endpoints
 {: #cd-devsecops-cos-endpoints}
 
-1. In the {{site.data.keyword.cos_short}} GUI, click **Buckets**.
-2. Select the bucket which was created in earlier step.
-3. Now select **Configuration** tab and select the **Endpoints**.
-4. Note down the **public endpoint**.
+1. In {{site.data.keyword.cos_short}}, click **Buckets**.
+2. Select the bucket that was created in the previous step.
+3. Select the **Configuration** tab, and then select **Endpoints**.
+4. Note the **public endpoint** because you need it later.
 
 ## Related information
 {: #cd-devsecops-cos-related-content}
