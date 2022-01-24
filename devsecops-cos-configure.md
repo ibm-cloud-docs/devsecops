@@ -32,7 +32,7 @@ Complete these steps to create a {{site.data.keyword.cos_full_notm}} instance an
 ## Create a {{site.data.keyword.cos_short}} instance
 {: #cd-devsecops-cos-instance-create}
 
-Create a [{{site.data.keyword.cos_short}} instance](https://cloud.ibm.com/catalog/services/cloud-object-storage){: external}.
+Create an [{{site.data.keyword.cos_full_notm}} instance](https://cloud.ibm.com/catalog/services/cloud-object-storage){: external}.
 
 ## Create a {{site.data.keyword.cos_short}} bucket
 {: #cd-devsecops-cos-bucket-create}
