@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-09-15"
+  years: 2021, 2022
+lastupdated: "2022-01-25"
 
 keywords: DevSecOps, pipelinectl
 
@@ -206,13 +206,22 @@ Used together with `list_repos`
 
 ```bash
 #
-# iterate over all repos and read their URLs
+# iterate over all repos and print their URLs
 #
 while read -r key; do
   url=$(load_repo $key url)
+  echo "Repository saved as '$key' is at: '$url'"
 done < <(list_repos)
 ```
 {: codeblock}
+
+Outputs the following lines to the console:
+
+```text
+$ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
+$ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
+```
+{: screen}
 
 ### save_result
 {: #save_result}
@@ -222,7 +231,7 @@ save_result  <path>
 ```
 {: codeblock}
 
-Saves an arbitrary test, scan result file for a given stage. Later this can be retrieved with `load_result`. Data is saved with the workspace-relative path as key.
+Saves an arbitrary test, scan result file for a given stage. Later this can be retrieved with `load_result`. By default, data is saved with the workspace-relative path as key.
 
 Example:
 
@@ -238,8 +247,6 @@ save_result test ./results/mocha_results.json
 # as an entry named "coverage.xml" for the "test" stage
 #
 save_result test ../data/coverage.xml
-```
-{: codeblock}
 
 ### list_results
 {: #list_results}
@@ -268,14 +275,9 @@ load_result  <file>
 ```
 {: codeblock}
 
-Prints the saved file keys to `stdout`. A key is the workspace-relative path of the provided file path in `save_result`. To get the exact list of keys, use `list_results`.
+Prints the saved file keys to `stdout`. By default, a key is the workspace-relative path of the provided file path in `save_result`. To get the exact list of keys, use `list_results`.
 
 Example:
-
-```bash
-load_result test mocha_results.json
-```
-{: codeblock}
 
 Used together with `list_results`
 
@@ -327,7 +329,6 @@ save_artifact ui_service "signature=${SIGNATURE}"
 
 Other artifact types to be added later.
 
-
 ### list_artifacts
 {: #list_artifacts}
 
@@ -348,8 +349,6 @@ list_artifacts
 # app_service
 ```
 {: codeblock}
-
-
 
 ### load_artifact
 {: #load_artifact}
@@ -372,14 +371,22 @@ Used together with `list_artifacts`
 
 ```bash
 #
-# iterate over all artifacts and read their image names
+# iterate over all artifacts and print their image names
 #
 while read -r key; do
   image=$(load_artifact $key name)
+  echo "Artifact saved as '$key' is named: '$image'"
 done < <(list_artifacts)
 ```
 {: codeblock}
 
+Outputs the following lines to the console:
+
+```text
+$ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
+$ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
+```
+{: screen}
 
 ## Low-level methods
 {: #low-level methods}
@@ -406,7 +413,6 @@ get_data <key> <prop>
 {: codeblock}
 
 Prints `prop` of the entry defined by `key`. If `prop` is not provided, it returns all of the `prop`s for the given `key`. Returns a non-zero exit code when `key` has no `prop`.
-
 
 ### save_string (deprecated)
 {: #save_string}
