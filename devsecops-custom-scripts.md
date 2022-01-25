@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-16"
+  years: 2021, 2022
+lastupdated: "2022-01-25"
 
-keywords: DevSecOps
+keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
 subcollection: devsecops
 
@@ -37,11 +37,11 @@ Custom scripts control the pipeline stages. You can use a configuration file (`p
 
 Stages in pull request, continuous integration, and continuous delivery pipelines run custom scripts.
 
-* **Pull request pipeline stages**: setup, test
+* **Pull request pipeline stages**: setup, test. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
-* **Continuous integration pipeline stages**: setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan artifact, release
+* **Continuous integration pipeline stages**: setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan artifact, release. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-* **Continuous delivery pipeline stages**: setup, deploy, acceptance-test
+* **Continuous delivery pipeline stages**: setup, deploy, acceptance-test. For more information, see [Continuous delivery pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
@@ -86,12 +86,14 @@ These settings are not pipeline parameters, they must be part of your `.pipeline
 * `script`: The script to run in the stage. Because this field is used as a script file make sure that the contents act like a script file in the base image that you provided. You can include other scripts next to this configuration file, and refer to them from this entry point. For example:
 
 ```bash
-   test:
-     script: |
-       #!/bin/sh
-       scripts/lint.sh
-       scripts/unit-test.sh
-   ```
+test:
+  image: ibmcom/pipeline-base-image:2.7
+  script: |
+    #!/bin/sh
+    scripts/lint.sh
+    scripts/unit-test.sh
+```
+{: codeblock}
 
 * `dind`: Specify whether to enable `docker-in-docker` for the script context. The default setting is `false`.
 
@@ -271,7 +273,7 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/image` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/artifact` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/signature` | The image artifact signature. |
-{: caption="Table 1. /config/ Values" caption-side="top"}
+{: caption="Table 1. '`/config/`' Values" caption-side="top"}
 
 These values are phased out and replaced by the stage I/O interface by way of pipelinectl.
 {: deprecated}
@@ -299,22 +301,46 @@ The following table includes the default ENV variables for the context of custom
 | WORKSPACE | The path to the shared workspace. |
 {: caption="Table 2. Environment variables" caption-side="top"}
 
-You can access these environment variables in any script, for example, `. ${PIPELINE_ID}`.
+You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
 
 ### Accessing toolchain data from custom scripts
-{: #cd-devsecops-scripts-toolchaindata}
+{: #devsecops-scripts-toolchaindata}
 
-You can read toolchain data from the `toolchain.json file` that is provided by the pipeline at the path that is stored in the `TOOLCHAIN_DATA_PATH` environment variable. You can also use the toolchain integration and `jsonpath`, and access them in `/config` in the same way as any other variable. Or, you can use `get_env`, which has the same effect. 
+You can read toolchain data from the `toolchain.json file` that is provided by the pipeline at the path that is stored in the `TOOLCHAIN_DATA_PATH` environment variable. You can also use the toolchain integration and `jsonpath`, and access them in `/config` in the same way as any other variable. Or, you can use `get_env`, which has the same effect.
+
+#### Example usage
+{: #devsecops-scripts-toolchaindata-example}
+
+```bash
+TOOLCHAIN_CONFIG_JSON="$(get_env TOOLCHAIN_CONFIG_JSON)"
+toolchain_id=$(jq -r '.toolchain_guid' "$TOOLCHAIN_CONFIG_JSON")
+```
+{: codeblock}
 
 ### Shared workspaces
-{: #cd-devsecops-scripts-workspaces}
+{: #devsecops-scripts-workspaces-shared}
 
 Because these custom scripts operate in the same workspace, you can pass data between them by writing it into a file and then reading it in the other task. This workspace is mounted on a path that is provided in the `$WORKSPACE` variable.
+
+#### Example usage
+{: #devsecops-scripts-workspaces-shared-example}
+
+Writing:
+```bash
+echo -n "$DIGEST" > "${WORKSPACE}"/image-digest
+```
+{: codeblock}
+
+Reading:
+```bash
+image_digest=$(cat "${WORKSPACE}"/image-digest)
+```
+{: codeblock}
 
 ## Stage output
 {: #cd-devsecops-scripts-stageoutput}
 
-Data expected to be available by other stages on the workspace, so make sure to create them using the [`pipelinectl` commands](/docs/devsecops?topic=devsecops-pipelinectl). To make the required outputs available to the other stages and scripts in the pipeline, use pipelinectl's save methods, such as save_repo, save_artifact, save_result and set_env.
+Some data is expected to be available by other stages on the workspace, so be sure to create them by using the [`pipelinectl` commands](/docs/devsecops?topic=devsecops-pipelinectl). To make the required outputs available to the other stages and scripts in the pipeline, use pipelinectl's save methods, like save_repo, save_artifact, save_result, and set_env.
 
 |Source stage |Description	|`Pipelinectl` method |Required |
 |:----------|:------------------------------|:------------------|:----------|
@@ -334,11 +360,12 @@ The result states of these custom stages are saved with `pipelinectl`. The resul
 
 The following tasks and stages are available:
 
-* **Pull request pipeline stages**: setup, test, detect-secrets, and branch-protection. The detect-secrets and branch-protection stages are not custom stages. They are provided by the pipelines by default.
-
-* **Continuous integration pipeline stages**: setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan artifact, release, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default.
-
-* **Continuous delivery pipeline stages**: set up, deploy, acceptance-test, create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request. The create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request stages are not custom stages. They are provided by the pipelines by default.
+| Pipeline | Task or stages |
+|:-----------------|:------------------------------------|
+|**Pull request pipeline stages**| setup, test, detect-secrets, and branch-protection. The detect-secrets and branch-protection stages are not custom stages. They are provided by the pipelines by default.|
+|**Continuous integration pipeline stages**| setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan-artifact, release, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default. |
+|**Continuous delivery pipeline stages**| setup, deploy, acceptance-test, create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request. The create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request stages are not custom stages. They are provided by the pipelines by default.|
+|**Continuous compliance pipeline stages**| setup, test, static-scan, scan-artifact, acceptance-test, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default.|
 
 #### Example usage
 {: #devsecops-scripts-resultsapi-example}
@@ -353,4 +380,6 @@ branch-protection
 $ get_data result detect-secrets
 success
 ```
+{: codeblock}
+
 For more information about the Stage Results API, see [Using the Stage Results API in custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-stage-results).
