@@ -27,10 +27,10 @@ subcollection: devsecops
 # pipelinectl
 {: #devsecops-pipelinectl}
 
-`pipelinectl` is a lightweight key-value store that can be used in [Tekton](https://tekton.dev/){: external} pipelines to share data between tasks and the compliance automation scripts.
+`pipelinectl` is a lightweight key-value store that can be used in DevSecOps pipelines to share data between tasks and the compliance automation scripts.
 {: shortdesc}
 
-For more information about where this tool is used, see [Setting up your pipeline scripts](/docs/devsecops?topic=devsecops-cd-devsecops-setup-pipeline-scripts).
+For more information about where this tool is used, see [Setting up your pipeline scripts](/docs/devsecops?topic=devsecops-pipelines-add-steps).
 
 ## Usage
 {: #pipelinectl-usage}
@@ -52,11 +52,15 @@ Available aliases/methods:
 - [save_artifact](#save_artifact)
 - [list_artifacts](#list_artifacts)
 - [load_artifact](#load_artifact)
+- [put_data](#put_data)
+- [get_data](#get_data)
 
 ### set_env
 {: #set_env}
 
 ```bash
+# <key>: The name of the environment variable e.g. pipeline-namespace, app-name
+# <value>: Value of the key
 set_env <key> # reads <value> from `stdin`
 set_env <key> <value>
 ```
@@ -81,6 +85,7 @@ set_env my-api-key < /config/my-api-key
 {: #get_env}
 
 ```bash
+# <key>: The name of the environment variable e.g. pipeline-namespace, app-name
 get_env <key> [default]
 ```
 {: codeblock}
@@ -103,6 +108,8 @@ get_env app-name "default-app-name"
 {: #save_file}
 
 ```bash
+# <key>:  File name
+# <value>: Path, where the file will be stored
 save_file <key> <value>
 ```
 {: codeblock}
@@ -121,6 +128,7 @@ save_file some_config ./config.yaml
 {: #load_file}
 
 ```bash
+# <key>:  File name
 load_file <key>
 ```
 {: codeblock}
@@ -138,6 +146,9 @@ load_file some_config > some_config.yaml
 {: #save_repo}
 
 ```bash
+# <key>:  Key of the repository e.g. repository name
+# <prop>: Type of the property, e.g. url, branch, commit etc.
+# <value>: Value of the property
 save_repo <key> [<prop>=<value> ...]
 ```
 {: codeblock}
@@ -188,6 +199,8 @@ list_repos
 {: #load_repo}
 
 ```bash
+# <key>: Key of the repository, e.g. repository name
+# <prop>: Name of the property, e.g. commit, branch, url
 load_repo <key> <prop>
 ```
 {: codeblock}
@@ -218,8 +231,8 @@ done < <(list_repos)
 Outputs the following lines to the console:
 
 ```text
-$ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
-$ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
+`$ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'`
+`$ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'`
 ```
 {: screen}
 
@@ -227,7 +240,9 @@ $ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
 {: #save_result}
 
 ```bash
-save_result  <path>
+# <stage>: Stage name e.g. test, detect-secrets, static-scan
+# <path>: Path where will be stored the file, string
+save_result  <stage> <path>
 ```
 {: codeblock}
 
@@ -248,11 +263,24 @@ save_result test ./results/mocha_results.json
 #
 save_result test ../data/coverage.xml
 
+<staging>
+#
+# Using the `PIPELINECTL_USE_PATH_AS_KEY` environment variable
+# save the contents of the file ../data/coverage.xml
+# as an entry named "../data/coverage.xml" for the "test" stage
+#
+PIPELINECTL_USE_PATH_AS_KEY=1 save_result test ../data/coverage.xml
+```
+{: codeblock}
+
+</staging>
+
 ### list_results
 {: #list_results}
 
 ```bash
-list_results 
+# <stage>: Stage name
+list_results <stage>
 ```
 {: codeblock}
 
@@ -271,7 +299,9 @@ list_results test
 {: #load_result}
 
 ```bash
-load_result  <file>
+# <stage>: Stage name e.g. test, detect-secrets, static-scan
+# <file>: File name e.g. mocha_results.json
+load_result <stage> <file>
 ```
 {: codeblock}
 
@@ -296,6 +326,9 @@ done < <(list_results test)
 {: #save_artifact}
 
 ```bash
+# <key>: Key of the artifact e.g. app-image, baseimage etc.
+# <prop>: Type of property e.g. name, type, tags, signature
+# <value>: Value of the property
 save_artifact <key> [<prop>=<value> ...]
 ```
 {: codeblock}
@@ -354,6 +387,8 @@ list_artifacts
 {: #load_artifact}
 
 ```bash
+# <key>: Name of the artifact e.g. app-image, baseimage etc.
+# <prop>: Type of property e.g. name, type, tags, signature
 load_artifact <key> <prop>
 ```
 {: codeblock}
@@ -383,8 +418,8 @@ done < <(list_artifacts)
 Outputs the following lines to the console:
 
 ```text
-$ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
-$ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
+`$ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'`
+`$ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/`backend_service:2.4.3'
 ```
 {: screen}
 
@@ -397,6 +432,9 @@ These methods are only exposed for the sake of completeness, they should be used
 {: #put_data}
 
 ```bash
+# <key>: Name of the data
+# <prop>: Type of property e.g. name, type, tags, signature
+# <value>: Value of the property
 put_data <key> <prop> <value>
 ```
 {: codeblock}
@@ -407,6 +445,9 @@ Sets `prop` to `value` for the entry defined by `key`.
 {: #get_data}
 
 ```bash
+# <key>: Key of data
+# <prop>: Type of property e.g. name, type, tags, signature
+# <value>: Value of the property
 get_data <key>
 get_data <key> <prop>
 ```
