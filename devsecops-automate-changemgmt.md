@@ -29,15 +29,6 @@ subcollection: devsecops
 Change management automation is one of the crucial parts of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can track the compliance aspects of deployments.
 {: shortdesc}
 
-<staging>
-
- <!-- INTERNAL ONLY-DO NOT PUSH TO PRODUCTION DOCS-->
-
-For IBM teams: Every deployment must follow the [{{site.data.keyword.cloud_notm}} Change Management Policy](https://ibm.ent.box.com/s/z0nklp949ztsjm4vqn0gvo5k4bjx8eya).{: external}
-{: important}
-
- </staging>
-
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a certain build and deployment of the artifacts. So, for each deployed artifact, we should be able to tell, if its build or test deployment had incidents or not. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
 In this document, you can find answers to the following questions regarding change management automation:
