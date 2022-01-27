@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-07"
+lastupdated: "2022-01-27"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -29,6 +29,15 @@ subcollection: devsecops
 Change management automation is one of the crucial parts of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can track the compliance aspects of deployments.
 {: shortdesc}
 
+<staging>
+
+ <!-- INTERNAL ONLY-DO NOT PUSH TO PRODUCTION DOCS-->
+
+For IBM teams: Every deployment must follow the [{{site.data.keyword.cloud_notm}} Change Management Policy](https://ibm.ent.box.com/s/z0nklp949ztsjm4vqn0gvo5k4bjx8eya).{: external}
+{: important}
+
+ </staging>
+
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a certain build and deployment of the artifacts. So, for each deployed artifact, we should be able to tell, if its build or test deployment had incidents or not. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
 In this document, you can find answers to the following questions regarding change management automation:
@@ -52,7 +61,7 @@ For more information, see [Automated change management](/docs/devsecops?topic=de
 3. Built artifacts in the Inventory are [promoted](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) to deployment environments, like staging or pre-production.
 4. Change management automation uses data from the inventory, the evidence locker, and the promotion PR to create the change request deployments, also leaving evidence behind about acceptance tests for example. Successfully deployed and tested artifacts are further promoted to production environments, like production.
 
-Every deployment to every environment and region needs to file a change request to the change management system Git Repos and issue tracking. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
+Every deployment to every environment and region needs to file a change request to the Change Management System. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
 
 ## Change the request fields in promotion pull requests
 {: #cd-devsecops-change-fields}
