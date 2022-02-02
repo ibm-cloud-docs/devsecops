@@ -1,8 +1,8 @@
 ---
 
 copyright:
-   years: 2021
-lastupdated: "2021-12-21"
+   years: 2021, 2022
+lastupdated: "2022-01-31"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
 
@@ -221,16 +221,16 @@ All raw compliance evidence that belongs to the application is collected in this
 You can optionally set any kind of Cloud Object Storage bucket as a locker, even without a retention policy. The pipeline doesn't check or enforce settings at the moment. For help, see the [Cloud Object Storage documentation](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage).
 {: note}
 
-You need to provide the following information for the Pipelines to reach the bucket:
-* Cloud Object Storage endpoint
+You need to select the following information for the Pipelines to reach the bucket:
+
+* Cloud Object Storage Instance 
 * Bucket name
+* Cloud Object Storage endpoint
 * Service API key
 
 You can set up the Cloud Object Storage locker later, by providing the necessary cos-bucket-name and cos-endpoint. To remove the Cloud Object Storage bucket, use the Cloud Object Storage bucket toggle in the previous step.
 
-To get the Cloud Object Storage Endpoint, refer to your Cloud Object Storage instance's page, and select the 'Endpoints' section in the menu. You need to copy the public endpoint that matches the bucket's region and resiliency.
-
-![DevSecOps Cloud Object Storage Endpoint menu](images/devsecops-cos-endpoint-menu.png){: caption="DevSecOps Cloud Object Storage Endpoint menu" caption-side="bottom"}
+![DevSecOps Cloud Object Storage](images/cos-evidence.png){: caption="DevSecOps Cloud Object Storage menu" caption-side="bottom"}
 
 If you decide not to use Cloud Object Storage as an evidence locker, you can also set the required values after the creation of the toolchain by setting the cos-bucket-name, cos-endpoint environment variables in the CI Pipeline.
 
@@ -590,14 +590,14 @@ Cloud Object Storage is used to store the evidences and artifacts that are gener
 You can optionally set any kind of Cloud Object Storage bucket as a locker, even without a retention policy. The pipeline won't check or enforce settings at the moment. For help, see the [Cloud Object Storage documentation](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage).
 {: note}
 
-You need to provide the following information for the Pipelines to reach the bucket:
-* Cloud Object Storage endpoint
+You need to select the following information for the Pipelines to reach the bucket:
+
+* Cloud Object Storage Instance 
 * Bucket name
+* Cloud Object Storage endpoint
 * Service API key
 
-To get the Cloud Object Storage Endpoint, see your Cloud Object Storage instance's page, and select the 'Endpoints' section in the menu. You need to copy the public endpoint that matches the Bucket's region and resiliency.
-
-![DevSecOps Cloud Object Storage Endpoint menu](images/devsecops-cos-endpoint-menu.png){: caption="DevSecOps Cloud Object Storage Endpoint menu" caption-side="bottom"}
+![DevSecOps Cloud Object Storage](images/cos-evidence.png){: caption="DevSecOps Cloud Object Storage menu" caption-side="bottom"}
 
 If you decide not to use Cloud Object Storage as an evidence locker, you can also set the required values after the creation of the toolchain by setting the cos-bucket-name, cos-endpoint environment variables in the CI Pipeline.
 
