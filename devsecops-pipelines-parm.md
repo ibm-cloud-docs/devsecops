@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-21"
+  years: 2021, 2022
+lastupdated: "2022-02-16"
 
 keywords: DevSecOps
 
@@ -104,6 +104,7 @@ The following table lists and describes the continuous integration parameters fo
 |signing-key		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |slack-notifications		|text		|The switch that turns the Slack integration on or off.	|Optional			|
 |sonarqube		|tool integration		|The Sonarqube tool integration.	|Optional			|
+|sonarqube-namespace 	|text		|The configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline.	|Optional			|
 |static-scan-retry-count		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
 |static-scan-retry-sleep		|text		|The amount of wait time per retry iteration.	|Optional			|
 |va-scan-retry-count		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
