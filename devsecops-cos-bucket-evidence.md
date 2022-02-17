@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-10-12"
+  years: 2021, 2022
+lastupdated: "2022-02-17"
 
 keywords: DevSecOps
 
@@ -40,15 +40,15 @@ For more information about the format of the evidence that is sent, see [Evidenc
 ## Configuring your bucket
 {: #cd-devsecops-cos-bucket-config}
 
-To configure your {{site.data.keyword.cos_short}} bucket to act as a compliance evidence locker as part of a continuous integration or continuous delivery pipeline, you can use the following information as a guide. The pipeline or toolchain template scripts do not set up the locker in {{site.data.keyword.cos_short}}.
+To configure your Cloud {{site.data.keyword.cos_short}} bucket to act as a compliance evidence locker as part of a continuous integration or continuous delivery pipeline, you can use the following information as a guide. The pipeline or toolchain template scripts do not set up the locker in Cloud {{site.data.keyword.cos_short}}.
 
-It is recommended that you set up a dedicated {{site.data.keyword.cos_short}} instance for compliance-related storage as evidence lockers must be created in-boundary to your applications. [Learn more](#cd-devsecops-cos-bucket-resiliency).
+It is recommended that you set up a dedicated Cloud {{site.data.keyword.cos_short}} instance for compliance-related storage as evidence lockers must be created in-boundary to your applications. [Learn more](#cd-devsecops-cos-bucket-resiliency).
 {: tip}
 
 ## Naming your bucket
 {: #cd-devsecops-cos-bucket-content-format}
 
-{{site.data.keyword.cos_short}} object names consist of the following components:
+Cloud {{site.data.keyword.cos_short}} object names consist of the following components:
 
 ```bash
 {NAMESPACE} / {PIPELINE_RUN_ID} / {TYPE} / {FILE_NAME} _ {HASH}
@@ -71,7 +71,7 @@ The name component `{NAMESPACE} / {PIPELINE_RUN_ID} / {TYPE}` is useful as a pre
 ### Retention policy
 {: #cd-devsecops-cos-bucket-retention}
 
-You can set {{site.data.keyword.cos_short}} buckets to enforce a retention policy or period for uploaded objects, otherwise known as [Immutable Object Storage](/docs/cloud-object-storage?topic=cloud-object-storage-immutable). Immutable Object Storage preserves electronic records and maintains data integrity. Retention policies ensure that data is stored in a Write-One-Read-Many (WORM), non-erasable, and non-rewritable manner. You cannot change or delete objects in protected buckets within the retention period, or delete protected buckets with objects themselves until the retention period is over. The policy is enforced until the end of a retention period and the removal of any legal holds. 
+You can set Cloud {{site.data.keyword.cos_short}} buckets to enforce a retention policy or period for uploaded objects, otherwise known as [Immutable Object Storage](/docs/cloud-object-storage?topic=cloud-object-storage-immutable). Immutable Object Storage preserves electronic records and maintains data integrity. Retention policies ensure that data is stored in a Write-One-Read-Many (WORM), non-erasable, and non-rewritable manner. You cannot change or delete objects in protected buckets within the retention period, or delete protected buckets with objects themselves until the retention period is over. The policy is enforced until the end of a retention period and the removal of any legal holds. 
 
 It is recommended that teams set a retention policy for the buckets that are used as their evidence locker that stores every object for a minimum of 365 days.
 
@@ -87,7 +87,7 @@ With [{{site.data.keyword.at_full_notm}}](/docs/cloud-object-storage?topic=cloud
 
 Pipelines put objects (evidence, evidence summary, and artifacts) and read objects (evidence summary) from Buckets. The tools do not alter or delete objects or create, update, or delete Buckets.
 
-Use the following access policies to access the {{site.data.keyword.cos_short}} buckets:
+Use the following access policies to access the Cloud {{site.data.keyword.cos_short}} buckets:
 
 * Object Reader, required for continuous delivery pipeline runs, to create Evidence Summary
 * Object Writer, required for both continuous integration and continuous delivery pipelines
@@ -95,7 +95,7 @@ Use the following access policies to access the {{site.data.keyword.cos_short}} 
 ## Storage classes
 {: #cd-devsecops-cos-bucket-classes}
 
-Costs vary for teams with different setups and deployment frequency. It is not recommended that you use the free tier as {{site.data.keyword.cos_short}} buckets because the free tier cannot be configured to be immutable. 
+Costs vary for teams with different setups and deployment frequency. It is not recommended that you use the free tier as Cloud {{site.data.keyword.cos_short}} buckets because the free tier cannot be configured to be immutable. 
 
 ### Sample estimation
 {: #cd-devsecops-cos-bucket-estimate}
@@ -120,4 +120,4 @@ It is recommended that you use `Cross-Region` or `Regional` resiliency, if it ne
 ## Bucket name
 {: #cd-devsecops-cos-bucket-name}
 
-{{site.data.keyword.cos_short}} bucket names must be globally unique and DNS-compliant. Names must be 3 - 63 characters in length and must contain lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number. Names that resemble IP addresses are not allowed. Bucket names be unique across the entire {{site.data.keyword.cos_full_notm}} system and they cannot contain any personal information, such as any part of a name or address, or financial, security accounts, or SSN.
+Cloud {{site.data.keyword.cos_short}} bucket names must be globally unique and DNS-compliant. Names must be 3 - 63 characters in length and must contain lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number. Names that resemble IP addresses are not allowed. Bucket names be unique across the entire {{site.data.keyword.cos_full_notm}} system and they cannot contain any personal information, such as any part of a name or address, or financial, security accounts, or SSN.
