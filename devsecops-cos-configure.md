@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-24"
+lastupdated: "2022-02-17"
 
-keywords: DevSecOps, COS, secure toolchain, compliance
+keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
 subcollection: devsecops
 
@@ -71,14 +71,6 @@ In {{site.data.keyword.cos_short}}, files are grouped in buckets. You might thin
 1. In {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **expand** the service credential to view the **apikey**. 
 3. Note the *apikey* because you need it later.
-
-## Endpoints
-{: #cd-devsecops-cos-endpoints}
-
-1. In {{site.data.keyword.cos_short}}, click **Buckets**.
-2. Select the bucket that was created in the previous step.
-3. Select the **Configuration** tab, and then select **Endpoints**.
-4. Note the **public endpoint** because you need it later.
 
 ## Related information
 {: #cd-devsecops-cos-related-content}
