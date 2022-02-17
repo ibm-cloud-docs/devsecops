@@ -29,17 +29,17 @@ subcollection: devsecops
 Complete these steps to create a {{site.data.keyword.cos_full_notm}} instance and {{site.data.keyword.cos_full_notm}} bucket to store evidence that is used by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration pipeline.
 {: shortdesc}
 
-## Create a {{site.data.keyword.cos_short}} instance
+## Create a Cloud {{site.data.keyword.cos_short}} instance
 {: #cd-devsecops-cos-instance-create}
 
 Create an [{{site.data.keyword.cos_full_notm}} instance](https://cloud.ibm.com/catalog/services/cloud-object-storage){: external}.
 
-## Create a {{site.data.keyword.cos_short}} bucket
+## Create a Cloud {{site.data.keyword.cos_short}} bucket
 {: #cd-devsecops-cos-bucket-create}
 
-In {{site.data.keyword.cos_short}}, files are grouped in buckets. You might think of buckets like directories, except that no subdirectories are in buckets.
+In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You might think of buckets like directories, except that no subdirectories are in buckets.
 
-1. In {{site.data.keyword.cos_short}}, click **Buckets**.
+1. In Cloud {{site.data.keyword.cos_short}}, click **Buckets**.
 2. Click **Create bucket**.
 3. Choose the **Customize your bucket** option.
 4. Give the bucket a unique, memorable name to help you remember what the bucket is for. Over time, you might create many buckets.
@@ -50,7 +50,7 @@ In {{site.data.keyword.cos_short}}, files are grouped in buckets. You might thin
 ## Create a service credential
 {: #cd-devsecops-cos-service-credential}
 
-1. In {{site.data.keyword.cos_short}}, click **Service Credential**.
+1. In Cloud {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **New Credential**.
 3. Provide the details:
    *  **Name:** Name of the credential
@@ -59,7 +59,7 @@ In {{site.data.keyword.cos_short}}, files are grouped in buckets. You might thin
 ## Provide bucket access to the service credential
 {: #cd-devsecops-cos-bucket-access}
 
-1. In {{site.data.keyword.cos_short}}, click **Buckets**.
+1. In Cloud {{site.data.keyword.cos_short}}, click **Buckets**.
 2. Select the bucket that was created in the previous step.
 3. Click **Access policies**, and select the **Service IDs** option
 4. Select the service credential that was created in the previous step, and select the **writer** role.
@@ -68,12 +68,12 @@ In {{site.data.keyword.cos_short}}, files are grouped in buckets. You might thin
 ## Copy the API Key of the service credential
 {: #cd-devsecops-cos-apikey-copy}
 
-1. In {{site.data.keyword.cos_short}}, click **Service Credential**.
+1. In Cloud {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **expand** the service credential to view the **apikey**. 
 3. Note the *apikey* because you need it later.
 
 ## Related information
 {: #cd-devsecops-cos-related-content}
 
-* [{{site.data.keyword.cos_short}} buckets as evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence)
-* [{{site.data.keyword.cos_short}} evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence#cd-devsecops-lockers-cos)
+* [{{site.data.keyword.cos_full_notm}} buckets as evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence)
+* [{{site.data.keyword.cos_full_notm}} evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence#cd-devsecops-lockers-cos)
