@@ -228,7 +228,7 @@ You need to select the following information for the Pipelines to reach the buck
 * Cloud {{site.data.keyword.cos_short}} endpoint
 * Service API key
 
-You can set up the Cloud {{site.data.keyword.cos_short}} locker later, by providing the necessary cos-bucket-name and cos-endpoint. To remove the Cloud {{site.data.keyword.cos_short}} bucket, use the Cloud {{site.data.keyword.cos_short}} bucket toggle in the previous step.
+You can set up the Cloud {{site.data.keyword.cos_short}} locker later by providing the necessary cos-bucket-name and cos-endpoint. To remove the Cloud {{site.data.keyword.cos_short}} bucket, use the Cloud {{site.data.keyword.cos_short}} bucket toggle in the previous step.
 
 ![DevSecOps Cloud {{site.data.keyword.cos_short}}](images/cos-evidence.png){: caption="DevSecOps Cloud {{site.data.keyword.cos_short}} menu" caption-side="bottom"}
 
