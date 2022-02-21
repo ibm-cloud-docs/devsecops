@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-16"
+lastupdated: "2022-02-21"
 
 keywords: DevSecOps
 
@@ -91,6 +91,7 @@ The following table lists and describes the continuous integration parameters fo
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
 |grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab user name). |Optional			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
