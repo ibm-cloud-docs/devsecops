@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-21"
+lastupdated: "2022-02-23"
 
 keywords: DevSecOps
 
@@ -149,7 +149,9 @@ The following table lists and describes the continuous delivery parameters for p
 |pipeline-debug		|select		|The pipeline debug mode switch.	|Optional			|
 |region		|text		|The target region where the app is deployed.	|Optional			|
 |slack-notifications		|text		|The switch that turns the Slack integration on or off.  |Optional			|
-|source-environment		|text		|The source environment that the app is promoted from.	|Required			|
+|[source-environment](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			| 
+|summary-retry-attempts		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
+|summary-max-retry-time		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time will be generated as a random number between 1 and the maximum backoff time. The default is `5`.  |Optional			|
 |target-environment		|text		|The target environment that the app is deployed to.	|Required			|
 |version		|text		|The version of the app to deploy.	|Required	  	|
 |inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
