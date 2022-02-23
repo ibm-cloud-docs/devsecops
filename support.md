@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-10-26"
+  years: 2021, 2022
+lastupdated: "2022-02-23"
 
 keywords: getting help, getting support, DevSecOps, continuous delivery, devops
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Getting help and support
 {: #gettinghelp}
 
-If you have problems or questions when using {{site.data.keyword.cloud_notm}} DevSecOps, you can go directly to the [{{site.data.keyword.cloud_notm}} Support page](https://{DomainName}/unifiedsupport/supportcenter) to review featured FAQs, view cloud status, or post questions on Stack Overflow. You can also open a support case.
+If you have problems or questions when using {{site.data.keyword.cloud_notm}} DevSecOps, you can go directly to the [{{site.data.keyword.cloud_notm}} Support page](/unifiedsupport/supportcenter){: external} to review featured FAQs, view cloud status, or post questions on Stack Overflow. You can also open a support case.
 {: shortdesc}
 
 * You can check the status of the {{site.data.keyword.cloud_notm}} platform and resources by going to the [Status page](https://cloud.ibm.com/status){: external}.
