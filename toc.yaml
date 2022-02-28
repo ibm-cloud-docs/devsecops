@@ -46,6 +46,7 @@ toc:
       - devsecops-pipelines-setup-scripts.md
       - devsecops-stage-results.md
       - devsecops-build-docker-images.md
+      - devsecops-custom-deployment.md
       - devsecops-pipelines-add-triggers.md
       - topicgroup: 
           label: Configuring Git repos
