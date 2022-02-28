@@ -121,7 +121,7 @@ After you capture the names of repos from continuous integration toolchain, proc
 
 - **Repository URL**: URL of the Inventory Repository configured in your CI Toolchain as captured in step above.
 
-![DevSecOps inventory repository](images/devsecops-cd-inventory_repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
+![DevSecOps inventory repository](images/devsecops-cd-inventory-repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
 
 ### Issues
 {: #cd-devsecops-issues}
