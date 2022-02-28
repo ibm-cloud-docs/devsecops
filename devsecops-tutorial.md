@@ -2,9 +2,9 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-02-23"
+lastupdated: "2022-02-28"
 
-keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
+keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
 subcollection: devsecops
 
@@ -74,6 +74,7 @@ To set up the prerequisites for your toolchains, follow these steps:
 1. **Optional.** Validate that the [recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
 1. **Optional.** [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
 1. **Optional.** Create an [{{site.data.keyword.cos_full_notm}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). [Learn more.](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
+1. **Optional.** Create an [{{site.data.keyword.satellitelong_notm}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) if you want to deploy your application to multiple clusters that are grouped as a {{site.data.keyword.satelliteshort}} cluster group by using {{site.data.keyword.satelliteshort}} Config. [Learn more.](/docs/satellite?topic=satellite-cluster-config)
 
 If you want to automatically set up the DevSecOps infrastructure for your toolchains by using an [{{site.data.keyword.bplong}} workspace](/docs/schematics?topic=schematics-about-schematics) and a Terraform-based quick start template, skip the previous steps and go to [Set up your DevSecOps infrastructure and CI toolchain for deploying a secure app](/docs/apps?topic=apps-tutorial-apps-devsecops). After the prerequisites and CI toolchain are successfully configured, proceed to the [Continuous Delivery (CD) toolchain introduction](#devsecops-cd-toolchain-intro).
 {: tip}
@@ -154,7 +155,7 @@ The toolchain region can differ from cluster and registry region.
 
 Multiple repositories must be configured during the guided setup, as described in the next sections.
 
-For each repository, you can either clone the repository that's provided as a sample, or you can provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own. The toolchain supports linking only to existing GRIT repositories.
+For each repository, you can either clone the repository that is provided as a sample, or you can provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own. The toolchain supports linking only to existing GRIT repositories.
 {: note}
 
 ### Application
@@ -192,9 +193,9 @@ The Git Repos and Issue Tracking repository records issues that are found while 
 ### Secrets
 {: #devsecops-ci-tool-integration-secrets}
 
-Several tools in this toolchain require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. All secrets should be stored securely in a secrets vault and then referenced as required by the toolchain.
+Several tools in this toolchain require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. All secrets must be stored securely in a secrets vault and then referenced as required by the toolchain.
 
-With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you to protect your sensitive data and centralize your secret. The Secrets step allows you to specify which secret vault integrations are added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation gives you information on prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select them from various vault integrations that are attached to the toolchain.
+With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you to protect your sensitive data and centralize your secret. In the Secrets step, you specify which secret vault integrations are added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation gives you information on prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select them from various vault integrations that are attached to the toolchain.
 
 This tutorial uses IBM Secrets Manager as the vault for secrets.
 
@@ -244,7 +245,7 @@ The toolchain comes with an integrated Tekton pipeline to automate continuous bu
 ### Deploy
 {: #devsecops-ci-tool-integration-deploy}
 
-Configure the target Kubernetes cluster where the application will be deployed. Once the application passes the build, test and scan phase the pipeline deploys the built application image to target Kubernetes cluster. This deployment is then ready for acceptance test or integration test.
+Configure the target Kubernetes cluster where the application is deployed. After the application passes the build, test and scan phase the pipeline deploys the built application image to target Kubernetes cluster. This deployment is then ready for acceptance test or integration test.
 
 * **App name:**
    The name of the application.
@@ -262,14 +263,14 @@ The newly generated API key can be immediately saved to an existing Key Protect 
 
 ![DevSecOps API key](images/devsecops-ci-api-key-full-access.png){: caption="DevSecOps API key" caption-side="bottom"}
 
-Using the API key that is either created, retrieved from a vault, or manually entered the following fields load automatically if the API key has sufficient access. If the API key is valid, the Container registry region and namespace Cluster region, name, namespace and Resource group will be automatically populated. You may change any of these fields to match your configuration if needed.
+Using the API key that is either created, retrieved from a vault, or manually entered the following fields load automatically if the API key has sufficient access. If the API key is valid, the Container registry region and namespace Cluster region, name, namespace, and resource group are automatically populated. You can change any of these fields to match your configuration if needed.
 
 ![DevSecOps deployment target](images/devsecops-ci-deployment-target.png){: caption="DevSecOps deployment target" caption-side="bottom"}
 
 ### Image Signing
 {: #devsecops-ci-tool-integration-image-signing}
 
-Any images built by this toolchain and recorded in the inventory must be signed before they can be deployed to production. The pipeline uses [Skopeo](https://github.com/containers/skopeo) as default tool to provide Image signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-devsecops-image-signing).
+Any images that are built by this toolchain and recorded in the inventory must be signed before they can be deployed to production. The pipeline uses [Skopeo](https://github.com/containers/skopeo) as default tool to provide Image signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 
 Ensure that the key follows the appropriate encoding as required by the chosen tool to store secrets.
 {: note}
@@ -279,7 +280,7 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 ### DevOps Insights
 {: #devsecops-ci-tool-integration-insights}
 
-[IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights, the CI pipeline will automatically use the insights instance included in the toolchain.  DevOps Insights aggregates code, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
+[IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights, the CI pipeline automatically uses the insights instance that is included in the toolchain. DevOps Insights aggregates code, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
 
 ### SonarQube
 {: #devsecops-ci-tool-integration-sonarqube}
@@ -327,7 +328,7 @@ The individual toolchain integrations can be configured also after the pipeline 
 {: #devsecops-ci-toolchain-explore}
 {: step}
 
-The created CI toolchain will look like this:
+The created CI toolchain looks like this:
 
 ![DevSecOps Continuous Integration Toolchain](images/devsecops-ci-explore-pipeline-created.png){: caption="DevSecOps Continuous Integration Toolchain" caption-side="bottom"}
 
@@ -343,9 +344,9 @@ To start the PR pipeline, you should create a merge request in your application 
 1. Create a branch from master.
 1. Update some code like in app or readme file and save changes.
 1. Submit merge request.
-1. Back on the CI toolchain page, click the `pr-pipeline` tile. Observe: the PR pipeline has been initiated.
+1. Back on the CI toolchain page, click the `pr-pipeline` tile. See that the PR pipeline is initiated.
 
-The corresponding Merge Request in your application repository will be in "Pending" state until all the stages of PR Pipeline finish successfully.
+The corresponding Merge Request that is in your application repository will be in "Pending" state until all the stages of PR Pipeline finish successfully.
 
 After the PR Pipeline run is successful, you can click it to explore numerous steps completed.
 
@@ -354,13 +355,13 @@ After the PR Pipeline run is successful, you can click it to explore numerous st
 1. Navigate back to the merge request.
 1. Merge the request so that your changes are copied to the master branch of your application repository: the CI pipeline is automatically triggered.
 
-Simplified flow of tasks in the pipeline: (Utility tasks have been omitted. For example, status-check update on GitHub, credential fetching).
+Simplified flow of tasks in the pipeline: (Utility tasks are omitted. For example, status-check update on GitHub, credential fetching).
 
 ![DevSecOps PR Tasks](images/devsecops-ci-pr-tasks.png){: caption="DevSecOps PR Tasks" caption-side="bottom"}
 
 In the DevSecOps world, shift left is a practice referred to preventing and finding issues like defects, security vulnerabilities and performing compliance checks early in the software delivery process.
 
-* Checks that can be run on the code/repository itself and do not need the built image, should be run as early as possible to prevent non-compliant code from being merged to master branch of repository. Evidence is not collected from the PR pipeline, its goal is to shift compliance checks, as far left as possible.
+* Checks that can be run on the code/repository itself and do not need the built image, should be run as early as possible to prevent non-compliant code from being merged to master branch of repository. Evidence is not collected from the PR pipeline. Its goal is to shift compliance checks, as far left as possible.
 * All checks are done every pipeline run, even if a previous check fails, the pipeline progresses to the next one. To evaluate if you have any failures in your run, you need to check the final step of your pipeline, which has a pipeline evaluator.
 * If you are trying to merge an emergency fix, and want to bypass compliance checks, add a label to your merge request to indicate this. The same label must be provided when running the CD pipeline.
 
@@ -377,17 +378,17 @@ In this tutorial, the CI Pipeline was triggered after you merged your code chang
 
 After the CI Pipeline run is successful, you can click it to explore the completed steps.
 
-![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="DevSecOps CI Pipeline Successful" caption-side="bottom"}
+![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="DevSecOps CI pipeline successful" caption-side="bottom"}
 
 Simplified flow of tasks in the pipeline: (Again, utility tasks are omitted. For example, status-check update on GitHub, credential fetching, and so on) Green colored tasks are outputting evidence.
 
-![DevSecOps CI Tasks](images/devsecops-ci-tasks-flow.png){: caption="DevSecOps CI Tasks" caption-side="bottom"}
+![DevSecOps CI Tasks](images/devsecops-ci-tasks-flow.png){: caption="DevSecOps CI tasks" caption-side="bottom"}
 
-Evidence is collected from all compliance checks in the CI pipeline, to the evidence-locker repository, that was provided during toolchain setup. Evidence from CI is stored under `raw/ci/<pipeline-run-id>/*.json`.
+Evidence is collected from all compliance checks in the CI pipeline to the evidence-locker repository that was provided during toolchain setup. Evidence from CI is stored under `raw/ci/<pipeline-run-id>/*.json`.
 
 Evidence is also published to the DevOps Insights instance inside the toolchain. You can navigate to it by clicking the DevOps Insights toolcard in the toolchain. You can review the collected evidence on the Quality Dashboard page.
 
-![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI Evidence" caption-side="bottom"}
+![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI evidence" caption-side="bottom"}
 
 To evaluate if you have any failures in your pipeline run, you need to check the final step of your pipeline, which has a pipeline evaluator.
 {: note}
@@ -416,10 +417,10 @@ More detailed information on customizing the CI pipelines can be found [here](/d
 Congratulations!
 
 By completing the CI part of this tutorial, you:
-* created a DevSecOps CI toolchain
-* modified some code in the application repository
-* ran the ci-pr pipeline before merging your changes
-* ran the ci-pipeline to build, test, and deploy your changes to your dev environment.
+* Created a DevSecOps CI toolchain
+* Modified some code in the application repository
+* Ran the ci-pr pipeline before merging your changes
+* Ran the ci-pipeline to build, test, and deploy your changes to your dev environment.
 
 Let's proceed with Continuous Delivery (CD) now.
 
@@ -431,7 +432,7 @@ Let's proceed with Continuous Delivery (CD) now.
 
 This is the toolchain template for continuous deployment with security and compliance-related best practices in DevSecOps. It is preconfigured for Continuous Delivery with inventory integration, change management with Git Repos and Issue Tracking, evidence collection, and deployment to the IBM Kubernetes Service.
 
-The integrated repositories, target cluster, and other integrations are configured during the setup process.
+The integrated repositories, target cluster, cluster groups, and other integrations are configured during the setup process.
 
 The toolchain includes a Tekton delivery pipeline, which can be manually triggered to initiate a new deployment.
 
@@ -439,10 +440,10 @@ The toolchain includes a Tekton delivery pipeline, which can be manually trigger
 
 The CD toolchain contains only one pipeline for Continuous Delivery. It implements the following best practices:
 * change Management automation to help developers, approvers, and auditors track deployments from the lens of compliance.
-* creates an evidence summary from the evidence collected in the CI pipeline
+* creates an evidence summary from the evidence that is collected in the CI pipeline
 * creates a change request in Git Repos and Issue Tracking based change management repository and adds deployment evidence to it
 * uses the inventory repository to promote built artifacts to deployment environments like staging and prod
-* checks the CR and auto approves if all checks have passed
+* checks the CR, and auto approves if all checks have passed
 * if CR is approved, or emergency, deploys the image from the inventory to production
 
 ## Guided setup overview for the CD toolchain
@@ -483,8 +484,12 @@ Start the CD toolchain configuration by using one of the following options:
 
 Review the default information for the toolchain settings. The toolchain's name identifies it in {{site.data.keyword.cloud_notm}}. Make sure that the toolchain's name is unique within your toolchains for the same region and resource group in {{site.data.keyword.cloud_notm}}.
 
-The toolchain region can differ from cluster and registry region.
+The toolchain region can differ from cluster and registry region. 
 {: note}
+
+Optionally, you can choose to link the CD toolchain with CI toolchain that was created earlier.
+1. Use the **Select region** and **Select a resource group** menus to obtain a list of toolchains in the selected region and resource group.
+2. From the **Choose the associated continuous integration (CI) toolchain** menu, select the CI toolchain to reuse and prefill the toolchain configurations of the selected toolchain for the current setup. These configurations include repositories, such as Inventory, Issues, Evidence, and Change Management. It also includes configurations that are related to secrets, such as the Secret Manager Instance or the Key Protect Instance configured for the selected CI toolchain.
 
 ![DevSecOps CD toolchain name and region](images/devsecops-cd-name-region.png){: caption="DevSecOps CD toolchain name and region" caption-side="bottom"}
 
@@ -494,10 +499,10 @@ The toolchain region can differ from cluster and registry region.
 
 This section covers the setup of the various tool and service integrations that the CD toolchain uses.
 
-If you used CI toolchain template to set up your CI process, refer to your CI toolchain, and copy the names of the application-related repositories that are used in that toolchain.
+If you already linked to an existing CI toolchain in the Welcome step, the names of application-related repositories that are used in that toolchain are prefilled. Review the repository URLs, and then continue to the next steps.
 {: tip}
 
-If you want to set up your CI toolchain from scratch, configure these repositories during CI toolchain creation, and then use them here.
+If you want to set up your CI toolchain from scratch, configure these repositories during CI toolchain creation, and then use or link to them here.
 
 ### Application-related repositories
 {: #devsecops-cd-tool-integration-application}
@@ -509,7 +514,7 @@ Example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-inventory`
 * **Evidence**: All raw compliance evidence that belongs to the application is collected here. For example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-evidence`.
 * **Toolchain**: The tekton pipeline definitions (pipelines), triggers, listeners, and so on, are stored in this repository. For example: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-toolchain`.
 
-After you capture the names of repositories from CI Toolchain, proceed with the Guided Setup to begin CD Toolchain creation. During the setup process, for each repository you may either provide url to an existing IBM hosted Git Repos and Issue Tracking (GRIT) repository that is created for your CI Toolchain or choose to create a new repository. Currently, the toolchain supports creating only GRIT repositories.
+After you capture the names of repositories from CI toolchain, proceed with the guided setup to begin CD Toolchain creation. During the setup process, for each repository you can either provide the URL to an existing IBM hosted Git Repos and Issue Tracking (GRIT) repository that is created for your CI toolchain, or choose to create a new repository. Currently, the toolchain supports creating only GRIT repositories.
 
 ### Inventory
 {: #devsecops-cd-tool-integration-inventory}
@@ -518,7 +523,7 @@ The default behavior of the toolchain is to use existing inventory to link an ex
 
 **Repository URL**: URL of the Inventory Repository configured in your CI Toolchain as captured in the previous step.
 
-![DevSecOps inventory repository](images/devsecops-cd-inventory_repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
+![DevSecOps inventory repository](images/devsecops-cd-inventory-repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
 
 ### Issues
 {: #devsecops-cd-tool-integration-issues}
@@ -541,9 +546,9 @@ By default, the setup Clone deployment configuration from the sample repository.
 
 More detailed information on customizing the CD pipeline can be found [here](/docs/devsecops?topic=devsecops-custom-scripts). 
 
-**New repository name**: Name of the IBM hosted GRIT Repository created by the toolchain as your deployment configuration repository. The region of the repository remains the same as that of the toolchain. Choose a unique name for the new repository.
+**New repository name**: Name of the IBM hosted GRIT Repository that is created by the toolchain as your deployment configuration repository. The region of the repository remains the same as that of the toolchain. Choose a unique name for the new repository.
 
-In case you have deployment configuration repository from an existing CD Toolchain, use the **Advanced Options** toggle to configure the same for this pipeline.
+In case you have deployment configuration repository from an existing CD toolchain, use the **Advanced Options** toggle to configure the same for this pipeline.
 
 ![DevSecOps pipeline configuration](images/devsecops-cd-pipeline-config.png){: caption="DevSecOps pipeline configuration" caption-side="bottom"}
 
@@ -552,26 +557,26 @@ In case you have deployment configuration repository from an existing CD Toolcha
 
 Several tools in this toolchain require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. All secrets should be stored securely in a secrets vault and then referenced as required by the toolchain.
 
-With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you to protect your sensitive data and centralize your secret. The Secrets step allows you to specify which secret vault integrations will be added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation gives you information on prerequisites and how to leverage a list of prescribed secret names otherwise known as hints.  By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select these from various vault integrations that are attached to the toolchain.
+With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you to protect your sensitive data and centralize your secret. The Secrets step allows you to specify which secret vault integrations will be added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation gives you information on prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select these from various vault integrations that are attached to the toolchain.
 
 This tutorial uses IBM Secrets Manager as the vault for secrets.
 
 ![DevSecOps secrets options](images/devsecops-secrets-options.png){: caption="DevSecOps secrets options" caption-side="bottom"}
 
-Use [IBM Secrets Manager](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature or HashiCorp credentials that are part of your toolchain.
+Use [IBM Secrets Manager](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets, such as API keys, Image Signature, or HashiCorp credentials that are part of your toolchain.
 
 ![DevSecOps IBM Secrets Manager](images/devsecops-secrets-manager.png){: caption="DevSecOps IBM Secrets Manager" caption-side="bottom"}
 
-If you plan to use IBM Key Protect or HashiCorp vault for managing your secrets, refer to details in the [CD Toolchain Setup Guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-cd-compliance#ibm-key-protect)
+If you plan to use IBM Key Protect or HashiCorp Vault for managing your secrets, refer to details in the [CD Toolchain Setup Guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-cd-compliance#ibm-key-protect)
 
 ### Evidence Storage
 {: #devsecops-cd-tool-integration-evidence-storage}
 
-All raw compliance evidence that belongs to the application is collected in this repository. This repository option should only be used for evaluation purposes.
+All raw compliance evidence that belongs to the application is collected in this repository. This repository option should be used only for evaluation purposes.
 
-The default behavior of the toolchain is to `Use existing evidence locker`. The `Repository URL` field can be set to the Evidence Repository URL that was created/used for CI Toolchain. In case you with to create new Evidence Locker for the toolchain, you can choose Create new evidence locker repository that creates a new repository as IBM hosted GRIT Repository.
+The default behavior of the toolchain is to `Use existing evidence locker`. The `Repository URL` field can be set to the Evidence Repository URL that was created or used for the CI toolchain. In case you with to create new Evidence Locker for the toolchain, you can choose Create new evidence locker repository that creates a new repository as IBM hosted GRIT Repository.
 
-However, it is recommended to collect and store all the evidences in a Cloud {{site.data.keyword.cos_short}} bucket that can be configured as described in the following image.
+However, it is recommended to collect and store all the evidence in a Cloud {{site.data.keyword.cos_short}} bucket that can be configured as described in the following image.
 
 ![DevSecOps Evidence Storage](images/devsecops-cd-evidence-storage.png){: caption="DevSecOps Evidence Storage" caption-side="bottom"}
 
@@ -587,7 +592,7 @@ To remove the Cloud {{site.data.keyword.cos_short}} bucket, use the Cloud {{site
 
 {{site.data.keyword.cos_full_notm}} is used to store the evidences and artifacts that are generated by the compliance pipelines. If you want to use this feature, you must have a Cloud {{site.data.keyword.cos_short}} instance and a bucket. [Click here](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence) to create a Cloud {{site.data.keyword.cos_short}} instance, and [read the recommendation](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) for configuring a bucket that can act as a compliance evidence locker.
 
-You can optionally set any kind of Cloud {{site.data.keyword.cos_short}} bucket as a locker, even without a retention policy. The pipeline won't check or enforce settings at the moment. For help, see the [Cloud {{site.data.keyword.cos_short}} documentation](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage).
+You can optionally set any kind of Cloud {{site.data.keyword.cos_short}} bucket as a locker, even without a retention policy. The pipeline doesn't check or enforce settings at the moment. For help, see the [Cloud {{site.data.keyword.cos_short}} documentation](/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage).
 {: note}
 
 You need to select the following information for the Pipelines to reach the bucket:
@@ -615,24 +620,55 @@ The Pipeline Repository contains configurations for both CI and CD Toolchains an
 ### Deploy
 {: #devsecops-cd-tool-integration-deploy}
 
-Configure the target Kubernetes cluster where the application is deployed. Choose the target Kubernetes cluster that you intend to use as the production or stage environment. The toolchain deploys the build application image to the cluster and runs the acceptance-test and other compliance checks.
+Configure the target where the application is deployed. The toolchain provides with an option to either deploy your application to **Single cluster** or to **Multiple clusters** by using {{site.data.keyword.satelliteshort}} Config. If you want to deploy your application to targets like VSI (Virtual Server Instance) or customize deployment process, use the **Custom** option. 
+
+![DevSecOps Tekton Pipeline](images/devsecops-cd-deployment-target.png){: caption="DevSecOps Tekton Pipeline" caption-side="bottom"}
+
+Each of the deployment target requires you to provide IBM Cloud API Key, which is required for the pipeline to access different cloud services. The section below illustrates various options to configure IBM Cloud API Key with the toolchain.
 
 ### IBM Cloud API Key
 {: #devsecops-cd-tool-integration-api-key}
 
-The API key is used to interact with the ibmcloud CLI tool in several tasks. If you already created a cluster, an API to access the cluster and stored the key in a secure vault (any of Key Protect, Secrets Manager, or HashiCorp Vault), as prerequisite you can use the same in this step.
-* Option-1: An existing key can be imported from an existing Secret Provider instance that is created as prerequisites (Key Protect Instance, Secret Manager Instance or HashiCorp Vault) by clicking the key icon (Recommended)
-* Option-2: An existing key can be copy and pasted (Not Recommended)
-* Option-3: A new key can be created from here by clicking the New + button. Generate a new api-key if you don’t have one or copy an existing key to the field. The newly generated API key can be immediately saved to an existing Key Protect instance.
+The API key is used to interact with the IBM Cloud CLI tool in several tasks. If you already created a cluster, an API to access the cluster and store the key in a secure vault (any of Key Protect, Secrets Manager, or HashiCorp Vault), as prerequisite you can use the same in this step.
+* Option 1: An existing key can be imported from an existing Secret Provider instance that is created as prerequisites (Key Protect Instance, Secret Manager Instance or HashiCorp Vault) by clicking the key icon (Recommended)
+* Option 2: An existing key can be copy and pasted (Not Recommended)
+* Option 3: A new key can be created from here by clicking the New + button. Generate a new API key if you don’t have one, or copy an existing key to the field. The newly generated API key can be immediately saved to an existing Key Protect instance.
 
-Click the Key Icon to use an existing key from your Secret Provider.
-* **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
+Click the Key icon to use an existing key from your secrets provider.
+* **Provider**: The secrets provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
 * **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
-* **Secret name**: Name/Alias of the secret, such as the API Key.
+* **Secret name**: Name or alias of the secret, such as the API Key.
 
-Once the API Key field is filled, the registry and cluster-related fields are filled automatically.
+### Single cluster deployment target
+{: #devsecops-single-cluster-target}
 
-![DevSecOps Tekton Pipeline](images/devsecops-cd-deployment-target.png){: caption="DevSecOps Tekton Pipeline" caption-side="bottom"}
+With this option, you can deploy your application to an existing Kubernetes cluster on {{site.data.keyword.cloud_notm}}. The toolchain currently supports Kubernetes cluster that is managed by {{site.data.keyword.containerlong_notm}} or a Red Hat OpenShift cluster. After the {{site.data.keyword.cloud_notm}} API Key field is completed, select the **Resource group** and **Cluster region** field where your target cluster is created. Select the target **Cluster name** after you choose the appropriate value for the resource group and cluster region fields.
+
+Provide the name of **Cluster namespace** where you want to deploy your application. If the namespace exists, your application is deployed in that namespace, else toolchain creates a new namespace with the name during the first deployment of the application.
+
+![DevSecOps Single Cluster Deployment](images/devsecops-cd-deployment-single-cluster.png){: caption="DevSecOps Single Cluster Deployment" caption-side="bottom"}
+
+### Multiple clusters deployment target
+{: #devsecops-multiple-clusters-target}
+
+With this option, you can deploy your application to a group of {{site.data.keyword.containerlong_notm}} clusters or Red Hat OpenShift clusters on {{site.data.keyword.cloud_notm}}.
+
+The toolchain uses [Satellite Config](/docs/satellite?topic=satellite-cluster-config) to group multiple clusters in a cluster group and simultaneously deploy the application to all the clusters. [Learn more](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-groups) about setting up cluster groups for multiple clusters. 
+
+After your cluster group is set up, proceed to the next step.
+
+![DevSecOps Multiple Cluster Deployment](images/devsecops-cd-deployment-multiple-clusters.png){: caption="DevSecOps Multiple Clusters Deployment" caption-side="bottom"}
+
+After the {{site.data.keyword.cloud_notm}} API Key field is filled, select the **Satellite Cluster Group** where you want to deploy your application. 
+
+Provide the name of **Cluster namespace** where you want to deploy your application. If the namespace already exists, your application is deployed in that namespace. Otherwise, elthese toolchain creates a new namespace with the name during the first deployment of the application.
+
+### Custom target
+{: #devsecops-custom-target}
+
+With this option, you can customize the deployment step to deploy your application to any target other than a Kubernetes cluster (for example, Virtual Server Instances (VSI)). This option requires you to provide the {{site.data.keyword.cloud_notm}} API key that can later be used within deployment scripts within the pipeline to access various cloud resources.
+
+![DevSecOps Custom Deployment](docs/devsecops?topic=devsecops-custom-scripts)
 
 ### Inventory target and source branches
 {: #devsecops-cd-tool-integration-inventory-branches}
@@ -645,7 +681,7 @@ Once the API Key field is filled, the registry and cluster-related fields are fi
 ### Change request management
 {: #devsecops-cd-tool-integration-change-request}
 
-IBM Cloud hosted GRIT(Git Repos and Issue Tracking) repository to manage Change Requests.
+{{site.data.keyword.cloud_notm}}-hosted GRIT (Git Repos and Issue Tracking) repository to manage change requests.
 
 ### Git Repo Issues and Tracking
 {: #devsecops-cd-tool-integration-GRIT}
@@ -765,9 +801,7 @@ Flow of the tasks in the CD Pipeline:
 
 ![DevSecOps CD tasks](images/devsecops-cd-tasks.png){: caption="DevSecOps CD tasks" caption-side="bottom"}
 
-After a successful CD pipeline run, you can find the sample app running on the prod namespace.
-The app url can be found under `run stage` substep of  `prod deployment` step of CD Pipeline run.
-Use that url to check that the app is running.
+After a successful CD pipeline run, you can find the sample app that is running on the prod namespace. The app URL can be found under `run stage` substep of  `prod deployment` step of CD Pipeline run. Use that URL to check that the app is running.
 
 ![DevSecOps App running](images/devsecops-cd-explore-app-running-prod-namespace.png){: caption="DevSecOps App running" caption-side="bottom"}
 
