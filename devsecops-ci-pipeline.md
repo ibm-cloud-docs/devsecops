@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-20"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Continuous integration pipeline
 {: #cd-devsecops-ci-pipeline}
 
-The continuous integration pipeline builds the deployable artifacts from the application (app) repositories (repos).
+The continuous integration pipeline builds the deployable artifacts from the application repositories.
 {: shortdesc}
 
 Before it builds artifacts, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management.
@@ -74,7 +74,7 @@ You can use any of the following methods to add static code to your pipeline:
 | Code Risk Analyzer CIS check |  Runs configuration checks on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
 | Repository compliance checking | Checks that branch protection settings are correct. |
-{: caption="Table 3. Compliance scans and checks" caption-side="top"}
+{: caption="Table 5. Compliance scans and checks" caption-side="top"}
     
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
 

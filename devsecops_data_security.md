@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2021
-lastupdated: "2021-12-08"
+  years: 2018, 2022
+lastupdated: "2022-03-01"
 
 keywords: secure environment, data, Data, high availability, access
 
@@ -24,7 +24,10 @@ subcollection: devsecops
 {:preview: .preview}
 
 # Securing your data in {{site.data.keyword.contdelivery_short}}
-{: #cd_data_security}  
+{: #cd_data_security}
+
+The {{site.data.keyword.contdelivery_short}} service encrypts customer-owned sensitive data before it stores it in databases that are used internally by the service.
+{: shortdesc}
 
 {{site.data.keyword.contdelivery_full}} hosts your databases in a highly available and secure environment:
 * Data is encrypted at rest (GPFS, LUKS, and built-in disk) and in transit (HTTPS and SSH) by using encryption keys that are internal to the {{site.data.keyword.contdelivery_short}} service, or the services and infrastructure that it depends on.
@@ -39,7 +42,7 @@ subcollection: devsecops
 ## Protecting your sensitive data in {{site.data.keyword.contdelivery_short}}
 {: #cd_secure_credentials}
 
-The {{site.data.keyword.contdelivery_short}} service encrypts customer-owned sensitive data before it stores it in databases that are used internally by the service. Sensitive data includes third-party tool integration configuration data and {{site.data.keyword.deliverypipeline}} property values. Data is encrypted by using encryption keys that are internal to the {{site.data.keyword.contdelivery_short}} service.
+Sensitive data includes third-party tool integration configuration data and {{site.data.keyword.deliverypipeline}} property values. Data is encrypted by using encryption keys that are internal to the {{site.data.keyword.contdelivery_short}} service.
 
 DevOps processes often require various types of credentials (such as usernames and passwords, API keys, service keys, and SSH keys) to interact with other systems to build, test, and deploy applications. You are responsible for ensuring that these credentials aren't inadvertently shared outside of their intended audience. Access to these credentials by malicious actors might disrupt your IT operations, cause unexpected costs, or use your resources to start attacks. IBM is not responsible for protecting and maintaining the security of your credentials.
 
@@ -61,7 +64,7 @@ For more information about secure DevOps best practices, see [DevOps Security](h
 
 When you configure a tool integration for a toolchain, you explicitly enable data sharing between the {{site.data.keyword.contdelivery_short}} service and the tool integration. The kind of data that is shared, and whether data is sent to the tool, received from the tool, or both, varies depending on the type of tool integration.
 
-Before you configure a tool integration, make sure you understand what data is shared. If you work with regulated data or data that you consider sensitive, make sure that the third-party tool usage and any data that might be shared with it do not compromise the confidentiality, integrity, or availability of your resources, or otherwise violate regulatory controls.
+Before you configure a tool integration, make sure you understand what data is shared. If you work with regulated data or sensitive data, ensure that the third-party tools and any data that might be shared with it do not compromise the confidentiality, integrity, or availability of your resources, or otherwise violate regulatory controls.
 
 To learn more about tool integrations, see [Configuring tool integrations](/docs/ContinuousDelivery?topic=ContinuousDelivery-integrations).
 
@@ -70,7 +73,7 @@ To learn more about tool integrations, see [Configuring tool integrations](/docs
 
 {{site.data.keyword.gitrepos}} is an IBM-hosted component of the {{site.data.keyword.contdelivery_short}} service. All of the data that you provide to {{site.data.keyword.gitrepos}}, including but not limited to source files, issues, pull requests, and project configuration properties, is managed securely within {{site.data.keyword.contdelivery_short}}. However, {{site.data.keyword.gitrepos}} supports various mechanisms for exporting, sending, or otherwise sharing data to users and third parties.
 
-The ability of {{site.data.keyword.gitrepos}} to share information is typical of many social coding platforms. However, such sharing might conflict with regulatory controls that might apply to your business. After you create a project in {{site.data.keyword.gitrepos}}, but before you entrust any files, issues, records, or other data with the project, review the project settings and change any settings that you deem necessary to protect your data. Settings to review include visibility levels, email notifications, integrations, web hooks, access tokens, deploy tokens, and deploy keys.
+The ability of {{site.data.keyword.gitrepos}} to share information is typical of many social coding platforms. However, such sharing might conflict with regulatory controls that might apply to your business. After you create a project in {{site.data.keyword.gitrepos}}, but before you entrust any files, issues, records, or other data with the project, review the project settings and change any settings that are necessary to protect your data. Settings to review include visibility levels, email notifications, integrations, web hooks, access tokens, deploy tokens, and deploy keys.
 
 ### Project visibility levels
 {: #cd_secure_grit_visibility}
@@ -78,7 +81,7 @@ The ability of {{site.data.keyword.gitrepos}} to share information is typical of
 {{site.data.keyword.gitrepos}} projects can have one of the following visibility levels: private, internal, or public.
 
 * Private projects are visible only to project members. This setting is the default visibility level for new projects, and is the most secure visibility level for your data.
-* Internal projects are visible to all users that are logged into {{site.data.keyword.cloud_notm}}.
+* Internal projects are visible to all users that are logged in to {{site.data.keyword.cloud_notm}}.
 * Public projects are visible to anyone.
 
 To limit project access to only project members, complete the following steps:
@@ -92,7 +95,7 @@ To limit project access to only project members, complete the following steps:
 ### Project email settings
 {: #cd_secure_grit_email}
 
-By default, {{site.data.keyword.gitrepos}} notifies project members by way of email about project activities. These emails typically include customer-owned data that was provided to {{site.data.keyword.gitrepos}} by users. For example, if a user posts a comment to an issue, {{site.data.keyword.gitrepos}} sends an email to all subscribers that includes information such as a copy of the comment, the user who posted it, and when the comment was posted. To turn off all email notifications for your project, complete the following steps:
+By default, {{site.data.keyword.gitrepos}} notifies project members by way of email about project activities. These emails typically include customer-owned data that was provided to {{site.data.keyword.gitrepos}} by users. For example, if a user posts a comment to an issue, {{site.data.keyword.gitrepos}} sends an email to all subscribers. The email includes information such as a copy of the comment, the user who posted it, and when the comment was posted. To turn off all email notifications for your project, complete the following steps:
 
 1. From the project sidebar, click **Settings** > **General**.
 2. On the General Settings page, click **Visibility** > **project features** > **permissions**.
@@ -118,7 +121,7 @@ To learn more about working with {{site.data.keyword.gitrepos}}, see [{{site.dat
 
 {{site.data.keyword.contdelivery_short}} pipelines run the jobs and steps that you provide. The {{site.data.keyword.contdelivery_short}} service securely manages the log output and build artifacts that are produced by your pipeline runs. However, {{site.data.keyword.contdelivery_short}} does not limit or manage the function of your pipeline job or step scripts.
 
-When you develop and configure your pipeline job and step scripts, make sure that your scripts do not run actions that might compromise the confidentiality, integrity, or availability of your resources, or otherwise violate regulatory controls.
+When you develop and configure your pipeline job and step scripts, ensure that your scripts do not run actions that might compromise the confidentiality, integrity, or availability of your resources, or otherwise violate regulatory controls.
 
 To learn more about Delivery Pipelines, see and [Working with pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about) and [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines).
 

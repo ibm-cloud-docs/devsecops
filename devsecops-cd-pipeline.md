@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Continuous delivery pipeline
 {: #cd-devsecops-cd-pipeline}
 
-The continuous delivery pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to a specific environment, such as staging or prod, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker.
+The continuous delivery pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to an environment, such as staging or production, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker.
 {: shortdesc}
 
 ## Stages and tasks

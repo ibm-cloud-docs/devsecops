@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-20"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
@@ -26,16 +26,16 @@ subcollection: devsecops
 # Managing secrets in your toolchains
 {: #cd-devsecops-toolchains-secrets}
 
-Many of the tool integrations in your CI and CD toolchains require secrets to be provided, for example passwords, API keys, certificates, or other tokens. For instance, an {{site.data.keyword.cloud}} API key is used to perform the most basic of pipeline tasks, such as to log in to {{site.data.keyword.cloud_notm}}. Similarly, the service ID API key is required to write evidences to the bucket in Cloud Object Store instance.
+Many of the tool integrations in your CI and CD toolchains require secrets, for example passwords, API keys, certificates, or other tokens. For example, an {{site.data.keyword.cloud}} API key performs basic pipeline tasks, such as logging in to {{site.data.keyword.cloud_notm}}. Similarly, the service ID API key writes evidences to the bucket in Cloud Object Store instance.
 {: shortdesc}
 
-For security reasons, these secrets should not belong to or be affiliated with a person's identity or account. This is because people often have greater access permissions than the toolchain automation requires, and it would violate the security principle of ["least privilege"](https://en.wikipedia.org/wiki/Principle_of_least_privilege){: external}. Also, people often change roles or even companies and their credentials should be removed which might break the toolchain automation. By using an identity that is affiliated specifically for automation purposes provides a separation of duties between automation and people who use the automation.
+For security reasons, these secrets must not belong to or be affiliated with a person's identity or account. This is because people often have greater access permissions than the toolchain automation requires, and it would violate the security principle of ["least privilege"](https://en.wikipedia.org/wiki/Principle_of_least_privilege){: external}. Also, people often change roles or even companies and their credentials must be removed which might break the toolchain automation. By using an identity that is affiliated specifically for automation purposes provides a separation of duties between automation and people who use the automation.
 
-Instead, the secrets that are used for non-{{site.data.keyword.cloud_notm}} resources (such as GitHub Enterprise) should be affiliated with a functional ID within your enterprise with only the appropriate access that is needed by the toolchains. Likewise, secrets for {{site.data.keyword.cloud_notm}} resources should be affiliated with an [IAM service ID API key](/docs/account?topic=account-serviceidapikeys) that is affiliated with an [IAM service ID](/docs/account?topic=account-serviceids). The IAM service ID access permissions should be scoped to the least privilege required by the toolchains.
+Instead, the secrets that are used for non-{{site.data.keyword.cloud_notm}} resources (such as GitHub Enterprise) must be affiliated with a functional ID within your enterprise with only the appropriate access that is needed by the toolchains. Likewise, secrets for {{site.data.keyword.cloud_notm}} resources must be affiliated with an [IAM service ID API key](/docs/account?topic=account-serviceidapikeys) that is affiliated with an [IAM service ID](/docs/account?topic=account-serviceids). The IAM service ID access permissions should be scoped to the least privilege required by the toolchains.
 
 Managing credentials like these must be done securely and in compliance with best practices in the field of secrets management. In particular, this means vaulting the required secrets by using an approved in-boundary vault provider, such as [Hashicorp](https://www.vaultproject.io){: external} and then linking your toolchain secrets to those resources.
 
-The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable easy selection of vaulted secrets by using Secrets Integrations for HashiCorp Vault and {{site.data.keyword.keymanagementservicelong}}. By using the Secrets Picker dialog, a toolchain or pipeline editor can easily select named secrets from a bound secrets integration that will then be resolved by reference within the toolchain and pipeline. After a secret is chosen, a canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is `{vault::integration-name.secret-name}`. This long form canonical reference is used by the front-end user interface components and importantly, the resolved value of the actual secret is never exposed to a user or permitted service.
+The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable selection of vaulted secrets by using Secrets Integrations for HashiCorp Vault and {{site.data.keyword.keymanagementservicelong}}. By using the Secrets Picker dialog, a toolchain or pipeline editor can easily select named secrets from a bound secrets integration that will then be resolved by reference within the toolchain and pipeline. After a secret is chosen, a canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is `{vault::integration-name.secret-name}`. This long form canonical reference is used by the front-end user interface components and importantly, the resolved value of the actual secret is never exposed to a user or permitted service.
 
 In addition to manually selecting chosen secrets on a one-by-one basis from any bound secrets integrations in a toolchain, the option of using a `Secret Hint` is also available. This enables a toolchain template to be predefined with suggested secrets names (also known as `Hints`) that are a short form secret reference. The format of a secret hint is `{vault::secret-name}` whereby no secret integration name is included. This provides flexibility to the toolchain author in that all required secret names can be prepopulated into a `toolchain.yml` and then these are automatically resolved against whatever secrets integrations are configured for the toolchain.
 

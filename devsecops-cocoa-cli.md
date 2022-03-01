@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -27,7 +27,7 @@ subcollection: devsecops
 # DevSecOps CLI 
 {: #cd-devsecops-cli}
 
-DevSecOps CLI is a CLI Interface to enable adopting compliance solutions under {{site.data.keyword.cloud_notm}} DevSecOps reference implementation, for example the shift-left reference pipelines. For more information about the Shift-Left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
+DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud_notm}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
 {: shortdesc}
 
 ## CLI interface
@@ -42,16 +42,16 @@ cocoa <command> <subcommand> [options]
 
 1. The base call to the CLI.
 
-2. The main command, which typically corresponds to a service or a module used by the Shift-Left architecture, for example change request, inventory, tekton.
+2. The main command, which typically corresponds to a service or a module that is used by the shift-left architecture; for example, change request, inventory, or tekton.
 
 3. The subcommand that specifies which action to perform.
 
-4. CLI options required by the action. As long as they follow the first three parts, You can specify these in any order.
+4. CLI options required by the action. As long as they follow steps 1-3, you can specify the CLI options in any order.
 
-Some commands use environment variables to get API Keys, or to configure an option value which was not provided in the command line. You need to export these variables before running the command.
+Some commands use environment variables to get API Keys or to configure an option value that was not provided in the command line. You need to export these variables before you run the command.
 {: important}
 
-Command line options can take various types of input values, such as numbers, strings, boolean values, arrays, and JSON objects. The options type is dependent upon the command you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
+Command-line options can take various types of input values, such as numbers, strings, Boolean values, arrays, and JSON objects. The options type is dependent upon the command you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
 {: tip}
 
 ## CLI commands
@@ -280,7 +280,7 @@ cocoa change-request change-state-to-implement --provider=gitlab
 ### cocoa change-request close
 {: #change-request-close}
 
-Closes a given Change Request through the ServiceNow API. You can attach 'close notes' via the `--close-notes` option and specify the 'close category' using the `--close-category` option.
+Closes a Change Request through the ServiceNow API. You can attach 'close notes' by using the `--close-notes` option and specify the 'close category' using the `--close-category` option.
 
 Options:
 
@@ -314,7 +314,7 @@ cocoa change-request close --provider=gitlab
 ### cocoa change-request check-approval
 {: #change-request-check-approval}
 
-Queries the approval status of a given change request. If the Change Request is an emergency, the command will not fail but will prompt for a retroactive approval.
+Queries the approval status of a change request. If the Change Request is an emergency, the command does not fail but prompts for a retroactive approval.
 
 Required environment variables:
 
@@ -339,7 +339,7 @@ cocoa change-request check-approval --provider=gitlab
 ### cocoa change-request prepare
 {: #change-request-prepare}
 
-Creates the change request data and prints it to the console or a given file.
+Creates the change request data and prints it to the console or a file.
 
 Required environment variables:
 
@@ -365,7 +365,7 @@ The following fields can be parsed from the pull request body:
 ```
 {: screen}
 
-In case they are specifically provided by using the CLI option, the CLI option overrides the value found in the pull request. If all of them are provided, pr is not parsed at all, `--org`, `--repo` and `GHE_TOKEN` is not necessary.
+In case they are provided by using the CLI option, the CLI option overrides the value that is found in the pull request. If all of them are provided, pr is not parsed, `--org`, `--repo` and `GHE_TOKEN` is not necessary.
 
 Options:
 
@@ -407,7 +407,7 @@ $ cocoa cr prepare \
 ### cocoa change-request request-approval
 {: #change-request-request-approval}
 
-Requests approval for records in the new state with approval not requested. When executed the record follows the manual approval path.
+Requests approval for records in the new state with approval not requested. When run the record follows the manual approval path.
 
 Required environment variables:
 
@@ -484,7 +484,7 @@ $ cocoa change-request task add "CHGXXXXXXX" \
 ### cocoa change-request task get
 {: #change-request-task-get}
 
-Gets a specific Change Task of a given Change Request.
+Gets a specific Change Task of a Change Request.
 
 Required environment variables:
 
@@ -508,7 +508,7 @@ cocoa change-request task get "CHGXXXXXXX" "CTASKXXXXXXX" --provider=gitlab
 ### cocoa change-request task list
 {: #change-request-task-list}
 
-Lists Change Tasks for a given Change Request.
+Lists Change Tasks for a Change Request.
 
 Required environment variables:
 
@@ -566,7 +566,7 @@ $ cocoa change-request task update --change-request-id='CHGXXXXXXX' --change-tas
 ### cocoa evidence create
 {: #evidence-create}
 
-Creates an evidence from the specified options and saves it to a file / prints it to the console.
+Creates evidence from the specified options and saves it to a file or prints it to the console.
 
 Running the command:
 
@@ -588,15 +588,15 @@ $ cocoa evidence create \
 ```
 {: codeblock}
 
-CLI options can be also set from environment variables with the exception of `issue`, `log` and `artifact`.
-Multiple issues/artifacts should be provided with multiple issue/artifact flags. For example:
+CLI options can be also set from environment variables except for `issue`, `log`, and `artifact`.
+Multiple issues or artifacts must be provided with multiple issue or artifact flags. For example:
 
 ```sh
 cocoa evidence create --artifact <url> <hash>  --artifact <url> <hash> --issue <issue-url> --issue <issue-url>
 ```
 {: pre}
 
-`artifact` consists of an url pointing to the artifact file and a hash, they should be provided the same way as in the previous example.
+`artifact` consists of an URL that points to the artifact file and a hash, they should be provided the same way as in the previous example.
 {: note}
 
 ### cocoa evidence format-summary
@@ -625,7 +625,7 @@ $ cocoa evidence format-summary --input=raw-summary.json --output=formatted-summ
 ### cocoa evidence upload
 {: #evidence-upload}
 
-Uploads an evidence to the specified backends. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}}, GitHub or {{site.data.keyword.DRA_short}}. Different lockers require different parameters to be provided.
+Uploads evidence to the specified backends. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}}, GitHub or {{site.data.keyword.DRA_short}}. Different lockers require different parameters to be provided.
 
 {{site.data.keyword.DRA_short}} is not yet supported.
 {: note}
@@ -674,7 +674,7 @@ $ cocoa evidence upload \
 ```
 {: codeblock}
 
-CLI options can be also set from environment variables with the exception of `backend`, `issue`, `log` and `artifact`. Multiple issues/artifacts should be provided with multiple issue/artifact flags. For example:
+CLI options can be also set from environment variables except for `backend`, `issue`, `log`, and `artifact`. Multiple issues or artifacts must be provided with multiple issue or artifact flags. For example:
 
 ```sh
 cocoa evidence upload --backend=git --artifact <url> <hash>  --artifact <url> <hash> --issue <issue-url> --issue <issue-url> --git-provider='gitlab' 
@@ -913,7 +913,7 @@ $ cocoa inventory get \
 ### cocoa inventory get-sha
 {: #get-sha}
 
-Gets the latest commit hash by a given label or environment from the inventory repository. Either use `--label` or `--environment`, and use only one of them.
+Gets the latest commit hash by a label or environment from the inventory repository. Either use `--label` or `--environment`, and use only one of them.
 
 Required environment variables:
 
@@ -1121,7 +1121,7 @@ $ cocoa tekton get-pipeline-logs \
 Cocoa check pull-request-approval is not supported in {{site.data.keyword.gitrepos}}.
 {: important}
 
-Checks the approval state of a pull request on a given commit hash. If the pull request is not approved, it creates an incident issue in the specified repo. The command can identify emergency pull requests that are marked with a label. In this scenario, the exit code is `0`.
+Checks the approval state of a pull request on a commit hash. If the pull request is not approved, it creates an incident issue in the specified repo. The command can identify emergency pull requests that are marked with a label. In this scenario, the exit code is `0`.
 
 Required environment variables:
 
@@ -1148,7 +1148,7 @@ cocoa check pull-request-approval
 Cocoa changelog is not supported in {{site.data.keyword.gitrepos}}.
 {: important}
 
-Prints the changelog between two revisions in the given repo to stdout.
+Prints the changelog between two revisions in the repo to stdout.
 
 Options:
 

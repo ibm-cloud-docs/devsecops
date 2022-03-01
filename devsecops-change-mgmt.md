@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-07"
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps
 
@@ -27,7 +27,7 @@ subcollection: devsecops
 # Automated change management
 {: #cd-devsecops-change-mgmt}
 
-Change management automation is a crucial part of the DevSecOps reference implementation. The goal of change management automation is to help developers, approvers, and auditors monitor the compliance aspects of deployments. Every deployment must follow the change management policy of an organization.
+Change management automation helps developers, approvers, and auditors to monitor the compliance aspects of deployments. Every deployment must follow an organization's change management policy.
 {: shortdesc}
 
 The pipelines collect evidence from each part of the build and deployment lifecycle. Because each piece of evidence correlates to a specific build and deployment of the artifacts, you can determine whether the build or test deployment for a deployed artifact contained any incidents. This correlation between evidence and build and deployment artifacts is implemented through the Inventory Model.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-27"
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps
 
@@ -26,10 +26,10 @@ subcollection: devsecops
 # Peer review compliance
 {: #cd-devsecops-peer-review}
 
-Peer code reviews are a general best practice in software development and they are also a key component of delivering secure and compliant software.
+Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
 {: shortdesc}
 
-The DevSecOps reference implementation helps to enforce the review of new code changes before they are merged and promoted to production. The reference implementation discovers instances of code that was not peer reviewed, collects evidence, and creates incident issues to track these items.
+The reference implementation discovers instances of code that are not peer reviewed, collects evidence, and creates incident issues to track these items.
 
 Before you can merge code in the main branch, it must be reviewed by a person who did not upload the modified code.
 
@@ -37,7 +37,7 @@ The code repository (repo) must have at least two members, one member that has a
 
 The pipeline collects peer review compliance data during builds and deployments to create the audit trail from code pull / merge request merges to change requests.
 
-In this diagram, PR1, PR2 are the pull / merge requests which have been approved before merging. Similarly for PR4, PR5 and PR7. However, PR3 and PR6, highlighted in red, have been merged without an approval which is a peer-review compliance violation. This will be captured and stored as an evidence. 
+In this diagram, PR1, PR2 are the pull / merge requests that are approved before merging. Similarly, for PR4, PR5 and PR7. However, PR3 and PR6, highlighted in red, are merged without an approval, which is a peer-review compliance violation. This is captured as an evidence. 
 
  ![Data collection](images/data-collection.svg){: caption="Data collection" caption-side="bottom"}
  

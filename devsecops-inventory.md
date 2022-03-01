@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Inventory
 {: #cd-devsecops-inventory}
 
-Learn about the inventory model, role, and purpose.
+Learn about the inventory concepts such as inventory structure, content model, role, and purpose.
 {: shortdesc}
 
 ## Inventory structure and content
@@ -35,7 +35,7 @@ Learn about the inventory model, role, and purpose.
 The Inventory model tracks the following items:
 
 * What artifact is deployed to which environment or region
-* Where was an artifact built (pipeline run, commit sha)
+* Where was an artifact that is built (pipeline run, commit sha)
 * What is the signature of the built artifact
 
 Based on this data, you can track evidence during artifact builds and deployments and help Change Management and Compliance audits.
@@ -204,12 +204,12 @@ In this setup, the prod branch has multiple `latest` tags on the same branch, su
 
 ![Prod branch with multiple latest tags per region](images/inventory-7.svg){: caption="Prod branch with multiple latest tags per region" caption-side="bottom"}
 
-As an example scenario, a set of changes that you plan to deploy everywhere might be released to a single region first, and then gradually deployed to other regions by using continuous delivery pipelines to target those regions.
+For example, a set of changes that you plan to deploy everywhere might be released to a single region first, and then gradually deployed to other regions by using continuous delivery pipelines to target those regions.
 
 ## Inventory operations
 {: #inventory-operations}
 
-The Inventory contains some basic operations that run by using the CLI or by using pure Git and  the GitHub CLI.
+The Inventory contains some basic operations that run by using the CLI or by using pure Git and the GitHub CLI.
 
 ### CLI commands
 {: #inventory-cli-commands}

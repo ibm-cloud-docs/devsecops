@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-10-13"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Setting pull request status
 {: #cd-devsecops-set-pr-status}
 
-You can use the CLI to set the pull request status.
+You can use the CLI `set-status` command to set the pull request status.
 {: shortdesc}
 
 The current implementation is tested on GitHub. For a list of available values, see [GitHub statuses](https://docs.github.com/en/rest/reference/repos#statuses){: external}.

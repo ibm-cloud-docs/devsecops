@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-09-15"
+  years: 2021, 2022
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Pull request pipeline
 {: #cd-devsecops-pr-pipeline}
 
-Pull request pipeline runs set compliance status checks on a pull request for the specified application (app) repository (repo).
+Pull request pipeline runs set compliance status checks on a pull request for the specified application repository.
 {: shortdesc}
 
 Attempts to merge a pull request into the master branch might be blocked because of failed compliance status checks. Opening or updating a pull request against the master branch triggers the pull request pipeline to run. You can run your own setup for the pipelines and tests in [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
