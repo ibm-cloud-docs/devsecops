@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-02-28"
+lastupdated: "2022-03-01"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, cloud object storage, satellite
 
@@ -70,7 +70,7 @@ Follow a two-step process to enable your {{site.data.keyword.containerlong_notm}
 
 2. [Attach a cluster to a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-access), which grants {{site.data.keyword.satelliteshort}} Config access to manage the resources within the cluster.
 
-As an advanced configuration, you can also deploy the application to compute infrastructure in your on-premises data center or other cloud providers by using ({{site.data.keyword.satellitelong_notm}})(/docs/satellite?topic=satellite-getting-started].
+As an advanced configuration, you can also deploy the application to the compute infrastructure in your on-premises data center or other cloud providers by using [{{site.data.keyword.satellitelong_notm}}](/docs/satellite?topic=satellite-getting-started).
 
 1. [Create a {{site.data.keyword.satelliteshort}} location](/satellite/locations/create){: external} for the compute infrastructure in your on-premises data center or other cloud providers by using predefined templates.
 
