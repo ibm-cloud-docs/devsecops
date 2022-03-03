@@ -264,7 +264,7 @@ Using the API key that is either created, retrieved from a vault, or manually en
 ![DevSecOps Deployment Target](images/devsecops-ci-deployment-target.png){: caption="DevSecOps Deployment Target" caption-side="bottom"}
 
 ### Inventory target and source branches
-{: #devsecops-cd-tool-integration-inventory-branches}
+{: #ci-tool-integration-inventory-branches}
 
 * **Inventory Source Environment**: The environment from where you want to promote the application Default: master
 * **Inventory Target Environment**: The environment to where you want to deploy the application Default: prod
@@ -272,7 +272,7 @@ Using the API key that is either created, retrieved from a vault, or manually en
 * **Emergency Label for change request PRs and issues**: Label on Change Request to be used for Emergency deployment
 
 ### Image signing
-{: #cd-devsecops-image-signing-ci}
+{: #ci-image-signing}
 
 Any images built by this toolchain and recorded in the inventory must be signed before they can be deployed to production. The pipeline uses [Skopeo](https://github.com/containers/skopeo) as default tool to provide Image signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 
@@ -331,7 +331,7 @@ Use this option if you wish to create a new instance of DevOps Insights to be us
 The Eclipse [Orion Web IDE](/docs/ContinuousDelivery?topic=ContinuousDelivery-web_ide) is a browser-based development environment where you can develop for the web in JavaScript, HTML, and CSS with the help of content assist, code completion, and error checking. 
 
 #### Delivery Pipeline Private Worker
-{: #devsecops-ci-tool-integration-optional-private-worker}
+{: #ci-tool-integration-optional-private-worker}
 
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
 
@@ -360,7 +360,7 @@ If you want the toolchain to use an existing SonarQube Instance that you have pr
 ![DevSecOps Summary](images/devsecops-ci-summary.png){: caption="DevSecOps Summary" caption-side="bottom"}
 
 ## Explore the CI toolchain
-{: #devsecops-ci-toolchain-explore}
+{: #ci-toolchain-explore}
 {: step}
 
 The created CI toolchain will look like this:
@@ -437,7 +437,7 @@ To evaluate if you have any failures in your pipeline run, you need to check the
 {: note}
 
 ### Viewing the running application
-{: #devsecops-ci-toolchain-view-app}
+{: #ci-toolchain-view-app}
 
 After a successful CI pipeline run, the sample application is deployed on your Kubernetes cluster, and is running in the dev namespace.
 

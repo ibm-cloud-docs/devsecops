@@ -32,7 +32,7 @@ Complete these steps to set up the Tekton continuous delivery pipelines with com
 {: shortdesc}
 
 ## Before you begin
-{: #cd-devsecops-tekton-cd-prereq}
+{: #cd-tekton-cd-prereq}
 
 * [Create a Kubernetes cluster](/docs/containers?topic=containers-getting-started) on IBM Cloud Kubernetes Service to deploy your application.
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure them.
@@ -41,7 +41,7 @@ Complete these steps to set up the Tekton continuous delivery pipelines with com
 * [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
 
 ## Guided setup overview for the CD toolchain
-{: #cd-devsecops-tekton-cd-guided}
+{: #cd-tekton-cd-guided}
 
 View the following video tutorial to get an overview of the setup process:
 
@@ -65,7 +65,7 @@ You can return to previous steps in the guided installer. The toolchain installe
 {: tip}
 
 ## Start the CD toolchain setup
-{: #cd-devsecops-tekton-cd-setup}
+{: #cd-tekton-cd-setup}
 {: step}
 
 Start the CD toolchain configuration by using one of the following options:
@@ -77,7 +77,7 @@ Start the CD toolchain configuration by using one of the following options:
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CD-Develop with DevSecOps practices**.
 
 ## Set up the toolchain name and region
-{: #cd-devsecops-tekton-cd-name-region}
+{: #cd-tekton-cd-name-region}
 {: step}
 
 ![DevSecOps CD toolchain name and region](images/devsecops-cd-name-region.png){: caption="DevSecOps CD toolchain name and region" caption-side="bottom"}
@@ -88,7 +88,7 @@ The toolchain region can differ from the cluster and registry region.
 {: tip}
 
 ## Set up the CD tool integrations
-{: #cd-devsecops-tekton-cd-tool-integrations}
+{: #cd-tekton-cd-tool-integrations}
 {: step}
 
 This section covers the setup of the various tool and service integrations that the CD toolchain uses. Please note, that this section may or may not follow the order in which the IBM Cloud installer wishes you to setup these tools.
@@ -98,7 +98,7 @@ If you have used [CI Pipeline Toolchain Template](https://us-south.git.cloud.ibm
 If you wish to set up your CI toolchain from scratch, configure these repositories during CI Toolchain creation and then use them here.
 
 ### Application Related Repositories
-{: #cd-devsecops-app-repos}
+{: #cd-app-repos}
 
 - **Inventory:** Change management is tracked in this repository. Each successful CI Pipeline Run CD pipeline creates a new branch named as the created CR number, and merges it to master after deployment is concluded.
     E.g.: `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-inventory`
@@ -258,7 +258,7 @@ The Pipeline Repository contains configurations for both CI and CD Toolchains an
 Configure the target Kubernetes cluster where the application will be deployed. Choose the target kubernetes cluster that you intend to use as the production or stage environment. The toolchain deploys the build application image to the cluster and runs the acceptance-test and other compliance checks.
 
 ### IBM Cloud API Key
-{: #devsecops-cd-tool-integration-api-key}
+{: #cd-tool-integration-api-key}
 
  The API key is used to interact with the `ibmcloud` CLI tool in several tasks. In case you have already created a cluster, an API to access the cluster and stored the key in a secure vault (any of Key Protect, Secrets Manager or HashiCorp Vault), as prerequisite you can use the same in this step.
 
@@ -306,7 +306,7 @@ In case you have an existing Change Request repository from an existing CD Toolc
 ![Change request management](images/devsecops-cd-change-request-mgmt.png){: caption="Change request management" caption-side="bottom"}
 
 ### Link to existing DevOps Insights Toolchain
-{: #devsecops-cd-tool-integration-insights}
+{: #cd-tool-integration-insights}
 
 We already created an instance of DevOps Insights during the CI toolchain creation. The same needs to be referred to in the CD toolchain. After each compliance check evidence is published into it. The toolchain publishes the deployment records to DevOps insights. You can link DevOps Insights integration from CI toolchain by providing the Integration ID to consolidate all the deployment data in single DevOps Insight Instance.
 
@@ -394,11 +394,11 @@ You can configure the individual toolchain integrations after the pipeline is cr
 {: tip}
 
 ## Explore the CD toolchain
-{: #devsecops-cd-toolchain-explore}
+{: #cd-toolchain-explore}
 {: step}
 
 ### Run the Promotion Pipeline
-{: #devsecops-cd-toolchain-promotion-pipeline-run}
+{: #cd-toolchain-promotion-pipeline-run}
 
 * Make sure that the CI Pipeline ran successfully before you run the Promotion Pipeline.
 * The Promotion Pipeline creates a Pull Request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod). An intermediary branch for the PR is created which can be discarded after the PR is merged.
@@ -452,7 +452,7 @@ The details of the `Pull Request` are used by the CD Pipeline to create a Change
 The details of the `Pull Request` will be used by the CD Pipeline to create a Change Request in Change Request Managment repository during the CD Pipeline Run.
 
 ### Run the CD Pipeline
-{: #devsecops-cd-toolchain-cd-pipeline-run}
+{: #cd-toolchain-cd-pipeline-run}
 
 You can start a CD pipeline in either of the following ways:
 * Trigger the CD pipeline manually.
