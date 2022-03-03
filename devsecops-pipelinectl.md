@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-25"
+lastupdated: "2022-03-03"
 
 keywords: DevSecOps, pipelinectl
 
@@ -54,6 +54,8 @@ Available aliases/methods:
 - [load_artifact](#load_artifact)
 - [put_data](#put_data)
 - [get_data](#get_data)
+- [serialize](#serialize)
+- [deserialize](#deserialize)
 
 ### set_env
 {: #set_env}
@@ -175,6 +177,35 @@ save_repo app_ui "commit=${REPO_SHA}"
 ```
 {: codeblock}
 
+#### Using stdin as a value source
+{: #stdin-value-source}
+
+Values can be provided from stdin, if the following are true:
+- the content is streamed for the command,
+- there is one property without a value and `=`
+
+Example:
+
+```bash
+command_with_large_output | save_repo app_ui "issues"
+
+# this also works with multiple properties,
+# but stdin can provide value for only a single one
+command_with_large_output | save_repo app_ui "issues" "result=success" "commit=${REPO_SHA}"
+```
+{: codeblock}
+
+If multiple values are missing with `=` the command will exit with an error, since it cannot determine,
+which property should belong to the value on stdin.
+
+Properties without value but still appending `=` will have an empty string as a value.
+
+```bash
+save_repo app_ui "bar="
+load_repo app_ui bar # returns an empty string
+```
+{: codeblock}
+
 ### list_repos
 {: #list_repos}
 
@@ -231,8 +262,8 @@ done < <(list_repos)
 Outputs the following lines to the console:
 
 ```text
-`$ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'`
-`$ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'`
+$ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
+$ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
 ```
 {: screen}
 
@@ -247,6 +278,8 @@ save_result  <stage> <path>
 {: codeblock}
 
 Saves an arbitrary test, scan result file for a given stage. Later this can be retrieved with `load_result`. By default, data is saved with the workspace-relative path as key.
+
+Using the `PIPELINECTL_USE_PATH_AS_KEY` feature flag, data is saved with the provided path as the key.
 
 Example:
 
@@ -263,7 +296,6 @@ save_result test ./results/mocha_results.json
 #
 save_result test ../data/coverage.xml
 
-<staging>
 #
 # Using the `PIPELINECTL_USE_PATH_AS_KEY` environment variable
 # save the contents of the file ../data/coverage.xml
@@ -272,8 +304,6 @@ save_result test ../data/coverage.xml
 PIPELINECTL_USE_PATH_AS_KEY=1 save_result test ../data/coverage.xml
 ```
 {: codeblock}
-
-</staging>
 
 ### list_results
 {: #list_results}
@@ -305,9 +335,18 @@ load_result <stage> <file>
 ```
 {: codeblock}
 
-Prints the saved file keys to `stdout`. By default, a key is the workspace-relative path of the provided file path in `save_result`. To get the exact list of keys, use `list_results`.
+Prints the saved file keys to `stdout`. By default, a key is the workspace-relative path of the provided file path in `save_result`. Using the `PIPELINECTL_USE_PATH_AS_KEY` feature flag, a key is the path of the provided file path in `save_result`. To get the exact list of keys, use `list_results`.
 
 Example:
+
+```bash
+load_result test mocha_results.json
+
+#
+# Using the `PIPELINECTL_USE_PATH_AS_KEY` environment variable
+PIPELINECTL_USE_PATH_AS_KEY=1 load_result test ../data/coverage.xml
+```
+{: codeblock}
 
 Used together with `list_results`
 
@@ -361,6 +400,36 @@ save_artifact ui_service "signature=${SIGNATURE}"
 {: codeblock}
 
 Other artifact types to be added later.
+
+#### Using stdin as a value source
+{: #stdin-value-source-save-artifact}
+
+Values can be provided from stdin, if the following are true:
+
+- the content is streamed for the command,
+- there is one property without a value and `=`
+
+Example:
+
+```bash
+command_with_large_output | save_artifact ui_service "issues"
+
+# this also works with multiple properties,
+# but stdin can provide value for only a single one
+command_with_large_output | save_artifact ui_service "issues" "result=success" "signature=${SIGNATURE}"
+```
+{: codeblock}
+
+If multiple values are missing with `=` the command will exit with an error, since it cannot determine,
+which property should belong to the value on stdin.
+
+Properties without value but still appending `=` will have an empty string as a value.
+
+```bash
+save_artifact ui_service "bar="
+load_artifact ui_service bar # returns an empty string
+```
+{: codeblock}
 
 ### list_artifacts
 {: #list_artifacts}
@@ -418,10 +487,47 @@ done < <(list_artifacts)
 Outputs the following lines to the console:
 
 ```text
-`$ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'`
-`$ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/`backend_service:2.4.3'
+$ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
+$ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
 ```
 {: screen}
+
+### serialize
+{: #serialize}
+
+Serialize `pipelinectl` data into a transferable JSON file to be used as payload for pipeline webhook triggers. It can serialize repositories set by `save_repo`, artifacts set by `save_artifact`, and environment variables set by `set_env`.
+
+(Optional) flags:
+```bash
+--all-repos         # all the repository information set by `pipelinectl`
+--all-artifacts     # all the artifacts information set by `pipelinectl`
+```
+{: codeblock}
+
+Example:
+
+The following code will save all the repositories, all the artifacts and <env_variable1>, <env_variable2> into the `foo.json` file:
+
+```bash
+pipelinectl serialize --all-repos --all-artifacts <env_variable1> <env_variable2> > foo.json
+```
+{: codeblock}
+
+> this command is not an alias, need `pipelinectl` explicitly
+
+### deserialize
+{: #deserialize}
+
+Deserialize the `pipelinectl` from JSON to files, so `pipelinectl` can work in the triggered pipeline. Use the JSON that is serialized by the `pipelinectl serialize` command as the argument.
+
+Example:
+
+```bash
+pipelinectl deserialize ./foo.json
+```
+{: codeblock}
+
+> this command is not an alias, need `pipelinectl` explicitly
 
 ## Low-level methods
 {: #low-level methods}
