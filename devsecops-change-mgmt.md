@@ -77,7 +77,7 @@ If a compliance check fails, the change request state is not approved.
 
 You can approve the change request manually and add the change-request-id to the environment properties to use the already created change request in the next run.
 
-Another solution is using the **emergency** label in the promotion pull requests. For more information, see [Add emergency label](docs/devsecops?topic=devsecops-cd-devsecops-approve-cr).
+Another solution is using the **emergency** label in the promotion pull requests. For more information, see [Add emergency label](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr).
 
 ### Set to implement
 {: #change-mgmt-set-implement}
