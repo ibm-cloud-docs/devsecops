@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-17"
+lastupdated: "2022-03-18"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Configuring {{site.data.keyword.cos_full_notm}} for storing evidence
 {: #cd-devsecops-cos-config}
 
-Complete these steps to create a {{site.data.keyword.cos_full_notm}} instance and {{site.data.keyword.cos_full_notm}} bucket to store evidence that is used by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration pipeline.
+Complete these steps to create a {{site.data.keyword.cos_full_notm}} instance and {{site.data.keyword.cos_full_notm}} bucket to store evidence that is used by the {{site.data.keyword.cloud_notm}} DevSecOps pipelines.
 {: shortdesc}
 
 ## Create a Cloud {{site.data.keyword.cos_short}} instance
@@ -70,7 +70,7 @@ In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You migh
 
 1. In Cloud {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **expand** the service credential to view the **apikey**. 
-3. Note the *apikey* because you need it later.
+3. Note the *apikey* because you need it later when setting up your DevSecOps pipelines.
 
 ## Related information
 {: #cd-devsecops-cos-related-content}
