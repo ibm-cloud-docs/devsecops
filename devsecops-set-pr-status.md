@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-03-18"
 
 keywords: DevSecOps
 
@@ -26,27 +26,35 @@ subcollection: devsecops
 # Setting pull request status
 {: #cd-devsecops-set-pr-status}
 
-You can use the CLI `set-status` command to set the pull request status.
+You can use the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) `set-status` command to set a GitHub or GitLab commit status. For more information about this command, see the [DevSecOps CLI documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cli#set-status).
 {: shortdesc}
 
-The current implementation is tested on GitHub. For a list of available values, see [GitHub statuses](https://docs.github.com/en/rest/reference/repos#statuses){: external}.
-{: tip}
-
-1. Specify the following environment variables:
+- Example usage on GitLab:
 
    ```bash
-   GHE_TOKEN=    # Github token
-   GHE_ORG=      # Github organization/username
-   GHE_REPO=     # Github repository
-   GHE_COMMIT=   # Github commit hash
-   ```
-
-1. Run the following command to set the pull request status:
-
-   ```bash
+   $ export GITLAB_TOKEN='my-git-token'
+   $ export GHE_ORG='my-github-username'
+   $ export GHE_REPO='my-github-repo-name'
+   $ export GIT_COMMIT='1df4adf81a294315a3fb4e211df9ae6cad4895c1'
    $ cocoa set-status \
     --state="pending" \
-    --targetURL="https://cloud.ibm.com/devops/pipelines/tekton/some-toolchain/runs/some-pipelinerun/lint/lint?   env_id=ibm:yp:us-south" \
+    --targetURL="https://cloud.ibm.com/devops/pipelines/tekton/pipeline-id/runs/run-id/lint/lint?env_id=ibm:yp:us-south" \
     --context="tekton/lint" \
-    --description="Tekton linter is running."
+    --description="Tekton linter is running." \
+    --git-provider="gitlab"
+   ```
+
+- Example usage on GitHub:
+
+   ```bash
+   $ export GHE_TOKEN='my-git-token'
+   $ export GHE_ORG='my-github-username'
+   $ export GHE_REPO='my-github-repo-name'
+   $ export GIT_COMMIT='1df4adf81a294315a3fb4e211df9ae6cad4895c1'
+   $ cocoa set-status \
+    --state="pending" \
+    --targetURL="https://cloud.ibm.com/devops/pipelines/tekton/pipeline-id/runs/run-id/lint/lint?env_id=ibm:yp:us-south" \
+    --context="tekton/lint" \
+    --description="Tekton linter is running." \
+    --git-provider="github"
    ```
