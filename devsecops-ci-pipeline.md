@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-03-18"
 
 keywords: DevSecOps
 
@@ -62,7 +62,14 @@ You can use any of the following methods to add static code to your pipeline:
 
 * Provide an already running SonarQube instance name, URL, and credentials by adding the SonarQube tool to your toolchain. The static-scan task runs a scan on the specified repos.
 
+* If you don't have your own SonarQube instance, the pipeline creates a SonarQube instance during the pipeline run. You can access this instance after the static-scan stage successfully runs.
+
 * Add your own static scan code to the static-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
+
+### Adding SonarQube scan to your pipelines
+{: #devsecops-ci-pipeline-sonarqube-info}
+
+For more information about integrating SonarQube with the continuous integration pipeline, see the [Configuring SonarQube](/docs/devsecops?topic=ContinuousDelivery-sonarqube) section.
 
 ## Scans and checks in compliance checks
 {: #devsecops-ci-pipeline-compliancechecks}
