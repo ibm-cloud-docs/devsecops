@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-06-30"
+  years: 2021, 2022
+lastupdated: "2022-03-18"
 
 keywords: DevSecOps
 
@@ -39,11 +39,11 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
 | `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
 | `https://<region>.git.cloud.ibm.com` | Clones repos, and sets and checks the pull request status. |
-| `https://detect-secrets-client-version.s3.us-south` | The incremental stage ID that is shown in the pipeline UI.  |
-| `https://otcbroker.devopsinsights.cloud.ibm.com` | The Git branch that the job uses as input. This property is only available in jobs that use a Git repository (repo) as input. |
-| `https://iam.cloud.ibm.com/identity/token` | The Git commit that the job uses as input. This property is only available in jobs that use a Git repo as input. |
-| `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Git commit value of the job's last successful run. This property is only available in jobs that use a Git repo as input. |
-| `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | The Git repo URL that the job uses as input. This property is only available in jobs that use a Git repo as input. |
+| `https://detect-secrets-client-version.s3.us-south` | Detects secrets checks for newer versions.  |
+| `https://otcbroker.devopsinsights.cloud.ibm.com` | Checks the toolchain for Code Risk Analyzer support. |
+| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
+| `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Code Risk Analyzer API. |
+| `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
 {: caption="Table 1. Pull request pipeline hosts" caption-side="top"}
 
 ## Continuous integration pipelines
@@ -88,5 +88,5 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://otc-github-consolidated-broker.*region*.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
 | `https://<region>.git.cloud.ibm.com` | Clones repos, and stores evidence, change requests, and inventory. |
 | Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  |
-| `https://iam.cloud.ibm.com/identity/token` | The get IAM token. |
+| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
 {: caption="Table 4. Continuous delivery pipeline hosts" caption-side="top"}
