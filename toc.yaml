@@ -90,6 +90,7 @@ toc:
       - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
       - devsecops-evidence.md
+      - devsecops-async-stages.md
       - devsecops-inventory.md
       - devsecops-custom-scripts.md
       - topicgroup:
