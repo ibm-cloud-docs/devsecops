@@ -34,7 +34,7 @@ The [DevSecOps reference implementation](/docs/devsecops?topic=devsecops-cd-devs
 
 To promote code changes from the source (master) branch to the target (staging, prod) branch of your inventory repository (repo), complete the following steps:
 
-1. The continuous integration pipelines populate the source (master) branch with [inventory entries](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt). Use the continuous delivery promotion pipeline to promote this content from your source (master) branch to the target (staging or prod) branch.
+1. The continuous integration pipelines populate the source (master) branch with [inventory entries](/docs/devsecops?topic=devsecops-cd-devsecops-inventory#inventory-entry-format). Use the continuous delivery [promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline) to promote this content from your source (master) branch to the target (staging or prod) branch.
 
    * From the continuous delivery pipeline dashboard, click **Run Pipeline**. 
    * Select **Manual Promotion Trigger**.
@@ -49,7 +49,7 @@ To promote code changes from the source (master) branch to the target (staging, 
    ![MR execution log](images/pr-exec-log.png){: caption="MR execution log" caption-side="bottom"}
  
    * Locate the URL of the merge request and open the merge request.
-   * Populate the required fields (Priority, Change Request assignee, Additional Description, and other fields).
+   * Populate the [required fields](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelineoutputs) (Priority, Change Request assignee, Additional Description, and other fields).
    * Merge the merge request to promote your changes from the source branch to the target branch.
 
 Now that your changes are promoted to the target branch, you can deploy them by using the [continuous delivery pipeline](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-cd-toolchain-cd-pipeline-run).
@@ -61,7 +61,7 @@ The source and target environments are defined at the continuous delivery pipeli
 
 ![Continuous delivery pipeline properties](images/cd-env-props.png){: caption="Continuous delivery pipeline properties" caption-side="bottom"}
 
-Depending on the continuous delivery pipeline [trigger settings](/docs/devsecops?topic=devsecops-cd-devsecops-devsecops-triggers), the pipeline is either automatically triggered after a merge request is merged or the pipeline is merged manually. To manually merge the pipeline, click **Run Pipeline** and choose the trigger to run.
+Depending on the continuous delivery pipeline [trigger settings](/docs/devsecops?topic=devsecops-cd-devsecops-triggers), the pipeline is either automatically triggered after a merge request is merged or the pipeline is merged manually. To manually merge the pipeline, click **Run Pipeline** and choose the trigger to run.
  
 The pipeline starts and tags the current commit in the inventory repo with the Pipeline Run ID. The pipeline uses that tag to pick up the content from the target branch (prod) and calculates the deployment delta between the current commit and the content of the last successful deployment. The delta is identified by the `<target-environment>_latest` tag, where `target-environment` is the value that is set in your continuous delivery pipeline properties, such as `prod_latest`.
 
