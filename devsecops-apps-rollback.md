@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-10-12"
+  years: 2021, 2022
+lastupdated: "2022-03-21"
 
 keywords: DevSecOps
 
@@ -31,7 +31,7 @@ When you work with {{site.data.keyword.contdelivery_full}}, you might need to ro
 
 Choose a point in the Inventory to roll back to. All commits are reverted up to this point, and then promoted as a pull request. The following commands show how to do this by using the Git CLI: 
 
-1. List the tags to identify the commit ID to roll back to. The following command rolls back to tags 8 - commit.  
+1. List the tags to identify the commit ID to roll back to. For example: `refs/tags/8`.  
  
    ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -49,7 +49,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
       1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
    ```
      
-1. Revert to the expected point in the inventory. The following command lists the commit IDs to revert, for informational purposes only.
+1. You can choose the expected point to revert `refs/tags/8`. The following command lists the commit IDs from the chosen commit. This is for informational purposes only.
      
    ```bash
      # /c/usr/devsecops/compliance-inventory (master)
