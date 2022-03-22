@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-03"
+lastupdated: "2022-03-22"
 
 keywords: DevSecOps, pipelinectl
 
@@ -377,12 +377,17 @@ Registers a new build artifact with the pipeline or updates an existing one.
 #### Container images
 {: #pipelinectl-container-images}
 
-Supported properties:
+Some suggested properties that you can use:
 
-- `type`: Must be `image`
-- `name`: fully qualified image name, for example something that can be used by `docker pull`
+- `type`: Must be `image`.
+- `name`: A fully qualified image name. For example, something that can be used by `docker pull`.
+- `signature`: A valid signature.
+- `digest`: A `sha256` digest.
+- `source`: For example, `http://<some-git-url>/blob/<commithash>/<path-to-file>`
 
-`name` should also contain the tag for the image.
+On top of these, any properties can be set.
+
+The `name` property must also contain the tag for the image.
 {: tip}
 
 Example:
@@ -399,7 +404,6 @@ save_artifact ui_service "signature=${SIGNATURE}"
 ```
 {: codeblock}
 
-Other artifact types to be added later.
 
 #### Using stdin as a value source
 {: #stdin-value-source-save-artifact}
