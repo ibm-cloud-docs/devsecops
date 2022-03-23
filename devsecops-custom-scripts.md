@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-25"
+lastupdated: "2022-03-23"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -211,7 +211,7 @@ You can set other variables by using `set_env`:
 set_env my_config_value "some value"
 
 # later on, even in another stage
-my_config_value$(get_env my_config_value)
+my_config_value=$(get_env my_config_value)
 ```
 
 These values are not persisted, they're scoped for a single pipeline run.
@@ -273,7 +273,7 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/image` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/artifact` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/signature` | The image artifact signature. |
-{: caption="Table 1. '`/config/`' Values" caption-side="top"}
+{: caption="Table 1. 'config' Values" caption-side="top"}
 
 These values are phased out and replaced by the stage I/O interface by way of pipelinectl.
 {: deprecated}
