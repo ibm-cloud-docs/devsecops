@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-09-15"
+  years: 2021, 2022
+lastupdated: "2022-03-23"
 
 keywords: DevSecOps, triggers
 
@@ -40,6 +40,8 @@ DevSecops continuous integration and continuous delivery pipelines provide a set
 |Continuous delivery		|Git CD Trigger		|Runs the continuous delivery pipeline when a commit is pushed to the `target-environment` branch of the Inventory.	|Disabled			|
 |Continuous delivery		|Manual CD Trigger		|Runs the continuous delivery pipeline on the `target-environment` branch of the Inventory, on demand.	|Enabled			|
 |Continuous delivery		|Manual Promotion Trigger		|Runs the promotion pipeline to promote inventory changes from the `source-environment` branch to the `target-environment` branch.	|Enabled			|
+|Continuous compliance		|Git CC Timed Trigger		|Runs the continuous compliance pipeline every day at 4 AM.	|Disabled			|
+|Continuous compliance		|Manual CC Trigger		|Runs the continuous compliance pipeline on the `target-environment` branch of the Inventory, on demand.	|Enabled			|
 {: caption="Table 1. Triggers" caption-side="top"}
 
 You can [add triggers](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-triggers) to the set of default triggers.
