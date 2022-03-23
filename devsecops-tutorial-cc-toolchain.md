@@ -77,7 +77,6 @@ Start the CC toolchain configuration by using one of the following options:
 * Click the following **Create toolchain** button.
 
    [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/create?env_id=ibm:yp:mon01&&ENABLE_CC_TEMPLATE=true){: external}
-   <!-- TODO: Update the toolchain template url once it is available in production -->
 
 * From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CC - Keep your app continuously Compliant with DevSecOps practices**.
 
@@ -138,8 +137,6 @@ This step asks you to provide details of target environment to scan the deployed
 The pipeline runs a number of dynamic scans, and it is recommended to use your staging environment.
 IBM Cloud API key: The API key you created and used during your CI toolchain setup. Optionally you can create a new key and store it in your preferred choice of secrets vault.
 Environment tag in your inventory: It is the [tag in your Inventory repository](/docs/devsecops?topic=devsecops-cd-devsecops-inventory#inventory-tags) which reflects the state of your current deployed environment. This tag is the snapshot of current running application on target.
-
-<!--TODO: review the explanation of the tags and how it decides the target env -->
 
 ![DevSecOps CC target definition](images/devsecops-cc-toolchain-setup-specify-target.png){: caption="DevSecOps CC target definition" caption-side="bottom"}
 
@@ -236,8 +233,6 @@ It contains Continuous Compliance pipeline and async pipeline. It comes with thr
 * **CC Timed Trigger** : CC Pipeline can be triggered at a pre-determined time. The maximum frequency is at every 5 minutes and can go till once a month. Depending on your requirement CC pipeline can be scheduled run every day, or a particular day of the week at a specified time, etc.
 * **Subpipeline Webhook Trigger** : Async sub pipeline is triggered. You can trigger any stage that is added to the `.pipeline-config.yaml` configuration file by using async sub pipelines. You don't need to add those stages inline to the pipeline, and you don't need to modify the pipeline. For triggering the stage, a webhook trigger is created with a webhook secret. know more about [Triggering a stage by using async sub pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines).
 
-<!-- TODO: Add steps on how to add app repo url and then trigger the CC pipeline run -->
-
 ![CC pipeline triggers](images/devsecops-cc-toolchain-explore-triggers.png){: caption="DevSecOps Continuous Compliance pipeline triggers" caption-side="bottom"}
 
 A completed CC pipeline run looks like this:
@@ -245,8 +240,6 @@ A completed CC pipeline run looks like this:
 
 A completed async sub pipeline run that got triggered during CC pipeline run looks like this:
 ![Async sub pipeline successful](images/devsecops-cc-toolchain-explore-async-sub-pipeline-successful.png){: caption="DevSecOps Continuous Compliance async sub pipeline successful run" caption-side="bottom"}
-
-<!-- TODO: currently, no scan is being run. The pipeline time shows execution time under 2 minutes. Once this is fixed, update the screenshot-->
 
 Refer a detailed and updated list of [scans and checks run in compliance checks](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-compliance-checks).
 
