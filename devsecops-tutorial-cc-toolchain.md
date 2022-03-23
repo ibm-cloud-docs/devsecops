@@ -1,5 +1,4 @@
 ---
-<staging>
 
 copyright:
    years: 2021, 2022
@@ -288,9 +287,3 @@ You might have observed that the CI and CC pipeline has many common steps. The s
 Get help fast directly from the {{site.data.keyword.cloud_notm}} {{site.data.keyword.contdelivery_short}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
 
 For more support options, see [Getting help and support for {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-gettinghelp).
-
-## Next steps
-{: #devsecops-tutorial-cc-toolchain-next}
-
-Next steps go here.
-</staging>

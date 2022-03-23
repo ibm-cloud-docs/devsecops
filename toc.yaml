@@ -33,6 +33,7 @@ toc:
       topics: 
       - /apps/apps-tutorial-apps-devsecops
       - devsecops-tutorial.md
+      - devsecops-tutorial-cc-toolchain.md
 
   - navgroup: 
       id: howto
