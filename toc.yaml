@@ -43,6 +43,7 @@ toc:
       - devsecops-image-signing.md
       - devsecops-cos-configure.md
       - devsecops-pipelines-add-steps.md
+      - devsecops-add-new-pipeline-to-existing-toolchain.md
       - devsecops-apps-byoa.md
       - devsecops-pipelines-setup-scripts.md
       - devsecops-stage-results.md
