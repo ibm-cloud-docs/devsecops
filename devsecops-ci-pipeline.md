@@ -2,11 +2,11 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-18"
+lastupdated: "2022-03-24"
 
-keywords: DevSecOps
+keywords: DevSecOps, scan, inventory, compliance
 
-subcollection: devsecops
+subcollection: devsecops, ci pipeline
 
 ---
 
@@ -114,21 +114,50 @@ The Deploy stage deploys built artifacts into a dev environment. You can provide
 ## Dynamic scan
 {: #devsecops-ci-pipeline-dynamic-codescan}
 
-The Dynamic scan stage runs a dynamic application security testing tool for finding vulnerabilities in the deployed application.
+Dynamic code scan is a form of black-box vulnerability scanning that allows software teams to scan running applications and identify vulnerabilities.
 
-By default, the pipeline provides support to run OWASP ZAP Scan. ZAP is an open source web application security scanner that provides several features to scan applications for common vulnerabilities. It performs both API and UI dynamic scans, both of which are required for the sample hello-compliance-app.
+The Dynamic Scan stage runs immediately after the `Deploy to dev` stage, after a successful deployment to the dev environment.
 
-### ZAP API Scan
+By default, the pipeline provides support to run Zed Attack Proxy (ZAP) Scan, which is a free and open-source penetration testing tool that is maintained under the umbrella of OWASP. It performs both API and UI dynamic scans, both of which can be run on the sample hello-compliance-app.
+
+To run the dynamic scan, set the pipeline parameter `opt-in-dynamic-scan` to a nonempty value. To disable the stage from running dynamic scans, set the pipeline parameter `opt-in-dynamic-scan` to empty. For more information about setting pipeline parameters, see [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
+
+The CI pipeline creates issues in the Issues Repository based on the severity. The label that is attached to the issue indicates the severity of the vulnerability.
+
+### ZAP API scan
 {: #devsecops-zap-api-scan}
 
-API scans work by providing a Swagger file that describes the API exposed by the app along with a few other inputs like the API key to use to authenticate with API. The scanner will systematically scan all the endpoints and produce a report.
+The ZAP API scans the application endpoints for possible data leakages, content-type errors, external redirects, code injection, SQL injection, remote OS command injection, and other vulnerabilities that are exposed by the application. The ZAP API scans help developers secure the application by detecting these vulnerabilities in a stage or test environment and fixing them before the application is deployed on a production environment.
+
+ZAP API scans require the following inputs to scan your application:
+
+* Swagger Definition File - Describing the HTTP APIs and their associated parameters as exposed by the app.
+* API Key - Authentication token that is required to authenticate with the API endpoints.
+* API Endpoint - Endpoints from the swagger definitions that you want ZAP to scan.
+* Excluded URLs - The URLs to be ignored by ZAP scanner.
+
+The ZAP API Scanner uses the inputs mentioned to run scan and produce a report.
+
+Set `opt-in-dynamic-api-scan` to a nonempty value for ZAP API scans to run. To opt out, set this parameter to empty.
 
 ### ZAP UI Scan
 {: #devsecops-zap-ui-scan}
 
-UI scans work similarly to API scans, but instead of providing a Swagger file, you provide a UI test script. This test script needs to be copied inside the ZAP scanner container and be run after the ZAP proxy is running before running the scan. The test script should start a headless browser that is configured to proxy through the ZAP scanner's proxy, and run a UI test that hits the UI endpoints. The ZAP proxy records the traffic and discovers the endpoints to scan. Then, the scan runs, produces a report, and generates issues in the same way as the API scan.
+ZAP UI scans the application endpoints for vulnerabilities on the web pages themselves, like unsecure cookies being set, improper caching header settings, cross domain file inclusions, improper CORS settings, and other vulnerabilities that are exposed by the application.
+
+UI scans work similarly to API scans, but they use a UI test script instead of a Swagger file. The UI test script starts a headless browser that is configured to proxy through the ZAP scanner's proxy, and it runs a UI test against the UI endpoint. The process to run ZAP UI tests is as follows:
+
+* Copy the tests scripts to the ZAP Scanner containers.
+* Run the ZAP Proxy.
+* Run the zap test scripts.
+
+The ZAP proxy records the traffic and discovers the endpoints to scan. After the scans are finished, the proxy produces a report and generates issues the same way as in the ZAP API scan.
+
+Set `opt-in-dynamic-ui-scan` to a nonempty value for ZAP API scans to run. To opt out, set this parameter to empty.
 
 * Add your own dynamic scan code to the dynamic-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
+
+For more information about the ZAP API scan and ZAP UI scans, see [Configuring ZAP scans](/docs/devsecops?topic=devsecops-zap-scans).
 
 ## Release to inventory
 {: #devsecops-ci-pipeline-inventoryrel}
