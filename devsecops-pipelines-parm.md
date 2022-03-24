@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-23"
+lastupdated: "2022-03-24"
 
 keywords: DevSecOps, scans, compliance, ibm cloud, maximum retry time, scans
 
@@ -76,7 +76,7 @@ The following table lists and describes the continuous integration parameters fo
 |baseimage-auth-password		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	|baseimage-auth-password		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
 |branch		|text		|The Git repo branch.	|Optional			|
 |cluster-name		|text		|The name of the Docker build cluster.	|Required			|
-|[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code.	|Optional	
+|[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code.	|Optional     |
 |cos-api-key		|text		|The Cloud Object Storage API key.	|Optional			|
 |cos-bucket-name		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
@@ -112,6 +112,7 @@ The following table lists and describes the continuous integration parameters fo
 |sonarqube-namespace 	|text		|The configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline.	|Optional			|
 |static-scan-retry-count		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
 |static-scan-retry-sleep		|text		|The amount of wait time per retry iteration.	|Optional			|
+|subpipeline-webhook-token | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |
 |va-scan-retry-count		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |va-scan-retry-sleep	|text		|The number of wait times per retry iteration.	|Optional			|
 |version		|text		|The version of the app to deploy.	|Required			|
@@ -159,7 +160,7 @@ The following table lists and describes the continuous delivery parameters for p
 |[purpose](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |region		|text		|The target region where the app is deployed.	|Optional			|
 |[slack-notifications](#pipeline-parm-slack-notifications)	|text		|The switch that turns the Slack integration on or off.  |Optional			|
-|[source-environment](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			| 
+|[source-environment](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
 |summary-retry-attempts		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
 |summary-max-retry-time		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time will be generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
 |[target-environment](#pipeline-parm-target-environment)		|text		|The target environment that the app is deployed to.	|Required			|
@@ -187,8 +188,8 @@ This parameter is for to the promotion pull request. Plan of how the change will
 
 This parameter holds the version of the compliance-baseimage. If you want to use something other than our latest image, you can use this parameter.
 
-Example: 
-`wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/compliance-baseimage:some-other-tag`
+Example:
+`icr.io/continuous-delivery/toolchains/devsecops/baseimage:some-other-tag`
 
 ### description
 {: #pipeline-parm-description}
