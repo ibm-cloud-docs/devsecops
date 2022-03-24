@@ -50,6 +50,7 @@ toc:
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - devsecops-pipelines-add-triggers.md
+      - devsecops-async-sub-pipelines.md
       - topicgroup: 
           label: Configuring Git repos
           topics: 
