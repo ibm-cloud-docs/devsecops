@@ -49,6 +49,12 @@ toc:
       - devsecops-stage-results.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
+      - topicgroup:
+          label: Working with incident issues
+          topics:
+          - devsecops-how-to-modify-due-date.md
+          - devsecops-how-to-set-incident-labels.md
+          - devsecops-how-to-set-incident-assignees.md
       - devsecops-pipelines-add-triggers.md
       - devsecops-async-sub-pipelines.md
       - topicgroup: 
