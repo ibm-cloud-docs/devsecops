@@ -33,7 +33,7 @@ To change the due date for the issue, edit the issue description in the reposito
 
 ```markdown
 Issue: **CVE-2020-0001**
-Due date: **2022-01-01** <!-- important: update onlyl the value between ** if you need to update this value -->
+Due date: **2022-01-01**
 Subject: `my-subject`
 URL: https://example.com
 Tool Type: Whitesource scan
@@ -41,4 +41,4 @@ Tool Type: Whitesource scan
 {: codeblock}
 
 Be sure to edit only the text between the `**` characters in the issues description.
-{: note}
+{: important}
