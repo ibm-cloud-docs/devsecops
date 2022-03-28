@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-24"
+lastupdated: "2022-03-28"
 
-keywords: DevSecOps, scans, compliance, ibm cloud, maximum retry time, scans
+keywords: DevSecOps, ibm cloud, maximum retry time, scans
 
 subcollection: devsecops
 
@@ -74,9 +74,9 @@ The following table lists and describes the continuous integration parameters fo
 |baseimage-auth-email		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	|baseimage-auth-email		|text 		|The e-mail credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			|
 |baseimage-auth-host		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|	|baseimage-auth-host		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
 |baseimage-auth-password		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	|baseimage-auth-password		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
-|branch		|text		|The Git repo branch.	|Optional			|
-|cluster-name		|text		|The name of the Docker build cluster.	|Required			|
-|[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code.	|Optional     |
+|[branch](#pipeline-parm-branch)		|text		|The Git repo branch.	|Optional			|
+|[cluster-name](#pipeline-parm-cluster-name)		|text		|The name of the Docker build cluster.	|Required			|
+|[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code.	|Optional	
 |cos-api-key		|text		|The Cloud Object Storage API key.	|Optional			|
 |cos-bucket-name		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
@@ -131,9 +131,9 @@ The following table lists and describes the continuous delivery parameters for p
 |artifactory-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |[assignee](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[backout-plan](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
-|change-request-id    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline. |Optional			|
-|cluster	|text 		|The name of the Docker build cluster.		|Required			|
-|cluster-region		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
+|[change-request-id](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline. |Optional			|
+|[cluster](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			|
+|[cluster-region](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
 |[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code. |Optional			|
 |cos-api-key		|text		|The Cloud Object Storage API key.	|Optional			|
 |cos-bucket-name		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
@@ -182,6 +182,35 @@ This parameter is for to the promotion pull request. This value holds the assign
 {: #pipeline-parm-backout-plan}
 
 This parameter is for to the promotion pull request. Plan of how the change will be rolled back in case of a failure. By default it is empty.
+
+### branch
+{: #pipeline-parm-branch}
+
+This is an optional parameter for the CI pipeline. It determines which branch we pull the code from the app repository. By default, it's `master`. 
+
+### change-management-duration
+{: #pipeline-parm-change-management-duration}
+
+This is an optional parameter for the CD pipeline. The value of it will be the created change request's maintenance duration. By default it's `30 min`.
+
+### change-request-id
+{: #pipeline-parm-change-request-id}
+
+This is an optional parameter for the CD pipeline. By providing a change request ID, the pipeline will skip the creation of a new change request and will use the provided change request. If this parameter is set to `notAvailable` or left empty, a change request is automatically created by the continuous delivery pipeline. By default it's `notAvailable`.
+
+### cluster
+{: #pipeline-parm-cluster}
+
+This parameter holds the name of the cluster in the CD pipeline, which is used for the Docker deploy. This parameter is required for the example app.
+
+### cluster-name
+{: #pipeline-parm-cluster-name}
+This parameter holds the name of the cluster in the CI pipeline, which is used for the Docker deploy. This parameter is required.
+
+### cluster-region
+{: #pipeline-parm-cluster-region}
+
+This is a parameter for the CD pipeline. The {{site.data.keyword.cloud}} region that hosts the cluster.	This is a required parameter for the example app.
 
 ### compliance-baseimage
 {: #pipeline-parm-compliance-baseimage}
