@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-24"
+lastupdated: "2022-03-28"
 
-keywords: DevSecOps, scan, inventory, compliance
+keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap
 
 subcollection: devsecops, ci pipeline
 

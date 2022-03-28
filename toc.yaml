@@ -78,6 +78,7 @@ toc:
       - devsecops-multiple-apps.md
       - devsecops-ignore-cra-vulnerabilities.md
       - devsecops-scc-toolchains.md
+      - devsecops-configuring-zap-scans.md
       - topicgroup: 
           label: Tool integrations
           topics: 
@@ -100,7 +101,7 @@ toc:
       - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
       - devsecops-evidence.md
-      - devsecops-async-stages.md
+      - devsecops-grace-period-reference.md</staging>
       - devsecops-inventory.md
       - devsecops-custom-scripts.md
       - topicgroup:
@@ -119,5 +120,3 @@ toc:
       id: help
       topics: 
       - support.md
-      - faq.md
-      - troubleshoot.md
