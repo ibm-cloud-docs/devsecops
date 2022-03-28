@@ -170,6 +170,46 @@ The following table lists and describes the continuous delivery parameters for p
 |incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
 {: caption="Table 3. Continuous delivery parameters" caption-side="top"}
 
+## Continuous compliance parameters
+{: #pipelines-cc-parameters}
+
+The following table lists and describes the continuous compliance parameters for pipelines:
+
+|Name |Type	|Description |Required or Optional |
+|:----------|:------------------------------|:------------------|:----------|
+|app-name 		|text 		|The name of your application that is specified in the toolchain settings.			|Required			|
+|artifactory-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
+|branch		|text		|The Git repo branch.	|Optional			|
+|baseimage-auth-user		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
+|baseimage-auth-email		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	|baseimage-auth-email		|text 		|The e-mail credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			|
+|baseimage-auth-host		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|	|baseimage-auth-host		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
+|baseimage-auth-password		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	|baseimage-auth-password		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
+|[compliance-baseimage](#pipeline-parm-compliance-baseimage)		|text		|The baseimage for running the built-in pipeline code. |Optional			|
+|cos-api-key		|text		|The Cloud Object Storage API key.	|Optional			|
+|cos-bucket-name		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
+|cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
+|cra-custom-script-path  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
+|cra-docker-buildflags   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
+|dind-image		|text		|Base image to run sidecars	|Optional			|
+|doi-environment		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
+|doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
+|environment-tag     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
+|evidence-repo		|tool integration		|The evidence repo URL.	|Optional			|
+|git-token		|SECRET		|The Git repo access token.	|Optional			|
+|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
+|inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
+|pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
+|pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
+|pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
+|[pipeline-debug](#pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
+|pipeline-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
+|region-prefix          |text   |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional            |
+|repository-integration		|text		|The integration name for the repo.	|Optional			|
+|[slack-notifications](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
+|sonarqube		|tool integration		|The Sonarqube tool integration.	|Optional			|
+{: caption="Table 4. Continuous compliance parameters" caption-side="top"}
+
 ## Specifications
 {: #pipeline-parm-specs}
 
@@ -205,6 +245,7 @@ This parameter holds the name of the cluster in the CD pipeline, which is used f
 
 ### cluster-name
 {: #pipeline-parm-cluster-name}
+
 This parameter holds the name of the cluster in the CI pipeline, which is used for the Docker deploy. This parameter is required.
 
 ### cluster-region
