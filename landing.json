@@ -4,6 +4,11 @@
     "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
+        "title": "Set up a Continuous Compliance toolchain",
+        "description": "Set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
+        "href": "/docs/devsecops?topic=devsecops-tutorial-cc-devsecops"
+      },
+      {
         "title": "Deploy a secure app with DevSecOps best practices",
         "description": "Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cd-devsecops"
@@ -12,11 +17,6 @@
         "title": "Set up your DevSecOps infrastructure and CI toolchain for deploying a secure app",
         "description": "Automatically set up the infrastructure for your continuous integration and continuous delivery toolchains by using a Terraform-based quick start template.",
         "href": "/docs/devsecops?topic=apps-tutorial-apps-devsecops"
-      },
-      {
-        "title": "Set up a Continuous Compliance toolchain",
-        "description": "Set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
-        "href": "/docs/devsecops?topic=devsecops-tutorial-cc-devsecops"
       },
       {
         "title": "DevSecOps architecture",
