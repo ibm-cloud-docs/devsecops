@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-23"
+lastupdated: "2022-03-29"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -89,13 +89,6 @@ Nonremediated pull / merge request incidents impact the deployment readiness of 
 
 ![Change request content](images/devsecops-pr-incident-change-request-content.png){: caption="Change request content" caption-side="bottom"}
 
-## Opting out of peer review
-{: #cd-devsecops-optout}
-
-In some exceptional cases, you might need to merge your changes without a peer review. To enable that option, set the `opt_out_pr_collection` environment variable with any nonzero textual value.
-
-Use this option with caution, and be sure to have your changes reviewed later.
-{: important}
 
 ## Pull request incident remediation
 {: #cd-devsecops-pr-remediate}
