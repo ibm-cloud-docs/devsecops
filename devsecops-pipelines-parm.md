@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-28"
+lastupdated: "2022-03-29"
 
 keywords: DevSecOps, ibm cloud, maximum retry time, scans
 
@@ -45,12 +45,20 @@ The following table lists and describes the pull request parameters for pipeline
 |baseimage-auth-host		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
 |baseimage-auth-password		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
 | cra-custom-script-path  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
+|cra-cveignore-path             |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   |Optional    |
 |cra-docker-build-context     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
+|cra-docker-buildflags          |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
 |cra-dockerfile-pattern             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | optional |
 |cra-exclude-devdependencies		|text		|Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	|Optional			|
+|cra-gradle-exclude-configs     |text   |Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   |Optional   |
+|cra-maven-exclude-scopes       |text   |Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  |Optional   |
+|cra-nodejs-create-package-lock		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
+|cra-python-create-requirements-txt		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
 |grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
+|iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Optional			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
@@ -82,9 +90,15 @@ The following table lists and describes the continuous integration parameters fo
 |cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 |custom-image-tag		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
 | cra-custom-script-path  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
+|cra-cveignore-path     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   |Optional    |
 |cra-docker-build-context     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
+|cra-docker-buildflags   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
 |cra-dockerfile-pattern             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | optional |
 |cra-exclude-devdependencies		|text		|Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	|Optional			|
+|cra-gradle-exclude-configs     |text   |Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   |Optional   |
+|cra-maven-exclude-scopes       |text   |Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  |Optional   |
+|cra-nodejs-create-package-lock		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
+|cra-python-create-requirements-txt		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |dev-cluster-namespace		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |dev-region		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
 |dev-resource-group		|text		|The cluster resource group.	|Required			|
@@ -95,9 +109,12 @@ The following table lists and describes the continuous integration parameters fo
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
 |grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
+|iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab user name). |Optional			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
+|opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -132,6 +149,8 @@ The following table lists and describes the continuous delivery parameters for p
 |[assignee](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[backout-plan](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
 |[change-request-id](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline. |Optional			|
+| [change-management-duration](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
+| change-management-repo        | text   | The URL of the change management repository.  | Optional |
 |[cluster](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			|
 |[cluster-region](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
 |[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code. |Optional			|
@@ -149,7 +168,10 @@ The following table lists and describes the continuous delivery parameters for p
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
 |grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
 |artifact-token		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
+|iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
+|iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|
 |[impact](#pipeline-parm-impact)		|text		|Additional notes on what this change implementation impacts.	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
