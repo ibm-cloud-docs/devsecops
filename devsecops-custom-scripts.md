@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-23"
+lastupdated: "2022-03-29"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -42,6 +42,8 @@ Stages in pull request, continuous integration, and continuous delivery pipeline
 * **Continuous integration pipeline stages**: setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan artifact, release. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
 * **Continuous delivery pipeline stages**: setup, deploy, acceptance-test. For more information, see [Continuous delivery pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+
+* **Continuous compliance pipeline stages**: setup, static-scan, dynamic-scan, scan-artifact. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
@@ -296,7 +298,7 @@ The following table includes the default ENV variables for the context of custom
 | TOOLCHAIN_DATA_PATH | The toolchain data path `/toolchain/toolchain.json` file. |
 | TRIGGER_TYPE | The pipeline trigger type. |
 | TRIGGER_NAME | The pipeline trigger name. |
-| TRIGGER_PAYLOAD | The payload that is received by way of the pipeline trigger event, if there was one. For more information about working with payloads, see [Accessing arguments from webhook payloads](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads). |
+| TRIGGER_PAYLOAD (DEPRECATED) | The payload that is received by way of the pipeline trigger event, if there was one. For more information about working with payloads, see [Accessing arguments from webhook payloads](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads). |
 | TRIGGERED_BY | Information about who triggered the pipeline. This value can be an email address or a time-triggered pipeline run.  |
 | WORKSPACE | The path to the shared workspace. |
 {: caption="Table 2. Environment variables" caption-side="top"}
