@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-03-28"
+lastupdated: "2022-03-29"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
 
@@ -34,7 +34,7 @@ completion-time: 1h
 {: toc-services="apps, containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-Use this tutorial to learn how to set up a continuous compliance (CC) toolchain to ensure your deployed artifacts and their source repositories are always compliant. The continuous compliance pipeline works in conjunction with [Continuous Integration (CI)](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-ci-toolchain-intro) and [Continuous Deployment (CD)](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-cd-toolchain-intro) toolchains.
+Use this tutorial to learn how to set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant. The continuous compliance pipeline works in conjunction with [Continuous Integration (CI)](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-ci-toolchain-intro) and [Continuous Deployment (CD)](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-cd-toolchain-intro) toolchains, both of which must be set up before you begin this tutorial.
 {: shortdesc}
 
 ## Overview and introduction
@@ -65,7 +65,7 @@ Let's now get started with the creation and exploration of the CC template.
 
 To set up the prerequisites for your CC toolchain, follow these steps:
 
-1. You should have setup the DevSecOps CI and CD toolchain already. If not refer [the tutorial](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-tutorial-prereqs) to get them working first.
+1. You should have set up the DevSecOps CI and CD toolchains already. For more information, see [this tutorial](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-tutorial-prereqs) to get them working first.
 1. Depending on your setup, you will reuse some or all of the resources created during CI and CD toolchain setup while setting up the CC toolchain such as Secret Management vault, Kubernetes cluster, IBM Cloud container registry namespace, IBM Cloud API key, IBM Cloud CLI, IBM Cloud Object Storage instance and bucket, IBM Cloud Satellite cluster group and application and inventory repositories. It will help to keep those resources, CI CD toolchains handy.
 
 ## Start the CC toolchain setup
