@@ -60,6 +60,7 @@ toc:
           - devsecops-how-to-set-incident-assignees.md
       - devsecops-pipelines-add-triggers.md
       - devsecops-async-sub-pipelines.md
+      - devsecops-async-update-webhook.md
       - topicgroup: 
           label: Configuring Git repos
           topics: 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-18"
+lastupdated: "2022-03-29"
 
 keywords: DevSecOps, async sub pipelines, async stages, ibm cloud
 
@@ -127,3 +127,10 @@ The initialization of the async stage sets up an environment for the stage scrip
 
 The created environment does not contain any changes that you made on the workspace in the parent pipeline run (installing dependencies, building binaries, and so on). The new pipeline run does not share the workspace with its parent.
 {: important}
+
+## Related information
+{: #devsecops-async-stages-related}
+
+For more information, see the following topics:
+- [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook)
+- [Triggering a stage by using async sub pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines)
