@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-27"
+lastupdated: "2022-04-26"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -10,23 +10,12 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Automating change management
 {: #cd-devsecops-automate-changemgmt}
 
-Change management automation is one of the crucial parts of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can track the compliance aspects of deployments.
+Change management automation is one of the crucial parts of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can monitor the compliance aspects of deployments. Every deployment must follow an organization's change management policy.
 {: shortdesc}
 
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a certain build and deployment of the artifacts. So, for each deployed artifact, we should be able to tell, if its build or test deployment had incidents or not. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
@@ -39,11 +28,12 @@ In this document, you can find answers to the following questions regarding chan
 * What is deployment readiness?
 * What data is included in a change request?
 * How can I use an existing change request ID in the CD pipeline?
-
-For more information, see [Automated change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+* what is the change management command order?
 
 ## Connection between evidence, inventory, and change management
 {: #connection-evidence-inventory-change}
+
+Figure 1 shows the data flow and connection between evidence, inventory, and change management.
 
 ![Connection between evidence, inventory, and change management](images/change-management-data-flow.svg "Flow diagram showing the relationship between evidence, inventory, and change management"){: caption="Figure 1. Connection between evidence, inventory, and change management" caption-side="bottom"}
 
@@ -53,6 +43,8 @@ For more information, see [Automated change management](/docs/devsecops?topic=de
 4. Change management automation uses data from the inventory, the evidence locker, and the promotion PR to create the change request deployments, also leaving evidence behind about acceptance tests for example. Successfully deployed and tested artifacts are further promoted to production environments, like production.
 
 Every deployment to every environment and region needs to file a change request to the Change Management System. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
+
+For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
 
 ## Change the request fields in promotion pull requests
 {: #cd-devsecops-change-fields}
@@ -166,3 +158,43 @@ You can start the DevSecOps reference continuous delivery pipeline by using a pr
  ![Pre-approved change request](images/pre-approved-cr.png){: caption="Figure 3. Pre-approved change request" caption-side="bottom"}
 
 If the **change-request-id** property is set, the pipeline skips data collection for the change request and moves ahead to check the approval state of the change request. If the **change-request-id** is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline.
+
+## Change management command order
+{: #devsecops-change-mgmt-order}
+
+### Create change request
+{: #create-change-request}
+
+Everything that changes the baseline must be tracked by using a change request. The changes include, for example, updates to the existing code level, changes to the configuration, and updates of the worker nodes. Collecting peer review compliance data is based on the data that is accessible in the inventory, the evidence locker, and the incident issue repository.
+
+Finally, this step creates the change request that is based on the Promotion PR fields, and attaches available compliance data. Deployment readiness is calculated by the collected compliance status, based on the available evidence.
+
+### Request for approval
+{: #change-mgmt-request-approval}
+
+If the created change request deployment state is not ready, this step requests it for approval.
+
+### Check for approval
+{: #change-mgmt-check-approval}
+
+If every compliance check (for example, unit test, CRA tasks, branch protection, detect secrets) is successful, the change request is approved automatically, and the task runs successfully.
+
+If a compliance check fails, the change request state is not approved.
+
+You can approve the change request manually and add the change-request-id to the environment properties to use the already created change request in the next run.
+
+Another solution is using the **emergency** label in the promotion pull requests. For more information, see [Add emergency label](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr).
+
+### Set to implement
+{: #change-mgmt-set-implement}
+
+This step sets the status of the change request to `implement` depending on the `success` or `failure` status of the change.
+
+### Close change request
+{: #change-mgmt-request-close}
+
+Details about the deployment are uploaded to the closing summary change task, and the change request is closed. In the close change request task, the close_category is added with these values:
+
+* successful
+* successful with issues (if the summary has issues)
+
