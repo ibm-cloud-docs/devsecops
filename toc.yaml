@@ -106,6 +106,7 @@ toc:
       - devsecops-async-stages.md
       - devsecops-inventory.md
       - devsecops-custom-scripts.md
+      - devsecops-common-scripts.md
       - topicgroup:
           label: Command reference
           topics:
