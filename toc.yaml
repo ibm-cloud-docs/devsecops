@@ -107,7 +107,6 @@ toc:
       - devsecops-inventory.md
       - devsecops-custom-scripts.md
       - devsecops-common-scripts.md
-      - devsecops-images.md
       - topicgroup:
           label: Command reference
           topics:
