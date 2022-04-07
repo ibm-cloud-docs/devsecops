@@ -25,7 +25,7 @@ subcollection: devsecops
 {:support: data-reuse='support'}
 
 # Common scripts
-{: #common-common-scripts}
+{: #devsecops-common-scripts}
 
 Some stages run default scripts out-of-the-box if they are not specified in the DevSecOps config YAML file.
 
