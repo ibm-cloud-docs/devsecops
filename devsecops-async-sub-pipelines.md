@@ -93,7 +93,7 @@ Only the marked variables are available in the async pipeline. Not everything ca
 Use the following command to trigger a stage:
 
 ```bash
-trigger_task <stage-name>
+trigger-task <stage-name>
 ```
 {: codeblock}
 
@@ -113,7 +113,7 @@ setup:
 ```
 {: codeblock}
 
-This command triggers the task from the pipeline configuration yaml. For example, `trigger_task owasp-zap-api`.
+This command triggers the task from the pipeline configuration yaml. For example, `trigger-task owasp-zap`.
 
 ###  What is accessible in the triggered pipeline
 {: #devsecops-accessible-triggered-pipeline}
