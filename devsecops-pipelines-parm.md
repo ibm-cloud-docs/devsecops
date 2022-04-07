@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-29"
+lastupdated: "2022-04-07"
 
-keywords: DevSecOps, ibm cloud, maximum retry time, scans
+keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
 subcollection: devsecops
 
@@ -96,6 +96,7 @@ The following table lists and describes the continuous integration parameters fo
 |cra-dockerfile-pattern             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | optional |
 |cra-exclude-devdependencies		|text		|Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	|Optional			|
 |cra-gradle-exclude-configs     |text   |Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   |Optional   |
+| cra-generate-cyclonedx-format      | text   | If set to `1`, CRA also generates the BOM in `cyclonedx` format (defaults to `0`). | Optional |
 |cra-maven-exclude-scopes       |text   |Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  |Optional   |
 |cra-nodejs-create-package-lock		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |cra-python-create-requirements-txt		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
@@ -149,7 +150,7 @@ The following table lists and describes the continuous delivery parameters for p
 |[assignee](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[backout-plan](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
 |[change-request-id](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline. |Optional			|
-| [change-management-duration](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
+|[change-management-duration](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
 | change-management-repo        | text   | The URL of the change management repository.  | Optional |
 |[cluster](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			|
 |[cluster-region](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
