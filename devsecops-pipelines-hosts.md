@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-18"
+lastupdated: "2022-04-06"
 
 keywords: DevSecOps
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Hosts accessed from pipelines
 {: #cd-devsecops-pipeline-hosts}
 
-You can access hosts from the following types of pipelines: pull request, continuous integration, promotion, and continuous delivery.
+You can access hosts from the following types of pipelines: pull request, continuous integration, promotion, continuous delivery, and continuous compliance.
 {: shortdesc}
 
 ## Pull request pipelines
@@ -90,3 +90,17 @@ The following table lists and describes each of the hosts that are accessed from
 | Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  |
 | `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
 {: caption="Table 4. Continuous delivery pipeline hosts" caption-side="top"}
+
+## Continuous compliance pipelines
+{: #cc-pipeline-hosts}
+
+The following table lists and describes each of the hosts that are accessed from continuous compliance pipelines.
+
+| Host | Description |
+|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
+| `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
+| `https://<region>.git.cloud.ibm.com` | Clones repos, and sets and checks the pull request status. |
+| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
+| Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  |
+{: caption="Table 5. Continuous Compliance pipeline hosts" caption-side="top"}
