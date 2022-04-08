@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-07"
+lastupdated: "2022-04-08"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -328,9 +328,9 @@ Switch to turn on/off the Slack Integration. This is turned off by default, so t
 ### source-environment
 {: #pipeline-parm-source-environment}
 
-The source environment that the app is promoted from, which is the source inventory branch of the promotion. The default value is `master`.
+The source environment that the app is promoted from, which is the source inventory branch of the promotion. The default value is `master`. This value can be overwritten with the usage of a webhook trigger by adding the `source-environment` property to the payload.
 
 ### target-environment
 {: #pipeline-parm-target-environment}
 
-The target environment that the app is deployed to, which is the target inventory branch of the promotion. The default value is `prod`.
+The target environment that the app is deployed to, which is the target inventory branch of the promotion. The default value is `prod`. This value can be overwritten with the usage of a webhook trigger by adding the `target-environment` property to the payload.
