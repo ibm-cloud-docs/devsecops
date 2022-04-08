@@ -227,8 +227,9 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 [IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain. View your pipeline test results for every build, from every deployment and environment. 
 
 You do not need to provide any configuration steps for DevOps Insights (DOI), select a DOI instance for your toolchain:
-   * current (to be created) CI toolchain
-   * another toolchain instance: select an existing toolchain (that has a DOI instance)
+
+* current (to be created) CI toolchain
+* another toolchain instance: select an existing toolchain (that has a DOI instance)
 
 ### SonarQube
 {: #devsecops-ci-tool-integration-sonarqube}
