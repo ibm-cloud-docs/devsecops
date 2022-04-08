@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-04-08"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline
 
@@ -105,7 +105,7 @@ The Dynamic scan stage runs a dynamic application security testing tool to find 
 
 * Add your own dynamic scan code to the dynamic-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
-To learn more about configuring dynamic scan using OWASP-ZAP, see [Configuring ZAP scan for CC pipeline](/docs/devsecops?topic=devsecops-zap-scans#zap-scan-for-cc).
+To learn more about configuring dynamic scan by using OWASP-ZAP, see [Configuring ZAP scan for CC pipeline](/docs/devsecops?topic=devsecops-zap-scans#zap-scan-for-cc).
 
 ## Scans and checks in compliance checks
 {: #devsecops-cc-pipeline-compliance-checks}
