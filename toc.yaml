@@ -11,8 +11,8 @@ toc:
     path: devsecops
     label: DevSecOps
 
-  entries: 
-  - navgroup: 
+  entries:
+  - navgroup:
       id: learn
       topics:
       - link:
@@ -24,7 +24,7 @@ toc:
       - devsecops-cd-pipeline.md
       - devsecops-ci-pipeline.md
       - devsecops-cc-pipeline.md
-      - topicgroup: 
+      - topicgroup:
           label: DevSecOps practices
           topics:
           - devsecops-change-mgmt.md
@@ -32,14 +32,14 @@ toc:
           - devsecops-cos-bucket-evidence.md
       - devsecops-release-notes.md
 
-  - navgroup: 
+  - navgroup:
       id: tutorial
-      topics: 
+      topics:
       - /apps/apps-tutorial-apps-devsecops
       - devsecops-tutorial.md
       - devsecops-tutorial-cc-toolchain.md
 
-  - navgroup: 
+  - navgroup:
       id: howto
       topics:
       - devsecops-tekton-ci-compliance.md
@@ -53,9 +53,11 @@ toc:
       - devsecops-stage-results.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
+      - devsecops-how-to-generate-cyclonedx-sbom.md
       - topicgroup:
           label: Working with incident issues
           topics:
+          - devsecops-how-to-configure-grace-period.md
           - devsecops-how-to-modify-due-date.md
           - devsecops-how-to-set-incident-labels.md
           - devsecops-how-to-set-incident-assignees.md
@@ -63,50 +65,60 @@ toc:
       - devsecops-async-sub-pipelines.md
       - devsecops-async-update-webhook.md
       - topicgroup: 
-          label: Configuring Git repos
-          topics: 
-          - devsecops-config-github.md
-      - topicgroup: 
           label: Working with Git repos
           topics: 
+          - devsecops-config-github.md
           - devsecops-promote-branches.md
           - devsecops-redeploy-staging.md
           - devsecops-apps-rollback.md
-      - devsecops-set-pr-status.md
-      - devsecops-automate-changemgmt.md
-      - devsecops-approve-cr.md
+          - devsecops-set-pr-status.md
+      - topicgroup:
+          label: Change management
+          topics:
+          - devsecops-automate-changemgmt.md
+          - devsecops-approve-cr.md
       - devsecops-webhook-payloads.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
       - devsecops-ignore-cra-vulnerabilities.md
       - devsecops-scc-toolchains.md
       - devsecops-configuring-zap-scans.md
-      - topicgroup: 
+      - topicgroup:
           label: Tool integrations
-          topics: 
+          topics:
           - /ContinuousDelivery/ContinuousDelivery-scc
           - /ContinuousDelivery/ContinuousDelivery-sonarqube
-      - topicgroup: 
+      - topicgroup:
           label: Enhancing security
-          topics: 
+          topics:
           - devsecops_security_compliance.md
           - devsecops_data_security.md
 
   - navgroup:
       id: reference
-      topics: 
+      topics:
       - devsecops-iam-permissions.md
-      - devsecops-pipelines-status.md
-      - devsecops-pr-pipeline.md
-      - devsecops-promotion-pipeline.md
-      - devsecops-pipelines-parm.md
-      - devsecops-pipelines-hosts.md
+      - topicgroup:
+          label: Delivery pipelines
+          topics:
+          - devsecops-pipelines-status.md
+          - devsecops-pr-pipeline.md
+          - devsecops-promotion-pipeline.md
+          - devsecops-pipelines-parm.md
+          - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
-      - devsecops-evidence.md
+      - topicgroup:
+          label: Evidence
+          topics:
+          - devsecops-evidence.md
       - devsecops-async-stages.md
-      - devsecops-inventory.md
+      - topicgroup: 
+          label: Inventory management
+          topics:
+          - devsecops-inventory.md
       - devsecops-custom-scripts.md
       - devsecops-common-scripts.md
+      - devsecops-images.md
       - topicgroup:
           label: Command reference
           topics:
@@ -121,5 +133,5 @@ toc:
 
   - navgroup:
       id: help
-      topics: 
+      topics:
       - support.md
