@@ -116,6 +116,10 @@ The following table lists and describes the continuous integration parameters fo
 |incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab user name). |Optional			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
 |opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|
+|opt-in-sonar		|tool integration		|The Sonarqube scan integration.	|Optional			|
+|opt-in-dynamic-scan		|tool integration		|To enable the owasp zap scan.	 |Optional			|
+|opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
+|opt-in-dynamic-api-scan		|tool integration		|To enable the owasp zap API scan. 	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -200,7 +204,8 @@ The following table lists and describes the continuous compliance parameters for
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
-|app-name 		|text 		|The name of your application that is specified in the toolchain settings.			|Required			|
+|app-url 		|text 		|The URL of your application that is deployed on the target. Recommended to use staging application url.			|Required			|
+|repo-url 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
 |artifactory-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |branch		|text		|The Git repo branch.	|Optional			|
 |baseimage-auth-user		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
@@ -219,6 +224,12 @@ The following table lists and describes the continuous compliance parameters for
 |environment-tag     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
 |evidence-repo		|tool integration		|The evidence repo URL.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
+|github-token		|SECRET		|The GitHub repo access token.	|Optional			|
+|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|opt-in-sonar		|tool integration		|The Sonarqube scan integration.	|Optional			|
+|opt-in-dynamic-scan		|tool integration		|To enable the owasp zap scan.	 |Optional			|
+|opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
+|opt-in-dynamic-api-scan		|tool integration		|To enable the owasp zap API scan. 	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
 |inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
