@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-10-13"
+  years: 2021, 2022
+lastupdated: "2022-04-08"
 
 keywords: DevSecOps
 
@@ -151,6 +151,16 @@ You can use the DevSecOps CLI or the Git CLI to run operations on the inventory.
    
    $ revert staging ba3b8e5ed3320e6b4981077e1a1627f08de4f511
    ```
+
+## Common use cases for working with Git repos
+{: #common-use-cases}
+
+For more information about working with Git repos, see these example scenarios:
+
+* [Promoting to target branches](/docs/devsecops?topic=devsecops-cd-devsecops-promote-branches)
+* [Promoting changes from the master branch](/docs/devsecops?topic=devsecops-cd-devsecops-promote-master)
+* [Deploying content to staging again](/docs/devsecops?topic=devsecops-cd-devsecops-redeploy-staging)
+* [Rolling back apps from production](/docs/devsecops?topic=devsecops-cd-devsecops-apps-rollback)
 
 ## Custom scripts
 {: #cd-devsecops-setup-pipeline-scripts-related}
