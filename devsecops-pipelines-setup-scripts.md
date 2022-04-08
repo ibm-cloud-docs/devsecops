@@ -4,7 +4,7 @@ copyright:
   years: 2021, 2022
 lastupdated: "2022-04-08"
 
-keywords: DevSecOps
+keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
 
@@ -34,17 +34,17 @@ You can use the DevSecOps CLI or the Git CLI to run operations on the inventory.
 
 1. Create a promotion pull request from the master branch to the target staging branch.
 
- ```bash
- cocoa inventory promote \
-   --source="master" \
-   --target="staging" \
-   --priority="moderate" \
-   --assigned-to="assignee@ibm.com" \
-   --description="Change description" \
-   --purpose="Change purpose" \
-   --impact="Change impact" \
-   --backout-plan="Details on backout and rollback")
-   ```
+   ```bash
+   cocoa inventory promote \
+     --source="master" \
+     --target="staging" \
+     --priority="moderate" \
+     --assigned-to="assignee@ibm.com" \
+     --description="Change description" \
+     --purpose="Change purpose" \
+     --impact="Change impact" \
+     --backout-plan="Details on backout and rollback")
+     ```
 
 1. Conclude a deployment by moving the `target_latest` tag to the same commit as the `pipeline-run-id` tag:
 
