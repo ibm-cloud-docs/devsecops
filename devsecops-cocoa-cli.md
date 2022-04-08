@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-22"
+lastupdated: "2022-04-08"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -160,6 +160,7 @@ Running the command:
 $ cocoa check pull-request-status
 ```
 {: codeblock}
+
 ### cocoa change-request commands
 {: #change-request-commands}
 
@@ -172,16 +173,16 @@ You can specify the provider using the `--provider` option with the following va
 
 Each provider requires different environment variable configuration:
 - `servicenow`:
-  - `SERVICENOW_TOKEN` - ServiceNow V1 API Token
-  - `SERVICENOW_URL` - ServiceNow V1 API URL
+   - `SERVICENOW_TOKEN` - ServiceNow V1 API Token
+   - `SERVICENOW_URL` - ServiceNow V1 API URL
 - `servicenow-v3`:
-  - `IAM_ACCESS_TOKEN` - IBMCloud IAM OAuth Token
-  - `SERVICENOW_URL` - ServiceNow V3 API URL
+   - `IAM_ACCESS_TOKEN` - IBMCloud IAM OAuth Token
+   - `SERVICENOW_URL` - ServiceNow V3 API URL
 - `gitlab`:
-  - `GITLAB_TOKEN` - Gitlab API Token
-  - `GITLAB_URL` - Gitlab API URL
-  - `GITLAB_ORG` - Owner organization of the change management repository
-  - `GITLAB_REPO` - Name of the change management repository
+   - `GITLAB_TOKEN` - Gitlab API Token
+   - `GITLAB_URL` - Gitlab API URL
+   - `GITLAB_ORG` - Owner organization of the change management repository
+   - `GITLAB_REPO` - Name of the change management repository
 
 If you are using `gitlab` you can use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API url instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
 
@@ -919,6 +920,7 @@ $ cat data.txt | cocoa change-request attachment update --change-request-id='CHG
 
 $ cocoa change-request attachment update --change-request-id='CHGXXXXXXX' --change-attachment-id='CTASKXXXXXXX' --data='@<path/to/file>'
 ```
+
 ### cocoa evidence create
 {: #evidence-create}
 
@@ -1965,18 +1967,18 @@ Some optional flags can be specified as well:
 - `--issue`: list of issue URLs which can be used to track activities related to the findings. The flag can be passed multiple times.
 - `--scope`: a unique identifier that can be used to correlate evidence from multiple sources.
 - `--comment-on-issues`: add a comment with details about the created evidence to the incident issues provided via `--issue` flag
-  - since the issues can be either on `gitlab` or `github`, the provider will be parsed from the issue urls
-  - every issue must be from the same repository
-  - the issue urls must match one of the following patterns:
-    - `https://<host>/<owner>/<name>/issues/<issue number>` - for `github`
-    - `https://<host>/<owner>/<name>/-/issues/<issue number>` - for `gitlab`
-  - Required environment variables to access the issues repository:
-    - if the urls point to `github` issues:
-      - `GH_URL`: optional, defaults to `https://github.ibm.com/api/v3`
-      - `GHE_TOKEN`
-    - if the urls point to `gitlab` issues:
-      - `GITLAB_URL`: required, Base URL of the Gitlab API
-      - `GITLAB_TOKEN`
+   - since the issues can be either on `gitlab` or `github`, the provider will be parsed from the issue urls
+   - every issue must be from the same repository
+   - the issue urls must match one of the following patterns:
+     - `https://<host>/<owner>/<name>/issues/<issue number>` - for `github`
+     - `https://<host>/<owner>/<name>/-/issues/<issue number>` - for `gitlab`
+   - Required environment variables to access the issues repository:
+     - if the urls point to `github` issues:
+       - `GH_URL`: optional, defaults to `https://github.ibm.com/api/v3`
+       - `GHE_TOKEN`
+     - if the urls point to `gitlab` issues:
+       - `GITLAB_URL`: required, Base URL of the Gitlab API
+       - `GITLAB_TOKEN`
 
 Some environment variables are automatically picked up to add details about the asset origin:
 
@@ -2067,7 +2069,7 @@ Optional flags:
 - `--latest-only`: Discards evidence if newer is available for a given asset (`true` by default, set to `false` to disable this behavior)
 - `--scope`: Only consider evidence that has the specified scope (see `evidence add --scope`), can be specified multiple times
 - `--check-immutable-storage`: Checks if every evidence is also present in a Cloud Object Storage bucket and is protected by a retention period of at least 365 days. Appends `com.ibm.immutable_storage` evidence to the summary.
-  - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
+   - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
 - `--dry-run`: Has effect combined with `--check-immutable-storage`. If used, `com.ibm.immutable_storage` evidence is only appended to the summary but it does not get uploaded to the evidence locker.
 
 Run the command:
@@ -2190,6 +2192,7 @@ $ cocoa tekton get-pipeline-logs \
   --use-task-ref
 ```
 {: codeblock}
+
 ### cocoa changelog
 {: #changelog}
 
