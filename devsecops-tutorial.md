@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-03-24"
+lastupdated: "2022-04-07"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -39,6 +39,7 @@ Use this tutorial to learn how to master DevSecOps best practices by using a com
 
 ## Overview
 {: #devsecops-tutorial-overview}
+
 Refer to the following documentation to get more information about DevSecOps and its implementation in IBM Cloud Continuous Delivery Service. 
 1. [What is DevSecOps](https://www.ibm.com/cloud/learn/devsecops)
 1. [DevSecOps architecture](/docs/devsecops?topic=devsecops-cd-devsecops-arch)
@@ -53,8 +54,8 @@ Let's now get started with the creation and exploration of the CI and CD templat
 To set up the prerequisites for your toolchains, follow these steps:
 
 1. Set up an [{{site.data.keyword.cloud_notm}} account](/registration){: external}. Depending on your {{site.data.keyword.cloud_notm}} account type, access to certain resources might be limited. Depending on your account plan limits, certain capabilities that are required by some DevSecOps toolchains might not be available. For more information, see [Setting up your {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-account-getting-started) and [Upgrading your account](/docs/account?topic=account-upgrading-account).
-1. Store all of the secrets in a secrets management vault and manage them centrally from a single location. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can help you to choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one.
-1. Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. Be sure to select the **Free** pricing plan. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
+1. Ensure that all of the secret values you need are stored in a secrets management vault. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can help you to choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one.
+1. Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. While you are evaluating the service, you can use the **Free** pricing plan. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
 1. Create an [{{site.data.keyword.registrylong}} namespace](https://cloud.ibm.com/registry/namespaces){: external}. {{site.data.keyword.registrylong_notm}} provides a multi-tenant private image registry that you can use to store and share your container images with users in your {{site.data.keyword.cloud_notm}} account. Select the location for your namespace, and click **Create**. [Learn more.](/docs/Registry?topic=Registry-getting-started)
 1. **Optional.** Create an [image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with the proper encoding to sign your application docker images.
 1. **Optional.** Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Save the API key value by either copying, downloading it or adding it to your vault. Alternatively, you can create the API key during the template guided setup process.
@@ -68,17 +69,21 @@ If you want to automatically set up the DevSecOps infrastructure for your toolch
 
 ## Continuous Integration (CI) toolchain introduction
 {: #devsecops-ci-toolchain-intro}
+
 The CI toolchain implements the following best practices:
 
 * Runs a static code scanner on the application repositories to detect secrets in the application source code and vulnerable packages that are used as application dependencies
 * Builds a container image on every Git commit, setting a tag based on build number, timestamp, and commit ID for traceability
-* Test the Dockerfile before you create the image
-* Use a private image registry to store the built image, automatically configure access permissions for target cluster deployment by using API tokens that can be revoked
-* Scan the container image for security vulnerabilities
-* Add a Docker signature upon successful completion
-* Insert the built image tag into the deployment manifest automatically
-* Use an explicit namespace in cluster to insulate each deployment (and make it easy to clear, by "kubectl delete namespace")
-* The target cluster is configured during toolchain setup (by using an {{site.data.keyword.cloud_notm}} API key and cluster name). You can later change these settings by altering the Delivery Pipeline configuration. Any code merged to the target Git repository branch is automatically built, validated, and deployed into the Kubernetes cluster.
+* Tests the Dockerfile before the image is created
+* Stores the built image in a private image registry
+* Automatically configures access permissions for target cluster deployment by using API tokens that can be revoked
+* Scans the container image for security vulnerabilities
+* Adds a Docker signature upon successful completion
+* Inserts the built image tag into the deployment manifest automatically
+* Uses an explicit namespace, in cluster, to insulate each deployment (and make it easy to clear, by "kubectl delete namespace")
+* Automatically builds, validates, and deploys to the Kubernetes cluster any code merged into the target Git repository branch.
+
+The target cluster is configured during toolchain setup (by using an {{site.data.keyword.cloud_notm}} API key and cluster name). You can later change these settings by altering the Delivery Pipeline configuration.
 
 ![DevSecOps Continuous Integration toolchain](images/devsecops-ci-toolchain-diagram.png){: caption="DevSecOps Continuous Integration toolchain" caption-side="bottom"}
 
@@ -86,7 +91,7 @@ The CI toolchain implements the following best practices:
 ## Guided setup overview for the CI toolchain
 {: #devsecops-ci-toolchain-guided-setup}
 
-Any of the methods in this tutorial takes you to the guided setup experience. You are guided through the toolchain setup process in a logical order, and you are presented with the recommended configuration options that are needed to create your toolchain.
+The Continuous Delivery service provides templates that guide you through the toolchain setup process in a logical order, presenting you with the recommended configuration options needed to create your toolchain.
 
 A progress indicator shows the steps to complete the configuration. You can use the progress indicator to navigate to a previous step with a mouse click. The configuration options for the current step are displayed in the main area of the page.
 
@@ -94,9 +99,9 @@ A progress indicator shows the steps to complete the configuration. You can use 
 
 To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
 
-Some steps include an **Advanced Options** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Advanced Options** toggle to reveal all options for the underlying integration.
+Some steps include a **Switch to advanced configuration** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal all options for the underlying integration.
 
-![DevSecOps Advanced options toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced options toggle" caption-side="bottom"}
+![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced configuration toggle" caption-side="bottom"}
 
 After all the steps are successfully completed, you create the toolchain by clicking **Create** on the Summary step.
 
@@ -107,27 +112,29 @@ You can always go back to previous steps in the guided installer. The toolchain 
 {: #devsecops-ci-toolchain-create-options}
 {: step}
 
-Start the CI toolchain configuration by using one of the following options:
+Use one of the following options to access the template for the CI toolchain:
 
 * Click the following **Create toolchain** button.
 
    [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-ci-toolchain&env_id=ibm:yp:us-south){: external}
 
-* From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/), click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI-Develop with DevSecOps practices**.
+* From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/), click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI - Develop a secure app with DevSecOps practices**.
 
 ## Set up the CI toolchain name and region
 {: #devsecops-ci-toolchain-name-region}
 {: step}
 
+The **Welcome** page you are taken to provides a summary of the purpose of the toolchain that will be created, along with pointers to documentation and related materials. When you are ready to proceed, click the **Start** button at the bottom of this page to begin configuring the toolchain.
+
 Review the default information for the toolchain settings:
 1. The toolchain's name identifies it in {{site.data.keyword.cloud_notm}}. Make sure that the toolchain's name is unique within your toolchains for the same region and resource group in {{site.data.keyword.cloud_notm}}.
-1. The toolchain region can differ from cluster and registry region.
+1. The toolchain region is the region where the toolchain itself and related resources (git repos, pipelines, etc.) will be created. Toolchains can deploy to any region, regardless of where they are created.
 
 ## Set up CI tool integrations
 {: #devsecops-ci-tool-integrations}
 {: step}
 
-Multiple repositories must be configured during the guided setup, as described in the next sections.
+Multiple repositories must be configured during the guided setup, as described in the following sections.
 
 For each repository, you can either clone the repository that is provided as a sample, or you can provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own. The toolchain supports linking only to existing GRIT repositories.
 {: note}
@@ -138,9 +145,9 @@ For each repository, you can either clone the repository that is provided as a s
 The application source code repository, can be hosted either on GitHub or the IBM-hosted Git Repos and Issue Tracking (GRIT) repository from the list of source providers. For consistency, this tutorial refers to GRIT.
 {: note}
 
-The recommended options are displayed by default, but you can click the **Advanced Options** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application as IBM-hosted GRIT Repository.
+The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application into an IBM-hosted GRIT Repository.
 
-Enter the name of the IBM-hosted GRIT repository that will be created by the toolchain as your application repository.
+Enter a name for the IBM-hosted GRIT repository that will be created by the toolchain as your application repository.
 
 The region of the repository remains the same as the region of the toolchain.
 
@@ -159,9 +166,9 @@ The issues repository records issues that are found while the CI pipeline is run
 ### Secrets
 {: #devsecops-ci-tool-integration-secrets}
 
-Specify which secret vault integrations are added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud).
+Specify the secret vault integrations to be added to your toolchain using the provided toggles, as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud).
 
-This tutorial uses IBM Secrets Manager as the vault for secrets: Region, Resource group and Service name fields are automatically populated. Select the appropriate values.
+This tutorial uses IBM Secrets Manager as the vault for secrets. The Region, Resource group and Service name fields are automatically populated based on available choices. Click the drop down indicators to see the other possible choices.
 
 If you plan to use IBM Key Protect or HashiCorp vault for managing your secrets, see the [IBM Key Protect section of the CI setup guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance#cd-devsecops-key-protect-ci).
 
@@ -220,8 +227,8 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 [IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain. View your pipeline test results for every build, from every deployment and environment. 
 
 You do not need to provide any configuration steps for DevOps Insights (DOI), select a DOI instance for your toolchain:
-  * current (to be created) CI toolchain
-  * another toolchain instance: select an existing toolchain (that has a DOI instance)
+   * current (to be created) CI toolchain
+   * another toolchain instance: select an existing toolchain (that has a DOI instance)
 
 ### SonarQube
 {: #devsecops-ci-tool-integration-sonarqube}
@@ -242,12 +249,12 @@ Link an existing SonarQube instance with the toolchain.
 {: #devsecops-ci-tool-integration-optional-slack}
 
 Configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your PR/CI Pipeline events.
-  * [Slack webhook](https://api.slack.com/incoming-webhooks)
+   * [Slack webhook](https://api.slack.com/incoming-webhooks)
    * Preferred: An existing webhook can be imported from a secrets vault by clicking the key icon.
    * An existing webhook can be copy and pasted.
-  * Slack channel: an existing Slack channel to post message to
-  * Slack team name: the phrase before *.slack.com* in our team URL. For example, if your team URL https://team.slack.com, the team name is *team*.
-  * Automated Slack Notifications: Customize your selection by choosing the events for which you want to receive notifications.
+   * Slack channel: an existing Slack channel to post message to
+   * Slack team name: the phrase before *.slack.com* in our team URL. For example, if your team URL https://team.slack.com, the team name is *team*.
+   * Automated Slack Notifications: Customize your selection by choosing the events for which you want to receive notifications.
 
 You can add the Slack Tool after toolchain creation.
 {: note}
@@ -381,9 +388,9 @@ A progress indicator shows the steps to complete the configuration. You can use 
 
 To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
 
-Some steps include an **Advanced Options** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Advanced Options** toggle to reveal all options for the underlying integration.
+Some steps include a **Switch to advanced configuration** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal all options for the underlying integration.
 
-![DevSecOps Advanced options toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced options toggle" caption-side="bottom"}
+![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced configuration toggle" caption-side="bottom"}
 
 After all the steps are successfully completed, you create the toolchain by clicking **Create** on the Summary step.
 
@@ -451,7 +458,7 @@ The toolchain currently supports linking only to existing IBM-hosted Git Repos a
 
 The Pipeline configuration repository contains YAML files and scripts that are needed for deployment, testing, and other custom tasks.
 
-If you do not have a configuration repository, enable the Advanced options toggle, and select the Clone repository type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization.
+If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization.
 
 For more information about Git Repos, see the CD toolchain setup [documentation](docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-tekton-cd-compliance). For more information about customizable scripts, see the custom script [documentation](docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-custom-scripts).
 
@@ -547,12 +554,12 @@ The CD toolchain can publish the deployment records to an existing DevOps Insigh
 {: #devsecops-cd-tool-integration-slack}
 
 Configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your PR/CI Pipeline events.
-  * [Slack webhook](https://api.slack.com/incoming-webhooks)
+   * [Slack webhook](https://api.slack.com/incoming-webhooks)
    * Preferred: An existing webhook can be imported from a secrets vault by clicking the key icon.
    * An existing webhook can be copy and pasted.
-  * Slack channel: an existing Slack channel to post message to
-  * Slack team name: the phrase before *.slack.com* in our team URL. For example, if your team URL https://team.slack.com, the team name is *team*.
-  * Automated Slack Notifications: Customize your selection by choosing the events for which you want to receive notifications.
+   * Slack channel: an existing Slack channel to post message to
+   * Slack team name: the phrase before *.slack.com* in our team URL. For example, if your team URL https://team.slack.com, the team name is *team*.
+   * Automated Slack Notifications: Customize your selection by choosing the events for which you want to receive notifications.
 
 You can add the Slack Tool after toolchain creation.
 {: note}
