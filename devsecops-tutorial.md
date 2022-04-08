@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-04-07"
+lastupdated: "2022-04-08"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -189,6 +189,9 @@ To use this feature, you must have a Cloud {{site.data.keyword.cos_short}} insta
 * Enter the Service ID API key
    * Preferred: An existing key can be imported from a secrets vault by clicking the key icon.
    * An existing key can be copy and pasted.
+
+The endpoint field is optional. It is recommended to select/provide the endpoint during the setup of the toolchain or during the pipeline run.
+{: note}
 
 ### Deploy
 {: #devsecops-ci-tool-integration-deploy}
@@ -497,6 +500,9 @@ To use this feature, you must have a Cloud {{site.data.keyword.cos_short}} insta
 * Enter the Service ID API key
    * Preferred: An existing key can be imported from a secrets vault by clicking the key icon.
    * An existing key can be copy and pasted.
+
+The endpoint field is optional. It is recommended to select/provide the endpoint during the setup of the toolchain or during the pipeline run.
+{: note}
 
 ### Deployment target
 {: #devsecops-cd-tool-integration-deploy}

@@ -177,6 +177,9 @@ The following details of the bucket in your resource group and region are fetche
 
 You need to enter the Service API key to write to Cloud Object Storage instance.
 
+The endpoint field is optional. It is recommended to select/provide the endpoint during the setup of the toolchain or during the pipeline run.
+{: note}
+
 ![DevSecOps Cloud Object Storage configuration](images/devsecops-cc-toolchain-setup-COS.png){: caption="DevSecOps COS configuration" caption-side="bottom"}
 
 ### DevOps Insights
