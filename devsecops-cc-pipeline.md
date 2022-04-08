@@ -29,7 +29,7 @@ subcollection: devsecops
 The continuous compliance pipeline (CC pipeline) periodically scans the deployed artifacts and their source repositories.
 {: shortdesc}
 
-The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) repo by using the `environment-tag` value to determine which is the latest deployed state to look at. After scanning and running checks on artifacts and source repositories, the pipeline creates new or updates the existing incident issues in the incident repository. Finally, using these issues and the results, the pipeline collects evidence and summarizes the evidence, so the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} can update the compliance status of the found artifacts.
+The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) repo by using the `environment-tag` value to determine which is the latest deployed state to look at. After scanning and running checks on artifacts and source repositories, the pipeline creates a new incident issue or updates the existing incident issues in the incident repository. Finally, using these issues and the results, the pipeline collects evidence and summarizes the evidence, so the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} can update the compliance status of the found artifacts.
 
 ## Stages and tasks
 {: #devsecops-cc-pipeline-stages}
@@ -64,7 +64,7 @@ The inventory entries contain deployed artifacts and repository sources. The pip
 * [save_repo](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo)
 * [save_artifact](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact)
 
-The start stage also clones the repositories found, each repo, and commit pair. So, for example, "repo1" with commit "sha1" are cloned in a folder, but the pipeline clones the same "repo1" with commit "sha2" in a separate folder.
+The start stage also clones the repositories found, each repo, and each commit pair. So, for example, "repo1" with commit "sha1" are cloned in a folder, but the pipeline clones the same "repo1" with commit "sha2" in a separate folder.
 
 The pipeline registers artifacts and repositories for the pipeline run by using a simple naming notation and incrementing index, such as the following examples:
 * `repo-1`, `repo-2`, `repo-3`
@@ -78,7 +78,7 @@ You can list these entries in the custom stages by using the following `pipeline
 ## Setup stage
 {: #devsecops-cc-pipeline-setup}
 
-The setup stage in the CC pipeline is running the script that is located in the `setup` stage that is defined by your `.pipeline-config.yaml`. You can determine which pipeline that the script is running in by using the following command:
+The setup stage in the CC pipeline runs the script that is located in the `setup` stage that is defined by your `.pipeline-config.yaml`. You can determine which pipeline that the script is running in by using the following command:
 
 ```text
 get_env pipeline_namespace
@@ -104,6 +104,8 @@ You can use any of the following methods to add static code to your pipeline:
 The Dynamic scan stage runs a dynamic application security testing tool to find vulnerabilities in the deployed application.
 
 * Add your own dynamic scan code to the dynamic-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
+
+To learn more about configuring dynamic scan using OWASP-ZAP, see [Configuring ZAP scan for CC pipeline](/docs/devsecops?topic=devsecops-zap-scans#zap-scan-for-cc).
 
 ## Scans and checks in compliance checks
 {: #devsecops-cc-pipeline-compliance-checks}
