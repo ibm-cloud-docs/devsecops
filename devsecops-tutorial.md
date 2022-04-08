@@ -172,7 +172,6 @@ This tutorial uses IBM Secrets Manager as the vault for secrets. The Region, Res
 
 If you plan to use IBM Key Protect or HashiCorp vault for managing your secrets, see the [IBM Key Protect section of the CI setup guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance#cd-devsecops-key-protect-ci).
 
-
 ### Evidence Storage
 {: #devsecops-ci-tool-integration-evidence-storage}
 
@@ -226,7 +225,7 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 
 [IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain. View your pipeline test results for every build, from every deployment and environment. 
 
-You do not need to provide any configuration steps for DevOps Insights (DOI), select a DOI instance for your toolchain:
+You do not need to provide any configuration steps for DevOps Insights (DOI). Select a DOI instance for your toolchain:
 
 * current (to be created) CI toolchain
 * another toolchain instance: select an existing toolchain (that has a DOI instance)
