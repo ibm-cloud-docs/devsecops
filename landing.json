@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-03-28",
+    "lastupdated": "2022-04-01",
     "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
@@ -41,5 +41,14 @@
       "architecture": "https://www.ibm.com/cloud/architecture",
       "training": "https://www.ibm.com/training/cloud",
       "community": "https://community.ibm.com/community/user/publiccloud/home"
-    }
-}
+    },
+    "section_updates": {
+      "view_more": "/docs/devsecops?topic=devsecops-release-notes",
+      "tiles": [
+        {
+          "date": "24 March 2022",
+          "title": "Release notes for DevSecOps",
+          "description": "Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps."
+        }
+      ]
+}}
