@@ -57,9 +57,9 @@ You can set and customize the following parameters to configure zap scans to run
 ## Configuring ZAP API scans
 {: #zap-api-scans}
 
-Inside your application repository, you must have at least one API definition file present, in `json` format. This API definition file needs to be a valid `swagger` or `openapi` definition. These files can be present at any location inside the application repository, for example, inside a `definitions` directory. For clarity, these files are referred to as follows: `definitions1.json` , `definitions2.json`, and so on.
+Inside your application repository, you must have at least one API definition file present, in `json` format. This API definition file needs to be a valid `swagger` or `openapi` definition. These files can be present at any location inside the application repository, for example, inside a `definitions` directory. For clarity, these files are referred to as follows: `definitions1.json`, `definitions2.json`, and so on.
 
-There are additional parameters required for configuring ZAP API scans. These parameters can be set by adding the following lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`.
+More parameters are required for configuring ZAP API scans. These parameters can be set by adding the following lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`.
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -97,7 +97,7 @@ Set the values for the corresponding parameters by adding these lines to the `tr
 Set the `zap-ui-scan` parameter to `true` for ZAP UI scan to run.
 {: note}
 
-Parameters required for configuring ZAP UI scans are as follows.
+Parameters that are required for configuring ZAP UI scans are as follows.
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -110,7 +110,7 @@ Parameters required for configuring ZAP UI scans are as follows.
 |`zap-ui-image`|String|Set this to use a custom ZAP UI Scanner image. Otherwise, the IBM default is used.|Optional|
 |`zap-proxy-image`|String|Set this to use a custom ZAP Proxy image. Otherwise, the IBM default is used.|Optional|
 
-Create a folder `uiscripts` inside the `scripts/zap` directory inside your application repository. and set this folder path against `zap-ui-script-directory` in the `trigger_zap_scans` file. This folder can be created anywhere else too, accordingly the path should be adjusted for `zap-ui-script-directory`.
+Create a folder `uiscripts` inside the `scripts/zap` directory inside your application repository. and set this folder path against `zap-ui-script-directory` in the `trigger_zap_scans` file. This folder can be created anywhere else, too. Accordingly the path should be adjusted for `zap-ui-script-directory`.
 
 Create a file `run.sh` inside the `uiscripts` directory. This is the file that drives the UI tests. We can configure Protractor-based tests or any other suitable framework.
 
@@ -118,7 +118,7 @@ Create a file `export.sh` inside the `uiscripts` directory. This file holds all 
 
 To hold any configuration information for the test framework, create a folder `conf` inside the `uiscripts` directory to house configuration information for the test framework.
 
-For a reference implementation using Protractor as the test framework, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
+For a reference implementation that uses Protractor as the test framework, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
 
 ## Managing ZAP Scan results 
 {: #zap-scan-results}
@@ -140,7 +140,7 @@ if [ -n "$(get_env opt-in-dynamic-ui-scan "")" ]; then
     source "${COMMONS_PATH}"/owasp-zap/run_scan.sh
 fi
 ```
-The `COMMONS_PATH` refers to a location which holds the build scripts and run scripts for various tools that are a part of the devsecops pipeline. For more information, see [Common scripts](/docs/devsecops?topic=devsecops-common-common-scripts).
+The `COMMONS_PATH` refers to a location that holds the build scripts and run scripts for various tools that are a part of the DevSecOps pipeline. For more information, see [Common scripts](/docs/devsecops?topic=devsecops-common-common-scripts).
 
 We can compute the success or failure of the zap scan by setting a proper exit code based on whether the API scan or the UI scan had run, and if run, if any vulnerabilities were found and reported. This can be checked by tapping into the variables `api-scan-result` and `ui-scan-result`.
 
@@ -162,7 +162,7 @@ A sample implementation can be found in the `trigger_zap_scans` file inside the 
 ## Configuring ZAP scan for CC pipeline 
 {: #zap-scan-for-cc}
 
-These are the additional parameters required to run ZAP scans inside the [CC pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-dynamic-scan).
+These are the additional parameters that are required to run ZAP scans inside the [CC pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-dynamic-scan).
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
