@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-26"
+lastupdated: "2022-04-08"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -28,7 +28,7 @@ In this document, you can find answers to the following questions regarding chan
 * What is deployment readiness?
 * What data is included in a change request?
 * How can I use an existing change request ID in the CD pipeline?
-* what is the change management command order?
+* What is the change management command order?
 
 ## Connection between evidence, inventory, and change management
 {: #connection-evidence-inventory-change}
