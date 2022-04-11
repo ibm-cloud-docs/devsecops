@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-04-08"
+lastupdated: "2022-04-11"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -238,12 +238,14 @@ You do not need to provide any configuration steps for DevOps Insights (DOI). Se
 
 SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. The static code analyzers detect tricky bugs, such as null-pointer dereferences, logic errors, and resource leaks for multiple programming languages.
 
-* **Default Configuration**
-Run a SonarQube scan in an isolated Docker-in-Docker container without persisting the SonarQube instance.
-* **Cluster Configuration**
-A new SonarQube instance will be provisioned in the Kubernetes cluster (chosen at the Deploy step) during the first CI pipeline run.
-* **Custom Configuration**
-Link an existing SonarQube instance with the toolchain.
+Default Configuration
+:   Run a SonarQube scan in an isolated Docker-in-Docker container without persisting the SonarQube instance.
+
+Cluster Configuration
+:   A new SonarQube instance will be provisioned in the Kubernetes cluster (chosen at the Deploy step) during the first CI pipeline run.
+
+Custom Configuration
+:   Link an existing SonarQube instance with the toolchain.
 
 ### Optional tools
 {: #devsecops-ci-tool-integration-optional-tools}
