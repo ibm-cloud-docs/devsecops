@@ -4,7 +4,7 @@ copyright:
   years: 2022
 lastupdated: "2022-04-13"
 
-keywords: DevSecOps, images, IBM Cloud
+keywords: DevSecOps, images, IBM Cloud, OWASP ZAP
 
 subcollection: devsecops
 
