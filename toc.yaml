@@ -27,7 +27,7 @@ toc:
       - topicgroup:
           label: DevSecOps practices
           topics:
-          - devsecops-change-mgmt.md
+          - devsecops-change-management.md
           - devsecops-peer-review.md
           - devsecops-cos-bucket-evidence.md
       - devsecops-release-notes.md
@@ -52,10 +52,12 @@ toc:
       - devsecops-stage-results.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
+      - devsecops-push-pull-based-deployment.md
       - devsecops-how-to-generate-cyclonedx-sbom.md
       - topicgroup:
           label: Working with incident issues
-          topics:
+          topics: 
+          - devsecops-due-date-reference.md
           - devsecops-how-to-configure-grace-period.md
           - devsecops-how-to-modify-due-date.md
           - devsecops-how-to-set-incident-labels.md
@@ -72,6 +74,7 @@ toc:
           label: Change management
           topics:
           - devsecops-automate-changemgmt.md
+          - devsecops-change-mgmt-data.md
           - devsecops-approve-cr.md
       - devsecops-webhook-payloads.md
       - devsecops-toolchains-secrets.md
