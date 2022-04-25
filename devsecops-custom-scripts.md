@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-29"
+lastupdated: "2022-04-25"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -10,19 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:deprecated: .deprecated}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Custom scripts
 {: #custom-scripts}
@@ -37,13 +25,13 @@ Custom scripts control the pipeline stages. You can use a configuration file (`p
 
 Stages in pull request, continuous integration, and continuous delivery pipelines run custom scripts.
 
-* **Pull request pipeline stages**: setup, test. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
+* **Pull request pipeline stages**: `setup`, `test`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
-* **Continuous integration pipeline stages**: setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan artifact, release. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
+* **Continuous integration pipeline stages**: `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, and `release`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-* **Continuous delivery pipeline stages**: setup, deploy, acceptance-test. For more information, see [Continuous delivery pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+* **Continuous delivery pipeline stages**: `setup`, `deploy`, and `acceptance-test`. For more information, see [Continuous delivery pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
-* **Continuous compliance pipeline stages**: setup, static-scan, dynamic-scan, scan-artifact. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
+* **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, and `scan-artifact`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
@@ -85,7 +73,7 @@ These settings are not pipeline parameters, they must be part of your `.pipeline
 
 * `image`: You can use any Docker image that is accessible by the pipeline worker as a base image for the task.
 
-* `script`: The script to run in the stage. Because this field is used as a script file make sure that the contents act like a script file in the base image that you provided. You can include other scripts next to this configuration file, and refer to them from this entry point. For example:
+* `script`: The script to run in the stage. Because this field is used as a script file, ensure that the contents act like a script file in the base image that you provided. You can include other scripts next to this configuration file, and refer to them from this entry point. For example:
 
 ```bash
 test:
@@ -106,7 +94,7 @@ test:
 * `configmap`: Pull key-value pairs from a provided configmap that is accessible by `PipelineRun`. The following values are supported:
 
     * `config-name`: The direct configmap name syntax. The stage runner tries to access and mount the configmap named `config-name`.
-    * `$prop-name`: The indirect configmap name syntax. The configmap name is looked up from the environment-properties configmap, which contains every environment value that is set on the pipeline UI. For example, if there's a prop: my-config entry in the environment properties, then my-config is going to be used for $prop
+    * `$prop-name`: The indirect configmap name syntax. The configmap name is looked up from the environment-properties configmap, which contains every environment value that is set on the pipeline UI. For example, if there is a prop: `my-config` entry in the environment properties, then `my-config` is used for `$prop`.
 
 * `secret`: Pull key-value pairs from a provided configmap that is accessible by `PipelineRun`. The following values are supported:
 
@@ -187,7 +175,7 @@ acceptance-test:
     ...
 ```
 
-To view the `.pipeline-config.yaml` configuration file that is used by default for the example app in the reference pipeline template, see the [configuration for pull requests and continuous integration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml"){: external} and the [configuration for continuous delivery](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment/-/blob/master/.pipeline-config.yaml"){: external}.
+To view the `.pipeline-config.yaml` configuration file that is used by default for the example app in the reference pipeline template, see [configuration for pull requests and continuous integration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml"){: external} and [configuration for continuous delivery](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment/-/blob/master/.pipeline-config.yaml"){: external}.
 
 ## Secrets, parameters, and properties
 {: #cd-devsecops-scripts-secrets}
@@ -249,7 +237,7 @@ kubectl create secret docker-registry regcred \
 
 In addition to the pipeline environment variables and secrets, these parameter values are provided for user script stages.
 
-You can access repos, artifacts, files, and env variables by using the `pipelinectl` command in the user scripts. Use the following methods: `list_repos`, `load_repo`, `load_artifact`, `list_artifacts`, and `get_env`.
+You can access repos, artifacts, files, and environment variables by using the `pipelinectl` command in the user scripts. Use the following methods: `list_repos`, `load_repo`, `load_artifact`, `list_artifacts`, and `get_env`.
 
 #### `pipelinectl`
 {: #cd-devsecops-scripts-pipelinectl}
@@ -368,6 +356,7 @@ The following tasks and stages are available:
 |**Continuous integration pipeline stages**| setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan-artifact, release, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default. |
 |**Continuous delivery pipeline stages**| setup, deploy, acceptance-test, create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request. The create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request stages are not custom stages. They are provided by the pipelines by default.|
 |**Continuous compliance pipeline stages**| setup, test, static-scan, scan-artifact, acceptance-test, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default.|
+{: caption="Table 1. Tasks and stages" caption-side="bottom"}
 
 #### Example usage
 {: #devsecops-scripts-resultsapi-example}

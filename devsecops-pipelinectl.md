@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-22"
+lastupdated: "2022-04-25"
 
 keywords: DevSecOps, pipelinectl
 
@@ -10,19 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:deprecated: .deprecated}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # pipelinectl
 {: #devsecops-pipelinectl}
@@ -68,7 +56,7 @@ set_env <key> <value>
 ```
 {: codeblock}
 
-If the `<value>` argument is missing, it will read it from the standard input.
+If the `<value>` argument is missing, `set_env` reads it from the standard input.
 Saves an arbitrary string that can be retrieved later on with [`get_env`](#get_env).
 
 Example:
@@ -97,7 +85,7 @@ Print the stored configuration value (in this order):
 * If `set_env` was used previously with `key`, it retrieves that value
 * It tries to read the file `$CONFIG_DIR/$key` (`CONFIG_DIR` defaults to `/config`)
 * It prints the specified default value (if there's any)
-* It prints an error message, and returns a non-zero exit code
+* It prints an error message, and returns a nonzero exit code
 
 Example:
 
@@ -159,10 +147,10 @@ Registers a new repository with the pipeline or updates an existing one.
 
 Supported properties:
 
-- `url`: The URL which can be used to clone the repository.
+- `url`: The URL that can be used to clone the repository.
 - `path`: Location of the cloned repository relative to the workspace root.
 
-Other property names can be used as well, but in order to avoid naming collisions, they should be prefixed with a service-specific identifier, for example instead of using `foo`, `my-service.foo` should be used.
+Other property names can be used as well, but to avoid naming collisions, they must be prefixed with a service-specific identifier, for example instead of using `foo`, `my-service.foo` should be used.
 
 Example:
 
@@ -180,9 +168,10 @@ save_repo app_ui "commit=${REPO_SHA}"
 #### Using stdin as a value source
 {: #stdin-value-source}
 
-Values can be provided from stdin, if the following are true:
-- the content is streamed for the command,
-- there is one property without a value and `=`
+Values can be provided from stdin, if the following conditions are true:
+
+- The content is streamed for the command
+- One property does not have a value and `=`
 
 Example:
 
@@ -195,10 +184,10 @@ command_with_large_output | save_repo app_ui "issues" "result=success" "commit=$
 ```
 {: codeblock}
 
-If multiple values are missing with `=` the command will exit with an error, since it cannot determine,
+If multiple values are missing with `=` the command exits with an error, since it cannot determine,
 which property should belong to the value on stdin.
 
-Properties without value but still appending `=` will have an empty string as a value.
+Properties without a value but still appending `=` have an empty string as a value.
 
 ```bash
 save_repo app_ui "bar="
@@ -236,7 +225,7 @@ load_repo <key> <prop>
 ```
 {: codeblock}
 
-Prints the given `<prop>` of repository `<key>` to `stdout`.
+Prints the `<prop>` of repository `<key>` to `stdout`.
 
 Example:
 
@@ -262,8 +251,8 @@ done < <(list_repos)
 Outputs the following lines to the console:
 
 ```text
-$ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
-$ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
+ Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
+ Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
 ```
 {: screen}
 
@@ -277,7 +266,7 @@ save_result  <stage> <path>
 ```
 {: codeblock}
 
-Saves an arbitrary test, scan result file for a given stage. Later this can be retrieved with `load_result`. By default, data is saved with the workspace-relative path as key.
+Saves an arbitrary test, scan result file for a stage. Later this file can be retrieved with `load_result`. By default, data is saved with the workspace-relative path as key.
 
 Using the `PIPELINECTL_USE_PATH_AS_KEY` feature flag, data is saved with the provided path as the key.
 
@@ -314,7 +303,7 @@ list_results <stage>
 ```
 {: codeblock}
 
-Lists the saved file names for a given stage.
+Lists the saved file names for a stage.
 
 Example:
 
@@ -385,7 +374,7 @@ Some suggested properties that you can use:
 - `digest`: A `sha256` digest.
 - `source`: For example, `http://<some-git-url>/blob/<commithash>/<path-to-file>`
 
-On top of these, any properties can be set.
+On top of these properties, any properties can be set.
 
 The `name` property must also contain the tag for the image.
 {: tip}
@@ -410,8 +399,8 @@ save_artifact ui_service "signature=${SIGNATURE}"
 
 Values can be provided from stdin, if the following are true:
 
-- the content is streamed for the command,
-- there is one property without a value and `=`
+- The content is streamed for the command
+- One property does not have a value and `=`
 
 Example:
 
@@ -424,10 +413,9 @@ command_with_large_output | save_artifact ui_service "issues" "result=success" "
 ```
 {: codeblock}
 
-If multiple values are missing with `=` the command will exit with an error, since it cannot determine,
-which property should belong to the value on stdin.
+If multiple values are missing with `=` the command exits with an error, because it cannot determine which property should belong to the value on stdin.
 
-Properties without value but still appending `=` will have an empty string as a value.
+Properties without a value but still appending `=` have an empty string as a value.
 
 ```bash
 save_artifact ui_service "bar="
@@ -466,7 +454,7 @@ load_artifact <key> <prop>
 ```
 {: codeblock}
 
-Prints the given `<prop>` of artifact `<key>` to `stdout`.
+Prints the `<prop>` of artifact `<key>` to `stdout`.
 
 Example:
 
@@ -491,8 +479,8 @@ done < <(list_artifacts)
 Outputs the following lines to the console:
 
 ```text
-$ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
-$ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
+ Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
+ Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
 ```
 {: screen}
 
@@ -510,14 +498,14 @@ Serialize `pipelinectl` data into a transferable JSON file to be used as payload
 
 Example:
 
-The following code will save all the repositories, all the artifacts and <env_variable1>, <env_variable2> into the `foo.json` file:
+The following code saves all the repositories, all the artifacts and <env_variable1>, <env_variable2> into the `foo.json` file:
 
 ```bash
 pipelinectl serialize --all-repos --all-artifacts <env_variable1> <env_variable2> > foo.json
 ```
 {: codeblock}
 
-> this command is not an alias, need `pipelinectl` explicitly
+> This command is not an alias, need `pipelinectl` explicitly
 
 ### deserialize
 {: #deserialize}
@@ -531,12 +519,12 @@ pipelinectl deserialize ./foo.json
 ```
 {: codeblock}
 
-> this command is not an alias, need `pipelinectl` explicitly
+> This command is not an alias, need `pipelinectl` explicitly
 
 ## Low-level methods
 {: #low-level methods}
 
-These methods are only exposed for the sake of completeness, they should be used in only rare occasions.
+These methods are only exposed for the sake of completeness. Use the methods only on rare occasions.
 
 ### put_data
 {: #put_data}
@@ -563,7 +551,7 @@ get_data <key> <prop>
 ```
 {: codeblock}
 
-Prints `prop` of the entry defined by `key`. If `prop` is not provided, it returns all of the `prop`s for the given `key`. Returns a non-zero exit code when `key` has no `prop`.
+Prints `prop` of the entry that is defined by `key`. If `prop` is not provided, it returns all of the `prop`s for the `key`. Returns a nonzero exit code when `key` has no `prop`.
 
 ### save_string (deprecated)
 {: #save_string}
@@ -589,4 +577,4 @@ load_string <key>
 ```
 {: codeblock}
 
-Prints the string stored in `key`.
+Prints the string that is stored in `key`.

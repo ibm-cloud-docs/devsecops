@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-22"
+lastupdated: "2022-04-25"
 
 keywords: DevSecOps
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Using the Stage Results API in custom scripts
 {: #cd-devsecops-stage-results}
@@ -63,7 +52,7 @@ You can use the [Stage Results API](/docs/devsecops?topic=devsecops-custom-scrip
 Outputs the following lines to the console:
 
    ```text
-   $ The result of 'detect-secrets' stage is: 'success'
-   $ The result of 'branch-protection' stage is: 'success'
+    The result of 'detect-secrets' stage is: 'success'
+    The result of 'branch-protection' stage is: 'success'
    ```
    {: screen}

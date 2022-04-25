@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-14"
+lastupdated: "2022-04-25"
 
 keywords: DevSecOps, images, IBM Cloud, OWASP ZAP, Sonarqube
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Images used by DevSecOps pipelines
 {: #devsecops-images}
@@ -39,7 +28,7 @@ The DevSecOps Continuous Integration (CI), Continuous Deployment (CD), and Conti
 
 5. Detect Secrets - Used to detect secrets like passwords or secret keys that are exposed by the application source code.
 
-6. Docker In Docker (DinD) -  Used to run a docker container within another docker container. This is used to run various images that belong to tools within the DevSecOps Baseimage. 
+6. Docker In Docker (DinD) - Used to run a docker container within another docker container. DinD runs various images that belong to tools within the DevSecOps Baseimage. 
 
 7. Sonarqube - Used to run static scan against application source code to detect vulnerabilities.
 
@@ -55,3 +44,4 @@ The DevSecOps Continuous Integration (CI), Continuous Deployment (CD), and Conti
 |Docker In Docker|icr.io/continuous-delivery/toolchains/devsecops/docker| 20.10.14-dind | Vulnerable | CVE-2022-1271 |
 |SonarQube|icr.io/continuous-delivery/toolchains/devsecops/sonarqube| 9.4.0-community | Vulnerable | CVE-2022-28391 |
 |SonarQube Scanner CLI|icr.io/continuous-delivery/toolchains/devsecops/sonar-scanner-cli | 4.7.0 | Vulnerable | CVE-2022-24765, CVE-2022-1271 |
+{: caption="Table 1. Sonarqube Scanner CLI" caption-side="bottom"}
