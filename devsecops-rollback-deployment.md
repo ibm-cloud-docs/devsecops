@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-03-21"
+  years: 2022
+lastupdated: "2022-04-25"
 
-keywords: DevSecOps
+keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
 subcollection: devsecops
 
@@ -23,16 +23,22 @@ subcollection: devsecops
 {:help: data-hd-content-type='help'}
 {:support: data-reuse='support'}
 
-# Rolling back apps from production
-{: #cd-devsecops-apps-rollback}
+# Rolling back a deployment
+{: #rollback-deployment}
 
-When you work with {{site.data.keyword.contdelivery_full}}, you might need to roll back a deployed app to a previous version on prod because of an issue.
+Sometimes, a new deployment to an environment behaves abnormally and requires a rollback to a last known good version. In such cases, you can use the Continuous Delivery (CD) Pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
 {: shortdesc}
 
-Choose a point in the Inventory to roll back to. All commits are reverted up to this point, and then promoted as a pull request. The following commands show how to do this by using the Git CLI: 
+To roll back the deployment, complete these steps:
 
-1. List the tags to identify the commit ID to roll back to. For example: `refs/tags/8`.  
- 
+1. Select the version of the deployment (identified by commit-id) in the inventory to roll back to.
+1. Revert the repository state to the identified commit.
+1. Create a pull request to promote the reverted state.
+
+The following commands show the scenario by using `git` commands:
+
+1. List the commits and tags to identify the commit ID (version) to roll back to. For example, we identify `refs/tags/8` to be the most recent good deployment.
+
    ```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git show-ref --tags
@@ -49,7 +55,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
       1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
    ```
      
-1. You can choose the expected point to revert `refs/tags/8`. The following command lists the commit IDs from the chosen commit. This is for informational purposes only.
+1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
      
    ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -60,7 +66,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
       cb6f4d53c17f0c2554c039708989c403eb0ead18     
    ```
      
-1. The following command reverts in the inventory.
+1. Revert the inventory state to `refs/tags/8`.
      
    ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -77,7 +83,7 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
       rewrite compliance-app (94%)
    ```
  
-1. Push to the master branch.
+1. Push to the update to the master branch.
     
    ```bash
     # /c/usr/devsecops/compliance-inventory (master)
@@ -93,6 +99,13 @@ Choose a point in the Inventory to roll back to. All commits are reverted up to 
       Branch 'master' set up to track remote branch 'master' from 'origin'.
    ```
  
-1. Create a pull request for this Rollback promotion pull request.
+1. Create a pull request for the rollback promotion pull request.
+1. Review the pull request and merge the pull request.
+1. Trigger the **Manual CD** pipeline run within the CD Toolchain. 
 
-The Rollback promotion pull request is merged and the continuous delivery pipeline starts. The pipeline picks up the content of the prod branch from that tag, calculates the deployment delta between the current commit and the contents of the `prod_latest` tag, and attempts to deploy. Successful deployment concludes by attaching the `prod_latest` tag to the commit that you work with.
+The summary of steps that the CD Pipeline follows for forced redeployment include: 
+
+1. The CD Pipeline starts and tags the current commit with the pipeline run ID.
+2. The pipeline picks up the content of the corresponding environment branch from that tag.
+3. The pipeline calculates the deployment delta between the current commit and the contents of the `<target-environment>_latest` tag.
+4. A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you work with.
