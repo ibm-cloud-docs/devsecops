@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-04-26"
 
-keywords: DevSecOps
+keywords: DevSecOps, IBM Cloud, deployment delta
 
 subcollection: devsecops
 
@@ -50,6 +50,20 @@ For more information about how to customize stages by using the `.pipeline-confi
 {: #cd-devsecops-pipeline-delta}
 
 When the inventory promotion is ready, the continuous delivery pipeline can start. The deployment delta is the difference between the contents of the last concluded deployment and the current deployment. The deployment delta lists the inventory items that are being deployed.
+
+To access the deployment delta in your deployment scripts, you can use the following commands:
+
+```bash
+# return a JSON file path with an array of inventory entries that were changed
+get_env DEPLOYMENT_DELTA_PATH 
+
+# return a JSON file path with an array of inventory entries that were deleted
+get_env DEPLOYMENT_DELTA_DELETIONS_PATH 
+
+# returns a JSON file path with an array of all inventory entries
+get_env INVENTORY_ENTRIES_PATH 
+
+```
 
 ## Calculate deployment BOM
 {: #cd-devsecops-pipeline-bom}
