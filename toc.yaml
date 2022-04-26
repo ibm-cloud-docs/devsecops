@@ -79,6 +79,7 @@ toc:
       - devsecops-webhook-payloads.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
+      - devsecops-partition-inventory-cc-pipeline.md
       - devsecops-ignore-cra-vulnerabilities.md
       - devsecops-scc-toolchains.md
       - devsecops-configuring-zap-scans.md

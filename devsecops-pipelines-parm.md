@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-08"
+lastupdated: "2022-04-26"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -242,6 +242,8 @@ The following table lists and describes the continuous compliance parameters for
 |repository-integration		|text		|The integration name for the repo.	|Optional			|
 |[slack-notifications](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |sonarqube		|tool integration		|The Sonarqube tool integration.	|Optional			|
+|inventory-include    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
+|inventory-exclude    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
 {: caption="Table 4. Continuous compliance parameters" caption-side="top"}
 
 ## Specifications
