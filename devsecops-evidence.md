@@ -264,7 +264,7 @@ Where *evidence_collection_subject* is the `repository_url` for a repo scan and 
 ## v2 evidence summary
 {: #devsecops-v2-evidence-summary}
 
-The DevSecOps pipeline creates an evidence summary document. This document contains the most recent of all evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the Change Request that is required to deploy any stage. This format of evidence is not yet supported by the Security and Compliance Center integration. 
+The DevSecOps pipeline creates an evidence summary document. This document contains the most recent of all evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the change request that is required to deploy any stage. This format of evidence is not yet supported by the {{site.data.keyword.compliance_short}} integration. 
 
 ```bash
 interface Summary {
@@ -283,7 +283,7 @@ This summary does not perform any result aggregation. It is the raw data of coll
 ## v1 evidence summary
 {: #devsecops-v1-evidence-summary}
 
-The DevSecOps pipeline creates an evidence summary document. This document is based on evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the Change Request that is required to deploy any stage; it is also used by the Security and Compliance Center integration.
+The DevSecOps pipeline creates an evidence summary document. This document is based on evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the change request that is required to deploy any stage; it is also used by the {{site.data.keyword.compliance_short}} integration.
 
 The format and fields of the evidence summary document are specified by using the typescript syntax:
 
