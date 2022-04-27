@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-04-27"
 
-keywords: DevSecOps, compliance evidence
+keywords: DevSecOps, compliance evidence, IBM Cloud
 
 subcollection: devsecops
 
@@ -24,18 +24,163 @@ subcollection: devsecops
 {:support: data-reuse='support'}
 
 # Evidence
-{: #cd-devsecops-evidence}
+{: #devsecops-evidence}
 
 Collecting evidence is one of the essential aspects of the DevSecOps reference architecture. Compliance evidence creates the audit trail that auditors look for during a compliance audit. One of the goals of DevSecOps is automated evidence generation and storage in auditable evidence lockers.
 {: shortdesc}
 
-## Evidence format
-{: #cd-devsecops-evidence-format}
+The way that DevSecOps pipelines handle evidence (file format and locker structure) includes two distinct versions:
+
+- v2 evidence ([asset-based evidence](/docs/devsecops?topic=devsecops-devsecops-evidence-summary#evidence-v2))
+- v1 evidence (legacy)
+
+## v2 evidence format
+{: #devsecops-v2-evidence-format}
+
+A piece of evidence represents the outcome of a scan, test, and so on. The evidence is always connected to at least a single asset. Multiple assets are allowed, such as a single end-to-end test suite that probably tests multiple assets together.
+
+An asset represents something that you can test, scan, and so on, such as a Git `commit` in a repository, or a docker `image`, or any `generic` asset with an URI.
+
+The `Evidence` and `Asset` types represent the schema of the v2 locker elements: evidence and asset. Although the schema uses typescript syntax, you can convert it to use JSON schema.
+
+```ts
+type SHA1 = string;          // 40 character string representing a SHA-1 hash in hexadecimal format
+type SHA256 = string;        // 64 character string representing a SHA256 hash in hexadecimal format
+type IssueURL = string;      // Link to issues on a git service provide like GitHub or GitLab
+type RepositoryURL = string; // Link to a git repository
+type AssetURI = string;      // URI of an Asset, like an image or a repository link and git hash
+type FileName = string;      // file basename of the attachment
+
+
+interface Evidence {
+  version: 2;
+  id: SHA256;
+  date: string;
+  evidence_type_id: string;
+  evidence_type_version: string;
+  origin: {
+    // scope defines a contextual set for multiple evidence, usually a SHA256 identifier or a CI/CD run ID
+    scope: SHA256;  
+    
+    // any further IDs can be used to determine evidence origin, see example below
+    [index: string]: string;
+  },
+  details: {
+    result: 'success' | 'failure' | 'pending';
+    tool: string;
+
+    // field "details" can have any arbitrary key-value pairs to provide metadata
+    [index: string]: string;
+  }
+  issues: IssueURL[],
+  attachments: {
+    [index: FileName]: SHA256;
+  }
+  assets: SHA256[]; 
+}
+
+interface Asset {
+    version: 1;
+    id: SHA256;
+    uri: AssetURI;
+    date: string;
+    type: 'commit' | 'image' | 'generic';
+    origin: {
+      // any IDs can be used to determine asset origin, see example below
+      [index: string]: string;
+    },
+    details: RepoAssetDetails | ImageAssetDetails | GenericAssetDetails,
+
+    // Assets can relate to each other, for example 
+    // an Image Asset can relate to the Git Commit Asset 
+    // it was built from on code level
+    related: SHA256[]; 
+}
+
+interface RepoAssetDetails {
+  sha: SHA1;
+  repository: RepositoryURL;
+}
+
+interface ImageAssetDetails {
+  registry: string;
+  name: string;
+  tag: string;
+  digest: SHA256; // for ImageAssetDetails the digest SHA256 is the same as the Asset ID - its a unique, content-addressable indentifier of the image
+}
+
+interface GenericAssetDetails {}
+```
+
+### Example
+{: #devsecops-v2-format-example}
+
+#### Example v2 Asset
+{: #devsecops-v2-format-example-asset}
+
+```json
+{
+  "version": "1",
+  "id": "cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb",
+  "uri": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
+  "origin": {
+    "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:fd3f2bf6-00f1-417f-b1a2-7df894223115::",
+    "pipeline_run_id": "a5e89ecc-a413-4dcb-b129-ff870ef3be85",
+    "pipeline_id": "66b583d9-3d1b-4b34-9e3a-cb807bf0c5ab"
+  },
+  "details": {
+    "sha": "8c2a65373cb4fd27bccff646e8bdf63d02cae856",
+    "repository": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git"
+  },
+  "date": "2022-04-20T09:26:46.226Z",
+  "type": "commit",
+  "related": [
+    "26a0f02126461e6505d5001d50ac71e585c280479a01cc70e36397a784440bf8"
+  ]
+}
+```
+
+#### Example v2 evidence
+{: #devsecops-v2-format-example-evidence}
+
+```json
+{
+  "version": "2",
+  "id": "3fd209270fbaf46137ec3966affac2a431a835e750301c7c44d583e0e426e29e",
+  "date": "2022-04-20T09:33:43.782Z",
+  "evidence_type_id": "com.ibm.code_vulnerability_scan",
+  "evidence_type_version": "1.0.0",
+  "details": {
+    "result": "failure",
+    "tool": "cra"
+  },
+  "origin": {
+    "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:fd3f2bf6-00f1-417f-b1a2-7df894223115::",
+    "pipeline_id": "66b583d9-3d1b-4b34-9e3a-cb807bf0c5ab",
+    "scope": "26a0f02126461e6505d5001d50ac71e585c280479a01cc70e36397a784440bf8"
+  },
+  "assets": [
+    "cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb",
+    "85c280479a01cc70e36397a784440bf826a0f02126461e6505d5001d50ac71e5"
+  ],
+  "issues": [
+    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
+    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
+    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
+  ],
+  "attachments": {
+    "app-repo_cra_vulnerability.json": "9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b",
+    "app-repo_cra_vulnerability_2.json": "7b841ef20188d2f13dbe440b102b9bff3ca1831630292cff7323c557704f386b",
+  }
+}
+```
+
+## v1 evidence format
+{: #devsecops-v1-evidence-format}
 
 The `Evidence` type represents the schema of the evidence. Although the schema uses typescript syntax, you can convert it to use JSON schema.
 
-
-```bash
+```ts
 interface Evidence {
   evidence_type_id: string;      // name of the evidence
   evidence_type_version: string; // version of the evidence schema
@@ -45,9 +190,11 @@ interface Evidence {
   pipeline_run_id: string;
   result: 'success' | 'failure';
   issues: string[];              // list of issues that were opened to track 'failed' state
-  log: Artifact;                 // logs related to the evidence
-  subject: string                // the repo url or artifact url
+  log: Artifact[];                 // logs related to the evidence
+  subject: string;               // asset url for the evidence
+  subjects: string[];            // a piece of evidence can be relevant for multiple asset in v2
   artifacts: Artifact[];         // additional artifacts related to the evidence
+  tool: string; | undefined      // the tool related to the evidence (optional)
 
   [origin]: {
     url: string; // origin of the evidence, e.g. path github where the task resides;
@@ -70,49 +217,73 @@ toolchain_crn: string;
   pipeline_id: string;
   pipeline_run_id: string;
  ```
- 
+
 These fields identify the specific continuous integration or continuous delivery job that produced the evidence. They can also contain information from any continuous integration or continuous delivery job if they serve the same purpose. These fields identify scope size from the widest to the narrowest in the following order: `toolchain_crn` -> `pipeline_id` -> `pipeline_run_id`.
 
 This schema is saved to the evidence locker by using JSON format. The evidence format that is collected in different pipeline stages does not differ. Currently, their saved path indicates the pipeline stage, such as continuous integration or continuous delivery.
 
 ### Example
-{: #cd-devsecops-format-example}
+{: #devsecops-v1-format-example}
 
-```bash
+```json
 {
-  "evidence_type_id": "com.ibm.unit_tests",
+  "evidence_type_id": "com.ibm.dynamic_scan",
   "evidence_type_version": "1.0.0",
-  "date": "2021-01-11T21:07:29.919Z",
-  "result": "success",
-  "pipeline_id": "15bdbfb9-8d07-426c-86f4-b5cab80e8b79",
-  "pipeline_run_id": "fa26687f-7048-4ea6-b101-9211d3f77234",
-  "issues": [],
-  "artifacts": [],
-  "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:32bfb168-29c8-4f0a-bc51-c51df93c8b87::",
+  "date": "2022-04-01T09:00:59.703Z",
+  "result": "failure",
+  "pipeline_id": "f9ab90d6-31a8-4b02-99b7-d2055ef0ee3c",
+  "pipeline_run_id": "9f93b02d-dbb3-4249-96e3-0739c6201779",
+  "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:2618d2b8-0531-4778-9b13-9ef1a40afe29::",
   "log": [
     {
-      "url": "https://cloud.ibm.com/devops/pipelines/tekton/15bdbfb9-8d07-426c-86f4-b5cab80e8b79/runs/fa26687f-7048-4ea6-b101-9211d3f77234/code-unit-tests/run-script?env_id=ibm:yp:us-south",
-      "hash": null
-    },
-    {
-      "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/cos-bucket-name/ci/fa26687f-7048-4ea6-b101-9211d3f77234/artifacts/code-unit-tests/prepare.log_d4356d5a1077c4f9d61b570949d6ee2b",
-      "hash": "d4356d5a1077c4f9d61b570949d6ee2b"
-    },
-    {
-      "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/cos-bucket-name/ci/fa26687f-7048-4ea6-b101-9211d3f77234/artifacts/code-unit-tests/run-stage.log_1a083814ef86fb68a7c4b47abae76070",
-      "hash": "1a083814ef86fb68a7c4b47abae76070"
+      "hash": null,
+      "url": "https://cloud.ibm.com/devops/pipelines/tekton/f9ab90d6-31a8-4b02-99b7-d2055ef0ee3c/runs/9f93b02d-dbb3-4249-96e3-0739c6201779?env_id=ibm:yp:us-south"
     }
   ],
-  "subject": "<evidence_collection_subject>”
+  "subject": "docker://us.icr.io/cocoa-e2e/hello-compliance-app-test:20220401083914-master-76c13d7e9fe67379f04319c8e8095b1cc623acae@sha256:090ab641c5371e48cf263119162140e3c925b8041e0220f1397528da2828a30d",
+  "subjects": [
+    "docker://us.icr.io/cocoa-e2e/hello-compliance-app-test:20220401083914-master-76c13d7e9fe67379f04319c8e8095b1cc623acae@sha256:090ab641c5371e48cf263119162140e3c925b8041e0220f1397528da2828a30d"
+  ],
+  "artifacts": [
+    {
+      "hash": "4e2cf12ffdf5438666be334106302f3e40cd0152ee1f26002cbc8bbcb5470796",
+      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-evidence-locker-20220331113709516/blob/master/raw/attachments/4e/2cf12ffdf5438666be334106302f3e40cd0152ee1f26002cbc8bbcb5470796/content"
+    }
+  ],
+  "issues": [
+    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220331113709516/issues/6",
+    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220331113709516/issues/7",
+    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220331113709516/issues/8"
+  ],
+  "tool": "owasp-zap-ui"
 }
 ```
 
 Where *evidence_collection_subject* is the `repository_url` for a repo scan and the `artifactory_url` for an image scan.
 
-## Evidence summary
-{: #cd-devsecops-evidence-summary}
+## v2 evidence summary
+{: #devsecops-v2-evidence-summary}
 
-The DevSecOps pipeline creates an evidence summary document. This document is based on evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the Change Request that is required to deploy any stage; it is also used by the Security and Compliance Center integration. 
+The DevSecOps pipeline creates an evidence summary document. This document contains the most recent of all evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the change request that is required to deploy any stage. This format of evidence is not yet supported by the {{site.data.keyword.compliance_short}} integration. 
+
+```bash
+interface Summary {
+  version: '2.0';                // schema version
+  date: string;                  // ISO-8601, UTC, ie. YYYY-MM-DDThh:mm:ssZ
+  toolchain_crn: string;         // CRN of the toolchain that generated the summary
+  pipeline_id: string;           // ID of the pipeline that generated the summary
+  pipeline_run_id: string;       // ID of the pipeline run that generated the summary
+  evidences: Evidence[];
+}
+```
+
+This summary does not perform any result aggregation. It is the raw data of collected v2 Evidence, as they were found for assets that are related to a change request.
+{: important}
+
+## v1 evidence summary
+{: #devsecops-v1-evidence-summary}
+
+The DevSecOps pipeline creates an evidence summary document. This document is based on evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the change request that is required to deploy any stage; it is also used by the {{site.data.keyword.compliance_short}} integration.
 
 The format and fields of the evidence summary document are specified by using the typescript syntax:
 
@@ -128,9 +299,9 @@ interface Summary {
 ```
 
 ### Example
-{: #cd-devsecops-summary-example}
+{: #devsecops-v1-evidence-summary-example}
 
-```bash
+```json
 {
   "date": "23-43-2020 UTC",
   "version": "1.0",
@@ -138,7 +309,7 @@ interface Summary {
   "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/190e0b4ce4cd013159917665213ddc51:7467a214-f404-4e23-acab-2e57e935d138::" // CRN of the toolchain
   // In each subsection result and evidence_type_id are MANDATORY
   "evidences": [{
-    // com.ibm is needed to identify evidences collected with ibm code and not by somebody's else;
+    // com.ibm is needed to identify evidence collected with IBM code and not by someone else;
     // Partial: CM-3(6)     CONFIGURATION CHANGE CONTROL | CRYPTOGRAPHY MANAGEMENT
     // The organization ensures that cryptographic mechanisms used to provide [Assignment: organization-defined security safeguards]
     // are under configuration management.
@@ -146,7 +317,7 @@ interface Summary {
     // 1- the script is one of the blessed ones AND
     // 2- the status is enabled OR
     // 3- the status is disabled
-    // if status is not the expected one, then it's a FAIL no matter what. Later on, lack of issues may prevent CR approval though.
+    // if the status is not the expected one, then it's a FAIL no matter what. Later on, lack of issues may prevent CR approval though.
     "evidence_type_id": "com.ibm.detect_secret",
     "version": "1.0.0",
     "date": "2020-05-06T12:00:00Z", // date of task run
@@ -156,7 +327,7 @@ interface Summary {
     }
     "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/190e0b4ce4cd013159917665213ddc51:7467a214-f404-4e23-acab-2e57e935d138::" // CRN of the toolchain
     "pipeline_id": "b1cfb6a4-813d-4fec-bbf7-ce662e8ce4e0", // the id of the pipeline that generated this piece of evidence
-    "pipeline_run_id": 12345, // this is the id of the pipeline run run that generated this piece of evidence
+    "pipeline_run_id": 12345, // this is the id of the pipeline run that generated this piece of evidence
     "result": ["passed" | "failed"], // status of the check
     "status": ["enabled"|"disabled"], // status of the configuration
     "issues": [ // link(s) to the issue(s) created to fix the github configuration (should be populated if result is failed)
@@ -813,7 +984,7 @@ interface Summary {
     // Control passed if:
     // 1- the script is one of the blessed ones AND
     // 2- the signature is verified OR
-    // 3- the signatures is not verified AND issues have been opened AND prod CR approved manually
+    // 3- the signatures are not verified AND issues have been opened AND prod CR approved manually
     "evidence_type_id": "com.ibm.images_signature",
     "version": "1.0.0",
     "date": "2020-05-06T12:00:00Z", // date of task run
@@ -963,7 +1134,7 @@ interface Summary {
     }
     "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/190e0b4ce4cd013159917665213ddc51:7467a214-f404-4e23-acab-2e57e935d138::" // CRN of the toolchain
     "pipeline_id": "b1cfb6a4-813d-4fec-bbf7-ce662e8ce4e0", // the id of the pipeline that generated this piece of evidence
-    "pipeline_run_id": 12345, // this is the id of the pipeline run generated this piece of evidence
+    "pipeline_run_id": 12345, // this is the id of the pipeline run that generated this piece of evidence
     "id": "https://change_tool/1213", // link to the production change request
     "status": ["auto-approved", "approved", "rejected"], // status of the change request
     "approvers": ["name1","name2", ..., "nameN"], // name of the approvers
@@ -977,29 +1148,36 @@ interface Summary {
 
 Evidence differs from artifacts that are created by pipeline stage steps, such as unit test results, or XML or JSON files. Each task must report to several tools that handle Evidence such as creating, formatting, and storing evidence.
 
-Any generic test, check, or scan can produce evidence within a pipeline stage by using the steps within DevSecOps tools or pipelines that are shown in the following image. The DevSecOps tools must be able to receive the result of the task, to create the evidence, and then store it in the evidence locker.
+Any generic test, check, or scan can produce evidence within a pipeline stage by using the steps within DevSecOps tools or pipelines that are shown in the following image. The DevSecOps tools must be able to receive the result of the task, create the evidence, and then store it in the evidence locker.
 
  ![Evidence creation](images/evidence-creation.png){: caption="Evidence creation" caption-side="bottom"}
- 
+
 The evidence format contains the result of the task (passing or failing), links to the created artifacts, and links to any incident issue that is created based on the Task result.
 
 These tools focus only on evidence collection and do not change the behavior of your build process. The DevSecOps reference pipeline does not break due to failed Task results. An image can be built and deployed with failing tests and vulnerabilities if evidence of the checks and failures exists, the team is notified, a change request that is created during the deployment shows evidence of these issues, and the change request is manually approved.
-{:important: .important}
+{: important}
 
-## Evidence collection
-{: #cd-devsecops-evidence-collection}
+## v2 evidence collection
+{: #devsecops-v2-evidence-collection}
+
+V2 Evidence must be collected as near as possible to the process that created the result for an Evidence. After each scan run, after each test for example.
+
+For collecting evidence, the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script can be used in the DevSecOps pipelines.
+
+## v1 evidence collection
+{: #devsecops-v1-evidence-collection}
 
 According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-complete-guide#toc-how-devops-u5vApdai){: external}, the continuous integration and continuous delivery flows can be divided into three stages: code, build, and deploy.
 
 The DevOps architecture divides these flows into four stages by distinguishing between pre-production and production deployment. The DevSecOps reference architecture currently includes the pre-production and production deployment within the same stage.
 {:tip: .tip}
 
-Evidence is collected from the steps in each stage by using the same process that is used to [create evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence). The following image shows the current steps in the reference pipelines that produce evidence.
+Evidence is collected from the steps in each stage [collect-evidence](/docs/devsecops?topic=devsecops-collec-evidence) script. The following image shows the current steps in the reference pipelines that produce evidence.
 
  ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
 
 ### Code stage
-{: #cd-devsecops-collection-code}
+{: #devsecops-collection-code}
 
 In the Code stage, evidence is collected for the following steps:
 
@@ -1008,7 +1186,7 @@ In the Code stage, evidence is collected for the following steps:
 * Code Vulnerability scan, CIS check, and Bill of Material check by way of Code Risk Analyzer
 
 ### Build stage
-{: #cd-devsecops-collection-build}
+{: #devsecops-collection-build}
 
 In the Build stage, evidence is collected for the following steps:
 
@@ -1016,7 +1194,7 @@ In the Build stage, evidence is collected for the following steps:
 * Image signing
 
 ### Deploy stage
-{: #cd-devsecops-collection-deploy}
+{: #devsecops-collection-deploy}
 
 In the Deploy stage, evidence is collected for the following steps:
 
@@ -1026,13 +1204,49 @@ In the Deploy stage, evidence is collected for the following steps:
 * Acceptance tests
 * Closing the change request
 
-## Evidence lockers
-{: #cd-devsecops-evidence-lockers}
+## v2 evidence locker
+{: #devsecops-v2-evidence-lockers}
 
-Evidence and related artifacts, such as logs and test results are stored in evidence lockers. Because pipeline runs can easily be deleted, pipelines are considered non-durable. To create a retention policy and audit log, evidence data that is related to compliance is stored in lockers.
+As opposed to v1 version, evidence is stored in a flat hierarchy, where each piece of evidence is identified by its own SHA256 hash, this provides a layer of integrity protection (that is, any modification of the evidence content can be detected). As each piece of evidence is related to one or more assets, the evidence summarization algorithms discover the relevant evidence based on assets (as opposed to pipeline-run IDs in v1 evidence lockers).
+
+The only hierarchy is the type differentiation and some hash grouping similar to the structure of Git hash objects.
+
+### Example
+{: #devsecops-v2-evidence-lockers-example}
+
+```text
+.
+└── raw/
+    ├── assets/
+    │   └── cc/
+    │       └── abcdef123456789/
+    │           ├── evidences/
+    │           │   ├── 00abcdef123456789
+    │           │   └── 01abcdef123456789
+    │           └── index.json
+    ├── attachments/
+    │   ├── aa/
+    │   │   └── abcdef123456789/
+    │   │       └── content
+    │   └── ab/
+    │       └── abcdef123456789/
+    │           └── content        
+    └── evidences/
+        ├── 00/
+        │   └── abcdef123456789/
+        │       └── index.json
+        └── 01 /
+            └── abcdef123456789/
+                └── index.json      
+```
+
+## v1 evidence locker
+{: #devsecops-v1-evidence-lockers}
+
+Evidence and related artifacts, such as logs and test results are stored in evidence lockers. Because pipeline runs can easily be deleted, pipelines are considered nondurable. To create a retention policy and audit log, evidence data that is related to compliance is stored in lockers.
 
 ### Git Repos and Issue Tracking
-{: #cd-devsecops-lockers-git}
+{: #devsecops-lockers-git}
 
 Although it does not contain the data retention capabilities of Cloud Object Storage, Git is a simple implementation for an evidence locker.
 
@@ -1041,17 +1255,17 @@ The folder and file structure of the Git evidence locker is similar to the Cloud
  ![Git evidence locker structure](images/git-structure.png){: caption="Git evidence locker structure" caption-side="bottom"}
 
 ### {{site.data.keyword.cos_full_notm}}
-{: #cd-devsecops-lockers-cos}
+{: #devsecops-lockers-cos}
 
 For more information about {{site.data.keyword.cos_short}} buckets, see [{{site.data.keyword.cos_full_notm}} buckets as evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence).
 
 ## Evidence flow
-{: #cd-devsecops-evidence-flow}
+{: #devsecops-evidence-flow}
 
 The following diagram shows how the evidence is handled and flows through the stages of continuous integration and continuous delivery.
 
  ![Evidence flow](images/evidence-flow.png){: caption="Evidence flow" caption-side="bottom"}
- 
+
  Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
 
-The evidence summary is attached to the change request, which is posted to the Change Request store. During a manual change request approval, the approver is aware of any issues that are found during the build. Additionally, the summary is submitted to the Security and Compliance Center.
+The evidence summary is attached to the change request, which is posted to the change request store. During a manual change request approval, the approver is aware of any issues that are found during the build. Additionally, the summary is submitted to the Security and Compliance Center.
