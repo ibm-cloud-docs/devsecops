@@ -30,6 +30,7 @@ toc:
           - devsecops-change-management.md
           - devsecops-peer-review.md
           - devsecops-cos-bucket-evidence.md
+          - devsecops-push-pull-based-deployment.md
       - devsecops-release-notes.md
 
   - navgroup:
@@ -52,7 +53,6 @@ toc:
       - devsecops-stage-results.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
-      - devsecops-push-pull-based-deployment.md
       - devsecops-how-to-generate-cyclonedx-sbom.md
       - topicgroup:
           label: Working with incident issues
