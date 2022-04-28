@@ -2,9 +2,9 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-04-28"
 
-keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
+keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
 
@@ -43,6 +43,9 @@ To change this default configuration, create a new property in the CC pipeline's
 {: codeblock}
 
 Make sure that the contents of the environment variable match the format in the example. If the environment property does not match the expected format or is not a valid JSON string, the pipeline uses the default values.
+{: note}
+
+The environment property `grace-period-configuration` sets due dates for issues that do not have a due date set already. For issues that have a due date set, reconfiguring the `grace-period-configuration` does not update those due dates.
 {: note}
 
 For more information, see [Incident issues with Due Date](/docs/devsecops?topic=devsecops-devsecops-issues-due-date).
