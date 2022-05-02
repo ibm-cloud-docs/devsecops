@@ -29,10 +29,10 @@ subcollection: devsecops
 The Continuous Integration (CI) pipeline generates the Software Bill of Materials (`BOM`) with the help of Code Risk Analyzer. By default, this `BOM` is generated in the `standard` format.
 {: shortdesc}
 
-## Prerequisites
+## Before you begin
 {: #generate-cyclonedx-sbom-prereq}
 
-This feature is based on V2 evidence collection. Make sure your custom scripts already collect v2 evidence in order to be able to use the CycloneDX SBOM generation.
+This feature is based on V2 evidence collection. Make sure that your custom scripts already collect v2 evidence to be able to use the CycloneDX SBOM generation.
 
 ## CI pipeline
 {: #generate-cyclonedx-sbom-ci-pipeline}
@@ -42,11 +42,12 @@ To configure the pipelines to also generate the `BOM` in `cyclonedx` format, cre
 After the pipeline is run, the `BOM` is added as an attachment to the `com.ibm.code_bom_check` evidence in both `standard` and `cyclonedx` format.
 {: note}
 
-## CD Pipeline
+## CD pipeline
+{: #generate-cyclonedx-sbom-cd-pipeline}
 
-The Continuous Delivery (CD) pipeline is capable of collecting the CycloneDX SBOM attachment of every asset that is being deployed by the run. The pipeline will merge these CycloneDX SBOMs and will upload the aggregated CycloneDX SBOM to the change request as an attachment.
+The Continuous Delivery (CD) pipeline can collect the CycloneDX SBOM attachment of every asset that is being deployed by the run. The pipeline merges these CycloneDX SBOMs and uploads the aggregated CycloneDX SBOM to the change request as an attachment.
 
 To enable this feature, create a new pipeline environment property that is named `merge-cra-sbom`, and set its value to `1`.
 
-After the pipeline is run, the change request will have an attachment named `CycloneDX SBOM` which can be inspected on the change management providers UI.
+After the pipeline is run, the change request has an attachment that is named `CycloneDX SBOM` that can be inspected on the change management providers UI.
 {: note}
