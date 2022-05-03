@@ -53,7 +53,6 @@ toc:
       - devsecops-stage-results.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
-      - devsecops-how-to-generate-cyclonedx-sbom.md
       - topicgroup:
           label: Working with incident issues
           topics: 
