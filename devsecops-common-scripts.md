@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-07"
+lastupdated: "2022-05-05"
 
 keywords: DevSecOps, common scripts, scripts, pipeline stages, IBM Cloud
 
@@ -10,24 +10,12 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:deprecated: .deprecated}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Common scripts
 {: #devsecops-common-scripts}
 
-Some stages run default scripts out-of-the-box if they are not specified in the DevSecOps config YAML file.
+Some stages run default scripts if they are not specified in the DevSecOps config YAML file.
 
 These scripts are part of a commons library, which can be used as a source to copy code from and 
 customize them for specific edge cases for adopters. This library also serves as an example 
@@ -36,8 +24,10 @@ of some pipeline mechanics.
 Every script that is included in the commons library performs the following actions:
 
 - Iterates over assets (repos or artifacts).
-- Runs the scan / check job.
+- Runs the scan / check job.<staging>
 - Collects evidence by using the [`collect-evidence` script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
+
+<!-- remove staging tags when collect-evidence topic is in production --></staging>
 
 To see which script is running, examine the logs from a stage that is running a default script. For example, the default scripts that are running in `scan-artifact`:
 
@@ -77,6 +67,6 @@ This message has three parts:
 
 2. The second part is a list of paths, repos, and commit hashes that are imported to the pipeline base image during the build. They are not pulled from these repos in runtime. This information improves public traceability of what exactly is included in the pipeline.
 
-3. The third part is the default configuration that is used as the config YAML. You can take this YAML snippet and include it in your DevSecOps config YAML file. This overrides the default config with yours but still uses the default script from the base image. This method is helpful if you want to implement some other checks before the default ones.
+3. The third part is the default configuration that is used as the config YAML. You can take this YAML snippet and include it in your DevSecOps config YAML file. This action overrides the default config with yours but still uses the default script from the base image. This method is helpful if you want to implement some other checks before the default ones.
 
 This information is displayed to help adopters identify the scripts that are running in stages by default. Then, they can inspect the scripts, understand what they do, copy the script into their script collection, and update them to fit their use cases.
