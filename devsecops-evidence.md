@@ -1161,9 +1161,7 @@ According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-com
 The DevOps architecture divides these flows into four stages by distinguishing between pre-production and production deployment. The DevSecOps reference architecture currently includes the pre-production and production deployment within the same stage.
 {:tip: .tip}
 
-Evidence is collected from the steps in each stage [collect-evidence](/docs/devsecops?topic=devsecops-collec-evidence) script. The following image shows the current steps in the reference pipelines that produce evidence.
 
- ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
 
 ### Code stage
 {: #devsecops-collection-code}
