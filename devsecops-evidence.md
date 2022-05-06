@@ -1151,9 +1151,7 @@ These tools focus only on evidence collection and do not change the behavior of 
 
 V2 Evidence must be collected as near as possible to the process that created the result for an Evidence. After each scan run, after each test for example.
 
-<staging><!-- remove staging tags when collect-evidence topic is in production -->
 
-For collecting evidence, the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script can be used in the DevSecOps pipelines.</staging>
 
 ## v1 evidence collection
 {: #devsecops-v1-evidence-collection}
