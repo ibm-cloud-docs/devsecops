@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-05"
+lastupdated: "2022-05-06"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -15,7 +15,9 @@ subcollection: devsecops
 # Incident issues with Due Date
 {: #devsecops-issues-due-date}
 
-<staging><!-- remove staging tags when collect-evidence topic is in production -->When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence.</staging> If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**Grace Period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
+<staging><!-- remove staging tags when collect-evidence topic is in production -->
+
+When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence.</staging> If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**Grace Period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
 {: shortdesc}
 
 If an issue such as vulnerability or CVE is found in production, and the same problem is also found in a build, the build does not make the situation worse. The feature can be deployed, and the team can focus on fixing the issue in production.

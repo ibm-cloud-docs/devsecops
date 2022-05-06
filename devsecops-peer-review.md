@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-05"
+lastupdated: "2022-05-06"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -18,7 +18,9 @@ subcollection: devsecops
 Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
 {: shortdesc}
 
-<staging><!-- remove staging tags when collect-evidence topic is in production -->The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.</staging>
+<staging><!-- remove staging tags when collect-evidence topic is in production -->
+
+The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.</staging>
 
 Before you can merge code in the master branch, the code must be reviewed by a person who did not upload the modified code.
 
