@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-06"
+lastupdated: "2022-05-09"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -1151,7 +1151,7 @@ These tools focus only on evidence collection and do not change the behavior of 
 
 V2 Evidence must be collected as near as possible to the process that created the result for an Evidence. After each scan run, after each test for example.
 
-
+For collecting evidence, the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script can be used in the DevSecOps pipelines.
 
 ## v1 evidence collection
 {: #devsecops-v1-evidence-collection}
@@ -1161,6 +1161,9 @@ According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-com
 The DevOps architecture divides these flows into four stages by distinguishing between pre-production and production deployment. The DevSecOps reference architecture currently includes the pre-production and production deployment within the same stage.
 {:tip: .tip}
 
+Evidence is collected from the steps in each stage [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script. The following image shows the current steps in the reference pipelines that produce evidence.
+
+ ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
 
 
 ### Code stage

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-06"
+lastupdated: "2022-05-09"
 
 keywords: DevSecOps, common scripts, scripts, pipeline stages, IBM Cloud
 
@@ -25,6 +25,7 @@ Every script that is included in the commons library performs the following acti
 
 - Iterates over assets (repos or artifacts).
 - Runs the scan / check job.
+- Collects evidence by using the [`collect-evidence` script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
 
 To see which script is running, examine the logs from a stage that is running a default script. For example, the default scripts that are running in `scan-artifact`:
 

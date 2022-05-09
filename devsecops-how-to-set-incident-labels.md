@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-06"
+lastupdated: "2022-05-09"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -20,7 +20,7 @@ Incident issues that are created by the continuous integration (CI) or continuou
 
 To achieve this, set the `incident-labels` environment property to one or more labels that are separated by a comma. For example, `First-Label` or `First-Label,Second-Label`.
 
- 
+The pipeline takes these labels and attaches them to the incident issues that are created by the [`collect-evidence`](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script. 
 
 You can define this environment property per trigger so that each trigger can assign different users.
 {: tip}
