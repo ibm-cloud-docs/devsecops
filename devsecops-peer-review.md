@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-06"
+lastupdated: "2022-05-09"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -18,7 +18,7 @@ subcollection: devsecops
 Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
 {: shortdesc}
 
-
+The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.
 
 Before you can merge code in the master branch, the code must be reviewed by a person who did not upload the modified code.
 
@@ -49,8 +49,7 @@ A compliance incident typically holds the following information:
 
  ![Pull Request incident content](images/devsecops-pr-incident-issue.png){: caption="Pull Request incident content" caption-side="bottom"}
 
-
-
+Collected data is saved as an [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) artifact, which is uploaded to the evidence locker, and then referred to in the evidence itself. The final evidence result is determined by the approved pull / merge requests. Unapproved, but merged pull / merge requests fail this type of evidence.
 
 ## Data that is collected in continuous delivery deployment runs 
 {: #cd-devsecops-cd-data}
