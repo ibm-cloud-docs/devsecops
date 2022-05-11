@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-05-10"
+lastupdated: "2022-05-11"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -413,7 +413,9 @@ The toolchain region can differ from cluster and registry region.
 
 You can optionally choose the associated CI toolchain in the dropdown. This copies some of the CI configuration to aid in the setup of this CD toolchain.
 
-**Warning**: This might overwrite values that you have already input.
+![DevSecOps associated CI toolchain](images/devsecops-associated-ci-toolchain.png){: caption="DevSecOps associated CI toolchain" caption-side="bottom"}
+
+**Warning**: This might overwrite some of the values that you already entered.
 
 ## Set up CD tool integrations
 {: #devsecops-cd-tool-integrations}

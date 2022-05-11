@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-10"
+lastupdated: "2022-05-11"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
