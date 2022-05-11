@@ -2,7 +2,7 @@
 
 copyright:
    years: 2021, 2022
-lastupdated: "2022-04-19"
+lastupdated: "2022-05-11"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -35,7 +35,7 @@ Refer to the following documentation to get more information about DevSecOps and
 1. [DevSecOps with Continuous Delivery](/docs/devsecops?topic=devsecops-devsecops_intro)
 1. [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines)
 
-Let's now get started with the creation and exploration of the CI and CD templates in that sequence.
+Let's get started with the creation and exploration of the CI and CD templates in that sequence.
 
 ## Before you begin
 {: #devsecops-tutorial-prereqs}
@@ -47,7 +47,7 @@ To set up the prerequisites for your toolchains, follow these steps:
 1. Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. While you are evaluating the service, you can use the **Free** pricing plan. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
 1. Create an [{{site.data.keyword.registrylong}} namespace](https://cloud.ibm.com/registry/namespaces){: external}. {{site.data.keyword.registrylong_notm}} provides a multi-tenant private image registry that you can use to store and share your container images with users in your {{site.data.keyword.cloud_notm}} account. Select the location for your namespace, and click **Create**. [Learn more.](/docs/Registry?topic=Registry-getting-started)
 1. **Optional.** Create an [image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with the proper encoding to sign your application docker images.
-1. **Optional.** Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Save the API key value by either copying, downloading it or adding it to your vault. Alternatively, you can create the API key during the template guided setup process.
+1. **Optional.** Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Save the API key value by either copying, downloading it or adding it to your vault. Alternatively, you can create the API key during the template-guided setup process.
 1. **Optional.** Validate that the [recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
 1. **Optional.** [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
 1. **Optional.** Create an [{{site.data.keyword.cos_full_notm}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). [Learn more.](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
@@ -113,7 +113,7 @@ Use one of the following options to access the template for the CI toolchain:
 {: #devsecops-ci-toolchain-name-region}
 {: step}
 
-The **Welcome** page you are taken to provides a summary of the purpose of the toolchain that is created, along with pointers to documentation and related materials. When you are ready to proceed, click the **Start** button to begin configuring the toolchain.
+The **Welcome** page summarizes the purpose of the toolchain that is created, along with pointers to documentation and related materials. When you are ready to proceed, click **Start** to begin configuring the toolchain.
 
 Review the default information for the toolchain settings:
 1. The toolchain's name identifies it in {{site.data.keyword.cloud_notm}}. Make sure that the toolchain's name is unique within your toolchains for the same region and resource group in {{site.data.keyword.cloud_notm}}.
@@ -365,7 +365,7 @@ The DevSecOps CD toolchain contains only one pipeline for Continuous Delivery. I
 * Creates an evidence summary from the evidence that is collected in the CI pipeline
 * Creates a change request in Git Repos and Issue Tracking based change management repository and adds deployment evidence to it
 * Uses the inventory repository to promote built artifacts to deployment environments like staging and prod
-* Checks the CR, and auto approves if all checks have passed
+* Checks the CR, and auto approves if all checks pass
 * If CR is approved, or emergency, deploys the image from the inventory to production
 
 ![DevSecOps CD deployment](images/devsecops-cd-toolchain-arch-diagram.png){: caption="DevSecOps CD deployment" caption-side="bottom"}
@@ -413,7 +413,9 @@ The toolchain region can differ from cluster and registry region.
 
 You can optionally choose the associated CI toolchain in the dropdown. This copies some of the CI configuration to aid in the setup of this CD toolchain.
 
-**Warning**: This might overwrite values that you have already input.
+![DevSecOps associated CI toolchain](images/devsecops-associated-ci-toolchain.png){: caption="DevSecOps associated CI toolchain" caption-side="bottom"}
+
+**Warning**: This might overwrite some of the values that you already entered.
 
 ## Set up CD tool integrations
 {: #devsecops-cd-tool-integrations}
