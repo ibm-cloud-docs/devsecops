@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-26"
+lastupdated: "2022-05-13"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -113,7 +113,8 @@ The following table lists and describes the continuous integration parameters fo
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
-|incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab user name). |Optional			|
+|incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
+|incident-assignees		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
 |opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|
 |opt-in-sonar		|tool integration		|The Sonarqube scan integration.	|Optional			|
@@ -231,6 +232,8 @@ The following table lists and describes the continuous compliance parameters for
 |opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
 |opt-in-dynamic-api-scan		|tool integration		|To enable the owasp zap API scan. 	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
+|incident-assignees		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
 |inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
