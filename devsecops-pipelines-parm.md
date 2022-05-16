@@ -101,7 +101,7 @@ The following table lists and describes the continuous integration parameters fo
 |cra-nodejs-create-package-lock		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |cra-python-create-requirements-txt		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |dev-cluster-namespace		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
-|dev-region		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
+|dev-region		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |dev-resource-group		|text		|The cluster resource group.	|Required			|
 |doi-buildnumber		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
 |doi-environment		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
@@ -112,7 +112,7 @@ The following table lists and describes the continuous integration parameters fo
 |grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
-|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |incident-assignees		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
@@ -126,7 +126,7 @@ The following table lists and describes the continuous integration parameters fo
 |pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |onepipeline-dockerconfigjson		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |registry-namespace		|text		|The container registry namespace for the image.	|Required			|
-|registry-region		|text		|The {{site.data.keyword.cloud}} region for the image registry.	|Required			|
+|registry-region		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|
 |repository-integration		|text		|The integration name for the repo.	|Optional			|
 |signing-key		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |[pipeline-debug](#pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
@@ -158,7 +158,7 @@ The following table lists and describes the continuous delivery parameters for p
 |[change-management-duration](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
 | change-management-repo        | text   | The URL of the change management repository.  | Optional |
 |[cluster](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			|
-|[cluster-region](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud}} region that hosts the cluster.	|Required			|
+|[cluster-region](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |[compliance-baseimage](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code. |Optional			|
 |cos-api-key		|text		|The Cloud Object Storage API key.	|Optional			|
 |cos-bucket-name		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
@@ -176,7 +176,7 @@ The following table lists and describes the continuous delivery parameters for p
 |artifact-token		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
-|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|
 |[impact](#pipeline-parm-impact)		|text		|Additional notes on what this change implementation impacts.	|Optional			|
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
@@ -292,7 +292,7 @@ This parameter holds the name of the cluster in the CI pipeline, which is used f
 ### cluster-region
 {: #pipeline-parm-cluster-region}
 
-This is a parameter for the CD pipeline. The {{site.data.keyword.cloud}} region that hosts the cluster.	This is a required parameter for the example app.
+This is a parameter for the CD pipeline. The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	This is a required parameter for the example app.
 
 ### compliance-baseimage
 {: #pipeline-parm-compliance-baseimage}
