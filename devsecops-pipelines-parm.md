@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-13"
+lastupdated: "2022-05-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -219,6 +219,8 @@ The following table lists and describes the continuous compliance parameters for
 |cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 |cra-custom-script-path  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |cra-docker-buildflags   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
+|dev-region		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
+|dev-resource-group		|text		|The cluster resource group.	|Required			|
 |dind-image		|text		|Base image to run sidecars	|Optional			|
 |doi-environment		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
 |doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
@@ -231,7 +233,7 @@ The following table lists and describes the continuous compliance parameters for
 |opt-in-dynamic-scan		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
 |opt-in-dynamic-api-scan		|tool integration		|To enable the owasp zap API scan. 	|Optional			|
-|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |incident-assignees		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
