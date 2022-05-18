@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-09"
+lastupdated: "2022-05-18"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -113,15 +113,8 @@ The locations where the problem was found are listed in the comments of the issu
 
 If you want to mark an Issue permanently exempted, add the label `exempt` to the issue, and it doesn't block deployments. However, the issue still appears in the Change Request for the deployment. As a best practice, link the source of the exempt (issue ticket, for example) to the issue in a comment so that reviewers can understand why the issue is exempted.
 
-### Assignee
-{: #due-date-issue-options-assignee}
-
-You can set a default assignee for the pipeline run if necessary. Set the assignee value to the pipeline parameter `incident-assignee` on the pipeline UI, or in the pipeline run dynamically by using the following command:
-
-```bash
-set_env incident-assignee "<assignee>"
-```
-{: codeblock}
+If an issue is marked with the `exempt` label, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
+{: note}
 
 ## Related information
 {: #due-date-related}
