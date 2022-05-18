@@ -30,7 +30,7 @@ Even though the CI and CC pipelines have many common steps, the issue processing
 * Incident issues that are created during the CI pipeline do not carry a due date, while incident issues that are created during the CC pipeline do.
 * Incident issues that are created during the CI pipeline are found during the build, while incident issues that are created during the CC pipeline are found in the production environment.
 
-The following diagram shows the possible use cases based on the distinctions:
+The following diagram shows the possible use cases that are based on these differences:
 
 ![Vulnerability use cases flow](images/devsecops-vulnerability-usecases-flow.png "Vulnerability use cases flow")
 {: caption="Vulnerability use cases flow" caption-side="bottom"}
