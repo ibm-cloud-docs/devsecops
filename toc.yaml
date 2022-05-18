@@ -56,6 +56,7 @@ toc:
       - topicgroup:
           label: Working with incident issues
           topics: 
+          - devsecops-incident-issues.md
           - devsecops-due-date-reference.md
           - devsecops-how-to-configure-grace-period.md
           - devsecops-how-to-modify-due-date.md
