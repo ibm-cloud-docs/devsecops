@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-05-19"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -19,6 +19,8 @@ Custom scripts are extension points in the pipeline where adopters, teams, and u
 {: shortdesc}
 
 Custom scripts control the pipeline stages. You can use a configuration file (`pipeline-config.yaml`) to configure the behavior of stages, script content, and the base image that runs the scripts. The scripts and configuration for pipeline stages are loaded from a Git repository (repo) that can either be the application (app) repo (similar to `.travis.yml` or `Jenkinsfile`) or a custom repo.
+
+When any of the custom scripts are invoked, the complete URL of the custom script file, including the file name and the commit hash, is printed at the beginning of the pipeline logs as follows: `The custom script can be viewed using the following link: 'https://<source repo url>/<organization name>/<repository name>/blob/<commit hash>/.pipeline-config.yaml'`. This positioning improves traceability.
 
 ## Stages
 {: #cd-devsecops-scripts-stages}
