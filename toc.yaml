@@ -38,6 +38,8 @@ toc:
       topics:
       - /apps/apps-tutorial-apps-devsecops
       - devsecops-tutorial.md
+      - devsecops-tutorial-ci-toolchain.md
+      - devsecops-tutorial-cd-toolchain.md
       - devsecops-tutorial-cc-toolchain.md
 
   - navgroup:
@@ -62,6 +64,8 @@ toc:
           - devsecops-how-to-modify-due-date.md
           - devsecops-how-to-set-incident-labels.md
           - devsecops-how-to-set-incident-assignees.md
+          - devsecops-cc-pipeline--slack.md
+          - devsecops-incident-labels-from-cra.md
       - devsecops-pipelines-add-triggers.md
       - devsecops-async-sub-pipelines.md
       - devsecops-async-update-webhook.md
@@ -111,6 +115,7 @@ toc:
           label: Evidence
           topics:
           - devsecops-evidence.md
+          - devsecops-how-to-generate-cyclonedx-sbom.md
       - devsecops-async-stages.md
       - topicgroup: 
           label: Inventory management
