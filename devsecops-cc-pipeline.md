@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-08"
+lastupdated: "2022-05-19"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline
 
@@ -138,6 +138,6 @@ To use a different scan process or to process artifacts other than Docker images
 ## Collecting compliance data on build
 {: #devsecops-cc-pipeline-collectdata}
 
-The CC pipeline attempts to process the results from checks and scans, breaking down results to individual issues per every found CVE, vulnerability, or alert.
+The CC pipeline attempts to process the results from checks and scans, breaking down results to individual issues per every found CVE, vulnerability, or alert. The issues that are found by the CC pipeline are marked with a `continuous-compliance-check` label that identifies issues that are discovered on the prod environment.
 
 The pipeline collects [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) on all checks and scans and stores them in the evidence locker. The evidence collector also saves the pipeline log files, the pipeline data itself, containing the Tekton definitions. The issues that are created according to scan and check that results are also attached to the evidence.
