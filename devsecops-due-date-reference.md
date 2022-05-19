@@ -2,7 +2,8 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-18"
+lastupdated: "2022-05-19"
+
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -14,7 +15,6 @@ subcollection: devsecops
 
 # Incident issues with Due Date
 {: #devsecops-issues-due-date}
-
 
 When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence. If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**Grace Period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
 {: shortdesc}
@@ -30,7 +30,6 @@ The duration of the grace period is determined by the severity of the found vuln
 |:--|:--|:--|:--|:--|
 |Grace Period |15 days |15 days |45 days |45 days |
 {: caption="Table 1. Grace period values determined by severity" caption-side="bottom"}
-
 
 ## Due Date calculation
 {: #due-date-calculation}
@@ -103,7 +102,7 @@ If the `collect-evidence` script receives an attachment from an unsupported tool
 - _“URL”_ is the link to the exact version of the asset
 - _“Tool Type”_ is the tool that produced the contents for the issue
 
-The locations where the problem was found are listed in the comments of the issue.
+The issue description contains the timestamp when the issue was first discovered. For example: `First found on 2022-04-07.`. The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
 
 ## More issue options
 {: #due-date-issue-options}
@@ -111,7 +110,7 @@ The locations where the problem was found are listed in the comments of the issu
 ### Exempt
 {: #due-date-issue-options-exempt}
 
-If you want to mark an Issue permanently exempted, add the label `exempt` to the issue, and it doesn't block deployments. However, the issue still appears in the Change Request for the deployment. As a best practice, link the source of the exempt (issue ticket, for example) to the issue in a comment so that reviewers can understand why the issue is exempted.
+If you want to mark an issue as permanently exempt, add the `exempt` label to the issue, so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted.
 
 If an issue is marked with the `exempt` label, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
 {: note}
