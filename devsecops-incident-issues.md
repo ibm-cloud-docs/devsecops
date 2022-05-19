@@ -32,8 +32,7 @@ Even though the CI and CC pipelines have many common steps, the issue processing
 
 The following diagram shows the possible use cases that are based on these differences:
 
-![Vulnerability use cases flow](images/devsecops-vulnerability-usecases-flow.png "Vulnerability use cases flow")
-{: caption="Vulnerability use cases flow" caption-side="bottom"}
+![Vulnerability use cases flow](images/devsecops-vulnerability-usecases-flow.png "Vulnerability use cases flow"){: caption="Figure 1. Vulnerability use cases flow" caption-side="bottom"}
 
 ## Managing incident issues
 {: #incident-issue-managing}
