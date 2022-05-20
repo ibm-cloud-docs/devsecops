@@ -115,6 +115,7 @@ toc:
           label: Evidence
           topics:
           - devsecops-evidence.md
+          - devsecops-evidence-summary.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
       - devsecops-async-stages.md
       - topicgroup: 
