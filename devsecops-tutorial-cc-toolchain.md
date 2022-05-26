@@ -1,15 +1,15 @@
 ---
 
 copyright:
-   years: 2021, 2022
-lastupdated: "2022-04-25"
+   years: 2022
+lastupdated: "2022-05-25"
 
-keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud
+keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
 subcollection: devsecops
 
 content-type: tutorial
-services: apps, containers, ContinuousDelivery
+services: containers, ContinuousDelivery
 account-plan: paid
 completion-time: 1h
 
@@ -17,25 +17,36 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-
-# Set up a Continuous Compliance toolchain
-{: #tutorial-cc-devsecops}
+# Part 4: Set up a Continuous Compliance (CC) toolchain
+{: #tutorial-cc-toolchain}
 {: toc-content-type="tutorial"}
-{: toc-services="apps, containers, ContinuousDelivery"}
+{: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-Use this tutorial to learn how to set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant. The continuous compliance pipeline works with [Continuous Integration (CI)](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-ci-toolchain-intro) and [Continuous Deployment (CD)](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-cd-toolchain-intro) toolchains, both of which must be set up before you begin this tutorial.
+This tutorial is part 4 of a 4-part tutorial series where you learn {{site.data.keyword.cloud}} DevSecOps best practices by using a complete reference implementation that is available as a service and powered by {{site.data.keyword.contdelivery_full}}. In part 4 of this tutorial series, you use the toolchain template for continuous compliance (CC) to ensure that your deployed artifacts and their source repositories are always compliant.
 {: shortdesc}
 
-## Overview and introduction
-{: #devsecops-cc-tutorial-overview}
+## Before you begin
+{: #tutorial-cc-toolchain-prereqs}
+
+Before you begin part 4 of this tutorial series, ensure that you completed the following prerequisites:
+1. Complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).
+1. Complete [Part 2: Set up a Continuous Integration (CI) toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
+1. Complete [Part 3: Set up a Continuous Delivery (CD) toolchain](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain).
+
+When you set up the CC toolchain by using the template in this tutorial, you might reuse some or all of the resources that were created during the CI and CD toolchain setup process. The toolchain consists of resources such as {{site.data.keyword.secrets-manager_full}} vault, {{site.data.keyword.containerlong_notm}} cluster, {{site.data.keyword.registrylong}} namespace, {{site.data.keyword.cloud_notm}} API key, {{site.data.keyword.cloud_notm}} CLI, {{site.data.keyword.cos_full_notm}} instance and bucket, {{site.data.keyword.satellitelong_notm}} cluster group and application, and inventory repositories. It helps to keep the resource information from the CI and CD toolchains handy.
+{: note}
+
+## Continuous Compliance (CC) toolchain introduction
+{: #tutorial-cc-toolchain-intro}
 
 [DevSecOps](#x9892260){: term} integrates a set of security and compliance controls into the [DevOps](https://www.ibm.com/cloud/learn/devops-a-complete-guide){: external} processes. This integration allows organizations to deliver rapidly and often while maintaining a strong security posture and continuous state of audit-readiness. Additionally, DevSecOps makes application and infrastructure security a shared responsibility of development, security, and IT operations teams, rather than the sole responsibility of a security silo.
 
-This tutorial provides information and hands-on guidance on Continuous Compliance reference implementation by using {{site.data.keyword.cloud_notm}} Continuous Delivery with Tekton Pipelines. This tutorial steps you through the creation of Continuous Compliance (CC) toolchain by using a toolchain template.
+This tutorial provides information and hands-on guidance on Continuous Compliance reference implementation by using {{site.data.keyword.cloud_notm}} {{site.data.keyword.contdelivery_short}} with Tekton Pipelines. This tutorial steps you through the creation of Continuous Compliance (CC) toolchain by using a toolchain template.
 
-The Continuous [Compliance (CC) pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline) from this reference implementation can be triggered manually or periodically by using triggers. This pipeline is useful for a continuous scanning of existing deployed artifacts and their source repositories independent of your deployment schedule. It runs the static scans and dynamic scans on the Application Source Code, detect secrets in Git repos, Bill Of Materials (BOM) check, CIS check, and Vulnerability Advisor scan. After scanning and running checks on artifacts and source repositories, the pipeline creates a new incident issue or updates the existing incident issues in the incident repository. Finally, using these issues and the results, the pipeline collects evidence and summarizes the evidence, so the Security and Compliance Center can update the compliance status of the found artifacts.
-The CC pipeline uses [async sub pipeline](/docs/devsecops?topic=devsecops-devsecops-async-stages#async-stages-setup-triggers) that runs in parallel to the main pipeline run to optimize pipeline run time and improve pipeline resiliency.
+The Continuous [Compliance (CC) pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline) from this reference implementation can be triggered manually or periodically by using triggers. This pipeline is useful for a continuous scanning of existing deployed artifacts and their source repositories independent of your deployment schedule. It runs the static scans and dynamic scans on the Application Source Code, detect secrets in Git repos, Bill Of Materials (BOM) check, CIS check, and Vulnerability Advisor scan. After scanning and running checks on artifacts and source repositories, the pipeline creates a new incident issue or updates the existing incident issues in the incident repository. Finally, using these issues and the results, the pipeline collects evidence and summarizes the evidence, so the {{site.data.keyword.compliance_short}} Center can update the compliance status of the found artifacts.
+
+The CC pipeline uses the [async sub pipeline](/docs/devsecops?topic=devsecops-devsecops-async-stages#async-stages-setup-triggers) that runs in parallel to the main pipeline run to optimize pipeline run time and improve pipeline resiliency.
 
 This tutorial uses a staging environment as an example to configure and showcase the continuous compliance (CC) toolchain.
 
@@ -46,20 +57,12 @@ The CC toolchain implements the following best practices:
 * Runs a static code scanner at pre-defined internals on the application repositories that are provided to detect secrets in the application source code and vulnerable packages that are used as application dependencies.
 * Scan the container image for security vulnerabilities.
 * Any incident issue that is found during the scan or updated is marked with a due date.
-* Generate a summary.jason and store in IBM Cloud Object Storage at the end of every run that summarizes the details of the scan.
+* Generate a `summary.json` file and store in IBM Cloud Object Storage at the end of every run that summarizes the details of the scan.
 
-Now get started with the creation and exploration of the CC template.
-
-## Before you begin
-{: #devsecops-tutorial-prereqs-cc-toolchain}
-
-To set up the prerequisites for your CC toolchain, follow these steps:
-
-1. Ensure that the DevSecOps CI and CD toolchains are already set up. For more information, see [this tutorial](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-tutorial-prereqs) to get them working first.
-1. Depending on your setup, you reuse some or all of the resources that are created during the CI and CD toolchain setup while setting up the CC toolchain. The toolchain consists of resources such as Secret Management vault, Kubernetes cluster, IBM Cloud Container Registry namespace, IBM Cloud API key, IBM Cloud CLI, IBM Cloud Object Storage instance and bucket, IBM Cloud Satellite cluster group and application, and inventory repositories. It helps to keep those resources, CI CD toolchains handy.
+Let's get started with the creation and exploration of the CC toolchain.
 
 ## Start the CC toolchain setup
-{: #devsecops-cc-toolchain-create-options}
+{: #tutorial-cc-toolchain-setup}
 {: step}
 
 Start the CC toolchain configuration by using one of the following options:
@@ -71,7 +74,7 @@ Start the CC toolchain configuration by using one of the following options:
 * From the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CC - Keep your app continuously Compliant with DevSecOps practices**.
 
 ## Set up the CC toolchain name and region
-{: #devsecops-cc-toolchain-name-region}
+{: #tutorial-cc-toolchain-name-region}
 {: step}
 
 The setup starts with a Welcome page that explains the toolchain, prerequisites needed to set this up, useful links like documentation or tutorial, and a framework diagram that explains the correlation between different integrated tools.
@@ -90,11 +93,11 @@ You can provide a CI toolchain already setup at this step. Using filter on the r
 The setup fetches the resource details such as pipeline configuration, repositories like inventory and incidence issues based on the CI toolchain provided. If you chose to not provide any details for the CI toolchain details, you need to manually provide the previously mentioned details in the later steps of the setup.
 
 ## Set up CC tool integrations
-{: #devsecops-cc-tool-integrations}
+{: #tutorial-cc-toolchain-tool-integrations}
 {: step}
 
 ### Secrets
-{: #devsecops-cc-tool-integration-secrets}
+{: #tutorial-cc-toolchain-secrets}
 
 Several tools in this toolchain require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. All secrets must be stored securely in a secrets vault and then referenced as required by the toolchain.
 
@@ -108,24 +111,22 @@ Use [IBM Secrets Manager](/docs/secrets-manager?topic=secrets-manager-getting-st
 
 ![DevSecOps IBM Secrets Manager](images/devsecops-cc-toolchain-setup-SM.png){: caption="DevSecOps IBM Secrets Manager" caption-side="bottom"}
 
-If you plan to use IBM Key Protect or HashiCorp vault for managing your secrets, see the [IBM Key Protect section of the CI setup guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance#cd-devsecops-key-protect-ci).
-
 Multiple repositories must be configured during the guided setup, as described in the next sections.
 
 For each repository, provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own and that was specified during CI toolchain setup. The toolchain supports linking only to existing GRIT repositories.
 {: note}
 
 ### Inventory
-{: #devsecops-cc-tool-integration-inventory}
+{: #tutorial-cc-toolchain-inventory}
 
 The [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) repository records details of artifacts that are built by the CI toolchains.
 
 ![DevSecOps inventory repository](images/devsecops-cc-toolchain-setup-inventory-repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
 
 ### Target
-{: #devsecops-cc-tool-integration-taregt}
+{: #tutorial-cc-toolchain-target}
 
-Provide details of target environment to scan the deployed artifacts in this step.
+Provide details of the target environment to scan the deployed artifacts in this step.
 The pipeline runs a number of dynamic scans, and it is recommended to use your staging environment.
 IBM Cloud API key: The API key that you created and used during your CI toolchain setup. Optionally you can create a new key and store it in your preferred choice of secrets vault.
 Environment tag in your inventory: It is the [tag in your Inventory repository that reflects the state of your current deployed environment. This tag is the snapshot of current running application on target.
@@ -133,27 +134,27 @@ Environment tag in your inventory: It is the [tag in your Inventory repository t
 ![DevSecOps CC target definition](images/devsecops-cc-toolchain-setup-specify-target.png){: caption="DevSecOps CC target definition" caption-side="bottom"}
 
 ### Issues
-{: #devsecops-cc-tool-integration-issues}
+{: #tutorial-cc-toolchain-issues}
 
 The Git Repos and Issue Tracking repository records incident issues that are found while the CC pipeline is running.
 ![DevSecOps incident issues repository](images/devsecops-cc-toolchain-setup-issues-repo.png){: caption="DevSecOps incident issues repository" caption-side="bottom"}
 
 ### Pipeline configuration
-{: #devsecops-cc-tool-integration-tekton-pipeline}
+{: #tutorial-cc-toolchain-tekton-pipeline}
 
 The toolchain comes with an integrated Tekton pipeline to automate continuous compliance scans of the deployed artifacts and source application repositories. This repository contains Tekton resources that are defined in YAML files that run the pipeline tasks. These repositories can be contributed to or can be forked although it is highly recommended to use the default repository provided by this step.
 
 ![DevSecOps CC Tekton Pipeline configuration](images/devsecops-cc-toolchain-setup-pipeline-config-repo.png){: caption="DevSecOps CC Tekton Pipeline configuration" caption-side="bottom"}
 
 ### Evidence Storage
-{: #devsecops-cc-tool-integration-evidence-storage}
+{: #tutorial-cc-toolchain-evidence-storage}
 
 All raw compliance evidence that belongs to the application is collected in this repository. This repository option should be used only for evaluation purposes. However, it is recommended to collect and store all the evidences in a Cloud {{site.data.keyword.cos_short}} bucket that can be configured as described in the following image.
 
 ![DevSecOps Evidence Storage](images/devsecops-cc-toolchain-setup-evidence-storage.png){: caption="DevSecOps Evidence Storage" caption-side="bottom"}
 
 ### Cloud {{site.data.keyword.cos_short}} bucket
-{: #devsecops-cc-tool-integration-cos-bucket}
+{: #tutorial-cc-toolchain-cos-bucket}
 
 [{{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage) is used to store the evidence and artifacts that are generated by the DevSecOps pipelines. If you want to use this feature, you must have a Cloud {{site.data.keyword.cos_short}} instance and a bucket that is created during your DevSecOps CI toolchain. [Read the recommendation](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) for configuring a bucket that can act as a compliance evidence locker.
 
@@ -173,13 +174,13 @@ The endpoint field is optional. It is recommended to select or provide the endpo
 ![DevSecOps Cloud Object Storage configuration](images/devsecops-cc-toolchain-setup-COS.png){: caption="DevSecOps COS configuration" caption-side="bottom"}
 
 ### DevOps Insights
-{: #devsecops-ci-tool-integration-insights}
+{: #tutorial-cc-toolchain-insights}
 
 [IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) created during the CI toolchain setup is reused for the CC toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights. DevOps Insights aggregates code scan, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
 We are working on it to make this available at the earliest!
 
 ### SonarQube
-{: #devsecops-cc-tool-integration-sonarqube}
+{: #tutorial-cc-toolchain-sonarqube}
 
 Configure SonarQube as the static code analysis tool for the toolchain. SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. The static code analyzers detect tricky bugs, such as null-pointer dereferences, logic errors, and resource leaks for multiple programming languages.
 
@@ -190,22 +191,22 @@ If you want the toolchain to use an existing SonarQube Instance that you provisi
 ![SonarQube configuration](images/devsecops-cc-toolchain-setup-sonarqube-default-config.png){: caption="SonarQube static scan configuration" caption-side="bottom"}
 
 ### Optional tools
-{: #devsecops-cc-tool-integration-optional-tools}
+{: #tutorial-cc-toolchain-optional-tools}
 
 #### Slack
-{: #devsecops-cc-tool-integration-optional-slack}
+{: #tutorial-cc-toolchain-slack}
 
 If you want to receive notifications about your CC Pipeline events, you can configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) during the setup from the toolchain template, or you can add the Slack Tool later.
 
 In order for a Slack channel to receive notifications from your tools, you need a Slack webhook URL. To get a webhook URL, see the Incoming Webhooks section of the [Slack API website](https://api.slack.com/messaging/webhooks){: external}.
 
 #### Delivery Pipeline Private Worker
-{: #devsecops-cc-tool-integration-optional-private-worker}
+{: #tutorial-cc-toolchain-private-worker}
 
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
 
 ## Create the CC toolchain
-{: #devsecops-cc-toolchain-create}
+{: #tutorial-cc-toolchain-summary}
 {: step}
 
 On the Summary page, click **Create toolchain**, and wait for the toolchain to be created.
@@ -216,7 +217,7 @@ The individual toolchain integrations can be configured also after the pipeline 
 ![DevSecOps Summary](images/devsecops-cc-toolchain-setup-summary.png){: caption="DevSecOps Summary" caption-side="bottom"}
 
 ## Explore the CC toolchain
-{: #devsecops-cc-toolchain-explore}
+{: #tutorial-cc-toolchain-explore}
 {: step}
 
 The created CC toolchain looks like this:
@@ -231,7 +232,7 @@ It contains Continuous Compliance pipeline and async pipeline. It comes with thr
 ![CC pipeline triggers](images/devsecops-cc-toolchain-explore-triggers.png){: caption="DevSecOps Continuous Compliance pipeline triggers" caption-side="bottom"}
 
 ### Update the app URL to run dynamic scan
-{: #devsecops-cc-toolchain-appurl}
+{: #tutorial-cc-toolchain-app-url}
 
 To run dynamic scan on the target environment, we need to provide application URL to the CC pipeline.
 
@@ -269,7 +270,7 @@ A completed async sub pipeline run that got triggered during CC pipeline run loo
 Refer a detailed and updated list of [scans and checks that are run in compliance checks](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-compliance-checks).
 
 ### Incident issues
-{: #devsecops-cc-toolchain-incident-issues}
+{: #tutorial-cc-toolchain-incident-issues}
 
 During CC pipeline execution, incident issues (vulnerability, CVE) are created and attached to the collected evidence. If found in production, these issues can have a specified time period in which they should be fixed so that deployments are not blocked. Thus, the issues are added with a due date. This also helps to continue with the deployment because thought the same issue is found in build, the deployment does not make the security posture worse.
 The detailed feature documentation can be found [here](/docs/devsecops?topic=devsecops-devsecops-issues-grace-period).
@@ -279,31 +280,17 @@ The issues are created in the issues repository that is mentioned at the time of
 ![DevSecOps sample incident issue](images/devsecops-cc-toolcain-explore-sample-issue.png){: caption="DevSecOps sample incident issue created with CC pipeline" caption-side="bottom"}
 
 ### CI and CC pipeline comparison
-{: #devsecops-cc-toolchain-comparison}
+{: #tutorial-cc-toolchain-comparison}
 
 You might notice that the CI and CC pipeline have many common steps. The scans and checks that are run are similar in nature and details. The pipelines still have some significant differences as explained in the following table:
 
 | CI pipeline | CC pipeline |
 |---------|------------|
-| It is part of CI toolchain | It is part of CC toolchain |
-| It is triggered after a merge request is merged with master branch | It can be triggered manually or at predefined intervals independent of deployment schedule |
-| Application URL and application code repo details are entered as part of setup process | An application URL and application code repo details are provided post-CC toolchain is configured before initiation of first pipeline run. |
-| The incident issues that are created as part of various scans and checks during compliance checks do not carry a due date | The incident issues that are created as part of various scans and checks during compliance checks carry a due date |
-| The incident issues that are created are found during build | The incident issues that are created are found during periodic scans of staging or production environment. |
-| summary.json is not generated at the end of each CI pipeline run | summary.json is not generated at the end of each CI pipeline run |
-| It includes steps like app image creation, image signing, deploy to dev cluster. This in turn creates inputs for CD pipeline  | It runs only scans and checks that are needed for compliance testing |
-{: caption="Table 1. Difference in CI and CC pipeline" caption-side="top"}
-
-## Related content
-{: #devsecops-tutorial-cc-related-content}
-
-* [Getting started with clusters](/docs/containers?topic=containers-getting-started)
-* [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
-* [Getting started with Continuous Delivery](/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started)
-
-## Looking for help?
-{: #devsecops-tutorial-cc-toolchain-help}
-
-Get help fast directly from the {{site.data.keyword.cloud_notm}} {{site.data.keyword.contdelivery_short}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
-
-For more support options, see [Getting help and support for {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-gettinghelp).
+| It is part of the CI toolchain. | It is part of the CC toolchain. |
+| It is triggered after a merge request is merged with the `master` branch | It can be triggered manually or at predefined intervals that are independent of a deployment schedule. |
+| An application URL and application code repo details are entered as part of the setup process. | An application URL and application code repo details are provided after the CC toolchain is configured and before initiation of first pipeline run. |
+| The incident issues that are created as part of various scans and checks during compliance checks do not carry a due date. | The incident issues that are created as part of various scans and checks during compliance checks carry a due date. |
+| The incident issues that are created are found during the build. | The incident issues that are created are found during periodic scans of the staging or production environment. |
+| The `summary.json` file is not generated at the end of each CI pipeline run. | The `summary.json` file is not generated at the end of each CI pipeline run. |
+| It includes steps like app image creation, image signing, and deploy to dev cluster. This in turn creates inputs for the CD pipeline.  | It runs only scans and checks that are needed for compliance testing. |
+{: caption="Table 1. Differences in the CI and CC pipelines" caption-side="bottom"}

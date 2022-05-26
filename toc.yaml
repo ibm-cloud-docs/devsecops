@@ -36,11 +36,14 @@ toc:
   - navgroup:
       id: tutorial
       topics:
+      - topicgroup:
+          label: Deploy a secure app with DevSecOps best practices
+          topics:
+          - devsecops-tutorial.md
+          - devsecops-tutorial-ci-toolchain.md
+          - devsecops-tutorial-cd-toolchain.md
+          - devsecops-tutorial-cc-toolchain.md
       - /apps/apps-tutorial-apps-devsecops
-      - devsecops-tutorial.md
-      - devsecops-tutorial-ci-toolchain.md
-      - devsecops-tutorial-cd-toolchain.md
-      - devsecops-tutorial-cc-toolchain.md
 
   - navgroup:
       id: howto
