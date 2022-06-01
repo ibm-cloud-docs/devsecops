@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-18"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -53,8 +53,8 @@ In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You migh
 1. In Cloud {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **New Credential**.
 3. Provide the details:
-   *  **Name:** Name of the credential
-   *  **Role:** Role for the credential. The **writer** role is suggested for uploading the file.
+   *  **Name:** Name of the credential.
+   *  **Role:** Role for the credential. The **Object writer** role is suggested for uploading the file.
 
 ## Provide bucket access to the service credential
 {: #cd-devsecops-cos-bucket-access}
@@ -62,7 +62,7 @@ In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You migh
 1. In Cloud {{site.data.keyword.cos_short}}, click **Buckets**.
 2. Select the bucket that was created in the previous step.
 3. Click **Access policies**, and select the **Service IDs** option
-4. Select the service credential that was created in the previous step, and select the **writer** role.
+4. Select the service credential that was created in the previous step, and select the **Object writer** role.
 5. Click **Create Access Policy**.
 
 ## Copy the API Key of the service credential
