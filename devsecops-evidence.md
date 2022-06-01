@@ -1237,7 +1237,7 @@ The only hierarchy is the type differentiation and some hash grouping similar to
 
 Evidence and related artifacts, such as logs and test results are stored in evidence lockers. Because pipeline runs can easily be deleted, pipelines are considered nondurable. To create a retention policy and audit log, evidence data that is related to compliance is stored in lockers.
 
-### Git Repos and Issue Tracking
+### {{site.data.keyword.gitrepos}}
 {: #devsecops-lockers-git}
 
 Although it does not contain the data retention capabilities of Cloud Object Storage, Git is a simple implementation for an evidence locker.

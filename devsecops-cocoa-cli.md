@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-19"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -59,8 +59,8 @@ GHE_REPO=               # The repository name
 INCIDENT_ISSUE_REPO=    # The incident issue repo name
 EMERGENCY_LABEL=        # Emergency Label name
 GIT_COMMIT=             # Commit hash of the Pull Request
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 {: screen}
 
@@ -290,8 +290,8 @@ SERVICENOW_URL=     # ServiceNow API URL
 
 Required Environment Variables for GitLab:
 ```text
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=             # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=            # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -357,8 +357,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=             # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=            # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -405,8 +405,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=             # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=            # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -450,8 +450,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=             # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=            # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -557,8 +557,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=             # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=            # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -604,8 +604,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=           # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=           # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=             # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=            # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -655,8 +655,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=          # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=         # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -778,8 +778,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=          # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=         # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -825,8 +825,8 @@ SERVICENOW_URL=      # ServiceNow API URL
 
 Required Environment Variables, if you are using the GitLab provider:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 GITLAB_ORG=          # The owner of the repository (Required if you are using 'gitlab' as provider)
 GITLAB_REPO=         # The repository name (Required if you are using 'gitlab' as provider)
 ```
@@ -998,8 +998,8 @@ GHE_TOKEN=          # Github Enterprise API Token (Optional if you are using --g
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 {: screen}
 
@@ -1068,8 +1068,8 @@ GHE_TOKEN=          # Github Enterprise API Token (Optional if you are using --g
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 {: screen}
 
@@ -1175,8 +1175,8 @@ GHE_TOKEN=          # Github Enterprise API Token (Optional if you are using --g
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=       # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as git-provider)
-GITLAB_URL=         # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
+GITLAB_TOKEN=       # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as git-provider)
+GITLAB_URL=         # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
 ```
 {: screen}
 
@@ -1227,8 +1227,8 @@ GHE_TOKEN=    # Github token (Optional if you are using --git-token-path)
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=     # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as git-provider)
-GITLAB_URL=       # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
+GITLAB_TOKEN=     # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as git-provider)
+GITLAB_URL=       # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
 ```
 {: screen}
 
@@ -1274,8 +1274,8 @@ GHE_TOKEN=    # Github Enterprise API Token(Optional if you are using --git-toke
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=     # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as git-provider)
-GITLAB_URL=       # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
+GITLAB_TOKEN=     # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as git-provider)
+GITLAB_URL=       # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
 ```
 {: screen}
 
@@ -1355,8 +1355,8 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-tok
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN= # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as git-provider)
-GITLAB_URL=   # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
+GITLAB_TOKEN= # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as git-provider)
+GITLAB_URL=   # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
 ```
 {: screen}
 
@@ -1404,8 +1404,8 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-tok
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN= # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as git-provider)
-GITLAB_URL=   # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
+GITLAB_TOKEN= # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as git-provider)
+GITLAB_URL=   # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
 ```
 {: screen}
 
@@ -1467,8 +1467,8 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-tok
 Required Environment Variables, if you are using GitLab:
 
 ```text
-GITLAB_TOKEN=   # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as git-provider)
-GITLAB_URL=     # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
+GITLAB_TOKEN=   # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as git-provider)
+GITLAB_URL=     # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as git-provider)
 ```
 {: screen}
 
@@ -1534,8 +1534,8 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-tok
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 
 Options for git:
@@ -1601,8 +1601,8 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-tok
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 {: screen}
 
@@ -1631,7 +1631,7 @@ Currently-supported scan result files:
 
 - Container Registry VA scan (option `--type va`)
 - CRA Vulnerability scan (option `--type cra`)
-- XRay (option `--type xray`)
+- Xray (option `--type xray`)
 - OWASP ZAP (option `--type owasp-zap`)
 - OWASP ZAP UI (option `--type owasp-zap-ui`)
 - Twistlock (option `--type twistlock`)
@@ -1678,8 +1678,8 @@ GHE_TOKEN=                # Github Enterprise API Token (Optional if you are usi
 
 Required Environment Variables, if you are using GitLab:
 ```text
-GITLAB_TOKEN=        # Git Repos and Issue Tracking (GRIT) API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+GITLAB_TOKEN=        # {{site.data.keyword.gitrepos}} API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # {{site.data.keyword.gitrepos}} URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 {: screen}
 
