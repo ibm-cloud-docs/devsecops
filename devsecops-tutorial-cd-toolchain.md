@@ -243,9 +243,9 @@ After you create your toolchain, you can toggle sending notifications with the `
 #### Security and Compliance
 {: #tutorial-cd-toolchain-scc}
 
-To integrate the toolchain with {{site.data.keyword.compliance_short}}, you need to provide a project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector. 
-
-You also need to provide the evidence namespace for the type of the toolchain, either **Continuous Delivery** or **Continuous Compliance**.
+To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
+* A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
+* The evidence namespace for the type of the toolchain, which is either **Continuous Delivery** or **Continuous Compliance**.
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information about how to choose a profile name, see [Managing security and compliance with Continuous Delivery](/docs/devsecops?topic=devsecops-scc-manage-cd).
 
