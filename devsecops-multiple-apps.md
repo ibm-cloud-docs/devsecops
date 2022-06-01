@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, CI toolchain with multiple apps, multiple apps toolchain
 

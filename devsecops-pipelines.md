@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-09-15"
+  years: 2021, 2022
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps
 
@@ -61,8 +61,7 @@ The pull request pipeline runs pre-set compliance status checks on a pull reques
 ## Continuous integration pipeline
 {: #cd-devsecops-pipelines-ci-pipeline}
 
-The continuous integration pipeline builds the deployable artifacts from the application (app) repositories (repos).
-Before it builds artifacts, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management. For more information about the continuous integration pipeline, see [Continuous Integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
+The continuous integration pipeline builds the deployable artifacts from the application (app) repositories (repos). Before it builds artifacts, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management. For more information about the continuous integration pipeline, see [Continuous Integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
 ## Continuous delivery pipeline
 {: #cd-devsecops-pipelines-cd-pipeline}

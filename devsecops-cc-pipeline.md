@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-19"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline
 
