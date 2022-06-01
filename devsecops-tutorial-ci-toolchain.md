@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-05-25"
+lastupdated: "2022-06-01"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -23,7 +23,7 @@ completion-time: 1h
 {: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-This tutorial is part 2 of a 4-part tutorial series where you learn {{site.data.keyword.cloud}} DevSecOps best practices by using a complete reference implementation that is available as a service and powered by {{site.data.keyword.contdelivery_full}}. In part 2 of this tutorial series, you use the toolchain template for continuous integration (CI) with security and compliance-related best practices in DevSecOps. It is preconfigured for {{site.data.keyword.contdelivery_short}} with inventory integration, change management with GRIT, evidence collection, and deployment to {{site.data.keyword.containerlong_notm}}.
+This tutorial is part 2 of a 4-part tutorial series where you learn {{site.data.keyword.cloud}} DevSecOps best practices by using a complete reference implementation that is available as a service and powered by {{site.data.keyword.contdelivery_full}}. In part 2 of this tutorial series, you use the toolchain template for continuous integration (CI) with security and compliance-related best practices in DevSecOps. It is preconfigured for {{site.data.keyword.contdelivery_short}} with inventory integration, change management with {{site.data.keyword.gitrepos}}, evidence collection, and deployment to {{site.data.keyword.containerlong_notm}}.
 {: shortdesc}
 
 ## Before you begin
@@ -101,22 +101,22 @@ Review the default information for the toolchain settings:
 
 Multiple repositories must be configured during the guided setup, as described in the following sections.
 
-For each repository, you can either clone the repository that is provided as a sample. Alternatively, you can provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own. The toolchain supports linking only to existing GRIT repositories.
+For each repository, you can either clone the repository that is provided as a sample. Alternatively, you can provide a URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that you own. The toolchain supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 {: note}
 
 ### Application
 {: #tutorial-ci-toolchain-application}
 
-The application source code repository can be hosted either on GitHub or the IBM-hosted Git Repos and Issue Tracking (GRIT) repository from the list of source providers. For consistency, this tutorial refers to GRIT.
+The application source code repository can be hosted either on GitHub or the IBM-hosted {{site.data.keyword.gitrepos}} repository from the list of source providers. For consistency, this tutorial refers to {{site.data.keyword.gitrepos}}.
 {: note}
 
-The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application into an IBM-hosted GRIT Repository.
+The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application into an IBM-hosted {{site.data.keyword.gitrepos}} Repository.
 
-Enter a name for the IBM-hosted GRIT repository that is created by the toolchain as your application repository.
+Enter a name for the IBM-hosted {{site.data.keyword.gitrepos}} repository that is created by the toolchain as your application repository.
 
 The region of the repository remains the same as the region of the toolchain.
 
-If you want to link an existing Application Repository for the toolchain, select the `Bring your own app` option, and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories. If you want to know more about `Bring your own app`, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+If you want to link an existing Application Repository for the toolchain, select the `Bring your own app` option, and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. If you want to know more about `Bring your own app`, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
 
 ### Inventory
 {: #tutorial-ci-toolchain-inventory}

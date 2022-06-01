@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-07"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap
 
@@ -10,18 +10,7 @@ subcollection: devsecops, ci pipeline
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Continuous integration pipeline
 {: #cd-devsecops-ci-pipeline}
@@ -64,12 +53,16 @@ You can use any of the following methods to add static code to your pipeline:
 
 * If you don't have your own SonarQube instance, the pipeline creates a SonarQube instance during the pipeline run. You can access this instance after the static-scan stage successfully runs.
 
+
+
 * Add your own static scan code to the static-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
 ### Adding SonarQube scan to your pipelines
 {: #devsecops-ci-pipeline-sonarqube-info}
 
 For more information about integrating SonarQube with the continuous integration pipeline, see the [Configuring SonarQube](/docs/devsecops?topic=ContinuousDelivery-sonarqube) section.
+
+
 
 ## Scans and checks in compliance checks
 {: #devsecops-ci-pipeline-compliancechecks}
@@ -80,7 +73,7 @@ For more information about integrating SonarQube with the continuous integration
 | Code Risk Analyzer vulnerability scan | Finds vulnerabilities for all of the app package dependencies, container base images, and operating system packages. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer CIS check |  Runs configuration checks on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
-| Repository compliance checking | Checks that branch protection settings are correct. For example, the master/main branch should always restrict the force push. For more information, see [Configuring your Git Repos and Issue Tracking repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).|
+| Repository compliance checking | Checks that branch protection settings are correct. For example, the master/main branch should always restrict the force push. For more information, see [Configuring your {{site.data.keyword.gitrepos}} repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).|
 {: caption="Table 5. Compliance scans and checks" caption-side="top"}
     
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
@@ -102,7 +95,11 @@ The artifact scan and sign stages provide a default behavior for Docker images, 
 * Image signing by using GPG Key.
 * Container Registry Vulnerability Advisor scanning.
 
+
+
 To get started with these stages, provide your artifacts for the pipeline to use the `pipelinectl` interface. You are not required to update the build scripts and the `.pipeline-config.yaml` configuration.
+
+
 
 To use a different scan or sign process, or to process artifacts other than Docker images in `icr.io`, you can customize these stages by using the `.pipeline-config.yaml` configuration in your project.
 

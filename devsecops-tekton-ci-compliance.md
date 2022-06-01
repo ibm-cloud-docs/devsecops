@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-11"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -81,7 +81,7 @@ The toolchain region can differ from cluster and registry region.
 
 Multiple repositories must be configured during the guided setup, as described in the next sections.
 
-For each repository, either clone the repository that's provided as a sample, or provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own. The toolchain supports linking only to existing GRIT repositories.
+For each repository, either clone the repository that's provided as a sample, or provide a URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that you own. The toolchain supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 
 ### Application
@@ -91,13 +91,13 @@ The Application step that refers to the application source code repository is sh
   
 ![DevSecOps application repository](images/devsecops-ci-app-repo.png){: caption="DevSecOps application repository" caption-side="bottom"}
 
-The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application as IBM-hosted GRIT Repository.
+The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application as IBM-hosted {{site.data.keyword.gitrepos}} Repository.
 
-Enter the name of the IBM-hosted GRIT repository that was created by the toolchain as your application repository.
+Enter the name of the IBM-hosted {{site.data.keyword.gitrepos}} repository that was created by the toolchain as your application repository.
 
 The region of the repository remains the same as the region of the toolchain.
 
-If you want to link an existing Application Repository for the toolchain, select the `Bring your own app` option, and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories. If you want to know more about `Bring your own app`, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+If you want to link an existing Application Repository for the toolchain, select the `Bring your own app` option, and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRI{{site.data.keyword.gitrepos}}T repositories. If you want to know more about `Bring your own app`, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
 
 ### Inventory
 {: #devsecops-ci-tool-inventory}
@@ -106,9 +106,9 @@ Change management is tracked in this repository. CD pipeline creates a new branc
 
 ![DevSecOps inventory repository](images/devsecops-ci-inventory-repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
 
-The default behavior of the toolchain is to `Create new inventory` that creates a new Inventory Repository as IBM hosted GRIT Repository. If you want to link an existing Inventory Repository for the toolchain, you may choose `Use existing inventory` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories.
+The default behavior of the toolchain is to `Create new inventory` that creates a new Inventory Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Inventory Repository for the toolchain, you may choose `Use existing inventory` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
-- **New repository name**: Name of the IBM hosted GRIT Repository created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
+- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} Repository created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
 
 ### Issues
 {: #cd-devsecops-issues-ci}
@@ -117,9 +117,9 @@ Issues about incidents that are captured during the build and deployment process
 
 ![DevSecOps Issues repository](images/devsecops-ci-issues-repo.png){: caption="DevSecOps Issues repository" caption-side="bottom"}
 
-The default behavior of the toolchain is to `Create new issues repository` that creates a new repository as IBM hosted GRIT Repository. In case you want to link an existing Issues Repository for the toolchain, you can choose `Use existing issues repository` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories.
+The default behavior of the toolchain is to `Create new issues repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. In case you want to link an existing Issues Repository for the toolchain, you can choose `Use existing issues repository` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
-- **New repository name**: Name of the IBM hosted GRIT Repository created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
+- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} Repository created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
 
 ### Secrets
 {: #cd-devsecops-secrets-ci}
@@ -180,7 +180,7 @@ Note: _We advise you to use AppRole authentication method as this method can be 
 
 All raw compliance evidence that belongs to the application is collected in this repository. Use this repository option for evaluation purposes only. 
 
-The default behavior of the toolchain is to `Create new evidence locker repository` that creates a new repository as IBM hosted GRIT Repository. If you ant to link an existing Evidence Locker for the toolchain, choose `Use existing evidence locker` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories.
+The default behavior of the toolchain is to `Create new evidence locker repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you ant to link an existing Evidence Locker for the toolchain, choose `Use existing evidence locker` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 However, you must collect and store all the evidences in a Cloud Object Storage bucket that can be configured as described in the following image.
 
@@ -212,7 +212,7 @@ If you decide not to use Cloud Object Storage as an evidence locker, you can als
 ### Deploy
 {: #cd-devsecops-deploy-ci}
 
-The default behavior of the toolchain is to `Clone existing pipeline` that creates a new repository as IBM hosted GRIT Repository. If you want to link an existing Pipeline Repository for the toolchain, choose `Use existing repository` and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories.
+The default behavior of the toolchain is to `Clone existing pipeline` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Pipeline Repository for the toolchain, choose `Use existing repository` and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **App name:**
 

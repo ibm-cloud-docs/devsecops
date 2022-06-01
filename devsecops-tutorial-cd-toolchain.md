@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-05-25"
+lastupdated: "2022-06-01"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -41,7 +41,7 @@ The DevSecOps CD toolchain contains only one pipeline for Continuous Delivery. I
 
 * Change Management automation to help developers, approvers, and auditors track deployments from the lens of compliance.
 * Creates an evidence summary from the evidence that is collected in the CI pipeline
-* Creates a change request in Git Repos and Issue Tracking based change management repository and adds deployment evidence to it
+* Creates a change request in {{site.data.keyword.gitrepos}} based change management repository and adds deployment evidence to it
 * Uses the inventory repository to promote built artifacts to deployment environments like staging and prod
 * Checks the CR, and auto approves if all checks pass
 * If CR is approved, or emergency, deploys the image from the inventory to production
@@ -113,7 +113,7 @@ To fetch the respective URL, go to the CI Pipeline, select the respective tool c
 * **Issues**: The issues repository records issues that are found while the CI pipeline is running. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-issues`.
 * **Evidence**: All raw compliance evidence that belongs to the application is collected here. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-evidence`.
 
-The toolchain currently supports linking only to existing IBM-hosted Git Repos and Issue Tracking (GRIT) repositories.
+The toolchain currently supports linking only to existing IBM-hosted {{site.data.keyword.gitrepos}} repositories.
 {: note}
 
 ### Inventory
@@ -212,7 +212,7 @@ With this option, you can customize the deployment step to deploy your applicati
 ### Change request management
 {: #tutorial-cd-toolchain-change-request}
 
-{{site.data.keyword.cloud_notm}}-hosted GRIT (Git Repos and Issue Tracking) repository to [manage change requests](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+{{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to [manage change requests](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
 
 ### DevOps Insights toolchain
 {: #tutorial-cd-toolchain-insights}
@@ -243,9 +243,14 @@ After you create your toolchain, you can toggle sending notifications with the `
 #### Security and Compliance
 {: #tutorial-cd-toolchain-scc}
 
-To integrate the toolchain with {{site.data.keyword.compliance_short}}, you need to provide a project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
+To integrate the toolchain with {{site.data.keyword.compliance_short}}, you need to provide a project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector. 
+
+You also need to provide the evidence namespace for the type of the toolchain, either **Continuous Delivery** or **Continuous Compliance**.
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information about how to choose a profile name, see [Managing security and compliance with Continuous Delivery](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-manage-security-compliance).
+
+Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile for DevSecOps toolchains.
+{: tip}
 
 Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external}.
 
@@ -287,7 +292,7 @@ The Promotion Pipeline creates a Pull Request with the content of the inventory 
    * **Backout Plan**: Steps to back out if there is a deployment failure
 1. Complete the fields in the `Pull Request` and `save`.
 1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to [continue with deployment](docs/devsecops?topic=devsecops-cd-devsecops-approve-cr#cd-devsecops-emergency-label)
-1. Merge the `Pull Request` from the GRIT.
+1. Merge the `Pull Request` from {{site.data.keyword.gitrepos}}.
 
 The details of the `Pull Request` are used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD pipeline run.
 
@@ -296,7 +301,7 @@ The details of the `Pull Request` are used by the CD Pipeline to create a Change
 
 You can start a CD pipeline in either of the following ways:
 * Preferred: trigger the CD pipeline manually.
-* Optional: automatically after every `Merge` action in the Inventory Repository. A GRIT trigger is set up to trigger automatic CD Pipeline, but is disabled by default.
+* Optional: automatically after every `Merge` action in the Inventory Repository. A {{site.data.keyword.gitrepos}} trigger is set up to trigger automatic CD Pipeline, but is disabled by default.
 
 You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD pipeline` aborts early because there is nothing to deploy. You can add and use [`force-redeploy` variable](docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes.
 {: tip}

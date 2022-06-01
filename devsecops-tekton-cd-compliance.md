@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-11"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -99,12 +99,12 @@ If you want to set up your CI toolchain from scratch, configure these repositori
 - **Toolchain:** The tekton pipeline definitions (for example pipelines, triggers, and listeners) are stored in this repo.
     For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-toolchain`
 
-After you capture the names of repos from continuous integration toolchain, proceed with the `Guided Setup` to begin continuous delivery toolchain creation. During the setup process, for each repository you can either provide the URL to an existing IBM hosted Git Repos and Issue Tracking (GRIT) repository that is created for your CI Toolchain or choose to create a new repository. Currently, the toolchain supports creating only GRIT repositories. Future releases provide support to create repositories with GitHub, GitHub Enterprise (GHE), and other SCM Providers.
+After you capture the names of repos from continuous integration toolchain, proceed with the `Guided Setup` to begin continuous delivery toolchain creation. During the setup process, for each repository you can either provide the URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that is created for your CI Toolchain or choose to create a new repository. Currently, the toolchain supports creating only {{site.data.keyword.gitrepos}} repositories. Future releases provide support to create repositories with GitHub, GitHub Enterprise (GHE), and other SCM Providers.
 
 ### Inventory
 {: #cd-devsecops-inventory}
 
- The default behavior of the toolchain is to `Use existing inventory` to link an existing Inventory Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories.
+ The default behavior of the toolchain is to `Use existing inventory` to link an existing Inventory Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **Repository URL**: URL of the Inventory Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
@@ -113,7 +113,7 @@ After you capture the names of repos from continuous integration toolchain, proc
 ### Issues
 {: #cd-devsecops-issues}
 
- The default behavior of the toolchain is to `Use existing issues repository` to link an existing Issues Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing GRIT repositories.
+ The default behavior of the toolchain is to `Use existing issues repository` to link an existing Issues Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **Repository URL**: URL of the Issues Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
@@ -126,7 +126,7 @@ The repository contains custom scripts to run pipeline tasks in the CD Pipeline 
 
 By default, the setup `Clone deployment configuration` from the sample repository. When the repository is cloned, you can customize configurations and scripts for pipeline runs. 
 
-- **New repository name**: Name of the IBM hosted GRIT Repository that is created by the toolchain as your deployment configuration repository. The region of the repository remains the same as that of the toolchain. Choose a unique name for the new repository.
+- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} repository that is created by the toolchain as your deployment configuration repository. The region of the repository remains the same as that of the toolchain. Choose a unique name for the new repository.
 
 If you have a deployment configuration repo from an existing continuous delivery toolchain, select the **Switch to advanced configuration** to configure the same settings for this pipeline.
 
@@ -192,7 +192,7 @@ You can use the `AppRole` authentication method to read secret values.
 
 All raw compliance evidence that belongs to the application is collected in this repository. Use this repository option for evaluation purposes only. 
 
-The default behavior of the toolchain is to `Use existing evidence locker`. The `Repository URL` field can be set to the Evidence Repository URL that was created/used for CI Toolchain. If you want to create an Evidence Locker for the toolchain, choose `Create new evidence locker repository`, which creates a new repository as IBM hosted GRIT Repository.
+The default behavior of the toolchain is to `Use existing evidence locker`. The `Repository URL` field can be set to the Evidence Repository URL that was created/used for CI Toolchain. If you want to create an Evidence Locker for the toolchain, choose `Create new evidence locker repository`, which creates a new repository as an IBM-hosted {{site.data.keyword.gitrepos}} Repository.
 
 However, you should collect and store all the evidences in a COS bucket that can be configured as described in [Cloud Object Storage Bucket](#cd-devsecops-cos-bucket).
 
@@ -232,7 +232,7 @@ If you decide not to use Cloud Object Storage as an evidence locker, you can als
 
 - **Repository URL**: URL of the Tekton Pipeline Definition Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
-The Pipeline Repository contains configurations for both CI and CD Toolchains and hence can be kept common across the two toolchains. If you want to use separate pipeline definitions for CD Toolchain Tekton definitions use the `Switch to advanced configuration` toggle to clone the repository.
+The Pipeline Repository contains configurations for both CI and CD Toolchains and hence can be kept common across the two toolchains. If you want to use separate pipeline definitions for CD Toolchain Tekton definitions, use the `Switch to advanced configuration` toggle to clone the repository.
 
 ![DevSecOps Tekton Pipeline](images/devsecops_set-up_cd_tekton_pipeline_orig.png){: caption="DevSecOps Tekton Pipeline" caption-side="bottom"}
 
@@ -274,16 +274,16 @@ When the API Key field is filled, the registry and cluster related fields are fi
 ### Change Request Management
 {: #cd-devsecops-change-request}
 
-You can select IBM Cloud hosted GRIT (Git Issues and Issue Tracking) repository to manage Change Requests.
+You can select IBM Cloud hosted {{site.data.keyword.gitrepos}} repository to manage Change Requests.
 
 ![Change Request](images/devsecops_set-up_cd_change_request_orig.png){: caption="Change request" caption-side="bottom"}
 
-### Git Repo and Issue Tracking
+### {{site.data.keyword.gitrepos}}
 {: #cd-devsecops-grit}
 
-- **New repository name:** Name of the GRIT Repository to be used for Change Request Management.
+- **New repository name:** Name of the {{site.data.keyword.gitrepos}} Repository to be used for Change Request Management.
 
-The default behavior of the toolchain is to `Use default GRIT change request management repo` that creates a new Change Request Management Repository as IBM hosted GRIT Repository. Choose a unique name for the new repository.
+The default behavior of the toolchain is to `Use default {{site.data.keyword.gitrepos}} change request management repo` that creates a new Change Request Management Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. Choose a unique name for the new repository.
 
 In case you have an existing Change Request repository from an existing CD Toolchain, use the `Switch to advanced configuration` toggle to configure the same for this pipeline.
 
@@ -400,7 +400,7 @@ After the `Promotion Pipeline` finishes successfully, the `promote` Task provide
    * **Backout Plan**: Steps to back out if the deployment fails
 1. Complete the fields in the `Pull Request` and `save`.
 1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to continue with deployment
-1. Merge the `Pull Request` from the GRIT.
+1. Merge the `Pull Request` from the {{site.data.keyword.gitrepos}}.
 
 The details of the `Pull Request` are used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD pipeline run.
 
@@ -432,7 +432,7 @@ The details of the `Pull Request` are used by the CD Pipeline to create a Change
 
 1. Complete the fields in the `Pull Request` and save. 
 
-1. Merge the `Pull Request` from the GRIT.
+1. Merge the `Pull Request` from the {{site.data.keyword.gitrepos}}.
 
 The details of the `Pull Request` is used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD Pipeline Run.
 
@@ -441,7 +441,7 @@ The details of the `Pull Request` is used by the CD Pipeline to create a Change 
 
 You can start a CD pipeline in either of the following ways:
 * Trigger the CD pipeline manually.
-* Automatically after every `Merge` action in Inventory Repository. After the merge, you must manually trigger the run of CD Pipeline. A GRIT trigger is set up to trigger automatic CD Pipeline, but is disabled by default and can be enabled after the first promotion.
+* Automatically after every `Merge` action in Inventory Repository. After the merge, you must manually trigger the run of CD Pipeline. A {{site.data.keyword.gitrepos}} trigger is set up to trigger automatic CD Pipeline, but is disabled by default and can be enabled after the first promotion.
 
 ![DevSecOps CD Pipeline Manual Promotion](images/devsecops-cd-explore-manual-pipeline-trigger.png){: caption="DevSecOps CD Pipeline Manual Promotion" caption-side="bottom"}
 

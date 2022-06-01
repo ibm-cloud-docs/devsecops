@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-05-25"
+lastupdated: "2022-06-01"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -113,7 +113,7 @@ Use [IBM Secrets Manager](/docs/secrets-manager?topic=secrets-manager-getting-st
 
 Multiple repositories must be configured during the guided setup, as described in the next sections.
 
-For each repository, provide a URL to an existing IBM-hosted Git Repos and Issue Tracking (GRIT) repository that you own and that was specified during CI toolchain setup. The toolchain supports linking only to existing GRIT repositories.
+For each repository, provide a URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that you own and that was specified during CI toolchain setup. The toolchain supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 {: note}
 
 ### Inventory
@@ -136,7 +136,7 @@ Environment tag in your inventory: It is the [tag in your Inventory repository t
 ### Issues
 {: #tutorial-cc-toolchain-issues}
 
-The Git Repos and Issue Tracking repository records incident issues that are found while the CC pipeline is running.
+The {{site.data.keyword.gitrepos}} repository records incident issues that are found while the CC pipeline is running.
 ![DevSecOps incident issues repository](images/devsecops-cc-toolchain-setup-issues-repo.png){: caption="DevSecOps incident issues repository" caption-side="bottom"}
 
 ### Pipeline configuration
@@ -198,12 +198,27 @@ If you want the toolchain to use an existing SonarQube Instance that you provisi
 
 If you want to receive notifications about your CC Pipeline events, you can configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) during the setup from the toolchain template, or you can add the Slack Tool later.
 
-In order for a Slack channel to receive notifications from your tools, you need a Slack webhook URL. To get a webhook URL, see the Incoming Webhooks section of the [Slack API website](https://api.slack.com/messaging/webhooks){: external}.
+So that a Slack channel can receive notifications from your tools, you need a Slack webhook URL. To get a webhook URL, see the Incoming Webhooks section of the [Slack API website](https://api.slack.com/messaging/webhooks){: external}.
 
 #### Delivery Pipeline Private Worker
 {: #tutorial-cc-toolchain-private-worker}
 
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
+
+#### Security and Compliance
+{: #tutorial-cd-toolchain-scc}
+
+To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide a project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
+
+You also need to provide the evidence namespace for the type of the toolchain, either **Continuous Delivery** or **Continuous Compliance**.
+
+You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information about how to choose a profile name, see [Managing security and compliance with Continuous Delivery](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-manage-security-compliance).
+
+Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile for DevSecOps toolchains.
+{: tip}
+
+Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external}.
+
 
 ## Create the CC toolchain
 {: #tutorial-cc-toolchain-summary}

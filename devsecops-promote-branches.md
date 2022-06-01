@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-21"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Promoting and deploying changes
 {: #cd-devsecops-promote-branches}
@@ -38,7 +27,7 @@ To promote code changes from the source (master) branch to the target (staging, 
 
    * From the continuous delivery pipeline dashboard, click **Run Pipeline**. 
    * Select **Manual Promotion Trigger**.
-   * Click **Run**. The pipeline-run creates a merge request to promote your code changes from the source branch to the target  branch.
+   * Click **Run**. The pipeline-run creates a merge request to promote your code changes from the source branch to the target branch.
  
    ![Manual Promotion Trigger](images/manual-promotion-trigger.png){: caption="Manual Promotion Trigger" caption-side="bottom"}
 
@@ -52,7 +41,7 @@ To promote code changes from the source (master) branch to the target (staging, 
    * Populate the [required fields](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelineoutputs) (Priority, Change Request assignee, Additional Description, and other fields).
    * Merge the merge request to promote your changes from the source branch to the target branch.
 
-Now that your changes are promoted to the target branch, you can deploy them by using the [continuous delivery pipeline](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-cd-toolchain-cd-pipeline-run).
+Now that your changes are promoted to the target branch, you can deploy them by using the [continuous delivery pipeline](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops-template#devsecops-cd-toolchain-cd-pipeline-run).
 
 ## Deploying changes from the source-environment to the target-environment
 {: #cd-devsecops-deploy-branches}
@@ -67,6 +56,6 @@ The pipeline starts and tags the current commit in the inventory repo with the P
 
 The pipeline attempts to deploy the content. During the deployment, the change request ID is attached to the commit that the pipeline works with as a tag. A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you promoted.
 
-![GRIT repo tags](images/grit-repo-tags.png){: caption="GRIT repo tags" caption-side="bottom"}
+![{{site.data.keyword.gitrepos}} repo tags](images/grit-repo-tags.png){: caption="{{site.data.keyword.gitrepos}} repo tags" caption-side="bottom"}
 
 For more information about the inventory workflow, see [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines#cd-devsecops-pipelines-inventory-workflow).

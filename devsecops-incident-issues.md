@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-18"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -63,10 +63,10 @@ You can easily filter and search for incident issues by using default and custom
 
 You can also add a default label for incident issues with the `incident-labels` pipeline parameter. For more information about this topic, see [Labeling incident issues](/docs/devsecops?topic=devsecops-label-incident-issues).
 
-### Searching on GRIT
+### Searching on {{site.data.keyword.gitrepos}}
 {: #devsecops-search-in-issues}
 
-When you use GRIT, you can search for issues in various ways in the UI. For example, you can filter by texts in the title or the body, even in comments, or you can filter by any label.
+When you use {{site.data.keyword.gitrepos}}, you can search for issues in various ways in the UI. For example, you can filter by texts in the title or the body, even in comments, or you can filter by any label.
 
 For more information, see the following documentation:
 - How to [search on GitLab](https://docs.gitlab.com/ee/user/search/#search-issues-and-merge-requests){: external}.
