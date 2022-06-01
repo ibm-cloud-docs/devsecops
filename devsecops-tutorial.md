@@ -69,7 +69,7 @@ Complete any or all of the following optional steps. If you don't complete these
 
 1. Create an [image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with the proper encoding to sign your application docker images.
 1. Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Save the API key value by either copying, downloading it or adding it to your vault. Alternatively, you can create the API key during the template-guided setup process.
-1. Validate that the [recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
+1. Validate that the [recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
 1. [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
 1. Create an [{{site.data.keyword.cos_full_notm}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). [Learn more.](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
 1. Create an [{{site.data.keyword.satellitelong_notm}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) if you want to deploy your application to multiple clusters that are grouped as a {{site.data.keyword.satelliteshort}} cluster group by using {{site.data.keyword.satelliteshort}} Config. [Learn more.](/docs/satellite?topic=satellite-cluster-config)

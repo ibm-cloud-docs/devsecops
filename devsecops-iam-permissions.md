@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # IAM permissions for toolchains 
-{: #cd-devsecops-iam-permissions}
+{: #iam-permissions}
 
 Certain IAM permissions are required for the various toolchains and {{site.data.keyword.cloud_notm}} resources that are used with the DevSecOps continuous integration and continuous delivery pipeline templates.
 {: shortdesc}
@@ -38,7 +38,7 @@ If you want to assign a role to a user, take the following steps:
 6. Select the scope of the access and provide the appropriate role.
 
 # IAM permissions for {{site.data.keyword.cloud_notm}} resources
-{: #cd-devsecops-iam-permissions}
+{: #iam-permissions-resources}
 
 Certain IAM permissions are required for the various {{site.data.keyword.cloud_notm}} resources that are used with the DevSecOps continuous integration and continuous delivery pipeline templates as follows:
 

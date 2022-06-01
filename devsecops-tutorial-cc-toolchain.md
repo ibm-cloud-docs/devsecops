@@ -206,7 +206,7 @@ You need a Slack webhook URL so that a Slack channel can receive notifications f
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
 
 #### Security and Compliance
-{: #tutorial-cd-toolchain-scc}
+{: #tutorial-cc-toolchain-scc}
 
 To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
 * A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.

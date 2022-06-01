@@ -26,7 +26,7 @@ Complete these steps to set up the Tekton continuous integration pipelines with 
 * [Create an image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with proper encoding to sign your application docker images.
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure them.
 * Optional. [COS Bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
-* [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
+* [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
 
 ## Guided setup overview for the CI toolchain
 {: #cd-devsecops-tekton-ci-guided}

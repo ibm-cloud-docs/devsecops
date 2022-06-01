@@ -25,7 +25,7 @@ Complete these steps to set up the Tekton continuous delivery pipelines with com
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure them.
 * [Compliance CI toolchain](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-ci-toolchain){: external} configured with DevOps Insight Integrations.
 * Optional. [COS Bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as Compliance Evidence Locker to store pipeline run evidences.
-* [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-cd-devsecops-iam-permissions) are assigned to corresponding integrations.
+* [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
 
 ## Guided setup overview for the CD toolchain
 {: #cd-tekton-cd-guided}
