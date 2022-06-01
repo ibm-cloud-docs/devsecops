@@ -24,7 +24,7 @@ The script does the following tasks:
 - Attempts to process any attachments as results, and creates incident issues from those results. A limited number of tool output formats are supported.
 - If issues are found, the script evaluates their grace periods (due dates) and exemption states.
 - Creates an evidence asset in the evidence locker.
-- Creates the [evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence) itself, and attaches the issues and provided attachments.
+- Creates the [evidence](/docs/devsecops?topic=devsecops-devsecops-evidence) itself, and attaches the issues and provided attachments.
 
 The `collect-evidence` script is provided by the pipeline. It does not need to be installed. The script has the following dependencies:
 

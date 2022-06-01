@@ -77,7 +77,7 @@ See [Using the {{site.data.keyword.compliance_full}} with DevSecOps toolchains](
 ## Inventory workflow
 {: #cd-devsecops-pipelines-inventory-workflow}
 
-See [Evidence](/docs/devsecops?topic=devsecops-cd-devsecops-evidence).
+See [Evidence](/docs/devsecops?topic=devsecops-devsecops-evidence).
 
 See [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
