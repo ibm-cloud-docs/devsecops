@@ -133,7 +133,7 @@ The Pipeline configuration repository contains YAML files and scripts that are n
 
 If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization.
 
-For more information about Git Repos, see the CD toolchain setup [documentation](docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-tekton-cd-compliance). For more information about customizable scripts, see the custom script [documentation](docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-custom-scripts).
+For more information about Git Repos, see the CD toolchain setup [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-tekton-cd-compliance). For more information about customizable scripts, see the custom script [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-custom-scripts).
 
 ### Secrets
 {: ##tutorial-cd-toolchain-secrets}
@@ -151,7 +151,7 @@ Select an existing evidence repository, preferably the evidence repository that 
 
 It is a best practice to use a Cloud Object Storage bucket as an evidence locker to store all the evidence and artifacts that are collected during the pipeline run.
 
-For more information about Evidence Storage, see the [documentation](docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-evidence).
+For more information about Evidence Storage, see the [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-evidence).
 
 ### Evidence
 {: #tutorial-cd-toolchain-evidence}
@@ -274,7 +274,7 @@ Now that the CD Toolchain is created, click the `cd-pipeline card` to open and r
 ### Run the Promotion Pipeline
 {: #tutorial-cd-toolchain-promotion-pipeline-run}
 
-Make sure that the [CI Pipeline](docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) ran successfully before you run the Promotion Pipeline.
+Make sure that the [CI Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) ran successfully before you run the Promotion Pipeline.
 {: note}
 
 The Promotion Pipeline creates a Pull Request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod). 
@@ -291,7 +291,7 @@ The Promotion Pipeline creates a Pull Request with the content of the inventory 
    * **Explanation of Impact**: Impact of the change to the application behavior or environment
    * **Backout Plan**: Steps to back out if there is a deployment failure
 1. Complete the fields in the `Pull Request` and `save`.
-1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to [continue with deployment](docs/devsecops?topic=devsecops-cd-devsecops-approve-cr#cd-devsecops-emergency-label)
+1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to [continue with deployment](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr#cd-devsecops-emergency-label)
 1. Merge the `Pull Request` from {{site.data.keyword.gitrepos}}.
 
 The details of the `Pull Request` are used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD pipeline run.
@@ -303,7 +303,7 @@ You can start a CD pipeline in either of the following ways:
 * Preferred: trigger the CD pipeline manually.
 * Optional: automatically after every `Merge` action in the Inventory Repository. A {{site.data.keyword.gitrepos}} trigger is set up to trigger automatic CD Pipeline, but is disabled by default.
 
-You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD pipeline` aborts early because there is nothing to deploy. You can add and use [`force-redeploy` variable](docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes.
+You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD pipeline` aborts early because there is nothing to deploy. You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes.
 {: tip}
 
 A successful CD pipeline run looks like this:

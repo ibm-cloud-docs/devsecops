@@ -77,7 +77,7 @@ The continuous delivery pipeline automatically approves change requests based on
 * Implementing the change does not cause any downtime (outage duration is zero).
 * Deployment Readiness is true.
 
-The Change Management automation in the DevSecOps reference implementation assumes that all changes are implemented without planned downtime. If your changes require planned downtime, you must create the change request manually and send it for approval. After it is approved, you can start deployment by providing the change request ID. The pipeline moves ahead to check its approval, and then runs the deployment.
+The Change Management automation in the DevSecOps reference implementation assumes that all changes are implemented without planned downtime. If your changes require planned downtime, you must create the change request manually and send it for approval. After it is approved, you can start deployment by providing the change request ID. The pipeline moves ahead to check its approval, and then runs the deployment. For more information, see [Manually approving change requests](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr).
 
 Deployment Readiness is calculated from the evidence that is collected in the continuous integration and continuous delivery stages. If any of the collected evidence suggests a deviation, or a non-successful check, scan, or test that is related to the deployed set of artifacts, the Deployment Readiness is set to false, and the Change Request is not auto-approved. The deployment stops, and prevents further steps until the change request is approved.
 
