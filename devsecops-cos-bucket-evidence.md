@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-17"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps
 
@@ -89,8 +89,11 @@ Pipelines put objects (evidence, evidence summary, and artifacts) and read objec
 
 Use the following access policies to access the Cloud {{site.data.keyword.cos_short}} buckets:
 
-* Object Reader, required for continuous delivery pipeline runs, to create Evidence Summary
-* Object Writer, required for both continuous integration and continuous delivery pipelines
+* **Reader**. Required for the CD pipeline to check the bucket retention policy.
+* **Object Writer**. Required for all CI, CD, and CC pipelines to persist new evidence into buckets.
+
+When you use the Cloud {{site.data.keyword.cos_short}} bucket as the evidence storage, the recommended permissions are **Reader** and **Object writer**. Permissions that have privileges might be harmful.
+{: note}
 
 ## Storage classes
 {: #cd-devsecops-cos-bucket-classes}
