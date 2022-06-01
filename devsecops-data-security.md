@@ -2,9 +2,9 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-06-01"
 
-keywords: secure environment, data, Data, high availability, access
+keywords: secure environment, data, Data, high availability, access, IBM Cloud, DevSecOps
 
 subcollection: devsecops
 
@@ -24,7 +24,7 @@ subcollection: devsecops
 {:preview: .preview}
 
 # Securing your data in {{site.data.keyword.contdelivery_short}}
-{: #cd_data_security}
+{: #data-security}
 
 The {{site.data.keyword.contdelivery_short}} service encrypts customer-owned sensitive data before it stores it in databases that are used internally by the service.
 {: shortdesc}
@@ -40,7 +40,7 @@ The {{site.data.keyword.contdelivery_short}} service encrypts customer-owned sen
 {: important}
 
 ## Protecting your sensitive data in {{site.data.keyword.contdelivery_short}}
-{: #cd_secure_credentials}
+{: #secure-credentials}
 
 Sensitive data includes third-party tool integration configuration data and {{site.data.keyword.deliverypipeline}} property values. Data is encrypted by using encryption keys that are internal to the {{site.data.keyword.contdelivery_short}} service.
 
@@ -60,7 +60,7 @@ To keep your credentials secure, make sure that you follow this guidance:
 For more information about secure DevOps best practices, see [DevOps Security](https://www.ibm.com/cloud/learn/devops-a-complete-guide?mhsrc=ibmsearch_a&mhq=Secure%20DevOps#toc-security-j2-0639C){: external}.
 
 ## Protecting your data when you use third-party tool integrations
-{: #cd_secure_integrations}
+{: #secure-integrations}
 
 When you configure a tool integration for a toolchain, you explicitly enable data sharing between the {{site.data.keyword.contdelivery_short}} service and the tool integration. The kind of data that is shared, and whether data is sent to the tool, received from the tool, or both, varies depending on the type of tool integration.
 
@@ -69,14 +69,14 @@ Before you configure a tool integration, make sure you understand what data is s
 To learn more about tool integrations, see [Configuring tool integrations](/docs/ContinuousDelivery?topic=ContinuousDelivery-integrations).
 
 ## Protecting your data when you use {{site.data.keyword.gitrepos}}
-{: #cd_secure_grit}
+{: #secure-grit}
 
 {{site.data.keyword.gitrepos}} is an IBM-hosted component of the {{site.data.keyword.contdelivery_short}} service. All of the data that you provide to {{site.data.keyword.gitrepos}}, including but not limited to source files, issues, pull requests, and project configuration properties, is managed securely within {{site.data.keyword.contdelivery_short}}. However, {{site.data.keyword.gitrepos}} supports various mechanisms for exporting, sending, or otherwise sharing data to users and third parties.
 
 The ability of {{site.data.keyword.gitrepos}} to share information is typical of many social coding platforms. However, such sharing might conflict with regulatory controls that might apply to your business. After you create a project in {{site.data.keyword.gitrepos}}, but before you entrust any files, issues, records, or other data with the project, review the project settings and change any settings that are necessary to protect your data. Settings to review include visibility levels, email notifications, integrations, web hooks, access tokens, deploy tokens, and deploy keys.
 
 ### Project visibility levels
-{: #cd_secure_grit_visibility}
+{: #secure-grit-visibility}
 
 {{site.data.keyword.gitrepos}} projects can have one of the following visibility levels: private, internal, or public.
 
@@ -93,7 +93,7 @@ To limit project access to only project members, complete the following steps:
 5. Click **Save changes**.
 
 ### Project email settings
-{: #cd_secure_grit_email}
+{: #secure-grit-email}
 
 By default, {{site.data.keyword.gitrepos}} notifies project members by way of email about project activities. These emails typically include customer-owned data that was provided to {{site.data.keyword.gitrepos}} by users. For example, if a user posts a comment to an issue, {{site.data.keyword.gitrepos}} sends an email to all subscribers. The email includes information such as a copy of the comment, the user who posted it, and when the comment was posted. To turn off all email notifications for your project, complete the following steps:
 
@@ -103,7 +103,7 @@ By default, {{site.data.keyword.gitrepos}} notifies project members by way of em
 4. Click **Save changes**.
 
 ### Project integrations and webhooks
-{: #cd_secure_grit_integrations}
+{: #secure-grit-integrations}
 
 {{site.data.keyword.gitrepos}} projects might also be configured with integrations or webhooks to other systems, or equipped with access tokens, deploy tokens, and deploy keys. To review or change the integrations, webhooks, tokens, and keys that might be configured with your project, from the project sidebar, complete the following steps:
 
@@ -117,7 +117,7 @@ By default, {{site.data.keyword.gitrepos}} notifies project members by way of em
 To learn more about working with {{site.data.keyword.gitrepos}}, see [{{site.data.keyword.gitrepos}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-git_working).
 
 ## Protecting your data when you use Delivery Pipelines
-{: #cd_secure_pipeline}
+{: #secure-pipeline}
 
 {{site.data.keyword.contdelivery_short}} pipelines run the jobs and steps that you provide. The {{site.data.keyword.contdelivery_short}} service securely manages the log output and build artifacts that are produced by your pipeline runs. However, {{site.data.keyword.contdelivery_short}} does not limit or manage the function of your pipeline job or step scripts.
 
@@ -125,8 +125,7 @@ When you develop and configure your pipeline job and step scripts, ensure that y
 
 To learn more about Delivery Pipelines, see and [Working with pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about) and [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines).
 
-
 ## Deleting your data from {{site.data.keyword.contdelivery_short}}
-{: #cd_delete-data}
+{: #delete-data}
 
 When you delete a {{site.data.keyword.contdelivery_short}} service instance, the related toolchains, tool integrations, tools, and data (including personal data) are not deleted. For more information about how to manage and delete data that is stored with toolchains, tool integrations, and tools, see [Modifying, exploring, and deleting personal data](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd_personal_data#managing_personal_data).

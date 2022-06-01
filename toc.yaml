@@ -98,8 +98,8 @@ toc:
       - topicgroup:
           label: Enhancing security
           topics:
-          - devsecops_security_compliance.md
-          - devsecops_data_security.md
+          - devsecops-security-compliance.md
+          - devsecops-data-security.md
 
   - navgroup:
       id: reference

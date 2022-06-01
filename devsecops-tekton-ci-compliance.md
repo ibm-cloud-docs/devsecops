@@ -126,7 +126,7 @@ The default behavior of the toolchain is to `Create new issues repository` that 
 
 Several tools in this toolchain require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. All secrets must be stored securely in a secrets vault and then referenced as required by the toolchain. 
 
-The **Secrets** step specifies which secret vault integrations are added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require. However, these can be configured in subsequent steps. Also, familiarize yourself with the concepts in the [Protecting your sensitive data in Continuous Delivery](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security#cd_secure_credentials) documentation because this provides important information about preconfiguring your vault providers and integrations.
+The **Secrets** step specifies which secret vault integrations are added to your toolchain. Use the provided toggles to add or remove the vault integrations that you require. However, these can be configured in subsequent steps. Also, familiarize yourself with the concepts in the [Protecting your sensitive data in Continuous Delivery](/docs/devsecops?topic=devsecops-data-security#secure-credentials) documentation because this provides important information about preconfiguring your vault providers and integrations.
 
 ![DevSecOps secrets options](images/devsecops-secrets-options.png){: caption="DevSecOps secrets options" caption-side="bottom"}
 
@@ -135,7 +135,7 @@ If you plan to use IBM Key Protect or HashiCorp vault for managing your secrets,
 #### IBM Key Protect
 {: #cd-devsecops-key-protect-ci}
 
-Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect) to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain. You must create a Key Protect Service Instance before proceeding further. If you already created a Key Protect Service Instance as prerequisite, you can link the same in this step.
+Use [Key Protect](/catalog/services/key-protect) to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain. You must create a Key Protect Service Instance before proceeding further. If you already created a Key Protect Service Instance as prerequisite, you can link the same in this step.
 
 ![Key Protect](images/devsecops_set-up_key_protect_mgr.png){: caption="Key Protect" caption-side="bottom"}
 
@@ -149,7 +149,7 @@ To comply with best practices for using Hashicorp Vault, this template includes 
 #### IBM Secrets Manager
 {: #cd-devsecops-secrets-manager-ci}
 
-Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager) to securely store and apply secrets like API keys, Image Signature, or Hashicorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before proceeding further. If you created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
+Use [Secrets Manager](/catalog/services/secrets-manager) to securely store and apply secrets like API keys, Image Signature, or Hashicorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before proceeding further. If you created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
 
 ![DevSecOps IBM Secrets Manager](images/devsecops-secrets-manager.png){: caption="DevSecOps IBM Secrets Manager" caption-side="bottom"}
 
