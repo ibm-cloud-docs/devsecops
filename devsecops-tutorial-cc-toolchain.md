@@ -4,7 +4,7 @@ copyright:
    years: 2022
 lastupdated: "2022-06-01"
 
-keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters, DevSecOps
+keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
 subcollection: devsecops
 
@@ -198,7 +198,7 @@ If you want the toolchain to use an existing SonarQube Instance that you provisi
 
 If you want to receive notifications about your CC Pipeline events, you can configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) during the setup from the toolchain template, or you can add the Slack Tool later.
 
-So that a Slack channel can receive notifications from your tools, you need a Slack webhook URL. To get a webhook URL, see the Incoming Webhooks section of the [Slack API website](https://api.slack.com/messaging/webhooks){: external}.
+You need a Slack webhook URL so that a Slack channel can receive notifications from your tools. To get a webhook URL, see the Incoming Webhooks section of the [Slack API website](https://api.slack.com/messaging/webhooks){: external}.
 
 #### Delivery Pipeline Private Worker
 {: #tutorial-cc-toolchain-private-worker}
@@ -208,9 +208,9 @@ The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=Continuous
 #### Security and Compliance
 {: #tutorial-cd-toolchain-scc}
 
-To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide a project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
-
-You also need to provide the evidence namespace for the type of the toolchain, either **Continuous Delivery** or **Continuous Compliance**.
+To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
+* A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
+* The evidence namespace for the type of the toolchain, which is either **Continuous Delivery** or **Continuous Compliance**.
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information about how to choose a profile name, see [Managing security and compliance with Continuous Delivery](/docs/devsecops?topic=devsecops-scc-manage-cd).
 
@@ -288,6 +288,7 @@ Refer a detailed and updated list of [scans and checks that are run in complianc
 {: #tutorial-cc-toolchain-incident-issues}
 
 During CC pipeline execution, incident issues (vulnerability, CVE) are created and attached to the collected evidence. If found in production, these issues can have a specified time period in which they should be fixed so that deployments are not blocked. Thus, the issues are added with a due date. This also helps to continue with the deployment because thought the same issue is found in build, the deployment does not make the security posture worse.
+
 The detailed feature documentation can be found [here](/docs/devsecops?topic=devsecops-devsecops-issues-grace-period).
 
 The issues are created in the issues repository that is mentioned at the time of toolchain setup. A sample issue that indicates a vulnerability with a due date looks like the following:
