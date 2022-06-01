@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-09"
+lastupdated: "2022-06-01"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -266,7 +266,7 @@ interface Summary {
 }
 ```
 
-This summary does not perform any result aggregation. It is the raw data of collected v2 Evidence, as they were found for assets that are related to a change request.
+This summary does not perform any result aggregation. It is the raw data of collected v2 evidence, as they were found for assets that are related to a change request.
 {: important}
 
 ## v1 evidence summary
@@ -1135,7 +1135,7 @@ interface Summary {
 ## Evidence creation
 {: #cd-devsecops-evidence-creation}
 
-Evidence differs from artifacts that are created by pipeline stage steps, such as unit test results, or XML or JSON files. Each task must report to several tools that handle Evidence such as creating, formatting, and storing evidence.
+Evidence differs from artifacts that are created by pipeline stage steps, such as unit test results, or XML or JSON files. Each task must report to several tools that handle evidence such as creating, formatting, and storing evidence.
 
 Any generic test, check, or scan can produce evidence within a pipeline stage by using the steps within DevSecOps tools or pipelines that are shown in the following image. The DevSecOps tools must be able to receive the result of the task, create the evidence, and then store it in the evidence locker.
 
@@ -1149,12 +1149,15 @@ These tools focus only on evidence collection and do not change the behavior of 
 ## v2 evidence collection
 {: #devsecops-v2-evidence-collection}
 
-V2 Evidence must be collected as near as possible to the process that created the result for an Evidence. After each scan run, after each test for example.
+The v2 evidence must be collected as near as possible to the process that created the result for an evidence. After each scan run, after each test for example.
 
 For collecting evidence, the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script can be used in the DevSecOps pipelines.
 
 ## v1 evidence collection
 {: #devsecops-v1-evidence-collection}
+
+The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
+{: important}
 
 According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-complete-guide#toc-how-devops-u5vApdai){: external}, the continuous integration and continuous delivery flows can be divided into three stages: code, build, and deploy.
 
@@ -1164,7 +1167,6 @@ The DevOps architecture divides these flows into four stages by distinguishing b
 Evidence is collected from the steps in each stage [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script. The following image shows the current steps in the reference pipelines that produce evidence.
 
  ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
-
 
 ### Code stage
 {: #devsecops-collection-code}
