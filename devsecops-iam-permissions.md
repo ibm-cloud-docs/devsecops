@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-06-02"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, object storage
 
@@ -37,7 +37,7 @@ If you want to assign a role to a user, take the following steps:
 5. Search and select the service name `Toolchain`.
 6. Select the scope of the access and provide the appropriate role.
 
-# IAM permissions for {{site.data.keyword.cloud_notm}} resources
+## IAM permissions for {{site.data.keyword.cloud_notm}} resources
 {: #iam-permissions-resources}
 
 Certain IAM permissions are required for the various {{site.data.keyword.cloud_notm}} resources that are used with the DevSecOps continuous integration and continuous delivery pipeline templates as follows:
