@@ -93,7 +93,7 @@ Use the following access policies to access the Cloud {{site.data.keyword.cos_sh
 * **Reader**. Required for the CD pipeline to check the bucket retention policy.
 * **Object Writer**. Required for all CI, CD, and CC pipelines to persist new evidence into buckets.
 
-When you use the Cloud {{site.data.keyword.cos_short}} bucket as the evidence storage, the recommended permissions are **Reader** and **Object writer**. Permissions that have privileges might be harmful.
+When you use the Cloud {{site.data.keyword.cos_short}} bucket as the evidence storage, the recommended permissions are **Reader** and **Object writer**. Permissions that have higher privileges might be harmful.
 {: note}
 
 ## Storage classes
