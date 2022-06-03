@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-07"
+lastupdated: "2022-06-03"
 
 keywords: DevSecOps, async sub pipelines, ibm cloud
 
@@ -154,7 +154,7 @@ ibmcloud dev tekton-pipelinerun ls [pipelineID]
 ```
 {: codeblock}
 
-For more information, see [{{site.data.keyword.dev_cli_notm}} commands (ibmcloud dev)](/docs/cli?topic=cli-idt-cli#tekton-pipelinerun).
+For more information, see the [{{site.data.keyword.cloud_notm}} CLI (`tekton-pipelinerun`) command](/docs/cli?topic=cli-idt-cli#tekton-pipelinerun).
 
 ## Related information
 {: #devsecops-async-sub-related}
