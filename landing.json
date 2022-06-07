@@ -6,7 +6,7 @@
       {
         "title": "Set up a Continuous Compliance toolchain",
         "description": "Set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
-        "href": "/docs/devsecops?topic=devsecops-tutorial-cc-devsecops"
+        "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
         "title": "Deploy a secure app with DevSecOps best practices",
