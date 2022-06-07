@@ -2,7 +2,7 @@
 
 copyright:
   years:  2021, 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-06-07"
 
 keywords: DevSecOps, IBM Cloud, goals, Security and Compliance Center
 
@@ -40,16 +40,18 @@ To start monitoring your resources, see [Getting started with {{site.data.keywor
 
 The following goals are available as part of the DevSecOps toolchain templates. To get started, see [Setting up Tekton continuous integration pipelines with compliance](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance).
 
-- Check whether {{site.data.keyword.contdelivery_short}} toolchain continuously scans source code to identify critical and high vulnerabilities.
-- Check whether {{site.data.keyword.contdelivery_short}} toolchain has unit tests that run continuously to validate source code changes.
-- Check whether {{site.data.keyword.contdelivery_short}} has Code Risk Analyzer configured that collects a bill of materials for pipeline run.
-- Check whether {{site.data.keyword.contdelivery_short}} toolchain is configured with image signing.
-- Check whether {{site.data.keyword.contdelivery_short}} toolchain source code meets Center for Internet Security benchmarks.
-- Check whether {{site.data.keyword.contdelivery_short}} toolchain has branch protection rules enabled.
-- Check whether {{site.data.keyword.contdelivery_short}} toochain has secret detection scans enabled for source code.
-- Check whether {{site.data.keyword.contdelivery_short}} production change request exists and is approved.
-- Check whether {{site.data.keyword.contdelivery_short}} acceptance tests exist and have passed.
-- Check whether {{site.data.keyword.contdelivery_short}} Vulnerability Advisor scans images for OS vulnerability detection exist and have passed.
+- 3000603 - Check whether Toolchain scans during continuous integration the source code to identify vulnerabilities.
+- 3000604 - Check whether Toolchain has unit tests that are continuously run to validate source code changes.
+- 3000605 - Check whether Toolchain has Code Risk Analyzer configured that collects a bill of materials for pipeline run.
+- 3000606 - Check whether Toolchain is configured with image signing.
+- 3000607 - Check whether Toolchain source code meets Center for Internet Security Docker benchmarks.
+- 3000608 - Check whether Toolchain has branch protection rules enabled.
+- 3000609 - Check whether Toolchain has secret detection scans enabled for source code.
+- 3000610 - Check whether Toolchain production change request exists and is approved.
+- 3000624 - Check whether Toolchain acceptance tests exist and have passed.
+- 3000611 - Check whether Container Registry Vulnerability Advisor scans images for OS vulnerability detection.
+- 3000641 - Check whether Toolchain static scan exists and have passed
+- 3000642 - Check whether Toolchain dynamic scan exists and have passed
 
 Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile for DevSecOps toolchains.
 {: tip}
@@ -62,11 +64,11 @@ Ensure that the tool integrations within the toolchain are included in the allow
 #### Identity and Access Management
 {: #scc-iam-goals}
 
-- Check whether {{site.data.keyword.contdelivery_short}} has no more than # users with the IAM administrator role.
-- Check whether {{site.data.keyword.contdelivery_short}} has no more than # service IDs with the IAM administrator role.
-- Check whether {{site.data.keyword.contdelivery_short}} has at least # users with the IAM manager role.
-- Check whether {{site.data.keyword.contdelivery_short}} has at least # service IDs with the IAM manager role.
-- Check whether {{site.data.keyword.contdelivery_short}} access is managed only by IAM access groups.
+- 3000622 - Check whether Toolchain has no more than # users with the IAM administrator role.
+- 3000629 - Check whether Toolchain has no more than # service IDs with the IAM administrator role.
+- 3000633 - Check whether {{site.data.keyword.contdelivery_short}} has at least # users with the IAM manager role.
+- 3000634 - Check whether {{site.data.keyword.contdelivery_short}} has at least # service IDs with the IAM manager role.
+- 3000638 - Check whether Toolchain service access is managed only by IAM access groups.
 
 ## Governing {{site.data.keyword.contdelivery_short}} resource configuration
 {: #scc-govern}
