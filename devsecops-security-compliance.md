@@ -50,8 +50,8 @@ The following goals are available as part of the DevSecOps toolchain templates. 
 - 3000610 - Check whether Toolchain production change request exists and is approved.
 - 3000624 - Check whether Toolchain acceptance tests exist and have passed.
 - 3000611 - Check whether Container Registry Vulnerability Advisor scans images for OS vulnerability detection.
-- 3000641 - Check whether Toolchain static scan exists and have passed
-- 3000642 - Check whether Toolchain dynamic scan exists and have passed
+- 3000641 - Check whether Toolchain static scan exists and have passed.
+- 3000642 - Check whether Toolchain dynamic scan exists and have passed.
 
 Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile for DevSecOps toolchains.
 {: tip}
@@ -59,7 +59,7 @@ Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile 
 #### Toolchain properties
 {: #scc-toolchain-properties}
 
-Ensure that the tool integrations within the toolchain are included in the allow list parameter array only.
+Ensure that the tool integrations within the toolchain are included in the allowlist parameter array only.
 
 #### Identity and Access Management
 {: #scc-iam-goals}
