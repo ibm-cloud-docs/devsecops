@@ -1,27 +1,40 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-04-01",
+    "lastupdated": "2022-06-08",
     "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
+    "section_devtools": {
+      "cli": "/docs/devsecops?topic=devsecops-cd-devsecops-cli"
+    },
     "section_recommended": [
       {
-        "title": "Set up a Continuous Compliance toolchain",
-        "description": "Set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
-        "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
-      },
-      {
-        "title": "Deploy a secure app with DevSecOps best practices",
-        "description": "Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "title": "Set up prerequisites to deploy a secure app with DevSecOps best practices",
+        "description": "Part 1 of a 4-part series: Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cd-devsecops"
       },
       {
-        "title": "Set up your DevSecOps infrastructure and CI toolchain for deploying a secure app",
-        "description": "Automatically set up the infrastructure for your continuous integration and continuous delivery toolchains by using a Terraform-based quick start template.",
-        "href": "/docs/devsecops?topic=apps-tutorial-apps-devsecops"
+        "title": "Set up a Continuous Integration (CI) toolchain",
+        "description": "Part 2 of a 4-part series: Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "href": "/docs/devsecops?topic=devsecops-tutorial-ci-toolchain"
+      },
+      {
+        "title": "Set up a Continuous Delivery (CD) toolchain",
+        "description": "Part 3 of a 4-part series: Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "href": "/docs/devsecops?topic=devsecops-tutorial-cd-toolchain"
+      },
+      {
+        "title": "Set up a Continuous Compliance (CC) toolchain",
+        "description": "Part 4 of a 4-part series: Set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
+        "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
         "title": "DevSecOps architecture",
         "description": "Learn about the DevSecOps reference architecture to help streamline compliance and audit-readiness.",
         "href": "/docs/devsecops?topic=devsecops-cd-devsecops-arch"
+      },
+      {
+        "title": "Working with incident issues",
+        "description": "Learn how to create, store, and update incident issues as part of the Continuous Integration and Continuous Compliance pipelines.",
+        "href": "/docs/devsecops?topic=devsecops-incident-issues"
       }
     ],
     "section_videos": [
