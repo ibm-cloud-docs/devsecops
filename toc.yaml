@@ -63,12 +63,11 @@ toc:
           topics: 
           - devsecops-incident-issues.md
           - devsecops-due-date-reference.md
-          - devsecops-how-to-configure-grace-period.md
+            - devsecops-how-to-configure-grace-period.md
           - devsecops-how-to-modify-due-date.md
           - devsecops-how-to-set-incident-labels.md
           - devsecops-how-to-set-incident-assignees.md
           - devsecops-cc-pipeline-slack.md
-          - devsecops-incident-labels-from-cra.md
       - devsecops-pipelines-add-triggers.md
       - devsecops-async-sub-pipelines.md
       - devsecops-async-update-webhook.md
