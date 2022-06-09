@@ -4,7 +4,6 @@ copyright:
   years: 2022
 lastupdated: "2022-06-09"
 
-
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
 subcollection: devsecops
@@ -24,7 +23,7 @@ If an issue such as vulnerability or CVE is found in production, and the same pr
 ## Grace period duration
 {: #grace-period-duration}
 
-The duration of the grace period is determined by the severity of the found vulnerability. The pipeline calculates the grace period according to the following table:
+The duration of the grace period is determined by the severity of the vulnerability that is found. The pipeline calculates the grace period according to the following table:
 
 | Severity      | Grace Period |
 | :-----------: | :----------: |
@@ -38,7 +37,7 @@ The duration of the grace period is determined by the severity of the found vuln
 ## Due Date calculation
 {: #due-date-calculation}
 
-The date of finding is when the CC pipeline runs and finds the issue in prod. If the issue exists, CC updates it with the Due Date that is calculated from that moment.
+The date of finding is when the CC pipeline runs and finds the issue in the production environment. If the issue exists, CC updates it with the Due Date that is calculated from that moment.
 
 ```text
 <due date> = <date of finding the issue in prod> + <grace period in days (determined by severity)>
@@ -47,7 +46,9 @@ The date of finding is when the CC pipeline runs and finds the issue in prod. If
 ## Due Date format
 {: #due-date-format}
 
-Due date is in `ISO 8601` format, and shows as **YYYY-MM-DD**. Example: `Due Date: 2022-04-01`.
+Due date is in `ISO 8601` format and shows as **YYYY-MM-DD**.
+
+Example: `Due Date: 2022-04-01`
 
 ## Use cases
 {: #due-date-usecases}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-06-09"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Postponing the due date of an incident issue
 {: #due-date-postpone}
@@ -40,5 +29,5 @@ Tool Type: Whitesource scan
 ```
 {: codeblock}
 
-Be sure to edit only the text between the `**` characters in the issues description.
+Be sure to edit only the text that is between the `**` characters in the issues description.
 {: important}
