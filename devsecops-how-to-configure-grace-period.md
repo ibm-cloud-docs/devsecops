@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-28"
+lastupdated: "2022-06-09"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Configuring custom grace periods on the CC pipeline
 {: #configure-custom-grace-period}
 
-The Continuous Compliance (CC) pipeline calculates the due dates of incident issues based on the severity of an issue.
+The Continuous Compliance (CC) pipeline calculates the due dates of incident issues based on the severity of an issue. You can change the default grace period values and replace them with custom values.
 {: shortdesc}
 
 By default, the following configuration is used:
@@ -29,7 +29,7 @@ By default, the following configuration is used:
 | Critical      | 15 days      |
 {: caption="Table 1. Default grace periods" caption-side="bottom"}
 
-To change this default configuration, create a new property in the CC pipeline's environment properties named `grace-period-configuration`. This environment property must be a JSON string, matching the following format:
+To change this default configuration, create a new property in the CC pipeline's environment properties named `grace-period-configuration`. This environment property must be a JSON string and match the following format:
 
 ```json
 {
@@ -42,7 +42,7 @@ To change this default configuration, create a new property in the CC pipeline's
 ```
 {: codeblock}
 
-Make sure that the contents of the environment variable match the format in the example. If the environment property does not match the expected format or is not a valid JSON string, the pipeline uses the default values.
+If the environment property does not match the expected format or is not a valid JSON string, the pipeline uses the default values.
 {: note}
 
 The environment property `grace-period-configuration` sets due dates for issues that do not have a due date set already. For issues that have a due date set, reconfiguring the `grace-period-configuration` does not update those due dates.
