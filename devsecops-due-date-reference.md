@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-19"
+lastupdated: "2022-06-09"
 
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
@@ -26,10 +26,14 @@ If an issue such as vulnerability or CVE is found in production, and the same pr
 
 The duration of the grace period is determined by the severity of the found vulnerability. The pipeline calculates the grace period according to the following table:
 
-|Severity |Critical |High |Medium |Low |
-|:--|:--|:--|:--|:--|
-|Grace Period |15 days |15 days |45 days |45 days |
-{: caption="Table 1. Grace period values determined by severity" caption-side="bottom"}
+| Severity      | Grace Period |
+| :-----------: | :----------: |
+| Informational | 90 days      |
+| Low           | 45 days      |
+| Medium        | 45 days      |
+| High          | 15 days      |
+| Critical      | 15 days      |
+{: caption="Table 1. Default grace periods" caption-side="bottom"}
 
 ## Due Date calculation
 {: #due-date-calculation}
