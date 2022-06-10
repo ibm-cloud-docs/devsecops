@@ -138,7 +138,6 @@ toc:
           label: Command reference
           topics:
           - devsecops-pipelinectl.md
-          - devsecops-cocoa-cli.md
           - devsecops-collect-evidence.md
       - topicgroup:
           label: Related links
