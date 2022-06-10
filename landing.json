@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-06-09",
+    "lastupdated": "2022-06-10",
     "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
@@ -24,9 +24,9 @@
         "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
-        "title": "DevSecOps architecture",
-        "description": "Learn about the DevSecOps reference architecture to help streamline compliance and audit-readiness.",
-        "href": "/docs/devsecops?topic=devsecops-cd-devsecops-arch"
+        "title": "Introduction to DevSecOps",
+        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous delivery processes.",
+        "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
       },
       {
         "title": "Working with incident issues",
