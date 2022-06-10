@@ -2,9 +2,6 @@
     "title": "IBM Cloud DevSecOps docs",
     "lastupdated": "2022-06-09",
     "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
-    "section_devtools": {
-      "cli": "/docs/devsecops?topic=devsecops-cd-devsecops-cli"
-    },
     "section_recommended": [
       {
         "title": "Part 1: Set up prerequisites to deploy a secure app with DevSecOps best practices",
