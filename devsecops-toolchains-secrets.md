@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-14"
+lastupdated: "2022-06-15"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
@@ -44,7 +44,6 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
 | Artifactory API token    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
 | Slack Web Hook           | `slack-webhook`          | **Optional: CI & CD** _This webhook is required if you choose to use the Slack tool integration to post toolchain status notifications_ |
-| ServiceNow API Token     | `servicenow-token`       | **Required: CD only** _Used to access Service Now for change management operations_  \n Although the ServiceNow API Token is documented, configuring the token to work with DevSecOps is not supported.|
 | HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
 | HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
