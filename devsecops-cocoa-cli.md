@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-14"
+lastupdated: "2022-06-15"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # DevSecOps CLI 
 {: #cd-devsecops-cli}
 
-DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud_notm}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
+DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
 {: shortdesc}
 
 ## CLI interface
@@ -45,7 +45,7 @@ Command line options can take various types of input values, such as numbers, st
 ## CLI commands
 {: #devsecops-cli-commands}
 
-Although the ServiceNow change management providers are documented, configuring ServiceNow to work with the DevSecOps CLI is not supported.
+Although ServiceNow is documented, it is not supported by the default {{site.data.keyword.cloud_notm}} DevSecOps reference implementation. However, if you want to learn about using ServiceNow with the DevSecOps reference implementation, get help from {{site.data.keyword.cloud_notm}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
 {: note}
 
 ### cocoa check pull-request-approval
@@ -175,7 +175,7 @@ Each provider requires different environment variable configuration:
    - `GITLAB_ORG` - Owner organization of the change management repository
    - `GITLAB_REPO` - Name of the change management repository
 
-If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API url instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API url instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If both of them are provided `--git-token-path` and `--git-api-url` take precedence.
 
 ### cocoa change-request get
 {: #change-request-get}

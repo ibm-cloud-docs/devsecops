@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-28"
+lastupdated: "2022-06-15"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Deployment models
 {: #deployment-model}
@@ -42,7 +31,7 @@ For a pull-based deployment, complete these steps:
 ## Pull-based deployment
 {: #deployment-model-pull}
 
-The pull-based deployment model is suitable for multi-cluster application deployments. This model uses [{{site.data.keyword.satellitelong_notm}} `satconfig`](/docs/satellite?topic=satellite-cluster-config) as the deployment tool for deploying across multiple clusters.
+The pull-based deployment model is suitable for multi-cluster application deployments. This model uses {{site.data.keyword.satellitelong_notm}} Config as the deployment tool for deploying across multiple clusters. For more information, see [Understanding {{site.data.keyword.satelliteshort}} Config](/docs/satellite?topic=satellite-cluster-config).
 
 For a pull-based deployment, complete these steps:
 
