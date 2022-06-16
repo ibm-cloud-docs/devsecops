@@ -2,7 +2,7 @@
 
 copyright:
   years:  2021, 2022
-lastupdated: "2022-06-07"
+lastupdated: "2022-06-16"
 
 keywords: DevSecOps, IBM Cloud, goals, Security and Compliance Center
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing security and compliance with {{site.data.keyword.contdelivery_short}}
+# Managing security and compliance with DevSecOps
 {: #scc-manage-cd}
 
 {{site.data.keyword.contdelivery_short}} is integrated with the {{site.data.keyword.compliance_short}} to help you manage security and compliance for your organization. 
@@ -22,17 +22,17 @@ With the {{site.data.keyword.compliance_short}}, you can:
 - Monitor for controls and goals that pertain to {{site.data.keyword.contdelivery_short}}.
 - Define rules for {{site.data.keyword.contdelivery_short}} that can help to standardize resource configuration.
 
-## Monitoring security and compliance posture with {{site.data.keyword.contdelivery_short}}
+## Monitoring security and compliance posture with DevSecOps
 {: #scc-monitor}
 
-As a security or compliance focal, you can use the {{site.data.keyword.contdelivery_short}} goals to ensure that your organization adheres to the external and internal standards for your industry. By using the {{site.data.keyword.compliance_short}} to validate the resource configurations in your account against a profile, you can identify potential issues as they arise.
+As a security or compliance focal, you can use the DevSecOps goals to ensure that your organization adheres to the external and internal standards for your industry. By using the {{site.data.keyword.compliance_short}} to validate the resource configurations in your account against a profile, you can identify potential issues as they arise.
 
-All of the goals for {{site.data.keyword.contdelivery_short}} are added to the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile but can also be mapped to other profiles.
+All of the goals for DevSecOps are added to the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile but can also be mapped to other profiles.
 {: tip}
 
 To start monitoring your resources, see [Getting started with {{site.data.keyword.compliance_short}}](/docs/security-compliance?topic=security-compliance-getting-started).
 
-### Available goals for {{site.data.keyword.contdelivery_short}}
+### Available goals for DevSecOps
 {: #scc-available-goals}
 
 #### DevSecOps goals
@@ -40,20 +40,20 @@ To start monitoring your resources, see [Getting started with {{site.data.keywor
 
 The following goals are available as part of the DevSecOps toolchain templates. To get started, see [Setting up Tekton continuous integration pipelines with compliance](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance).
 
-- 3000603 - Check whether Toolchain scans during continuous integration the source code to identify vulnerabilities.
-- 3000604 - Check whether Toolchain has unit tests that are continuously run to validate source code changes.
-- 3000605 - Check whether Toolchain has Code Risk Analyzer configured that collects a bill of materials for pipeline run.
-- 3000606 - Check whether Toolchain is configured with image signing.
-- 3000607 - Check whether Toolchain source code meets Center for Internet Security Docker benchmarks.
-- 3000608 - Check whether Toolchain has branch protection rules enabled.
-- 3000609 - Check whether Toolchain has secret detection scans enabled for source code.
-- 3000610 - Check whether Toolchain production change request exists and is approved.
-- 3000624 - Check whether Toolchain acceptance tests exist and have passed.
+- 3000603 - Check whether toolchain scans during continuous integration the source code to identify vulnerabilities.
+- 3000604 - Check whether toolchain has unit tests that are continuously run to validate source code changes.
+- 3000605 - Check whether toolchain has Code Risk Analyzer configured that collects a bill of materials for pipeline run.
+- 3000606 - Check whether toolchain is configured with image signing.
+- 3000607 - Check whether toolchain source code meets Center for Internet Security Docker benchmarks.
+- 3000608 - Check whether toolchain has branch protection rules enabled.
+- 3000609 - Check whether toolchain has secret detection scans enabled for source code.
+- 3000610 - Check whether toolchain production change request exists and is approved.
+- 3000624 - Check whether toolchain acceptance tests exist and have passed.
 - 3000611 - Check whether Container Registry Vulnerability Advisor scans images for OS vulnerability detection.
-- 3000641 - Check whether Toolchain static scan exists and have passed.
-- 3000642 - Check whether Toolchain dynamic scan exists and have passed.
+- 3000641 - Check whether toolchain static scan exists and has passed.
+- 3000642 - Check whether toolchain dynamic scan exists and has passed.
 
-Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile for DevSecOps toolchains.
+Use the {{site.data.keyword.cloud_notm}} Security Best Practices profile for DevSecOps toolchains.
 {: tip}
 
 #### Toolchain properties
@@ -64,11 +64,11 @@ Ensure that the tool integrations within the toolchain are included in the allow
 #### Identity and Access Management
 {: #scc-iam-goals}
 
-- 3000622 - Check whether Toolchain has no more than # users with the IAM administrator role.
-- 3000629 - Check whether Toolchain has no more than # service IDs with the IAM administrator role.
+- 3000622 - Check whether toolchain has no more than # users with the IAM administrator role.
+- 3000629 - Check whether toolchain has no more than # service IDs with the IAM administrator role.
 - 3000633 - Check whether {{site.data.keyword.contdelivery_short}} has at least # users with the IAM manager role.
 - 3000634 - Check whether {{site.data.keyword.contdelivery_short}} has at least # service IDs with the IAM manager role.
-- 3000638 - Check whether Toolchain service access is managed only by IAM access groups.
+- 3000638 - Check whether toolchain service access is managed only by IAM access groups.
 
 ## Governing {{site.data.keyword.contdelivery_short}} resource configuration
 {: #scc-govern}
