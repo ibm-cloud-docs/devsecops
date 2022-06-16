@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Managing security and compliance with DevSecOps
-{: #scc-manage-cd}
+{: #scc-manage-devsecops}
 
 {{site.data.keyword.contdelivery_short}} is integrated with the {{site.data.keyword.compliance_short}} to help you manage security and compliance for your organization. 
 {: shortdesc}
