@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-15"
+lastupdated: "2022-06-20"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -23,7 +23,7 @@ Deployment models help you to understand your application deployment process acr
 
 The push-based deployment model deploys your application on a single cluster. It does not require any operator installation on your cluster. 
 
-For a pull-based deployment, complete these steps:
+For a push-based deployment, complete these steps:
 
 1. Log in to your Kubernetes or {{site.data.keyword.openshiftlong_notm}} cluster.
 2. Apply the deployment files by using the native [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/){: external} tool.
