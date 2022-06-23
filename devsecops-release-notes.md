@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-31"
+lastupdated: "2022-06-23"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -11,14 +11,7 @@ content-type: release-note
 
 ---
 
-{:external: target="_blank" .external}
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:codeblock: .codeblock}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:release-note: data-hd-content-type='release-note'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Release notes for DevSecOps
 {: #release-notes}
@@ -30,8 +23,10 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #devsecops-mar2422}
 {: release-note}
 
-Introducing {{site.data.keyword.cloud_notm}} DevSecOps
-:   A methodology that integrates security practices with the software development and operations lifecycle. The goal of the merge is to prioritize the balance of development speed and security.
+### Introducing {{site.data.keyword.cloud_notm}} DevSecOps
+{: #devsecops-intro}
+
+DevSecOps is a methodology that integrates security practices with the software development and operations lifecycle. The goal of the merge is to prioritize the balance of development speed and security.
 
 - New Continuous Compliance template that periodically scans your deployed application code.
 - Support for Zap Dynamic scans that use async pipelines.
@@ -43,9 +38,8 @@ Introducing {{site.data.keyword.cloud_notm}} DevSecOps
 - Support for querying environment tags from inventory repository while setting up CC and CD toolchain.
 - New wizard support for customizing the welcome page.
 
-Note:
-- {{site.data.keyword.DRA_full}} is not supported in the Continuous Compliance pipeline.
-- Limited support for triggering dynamic scans for multiple apps out of the box.
+{{site.data.keyword.DRA_full}} is not supported in the Continuous Compliance pipeline. Also, there is limited support for triggering dynamic scans for multiple apps out of the box.
+{: note}
 
 ## 16 March 2022
 {: #devsecops-mar1622}
