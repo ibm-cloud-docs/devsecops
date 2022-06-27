@@ -318,7 +318,7 @@ The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=Continuous
 
 Configure SonarQube as the static code analysis tool for the toolchain. SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. The static code analyzers detect tricky bugs, such as null-pointer dereferences, logic errors, and resource leaks for multiple programming languages.
 
-With **Default Configuration**,a SonarQube scan runs in an isolated Docker in Docker container that is not persisted.
+With **Default Configuration**, a SonarQube scan runs in an isolated Docker in Docker container that is not persisted.
 
 With **Cluster Configuration**, the pipeline provisions a new SonarQube instance in the Kubernetes cluster that is configured in the **Deploy** step. This instance is provisioned during the first pipeline run and remains available to all the subsequent pipeline runs.
 
