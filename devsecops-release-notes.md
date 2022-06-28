@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-23"
+lastupdated: "2022-06-28"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,38 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
+
+## 24 June 2022
+{: #devsecops-jun2422}
+{: release-note}
+
+- Enabled DevOps Insights integration for the continuous compliance (CC) template. 
+
+If you have an existing CC toolchain, you can set the `doi-toolchain-id` and `doi-environment` properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain.
+{: note}
+
+- Added tags to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
+- Surfaced dynamic scan results in the Insights dashboard.
+- Improved message logging for the pipeline evaluator task so that users can better understand what failed or succeeded for a pipeline run.
+
+## 17 June 2022
+{: #devsecops-jun1722}
+{: release-note}
+
+The deployment BOM that is attached in a generated Change Request was missing information that is related to artifacts in the inventory. This information is now included.
+
+## 19 May 2022
+{: #devsecops-may1922}
+{: release-note}
+
+- Notify users about incident issues that have approaching due dates and overdue due dates by using Slack after the Slack tool integration is enabled.
+- Support for [cyclonedx](/docs/devsecops?topic=devsecops-generate-cyclonedx-sbom) format when generating Software Bill of Material by using Code Risk Analyzer in compliance pipelines.
+
+## 13 May 2022
+{: #devsecops-may1322}
+{: release-note}
+
+Added support to the Continuous Integration and Continuous Compliance pipelines for [incident issues](/docs/devsecops?topic=devsecops-incident-issues), such as vulnerabilities and CVEs, that are related to creating, storing, updating, and closing those issues. With this feature, you can set due dates for issues, add default assignees, and filter issues by using labels. 
 
 ## 24 March 2022
 {: #devsecops-mar2422}
