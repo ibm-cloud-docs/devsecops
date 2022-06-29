@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-09"
+lastupdated: "2022-06-29"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -33,3 +33,11 @@ Code Risk Analyzer (CRA) detects multiple types of vulnerabilities, like app dep
 The type of vulnerability can be of the following types: name `os`, `python`, `js`, `golang`, or `java`.
 
 If the type of vulnerability is of type `os`, an  `os-vulnerability` label is attached to the issue. For any other type of vulnerability, an `app-vulnerability` label is attached to the issue.
+
+## Labels for incident issues with available fixes
+{: #label-incident-issues-fix-available}
+
+For incident issues that are created by the continuous integration (CI) pipeline or continuous compliance (CC) pipeline, the scanner might have remediation information as a part of the scan result. If remediation information is available, a `fix-available` label is added to the incident issue with a link to the fix description inside the issue description.
+
+However, the absence of the `fix-available` label does not mean that the issue is not actionable because not every scanner includes the fix information in the scan result. The scanner suggests the fix information, and that information comes from wherever the scanner sources this "fix" data. Some scanners might not have up-to-date "fix" dictionaries or do not contain information for a fix.
+{: note}
