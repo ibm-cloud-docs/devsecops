@@ -25,11 +25,11 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 
 - Enabled DevOps Insights integration for the continuous compliance (CC) template. 
 
-If you have an existing CC toolchain, you can set the `doi-toolchain-id` and `doi-environment` properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain.
+If you have an existing CC toolchain, you can set the [`doi-toolchain-id`](/docs/devsecops?topic=devsecops-tutorial-cc-toolchain#tutorial-cc-toolchain-insights) and `doi-environment` properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain.
 {: note}
 
-- Added tags to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
-- Surfaced dynamic scan results in the Insights dashboard.
+- Added [tags](/docs/devops-insights-cli-plugin?topic=devops-insights-cli-plugin-CLI_devops-insights) to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
+- Surfaced dynamic scan results in the [Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-devops-data-aggregation).
 - Improved message logging for the pipeline evaluator task so that users can better understand what failed or succeeded for a pipeline run.
 
 ## 17 June 2022
