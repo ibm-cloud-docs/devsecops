@@ -98,11 +98,7 @@ The following table lists and describes the continuous integration parameters fo
 |doi-logicalappname		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			|
 |doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
-|github-token		|SECRET		|The GitHub repo access token.	|Optional			|<staging><!-- gosec is internal only -->|gosec-private-repository-url   |text   |Your private repository base URL. For example, `https://github.ibm.com`. |Optional |
-|gosec-private-repository-ssh-key     |secret   |The ssh key for the private repository. |Optional |
-|gosec-proxy-virtual-repository-user     |text   |The virtual repository user for gosec proxy. | Optional |
-|gosec-proxy-virtual-repository-token     |secret   |The virtual repository token for gosec proxy. |Optional |
-|gosec-proxy-virtual-repository-url     |text   |The virtual repository url for gosec proxy. |Optional |</staging>
+|github-token		|SECRET		|The GitHub repo access token.	|Optional			|
 |grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -110,8 +106,7 @@ The following table lists and describes the continuous integration parameters fo
 |incident-assignee		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |incident-assignees		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |incident-label		|text		|The label for new incident issues.	|Optional			|
-|opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|<staging><!-- gosec is internal only -->
-|opt-in-gosec		|tool integration		|The Gosec scan integration.	|Optional			|</staging>
+|opt-in-pr-collection		|text		|Add any value to enable PR collection.	|Optional			|
 |opt-in-sonar		|tool integration		|The Sonarqube scan integration.	|Optional			|
 |opt-in-dynamic-scan		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
@@ -136,13 +131,7 @@ The following table lists and describes the continuous integration parameters fo
 |version		|text		|The version of the app to deploy.	|Required			|
 |inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
 |evidence-repo		|tool integration		|The evidence repo URL.	|Optional			|
-|incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|<staging><!-- Xray is internal only -->
-|[xray-opt-in](#pipeline-parm-xray-opt-in) |text   |To turn on Xray scans, add this parameter with any value. |Optional |
-|[xray-api-url](#pipeline-parm-xray-api-url)  |text   |The JFrog artifactory URL with Xray set up. |Optional |
-|[xray-artifactory](#pipeline-parm-xray-artifactory) |tool integration | The JFrog artifactory integration's with Xray set up. |Optional |
-|[xray-watch-name](#pipeline-parm-xray-watch-name) |text   |The Xray watch name. |Optional |
-|[xray-retry-count](#pipeline-parm-xray-retry-count) |text   |The number of retries to wait between checking xray report readiness. |Optional |
-|[xray-retry-sleep](#pipeline-parm-xray-retry-sleep)  |text   |The amount of wait time between retries. |Optional |</staging>
+|incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
 {: caption="Table 2. Continuous integration parameters" caption-side="top"}
 
 ## Continuous delivery parameters
@@ -344,36 +333,3 @@ The source environment that the app is promoted from, which is the source invent
 {: #pipeline-parm-target-environment}
 
 The target environment that the app is deployed to, which is the target inventory branch of the promotion. The default value is `prod`. This value can be overwritten with the usage of a webhook trigger by adding the `target-environment` property to the payload.
-
-<staging><!-- Xray is internal only -->
-
-### xray-opt-in
-{: #pipeline-parm-xray-opt-in}
-
-You can turn on Xray integration with giving this variable any value in the CI pipeline. For more information about the Xray integration, see [Artifact scan and sign](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-artifactscan).
-
-### xray-api-url
-{: #pipeline-parm-xray-api-url}
-
-This is the artifactory's base URL. To run Xray scans in the pipeline, make sure your artifactory is set up to run Xray.
-
-### xray-artifactory
-{: #pipeline-parm-xray-artifactory}
-
-This is a `tool integration` type environment property. Add your artifactory integration, which has Xray configured
-
-### xray-watch-name
-{: #pipeline-parm-xray-watch-name}
-
-Your Xray watch name. For more information about watches, see [JFrog Xray - Watches](https://www.jfrog.com/confluence/display/XRAY2X/Watches).{: external}
-
-### xray-retry-count
-{: #pipeline-parm-xray-retry-count}
-
-We use a retry method to gather the results of the scan. You can modify this value to change the number of retries we check the Xray report readiness. Default value is `5` (times).
-
-### xray-retry-sleep
-{: #pipeline-parm-xray-retry-sleep}
-
-We use a retry method to gather the results of the scan. You can modify this value to set how many seconds we should wait between retries. Default value is `10` (seconds).
-</staging>
