@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-06-10",
+    "lastupdated": "2022-06-29",
     "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
@@ -56,9 +56,19 @@
       "view_more": "/docs/devsecops?topic=devsecops-release-notes",
       "tiles": [
         {
-          "date": "24 March 2022",
-          "title": "Release notes for DevSecOps",
-          "description": "Use the release notes to learn about the latest changes to IBM Cloud DevSecOps."
+          "date": "24 June 2022",
+          "title": "DevOps Insights integration is now enabled for the continuous compliance (CC) template.",
+          "description": "If you have an existing CC toolchain, you can set certain properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain." 
+        },
+        {
+          "date": "24 June 2022",
+          "title": "DevSecOps pipeline scripts now include tags",
+          "description": "Tags are now added to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface." 
+        },
+        {
+          "date": "24 June 2022",
+          "title": "Dynamic scan results are now included in the Insights quality dashboard",
+          "description": "The DevOps Insights quality dashboard now includes dynamic scan results."
         }
       ]
 }}
