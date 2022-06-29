@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-06-16"
+lastupdated: "2022-06-29"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -54,7 +54,7 @@ This tutorial uses a staging environment as an example to configure and showcase
 
 The CC toolchain implements the following best practices:
 
-* Runs a static code scanner at pre-defined internals on the application repositories that are provided to detect secrets in the application source code and vulnerable packages that are used as application dependencies.
+* Runs a static code scanner at pre-defined intervals on the application repositories that are provided to detect secrets in the application source code and vulnerable packages that are used as application dependencies.
 * Scan the container image for security vulnerabilities.
 * Any incident issue that is found during the scan or updated is marked with a due date.
 * Generate a `summary.json` file and store in IBM Cloud Object Storage at the end of every run that summarizes the details of the scan.
@@ -90,7 +90,7 @@ The toolchain region can differ from cluster and registry region.
 
 You can provide a CI toolchain already setup at this step. Using filter on the region where your CI toolchain resides helps you to find it easily.
 
-The setup fetches the resource details such as pipeline configuration, repositories like inventory and incidence issues based on the CI toolchain provided. If you chose to not provide any details for the CI toolchain details, you need to manually provide the previously mentioned details in the later steps of the setup.
+The setup fetches the resource details such as pipeline configuration, repositories like inventory and incidence issues based on the CI toolchain provided. If you chose to not provide any details for the CI toolchain details, you need to manually provide the previous details in the later steps of the setup.
 
 ## Set up CC tool integrations
 {: #tutorial-cc-toolchain-tool-integrations}
@@ -149,7 +149,7 @@ The toolchain comes with an integrated Tekton pipeline to automate continuous co
 ### Evidence Storage
 {: #tutorial-cc-toolchain-evidence-storage}
 
-All raw compliance evidence that belongs to the application is collected in this repository. This repository option should be used only for evaluation purposes. However, it is recommended to collect and store all the evidences in a Cloud {{site.data.keyword.cos_short}} bucket that can be configured as described in the following image.
+All raw compliance evidence that belongs to the application is collected in this repository. Use this repository option only for evaluation purposes. However, it is recommended to collect and store all the evidence in a Cloud {{site.data.keyword.cos_short}} bucket that can be configured as described in the following image.
 
 ![DevSecOps Evidence Storage](images/devsecops-cc-toolchain-setup-evidence-storage.png){: caption="DevSecOps Evidence Storage" caption-side="bottom"}
 
@@ -171,13 +171,31 @@ You need to enter the Service API key to write to Cloud Object Storage instance.
 The endpoint field is optional. It is recommended to select or provide the endpoint during the setup of the toolchain or during the pipeline run.
 {: note}
 
-![DevSecOps Cloud Object Storage configuration](images/devsecops-cc-toolchain-setup-COS.png){: caption="DevSecOps COS configuration" caption-side="bottom"}
+![DevSecOps Cloud Object Storage configuration](images/devsecops-cc-toolchain-setup-COS.png){: caption="DevSecOps Cloud Object Storage configuration" caption-side="bottom"}
 
 ### DevOps Insights
 {: #tutorial-cc-toolchain-insights}
 
-[IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) created during the CI toolchain setup is reused for the CC toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights. DevOps Insights aggregates code scan, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
-We are working on it to make this available at the earliest!
+You can link to an existing {{site.data.keyword.cloud_notm}} DevOps Insights toolchain instance from the CI toolchain. For more information, see [Working with DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working).
+
+You already created an instance of DevOps Insights during the CI toolchain creation steps. After each compliance check, evidence is published into the toolchain, which then publishes the test records to DevOps Insights. You can link the DevOps Insights integration from the CI toolchain by providing the integration ID to consolidate all the deployment data into single DevOps Insights instance.
+
+The CC toolchain can publish the scan results to an existing DevOps Insights instance. To enable this feature, provide the ID of the toolchain that contains the existing DevOps Insights instance by selecting it from the **DevOps Insights toolchain ID** list.
+
+You can copy the toolchain ID from the URL of your toolchain. A toolchain's URL follows this pattern:
+
+```text
+https://cloud.ibm.com/devops/toolchains/<toolchain-ID-comes-here>?env_id=ibm:yp:us-south
+```
+
+For example, if the URL is `https://cloud.ibm.com/devops/toolchains/aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?env_id=ibm:yp:us-south` then the toolchain's ID is `aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`.
+
+Be sure to include the ID only, not the full URL. In the existing toolchain, you can update `doi-toolchain-id` with the CI `toolchain-id` to link with the CI DevOps Insights instance.
+{: note}
+
+You can also set a target environment for the DevOps Insights (DOI) interactions. This parameter is optional. If you provide this parameter, it is used instead of the target environment from the inventory.
+
+![DevSecOps DevOps Insights Toolchain](images/devsecops-cc-devops-insights.png){: caption="DevSecOps DevOps Insights Toolchain" caption-side="bottom"}
 
 ### SonarQube
 {: #tutorial-cc-toolchain-sonarqube}
@@ -218,7 +236,6 @@ Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile 
 {: tip}
 
 Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external}.
-
 
 ## Create the CC toolchain
 {: #tutorial-cc-toolchain-summary}
@@ -266,7 +283,7 @@ A sample app URL looks like this:
 We need to supply this application URL to the CC pipeline. It can be achieved by:
 * Go to the CC pipeline from the newly created CC toolchain tiles
 * Click the `Environment Properties`
-* Add a new environment variable by using `Add` => `Text value`
+* Add an environment variable by using `Add` > `Text value`
 * For name of the property mention: `app-url`
 * For value, mention the application URL
 * Click `Save`
@@ -294,6 +311,17 @@ The detailed feature documentation can be found [here](/docs/devsecops?topic=dev
 The issues are created in the issues repository that is mentioned at the time of toolchain setup. A sample issue that indicates a vulnerability with a due date looks like the following:
 
 ![DevSecOps sample incident issue](images/devsecops-cc-toolcain-explore-sample-issue.png){: caption="DevSecOps sample incident issue created with CC pipeline" caption-side="bottom"}
+
+### Explore DevOps Insights
+{: #tutorial-cc-toolchain-insights-explore}
+
+Evidence from all compliance checks in the CC pipeline is uploaded to both the evidence locker repository and to the Cloud {{site.data.keyword.cos_short}} bucket if Cloud {{site.data.keyword.cos_short}} is enabled during setup.
+
+Evidence is also published to DevOps Insights. You can navigate to DevOps Insights by clicking the **Link DevOps Insights** tool card in the toolchain, or you can go to the CI toolchain DevOps Insights instance, which is linked to the CC pipeline. You can review the collected evidence on the DevOps Insights quality dashboard page.
+
+![DevSecOps CC evidence](images/devsecops-cc-explore-evidence.png){: caption="DevSecOps CC evidence" caption-side="bottom"}
+
+For more information, see [DevOps data aggregation](/docs/ContinuousDelivery?topic=ContinuousDelivery-devops-data-aggregation).
 
 ### CI and CC pipeline comparison
 {: #tutorial-cc-toolchain-comparison}
