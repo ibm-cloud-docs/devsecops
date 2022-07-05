@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-22"
+lastupdated: "2022-07-05"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -54,7 +54,7 @@ The following table lists and describes the pull request parameters for pipeline
 |pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |pipeline-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |onepipeline-dockerconfigjson		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
-|[pipeline-debug](#pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
+|[pipeline-debug](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |slack-notifications		|text		|The switch that turns the Slack integration on or off.	|Optional			|	|[slack-notifications](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 {: caption="Table 1. Pull request parameters" caption-side="top"}
 
@@ -118,13 +118,13 @@ The following table lists and describes the continuous integration parameters fo
 |registry-namespace		|text		|The container registry namespace for the image.	|Required			|
 |registry-region		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|
 |repository-integration		|text		|The integration name for the repo.	|Optional			|
-|signing-key		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
-|[pipeline-debug](#pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
+|[signing-key](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
+|[pipeline-debug](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |[slack-notifications](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
-|sonarqube		|tool integration		|The Sonarqube tool integration.	|Optional			|
-|sonarqube-namespace 	|text		|The configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline.	|Optional			|
-|static-scan-retry-count		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
-|static-scan-retry-sleep		|text		|The amount of wait time per retry iteration.	|Optional			|
+|[sonarqube](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|
+|[sonarqube-namespace](#pipeline-parm-sonarqube-namespace) 	|text		|The configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline.	|Optional			|
+|[static-scan-retry-count](#pipeline-parm-static-scan-retry-count)		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
+|[static-scan-retry-sleep](#pipeline-parm-static-scan-retry-sleep)		|text		|The amount of wait time per retry iteration.	|Optional			|
 |subpipeline-webhook-token | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |
 |va-scan-retry-count		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |va-scan-retry-sleep	|text		|The number of wait times per retry iteration.	|Optional			|
@@ -173,15 +173,15 @@ The following table lists and describes the continuous delivery parameters for p
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
-|[pipeline-debug](#pipeline-debug)		|select		|The pipeline debug mode switch.	|Optional			|
+|[pipeline-debug](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.	|Optional			|
 |pipeline-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
 |[priority](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
 |[purpose](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |region		|text		|The target region where the app is deployed.	|Optional			|
 |[slack-notifications](#pipeline-parm-slack-notifications)	|text		|The switch that turns the Slack integration on or off.  |Optional			|
 |[source-environment](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
-|summary-retry-attempts		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
-|summary-max-retry-time		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time will be generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
+|[summary-retry-attempts](#pipeline-parm-summary-retry-attempts)		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
+|[summary-max-retry-time](#pipeline-parm-summary-max-retry-time)		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time is generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
 |[target-environment](#pipeline-parm-target-environment)		|text		|The target environment that the app is deployed to.	|Required			|
 |version		|text		|The version of the app to deploy.	|Required	  	|
 |inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
@@ -233,7 +233,7 @@ The following table lists and describes the continuous compliance parameters for
 |pipeline-config		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |pipeline-config-branch		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |pipeline-config-repo		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
-|[pipeline-debug](#pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
+|[pipeline-debug](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |pipeline-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
 |region-prefix          |text   |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional            |
 |repository-integration		|text		|The integration name for the repo.	|Optional			|
@@ -249,12 +249,12 @@ The following table lists and describes the continuous compliance parameters for
 ### assignee
 {: #pipeline-parm-assignee}
 
-This parameter is for to the promotion pull request. This value holds the assignee of the change request. This should be a functional id or an email who will be assigned to the change request in the change management system.
+This parameter is for the promotion pull request. This value holds the assignee of the change request. This should be a functional id or an email who will be assigned to the change request in the change management system.
 
 ### backout-plan
 {: #pipeline-parm-backout-plan}
 
-This parameter is for to the promotion pull request. Plan of how the change will be rolled back in case of a failure. By default it is empty.
+This parameter is for the promotion pull request. Plan of how the change will be rolled back in case of a failure. By default it is empty.
 
 ### branch
 {: #pipeline-parm-branch}
@@ -297,12 +297,12 @@ Example:
 ### description
 {: #pipeline-parm-description}
 
-This parameter is for to the promotion pull request. This parameter contains the description of the change, that will be appended to the Change Request Description. By default it is empty.
+This parameter is for the promotion pull request. This parameter contains the description of the change, that will be appended to the Change Request Description. By default it is empty.
 
 ### impact
 {: #pipeline-parm-impact}
 
-This parameter is for to the promotion pull request. Additional notes on what this Change Implementation will impact. By default it is empty.
+This parameter is for the promotion pull request. Additional notes on what this Change Implementation will impact. By default it is empty.
 
 ### pipeline-debug
 {: #pipeline-parm-pipeline-debug}
@@ -312,24 +312,62 @@ If this is set to 1, the pipeline will run in debug mode, and the logs will show
 ### priority
 {: #pipeline-parm-priority}
 
-This parameter is for to the promotion pull request. The priority of the change request. By default it is `'Critical | High | Moderate | Low | Plan'`. You can change it to one of these values.
+This parameter is for the promotion pull request. The priority of the change request. By default it is `'Critical | High | Moderate | Low | Plan'`. You can change it to one of these values.
 
 ### purpose
 {: #pipeline-parm-purpose}
 
-This parameter is for to the promotion pull request. The reason of why the change is needed. By default it is empty.
+This parameter is for the promotion pull request. The reason why the change is needed. By default it is empty.
+
+### signing-key
+{: #pipeline-parm-signing-key}
+
+This parameter is for the CI pipeline. It is a secret type parameter that holds the base64-encoded private key for signing images by using `.pfx` file data.
 
 ### slack-notifications
 {: #pipeline-parm-slack-notifications}
 
 Switch to turn on/off the Slack Integration. This is turned off by default, so the value is `0`. Set to `1` to turn it on, set to `0` to turn it off.
 
+### sonarqube
+{: #pipeline-parm-sonarqube}
+
+This parameter is for all the pipelines that use static scan stages. This is an integration type parameter. If you are using your own sonarqube integration, select that integration as value. By default, this parameter is empty.
+
+### sonarqube-namespace
+{: #pipeline-parm-sonarqube-namespace}
+
+This parameter is for all the pipelines that use static scan stages. This is the configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline, you can change it to any namespace that you want to use.
+
 ### source-environment
 {: #pipeline-parm-source-environment}
 
 The source environment that the app is promoted from, which is the source inventory branch of the promotion. The default value is `master`. This value can be overwritten with the usage of a webhook trigger by adding the `source-environment` property to the payload.
 
+### static-scan-retry-count
+{: #pipeline-parm-static-scan-retry-count}
+
+This parameter is for any static scan that you want to run in a pipeline. These scans use API calls, which can take a short time to work. Therefore, retry these calls if needed. You can change the times of retries with this parameter. By default, this parameter is set to 30.
+
+### static-scan-retry-sleep
+{: #pipeline-parm-static-scan-retry-sleep}
+
+This parameter is for any static scan that you want to run in a pipeline. These scans use API calls, which can take a short time to work. Therefore, retry these calls if needed. You can change the amount of seconds to wait with this parameter. By default, this parameter is set to 10.
+
+### summary-retry-attempts
+{: #pipeline-parm-summary-retry-attempts}
+
+Use a retry method to upload the evidence summary to make sure it is successful. You can change the times of retries with this parameter. By default, this parameter is set to 5.
+
+
+### summary-max-retry-time
+{: #pipeline-parm-summary-max-retry-time}
+
+Use a retry method to upload the evidence summary to make sure it is successful. You can change the amount of seconds to wait with this parameter. By default, this parameter is set to 32.
+
 ### target-environment
 {: #pipeline-parm-target-environment}
 
 The target environment that the app is deployed to, which is the target inventory branch of the promotion. The default value is `prod`. This value can be overwritten with the usage of a webhook trigger by adding the `target-environment` property to the payload.
+
+
