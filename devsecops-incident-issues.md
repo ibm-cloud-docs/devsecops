@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-07-07"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -40,7 +40,7 @@ The following diagram shows the possible use cases that are based on these diffe
 ### Setting the due date for incident issues
 {: #incident-issue-due-date-setting}
 
-If the incident issues are found in production, the "Due Date" property might be added to the issue to specify the grace period in which it must be fixed. The [duration of the grace period](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#grace-period-duration) is determined by the severity of the found vulnerability.
+If the incident issues are found in production, the `Due Date` property might be added to the issue to specify the grace period in which it must be fixed. The [duration of the grace period](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#grace-period-duration) is determined by the severity of the found vulnerability.
 
 For more information about customizing the grace periods, see [Configuring custom grace periods on the CC pipeline](/docs/devsecops?topic=devsecops-configure-custom-grace-period).
 
@@ -56,10 +56,10 @@ You can also set a default incident issue assignee for the pipeline with the `in
 ### Filtering incident issues
 {: #incident-issue-filtering}
 
-You can easily filter and search for incident issues by using default and custom labels. The following default labels are assigned to the incident issues upon creation or update:
+You can filter and search for incident issues by using default and custom labels. The following default labels are assigned to the incident issues upon creation or update:
 - The [scan type](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#due-date-supported-tools) that is used for the issue processing is added to the incident issue as a tool label (for example, `tool:cra`, `tool:va`, `tool:sonarqube`).
 - A severity label is also assigned to the incident issues by default. The severity categories are defined based on the scan results and can be one of the following: `severity:critical`, `severity:high`, `severity:medium`, `severity:low`, `severity:informational`.
-- The `has-excempt` is a VA tool-specific label that is assigned to the incident issue if it is exempted based on the scan result. If the `exempt` status is not included in the scan result, the incident issue can be [exempted manually](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#due-date-issue-options-exempt) by assigning the `exempt` label and adding a link to the source of the exempt issue ticket in a comment. If an issue is marked with the `exempt` label, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
+- The `has-exempt` is a VA tool-specific label that is assigned to the incident issue if it is exempted based on the scan result. If the `exempt` status is not included in the scan result, the incident issue can be exempted manually by assigning the `exempt` label and adding a link to the source of the exempt issue ticket in a comment. For more information, see [More issue options - Exempt](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#due-date-issue-options-exempt). If an issue is marked with the `exempt` label, rerun the CI pipeline. Otherwise, the pipeline does not produce new evidence.
 
 You can also add a default label for incident issues with the `incident-labels` pipeline parameter. For more information about this topic, see [Labeling incident issues](/docs/devsecops?topic=devsecops-label-incident-issues).
 
