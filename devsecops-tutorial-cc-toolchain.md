@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-06-29"
+lastupdated: "2022-07-14"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -32,7 +32,7 @@ This tutorial is part 4 of a 4-part tutorial series where you learn {{site.data.
 Before you begin part 4 of this tutorial series, ensure that you completed the following prerequisites:
 1. Complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).
 1. Complete [Part 2: Set up a Continuous Integration (CI) toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
-1. Complete [Part 3: Set up a Continuous Delivery (CD) toolchain](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain).
+1. Complete [Part 3: Set up a Continuous Deployment (CD) toolchain](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain).
 
 When you set up the CC toolchain by using the template in this tutorial, you might reuse some or all of the resources that were created during the CI and CD toolchain setup process. The toolchain consists of resources such as {{site.data.keyword.secrets-manager_full}} vault, {{site.data.keyword.containerlong_notm}} cluster, {{site.data.keyword.registrylong}} namespace, {{site.data.keyword.cloud_notm}} API key, {{site.data.keyword.cloud_notm}} CLI, {{site.data.keyword.cos_full_notm}} instance and bucket, {{site.data.keyword.satellitelong_notm}} cluster group and application, and inventory repositories. It helps to keep the resource information from the CI and CD toolchains handy.
 {: note}
@@ -228,7 +228,7 @@ The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=Continuous
 
 To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
 * A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
-* The evidence namespace for the type of the toolchain, which is either **Continuous Delivery** or **Continuous Compliance**.
+* The evidence namespace for the type of the toolchain, which is either **Continuous Deployment** or **Continuous Compliance**.
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information about how to choose a profile name, see [Managing security and compliance with DevSecOps](/docs/devsecops?topic=devsecops-scc-manage-devsecops).
 

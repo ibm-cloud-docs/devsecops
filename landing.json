@@ -1,21 +1,21 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-06-29",
-    "introduction": "Adopt a DevSecOps approach by using Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
+    "lastupdated": "2022-07-14",
+    "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
         "title": "Part 1: Set up prerequisites to deploy a secure app with DevSecOps best practices",
-        "description": "Part 1 of a 4-part tutorial series: Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "description": "Part 1 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cd-devsecops"
       },
       {
         "title": "Part 2: Set up a Continuous Integration (CI) toolchain",
-        "description": "Part 2 of a 4-part tutorial series: Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "description": "Part 2 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-ci-toolchain"
       },
       {
-        "title": "Part 3: Set up a Continuous Delivery (CD) toolchain",
-        "description": "Part 3 of a 4-part tutorial series: Learn how to master DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "title": "Part 3: Set up a Continuous Deployment (CD) toolchain",
+        "description": "Part 3 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cd-toolchain"
       },
       {
@@ -25,7 +25,7 @@
       },
       {
         "title": "Introduction to DevSecOps",
-        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous delivery processes.",
+        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous deployment processes.",
         "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
       },
       {
@@ -41,7 +41,7 @@
         "thumbnail": "/images/CI_toolchain_thumbnail.png" 
       },
       {
-        "title": "Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Delivery Toolchain",
+        "title": "Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Deployment Toolchain",
         "href": "https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-2",
         "thumbnail": "/images/CD_toolchain_thumbnail.png"
       }
