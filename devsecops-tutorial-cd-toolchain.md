@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-06-16"
+lastupdated: "2022-07-14"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -17,7 +17,7 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Part 3: Set up a Continuous Delivery (CD) toolchain
+# Part 3: Set up a Continuous Deployment (CD) toolchain
 {: #tutorial-cd-toolchain}
 {: toc-content-type="tutorial"}
 {: toc-services="containers, ContinuousDelivery"}
@@ -37,7 +37,7 @@ Before you begin part 3 of this tutorial series, ensure that you completed the f
 ## CD - Deploy a secure app with DevSecOps practices
 {: #tutorial-cd-toolchain-tekton-pipeline}
 
-The DevSecOps CD toolchain contains only one pipeline for Continuous Delivery. It implements the following best practices:
+The DevSecOps CD toolchain contains only one pipeline for continuous deployment. It implements the following best practices:
 
 * Change Management automation to help developers, approvers, and auditors track deployments from the lens of compliance.
 * Creates an evidence summary from the evidence that is collected in the CI pipeline
@@ -55,7 +55,7 @@ Any of the methods in this tutorial takes you to the guided setup experience. Yo
 
 A progress indicator shows the steps to complete the configuration. You can use the progress indicator to navigate to a previous step with a mouse click. The configuration options for the current step are displayed in the main area of the page.
 
-![DevSecOps Continuous Delivery toolchain welcome page](images/devsecops-cd-welcome.png){: caption="DevSecOps Continuous Delivery toolchain welcome page" caption-side="bottom"}
+![DevSecOps Continuous Deployment toolchain welcome page](images/devsecops-cd-welcome.png){: caption="DevSecOps Continuous Deployment toolchain welcome page" caption-side="bottom"}
 
 To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
 
@@ -245,7 +245,7 @@ After you create your toolchain, you can toggle sending notifications with the `
 
 To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
 * A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
-* The evidence namespace for the type of the toolchain, which is either **Continuous Delivery** or **Continuous Compliance**.
+* The evidence namespace for the type of the toolchain, which is either **Continuous Deployment** or **Continuous Compliance**.
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information about how to choose a profile name, see [Managing security and compliance with DevSecOps](/docs/devsecops?topic=devsecops-scc-manage-devsecops).
 
