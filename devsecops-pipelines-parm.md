@@ -312,12 +312,12 @@ If this is set to 1, the pipeline will run in debug mode, and the logs will show
 ### priority
 {: #pipeline-parm-priority}
 
-This parameter is for the promotion pull request. The priority of the change request. By default it is `'Critical | High | Moderate | Low | Plan'`. You can change it to one of these values.
+This parameter is for the promotion pull request. It is the priority of the change request. By default, it is `'Critical | High | Moderate | Low | Plan'`. You can change it to one of these values.
 
 ### purpose
 {: #pipeline-parm-purpose}
 
-This parameter is for the promotion pull request. The reason why the change is needed. By default it is empty.
+This parameter is for the promotion pull request. It is the reason why the change is needed. By default, it is empty.
 
 ### signing-key
 {: #pipeline-parm-signing-key}
@@ -337,7 +337,7 @@ This parameter is for all the pipelines that use static scan stages. This is an 
 ### sonarqube-namespace
 {: #pipeline-parm-sonarqube-namespace}
 
-This parameter is for all the pipelines that use static scan stages. This is the configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline, you can change it to any namespace that you want to use.
+This parameter is for all the pipelines that use static scan stages. This is the configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline. You can change it to any namespace that you want to use.
 
 ### source-environment
 {: #pipeline-parm-source-environment}
@@ -357,13 +357,12 @@ This parameter is for any static scan that you want to run in a pipeline. These 
 ### summary-retry-attempts
 {: #pipeline-parm-summary-retry-attempts}
 
-Use a retry method to upload the evidence summary to make sure it is successful. You can change the times of retries with this parameter. By default, this parameter is set to 5.
-
+Use a retry method to upload the evidence summary to make sure that it is successful. You can change the times of retries with this parameter. By default, this parameter is set to 5.
 
 ### summary-max-retry-time
 {: #pipeline-parm-summary-max-retry-time}
 
-Use a retry method to upload the evidence summary to make sure it is successful. You can change the amount of seconds to wait with this parameter. By default, this parameter is set to 32.
+Use a retry method to upload the evidence summary to make sure that it is successful. You can change the amount of seconds to wait with this parameter. By default, this parameter is set to 32.
 
 ### target-environment
 {: #pipeline-parm-target-environment}
