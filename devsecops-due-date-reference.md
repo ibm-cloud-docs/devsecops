@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-09"
+lastupdated: "2022-07-07"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Incident issues with Due Date
+# Incident issues with due date
 {: #devsecops-issues-due-date}
 
 When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence. If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**Grace Period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
@@ -34,16 +34,16 @@ The duration of the grace period is determined by the severity of the vulnerabil
 | Critical      | 15 days      |
 {: caption="Table 1. Default grace periods" caption-side="bottom"}
 
-## Due Date calculation
+## Due date calculation
 {: #due-date-calculation}
 
-The date of finding is when the CC pipeline runs and finds the issue in the production environment. If the issue exists, CC updates it with the Due Date that is calculated from that moment.
+The date of finding is when the CC pipeline runs and finds the issue in the production environment. If the issue exists, CC updates it with the _**Due Date**_ that is calculated from that moment.
 
 ```text
 <due date> = <date of finding the issue in prod> + <grace period in days (determined by severity)>
 ```
 
-## Due Date format
+## Due date format
 {: #due-date-format}
 
 Due date is in `ISO 8601` format and shows as **YYYY-MM-DD**.
@@ -106,6 +106,9 @@ If the `collect-evidence` script receives an attachment from an unsupported tool
 - _“Subject”_ is the asset that the issue is bound to
 - _“URL”_ is the link to the exact version of the asset
 - _“Tool Type”_ is the tool that produced the contents for the issue
+
+For issues created on {{site.data.keyword.gitrepos}}, the due date is set in the Gitlab native due date field instead of the issue description.
+{: note}
 
 The issue description contains the timestamp when the issue was first discovered. For example: `First found on 2022-04-07.`. The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
 
