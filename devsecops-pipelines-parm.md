@@ -45,7 +45,7 @@ The following table lists and describes the pull request parameters for pipeline
 |cra-python-create-requirements-txt		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
@@ -99,7 +99,7 @@ The following table lists and describes the continuous integration parameters fo
 |doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
@@ -163,7 +163,7 @@ The following table lists and describes the continuous delivery parameters for p
 |force-redeploy    |text   |Forces the deployment or redeployment of the app even if the last deployment does not contain a delta in the inventory. Set this parameter to `true` to force a deployment of the app as if it is the first deployment on the specified target environment. By default, this parameter is set to `false`. |Optional |
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |artifact-token		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -220,7 +220,7 @@ The following table lists and describes the continuous compliance parameters for
 |evidence-repo		|tool integration		|The evidence repo URL.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |opt-in-sonar		|tool integration		|The Sonarqube scan integration.	|Optional			|
 |opt-in-dynamic-scan		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
