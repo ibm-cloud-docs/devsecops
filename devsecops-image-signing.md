@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-13"
+  years: 2022
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, image signing, GPG key, secure toolchain, compliance, IBM Cloud
 

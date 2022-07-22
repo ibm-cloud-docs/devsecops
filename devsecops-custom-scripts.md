@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-19"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -102,7 +102,7 @@ test:
 
     * `secret-name`: The direct Secret name syntax. The stage runner tries to access and mount the Secret named `secret-name`.
 
-    * `$prop-name`: The indirect Secret name syntax. The Secret name is located in the environment-properties configmap that contains every environment value that is set on the pipeline UI. For example, if the environment-properties configmap contains the `my-secret entry` property, `my-secret` is used for `$prop`.
+    * `$prop-name`: The indirect Secret name syntax. The Secret name is located in the environment-properties configmap that contains every environment value that is set on the pipeline UI. For example, if the environment-properties configmap contains the `my-secret` entry property, `my-secret` is used for `$prop`.
 
 #### Example configuration
 {: #cd-devsecops-scripts-sample-config}

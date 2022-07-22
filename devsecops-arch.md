@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, IBM Cloud
 
@@ -22,6 +22,7 @@ subcollection: devsecops
 {:important: .important}
 {:download: .download}
 {:help: data-hd-content-type='help'}
+{:term: .term}
 {:support: data-reuse='support'}
 
 # DevSecOps architecture
@@ -30,7 +31,7 @@ subcollection: devsecops
 The {{site.data.keyword.contdelivery_full}} DevSecOps reference architecture streamlines compliance and audit-readiness by using building blocks like Tekton task library and toolchain templates.
 {: shortdesc}
 
-Because the continuous integration and continuous delivery processes are standardized, application development teams can be sure that they are following security best practices. The DevSecOps reference architecture provides a set of predefined continuous integration and continuous delivery toolchain templates. These templates use a collection of tool integrations and customizable reference Tekton pipelines for build, scan, test, change management, and deploy.
+Because the continuous integration and continuous delivery processes are standardized, application development teams can be sure that they are following security best practices. The [DevSecOps](#x9892260){: term} reference architecture provides a set of predefined continuous integration and continuous delivery toolchain templates. These templates use a collection of tool integrations and customizable reference Tekton pipelines for build, scan, test, change management, and deploy.
 
 The Tekton pipelines provide a framework of custom scripts that you can use to ensure the compliant and automated orchestration of code and configuration changes. The pipelines can also help to maintain a GitOps release inventory, while it collects and stores evidence that can be used to generate auditable change requests.
 
