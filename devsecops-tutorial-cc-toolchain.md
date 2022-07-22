@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-07-14"
+lastupdated: "2022-07-22"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -71,7 +71,7 @@ Start the CC toolchain configuration by using one of the following options:
 
    [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-cc-toolchain&env_id=ibm:yp:us-south)
    
-* From the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CC - Keep your app continuously Compliant with DevSecOps practices**.
+* From the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the **Toolchains** page, click **Create toolchain**. On the Create a Toolchain page, click **CC - Keep your app continuously Compliant with DevSecOps practices**.
 
 ## Set up the CC toolchain name and region
 {: #tutorial-cc-toolchain-name-region}
@@ -273,20 +273,20 @@ Dynamic scan might run some tests that are intrusive in nature. It is recommende
 
 To get the application URL:
 * Go to a successful CI pipeline run
-* Go to stage `deploy-dev`
-* Click the task `run stage`
-* Under `Logs` look for `App URL`
+* Go to stage **deploy-dev**
+* Click the task **run stage**
+* Under **Logs** look for **App URL**
 
 A sample app URL looks like this:
 ![Sample application URL from CI Pipeline](images/devsecops-cc-toolchain-explore-app-url.png){: caption="Sample application URL from CI Pipeline" caption-side="bottom"}
 
 We need to supply this application URL to the CC pipeline. It can be achieved by:
 * Go to the CC pipeline from the newly created CC toolchain tiles
-* Click the `Environment Properties`
-* Add an environment variable by using `Add` > `Text value`
-* For name of the property mention: `app-url`
+* Click **Environment Properties**
+* Add an environment variable by using **Add** > **Text value**
+* For name of the property mention: **app-url**
 * For value, mention the application URL
-* Click `Save`
+* Click **Save**
 
 The property after addition looks like this:
 ![CC pipeline updated with application URL details](images/devsecops-cc-toolchain-explore-env-prop-dyn-scan.png){: caption="CC pipeline updated with application URL details" caption-side="bottom"}

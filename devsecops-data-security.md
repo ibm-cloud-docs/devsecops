@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-07-22"
 
 keywords: secure environment, data, Data, high availability, access, IBM Cloud, DevSecOps
 
@@ -87,8 +87,8 @@ The ability of {{site.data.keyword.gitrepos}} to share information is typical of
 To limit project access to only project members, complete the following steps:
 
 1. From the project sidebar, click **Settings** > **General**.
-2. On the General Settings page, click **Visibility** > **project features** > **permissions**.
-3. Locate the Project visibility setting.
+2. On the **General Settings** page, click **Visibility** > **project features** > **permissions**.
+3. Locate the **Project** visibility setting.
 4. Select **Private**, if it is not already selected.
 5. Click **Save changes**.
 
@@ -98,7 +98,7 @@ To limit project access to only project members, complete the following steps:
 By default, {{site.data.keyword.gitrepos}} notifies project members by way of email about project activities. These emails typically include customer-owned data that was provided to {{site.data.keyword.gitrepos}} by users. For example, if a user posts a comment to an issue, {{site.data.keyword.gitrepos}} sends an email to all subscribers. The email includes information such as a copy of the comment, the user who posted it, and when the comment was posted. To turn off all email notifications for your project, complete the following steps:
 
 1. From the project sidebar, click **Settings** > **General**.
-2. On the General Settings page, click **Visibility** > **project features** > **permissions**.
+2. On the **General Settings **page, click **Visibility** > **project features** > **permissions**.
 3. Select the **Disable email notifications** checkbox.
 4. Click **Save changes**.
 

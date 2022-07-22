@@ -104,7 +104,7 @@ After you capture the names of repos from continuous integration toolchain, proc
 ### Inventory
 {: #cd-devsecops-inventory}
 
- The default behavior of the toolchain is to `Use existing inventory` to link an existing Inventory Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+ The default behavior of the toolchain is to **Use existing inventory** to link an existing Inventory Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **Repository URL**: URL of the Inventory Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
@@ -113,7 +113,7 @@ After you capture the names of repos from continuous integration toolchain, proc
 ### Issues
 {: #cd-devsecops-issues}
 
- The default behavior of the toolchain is to `Use existing issues repository` to link an existing Issues Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+ The default behavior of the toolchain is to **Use existing issues repository** to link an existing Issues Repository for the toolchain. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **Repository URL**: URL of the Issues Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
@@ -124,7 +124,7 @@ After you capture the names of repos from continuous integration toolchain, proc
 
 The repository contains custom scripts to run pipeline tasks in the CD Pipeline (`.pipeline-config.yaml`). Refer to [hello-compliance-deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) sample repository that contains some default configuration and scripts.
 
-By default, the setup `Clone deployment configuration` from the sample repository. When the repository is cloned, you can customize configurations and scripts for pipeline runs. 
+By default, the setup **Clone deployment configuration** from the sample repository. When the repository is cloned, you can customize configurations and scripts for pipeline runs. 
 
 - **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} repository that is created by the toolchain as your deployment configuration repository. The region of the repository remains the same as that of the toolchain. Choose a unique name for the new repository.
 
@@ -184,7 +184,7 @@ Use HashiCorp Vault to securely store secrets that are needed by your toolchain.
 - **Role ID:** Your team's [AppRole Role ID](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle){: external}.
 - **Secret ID:** Your team's [Secret ID](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle){: external}.
 
-You can use the `AppRole` authentication method to read secret values.
+You can use the **AppRole** authentication method to read secret values.
 {: tip}
 
 ### Evidence Storage
@@ -192,7 +192,7 @@ You can use the `AppRole` authentication method to read secret values.
 
 All raw compliance evidence that belongs to the application is collected in this repository. Use this repository option for evaluation purposes only. 
 
-The default behavior of the toolchain is to `Use existing evidence locker`. The `Repository URL` field can be set to the Evidence Repository URL that was created or used for the CI toolchain. If you want to create an Evidence Locker for the toolchain, choose `Create new evidence locker repository`, which creates a new repository as an IBM-hosted {{site.data.keyword.gitrepos}} repo.
+The default behavior of the toolchain is to **Use existing evidence locker**. The **Repository URL** field can be set to the Evidence Repository URL that was created/used for CI Toolchain. If you want to create an Evidence Locker for the toolchain, choose **Create new evidence locker repository**, which creates a new repository as an IBM-hosted {{site.data.keyword.gitrepos}} Repository.
 
 However, you should collect and store all the evidence in a Cloud Object Storage bucket that can be configured as described in [Cloud Object Storage Bucket](#cd-devsecops-cos-bucket).
 
@@ -232,7 +232,7 @@ If you decide not to use Cloud Object Storage as an evidence locker, you can als
 
 - **Repository URL**: URL of the Tekton Pipeline Definition Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
-The Pipeline Repository contains configurations for both CI and CD Toolchains and hence can be kept common across the two toolchains. If you want to use separate pipeline definitions for CD Toolchain Tekton definitions, use the `Switch to advanced configuration` toggle to clone the repository.
+The Pipeline Repository contains configurations for both CI and CD Toolchains and hence can be kept common across the two toolchains. If you want to use separate pipeline definitions for CD Toolchain Tekton definitions, use the`**Switch to advanced configuration** toggle to clone the repository.
 
 ![DevSecOps Tekton Pipeline](images/devsecops_set-up_cd_tekton_pipeline_orig.png){: caption="DevSecOps Tekton Pipeline" caption-side="bottom"}
 
@@ -248,9 +248,9 @@ Configure the target Kubernetes cluster where the application is deployed. Choos
 
     - Option-1: An existing key can be imported from an existing Secret Provider intance created as prerequisites (Key Protect Instance, Secret Manager Instance or HashiCorp Vault) by clicking the key icon (Recommended)
     - Option-2: An existing key can be copy & pasted (Not Recommended)
-    - Option-3: A new key can be created from here by clicking the `New +` button. Generate a new api-key if you don’t have one or copy an existing key to the field.The newly generated API key can be immediately saved to an existing Key Protect instance
+    - Option-3: A new key can be created from here by clicking **New +**. Generate a new api-key if you don’t have one or copy an existing key to the field.The newly generated API key can be immediately saved to an existing Key Protect instance
 
-Click the `Key` icon to use an existing key from your Secret Provider.
+Click the **Key** icon to use an existing key from your Secret Provider.
 
 - **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
 - **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
@@ -283,9 +283,9 @@ You can select IBM Cloud hosted {{site.data.keyword.gitrepos}} repository to man
 
 - **New repository name:** Name of the {{site.data.keyword.gitrepos}} Repository to be used for Change Request Management.
 
-The default behavior of the toolchain is to `Use default {{site.data.keyword.gitrepos}} change request management repo` that creates a new Change Request Management Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. Choose a unique name for the new repository.
+The default behavior of the toolchain is to **Use default {{site.data.keyword.gitrepos}} change request management repo** that creates a new Change Request Management Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. Choose a unique name for the new repository.
 
-In case you have an existing Change Request repository from an existing CD Toolchain, use the `Switch to advanced configuration` toggle to configure the same for this pipeline.
+In case you have an existing Change Request repository from an existing CD Toolchain, use the **Switch to advanced configuration** toggle to configure the same for this pipeline.
 
 ![Change request management](images/devsecops-cd-change-request-mgmt.png){: caption="Change request management" caption-side="bottom"}
 

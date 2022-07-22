@@ -82,6 +82,6 @@ The templates also come with an {{site.data.keyword.keymanagementservicefull}} t
 
 ![{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values](images/kp-int.png "{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values"){: caption="Figure 3. IBM Key Protect tool integration" caption-side="bottom"}
 
-If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the `role id` and `secret id` fields in the Hashicorp tool card, and use the picker to apply the secrets to those fields.
+If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the Hashicorp tool card, and use the picker to apply the secrets to those fields.
 
 Similarly, any other secrets that are used in the toolchain have a key icon that is attached to the text field. You can use the same picker control to apply the Hashicorp secrets to all the remaining instances.

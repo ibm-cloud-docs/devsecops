@@ -20,7 +20,7 @@ From a compliance perspective, creating, storing, and updating incident issues (
 
 During the execution of the CI and CC pipelines, the [`collect-evidence` script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) creates incident issues, attaches them to the collected evidence, and stores them in the [incident issues repository](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-ci-tool-integration-issues).
 
-The `collect-evidence` script uses the functions of the [`cocoa incident process`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#incident-process) command of the DevSecOps CLI tool, which processes the provided scan results and either creates new incident issues in the provided repository per vulnerability or updates the existing incident issues based on the subject-incident pairs. 
+The `collect-evidence` script uses the functions of the [cocoa incident process](/docs/devsecops?topic=devsecops-cd-devsecops-cli#incident-process) command of the DevSecOps CLI tool, which processes the provided scan results and either creates new incident issues in the provided repository per vulnerability or updates the existing incident issues based on the subject-incident pairs. 
 Therefore, the incident issues are bound to assets and created according to the [results of specific tools](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#processing-results-issues).
 
 ## Incident issue processing

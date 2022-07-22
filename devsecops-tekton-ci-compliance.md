@@ -91,13 +91,13 @@ The Application step that refers to the application source code repository is sh
   
 ![DevSecOps application repository](images/devsecops-ci-app-repo.png){: caption="DevSecOps application repository" caption-side="bottom"}
 
-The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application as IBM-hosted {{site.data.keyword.gitrepos}} Repository.
+The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is **Use default sample application** that clones the sample application as IBM-hosted {{site.data.keyword.gitrepos}} Repository.
 
 Enter the name of the IBM-hosted {{site.data.keyword.gitrepos}} repository that was created by the toolchain as your application repository.
 
 The region of the repository remains the same as the region of the toolchain.
 
-If you want to link an existing Application Repository for the toolchain, select the `Bring your own app` option, and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing GRI{{site.data.keyword.gitrepos}}T repositories. If you want to know more about `Bring your own app`, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+If you want to link an existing Application Repository for the toolchain, select the **Bring your own application** option, and provide it as input to the **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing GRI{{site.data.keyword.gitrepos}}T repositories. If you want to know more about **Bring your own application**, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
 
 ### Inventory
 {: #devsecops-ci-tool-inventory}
@@ -106,7 +106,7 @@ Change management is tracked in this repository. CD pipeline creates a new branc
 
 ![DevSecOps inventory repository](images/devsecops-ci-inventory-repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
 
-The default behavior of the toolchain is to `Create new inventory` that creates a new Inventory Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Inventory Repository for the toolchain, you can choose `Use existing inventory` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+The default behavior of the toolchain is to **Create new inventory repository** that creates a new Inventory Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Inventory Repository for the toolchain, you may choose **Use existing inventory repository** option and provide it as input to **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} Repository that is created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
 
@@ -117,7 +117,7 @@ Issues about incidents that are captured during the build and deployment process
 
 ![DevSecOps Issues repository](images/devsecops-ci-issues-repo.png){: caption="DevSecOps Issues repository" caption-side="bottom"}
 
-The default behavior of the toolchain is to `Create new issues repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. In case you want to link an existing Issues Repository for the toolchain, you can choose `Use existing issues repository` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+The default behavior of the toolchain is to **Create new issues repository** that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. In case you want to link an existing Issues Repository for the toolchain, you can choose **Use existing issues repository** option and provide it as input to **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} repo that is created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
 
@@ -180,7 +180,7 @@ Note: _We advise you to use AppRole authentication method as this method can be 
 
 All raw compliance evidence that belongs to the application is collected in this repository. Use this repository option for evaluation purposes only. 
 
-The default behavior of the toolchain is to `Create new evidence locker repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} repo. If you want to link an existing Evidence Locker for the toolchain, choose `Use existing evidence locker` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repos.
+The default behavior of the toolchain is to **Create new evidence locker repository** that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you ant to link an existing Evidence Locker for the toolchain, choose **Use existing evidence locker repository** option and provide it as input to **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 However, you must collect and store all the evidence in a Cloud Object Storage bucket that can be configured as described in the following image.
 
@@ -212,7 +212,7 @@ If you decide not to use Cloud Object Storage as an evidence locker, you can als
 ### Deploy
 {: #cd-devsecops-deploy-ci}
 
-The default behavior of the toolchain is to `Clone existing pipeline` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Pipeline Repository for the toolchain, choose `Use existing repository` and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+The default behavior of the toolchain is to **Clone existing pipeline** that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Pipeline Repository for the toolchain, choose **Use existing repository** and provide it as input to **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
 - **App name:**
 
@@ -225,7 +225,7 @@ The name of the application.
 The API key is used to interact with the ibmcloud CLI tool in several tasks. If you already created a cluster, an API to access the cluster and stored the key in a secure vault (any of Key Protect, Secrets Manager, or HashiCorp Vault), as prerequisite you can use the same in this step.
 * Option-1: An existing key can be imported from an existing Secret Provider instance that is created as prerequisites (Key Protect Instance, Secret Manager Instance, or HashiCorp Vault) by clicking the key icon (Recommended)
 * Option-2: An existing key can be copy and pasted (Not Recommended)
-* Option-3: A new key can be created from here by clicking the `New +`. Generate a new api-key if you don’t have one or copy an existing key to the field. The newly generated API key can be saved to an existing Key Protect instance.
+* Option-3: A new key can be created from here by clicking **New +**. Generate a new api-key if you don’t have one or copy an existing key to the field. The newly generated API key can be saved to an existing Key Protect instance.
 
 The newly generated API key can be saved to an existing Key Protect instance.
 {: tip}
@@ -259,7 +259,7 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 
 ![DevSecOps Image Signing](images/devsecops-ci-image-signing.png){: caption="DevSecOps Image Signing" caption-side="bottom"}
 
-Click `Key` to use an existing key from your Secret Provider.
+Click **Key** to use an existing key from your Secret Provider.
 
 - **Provider**: The Secret Provider, which stores your GPG Key. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
 - **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
@@ -332,7 +332,7 @@ If you want the toolchain to use an existing SonarQube Instance that you provisi
 
  **Create toolchain:**
 
-- Click the `Create` in the **Summary** step and wait for the toolchain to be created.
+- Click **Create** in the **Summary** step and wait for the toolchain to be created.
 
    You can configure the individual toolchain integrations after the pipeline is created.
    {: tip}
@@ -355,12 +355,12 @@ It contains two pipelines:
 ## Run the PR-CI Pipeline
 {: #cd-devsecops-tekton-ci-run-pipeline}
 
-To start the PR pipeline, create a merge request in your application repository. To achieve this, do the following:
-1. On the CI toolchain page, click the application repository tile. By default it gets created with a name `compliance-app-<timestamp>`.
+To start the PR pipeline, you should create a merge request in your application repository. To achieve this, do the following:
+1. On the CI toolchain page, click the application repository tile. By default it gets created with a name **compliance-app-<timestamp>**.
 1. Create a branch from master.
 1. Update some code like in app or readme file and save changes.
 1. Submit merge request.
-1. Back on the CI toolchain page, click the `pr-pipeline` tile. The PR pipeline is initiated.
+1. Back on the CI toolchain page, click the **pr-pipeline** tile. The PR pipeline is initiated.
 
 The corresponding Merge Request in your application repository is in "Pending" state until all the stages of PR Pipeline finish successfully.
 
@@ -393,10 +393,10 @@ In the DevSecOps world, shift left is a practice that prevents and finds issues 
 
 There are two ways to start a CI pipeline:
 * Automatically: after a successful PR pipeline, by approving and merging the PR to the master branch.
-* Manually: to trigger the CI pipeline manually, select the Delivery Pipeline card and click **Run Pipeline** and select `Manual Trigger`.
+* Manually: to trigger the CI pipeline manually, select the Delivery Pipeline card and click **Run Pipeline** and select **Manual Trigger**.
 
 In this document, the CI Pipeline was triggered after you merged your code changes to the master branch of your application repository.
-1. On the CI toolchain page, click the `ci-pipeline` tile.
+1. On the CI toolchain page, click the **ci-pipeline** tile.
 1. Observe: a pipeline-run is running. Wait for the pipeline-run to complete.
 
 After the CI Pipeline run is successful, you can click it to explore the completed steps.
@@ -428,12 +428,12 @@ The app url can be found at the end of the log of the `run stage` step of `deplo
 ## Configure Pipeline
 {: #cd-devsecops-config-pipeline-ci}
 
-You can add a `commit-id` text property (click `Add property` button and select `"Text property"`), if you trigger the pipeline manually. If no `commit-id` is supplied, the Pipeline takes the latest commit ID from the master branch of your app.
+You can add a `commit-id` text property (click **Add property** and select **Text property**), if you trigger the pipeline manually. If no `commit-id` is supplied, the Pipeline takes the latest commit ID from the master branch of your app.
 
 For example:
 
 ![commit-id](images/commit-id.png){: caption="commit-id" caption-side="bottom"}
 
-Add the trigger parameters (click `Run Pipeline` button), select `"Manual Trigger"` and click `Run`.
+Add the trigger parameters (click **Run Pipeline** ), select **Manual Trigger** and click **Run**.
 
 ![CI Trigger](images/ci-trigger.png){: caption="CI Trigger" caption-side="bottom"}

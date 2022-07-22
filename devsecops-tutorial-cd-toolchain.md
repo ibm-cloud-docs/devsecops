@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-07-14"
+lastupdated: "2022-07-22"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -107,7 +107,7 @@ If you already linked to an existing CI toolchain in the Welcome step, the names
 
 If you want to set up your CD toolchain from scratch, configure these repositories during CI toolchain creation, and then use or link to them here.
 
-To fetch the respective URL, go to the CI Pipeline, select the respective tool card. Right-click the tool card, select `Copy link address`.
+To fetch the respective URL, go to the CI Pipeline, select the respective tool card. Right-click the tool card, and select **Copy link address**.
 
 * **Inventory**: The inventory repository records details of artifacts that are built by the CI and CD pipelines. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-inventory`
 * **Issues**: The issues repository records issues that are found while the CI pipeline is running. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-issues`.
@@ -269,7 +269,7 @@ The individual toolchain integrations can be configured also after the pipeline 
 {: #tutorial-cd-toolchain-explore}
 {: step}
 
-Now that the CD Toolchain is created, click the `cd-pipeline card` to open and run the Promotion Pipeline.
+Now that the CD Toolchain is created, click the **cd-pipeline** card to open and run the Promotion Pipeline.
 
 ### Run the Promotion Pipeline
 {: #tutorial-cd-toolchain-promotion-pipeline-run}
@@ -279,22 +279,22 @@ Make sure that the [CI Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci
 
 The Promotion Pipeline creates a Pull Request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod). 
 
-* On the `cd-pipeline Dashboard`, click **Run pipeline**, and select the `Manual Promotion Trigger`. Click `Run` to trigger the pipeline. 
+* On the **cd-pipeline Dashboard**, click **Run pipeline**, and select the **Manual Promotion Trigger**. Click **Run** to trigger the pipeline. 
 * Wait for the Promotion Pipeline run to complete and check execution log.
-* After the `Promotion Pipeline` finishes successfully, the `promote` Task log provides a link to the `Pull Request` in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment>`.
+* After the Promotion Pipeline finishes successfully, the `promote` Task log provides a link to the pull Request in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment>`.
 
-1. Open the `Pull Request` in your browser with the link provided in the log. Complete the details in the following sections:
+1. Open the pull request in your browser with the link provided in the log. Complete the details in the following sections:
    * **Priority**: (mandatory) One of Critical, High, Moderate, Low, Planning
    * **Change Request assignee**: (mandatory) email-id of the assignee
    * **Additional Description**: Description about the changes in the application
    * **Purpose**: Purpose of the changes that are made to the application
    * **Explanation of Impact**: Impact of the change to the application behavior or environment
    * **Backout Plan**: Steps to back out if there is a deployment failure
-1. Complete the fields in the `Pull Request` and `save`.
+1. Complete the fields in the **Pull Request** and **save**.
 1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to [continue with deployment](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr#cd-devsecops-emergency-label)
-1. Merge the `Pull Request` from {{site.data.keyword.gitrepos}}.
+1. Merge the pull request from {{site.data.keyword.gitrepos}}.
 
-The details of the `Pull Request` are used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD pipeline run.
+The details of the pull request are used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD pipeline run.
 
 ### Run the CD Pipeline
 {: #tutorial-cd-toolchain-pipeline-run}
@@ -303,7 +303,7 @@ You can start a CD pipeline in either of the following ways:
 * Preferred: trigger the CD pipeline manually.
 * Optional: automatically after every `Merge` action in the Inventory Repository. A {{site.data.keyword.gitrepos}} trigger is set up to trigger automatic CD Pipeline, but is disabled by default.
 
-You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD pipeline` aborts early because there is nothing to deploy. You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes.
+You can also trigger the CD pipeline manually anytime, but if there are no changes since the last successful deployment, the CD pipeline aborts early because there is nothing to deploy. You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes.
 {: tip}
 
 A successful CD pipeline run looks like this:

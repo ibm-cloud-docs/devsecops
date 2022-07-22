@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-20"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -43,8 +43,8 @@ In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You migh
 2. Click **Create bucket**.
 3. Choose the **Customize your bucket** option.
 4. Give the bucket a unique, memorable name to help you remember what the bucket is for. Over time, you might create many buckets.
-5. Set Resiliency to "Regional." In general, regional resiliency has the best performance with the lowest cost. However, if the ability to survive a regional outage is essential, set the resiliency to "Cross Region."
-6. For best performance, set "Location" to the same location as your toolchain location.
+5. Set Resiliency to **Regional**. Regional resiliency has the best performance with the lowest cost. However, if the ability to survive a regional outage is essential, set the resiliency to "Cross Region."
+6. For best performance, set **Location** to the same location as your toolchain location.
 7. Usually, the default for Storage class is suitable for use, so you don't need to use **ADVANCED CONFIGURATION**.
 
 ## Create a service credential

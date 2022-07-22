@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2022
+  years: 2021, 2022
 lastupdated: "2022-07-22"
 
 keywords: DevSecOps, image signing, GPG key, secure toolchain, compliance, IBM Cloud
@@ -36,13 +36,13 @@ Create and store a GPG key that is used by the DevSecOps continuous integration 
 ## Automated generation of GPG key
 {: #devsecops-image-signing-auto}
 
-With this method, the template generates the GPG key for you. Provide the `name` and `email` as required for the key generation by completing these steps:
+With this method, the template generates the GPG key for you. Provide the **name** and **email** as required for the key generation by completing these steps:
 
 1. Go to the image signing stage, and click **New**.
 
    ![Image signing](images/devsecops_image_signing_key_start.png){: caption="Image signing" caption-side="bottom"}
 
-1. In the window, the `name` and `email` fields are prepopulated with the toolchain name and the email ID. Change the name and email ID to reflect your GPG key requirements. You can also store the keys in your secrets provider by selecting the box.
+1. In the window, the **name** and **email** fields are prepopulated with the toolchain name and the email ID. Change the name and email ID to reflect your GPG key requirements. You can also store the keys in your secrets provider by selecting the box.
 
    ![Change name and email](images/devsecops_image_signing_key_generation.png){: caption="Change name and email" caption-side="bottom"}
 
@@ -59,7 +59,7 @@ The copied key is in `base64` format. Decrypt the key before you import it to yo
 ### Download and install GPG command-line tools
 {: #cd-devsecops-gpg-download}
 
-Download and install the [GPG command-line tools](https://www.gnupg.org/download/){: external} for your operating system. Go to the `GnuPG binary releases` section to download the tools for your operating system.
+Download and install the [GPG command-line tools](https://www.gnupg.org/download/){: external} for your operating system. Go to the **GnuPG binary releases** section to download the tools for your operating system.
 
 #### OS X
 {: #devsecops-gpg-download-osx}
@@ -73,7 +73,7 @@ Download and install the [GPG command-line tools](https://www.gnupg.org/download
    libgcrypt 1.9.3
    Copyright (C) 2021 Free Software Foundation, Inc.
    ```
-* For versions of GPG prior to 2.3.1, it might not be possible to use the `--passphrase=''` option. In this case, you can omit the password in the following dialog by pressing Enter when prompted.
+* For versions of GPG prior to 2.3.1, it might not be possible to use the **--passphrase=''** option. In this case, you can omit the password in the following dialog by pressing **Enter** when prompted.
 
 #### Windows
 {: #devsecops-gpg-download-windows}
@@ -102,10 +102,10 @@ From your shell prompt, run the following command:
    gpg --pinentry-mode loopback --passphrase='' --generate-key
    ```
 
-* Enter `Real name` your name
-* Enter `Email address` your email address
-* Enter `O` to initiate key creation
-* After the key is generated, select option `O`
+* Enter **Real name** your name
+* Enter **Email address** your email address
+* Enter **O** to initiate key creation
+* After the key is generated, select option **O**
 
 ### Windows
 {: #cd-devsecops-gpg-windows}
@@ -118,10 +118,10 @@ From the Git bash command prompt, run the following command:
    gpg --pinentry-mode loopback --passphrase='' --generate-key
    ```
 
-* Enter `Real name`: your name
-* Enter `Email address`: your email address
-* Enter `O` to initiate key creation
-* After the key is generated, select option `O`
+* Enter **Real name** your name
+* Enter **Email address** your email address
+* Enter **O** to initiate key creation
+* After the key is generated, select option **O**
 
 #### GPG Version < 1.4 (or any failure with previous command)
 {: #cd-devsecops-gpg-version2}
@@ -131,14 +131,14 @@ From the Git bash command prompt, run the following command:
    gpg --gen-key
    ```
 
-* `kind of key`: select Default option `(1) RSA and RSA (default)`
-* `keysize`: keep default (2048)
-* `key validity`: keep default (0 = key does not expire)
-* Confirm your choice: enter `y`
-* Enter `Real name`: your name
-* Enter `Email address`: your email address
-* Enter `comment`: any comment of your choice
-* Enter `O` to initiate key creation
+* **kind of key**: select Default option **(1) RSA and RSA (default)**
+* **keysize**: keep default (2048)
+* **key validity**: keep default (0 = key does not expire)
+* Confirm your choice: enter **y**
+* Enter **Real name**: your name
+* Enter **Email address**: your email address
+* Enter **comment**: any comment of your choice
+* Enter **O** to initiate key creation
 
 ## Verify the key creation
 {: #cd-devsecops-gpg-verify}
@@ -212,16 +212,16 @@ gpg --export-secret-key <Email Address> | base64 | base64
 
 1. In your {{site.data.keyword.cloud_notm}} console, select the {{site.data.keyword.keymanagementserviceshort}} instance where you want to store the GPG key generated from the previous steps.
 2. Click the **Add +** icon to add new key to the instance.
-3. Select `Import your own key` option.
-4. Select `Select a key type` as **Standard Key**.
-5. Give appropriate name in the `Key name` field. The stored GPG key can be retrieved later by this name.
-6. Copy the key as exported earlier in the `Key material` field.
+3. Select **Import your own key** option.
+4. Select **Select a key type** as **Standard Key**.
+5. Give appropriate name in the **Key name** field. The stored GPG key can be retrieved later by this name.
+6. Copy the key as exported earlier in the **Key material** field.
 
-      Ensure that when you copy the key and paste it in `Key material` field, there is no extra line at the end of the key.
+      Ensure that when you copy the key and paste it in **Key material** field, there is no extra line at the end of the key.
       {: note}
 
-7. Select the `Choose a key ring` option as default. 
-8. Add the key to your key protect by clicking the `Add key` icon.
+7. Select the **Choose a key ring** option as default. 
+8. Add the key to your key protect by clicking the **Add key** icon.
 
    ![Add the key to key protect](images/devsecops_set-up_store_key_protect.png){: caption="Add the key to key protect" caption-side="bottom"}
 
@@ -258,18 +258,18 @@ gpg --export-secret-key <Email Address> | base64
 
 1. In your {{site.data.keyword.cloud_notm}} console, select the {{site.data.keyword.secrets-manager_short}} instance where you want to store GPG Key generated from the previous steps.
 1. Click the **Add +** icon to add new key to the instance.
-1. Select `Other secret type` option.
+1. Select **Other secret type** option.
 
    ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Other secret type" caption-side="bottom"}
 
-1. Select `Select a key type` as **Standard Key**.
-1. Give an appropriate name in the `Name` field. The stored GPG key can be retrieved later by this name.
-1. Choose the option as `Secret value` and paste the key as exported earlier in the `Secret Value` field.
+1. Select **Select a key type** as **Standard Key**.
+1. Give an appropriate name in the **Name** field. The stored GPG key can be retrieved later by this name.
+1. Choose the option as **Secret value** and paste the key as exported earlier in the **Secret Value** field.
 
-    Ensure that when you copy the key and paste it in `Secret value` field, there is no extra line at the end of the key.
+    Ensure that when you copy the key and paste it in **Secret value** field, there is no extra line at the end of the key.
     {: note}
 
-1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking the `Add` icon.
+1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking the **Add** icon.
 
    ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Add the key" caption-side="bottom"}
 

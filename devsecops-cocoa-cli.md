@@ -1663,6 +1663,7 @@ Options:
 --assignee         #(Optional) Assignee(s) for the incident issue (github/gitlab username) e.g: --assigne=jane-doe --assignee=john-smith
 --git-token-path   #(Optional) Github or Gitlab Token's path
 --git-api-url      #(Optional) Github or Gitlab API url
+--custom-exempt-label # (Optional) Defines the custom label with which the incident issue has been marked as exempted
 ```
 {: screen}
 
@@ -1944,7 +1945,7 @@ https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 
 Adds evidence to the evidence locker.
 
-The evidence locker can be specified by using flags. For more information, see [`cocoa locker commands`](#cocoa-locker-commands).
+The evidence locker can be specified by using flags. For more information, see [cocoa locker commands](#cocoa-locker-commands).
 
 The evidence can be configured by using the following flags:
 
@@ -2136,7 +2137,7 @@ Checks the required configuration and settings of the locker.
 Currently, only the Cloud Object Storage based locker has a configuration requirement:
 - Because every evidence must be kept for at least one year, the Cloud Object Storage bucket must be protected by a retention policy. Default retention period must be greater or equal to 365 days.
 
-For more information, see [`cocoa locker commands`](#cocoa-locker-commands).
+For more information, see [cocoa locker commands](#cocoa-locker-commands).
 
 Required Environment Variables:
 ```text

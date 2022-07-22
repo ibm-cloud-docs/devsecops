@@ -277,20 +277,20 @@ The following table includes the default ENV variables for the context of custom
 
 | Path | Description |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| BUILD_NUMBER | The Tekton pipeline build number.|
-| PIPELINE_CONFIG_PATH | The path to the root of the pipeline script library. |
-| PIPELINE_CONFIG_REPO_PATH | The directory where the pipeline `config-repo` is cloned. |
-| PIPELINE_RUN_NAME | The Tekton pipeline run name. |
-| PIPELINE_RUN_ID | The Tekton pipeline run ID. |
-| PIPELINE_RUN_URL | The Tekton pipeline run URL. |
-| PIPELINE_ID | The Tekton pipeline ID. |
-| STAGE | The user script stage. |
-| TOOLCHAIN_DATA_PATH | The toolchain data path `/toolchain/toolchain.json` file. |
-| TRIGGER_TYPE | The pipeline trigger type. |
-| TRIGGER_NAME | The pipeline trigger name. |
-| TRIGGER_PAYLOAD (DEPRECATED) | The payload that is received by way of the pipeline trigger event, if there was one. For more information about working with payloads, see [Accessing arguments from webhook payloads](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads). |
-| TRIGGERED_BY | Information about who triggered the pipeline. This value can be an email address or a time-triggered pipeline run.  |
-| WORKSPACE | The path to the shared workspace. |
+| `BUILD_NUMBER` | The Tekton pipeline build number.|
+| `PIPELINE_CONFIG_PATH` | The path to the root of the pipeline script library. |
+| `PIPELINE_CONFIG_REPO_PATH` | The directory where the pipeline `config-repo` is cloned. |
+| `PIPELINE_RUN_NAME` | The Tekton pipeline run name. |
+| `PIPELINE_RUN_ID` | The Tekton pipeline run ID. |
+| `PIPELINE_RUN_URL` | The Tekton pipeline run URL. |
+| `PIPELINE_ID` | The Tekton pipeline ID. |
+| `STAGE` | The user script stage. |
+| `TOOLCHAIN_DATA_PATH` | The toolchain data path `/toolchain/toolchain.json` file. |
+| `TRIGGER_TYPE` | The pipeline trigger type. |
+| `TRIGGER_NAME` | The pipeline trigger name. |
+| `TRIGGER_PAYLOAD` (DEPRECATED) | The payload that is received by way of the pipeline trigger event, if there was one. For more information about working with payloads, see [Accessing arguments from webhook payloads](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads). |
+| `TRIGGERED_BY` | Information about who triggered the pipeline. This value can be an email address or a time-triggered pipeline run.  |
+| `WORKSPACE` | The path to the shared workspace. |
 {: caption="Table 2. Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
@@ -355,9 +355,9 @@ The following tasks and stages are available:
 | Pipeline | Task or stages |
 |:-----------------|:------------------------------------|
 |**Pull request pipeline stages**| setup, test, detect-secrets, and branch-protection. The detect-secrets and branch-protection stages are not custom stages. They are provided by the pipelines by default.|
-|**Continuous integration pipeline stages**| setup, test, static-scan, containerize, sign-artifact, deploy, acceptance-test, scan-artifact, release, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default. |
-|**Continuous delivery pipeline stages**| setup, deploy, acceptance-test, create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request. The create-change-request, change-request-check-approval, change-request-change-state-to-implement, and close-change-request stages are not custom stages. They are provided by the pipelines by default.|
-|**Continuous compliance pipeline stages**| setup, test, static-scan, scan-artifact, acceptance-test, detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan. The detect-secrets, branch-protection, bom-check, cis-check, and vulnerability-scan stages are not custom stages. They are provided by the pipelines by default.|
+|**Continuous integration pipeline stages**| `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default. |
+|**Continuous delivery pipeline stages**| `setup`, `deploy`, `acceptance-test`, `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request`. The `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request` stages are not custom stages. They are provided by the pipelines by default.|
+|**Continuous compliance pipeline stages**| `setup`, `test`, `static-scan`, `scan-artifact`, `acceptance-test`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default.|
 {: caption="Table 1. Tasks and stages" caption-side="bottom"}
 
 #### Example usage
