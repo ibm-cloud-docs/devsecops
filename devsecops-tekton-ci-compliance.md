@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-24"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -25,7 +25,7 @@ Complete these steps to set up the Tekton continuous integration pipelines with 
 * [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/containers?topic=containers-getting-started) on your operating system to interact with {{site.data.keyword.cloud_notm}} resources.
 * [Create an image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with proper encoding to sign your application docker images.
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure them.
-* Optional. [COS Bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
+* Optional. [Configure Cloud Object Storage](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
 * [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
 
 ## Guided setup overview for the CI toolchain
@@ -106,9 +106,9 @@ Change management is tracked in this repository. CD pipeline creates a new branc
 
 ![DevSecOps inventory repository](images/devsecops-ci-inventory-repo.png){: caption="DevSecOps inventory repository" caption-side="bottom"}
 
-The default behavior of the toolchain is to `Create new inventory` that creates a new Inventory Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Inventory Repository for the toolchain, you may choose `Use existing inventory` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+The default behavior of the toolchain is to `Create new inventory` that creates a new Inventory Repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you want to link an existing Inventory Repository for the toolchain, you can choose `Use existing inventory` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
-- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} Repository created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
+- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} Repository that is created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
 
 ### Issues
 {: #cd-devsecops-issues-ci}
@@ -119,7 +119,7 @@ Issues about incidents that are captured during the build and deployment process
 
 The default behavior of the toolchain is to `Create new issues repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. In case you want to link an existing Issues Repository for the toolchain, you can choose `Use existing issues repository` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 
-- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} Repository created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
+- **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} repo that is created by the toolchain as your inventory repository. The region of the repository remains the same as that of the toolchain.
 
 ### Secrets
 {: #cd-devsecops-secrets-ci}
@@ -149,7 +149,7 @@ To comply with best practices for using Hashicorp Vault, this template includes 
 #### IBM Secrets Manager
 {: #cd-devsecops-secrets-manager-ci}
 
-Use [Secrets Manager](/catalog/services/secrets-manager) to securely store and apply secrets like API keys, Image Signature, or Hashicorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before proceeding further. If you created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
+Use [Secrets Manager](/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or Hashicorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
 
 ![DevSecOps IBM Secrets Manager](images/devsecops-secrets-manager.png){: caption="DevSecOps IBM Secrets Manager" caption-side="bottom"}
 
@@ -180,16 +180,16 @@ Note: _We advise you to use AppRole authentication method as this method can be 
 
 All raw compliance evidence that belongs to the application is collected in this repository. Use this repository option for evaluation purposes only. 
 
-The default behavior of the toolchain is to `Create new evidence locker repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} Repository. If you ant to link an existing Evidence Locker for the toolchain, choose `Use existing evidence locker` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+The default behavior of the toolchain is to `Create new evidence locker repository` that creates a new repository as IBM-hosted {{site.data.keyword.gitrepos}} repo. If you want to link an existing Evidence Locker for the toolchain, choose `Use existing evidence locker` option and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repos.
 
-However, you must collect and store all the evidences in a Cloud Object Storage bucket that can be configured as described in the following image.
+However, you must collect and store all the evidence in a Cloud Object Storage bucket that can be configured as described in the following image.
 
 ![DevSecOps Evidence Storage](images/devsecops-cd-evidence-storage.png){: caption="DevSecOps Evidence Storage" caption-side="bottom"}
 
 ### Cloud Object Storage Bucket
 {: #cd-devsecops-cos-bucket-ci}
 
-![COS bucket toggle](images/cos-evidence.png){: caption="COS bucket toggle" caption-side="bottom"}
+![Cloud Object Storage bucket toggle](images/cos-evidence.png){: caption="COS bucket toggle" caption-side="bottom"}
 
 [Cloud Object Storage](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage) is used to store the evidence and artifacts that are generated by the DevSecOps Pipelines. If you want to use this feature, you must have a Cloud Object Storage instance and a Bucket. Read the recommendation for configuring a Bucket that can act as a Compliance Evidence Locker.
 
@@ -235,7 +235,7 @@ The newly generated API key can be saved to an existing Key Protect instance.
 Click the Key Icon to use an existing key from your Secret Provider.
 * **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
 * **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
-* **Secret name**: Name/Alias of the secret, such as the API Key.
+* **Secret name**: Name or alias of the secret, such as the API Key.
 
 Using the API key that is either created, retrieved from a vault, or manually entered the following fields load automatically if the API key has sufficient access. If the API key is valid, the Container registry region and namespace Cluster region, name, namespace, and Resource group is automatically populated. Change any of these fields to match your configuration if needed.
 
@@ -263,12 +263,12 @@ Click `Key` to use an existing key from your Secret Provider.
 
 - **Provider**: The Secret Provider, which stores your GPG Key. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
 - **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
-- **Secret name**: Name/Alias of the secret, that is, GPG Key.
+- **Secret name**: Name or alias of the secret, that is, GPG Key.
 
 ### DevOps Insights
 {: #devsecops-tekton-tool-integration-insights}
 
-[IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights, the CI pipeline  automatically uses the insights instance included in the toolchain. DevOps Insights aggregates code, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
+[IBM Cloud DevOps Insights](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the created toolchain and after each compliance check evidence is published into it. You do not need to provide any configuration steps for DevOps Insights, the CI pipeline automatically uses the insights instance that is included in the toolchain. DevOps Insights aggregates code, test, build, and deployment data to provide visibility into the velocity and quality of all your teams and releases.
 
 ### Optional tools
 {: #cd-devsecops-optional-tools-ci}
@@ -322,7 +322,7 @@ With **Default Configuration**, a SonarQube scan runs in an isolated Docker in D
 
 With **Cluster Configuration**, the pipeline provisions a new SonarQube instance in the Kubernetes cluster that is configured in the **Deploy** step. This instance is provisioned during the first pipeline run and remains available to all the subsequent pipeline runs.
 
-If you want the toolchain to use an existing SonarQube Instance that you have provisioned on another host, use the **Custom Configuration** option.
+If you want the toolchain to use an existing SonarQube Instance that you provisioned on another host, use the **Custom Configuration** option.
 
 ![SonarQube tool](images/devsecops_set-up_sonarqube_orig.png){: caption="SonarQube tool" caption-side="bottom"}
 
@@ -355,12 +355,12 @@ It contains two pipelines:
 ## Run the PR-CI Pipeline
 {: #cd-devsecops-tekton-ci-run-pipeline}
 
-To start the PR pipeline, you should create a merge request in your application repository. To achieve this, do the following:
+To start the PR pipeline, create a merge request in your application repository. To achieve this, do the following:
 1. On the CI toolchain page, click the application repository tile. By default it gets created with a name `compliance-app-<timestamp>`.
 1. Create a branch from master.
 1. Update some code like in app or readme file and save changes.
 1. Submit merge request.
-1. Back on the CI toolchain page, click the `pr-pipeline` tile. Tthe PR pipeline is initiated.
+1. Back on the CI toolchain page, click the `pr-pipeline` tile. The PR pipeline is initiated.
 
 The corresponding Merge Request in your application repository is in "Pending" state until all the stages of PR Pipeline finish successfully.
 
@@ -377,7 +377,7 @@ Simplified flow of tasks in the pipeline: (Utility tasks are omitted. For exampl
 
 In the DevSecOps world, shift left is a practice that prevents and finds issues like defects, security vulnerabilities. Shift left also performs compliance checks early in the software delivery process.
 
-* Checks that can be run on the code/repository and do not need the built image should be run as early as possible to prevent noncompliant code from being merged to master branch of repository. Evidence is not collected from the PR pipeline, its goal is to shift compliance checks, as far left as possible.
+* Checks that can be run on the code/repository and do not need the built image should be run as early as possible to prevent noncompliant code from being merged to master branch of repository. Evidence is not collected from the PR pipeline. The pipeline's goal is to shift compliance checks, as far left as possible.
 * All checks are done every pipeline run, even if a previous check fails, the pipeline progresses to the next one. To evaluate if you have any failures in your run, you need to check the final step of your pipeline, which has a pipeline evaluator.
 * If you are trying to merge an emergency fix, and want to bypass compliance checks, add a label to your merge request to indicate this. The same label must be provided when running the CD pipeline.
 
@@ -407,9 +407,9 @@ Simplified flow of tasks in the pipeline: (Again, utility tasks are omitted. For
 
 ![DevSecOps CI Tasks](images/devsecops-ci-tasks-flow.png){: caption="DevSecOps CI Tasks" caption-side="bottom"}
 
-Evidence is collected from all compliance checks in the CI pipeline, to the evidence-locker repository, that was provided during toolchain setup. Evidence from CI is stored under `raw/ci/<pipeline-run-id>/*.json`.
+Evidence is collected from all compliance checks in the CI pipeline, to the evidence-locker repository that was provided during toolchain setup. Evidence from CI is stored under `raw/ci/<pipeline-run-id>/*.json`.
 
-Evidence is also published to the DevOps Insights instance inside the toolchain. You can navigate to it by clicking the DevOps Insights toolcard in the toolchain. You can review the collected evidence on the Quality Dashboard page.
+Evidence is also published to the DevOps Insights instance inside the toolchain. You can navigate to it by clicking the DevOps Insights tool card in the toolchain. You can review the collected evidence on the Quality Dashboard page.
 
 ![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI Evidence" caption-side="bottom"}
 
@@ -428,7 +428,7 @@ The app url can be found at the end of the log of the `run stage` step of `deplo
 ## Configure Pipeline
 {: #cd-devsecops-config-pipeline-ci}
 
-You can add a `commit-id` text property (click `Add property` button and select `"Text property"`), if you trigger the pipeline manually. If no `commit-id` is supplied, the Pipeline will take the latest commit ID from the master branch of your app.
+You can add a `commit-id` text property (click `Add property` button and select `"Text property"`), if you trigger the pipeline manually. If no `commit-id` is supplied, the Pipeline takes the latest commit ID from the master branch of your app.
 
 For example:
 
