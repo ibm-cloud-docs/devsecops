@@ -37,7 +37,7 @@ toc:
       id: tutorial
       topics:
       - topicgroup:
-          label: Deploy a secure app with DevSecOps best practices
+          label: Deploy a secure app with DevSecOps
           topics:
           - devsecops-tutorial.md
           - devsecops-tutorial-ci-toolchain.md
