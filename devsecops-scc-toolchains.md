@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps
 
@@ -48,6 +48,6 @@ A {{site.data.keyword.compliance_short}} data [collector](/docs/security-complia
 
 ![Validation by resource](images/cd-devsecops-validation-by-resource.png "Validation by resource"){: caption="Figure 4. Validation by resource" caption-side="bottom"}
 
-The 10 entries that are shown in Figure 4 map to the individual evidence fragments gathered in the CI pipeline. In this evidence sample, all the validations passed. There might be cases when few validations are classified as `Fail` or as `Unable to perform`. This situation can occur when a validation check finds no corresponding evidence, for example if task is removed or skipped in the CI pipeline. This condition might occur when a deployment is performed by using the CD EMERGENCY process to override the evidence failures. It is to be noted here that while it is possible to deploy an image with imperfect validations, these facts are reported on inspection in {{site.data.keyword.compliance_short}}.
+The 10 entries that are shown in Figure 4 map to the individual evidence fragments gathered in the CI pipeline. In this evidence sample, all the validations passed. There might be cases when few validations are classified as **Fail** or as **Unable to perform**. This situation can occur when a validation check finds no corresponding evidence, for example if task is removed or skipped in the CI pipeline. This condition might occur when a deployment is performed by using the CD EMERGENCY process to override the evidence failures. It is to be noted here that while it is possible to deploy an image with imperfect validations, these facts are reported on inspection in {{site.data.keyword.compliance_short}}.
 
 To explore toolchains in {{site.data.keyword.compliance_short}}, it might be a useful start to learn about [managing scopes](/docs/security-compliance?topic=security-compliance-scopes) in the [{{site.data.keyword.compliance_short}} documentation](/docs/security-compliance?topic=security-compliance-getting-started).

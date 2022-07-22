@@ -110,13 +110,13 @@ For each repository, you can either clone the repository that is provided as a s
 The application source code repository can be hosted either on GitHub or the IBM-hosted {{site.data.keyword.gitrepos}} repository from the list of source providers. For consistency, this tutorial refers to {{site.data.keyword.gitrepos}}.
 {: note}
 
-The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is `Use default sample` that clones the sample application into an IBM-hosted {{site.data.keyword.gitrepos}} Repository.
+The recommended options are displayed by default, but you can click the **Switch to advanced configuration** toggle to see all of the configuration options available for the underlying Git integration. The default behavior of the toolchain is **Use default sample** that clones the sample application into an IBM-hosted {{site.data.keyword.gitrepos}} Repository.
 
 Enter a name for the IBM-hosted {{site.data.keyword.gitrepos}} repository that is created by the toolchain as your application repository.
 
 The region of the repository remains the same as the region of the toolchain.
 
-If you want to link an existing Application Repository for the toolchain, select the `Bring your own app` option, and provide it as input to `Repository URL` field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. If you want to know more about `Bring your own app`, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+If you want to link an existing Application Repository for the toolchain, select the **Bring your own application** option, and provide it as input to **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. If you want to know more about **Bring your own application**, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
 
 ### Inventory
 {: #tutorial-ci-toolchain-inventory}
@@ -263,7 +263,7 @@ To start the ci-pr pipeline, you need to create a merge request in your applicat
 1. Create a branch from master branch.
 1. Update some code like in app or readme file and save changes.
 1. Submit merge request.
-1. On the CI toolchain page, click the `pr-pipeline` tile. Verify that the ci-pr pipeline is triggered (by the creation of the Merge Request).
+1. On the CI toolchain page, click the **pr-pipeline** tile. Verify that the ci-pr pipeline is triggered (by the creation of the Merge Request).
 1. Wait for the ci-pr pipeline run to complete.
 
 The corresponding Merge Request that is in your application repository is in `Pending` state until all the stages of PR Pipeline finish successfully.
@@ -280,10 +280,10 @@ After the PR Pipeline run is successful, you can click it to explore numerous st
 
 Start the CI pipeline in one of the following ways:
 * Automatically: after a successful PR pipeline, by approving and merging the PR to the master branch.
-* Manually: to trigger the CI pipeline manually, select the Delivery Pipeline card and click **Run Pipeline** and select `Manual Trigger`.
+* Manually: to trigger the CI pipeline manually, select the Delivery Pipeline card and click **Run Pipeline** and select **Manual Trigger**.
 
 In this tutorial, the CI Pipeline was triggered after you merged your code changes to the master branch of your application repository.
-1. On the CI toolchain page, click the `ci-pipeline` tile.
+1. On the **CI toolchain** page, click the **ci-pipeline** tile.
 1. Observe: a pipeline-run is running. Wait for the pipeline-run to complete.
 
 After the CI Pipeline run is successful, you can click it to explore the completed steps.

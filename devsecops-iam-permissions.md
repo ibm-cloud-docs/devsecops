@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-02"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, object storage
 
@@ -34,7 +34,7 @@ If you want to assign a role to a user, take the following steps:
 2. Go to **Users** and select the user.
 3. Click **Access** and select **Assign access**.
 4. Click **Access policy**.
-5. Search and select the service name `Toolchain`.
+5. Search and select the service name **Toolchain**.
 6. Select the scope of the access and provide the appropriate role.
 
 ## IAM permissions for {{site.data.keyword.cloud_notm}} resources
