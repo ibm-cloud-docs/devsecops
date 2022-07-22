@@ -294,6 +294,8 @@ This parameter holds the version of the compliance-baseimage. If you want to use
 Example:
 `icr.io/continuous-delivery/toolchains/devsecops/baseimage:some-other-tag`
 
+
+
 ### description
 {: #pipeline-parm-description}
 
