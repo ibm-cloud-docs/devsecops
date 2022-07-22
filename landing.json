@@ -20,7 +20,7 @@
       },
       {
         "title": "Part 4: Set up a Continuous Compliance (CC) toolchain",
-        "description": "Part 4 of a 4-part tutorial series: Set up a CC toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
+        "description": "Part 4 of a 4-part tutorial series: Use the CC toolchain template to ensure that your deployed artifacts and their source repositories are always compliant.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
