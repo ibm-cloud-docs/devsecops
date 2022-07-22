@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-05"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -45,7 +45,7 @@ The following table lists and describes the pull request parameters for pipeline
 |cra-python-create-requirements-txt		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
@@ -99,7 +99,7 @@ The following table lists and describes the continuous integration parameters fo
 |doi-toolchain-id		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |ibmcloud-api-key		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
@@ -163,7 +163,7 @@ The following table lists and describes the continuous delivery parameters for p
 |force-redeploy    |text   |Forces the deployment or redeployment of the app even if the last deployment does not contain a delta in the inventory. Set this parameter to `true` to force a deployment of the app as if it is the first deployment on the specified target environment. By default, this parameter is set to `false`. |Optional |
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |artifact-token		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
 |iam_retry_count		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |iam_retry_sleep		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -220,7 +220,7 @@ The following table lists and describes the continuous compliance parameters for
 |evidence-repo		|tool integration		|The evidence repo URL.	|Optional			|
 |git-token		|SECRET		|The Git repo access token.	|Optional			|
 |github-token		|SECRET		|The GitHub repo access token.	|Optional			|
-|grit-token		|SECRET		|The Git Repo and Issue Tracking access token.	|Optional			|
+|grit-token		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |opt-in-sonar		|tool integration		|The Sonarqube scan integration.	|Optional			|
 |opt-in-dynamic-scan		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |opt-in-dynamic-ui-scan		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
@@ -294,6 +294,8 @@ This parameter holds the version of the compliance-baseimage. If you want to use
 Example:
 `icr.io/continuous-delivery/toolchains/devsecops/baseimage:some-other-tag`
 
+
+
 ### description
 {: #pipeline-parm-description}
 
@@ -312,12 +314,12 @@ If this is set to 1, the pipeline will run in debug mode, and the logs will show
 ### priority
 {: #pipeline-parm-priority}
 
-This parameter is for the promotion pull request. It is the priority of the change request. By default, it is `'Critical | High | Moderate | Low | Plan'`. You can change it to one of these values.
+This parameter is for the promotion pull request. The priority of the change request. By default it is `'Critical | High | Moderate | Low | Plan'`. You can change it to one of these values.
 
 ### purpose
 {: #pipeline-parm-purpose}
 
-This parameter is for the promotion pull request. It is the reason why the change is needed. By default, it is empty.
+This parameter is for the promotion pull request. The reason why the change is needed. By default it is empty.
 
 ### signing-key
 {: #pipeline-parm-signing-key}
@@ -337,7 +339,7 @@ This parameter is for all the pipelines that use static scan stages. This is an 
 ### sonarqube-namespace
 {: #pipeline-parm-sonarqube-namespace}
 
-This parameter is for all the pipelines that use static scan stages. This is the configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline. You can change it to any namespace that you want to use.
+This parameter is for all the pipelines that use static scan stages. This is the configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline, you can change it to any namespace that you want to use.
 
 ### source-environment
 {: #pipeline-parm-source-environment}
@@ -357,12 +359,13 @@ This parameter is for any static scan that you want to run in a pipeline. These 
 ### summary-retry-attempts
 {: #pipeline-parm-summary-retry-attempts}
 
-Use a retry method to upload the evidence summary to make sure that it is successful. You can change the times of retries with this parameter. By default, this parameter is set to 5.
+Use a retry method to upload the evidence summary to make sure it is successful. You can change the times of retries with this parameter. By default, this parameter is set to 5.
+
 
 ### summary-max-retry-time
 {: #pipeline-parm-summary-max-retry-time}
 
-Use a retry method to upload the evidence summary to make sure that it is successful. You can change the amount of seconds to wait with this parameter. By default, this parameter is set to 32.
+Use a retry method to upload the evidence summary to make sure it is successful. You can change the amount of seconds to wait with this parameter. By default, this parameter is set to 32.
 
 ### target-environment
 {: #pipeline-parm-target-environment}

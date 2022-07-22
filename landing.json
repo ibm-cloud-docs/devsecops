@@ -57,7 +57,7 @@
       "tiles": [
         {
           "date": "24 June 2022",
-          "title": "DevOps Insights integration is now enabled for the continuous compliance (CC) template.",
+          "title": "DevOps Insights integration is now enabled for the continuous compliance (CC) template",
           "description": "If you have an existing CC toolchain, you can set certain properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain." 
         },
         {

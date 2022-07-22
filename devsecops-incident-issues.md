@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-07-07"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, IBM Cloud
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years:  2021
-lastupdated: "2021-09-15"
+  years:  2022
+lastupdated: "2022-07-22"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -19,7 +19,7 @@ subcollection: devsecops
 {:note: .note}
 {:important: .important}
 {:download: .download}
-
+{:term: .term}
 
 # DevSecOps with {{site.data.keyword.contdelivery_short}}
 {: #devsecops_intro}
@@ -27,7 +27,7 @@ subcollection: devsecops
 [DevSecOps](https://www.ibm.com/cloud/learn/devsecops){: external} is an evolution of Agile and DevOps, integrating secure development best practices as early as possible in the software delivery lifecycle (also known as "shift left"). This approach prevents security problems from reaching production systems and failing corporate audits.
 {: shortdesc}
 
-DevSecOps requires automating security and compliance controls as part of continuous integration and continuous delivery processes. Evidence of these controls is also collected to demonstrate to auditors that every change in history meets the necessary controls. 
+[DevSecOps](#x9892260){: term} requires automating security and compliance controls as part of continuous integration and continuous delivery processes. Evidence of these controls is also collected to demonstrate to auditors that every change in history meets the necessary controls. 
 
 Aligned with the requirements of the Financial Services industry, {{site.data.keyword.contdelivery_short}} provides a reference implementation of [NIST Configuration Management](https://csrc.nist.gov/Projects/risk-management/sp800-53-controls/release-search#!/controls?version=5.1&family=CM){: external} controls as a service. You can configure this service in a few clicks by using templates.
 

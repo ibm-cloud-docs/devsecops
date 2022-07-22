@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-15"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -77,7 +77,7 @@ Options:
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
@@ -1015,7 +1015,7 @@ COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket 
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
@@ -1046,13 +1046,13 @@ CLI options can be also set from environment variables except for `backend`, `is
 ```
 {: codeblock}
 
-`artifact` consists of a URL that points to the artifact file and a hash, they should be provided the same way as in the previous example.
+`artifact` consists of a URL that points to the artifact file and a hash, provide these items in the same way as in the previous example.
 {: note}
 
 ### cocoa evidence summarize
 {: #evidence-summaries}
 
-Queries evidences from the Evidence Locker and generates an Evidence Summary from their contents. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}} or GitHub. Currently, `git` and `cos` is supported as backend. Different lockers require different parameters to be provided.
+Queries evidence from the Evidence Locker and generates an Evidence Summary from their contents. Backends can be different evidence locker types, such as {{site.data.keyword.cos_short}} or GitHub. Currently, `git` and `cos` are supported as backend. Different lockers require different parameters to be provided.
 
 Required Environment Variables for Git:
 ```text
@@ -1260,7 +1260,7 @@ $ cocoa set-status \
 {: #inventory-add}
 
 Adds a value to the inventory repository. Creates a file with the `name` option, if it does not exist otherwise overwrites it.
-Currently, the `type` `sha256` `provenance` and `signature` fields are optional parameters, but after the upcoming breaking changes they will be mandatory.
+Currently, the following fields are optional parameters: `type`, `sha256`, `provenance`, and `signature`. However, after the upcoming breaking changes, they are mandatory.
 
 Required Environment Variables:
 ```text
@@ -1303,10 +1303,10 @@ Options for Git:
 | app-artifacts    | Arbitrary app content in JSON format             | String | |
 | type             | Type of the artifact                             | String | |
 | sha256           | The sha256 hash of the artifact                  | String | |
-| provenance       | URL pointing to the artifact (e.g built image)   | String | |
+| provenance       | URL pointing to the artifact (for example, built image)   | String | |
 | signature        | The artifact's signature                         | String | |
 | environment      | The name of the environment where the entry should be added. | String | "master" |
-| git-provider*    | The Git version control service provider, either github or gitlab | string* | "github" |
+| git-provider*    | The Git version control service provider, either GitHub or GitLab | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
 {: caption="Table 1. Options for git" caption-side="bottom"}
@@ -1412,7 +1412,7 @@ GITLAB_URL=   # Git Repos and Issue Tracking URL Example: https://<region>.git.c
 ```
 {: screen}
 
-Options for git:
+Options for Git:
 ```text
 --git-token-path    #(Optional) Github or Gitlab Token's path
 --git-api-url       #(Optional) Github or Gitlab API url
@@ -1475,14 +1475,14 @@ GITLAB_URL=     # Git Repos and Issue Tracking URL Example: https://<region>.git
 ```
 {: screen}
 
-Options for git:
+Options for Git:
 ```text
 --git-token-path    #(Optional) Github or Gitlab Token's path
 --git-api-url           #(Optional) Github or Gitlab API url
 ```
 {: screen}
 
-If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your Github Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
 {: screen}
 
@@ -1541,14 +1541,14 @@ GITLAB_TOKEN=        # Git Repos and Issue Tracking API Token (Required if you a
 GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
 ```
 
-Options for git:
+Options for Git:
 ```sh
 --git-token-path    #(Optional) Github or Gitlab Token's path
 --git-api-url           #(Optional) Github or Gitlab API url
 ```
 
-If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your Github Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If both of them are provided `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
@@ -1610,7 +1610,7 @@ GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
@@ -1630,7 +1630,7 @@ Grace Period is set to 15 days if enabled. If Exempt or Grace Period is set on a
 
 Exceptions are either configured in CR VA, or you can submit the Incident or CVE for an exemption approval. If approved, you can edit the Incident issue (setting `Excempt: **true**`), and link to the approved request.
 
-Currently-supported scan result files:
+Currently supported scan result files:
 
 - Container Registry VA scan (option `--type va`)
 - CRA Vulnerability scan (option `--type cra`)
@@ -1663,6 +1663,7 @@ Options:
 --assignee         #(Optional) Assignee(s) for the incident issue (github/gitlab username) e.g: --assigne=jane-doe --assignee=john-smith
 --git-token-path   #(Optional) Github or Gitlab Token's path
 --git-api-url      #(Optional) Github or Gitlab API url
+--custom-exempt-label # (Optional) Defines the custom label with which the incident issue has been marked as exempted
 ```
 {: screen}
 
@@ -1687,13 +1688,13 @@ GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Return values:
 
-- The command lists incident issue URLs found or created according to the result file and subject
-- If no issues are found, or all found issues have either Exempt or Grace period set, the command exits with zero status
-- If any of the issues found has no Exempt or Grace Period set, the command exits with a nonzero status
+- The command lists incident issue URLs found or created according to the result file and subject.
+- If no issues are found, or all found issues have either Exempt or Grace period set, the command exits with zero status.
+- If any of the issues that are found have no Exempt or Grace Period set, the command exits with a nonzero status.
 
 Running the command:
 ```sh
@@ -1942,13 +1943,13 @@ https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 ### cocoa locker evidence add
 {: #locker-evidence-add}
 
-Adds an evidence to the evidence locker.
+Adds evidence to the evidence locker.
 
 The evidence locker can be specified by using flags. For more information, see [`cocoa locker commands`](#cocoa-locker-commands).
 
 The evidence can be configured by using the following flags:
 
-- `--evidence-type-id`: a string that identifies the type of the evidence (for example `com.ibm.unit_test`, and so on)
+- `--evidence-type-id`: a string that identifies the type of the evidence (for example `com.ibm.unit_test`)
 - `--evidence-type-version`: a string that identifies the evidence details schema (for example `1.0.0`, `v2`, and so on)
 
 Some optional flags can be specified as well:
@@ -1983,7 +1984,7 @@ Some environment variables are automatically picked up to add details about the 
 The behavior of the command can be altered by using these flags:
 
 - `--dry-run`: Adds nothing to the locker, but shows what would be added.
-- `--format`: controls the output format, `id` or `json` (`id` by default)
+- `--format`: controls the output format, `id` or `json` (`id` by default).
 
 Run the command to save results for [`detect-secrets`](https://github.com/IBM/detect-secrets){: external}:
 ```sh
@@ -2131,10 +2132,10 @@ Run the command to retrieve the attachment:
 ### cocoa locker check
 {: #locker-check}
 
-Checks the required configuration/settings of the locker.
+Checks the required configuration and settings of the locker.
 
 Currently, only the Cloud Object Storage based locker has a configuration requirement:
-- Because every evidence should be kept for at least one year, the Cloud Object Storage bucket must be protected by a retention policy. Default retention period should be greater or equal to 365 days.
+- Because every evidence must be kept for at least one year, the Cloud Object Storage bucket must be protected by a retention policy. Default retention period must be greater or equal to 365 days.
 
 For more information, see [`cocoa locker commands`](#cocoa-locker-commands).
 

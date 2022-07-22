@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-07-07"
+lastupdated: "2022-07-22"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -120,7 +120,9 @@ The issue description contains the timestamp when the issue was first discovered
 
 If you want to mark an issue as permanently exempt, add the `exempt` label to the issue, so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted.
 
-If an issue is marked with the `exempt` label, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
+
+
+If an issue is marked as exempted, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
 {: note}
 
 ## Related information
