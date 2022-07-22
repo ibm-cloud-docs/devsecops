@@ -1663,7 +1663,6 @@ Options:
 --assignee         #(Optional) Assignee(s) for the incident issue (github/gitlab username) e.g: --assigne=jane-doe --assignee=john-smith
 --git-token-path   #(Optional) Github or Gitlab Token's path
 --git-api-url      #(Optional) Github or Gitlab API url
---custom-exempt-label # (Optional) Defines the custom label with which the incident issue has been marked as exempted
 ```
 {: screen}
 
