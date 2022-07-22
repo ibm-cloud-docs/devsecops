@@ -1,26 +1,26 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-07-14",
+    "lastupdated": "2022-07-22",
     "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
-        "title": "Part 1: Set up prerequisites to deploy a secure app with DevSecOps best practices",
+        "title": "Part 1: Set up prerequisites to deploy a secure app with DevSecOps",
         "description": "Part 1 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cd-devsecops"
       },
       {
         "title": "Part 2: Set up a Continuous Integration (CI) toolchain",
-        "description": "Part 2 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "description": "Part 2 of a 4-part tutorial series: Use the CI toolchain template to develop your application. The toolchain is preconfigured for continuous deployment with inventory integration, change management, and evidence collection.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-ci-toolchain"
       },
       {
         "title": "Part 3: Set up a Continuous Deployment (CD) toolchain",
-        "description": "Part 3 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
+        "description": "Part 3 of a 4-part tutorial series: Use the CD toolchain template for continuous deployment of your application, evidence collection, GitOps flow, change management, and compliance scans.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cd-toolchain"
       },
       {
         "title": "Part 4: Set up a Continuous Compliance (CC) toolchain",
-        "description": "Part 4 of a 4-part tutorial series: Set up a continuous compliance (CC) toolchain to ensure that your deployed artifacts and their source repositories are always compliant.",
+        "description": "Part 4 of a 4-part tutorial series: Use the CC toolchain template to ensure that your deployed artifacts and their source repositories are always compliant.",
         "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
