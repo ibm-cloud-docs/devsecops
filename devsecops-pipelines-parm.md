@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-07-26"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -78,6 +78,7 @@ The following table lists and describes the continuous integration parameters fo
 |cos-bucket-name		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 |custom-image-tag		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
+|[custom-exempt-label](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.	|Optional			|
 | cra-custom-script-path  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |cra-cveignore-path     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   |Optional    |
 |cra-docker-build-context     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
@@ -210,6 +211,7 @@ The following table lists and describes the continuous compliance parameters for
 |cos-endpoint		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 |cra-custom-script-path  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |cra-docker-buildflags   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
+|[custom-exempt-label](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.    |Optional    |
 |dev-region		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |dev-resource-group		|text		|The cluster resource group.	|Required			|
 |dind-image		|text		|Base image to run sidecars	|Optional			|
@@ -294,7 +296,10 @@ This parameter holds the version of the compliance-baseimage. If you want to use
 Example:
 `icr.io/continuous-delivery/toolchains/devsecops/baseimage:some-other-tag`
 
+### custom-exempt-label
+{: #pipeline-parm-custom-exempt-label}
 
+This is an optional parameter for the CI and CC pipelines. If you marked an incident issue permanently exempted with a custom label, then this parameter should hold the value of the custom label.
 
 ### description
 {: #pipeline-parm-description}
