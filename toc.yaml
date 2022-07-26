@@ -40,13 +40,13 @@ toc:
           label: Deploy a secure app with DevSecOps
           topics:
           - topic: devsecops-tutorial.md
-            navtitle: Part 1 - Set up prerequisites
+            navtitle: "Part 1: Set up prerequisites"
           - topic: devsecops-tutorial-ci-toolchain.md
-            navtitle: Part 2 - Set up a CI toolchain 
+            navtitle: "Part 2: Set up a CI toolchain" 
           - topic: devsecops-tutorial-cd-toolchain.md
-            navtitle: Part 3 - Set up a CD toolchain
+            navtitle: "Part 3: Set up a CD toolchain"
           - topic: devsecops-tutorial-cc-toolchain.md
-            navtitle: Part 4 - Set up a CC toolchain
+            navtitle: "Part 4: Set up a CC toolchain"
       - /apps/apps-tutorial-apps-devsecops
 
   - navgroup:
