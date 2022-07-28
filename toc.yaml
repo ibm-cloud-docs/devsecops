@@ -96,6 +96,7 @@ toc:
       - devsecops-ignore-cra-vulnerabilities.md
       - devsecops-scc-toolchains.md
       - devsecops-configuring-zap-scans.md
+      - devsecops-iam-permissions.md
       - topicgroup:
           label: Tool integrations
           topics:
@@ -110,7 +111,6 @@ toc:
   - navgroup:
       id: reference
       topics:
-      - devsecops-iam-permissions.md
       - topicgroup:
           label: Delivery pipelines
           topics:
