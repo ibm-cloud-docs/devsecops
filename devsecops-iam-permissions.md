@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-07-22"
+  years:  2021, 2022
+lastupdated: "2022-07-28"
 
-keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, object storage
+keywords: IAM access for toolchain, permissions for toolchain, identity and access management for toolchain, roles for toolchain, actions for toolchain, assigning access for toolchain
 
 subcollection: devsecops
 
@@ -12,38 +12,39 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# IAM permissions for toolchains 
+
+# Managing IAM access for toolchains
 {: #iam-permissions}
 
-Certain IAM permissions are required for the various toolchains and {{site.data.keyword.cloud_notm}} resources that are used with the DevSecOps continuous integration and continuous delivery pipeline templates.
+Access to toolchains for users in your account is controlled by {{site.data.keyword.cloud}} Identity and Access Management (IAM). Every user that accesses the toolchains in your account must be assigned an access policy with an IAM role. Review the following roles, actions, and more to determine the best way to assign access to toolchains.
 {: shortdesc}
 
-IAM services restrict the user permissions to create, manage, and run the toolchains. {{site.data.keyword.cloud_notm}} provides various roles per resource group to provide access to toolchains as follows: 
+The access policy that you assign users in your account determines what actions a user can perform within the context of the toolchain that you select. The allowable actions are customized and defined by the toolchain as operations that are allowed to be performed. Each action is mapped to an IAM platform or role that you can assign to a user.
 
-| Role | Description |
-|--|--|
-|  Viewer  |  Users can view the toolchains. |
-|  Operator  |  Users can run the toolchains. |
-|  Editor  |  Users can manage the toolchains, which includes creating and deleting toolchains along with performing all platform actions except for managing the account and assigning access policies.|
-|  Administrator  | Users can perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users.|
-{: caption="Table 1. Roles per resource group" caption-side="bottom"}
+If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles#custom-access-roles) and pick the actions to include.
+{: tip}
 
-If you want to assign a role to a user, take the following steps:
+IAM access policies enable access to be granted at different levels. Some of the options include the following: 
 
-1. Go to **Manage** > **Access (IAM)**.
-2. Go to **Users** and select the user.
-3. Click **Access** and select **Assign access**.
-4. Click **Access policy**.
-5. Search and select the service name **Toolchain**.
-6. Select the scope of the access and provide the appropriate role.
+* Access across all instances of the service in your account
 
-## IAM permissions for {{site.data.keyword.cloud_notm}} resources
-{: #iam-permissions-resources}
+Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to toolchain and the ability to call the toolchain's API. For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain).
 
-Certain IAM permissions are required for the various {{site.data.keyword.cloud_notm}} resources that are used with the DevSecOps continuous integration and continuous delivery pipeline templates as follows:
+| Platform role |  Description of actions | 
+|---------------|-------------------------|
+| Viewer                 |  Users can view the toolchains. |
+| Operator               |  Users can run the toolchains.  |
+| Editor                 |  Users can manage the toolchains, which include creating and deleting toolchains along with performing all platform actions except for managing the account and assigning access policies.  | 
+| Administrator          |  Users can perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users.  |
+{: row-headers}
+{: class="simple-tab-table"}
+{: caption="Table 1. IAM platform roles" caption-side="bottom"}
+{: #iamrolesplatform}
+{: tab-title="Platform roles"}
+{: tab-group="IAM"}
 
-| Role | Resource |
-|--|--|
+| Service role |  Description of actions | 
+|--------------|------------------------|
 |  Administrator, Writer  |  The {{site.data.keyword.cos_full_notm}} service in your team's resource group. |
 |  Administrator, Writer  |  The {{site.data.keyword.contdelivery_full}} service in your team's resource group. |
 |  Administrator  |  The toolchain service in your team's resource group. |
@@ -51,11 +52,19 @@ Certain IAM permissions are required for the various {{site.data.keyword.cloud_n
 |  Viewer, Reader, Writer  |  The {{site.data.keyword.containerlong}}. |
 |  Viewer, ReaderPlus  |  The {{site.data.keyword.keymanagementserviceshort}} service in your team's resource group. |
 |  Viewer, SecretsReader  |  The Secrets Manager service in your team's resource group. |
-{: caption="Table 1. IAM roles and resources" caption-side="top"}
+{: row-headers}
+{: class="simple-tab-table"}
+{: caption="Table 1. IAM service access roles" caption-side="bottom"}
+{: #iamrolesservice}
+{: tab-title="Service roles"}
+{: tab-group="IAM"}
 
-## Related information
-{: #cd-devsecops-iam-related-content}
+## Assigning access to toolchains in the console
+{: #assign-access-console}
+{: ui}
 
-* [IAM roles and actions](/docs/account?topic=account-iam-service-roles-actions)
-* [Access management in {{site.data.keyword.cloud_notm}}](/docs/account?topic=account-cloudaccess)
-* [IAM access](/docs/account?topic=account-userroles)
+Assign access in the console in one of the following ways:
+
+* Access policies per user. You can manage access policies per user from the **Manage** > **Access (IAM)** > **Users** page in the console. For information about the steps to assign IAM access, see [Assigning access to resources in the console](/docs/account?topic=account-assign-access-resources&interface=ui#access-resources-console).
+* Access groups. Access groups are used to streamline access management by assigning access to a group once, then you can add or remove users as needed from the group to control their access. You manage access groups and their access from the **Manage** > **Access (IAM)** > **Access groups** page in the console. For more information, see [Assigning access to a group in the console](/docs/account?topic=account-groups&interface=ui#access_ag).
+
