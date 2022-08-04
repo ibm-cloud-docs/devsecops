@@ -2,7 +2,7 @@
 
 copyright:
   years:  2021, 2022
-lastupdated: "2022-07-28"
+lastupdated: "2022-08-04"
 
 keywords: IAM access for toolchain, permissions for toolchain, identity and access management for toolchain, roles for toolchain, actions for toolchain, assigning access for toolchain
 
@@ -32,10 +32,10 @@ Review the following tables that outline what types of tasks each role allows fo
 
 | Platform role |  Description of actions | 
 |---------------|-------------------------|
-| Viewer                 |  Users can view the toolchains. |
-| Operator               |  Users can run the toolchains.  |
-| Editor                 |  Users can manage the toolchains, which include creating and deleting toolchains along with performing all platform actions except for managing the account and assigning access policies.  | 
-| Administrator          |  Users can perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users.  |
+| Viewer                 |  View toolchains and delivery pipelines. |
+| Operator               |  Run toolchains and delivery pipelines.  |
+| Editor                 |  Manage the toolchains, which include creating and deleting toolchains along with performing all platform actions except for managing the account and assigning access policies.  | 
+| Administrator          |  Perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users.  |
 {: row-headers}
 {: class="simple-tab-table"}
 {: caption="Table 1. IAM platform roles" caption-side="bottom"}
@@ -61,7 +61,6 @@ Review the following tables that outline what types of tasks each role allows fo
 
 ## Assigning access to toolchains in the console
 {: #assign-access-console}
-{: ui}
 
 Assign access in the console in one of the following ways:
 
