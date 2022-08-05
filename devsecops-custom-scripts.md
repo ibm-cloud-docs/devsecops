@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Custom scripts
 {: #custom-scripts}
 
-Custom scripts are extension points in the pipeline where adopters, teams, and users can provide scripts to run custom tasks that are required by their continuous integration and continuous delivery strategies.
+Custom scripts are extension points in the pipeline where adopters, teams, and users can provide scripts to run custom tasks that are required by their continuous integration and continuous deployment strategies.
 {: shortdesc}
 
 Custom scripts control the pipeline stages. You can use a configuration file (`pipeline-config.yaml`) to configure the behavior of stages, script content, and the base image that runs the scripts. The scripts and configuration for pipeline stages are loaded from a Git repository (repo) that can either be the application (app) repo (similar to `.travis.yml` or `Jenkinsfile`) or a custom repo.
@@ -25,13 +25,13 @@ When any of the custom scripts are invoked, the complete URL of the custom scrip
 ## Stages
 {: #cd-devsecops-scripts-stages}
 
-Stages in pull request, continuous integration, and continuous delivery pipelines run custom scripts.
+Stages in pull request, continuous integration, and continuous deployment pipelines run custom scripts.
 
 * **Pull request pipeline stages**: `setup`, `test`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
 * **Continuous integration pipeline stages**: `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, and `release`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-* **Continuous delivery pipeline stages**: `setup`, `deploy`, and `acceptance-test`. For more information, see [Continuous delivery pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+* **continuous deployment pipeline stages**: `setup`, `deploy`, and `acceptance-test`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
 * **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, and `scan-artifact`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
@@ -57,13 +57,13 @@ You can use a `.pipeline-config.yaml` configuration file to extend pipeline beha
 ### File location
 {: #cd-devsecops-scripts-location}
 
-For pull request and continuous integration pipelines, store the `.pipeline-config.yaml` configuration file in an app repo in the same manner as the `.travis.yml`, or `Jenkinsfile` files. For continuous delivery pipelines, store this file in a dedicated repo.
+For pull request and continuous integration pipelines, store the `.pipeline-config.yaml` configuration file in an app repo in the same manner as the `.travis.yml`, or `Jenkinsfile` files. For continuous deployment pipelines, store this file in a dedicated repo.
 
 For all pipelines, you can customize the location and source of the `.pipeline-config.yaml` file with the following pipeline UI parameters:
 
 * `pipeline-config` to set the path of the configuration file. The default value is `.pipeline-config.yaml`.
 * `pipeline-config-repo` to set the repo to pull the configuration and scripts from. The default value is the continuous integration app repo.
-* `pipeline-config-branch` to use as the branch for the configuration in the config repo. The default value is the continuous integration app repo branch, and the `master` branch in continuous delivery.
+* `pipeline-config-branch` to use as the branch for the configuration in the config repo. The default value is the continuous integration app repo branch, and the `master` branch in continuous deployment.
 
 ### Configuration parameters
 {: #cd-devsecops-scripts-configparm}
@@ -177,7 +177,7 @@ acceptance-test:
     ...
 ```
 
-To view the `.pipeline-config.yaml` configuration file that is used by default for the example app in the reference pipeline template, see [configuration for pull requests and continuous integration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml"){: external} and [configuration for continuous delivery](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment/-/blob/master/.pipeline-config.yaml"){: external}.
+To view the `.pipeline-config.yaml` configuration file that is used by default for the example app in the reference pipeline template, see [configuration for pull requests and continuous integration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml){: external} and [configuration for continuous deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment/-/blob/master/.pipeline-config.yaml){: external}.
 
 ## Secrets, parameters, and properties
 {: #cd-devsecops-scripts-secrets}
@@ -356,7 +356,7 @@ The following tasks and stages are available:
 |:-----------------|:------------------------------------|
 |**Pull request pipeline stages**| setup, test, detect-secrets, and branch-protection. The detect-secrets and branch-protection stages are not custom stages. They are provided by the pipelines by default.|
 |**Continuous integration pipeline stages**| `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default. |
-|**Continuous delivery pipeline stages**| `setup`, `deploy`, `acceptance-test`, `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request`. The `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request` stages are not custom stages. They are provided by the pipelines by default.|
+|**continuous deployment pipeline stages**| `setup`, `deploy`, `acceptance-test`, `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request`. The `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request` stages are not custom stages. They are provided by the pipelines by default.|
 |**Continuous compliance pipeline stages**| `setup`, `test`, `static-scan`, `scan-artifact`, `acceptance-test`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default.|
 {: caption="Table 1. Tasks and stages" caption-side="bottom"}
 

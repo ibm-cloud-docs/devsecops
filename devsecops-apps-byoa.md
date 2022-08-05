@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-20"
+  years: 2021, 2022
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps
 
@@ -10,26 +10,15 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Bringing your own app to DevSecOps
 {: #cd-devsecops-apps-byoa}
 
-You can bring your own application to a DevSecOps toolchain for continuous integration and continuous delivery. 
+You can bring your own application to a DevSecOps toolchain for continuous integration and continuous deployment. 
 {: shortdesc}
 
-Create your DevSecOps toolchain by using the default sample app that is provided. This sample app hosts a Node.js server that provides a static web page. The source code of the sample app contains a `.pipeline-config.yaml` file. The `.pipeline-config.yaml` file is the core configuration file that is used by continuous integration and continuous delivery toolchains for all of the stages in the pipeline run process.
+Create your DevSecOps toolchain by using the default sample app that is provided. This sample app hosts a Node.js server that provides a static web page. The source code of the sample app contains a `.pipeline-config.yaml` file. The `.pipeline-config.yaml` file is the core configuration file that is used by continuous integration and continuous deployment toolchains for all of the stages in the pipeline run process.
 
 Add a `.pipeline-config.yaml` configuration file that contains the following properties that are required by each stage:
 

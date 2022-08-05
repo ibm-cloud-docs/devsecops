@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -16,7 +16,7 @@ subcollection: devsecops
 # Automated change management
 {: #cd-devsecops-change-management}
 
-Change management automation is an important part of the DevSecOps pipeline reference implementation. With {{site.data.keyword.contdelivery_full}}, developers, approvers, and auditors can monitor the compliance aspects of deployments. Every deployment must follow an organization's change management policy.
+Change management automation is an important part of the DevSecOps pipeline reference implementation. Developers, approvers, and auditors can monitor the compliance aspects of deployments. Every deployment must follow an organization's change management policy.
 {: shortdesc}
 
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a specific build and deployment of the artifacts. So, for each deployed artifact, you can tell if its build or test deployment has incidents. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).

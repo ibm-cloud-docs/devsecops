@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-02"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Hosts accessed from pipelines
 {: #cd-devsecops-pipeline-hosts}
 
-You can access hosts from the following types of pipelines: pull request, continuous integration, promotion, continuous delivery, and continuous compliance.
+You can access hosts from the following types of pipelines: pull request, continuous integration, promotion, continuous deployment, and continuous compliance.
 {: shortdesc}
 
 ## Pull request pipelines
@@ -66,10 +66,10 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://<region>.git.cloud.ibm.com` | The open promotion pull request. |
 {: caption="Table 3. Promotion pipeline hosts" caption-side="top"}
 
-## Continuous delivery pipelines
+## Continuous deployment pipelines
 {: #cd-pipeline-hosts}
 
-The following table lists and describes each of the hosts that are accessed from continuous delivery pipelines.
+The following table lists and describes each of the hosts that are accessed from continuous deployment pipelines.
 
 | Host | Description |
 |-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
@@ -82,7 +82,7 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
 | Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  |
 | `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
-{: caption="Table 4. Continuous delivery pipeline hosts" caption-side="top"}
+{: caption="Table 4. Continuous deployment pipeline hosts" caption-side="top"}
 
 ## Continuous compliance pipelines
 {: #cc-pipeline-hosts}

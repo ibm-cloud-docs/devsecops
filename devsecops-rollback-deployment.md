@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -10,23 +10,12 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Rolling back a deployment
 {: #rollback-deployment}
 
-Sometimes, a new deployment to an environment behaves abnormally and requires a rollback to a last known good version. In such cases, you can use the Continuous Delivery (CD) Pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
+Sometimes, a new deployment to an environment behaves abnormally and requires a rollback to a last known good version. In such cases, you can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
 {: shortdesc}
 
 To roll back the deployment, complete these steps:

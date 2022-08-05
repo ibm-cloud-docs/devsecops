@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-26"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Pipeline parameters
 {: #cd-devsecops-pipeline-parm}
 
-Parameters are provided out of the box for the pull request, continuous integration, and continuous delivery pipelines.
+Parameters are provided out of the box for the pull request, continuous integration, and continuous deployment pipelines.
 {: shortdesc}
 
 You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
@@ -135,17 +135,17 @@ The following table lists and describes the continuous integration parameters fo
 |incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
 {: caption="Table 2. Continuous integration parameters" caption-side="top"}
 
-## Continuous delivery parameters
+## Continuous deployment parameters
 {: #cd-parameters}
 
-The following table lists and describes the continuous delivery parameters for pipelines:
+The following table lists and describes the continuous deployment parameters for pipelines:
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |artifactory-dockerconfigjson		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |[assignee](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[backout-plan](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
-|[change-request-id](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous delivery pipeline. |Optional			|
+|[change-request-id](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous deployment pipeline. |Optional			|
 |[change-management-duration](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
 | change-management-repo        | text   | The URL of the change management repository.  | Optional |
 |[cluster](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			|
@@ -188,7 +188,7 @@ The following table lists and describes the continuous delivery parameters for p
 |inventory-repo		|tool integration		|The inventory repo URL.	|Optional			|
 |evidence-repo		|tool integration		|The evidence repo URL.	|Optional			|
 |incident-repo  	|tool integration		|The incident issues repo URL.	|Optional			|
-{: caption="Table 3. Continuous delivery parameters" caption-side="top"}
+{: caption="Table 3. continuous deployment parameters" caption-side="top"}
 
 ## Continuous compliance parameters
 {: #pipelines-cc-parameters}
@@ -271,7 +271,7 @@ This is an optional parameter for the CD pipeline. The value of it will be the c
 ### change-request-id
 {: #pipeline-parm-change-request-id}
 
-This is an optional parameter for the CD pipeline. By providing a change request ID, the pipeline will skip the creation of a new change request and will use the provided change request. If this parameter is set to `notAvailable` or left empty, a change request is automatically created by the continuous delivery pipeline. By default it's `notAvailable`.
+This is an optional parameter for the CD pipeline. By providing a change request ID, the pipeline will skip the creation of a new change request and will use the provided change request. If this parameter is set to `notAvailable` or left empty, a change request is automatically created by the continuous deployment pipeline. By default it's `notAvailable`.
 
 ### cluster
 {: #pipeline-parm-cluster}

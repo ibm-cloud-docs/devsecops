@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -207,9 +207,9 @@ toolchain_crn: string;
   pipeline_run_id: string;
  ```
 
-These fields identify the specific continuous integration or continuous delivery job that produced the evidence. They can also contain information from any continuous integration or continuous delivery job if they serve the same purpose. These fields identify scope size from the widest to the narrowest in the following order: `toolchain_crn` -> `pipeline_id` -> `pipeline_run_id`.
+These fields identify the specific continuous integration or continuous deployment job that produced the evidence. They can also contain information from any continuous integration or continuous deployment job if they serve the same purpose. These fields identify scope size from the widest to the narrowest in the following order: `toolchain_crn` -> `pipeline_id` -> `pipeline_run_id`.
 
-This schema is saved to the evidence locker by using JSON format. The evidence format that is collected in different pipeline stages does not differ. Currently, their saved path indicates the pipeline stage, such as continuous integration or continuous delivery.
+This schema is saved to the evidence locker by using JSON format. The evidence format that is collected in different pipeline stages does not differ. Currently, their saved path indicates the pipeline stage, such as continuous integration or continuous deployment.
 
 ### Example
 {: #devsecops-v1-format-example}
@@ -1159,7 +1159,7 @@ For collecting evidence, the [collect-evidence](/docs/devsecops?topic=devsecops-
 The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
 {: important}
 
-According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-complete-guide#toc-how-devops-u5vApdai){: external}, the continuous integration and continuous delivery flows can be divided into three stages: code, build, and deploy.
+According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-complete-guide#toc-how-devops-u5vApdai){: external}, the continuous integration and continuous deployment flows can be divided into three stages: code, build, and deploy.
 
 The DevOps architecture divides these flows into four stages by distinguishing between pre-production and production deployment. The DevSecOps reference architecture currently includes the pre-production and production deployment within the same stage.
 {:tip: .tip}
@@ -1254,7 +1254,7 @@ For more information about {{site.data.keyword.cos_short}} buckets, see [{{site.
 ## Evidence flow
 {: #devsecops-evidence-flow}
 
-The following diagram shows how the evidence is handled and flows through the stages of continuous integration and continuous delivery.
+The following diagram shows how the evidence is handled and flows through the stages of continuous integration and continuous deployment.
 
  ![Evidence flow](images/evidence-flow.png){: caption="Evidence flow" caption-side="bottom"}
 

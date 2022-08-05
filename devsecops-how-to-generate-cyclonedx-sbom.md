@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2022
-lastupdated: "2022-05-19"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, IBM Cloud, BOM
 
@@ -9,18 +9,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Generating the software bill of materials (SBOM) in `cyclonedx` format
 {: #generate-cyclonedx-sbom}
@@ -35,7 +24,7 @@ To learn more about `BOM` generation, see [Bill of Materials (BOM)](/docs/code-r
 
 This feature is based on V2 evidence collection. Make sure that your custom scripts already collect v2 evidence to be able to use the CycloneDX SBOM generation.
 
-## CI pipeline
+## Continuous integration pipeline
 {: #generate-cyclonedx-sbom-ci-pipeline}
 
 To configure the pipelines to also generate the `BOM` in `cyclonedx` format, create a new pipeline environment property that is named `cra-generate-cyclonedx-format`, and set its value to `1`.
@@ -43,10 +32,10 @@ To configure the pipelines to also generate the `BOM` in `cyclonedx` format, cre
 After the pipeline is run, the `BOM` is added as an attachment to the `com.ibm.code_bom_check` evidence in both `standard` and `cyclonedx` format.
 {: note}
 
-## CD pipeline
+## Continuous deployment pipeline
 {: #generate-cyclonedx-sbom-cd-pipeline}
 
-The Continuous Delivery (CD) pipeline can collect the CycloneDX SBOM attachment of every asset that is being deployed by the run. The pipeline merges these CycloneDX SBOMs and uploads the aggregated CycloneDX SBOM to the change request as an attachment.
+The continuous deployment pipeline can collect the CycloneDX SBOM attachment of every asset that is being deployed by the run. The pipeline merges these CycloneDX SBOMs and uploads the aggregated CycloneDX SBOM to the change request as an attachment.
 
 To enable this feature, create a new pipeline environment property that is named `merge-cra-sbom`, and set its value to `1`.
 
