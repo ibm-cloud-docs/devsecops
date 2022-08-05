@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -10,23 +10,12 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Forced redeployment of an application
 {: #forced-redeployment}
 
-Sometimes, a running application in an environment crashes or behaves abnormally due to changes in the infrastructure configuration and requires a redeployment. In such cases, you can use the Continuous Delivery (CD) Pipeline to deploy the existing state of the inventory to the target environment by setting a new environment variable for the CD Pipeline.
+Sometimes, a running application in an environment crashes or behaves abnormally due to changes in the infrastructure configuration and requires a redeployment. In such cases, you can use the continuous deployment pipeline to deploy the existing state of the inventory to the target environment by setting a new environment variable for the continuous deployment pipeline.
 {: shortdesc}
 
 Set the `force-redeploy` environment variable with the value as `true` while the **Manual CD** pipeline run is triggered.

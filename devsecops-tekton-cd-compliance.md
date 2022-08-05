@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -12,10 +12,10 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Setting up Tekton continuous delivery pipelines with DevSecOps
+# Setting up Tekton continuous deployment pipelines with DevSecOps
 {: #cd-devsecops-tekton-cd-compliance}
 
-Complete these steps to set up the Tekton continuous delivery pipelines with compliance. Configuration options guide you through the steps to create your toolchain.
+Complete these steps to set up the Tekton continuous deployment pipelines with compliance. Configuration options guide you through the steps to create your toolchain.
 {: shortdesc}
 
 ## Before you begin
@@ -32,9 +32,9 @@ Complete these steps to set up the Tekton continuous delivery pipelines with com
 
 View the following video tutorial to get an overview of the setup process:
 
-![Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Delivery Toolchain](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-2){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
+![Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Deployment Toolchain](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-2){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
 
-![DevSecOps Continuous Delivery toolchain welcome page](images/devsecops-cd-welcome.png){: caption="DevSecOps Continuous Delivery toolchain welcome page" caption-side="bottom"}
+![DevSecOps continuous deployment toolchain welcome page](images/devsecops-cd-welcome.png){: caption="DevSecOps continuous deployment toolchain welcome page" caption-side="bottom"}
 
 A progress indicator shows your progress in completing the configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
@@ -99,7 +99,7 @@ If you want to set up your CI toolchain from scratch, configure these repositori
 - **Toolchain:** The tekton pipeline definitions (for example pipelines, triggers, and listeners) are stored in this repo.
     For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-toolchain`
 
-After you capture the names of repos from continuous integration toolchain, proceed with the `Guided Setup` to begin continuous delivery toolchain creation. During the setup process, for each repository you can either provide the URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that is created for your CI Toolchain or choose to create a new repository. Currently, the toolchain supports creating only {{site.data.keyword.gitrepos}} repositories. Future releases provide support to create repositories with GitHub, GitHub Enterprise (GHE), and other SCM Providers.
+After you capture the names of repos from continuous integration toolchain, proceed with the `Guided Setup` to begin continuous deployment toolchain creation. During the setup process, for each repository you can either provide the URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that is created for your CI Toolchain or choose to create a new repository. Currently, the toolchain supports creating only {{site.data.keyword.gitrepos}} repositories. Future releases provide support to create repositories with GitHub, GitHub Enterprise (GHE), and other SCM Providers.
 
 ### Inventory
 {: #cd-devsecops-inventory}
@@ -128,7 +128,7 @@ By default, the setup **Clone deployment configuration** from the sample reposit
 
 - **New repository name**: Name of the IBM-hosted {{site.data.keyword.gitrepos}} repository that is created by the toolchain as your deployment configuration repository. The region of the repository remains the same as that of the toolchain. Choose a unique name for the new repository.
 
-If you have a deployment configuration repo from an existing continuous delivery toolchain, select the **Switch to advanced configuration** to configure the same settings for this pipeline.
+If you have a deployment configuration repo from an existing continuous deployment toolchain, select the **Switch to advanced configuration** to configure the same settings for this pipeline.
 
 ![DevSecOps pipeline configuration](images/devsecops-cd-pipeline-config.png){: caption="DevSecOps pipeline configuration" caption-side="bottom"}
 

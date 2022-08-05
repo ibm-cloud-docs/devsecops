@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-01"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Inventory
 {: #cd-devsecops-inventory}
@@ -196,15 +185,15 @@ The current deployed state contains the content to deploy to an environment. Eve
 ### Setup for a single target with multiple regions
 {: #single-target-multi-region}
 
-Multiple `latest` tags are introduced for a single target environment so that multiple continuous delivery pipelines can work on the same target, for different types of use cases. You can use, for example, the same target environment (such as `us-south` or `eu-de`) for multiple regions in the prod target environment and the inventory branch.
+Multiple `latest` tags are introduced for a single target environment so that multiple continuous deployment pipelines can work on the same target, for different types of use cases. You can use, for example, the same target environment (such as `us-south` or `eu-de`) for multiple regions in the prod target environment and the inventory branch.
 
 You do not need to set up a different branch for each region, such as `prod-us-south` and `prod-eu-de`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch, and then use them as Git tags.
 
-In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`.  Each continuous delivery pipeline that is responsible for each region can use those tags to deploy.
+In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`.  Each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
 ![Prod branch with multiple latest tags per region](images/inventory-7.svg){: caption="Prod branch with multiple latest tags per region" caption-side="bottom"}
 
-For example, a set of changes that you plan to deploy everywhere might be released to a single region first, and then gradually deployed to other regions by using continuous delivery pipelines to target those regions.
+For example, a set of changes that you plan to deploy everywhere might be released to a single region first, and then gradually deployed to other regions by using continuous deployment pipelines to target those regions.
 
 ## Inventory operations
 {: #inventory-operations}

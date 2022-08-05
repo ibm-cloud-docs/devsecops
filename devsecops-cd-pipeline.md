@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-26"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -10,29 +10,18 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
-# Continuous delivery pipeline
+# Continuous deployment pipeline
 {: #cd-devsecops-cd-pipeline}
 
-The continuous delivery pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to an environment, such as staging or production, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker.
+The continuous deployment pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to an environment, such as staging or production, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker.
 {: shortdesc}
 
 ## Stages and tasks
 {: #cd-devsecops-pipeline-stages}
 
-Review the following table to learn more about the stages and tasks that are part of the continuous delivery pipeline.
+Review the following table to learn more about the stages and tasks that are part of the continuous deployment pipeline.
 
 |Task or stage |Short description	|Customizable in `.pipeline-config.yaml` |
 |:----------|:------------------------------|:------------------|
@@ -49,7 +38,7 @@ For more information about how to customize stages by using the `.pipeline-confi
 ## Deployment delta
 {: #cd-devsecops-pipeline-delta}
 
-When the inventory promotion is ready, the continuous delivery pipeline can start. The deployment delta is the difference between the contents of the last concluded deployment and the current deployment. The deployment delta lists the inventory items that are being deployed.
+When the inventory promotion is ready, the continuous deployment pipeline can start. The deployment delta is the difference between the contents of the last concluded deployment and the current deployment. The deployment delta lists the inventory items that are being deployed.
 
 To access the deployment delta in your deployment scripts, you can use the following commands:
 

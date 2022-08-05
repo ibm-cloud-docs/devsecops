@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps
 
@@ -10,23 +10,12 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Understanding DevSecOps pipelines
 {: #cd-devsecops-pipelines}
 
-The various pipelines that are provided in the reference continuous integration and continuous delivery toolchains are based on the {{site.data.keyword.contdelivery_short}} support for Tekton Pipelines.
+The various pipelines that are provided in the reference continuous integration and continuous deployment toolchains are based on the {{site.data.keyword.contdelivery_short}} support for Tekton Pipelines.
 {: shortdesc}
 
 To learn more about Tekton Pipelines, see [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines). You do not need to be a Tekton expert to use the reference pipelines. These pipelines are predefined with a basic structure that includes placeholders for custom scripts for steps such as builds, automated tests, and deployment.  Users can declare their custom scripts for their own pipelines and set values for various environment properties for a specific pipeline.
@@ -63,10 +52,10 @@ The pull request pipeline runs pre-set compliance status checks on a pull reques
 
 The continuous integration pipeline builds the deployable artifacts from the application (app) repositories (repos). Before it builds artifacts, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management. For more information about the continuous integration pipeline, see [Continuous Integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-## Continuous delivery pipeline
+## Continuous deployment pipeline
 {: #cd-devsecops-pipelines-cd-pipeline}
 
-The continuous delivery pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to a specific environment, such as staging or prod, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker. For more information about the continuous delivery pipeline, see [Continuous Delivery pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+The continuous deployment pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to a specific environment, such as staging or prod, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker. For more information about the continuous deployment pipeline, see [Continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
 ## Integration with {{site.data.keyword.compliance_short}}
 {: #cd-devsecops-pipelines-scc}
@@ -128,15 +117,15 @@ The single target - multiple region setup is an iteration on this model where mu
 
 For example, you can use the same target environment for multiple regions (such as `us-south` and `eu-de`) in the prod target environment and the inventory branch.
 
-To specify the deployment region by the continuous delivery pipeline, use the `region` parameter. For more information about this parameter, see [Continuous Delivery Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters).
+To specify the deployment region by the continuous deployment pipeline, use the `region` parameter. For more information about this parameter, see [Continuous deployment Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters).
 
 Teams do not need to set up a different branch for each region, such as `prod-us-south` and `prod-eu-de`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch and then use them as Git tags.
 
-In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`, and each continuous delivery pipeline that is responsible for each region can use those tags to deploy.
+In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`, and each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
 ![Single target - multiple region setup](images/inventory-single-target-multi-region.svg "Single target - multiple region setup"){: caption="Figure 3. Single target - multiple region setup" caption-side="bottom"}
 
 #### Example scenario
 {: #cd-devsecops-pipelines-inventory-example}
 
-A set of changes that can eventually be deployed everywhere, might be released to a single region first. You can then gradually deploy this set of changes to other regions by using continuous delivery pipelines that target those regions.
+A set of changes that can eventually be deployed everywhere, might be released to a single region first. You can then gradually deploy this set of changes to other regions by using continuous deployment pipelines that target those regions.

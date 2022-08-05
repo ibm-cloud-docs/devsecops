@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years:  2022
-lastupdated: "2022-07-22"
+  years:  2021, 2022
+lastupdated: "2022-08-05"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -10,16 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:term: .term}
+{{site.data.keyword.attribute-definition-list}}
 
 # DevSecOps with {{site.data.keyword.contdelivery_short}}
 {: #devsecops_intro}
@@ -46,6 +37,6 @@ Organizations can take advantage of the significant benefits of using a standard
 
 Learn more about [DevSecOps](https://www.ibm.com/cloud/learn/devsecops){: external}.
 
-For more information about the {{site.data.keyword.contdelivery_short}} DevSecOps reference architecture, see [DevSecOps architecture](/docs/devsecops?topic=devsecops-cd-devsecops-arch).
+For more information about the DevSecOps reference architecture, see [DevSecOps architecture](/docs/devsecops?topic=devsecops-cd-devsecops-arch).
 
 Get started and [deploy a secure app with DevSecOps best practices](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).

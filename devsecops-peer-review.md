@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-09"
+lastupdated: "2022-08-05"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -51,7 +51,7 @@ A compliance incident typically holds the following information:
 
 Collected data is saved as an [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) artifact, which is uploaded to the evidence locker, and then referred to in the evidence itself. The final evidence result is determined by the approved pull / merge requests. Unapproved, but merged pull / merge requests fail this type of evidence.
 
-## Data that is collected in continuous delivery deployment runs 
+## Data that is collected in continuous deployment runs 
 {: #cd-devsecops-cd-data}
 
 This data collection contains a list of all of the pull / merge requests that were merged in app repos since the last deployment. 
@@ -62,7 +62,7 @@ Pull request data is collected from the inventory, the evidence locker, and the 
 * The evidence locker collects stored peer review data from the builds.
 * The incident issue repo collects information about open pull / merge request incidents.
 
-The app repos are not accessed during this data collection. Because continuous delivery pipelines are assumed to be located in isolated environments, you cannot cross those boundaries.
+The app repos are not accessed during this data collection. Because continuous deployment pipelines are assumed to be located in isolated environments, you cannot cross those boundaries.
 {: important}
 
 ## Change request content 
