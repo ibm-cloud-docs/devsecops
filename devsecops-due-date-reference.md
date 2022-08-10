@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-07-26"
+lastupdated: "2022-08-10"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Incident issues with due date
 {: #devsecops-issues-due-date}
 
-When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence. If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**Grace Period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
+When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence. If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**grace period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
 {: shortdesc}
 
 If an issue such as vulnerability or CVE is found in production, and the same problem is also found in a build, the build does not make the situation worse. The feature can be deployed, and the team can focus on fixing the issue in production.
@@ -37,7 +37,7 @@ The duration of the grace period is determined by the severity of the vulnerabil
 ## Due date calculation
 {: #due-date-calculation}
 
-The date of finding is when the CC pipeline runs and finds the issue in the production environment. If the issue exists, CC updates it with the _**Due Date**_ that is calculated from that moment.
+The date of finding is when the continuous compliance (CC) pipeline runs and finds the issue in the production environment. If the issue exists, CC updates it with the _**Due Date**_ that is calculated from that moment.
 
 ```text
 <due date> = <date of finding the issue in prod> + <grace period in days (determined by severity)>
@@ -53,7 +53,7 @@ Example: `Due Date: 2022-04-01`
 ## Use cases
 {: #due-date-usecases}
 
-* A vulnerability is found in one of the base images in production by the CC pipeline. The team is notified of an Incident Issue with a Grace period set according to the severity of the vulnerability. The Grace Period is the number of days that the team must deploy a fix.
+* A vulnerability is found in one of the base images in production by the CC pipeline. The team is notified of an incident issue with a grace period set according to the severity of the vulnerability. The grace period is the number of days that the team must deploy a fix.
 
 * The team builds a new release with a new feature. The build finds a CVE associated with the base image that is used for the application. The team runs the CC pipeline manually, which scans artifacts already in production. The manual CC run detects the same CVE in the same application in production and adds the Grace Period to the Incident Issue. The team now can build and deploy without being blocked.
 
@@ -107,10 +107,10 @@ If the `collect-evidence` script receives an attachment from an unsupported tool
 - _“URL”_ is the link to the exact version of the asset
 - _“Tool Type”_ is the tool that produced the contents for the issue
 
-For issues created on {{site.data.keyword.gitrepos}}, the due date is set in the Gitlab native due date field instead of the issue description.
+For issues created on {{site.data.keyword.gitrepos}}, the due date is set in the GitLab native due date field instead of the issue description.
 {: note}
 
-The issue description contains the timestamp when the issue was first discovered. For example: `First found on 2022-04-07.`. The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
+The issue description contains the timestamp when the issue was first discovered. For example, `First found on 2022-04-07.`. The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
 
 ## More issue options
 {: #due-date-issue-options}
@@ -118,7 +118,7 @@ The issue description contains the timestamp when the issue was first discovered
 ### Exempt
 {: #due-date-issue-options-exempt}
 
-If you want to mark an issue as permanently exempt, add the `exempt` label to the issue, so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted.
+If you want to mark an issue as permanently exempt, add the `exempt` label to the issue so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted. Issues that have the exempt label are open permanently.
 
 If you want to mark an issue permanently exempted with a custom label, add that label to the incident issue, and then add the `custom-exempt-label` optional parameter to the CI and CC pipelines with the same value as the custom label.
 
