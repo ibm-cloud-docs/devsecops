@@ -101,7 +101,7 @@ toc:
           label: Tool integrations
           topics:
           - /ContinuousDelivery/ContinuousDelivery-scc
-          - /ContinuousDelivery/ContinuousDelivery-sonarqube
+          - devescops-sonarqube-integration
       - topicgroup:
           label: Enhancing security
           topics:
