@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-08-10"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap
 
@@ -60,7 +60,7 @@ You can use any of the following methods to add static code to your pipeline:
 ### Adding SonarQube scan to your pipelines
 {: #devsecops-ci-pipeline-sonarqube-info}
 
-For more information about integrating SonarQube with the continuous integration pipeline, see the [Configuring SonarQube](/docs/devsecops?topic=ContinuousDelivery-sonarqube) section.
+For more information about integrating SonarQube with the continuous integration pipeline, see [Configuring SonarQube](/docs/devsecops?topic=devsecops-sonarqube).
 
 
 
