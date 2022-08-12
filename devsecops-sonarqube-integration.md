@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-04"
+lastupdated: "2022-08-12"
 
 keywords: tool integrations, IBM Cloud Public, Sonarqube
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring Sonarqube
+# Configuring SonarQube
 {: #sonarqube}
 
 SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. The code analyzers detect tricky bugs, such as null-pointer dereferences, logic errors, and resource leaks, for more than 20 coding languages.
@@ -38,7 +38,7 @@ Configure SonarQube to continuously analyze and measure the quality of your sour
 1. Click **Create Integration**.
 1. On your Toolchain's Overview page, on the **Third-Party tools** card, click **SonarQube** to view the dashboard for the SonarQube instance that you connected to.
 
-## Adding Sonarqube to the continuous integration pipeline
+## Adding SonarQube to the continuous integration pipeline
 {: #sonarqube-ci-pipeline}
 
 ### Default SonarQube instance
@@ -49,7 +49,7 @@ If you don't have your own SonarQube instance, the pipeline creates a SonarQube 
 ### Existing SonarQube instance
 {: #sonarqube-ci-pipeline-existing}
 
-To add your own SonarQube instance to your existing pipeline, [add the tool integration](/docs/devsecops?topic=devsecops-sonarqube) to your toolchain, and then add the Sonarqube tool integration parameter to the pipeline.
+To add your own SonarQube instance to your existing pipeline, [add the tool integration](/docs/devsecops?topic=devsecops-sonarqube) to your toolchain, and then add the SonarQube tool integration parameter to the pipeline.
 
 ### Required parameters
 {: #sonarqube-cipipeline-parm}
@@ -60,13 +60,13 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |:----------|:------------------------------|:------------------|:----------|
 |cluster-name 		|Text 		|The name of the Docker build cluster.			|Required			|
 |dev-region		|Text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.			|Required			|
-|opt-in-sonar		|Text 		|The option to enable the sonarQube scan.		|Required			|
-|sonarqube		|Tool integration		|The Sonarqube tool integration.	|Optional			|
+|opt-in-sonar		|Text 		|The option to enable the SonarQube scan.		|Required			|
+|sonarqube		|Tool integration		|The SonarQube tool integration.	|Optional			|
 {: caption="Table 1. Continuous integration pipeline parameters}
 
 For more information about pipelines parameters, see [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
 
-If you add multiple SonarQube tool integrations to your pipeline, you can switch between them by changing the value of the sonarqube pipeline parameter, which is a tool integration parameter.
+If you add multiple SonarQube tool integrations to your pipeline, you can switch between them by changing the value of the SonarQube pipeline parameter, which is a tool integration parameter.
 {: tip}
 
 ### Updating the quality gate
@@ -76,7 +76,7 @@ If you use the SonarQube instance that the pipeline created, you can update the 
 
 1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task. 
 
-   ![SonarQube dashboard](images/sonar-quality-gate.png){: caption="Figure 1. SonarQube dashboars" caption-side="bottom"}
+   ![SonarQube dashboard](images/sonar-quality-gate.png){: caption="Figure 1. SonarQube dashboards" caption-side="bottom"}
 
 1. Click **Quality Gates** > **Create**. 
 1. Set your Quality Gate by using one of the following options:
