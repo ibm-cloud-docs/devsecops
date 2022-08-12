@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-29"
+lastupdated: "2022-08-12"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -17,6 +17,8 @@ subcollection: devsecops
 
 Incident issues that are created by the continuous integration (CI) or continuous compliance (CC) pipelines can have default labels.
 {: shortdesc}
+
+Incident issues created by any scanning tool contains a default `severity` label. The severity levels are `informational`, `low`, `medium`, `high` or `critical`. Example labels are as follows: `severity:informational`, `severity:low`, `severity:medium`, `severity:high` or `severity:critical`. In the absence of severity information from the scanning tool, a default `severity:high` label is attached to the issue.
 
 To set default labels for incident issues, set the `incident-labels` environment property to one or more labels that are separated by a comma. For example, `First-Label` or `First-Label,Second-Label`.
 
