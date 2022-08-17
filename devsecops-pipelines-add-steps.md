@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Adding test and build steps to pipelines
 {: #cd-devsecops-add-pipeline-steps}
@@ -70,8 +59,8 @@ save_repo <repo-reference-name> \
     path="${REPO_PATH}" \
     branch="${CLONED_BRANCH}" \
     commit="${LATEST_GIT_COMMIT}"
-```    
-    
+```
+
 This way the rest of the pipeline can scan these repos for compliance violations and vulnerabilities.
 
 Paths saved by using `save_repo` must be relative to the workspace path.
@@ -186,7 +175,7 @@ To provide information on your built artifacts, use the `save_artifact` pipeline
 ### Example
 {: #cd-devsecops-add-pipeline-build-example}
 
-```{: #cd-devsecops-add-pipeline-test-example}
+```bash
 #
 # your scripts building the artifact
 #

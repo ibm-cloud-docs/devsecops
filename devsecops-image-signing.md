@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps, image signing, GPG key, secure toolchain, compliance, IBM Cloud
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Image signing: generating a GPG key
 {: #devsecops-image-signing}
@@ -67,12 +56,12 @@ Download and install the [GPG command-line tools](https://www.gnupg.org/download
 * Download and install [Mac GPG](https://gpgtools.org/){: external}.
 * Verify the version of the installed GPG. From the command line, run the following command:
 
-   ```bash
-   $ gpg --version
-   gpg (GnuPG) 2.3.1
-   libgcrypt 1.9.3
-   Copyright (C) 2021 Free Software Foundation, Inc.
-   ```
+```bash
+$ gpg --version
+gpg (GnuPG) 2.3.1
+libgcrypt 1.9.3
+Copyright (C) 2021 Free Software Foundation, Inc.
+```
 * For versions of GPG prior to 2.3.1, it might not be possible to use the **--passphrase=''** option. In this case, you can omit the password in the following dialog by pressing **Enter** when prompted.
 
 #### Windows
@@ -81,12 +70,12 @@ Download and install the [GPG command-line tools](https://www.gnupg.org/download
 * Download and install [GitBash](https://gitforwindows.org/){: external} (required for `base64` encoding).
 * Verify the version of the installed GPG. From the Git bash command prompt, run the following command:
 
-   ```bash
-   $ gpg --version
-   gpg (GnuPG) 2.2.27
-   libgcrypt 1.8.7
-   Copyright (C) 2021 g10 Code GmbH
-   ```
+```bash
+$ gpg --version
+gpg (GnuPG) 2.2.27
+libgcrypt 1.8.7
+Copyright (C) 2021 g10 Code GmbH
+```
 
 ## Generate a GPG key
 {: #cd-devsecops-gpg-generate}
@@ -98,9 +87,10 @@ Leave the passphrase and repeat field empty if the generate-key command opens a 
 {: #cd-devsecops-gpg-linux}
 
 From your shell prompt, run the following command:
-   ```bash
-   gpg --pinentry-mode loopback --passphrase='' --generate-key
-   ```
+
+```bash
+gpg --pinentry-mode loopback --passphrase='' --generate-key
+```
 
 * Enter **Real name** your name
 * Enter **Email address** your email address
@@ -114,9 +104,10 @@ From your shell prompt, run the following command:
 {: #cd-devsecops-gpg-version}
 
 From the Git bash command prompt, run the following command:
-   ```bash
-   gpg --pinentry-mode loopback --passphrase='' --generate-key
-   ```
+
+```bash
+gpg --pinentry-mode loopback --passphrase='' --generate-key
+```
 
 * Enter **Real name** your name
 * Enter **Email address** your email address
@@ -127,9 +118,10 @@ From the Git bash command prompt, run the following command:
 {: #cd-devsecops-gpg-version2}
 
 From the Git bash command prompt, run the following command:
-   ```bash
-   gpg --gen-key
-   ```
+
+```bash
+gpg --gen-key
+```
 
 * **kind of key**: select Default option **(1) RSA and RSA (default)**
 * **keysize**: keep default (2048)
@@ -144,28 +136,31 @@ From the Git bash command prompt, run the following command:
 {: #cd-devsecops-gpg-verify}
 
 Verify that the GPG key was created. From the command prompt, run the following command:
-   ```bash
-   gpg --list-keys
-   ```
+
+```bash
+gpg --list-keys
+```
 
 Ensure that your key is listed. Example output on Windows:
-   ```bash
-   $ gpg --list-keys
-   /c/Users/FredSmith/.gnupg/pubring.gpg
-   -------------------------------------
-   pub   2048R/1BB354B5 2021-06-08
-   uid   Fred Smith <fred@company.com>
-   sub   2048R/F91C39A6 2021-06-08
-   ```
-   {: screen}
+
+```bash
+$ gpg --list-keys
+/c/Users/FredSmith/.gnupg/pubring.gpg
+-------------------------------------
+pub   2048R/1BB354B5 2021-06-08
+uid   Fred Smith <fred@company.com>
+sub   2048R/F91C39A6 2021-06-08
+```
+{: screen}
 
 ## Export the key
 {: #cd-devsecops-gpg-export}
 
 This step is optional. Run this command to ensure that the gpg key can be exported. 
-   ```bash
-   gpg --export-secret-key <Email Address>
-   ```
+
+```bash
+gpg --export-secret-key <Email Address>
+```
 
 The raw key that is exported must not be copied directly. It is recommended to securely store the key that is generated in this step in your {{site.data.keyword.keymanagementserviceshort}} instance or {{site.data.keyword.secrets-manager_short}} instance. See the next sections for more details.
 {: important}

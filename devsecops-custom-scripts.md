@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -318,12 +318,14 @@ Because these custom scripts operate in the same workspace, you can pass data be
 {: #devsecops-scripts-workspaces-shared-example}
 
 Writing:
+
 ```bash
 echo -n "$DIGEST" > "${WORKSPACE}"/image-digest
 ```
 {: codeblock}
 
 Reading:
+
 ```bash
 image_digest=$(cat "${WORKSPACE}"/image-digest)
 ```

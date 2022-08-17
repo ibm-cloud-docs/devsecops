@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -28,7 +28,7 @@ The following commands show the scenario by using `git` commands:
 
 1. List the commits and tags to identify the commit ID (version) to roll back to. For example, we identify `refs/tags/8` to be the most recent good deployment.
 
-   ```bash
+```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git show-ref --tags
       09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/1
@@ -42,39 +42,39 @@ The following commands show the scenario by using `git` commands:
       1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/10
       d9dd5d8553889ef24dff0678a3fcbae8aed3259b refs/tags/11
       1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
-   ```
-     
+```
+
 1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
-     
-   ```bash
+
+```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
       67cc8babdff3e09c1f0e632f897798c1b5424f38
       6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
       22a575d48008299116ea426bdac45417d9df6238
       cb6f4d53c17f0c2554c039708989c403eb0ead18     
-   ```
-     
+```
+
 1. Revert the inventory state to `refs/tags/8`.
-     
-   ```bash
+
+```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
-   ```
-     
+```
+
 1. Commit the new state of the inventory.
 
-   ```bash
+```bash
      # /c/usr/devsecops/compliance-inventory (master|REVERTING)
      $ git commit -m "revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8"
       [master af82538] revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
       2 files changed, 19 insertions(+), 19 deletions(-)
       rewrite compliance-app (94%)
-   ```
- 
+```
+
 1. Push to the update to the master branch.
-    
-   ```bash
+
+```bash
     # /c/usr/devsecops/compliance-inventory (master)
     $ git push --set-upstream origin master
       Enumerating objects: 7, done.
@@ -86,8 +86,8 @@ The following commands show the scenario by using `git` commands:
       To https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git
         67cc8ba..af82538  master -> master
       Branch 'master' set up to track remote branch 'master' from 'origin'.
-   ```
- 
+```
+
 1. Create a pull request for the rollback promotion pull request.
 1. Review the pull request and merge the pull request.
 1. Trigger the **Manual CD** pipeline run within the CD Toolchain. 

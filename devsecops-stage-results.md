@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps
 
@@ -20,39 +20,39 @@ You can use the [Stage Results API](/docs/devsecops?topic=devsecops-custom-scrip
 
 1. Type `get_data result` to print which stages have saved results:
 
-   ```bash
+```bash
    $ get_data result
    test
    detect-secrets
    branch-protection
-   ```
-   {: codeblock}
+```
+{: codeblock}
 
 1. Type `get_data result <stage-name>` to print the result for a specific stage:
 
-   ```bash
+```bash
    $ get_data result detect-secrets
    success
    $ get_data result test
    failure
-   ```
-   {: codeblock}
+```
+{: codeblock}
 
 1. Iterate through the saved results:
 
-   ```bash
+```bash
    #!/usr/bin/env bash
    while read -r stage; do
          result=$(get_data result $stage)
          echo "The result of '$stage' stage is: '$result'"
    done < <(get_data result)
-   ```
-   {: codeblock}
+```
+{: codeblock}
 
 Outputs the following lines to the console:
 
-   ```text
+```text
     The result of 'detect-secrets' stage is: 'success'
     The result of 'branch-protection' stage is: 'success'
-   ```
-   {: screen}
+```
+{: screen}
