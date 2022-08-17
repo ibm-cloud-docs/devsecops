@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-18"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Setting pull request status
 {: #cd-devsecops-set-pr-status}
@@ -31,7 +20,7 @@ You can use the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli
 
 - Example usage on GitLab:
 
-   ```bash
+```bash
    $ export GITLAB_TOKEN='my-git-token'
    $ export GHE_ORG='my-github-username'
    $ export GHE_REPO='my-github-repo-name'
@@ -42,11 +31,11 @@ You can use the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli
     --context="tekton/lint" \
     --description="Tekton linter is running." \
     --git-provider="gitlab"
-   ```
+```
 
 - Example usage on GitHub:
 
-   ```bash
+```bash
    $ export GHE_TOKEN='my-git-token'
    $ export GHE_ORG='my-github-username'
    $ export GHE_REPO='my-github-repo-name'
@@ -57,4 +46,4 @@ You can use the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli
     --context="tekton/lint" \
     --description="Tekton linter is running." \
     --git-provider="github"
-   ```
+```

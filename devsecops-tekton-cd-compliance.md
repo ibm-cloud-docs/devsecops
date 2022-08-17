@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -417,9 +417,9 @@ The details of the `Pull Request` are used by the CD Pipeline to create a Change
 
 1. After the `Promotion Pipeline` finishes successfully, the `promote` task provides you with a link to the previously mentioned `Pull Request` in the Inventory Repository. The pull request name is in the following format:
 
-   ```text
-   promote <Inventory Source Environment> to <Inventory Target Environment>
-   ```
+```text
+promote <Inventory Source Environment> to <Inventory Target Environment>
+```
 
 1. Open the `Pull Request` in your browser with the link provided in the log. Complete the sections as follows:
 

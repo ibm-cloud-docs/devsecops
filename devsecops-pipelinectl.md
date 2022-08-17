@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-25"
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps, pipelinectl
 
@@ -155,7 +155,6 @@ Other property names can be used as well, but to avoid naming collisions, they m
 Example:
 
 ```bash
-
 save_repo app_ui "url=${REPO_URL}" "path=app_ui_repo"
 save_repo app_ui "branch=${REPO_BRANCH}"
 save_repo app_ui "commit=${REPO_SHA}"
@@ -490,6 +489,7 @@ Outputs the following lines to the console:
 Serialize `pipelinectl` data into a transferable JSON file to be used as payload for pipeline webhook triggers. It can serialize repositories set by `save_repo`, artifacts set by `save_artifact`, and environment variables set by `set_env`.
 
 (Optional) flags:
+
 ```bash
 --all-repos         # all the repository information set by `pipelinectl`
 --all-artifacts     # all the artifacts information set by `pipelinectl`
