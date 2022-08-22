@@ -57,6 +57,12 @@ The continuous integration pipeline builds the deployable artifacts from the app
 
 The continuous deployment pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to a specific environment, such as staging or prod, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker. For more information about the continuous deployment pipeline, see [Continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
+## Continuous compliance pipeline
+{: #cd-devsecops-pipelines-cc-pipeline}
+
+The continuous compliance pipeline periodically scans the deployed artifacts and their source repositories for newer vulnerabilities since they got deployed in production, and helps tracking deviations with due date automatically. It also provides application awareness into [{{site.data.keyword.compliance_long}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}.
+For more information about the continuous compliance pipeline, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cc-pipeline).
+
 ## Integration with {{site.data.keyword.compliance_short}}
 {: #cd-devsecops-pipelines-scc}
 
