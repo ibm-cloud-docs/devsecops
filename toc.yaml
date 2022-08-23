@@ -21,8 +21,8 @@ toc:
       - devsecops_intro.md
       - devsecops-arch.md
       - devsecops-pipelines.md
-      - devsecops-cd-pipeline.md
       - devsecops-ci-pipeline.md
+      - devsecops-cd-pipeline.md
       - devsecops-cc-pipeline.md
       - topicgroup:
           label: DevSecOps practices
