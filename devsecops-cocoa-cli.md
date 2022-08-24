@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-17"
+lastupdated: "2022-08-24"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -39,7 +39,7 @@ cocoa <command> <subcommand> [options]
 Some commands use environment variables to get API Keys or to configure an option value that was not provided in the command line. You need to export these variables before you run the command.
 {: important}
 
-Command line options can take various types of input values, such as numbers, strings, Boolean values, arrays, and JSON objects. The options type is dependent upon the command that you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
+Command-line options can take various types of input values, such as numbers, strings, Boolean values, arrays, and JSON objects. The options type is dependent upon the command that you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
 {: tip}
 
 ## CLI commands
@@ -1011,7 +1011,7 @@ Multiple issues or artifacts must be provided with multiple issue or artifact fl
 ```
 {: pre}
 
-`artifact` consists of a URL that points to the artifact file and a hash, they should be provided the same way as in the previous example.
+`artifact` consists of a URL that points to the artifact file and a hash, they must be provided the same way as in the previous example.
 {: note}
 
 ### cocoa evidence format-summary
@@ -1347,7 +1347,6 @@ $ cocoa set-status \
 {: #inventory-add}
 
 Adds a value to the inventory repository. Creates a file with the `name` option, if it does not exist otherwise overwrites it.
-Currently, the following fields are optional parameters: `type`, `sha256`, `provenance`, and `signature`. However, after the upcoming breaking changes, they are mandatory.
 
 Required Environment Variables:
 
@@ -1392,15 +1391,15 @@ Options for Git:
 | org              | The GitHub organization that owns the inventory repository. | String | |
 | repo             | The name of the inventory repository.            | String | |
 | app-artifacts    | Arbitrary app content in JSON format             | String | |
-| type             | Type of the artifact                             | String | |
-| sha256           | The sha256 hash of the artifact                  | String | |
-| provenance       | URL pointing to the artifact (for example, built image)   | String | |
-| signature        | The artifact's signature                         | String | |
-| environment      | The name of the environment where the entry should be added. | String | "master" |
+| type             | Type of the artifact                             | String | Required |
+| sha256           | The sha256 hash of the artifact                  | String | Required |
+| provenance       | URL pointing to the artifact (for example, built image)   | String | Required |
+| signature        | The artifact's signature                         | String | Required |
+| environment      | The name of the environment where the entry is added. | String | "master" |
 | git-provider*    | The Git version control service provider, either GitHub or GitLab | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
-{: caption="Table 1. Options for git" caption-side="bottom"}
+{: caption="Table 1. Options for Git" caption-side="bottom"}
 
 Running the command:
 
