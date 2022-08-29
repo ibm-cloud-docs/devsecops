@@ -144,6 +144,7 @@ toc:
           - devsecops-pipelinectl.md
           - devsecops-cocoa-cli.md
           - devsecops-collect-evidence.md
+          - devsecops-set-commit-status.md
       - topicgroup:
           label: Related links
           topics:
