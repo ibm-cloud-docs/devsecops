@@ -2,7 +2,7 @@
 
 copyright:
   years:  2021, 2022
-lastupdated: "2022-08-04"
+lastupdated: "2022-09-05"
 
 keywords: IAM access for toolchain, permissions for toolchain, identity and access management for toolchain, roles for toolchain, actions for toolchain, assigning access for toolchain
 
@@ -48,7 +48,6 @@ Review the following tables that outline what types of tasks each role allows fo
 |  Administrator, Writer  |  The {{site.data.keyword.cos_full_notm}} service in your team's resource group. |
 |  Administrator, Writer  |  The {{site.data.keyword.contdelivery_full}} service in your team's resource group. |
 |  Administrator  |  The toolchain service in your team's resource group. |
-|  KeyPurge, Writer, Editor, Manager, Administrator  |  The {{site.data.keyword.keymanagementservicefull}} service in your team's resource group. |
 |  Viewer, Reader, Writer  |  The {{site.data.keyword.containerlong}}. |
 |  Viewer, ReaderPlus  |  The {{site.data.keyword.keymanagementserviceshort}} service in your team's resource group. |
 |  Viewer, SecretsReader  |  The Secrets Manager service in your team's resource group. |
