@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-09-05"
 
 keywords: DevSecOps
 
@@ -150,7 +150,7 @@ Define this stage to deploy your app on the target environment.
 ## sign-artifact
 {: #byoa-sign-artifact}
 
-Define this stage to sign your built images.
+By default DevSecOps CI toolchain signs all the images that are built during containerize stage. GPG keys provided during the setup of the toolchain are used to [sign](https://github.com/containers/skopeo/blob/main/docs/skopeo-copy.1.md) the images. If you want to customize the image signing process then add the following stage definition in your `.pipeline-config.yaml`:
 
 ```bash
    sign-artifact:
