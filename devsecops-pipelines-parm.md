@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-05"
+lastupdated: "2022-09-06"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -153,7 +153,7 @@ The following table lists and describes the continuous deployment parameters for
 |[`cluster-region`](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code. |Optional			|
 |`cos-api-key`		|text		|The Cloud Object Storage API key.	|Optional			|
-|`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		`	|
+|`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|
 |`cos-endpoint`		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that will be appended to the Change Request Description.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
