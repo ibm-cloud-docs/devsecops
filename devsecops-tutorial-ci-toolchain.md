@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-08-26"
+lastupdated: "2022-09-07"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -51,7 +51,6 @@ The CI toolchain implements the following best practices:
 
 The target cluster is configured during toolchain setup (by using an {{site.data.keyword.cloud_notm}} API key and cluster name). You can later change these settings by altering the Delivery Pipeline configuration.
 
-![DevSecOps Continuous Integration toolchain](images/devsecops-ci-toolchain-diagram.png){: caption="DevSecOps Continuous Integration toolchain" caption-side="bottom"}
 
 ## Guided setup overview for the CI toolchain
 {: #tutorial-ci-toolchain-guided-setup}

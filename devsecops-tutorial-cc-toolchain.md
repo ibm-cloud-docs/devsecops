@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-09-07"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -49,8 +49,6 @@ The Continuous [Compliance (CC) pipeline](/docs/devsecops?topic=devsecops-devsec
 The CC pipeline uses the [async sub pipeline](/docs/devsecops?topic=devsecops-devsecops-async-stages#async-stages-setup-triggers) that runs in parallel to the main pipeline run to optimize pipeline run time and improve pipeline resiliency.
 
 This tutorial uses a staging environment as an example to configure and showcase the continuous compliance (CC) toolchain.
-
-![DevSecOps Continuous Compliance toolchain](images/Diagram-CC_Pipeline.svg){: caption="DevSecOps Continuous Compliance toolchain" caption-side="bottom"}
 
 The CC toolchain implements the following best practices:
 
