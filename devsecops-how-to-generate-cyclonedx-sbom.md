@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-09-07"
 
 keywords: DevSecOps, IBM Cloud, BOM
 
@@ -41,3 +41,11 @@ To enable this feature, create a new pipeline environment property that is named
 
 After the pipeline is run, the change request has an attachment that is named `CycloneDX SBOM` that can be inspected on the change management providers UI.
 {: note}
+
+## Continuous compliance pipeline
+{: #generate-cyclonedx-sbom-cc-pipeline}
+
+During the CC summarization the SBOM attachment is treated as follows:
+
+- If an SBOM attachment is found for the evidence type `com.ibm.code_bom_check`, the attachment is downloaded and it is used for the CC evidence for `com.ibm.code_bom_check`. Fresh SBOM regeneration does not happen.
+- If an SBOM attachment is not found for the evidence type `com.ibm.code_bom_check`, then `ibmcloud cra bom-generate` is run to generate the fresh BOM at that point in the `standard` format. The BOM is also generated in the `cyclonedx` format if the BOM is opted in by using the `cra-generate-cyclonedx-format` flag. This freshly-created `BOM` is used for the CC evidence for `com.ibm.code_bom_check`.
