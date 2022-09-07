@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-09-07"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -45,8 +45,6 @@ The DevSecOps CD toolchain contains only one pipeline for continuous deployment.
 * Uses the inventory repository to promote built artifacts to deployment environments like staging and prod
 * Checks the CR, and auto approves if all checks pass
 * If CR is approved, or emergency, deploys the image from the inventory to production
-
-![DevSecOps CD deployment](images/devsecops-cd-toolchain-arch-diagram.png){: caption="DevSecOps CD deployment" caption-side="bottom"}
 
 ## Guided setup overview for the CD toolchain
 {: #tutorial-cd-toolchain-guided-setup}
