@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-17"
+lastupdated: "2022-09-08"
 
 keywords: DevSecOps, image signing, GPG key, secure toolchain, compliance, IBM Cloud
 
@@ -29,15 +29,15 @@ With this method, the template generates the GPG key for you. Provide the **name
 
 1. Go to the image signing stage, and click **New**.
 
-   ![Image signing](images/devsecops_image_signing_key_start.png){: caption="Image signing" caption-side="bottom"}
+   ![Image signing](images/devsecops_image_signing_key_start.png){: caption="Figure 1. Image signing" caption-side="bottom"}
 
 1. In the window, the **name** and **email** fields are prepopulated with the toolchain name and the email ID. Change the name and email ID to reflect your GPG key requirements. You can also store the keys in your secrets provider by selecting the box.
 
-   ![Change name and email](images/devsecops_image_signing_key_generation.png){: caption="Change name and email" caption-side="bottom"}
+   ![Change name and email](images/devsecops_image_signing_key_generation.png){: caption="Figure 2. Change name and email" caption-side="bottom"}
 
 1. After the key is generated, you can copy it for your reference.
 
-   ![Image signing certificate](images/devsecops_image_signing_key_generated.png){: caption="Image signing certificate" caption-side="bottom"}
+   ![Image signing certificate](images/devsecops_image_signing_key_generated.png){: caption="Figure 3 Image signing certificate" caption-side="bottom"}
 
 The copied key is in `base64` format. Decrypt the key before you import it to your [key ring](/docs/key-protect?topic=key-protect-grouping-keys&interface=ui).
 {: note}
@@ -218,7 +218,7 @@ gpg --export-secret-key <Email Address> | base64 | base64
 7. Select the **Choose a key ring** option as default. 
 8. Add the key to your key protect by clicking the **Add key** icon.
 
-   ![Add the key to key protect](images/devsecops_set-up_store_key_protect.png){: caption="Add the key to key protect" caption-side="bottom"}
+   ![Add the key to key protect](images/devsecops_set-up_store_key_protect.png){: caption="Figure 4. Add the key to key protect" caption-side="bottom"}
 
 For more information about {{site.data.keyword.keymanagementserviceshort}}, see the [{{site.data.keyword.keymanagementserviceshort}} docs](/docs/key-protect?topic=key-protect-about).
 
@@ -255,7 +255,7 @@ gpg --export-secret-key <Email Address> | base64
 1. Click the **Add +** icon to add new key to the instance.
 1. Select **Other secret type** option.
 
-   ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Other secret type" caption-side="bottom"}
+   ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Figure 5. Other secret type" caption-side="bottom"}
 
 1. Select **Select a key type** as **Standard Key**.
 1. Give an appropriate name in the **Name** field. The stored GPG key can be retrieved later by this name.
@@ -266,7 +266,7 @@ gpg --export-secret-key <Email Address> | base64
 
 1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking the **Add** icon.
 
-   ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Add the key" caption-side="bottom"}
+   ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Figure 6. Add the key" caption-side="bottom"}
 
 For more information about {{site.data.keyword.secrets-manager_short}}, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
 
