@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-05"
+lastupdated: "2022-09-13"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline
 
@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Continuous compliance pipeline
 {: #devsecops-cc-pipeline}
@@ -47,16 +36,16 @@ The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
-## Processing Inventory for Artifacts and Repositories
+## Processing inventory for artifacts and repositories
 {: #devsecops-cc-pipeline-start}
 
 The start stage clones the inventory and processes the latest entries in the production environment. You can specify this environment by providing the following pipeline parameters:
 
 |Name |Type |Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
-|environment-tag     |text   |Tag that represents the latest target environment in the inventory. Example: `prod_latest` or `us-south_prod_latest`    |Required           |
-|environment-branch     |text   |Branch name that represents the target environment in the inventory. Example: `prod`    |Deprecated - prefer `environment-tag` instead           |
-|region-prefix          |text   |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Deprecated - prefer `environment-tag` instead             |
+|`environment-tag`     |text   |Tag that represents the latest target environment in the inventory. Example: `prod_latest` or `us-south_prod_latest`    |Required           |
+|`environment-branch`     |text   |Branch name that represents the target environment in the inventory. Example: `prod`    |Deprecated - prefer `environment-tag` instead           |
+|`region-prefix`          |text   |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Deprecated - prefer `environment-tag` instead             |
 {: caption="Table 2. Continuous compliance pipeline artifacts and repositories" caption-side="top"}
 
 The inventory entries contain deployed artifacts and repository sources. The pipeline processes and collects the inventory entries and registers them for the pipeline run by using the following `pipelinectl` commands:
@@ -64,7 +53,7 @@ The inventory entries contain deployed artifacts and repository sources. The pip
 * [save_repo](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo)
 * [save_artifact](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact)
 
-The start stage also clones the repositories found, each repo, and each commit pair. So, for example, "repo1" with commit "sha1" are cloned in a folder, but the pipeline clones the same "repo1" with commit "sha2" in a separate folder.
+The start stage also clones the repositories found, each repo, and each commit pair. So, for example, `repo1` with commit `sha1` are cloned in a folder, but the pipeline clones the same `repo1` with commit `sha2` in a separate folder.
 
 The pipeline registers artifacts and repositories for the pipeline run by using a simple naming notation and incrementing index, such as the following examples:
 * `repo-1`, `repo-2`, `repo-3`

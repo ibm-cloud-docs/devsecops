@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-04"
+lastupdated: "2022-09-13"
 
 keywords: DevSecOps
 
@@ -11,18 +11,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Automated change management
 {: #cd-devsecops-change-mgmt}
@@ -37,15 +26,12 @@ The pipelines collect evidence from each part of the build and deployment lifecy
 
 The following diagram shows the data flow and connection between evidence, inventory, and change management.
 
- ![Data flow](images/data-flow.svg){: caption="Data flow" caption-side="bottom"}
+![Data flow](images/data-flow.svg){: caption="Data flow" caption-side="bottom"}
  
- 1. Continuous integration runs build artifacts and leaves behind evidence about what happened during the creation of those artifacts.
-
- 2. Continuous integration creates entries in the inventory about the artifacts that are created.
- 
- 3. Built artifacts in the inventory are promoted to deployment environments such as staging or pre-prod.
- 
- 4. Change management automation uses data from the inventory, the evidence locker, and the promotion pull request to create the change request.
+1. Continuous integration runs build artifacts and leaves behind evidence about what happened during the creation of those artifacts.
+2. Continuous integration creates entries in the inventory about the artifacts that are created.
+3. Built artifacts in the inventory are promoted to deployment environments such as staging or pre-prod.
+4. Change management automation uses data from the inventory, the evidence locker, and the promotion pull request to create the change request.
 
 Deployments also leave evidence behind such as acceptance tests. Successfully deployed and tested artifacts are further promoted to production environments, such as `prod`.
 
@@ -75,9 +61,9 @@ If every compliance check (for example, unit test, CRA tasks, branch protection,
 
 If a compliance check fails, the change request state is not approved.
 
-You can approve the change request manually and add the change-request-id to the environment properties to use the already created change request in the next run.
+You can approve the change request manually and add the `change-request-id` to the environment properties to use the already created change request in the next run.
 
-Another solution is using the **emergency** label in the promotion pull requests. For more information, see [Add emergency label](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr).
+Another solution is using the `emergency` label in the promotion pull requests. For more information, see [Add emergency label](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr).
 
 ### Set to implement
 {: #change-mgmt-set-implement}
