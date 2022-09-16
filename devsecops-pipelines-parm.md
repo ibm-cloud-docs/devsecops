@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-06"
+lastupdated: "2022-09-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -116,6 +116,7 @@ The following table lists and describes the continuous integration parameters fo
 |`opt-in-dynamic-ui-scan`		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
 |`opt-in-sonar`		|tool integration		|The Sonarqube scan integration.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -233,6 +234,7 @@ The following table lists and describes the continuous compliance parameters for
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
 |`opt-in-sonar`		|tool integration		|The Sonarqube scan integration.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
