@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-05"
+lastupdated: "2022-09-16"
 
 keywords: DevSecOps
 
@@ -35,7 +35,7 @@ image: icr.io/continuous-delivery/pipeline/image-signing:1.0.   0@sha256:e9d8e35
 ## abort_on_failure
 {: #byoa-abort-failure}
 
-Set this property to `true` to stop the pipeline run if the stage fails.
+Set this property to `true` to stop the pipeline run if the stage fails. If this property is set to `false`, then the step is marked as passed with a warning state (amber state), and the pipeline continues to run.
 
 ## script
 {: #byoa-script}
