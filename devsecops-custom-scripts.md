@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-17"
+lastupdated: "2022-09-16"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -89,7 +89,7 @@ test:
 
 * `dind`: Specify whether to enable `docker-in-docker` for the script context. The default setting is `false`.
 
-* `abort_on_failure`: By default, the pipeline stops when the script fails. Set this value to `false` to allow the pipeline to continue and reference the failed job in the evidence later.
+* `abort_on_failure`: By default, the pipeline stops when the script fails. Setting this to `false` marks the stage in a warning (amber state) (it passed with warning), allows the pipeline to continue, and lets the failed job be referenced in the evidence later.
 
 * `image_pull_policy`: Set the pod `ImagePullPolicy` setting that is provided in the image, for the base image. Possible values are the same as valid values for Kubernetes: `Always` or `IfNotPresent`. The default value is `IfNotPresent`.
 
