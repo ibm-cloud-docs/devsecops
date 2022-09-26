@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-22"
+lastupdated: "2022-09-26"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 

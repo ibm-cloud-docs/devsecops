@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-24"
+lastupdated: "2022-09-26"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1222,7 +1222,8 @@ Options:
 --backend           # (Required) Specifies the types of lockers we upload the artifact ('cos', 'git')
 --pipeline-run-id   # The ID of the PipelineRun running the CLI command
 --namespace         # Specifies the pipeline the evidence is collected from
---upload-path       # If present, it will override the artifact name with the specified value
+--upload-path       # If present, this overrides the artifact name with the specified value
+--is-summary        # If present, this uploads the artifact to the location where evidence summary is usually stored
 ```
 {: screen}
 
@@ -1286,6 +1287,7 @@ $ cocoa artifact upload \
   --backend=[choices: "git", "cos"] \ # e.g. --backend=cos,git
   --pipeline-run-id=<pipeline-run-id> # can be substituted by PIPELINE_RUN_ID
   --namespace=[choices: "ci", "cd"] \ # Pipeline type the evidence was collected from, can be substituted by NAMESPACE
+  --is-summary        # If present, this uploads the artifact to the location where evidence summary is usually stored
   <file-path>
 ```
 {: codeblock}

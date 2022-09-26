@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-09-26"
 
 keywords: DevSecOps, images, IBM Cloud, OWASP ZAP, Sonarqube
 

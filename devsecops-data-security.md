@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-07-22"
+lastupdated: "2022-09-26"
 
 keywords: secure environment, data, Data, high availability, access, IBM Cloud, DevSecOps
 

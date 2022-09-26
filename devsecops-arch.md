@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-09-26"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, IBM Cloud
 
