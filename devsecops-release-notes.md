@@ -19,7 +19,7 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
 
-## 16 Sep 2022
+## 16 September 2022
 {: #devsecops-sep1622}
 {: release-note}
 
@@ -27,7 +27,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 - Improved log messages so the evidence status is clearer. For example: `Evaluated evidence status: <success|failure|pending>`.
 
 
-## 11 Aug 2022
+## 11 August 2022
 {: #devsecops-aug1122}
 {: release-note}
 
