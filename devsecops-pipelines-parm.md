@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-09-28"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -33,11 +33,11 @@ The following table lists and describes the pull request parameters for pipeline
 |`baseimage-auth-host`		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-password`		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404` | optional |
-| `cocoa-config-max-retry-attempts` | text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5` | optional |
-| `cocoa-config-git-default-branch` | text   | The default native Git branch for the cocoa CLI. For example: `main`  | optional |
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
+| `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |`cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
-|`cra-cveignore-path`  |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   |Optional    |
+|`cra-cveignore-path`  |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   | Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
 |`cra-docker-buildflags`  |text  |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
 |`cra-dockerfile-pattern`             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | optional |
@@ -75,12 +75,12 @@ The following table lists and describes the continuous integration parameters fo
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
 |[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch.	|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404` | optional |
-| `cocoa-config-max-retry-attempts` | text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5` | optional |
-| `cocoa-config-git-default-branch` | text   | The default native Git branch for the cocoa CLI. For example: `main`  | optional |
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
+| `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |[`cluster-name`](#pipeline-parm-cluster-name)		|text		|The name of the Docker build cluster.	|Required			|
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code.	|Optional	
-|`cos-api-key`		|text		|The Cloud Object Storage API key.	|Optional			|
+|`cos-api-key`		|text		|The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
@@ -153,9 +153,9 @@ The following table lists and describes the continuous deployment parameters for
 |`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |[`assignee`](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[`backout-plan`](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404` | optional |
-| `cocoa-config-max-retry-attempts` | text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5` | optional |
-| `cocoa-config-git-default-branch` | text   | The default native Git branch for the cocoa CLI. For example: `main`  | optional |
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
+| `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |[`change-management-duration`](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
 |`change-management-repo`  | text   | The URL of the change management repository.  | Optional |
 |[`change-request-id`](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous deployment pipeline. |Optional			|
@@ -214,9 +214,9 @@ The following table lists and describes the continuous compliance parameters for
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
 |`branch`		|text		|The Git repo branch.	|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404` | optional |
-| `cocoa-config-max-retry-attempts` | text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5` | optional |
-| `cocoa-config-git-default-branch` | text   | The default native Git branch for the cocoa CLI. For example: `main`  | optional |
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
+| `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)		|text		|The baseimage for running the built-in pipeline code. |Optional			|
 |`cos-api-key`		|text		|The Cloud Object Storage API key.	|Optional			|
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
