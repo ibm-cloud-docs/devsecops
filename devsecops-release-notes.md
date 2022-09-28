@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-28"
+lastupdated: "2022-09-30"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,8 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
+
+
 
 ## 24 June 2022
 {: #devsecops-jun2422}
@@ -79,3 +81,4 @@ DevSecOps is a methodology that integrates security practices with the software 
 
 - Enhanced DevSecOps pipeline code to publish CRA results to {{site.data.keyword.DRA_short}} including BOM, vulnerability, and deployment records.
 - Added support for the optional CRA plug-in parameter `--dockerfilepattern`.
+
