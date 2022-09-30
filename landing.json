@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-07-22",
+    "lastupdated": "2022-09-30",
     "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
@@ -56,19 +56,19 @@
       "view_more": "/docs/devsecops?topic=devsecops-release-notes",
       "tiles": [
         {
-          "date": "24 June 2022",
-          "title": "DevOps Insights integration is now enabled for the continuous compliance (CC) template",
-          "description": "If you have an existing CC toolchain, you can set certain properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain." 
+          "date": "16 September 2022",
+          "title": "Added the `retry_sleep` environment property for VA scans",
+          "description": "The `retry_sleep` environment property is now added for the number of Vulnerability Advisor (VA) scans to attempt for a pipeline run." 
         },
         {
-          "date": "24 June 2022",
-          "title": "DevSecOps pipeline scripts now include tags",
-          "description": "Tags are now added to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface." 
+          "date": "16 September 2022",
+          "title": "Improved log messaging clarifies evidence status",
+          "description": "Improved log messages so the evidence status is clearer. For example, `Evaluated evidence status: <success|failure|pending>`" 
         },
         {
-          "date": "24 June 2022",
-          "title": "Dynamic scan results are now included in the Insights quality dashboard",
-          "description": "The DevOps Insights quality dashboard now includes dynamic scan results."
+          "date": "11 August 2022",
+          "title": "Native due date field in GitLab",
+          "description": "Now using the native due date field in GitLab to manage issues."
         }
       ]
 }}
