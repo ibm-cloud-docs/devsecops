@@ -57,13 +57,13 @@
       "tiles": [
         {
           "date": "16 September 2022",
-          "title": "Added the `retry_sleep` environment property for VA scans",
-          "description": "The `retry_sleep` environment property is now added for the number of Vulnerability Advisor (VA) scans to attempt for a pipeline run." 
+          "title": "Added the retry_sleep environment property for VA scans",
+          "description": "The retry_sleep environment property is now added for the number of Vulnerability Advisor (VA) scans to attempt for a pipeline run." 
         },
         {
           "date": "16 September 2022",
           "title": "Improved log messaging clarifies evidence status",
-          "description": "Improved log messages so the evidence status is clearer. For example, `Evaluated evidence status: <success|failure|pending>`" 
+          "description": "Improved log messages so the evidence status is clearer. For example, Evaluated evidence status: <success|failure|pending>" 
         },
         {
           "date": "11 August 2022",

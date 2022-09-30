@@ -24,8 +24,8 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #devsecops-sep1622}
 {: release-note}
 
-- Added the `retry_sleep` environment property for the number of Vulnerability Advisor (VA) scans to attempt for a given pipeline run.
-- Improved log messages so the evidence status is clearer. For example: `Evaluated evidence status: <success|failure|pending>`.
+- Added the `retry_sleep` environment property for the number of Vulnerability Advisor (VA) scans to attempt for a pipeline run.
+- Improved log messages so the evidence status is clearer. For example, `Evaluated evidence status: <success|failure|pending>`.
 
 
 ## 11 August 2022
@@ -40,7 +40,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #devsecops-jul2522}
 {: release-note}
 
-- Upload Continious Compliance evidence summary for Security and Compliance Center.
+- Upload Continuous Compliance evidence summary for Security and Compliance Center.
 
 
 ## 24 June 2022
@@ -73,7 +73,7 @@ The deployment BOM that is attached in a generated Change Request was missing in
 {: #devsecops-may1322}
 {: release-note}
 
-Added support to the Continuous Integration and Continuous Compliance pipelines for [incident issues](/docs/devsecops?topic=devsecops-incident-issues), such as vulnerabilities and CVEs, that are related to creating, storing, updating, and closing those issues. With this feature, you can set due dates for issues, add default assignees, and filter issues by using labels. 
+Added support to the Continuous Integration and Continuous Compliance pipelines for [incident issues](/docs/devsecops?topic=devsecops-incident-issues), such as vulnerabilities and CVEs that are related to creating, storing, updating, and closing those issues. With this feature, you can set due dates for issues, add default assignees, and filter issues by using labels. 
 
 ## 24 March 2022
 {: #devsecops-mar2422}
