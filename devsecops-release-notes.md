@@ -20,6 +20,28 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: shortdesc}
 
 
+## 16 September 2022
+{: #devsecops-sep1622}
+{: release-note}
+
+- Added the `retry_sleep` environment property for the number of Vulnerability Advisor (VA) scans to attempt for a given pipeline run.
+- Improved log messages so the evidence status is clearer. For example: `Evaluated evidence status: <success|failure|pending>`.
+
+
+## 11 August 2022
+{: #devsecops-aug1122}
+{: release-note}
+
+- Use the native due date field in GitLab for managing issues.
+- Added `custom-exempt-label` as an environment property that so pipelines are not marked as failed if they have the matching exempt label.
+- Fixed Cloud Object Storage as an evidence locker for CC pipeline.
+
+## 25 July 2022
+{: #devsecops-jul2522}
+{: release-note}
+
+- Upload Continious Compliance evidence summary for Security and Compliance Center.
+
 
 ## 24 June 2022
 {: #devsecops-jun2422}
