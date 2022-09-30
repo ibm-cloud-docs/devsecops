@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-28"
+lastupdated: "2022-09-30"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -134,6 +134,7 @@ The following table lists and describes the continuous integration parameters fo
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |[`sonarqube`](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|
 |[`sonarqube-namespace`](#pipeline-parm-sonarqube-namespace) 	|text		|The configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline.	|Optional			|
+|[`sonarqube-scan-command`](#pipeline-parm-sonarqube-scan-command) 	|text		|The sonarqube scan command that starts the sonarqube scan. `sonarqube-scan-command` must be set for Maven Java projects. For more information, see [`sonarqube-scan-command`](#pipeline-parm-sonarqube-scan-command) |Optional			|
 |[`static-scan-retry-count`](#pipeline-parm-static-scan-retry-count)		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
 |[`static-scan-retry-sleep`](#pipeline-parm-static-scan-retry-sleep)		|text		|The amount of wait time per retry iteration.	|Optional			|
 |`subpipeline-webhook-token` | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |
@@ -359,6 +360,13 @@ This parameter is for all the pipelines that use static scan stages. This is an 
 {: #pipeline-parm-sonarqube-namespace}
 
 This parameter is for all the pipelines that use static scan stages. This is the configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline, you can change it to any namespace that you want to use.
+
+### sonarqube-scan-command
+{: #pipeline-parm-sonarqube-scan-command}
+
+This parameter is for the pipelines that use static scan stages. `sonarqube-scan-command` specifies the command to start the sonarqube scan. If this parameter is not set, the default is `docker run --network host -v "$SONAR_DIR":/usr/sonar_scan -v "$WORKSPACE/$path":/usr/src "$sonarqube_scanner_image" sonar-scanner -Dsonar.working.directory=/usr/sonar_scan`. The default parameter uses the Docker `sonar-scanner` image to perform the scan.
+
+For a Maven Java project, set this parameter to `mvn -Dmaven.repo.local="${WORKSPACE}/.m2" -Dsonar.login="$(cat /tmp/sonarqube-token)" -Dsonar.host.url="$SONAR_HOST_URL" -Dsonar.projectKey="$SONAR_PROJECT_KEY" -Dsonar.projectName="$SONAR_PROJECT_KEY" -Dsonar.working.directory="$SONAR_DIR" sonar:sonar` to use the Maven computed classpath for sonar scan.
 
 ### source-environment
 {: #pipeline-parm-source-environment}
