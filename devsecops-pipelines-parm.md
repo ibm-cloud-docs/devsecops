@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-30"
+lastupdated: "2022-10-11"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -29,15 +29,15 @@ The following table lists and describes the pull request parameters for pipeline
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`artifactory-dockerconfigjson` 		|SECRET 		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.	 			|Optional			|
-|`baseimage-auth-email`		|text 		|The e-mail credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			|
+|`baseimage-auth-email`		|text 		|The email credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			|
 |`baseimage-auth-host`		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-password`		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |`cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
-|`cra-cveignore-path`  |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   | Optional    |
+|`cra-cveignore-path`  |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore` if value is not provided.   | Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
 |`cra-docker-buildflags`  |text  |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
 |`cra-dockerfile-pattern`             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | optional |
@@ -74,8 +74,8 @@ The following table lists and describes the continuous integration parameters fo
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
-|[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch.	|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+|[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`1PL code` |Optional			|
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |[`cluster-name`](#pipeline-parm-cluster-name)		|text		|The name of the Docker build cluster.	|Required			|
@@ -84,10 +84,10 @@ The following table lists and describes the continuous integration parameters fo
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		|text		|The endpoint of your Cloud Object Storage instance that is used as an evidence locker.   |Optional			|
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
-|`cra-cveignore-path`     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore`, if value is not provided.   |Optional    |
+|`cra-cveignore-path`     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore` if value is not provided.   |Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
 |`cra-docker-buildflags`   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
-|`cra-dockerfile-pattern`             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | optional |
+|`cra-dockerfile-pattern`             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | Optional |
 |`cra-exclude-devdependencies`		|text		|Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	|Optional			|
 |`cra-gradle-exclude-configs`     |text   |Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   |Optional   |
 | `cra-generate-cyclonedx-format`      | text   | If set to `1`, CRA also generates the BOM in `cyclonedx` format (defaults to `0`). | Optional |
@@ -112,7 +112,7 @@ The following table lists and describes the continuous integration parameters fo
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
-|`incident-assignees`		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
+|`incident-assignees`		|text		|The assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
@@ -129,6 +129,7 @@ The following table lists and describes the continuous integration parameters fo
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`registry-namespace`		|text		|The container registry namespace for the image.	|Required			|
 |`registry-region`		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|
+| `repository` |text |The URL of your application's source code repository. | Optional |
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|
 |[`signing-key`](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
@@ -154,7 +155,7 @@ The following table lists and describes the continuous deployment parameters for
 |`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |[`assignee`](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[`backout-plan`](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |[`change-management-duration`](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
