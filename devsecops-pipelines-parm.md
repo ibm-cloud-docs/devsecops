@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-11"
+lastupdated: "2022-10-17"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -219,6 +219,7 @@ The following table lists and describes the continuous compliance parameters for
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
+| `cocoa-display-elapsed-time` | text   | Set this to a non-empty value to print the elapsed time in seconds for cocoa CLI command execution. Example: `Elapsed time: 5.32 seconds`.   | Optional |
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)		|text		|The baseimage for running the built-in pipeline code. |Optional			|
 |`cos-api-key`		|text		|The Cloud Object Storage API key.	|Optional			|
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
