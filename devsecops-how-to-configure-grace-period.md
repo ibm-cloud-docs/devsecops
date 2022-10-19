@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-09"
+lastupdated: "2022-10-19"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -48,4 +48,4 @@ If the environment property does not match the expected format or is not a valid
 The environment property `grace-period-configuration` sets due dates for issues that do not have a due date set already. For issues that have a due date set, reconfiguring the `grace-period-configuration` does not update those due dates.
 {: note}
 
-For more information, see [Incident issues with Due Date](/docs/devsecops?topic=devsecops-devsecops-issues-due-date).
+For more information, see [Incident issues with due date](/docs/devsecops?topic=devsecops-devsecops-issues-due-date).

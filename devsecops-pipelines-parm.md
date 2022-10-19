@@ -134,6 +134,7 @@ The following table lists and describes the continuous integration parameters fo
 |[`signing-key`](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |[`sonarqube`](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|
+|`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing Kubernetes cluster (custom configuration). Options: `default` or `custom`. Default is `default`. | Required |
 |[`sonarqube-namespace`](#pipeline-parm-sonarqube-namespace) 	|text		|The configured Kubernetes namespace to use with the SonarQube instance that is created by the pipeline.	|Optional			|
 |[`sonarqube-scan-command`](#pipeline-parm-sonarqube-scan-command) 	|text		|The sonarqube scan command that starts the sonarqube scan. `sonarqube-scan-command` must be set for Maven Java projects. For more information, see [`sonarqube-scan-command`](#pipeline-parm-sonarqube-scan-command) |Optional			|
 |[`static-scan-retry-count`](#pipeline-parm-static-scan-retry-count)		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
@@ -260,6 +261,7 @@ The following table lists and describes the continuous compliance parameters for
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |`sonarqube`		|tool integration		|The Sonarqube tool integration.	|Optional			|
+|`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing Kubernetes cluster (custom configuration). Options: `default` or `custom`. Default is `default`. | Required |
 {: caption="Table 4. Continuous compliance parameters" caption-side="top"}
 
 ## Specifications
