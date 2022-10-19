@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-24"
+lastupdated: "2022-10-19"
 
 keywords: tool integrations, IBM Cloud Public, Sonarqube
 
@@ -44,14 +44,19 @@ Configure SonarQube to continuously analyze and measure the quality of your sour
 ### Default SonarQube instance
 {: #sonarqube-ci-pipeline-default}
 
-If you don't have your own SonarQube instance, the pipeline creates a SonarQube instance during the pipeline run. You can access this instance after the static-scan stage successfully runs.
+If `sonarqube-config` is set to `default`, then default configuration is used, a SonarQube scan runs as Docker-in-Docker and the instance is not available after the run. 
+
+### SonarQube instance on the dev cluster
+{: #sonarqube-ci-pipeline-cluster}
+
+If `sonarqube-config` is set to `cluster`, the pipeline creates a SonarQube instance during the pipeline run in the dev cluster. You can access this instance after the static-scan stage successfully runs.
 
 ### Existing SonarQube instance
 {: #sonarqube-ci-pipeline-existing}
 
-To add your own SonarQube instance to your existing pipeline, [add the tool integration](/docs/devsecops?topic=devsecops-sonarqube) to your toolchain, and then add the SonarQube tool integration parameter to the pipeline.
+Set `sonarqube-config` to `custom`, to add your own SonarQube instance to your existing pipeline, add the tool integration to your toolchain, and then add the SonarQube tool integration parameter to the pipeline. For more information, see [Configuring SonarQube](/docs/devsecops?topic=devsecops-sonarqube).
 
-### Required parameters
+### Parameters
 {: #sonarqube-cipipeline-parm}
 
 To run the SonarQube scan, the pipeline needs the following continuous integration parameters:
@@ -63,6 +68,7 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |opt-in-sonar		|Text 		|The option to enable the SonarQube scan.		|Required			|
 |sonarqube		|Tool integration		|The SonarQube tool integration.	|Optional			|
 |sonarqube-config		|Text		|Runs a SonarQube scan in an isolated Docker-in-Docker container or in an existing Kubernetes cluster.	|Required			|
+|opt-in-sonar-hotspots		|Text		|The Sonarqube scan for detecting hotspots.	|Optional			|
 {: caption="Table 1. Continuous integration pipeline parameters}
 
 For more information about pipelines parameters, see [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).

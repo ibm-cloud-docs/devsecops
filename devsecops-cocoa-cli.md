@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-10-19"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -194,7 +194,7 @@ SERVICENOW_URL=   # ServiceNow API URL
 Required Environment Variables for ServiceNow v3:
 
 ```text
-IAM_ACCESS_TOKEN= # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN= # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=   # ServiceNow API URL
 ```
 {: screen}
@@ -293,7 +293,7 @@ SERVICENOW_URL=     # ServiceNow API URL
 Required Environment Variables for ServiceNow v3:
 
 ```text
-IAM_ACCESS_TOKEN=   # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=   # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=     # ServiceNow API URL
 ```
 {: screen}
@@ -365,7 +365,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -419,7 +419,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -470,7 +470,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -582,7 +582,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -633,7 +633,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -689,7 +689,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -737,7 +737,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -779,7 +779,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -825,7 +825,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -877,7 +877,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -921,7 +921,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
@@ -959,7 +959,7 @@ SERVICENOW_URL=      # ServiceNow API URL
 Required Environment Variables, if you are using ServiceNow v3 provider:
 
 ```text
-IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service
+IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}

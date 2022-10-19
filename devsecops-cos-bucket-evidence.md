@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-10-19"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -113,3 +113,8 @@ It is recommended that you use `Cross-Region` or `Regional` resiliency, if it ne
 {: #cd-devsecops-cos-bucket-name}
 
 Cloud {{site.data.keyword.cos_short}} bucket names must be globally unique and DNS-compliant. Names must be 3 - 63 characters in length and must contain lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number. Names that resemble IP addresses are not allowed. Bucket names be unique across the entire {{site.data.keyword.cos_full_notm}} system and they cannot contain any personal information, such as any part of a name or address, or financial, security accounts, or SSN.
+
+## Endpoint
+{: #cd-devsecops-cos-bucket-endpoint}
+
+Use `private` endpoints for most requests originating from within {{site.data.keyword.cloud}} and use  `public` endpoints for most requests originating from outside {{site.data.keyword.cloud}}. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-17"
+lastupdated: "2022-10-19"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -223,7 +223,7 @@ You need to provide the following information for the Pipelines to reach the buc
 
 You can set up the Cloud Object Storage locker later, by providing the necessary `cos-bucket-name` and `cos-endpoint`.
 
-To get the **Cloud Object Storage Endpoint**, go to your Cloud Object Storage Instance's page and select the _'Endpoints'_ section in the menu. Copy the Public Endpoint matching the Bucket's _region_ and _resiliency_.
+To get the **Cloud Object Storage Endpoint**, go to your Cloud Object Storage Instance's page and select the **Endpoints** section in the menu. Copy the public, priavte, or direct endpoint that matches the bucket's **region** and **resiliency**.
 
 ![DevSecOps Cloud Object Storage Endpoint menu](images/devsecops-cos-endpoint-menu.png){: caption="DevSecOps Cloud Object Storage Endpoint menu" caption-side="bottom"}
 
