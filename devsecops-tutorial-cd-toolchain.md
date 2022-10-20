@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-10-20"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -210,7 +210,7 @@ With this option, you can customize the deployment step to deploy your applicati
 ### Change request management
 {: #tutorial-cd-toolchain-change-request}
 
-{{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to [manage change requests](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+Use a {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to [manage change requests](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
 
 ### DevOps Insights toolchain
 {: #tutorial-cd-toolchain-insights}
