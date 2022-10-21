@@ -2,7 +2,8 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-19"
+lastupdated: "2022-10-19"
+
 
 keywords: DevSecOps, collect-evidence, script
 

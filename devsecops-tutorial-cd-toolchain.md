@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-10-21"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -131,7 +131,7 @@ The Pipeline configuration repository contains YAML files and scripts that are n
 
 If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization.
 
-For more information about Git Repos, see the CD toolchain setup [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-tekton-cd-compliance). For more information about customizable scripts, see the custom script [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-custom-scripts).
+For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 
 ### Secrets
 {: ##tutorial-cd-toolchain-secrets}
@@ -149,7 +149,7 @@ Select an existing evidence repository, preferably the evidence repository that 
 
 It is a best practice to use a Cloud Object Storage bucket as an evidence locker to store all the evidence and artifacts that are collected during the pipeline run.
 
-For more information about Evidence Storage, see the [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-devsecops-evidence).
+For more information about evidence storage, see [Evidence](/docs/devsecops?topic=devsecops-devsecops-evidence).
 
 ### Evidence
 {: #tutorial-cd-toolchain-evidence}
@@ -159,7 +159,7 @@ For more information about Evidence Storage, see the [documentation](/docs/Conti
 ### Cloud {{site.data.keyword.cos_short}} bucket
 {: #tutorial-cd-toolchain-cos-bucket}
 
-To use this feature, you must have a Cloud {{site.data.keyword.cos_short}} instance and a bucket. [Click here](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence) to create a Cloud {{site.data.keyword.cos_short}} instance, and [read the recommendation](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) for configuring a bucket that can act as a compliance evidence locker.
+To use this feature, you must have a Cloud {{site.data.keyword.cos_short}} instance and a bucket. Click [Using Cloud {{site.data.keyword.cos_short}} buckets as an evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence) to create a Cloud {{site.data.keyword.cos_short}} instance. For more information on configuring a bucket that can act as a compliance evidence locker, see [Configuring Cloud {{site.data.keyword.cos_short}} for storing evidence](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config).
 {: note}
 
 * Cloud {{site.data.keyword.cos_short}} instance, Bucket name, and Cloud {{site.data.keyword.cos_short}} endpoint fields are automatically populated.
@@ -210,7 +210,7 @@ With this option, you can customize the deployment step to deploy your applicati
 ### Change request management
 {: #tutorial-cd-toolchain-change-request}
 
-{{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to [manage change requests](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+Use a {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
 
 ### DevOps Insights toolchain
 {: #tutorial-cd-toolchain-insights}

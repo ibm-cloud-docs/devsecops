@@ -3,7 +3,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-06-01"
+lastupdated: "2022-10-19"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -23,6 +23,7 @@ Evidence summary refers to a collection of evidence pieces that are relevant for
 {: #evidence-summary-v1}
 
 Evidence is organized in the locker on a per-pipeline-run basis, that is, every piece of evidence that was collected in a pipeline run is stored next to each other. This organization makes evidence collection easy when you have a pipeline run ID. However, it's difficult to tell which piece of evidence is relevant for an asset, such as evidence that is related to a docker image. This difficulty is because evidence can span across multiple pipeline runs, such as a CI pipeline, a staging CD pipeline, or a production CD pipeline.
+For more information, see [v1 evidence format](/docs/devsecops?topic=devsecops-devsecops-evidence#devsecops-v1-evidence-format).
 
 Because of these difficulties, `v1` evidence is superseded by `v2`.
 
@@ -32,7 +33,7 @@ The v1 evidence collection is the legacy evidence collection. To opt out of v1 e
 ## v2 evidence collection
 {: #evidence-v2}
 
-The evidence locker stores three kinds of entities: _Assets_, _Evidence_, and _Attachments_.
+The evidence locker stores three kinds of entities: _Assets_, _Evidence_, and _Attachments_. For more information, see [v2 evidence format](/docs/devsecops?topic=devsecops-devsecops-evidence#devsecops-v2-evidence-format).
 
 ### Asset
 {: #evidence-asset}
