@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-19"
+lastupdated: "2022-10-25"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -72,6 +72,7 @@ The only hierarchy is the type differentiation and some hash grouping similar to
             └── abcdef123456789/
                 └── index.json      
 ```
+
 ## v2 evidence collection
 {: #devsecops-v2-evidence-collection}
 
@@ -1247,6 +1248,7 @@ interface Summary {
   }]
 }
 ```
+
 ## Evidence flow
 {: #devsecops-evidence-flow}
 
