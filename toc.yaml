@@ -78,9 +78,9 @@ toc:
       - topicgroup:
           label: Managing change requests
           topics:
-           - devsecops-automate-changemgmt.md
-             - devsecops-change-mgmt-data.md
-           - devsecops-approve-cr.md
+          - devsecops-automate-changemgmt.md
+            - devsecops-change-mgmt-data.md
+          - devsecops-approve-cr.md
       - topicgroup:
           label: Managing evidence
           topics:
