@@ -63,7 +63,7 @@ toc:
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
-          label: Working with incident issues
+          label: Managing incident issues
           topics: 
           - devsecops-incident-issues.md
           - topicgroup:
@@ -75,6 +75,26 @@ toc:
           - devsecops-how-to-set-incident-labels.md
           - devsecops-how-to-set-incident-assignees.md
           - devsecops-cc-pipeline-slack.md
+      - topicgroup:
+          label: Managing change requests
+          topics:
+           - devsecops-automate-changemgmt.md
+             - devsecops-change-mgmt-data.md
+           - devsecops-approve-cr.md
+      - topicgroup:
+          label: Managing evidence
+          topics:
+          - devsecops-evidence.md
+          - devsecops-evidence-summary.md
+          - devsecops-opt-out-legacy-evidence-collection.md
+          - devsecops-how-to-generate-cyclonedx-sbom.md
+      - topicgroup: 
+          label: Managing inventory
+          topics:
+          - devsecops-inventory.md
+          - devsecops-promote-branches.md
+          - devsecops-force-redeployment.md
+          - devsecops-rollback-deployment.md
       - devsecops-pipelines-add-triggers.md
       - devsecops-async-sub-pipelines.md
       - devsecops-async-update-webhook.md
@@ -83,12 +103,6 @@ toc:
           topics: 
           - devsecops-config-github.md
           - devsecops-set-pr-status.md
-      - topicgroup:
-          label: Change management
-          topics:
-          - devsecops-automate-changemgmt.md
-          - devsecops-change-mgmt-data.md
-          - devsecops-approve-cr.md
       - devsecops-webhook-payloads.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
@@ -107,7 +121,6 @@ toc:
           topics:
           - devsecops-security-compliance.md
           - devsecops-data-security.md
-
   - navgroup:
       id: reference
       topics:
@@ -120,21 +133,7 @@ toc:
           - devsecops-pipelines-parm.md
           - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
-      - topicgroup:
-          label: Evidence
-          topics:
-          - devsecops-evidence.md
-          - devsecops-evidence-summary.md
-          - devsecops-opt-out-legacy-evidence-collection.md
-          - devsecops-how-to-generate-cyclonedx-sbom.md
       - devsecops-async-stages.md
-      - topicgroup: 
-          label: Inventory management
-          topics:
-          - devsecops-inventory.md
-          - devsecops-promote-branches.md
-          - devsecops-force-redeployment.md
-          - devsecops-rollback-deployment.md          
       - devsecops-custom-scripts.md
       - devsecops-common-scripts.md
       - devsecops-images.md
