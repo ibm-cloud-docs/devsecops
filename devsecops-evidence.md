@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-19"
+lastupdated: "2022-10-27"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -37,14 +37,17 @@ The evidence format contains the result of the task (passing or failing), links 
 These tools focus only on evidence collection and do not change the behavior of your build process. The DevSecOps reference pipeline does not break due to failed Task results. An image can be built and deployed with failing tests and vulnerabilities if evidence of the checks and failures exists, the team is notified, a change request that is created during the deployment shows evidence of these issues, and the change request is manually approved.
 {: important}
 
-## v2 evidence locker
+## v2 evidence (current format)
+{: #devsecops-v2-evidence-current}
+
+### v2 evidence locker
 {: #devsecops-v2-evidence-lockers}
 
 As opposed to v1 version, evidence is stored in a flat hierarchy, where each piece of evidence is identified by its own SHA256 hash, this provides a layer of integrity protection (that is, any modification of the evidence content can be detected). As each piece of evidence is related to one or more assets, the evidence summarization algorithms discover the relevant evidence based on assets (as opposed to pipeline-run IDs in v1 evidence lockers).
 
 The only hierarchy is the type differentiation and some hash grouping similar to the structure of Git hash objects.
 
-### Example
+#### Example
 {: #devsecops-v2-evidence-lockers-example}
 
 ```text
@@ -72,14 +75,15 @@ The only hierarchy is the type differentiation and some hash grouping similar to
             └── abcdef123456789/
                 └── index.json      
 ```
-## v2 evidence collection
+
+### v2 evidence collection
 {: #devsecops-v2-evidence-collection}
 
 The v2 evidence must be collected as near as possible to the process that created the result for an evidence. After each scan run, after each test for example.
 
 For collecting evidence, the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script can be used in the DevSecOps pipelines.
 
-## v2 evidence format
+### v2 evidence format
 {: #devsecops-v2-evidence-format}
 
 A piece of evidence represents the outcome of a scan, test, and so on. The evidence is always connected to at least a single asset. Multiple assets are allowed, such as a single end-to-end test suite that probably tests multiple assets together.
@@ -148,10 +152,10 @@ interface Asset {
 
 ```
 
-### Example
+#### Example
 {: #devsecops-v2-format-example}
 
-#### Example v2 Asset
+##### Example v2 Asset
 {: #devsecops-v2-format-example-asset}
 
 ```json
@@ -176,7 +180,7 @@ interface Asset {
 }
 ```
 
-#### Example v2 evidence
+##### Example v2 evidence
 {: #devsecops-v2-format-example-evidence}
 
 ```json
@@ -218,7 +222,7 @@ interface Asset {
 }
 ```
 
-## v2 evidence summary
+### v2 evidence summary
 {: #devsecops-v2-evidence-summary}
 
 The DevSecOps pipeline creates an evidence summary document. This document contains the most recent of all evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the change request that is required to deploy any stage. This format of evidence is not yet supported by the {{site.data.keyword.compliance_short}} integration. 
@@ -237,12 +241,15 @@ interface Summary {
 This summary does not perform any result aggregation. It is the raw data of collected v2 evidence, as they were found for assets that are related to a change request.
 {: important}
 
-## v1 evidence locker
+## v1 evidence (older format)
+{: #devsecops-v1-evidence-older}
+
+### v1 evidence locker
 {: #devsecops-v1-evidence-lockers}
 
 Evidence and related artifacts, such as logs and test results are stored in evidence lockers. Because pipeline runs can easily be deleted, pipelines are considered nondurable. To create a retention policy and audit log, evidence data that is related to compliance is stored in lockers.
 
-### {{site.data.keyword.gitrepos}}
+#### {{site.data.keyword.gitrepos}}
 {: #devsecops-lockers-git}
 
 Although it does not contain the data retention capabilities of Cloud Object Storage, Git is a simple implementation for an evidence locker.
@@ -251,12 +258,12 @@ The folder and file structure of the Git evidence locker is similar to the Cloud
 
  ![Git evidence locker structure](images/git-structure.png){: caption="Git evidence locker structure" caption-side="bottom"}
 
-### {{site.data.keyword.cos_full_notm}}
+#### {{site.data.keyword.cos_full_notm}}
 {: #devsecops-lockers-cos}
 
 For more information about {{site.data.keyword.cos_short}} buckets, see [{{site.data.keyword.cos_full_notm}} buckets as evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence).
 
-## v1 evidence collection
+### v1 evidence collection
 {: #devsecops-v1-evidence-collection}
 
 The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
@@ -271,7 +278,7 @@ Evidence is collected from the steps in each stage [collect-evidence](/docs/devs
 
  ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
 
-### Code stage
+#### Code stage
 {: #devsecops-collection-code}
 
 In the Code stage, evidence is collected for the following steps:
@@ -280,7 +287,7 @@ In the Code stage, evidence is collected for the following steps:
 * Unit test results
 * Code Vulnerability scan, CIS check, and Bill of Material check by way of Code Risk Analyzer
 
-### Build stage
+#### Build stage
 {: #devsecops-collection-build}
 
 In the Build stage, evidence is collected for the following steps:
@@ -288,7 +295,7 @@ In the Build stage, evidence is collected for the following steps:
 * Vulnerability Advisor scan
 * Image signing
 
-### Deploy stage
+#### Deploy stage
 {: #devsecops-collection-deploy}
 
 In the Deploy stage, evidence is collected for the following steps:
@@ -299,7 +306,7 @@ In the Deploy stage, evidence is collected for the following steps:
 * Acceptance tests
 * Closing the change request
 
-## v1 evidence format
+### v1 evidence format
 {: #devsecops-v1-evidence-format}
 
 The `Evidence` type represents the schema of the evidence. Although the schema uses typescript syntax, you can convert it to use JSON schema.
@@ -346,7 +353,7 @@ These fields identify the specific continuous integration or continuous deployme
 
 This schema is saved to the evidence locker by using JSON format. The evidence format that is collected in different pipeline stages does not differ. Currently, their saved path indicates the pipeline stage, such as continuous integration or continuous deployment.
 
-### Example
+#### Example
 {: #devsecops-v1-format-example}
 
 ```json
@@ -385,7 +392,7 @@ This schema is saved to the evidence locker by using JSON format. The evidence f
 
 Where *evidence_collection_subject* is the `repository_url` for a repo scan and the `artifactory_url` for an image scan.
 
-## v1 evidence summary
+### v1 evidence summary
 {: #devsecops-v1-evidence-summary}
 
 The DevSecOps pipeline creates an evidence summary document. This document is based on evidence that is created during each of the continuous integration builds that deploy an image, and the evidence that is created during the deployment itself. The summary is created for the change request that is required to deploy any stage; it is also used by the {{site.data.keyword.compliance_short}} integration.
@@ -403,7 +410,7 @@ interface Summary {
 }
 ```
 
-### Example
+#### Example
 {: #devsecops-v1-evidence-summary-example}
 
 ```json
@@ -1247,7 +1254,8 @@ interface Summary {
   }]
 }
 ```
-## Evidence flow
+
+### Evidence flow
 {: #devsecops-evidence-flow}
 
 The following diagram shows how the evidence is handled and flows through the stages of continuous integration and continuous deployment.

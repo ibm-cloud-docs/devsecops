@@ -3,7 +3,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-10-19"
+lastupdated: "2022-10-27"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -18,17 +18,6 @@ subcollection: devsecops
 
 Evidence summary refers to a collection of evidence pieces that are relevant for a set of artifacts. The pipeline currently uses two approaches to collect and summarize evidence, `v1` and `v2`. The intention is that `v1` is superseded by `v2`.
 {: shortdesc}
-
-## v1 evidence collection
-{: #evidence-summary-v1}
-
-Evidence is organized in the locker on a per-pipeline-run basis, that is, every piece of evidence that was collected in a pipeline run is stored next to each other. This organization makes evidence collection easy when you have a pipeline run ID. However, it's difficult to tell which piece of evidence is relevant for an asset, such as evidence that is related to a docker image. This difficulty is because evidence can span across multiple pipeline runs, such as a CI pipeline, a staging CD pipeline, or a production CD pipeline.
-For more information, see [v1 evidence format](/docs/devsecops?topic=devsecops-devsecops-evidence#devsecops-v1-evidence-format).
-
-Because of these difficulties, `v1` evidence is superseded by `v2`.
-
-The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
-{: important}
 
 ## v2 evidence collection
 {: #evidence-v2}
@@ -65,3 +54,14 @@ Evidence is summarized in the CD pipeline, based on the `provenance` field of ea
 The `v2` evidence summary is calculated, unless you explicitly opt out by setting `skip-v2-summary` to `1`.
 
 The change management system uses the `v1` evidence summary as the basis for the change request, unless you explicitly opt in by setting `use-v2-summary` to `1`.
+
+## v1 evidence collection
+{: #evidence-summary-v1}
+
+Evidence is organized in the locker on a per-pipeline-run basis, that is, every piece of evidence that was collected in a pipeline run is stored next to each other. This organization makes evidence collection easy when you have a pipeline run ID. However, it's difficult to tell which piece of evidence is relevant for an asset, such as evidence that is related to a docker image. This difficulty is because evidence can span across multiple pipeline runs, such as a CI pipeline, a staging CD pipeline, or a production CD pipeline.
+For more information, see [v1 evidence format](/docs/devsecops?topic=devsecops-devsecops-evidence#devsecops-v1-evidence-format).
+
+Because of these difficulties, `v1` evidence is superseded by `v2`.
+
+The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
+{: important}
