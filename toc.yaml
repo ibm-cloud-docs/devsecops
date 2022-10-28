@@ -127,7 +127,6 @@ toc:
           - devsecops-pipelines-status.md
           - devsecops-pr-pipeline.md
           - devsecops-ci-pipeline.md
-          - devsecops-iac-ci-pipeline.md
           - devsecops-promotion-pipeline.md
           - devsecops-cd-pipeline.md
           - devsecops-cc-pipeline.md
