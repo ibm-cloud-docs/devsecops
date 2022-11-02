@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-21"
+lastupdated: "2022-11-02"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -15,16 +15,13 @@ subcollection: devsecops
 # Pipeline parameters
 {: #cd-devsecops-pipeline-parm}
 
-Parameters are provided out of the box for the pull request, continuous integration, and continuous deployment pipelines.
+Parameters are provided out of the box for the pull request, continuous integration, continuous deployment, and continuous compliance pipelines.
 {: shortdesc}
 
 You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 {: tip}
 
-## Pull request parameters
-{: #cd-pr-parameters}
-
-The following table lists and describes the pull request parameters for pipelines:
+The following tables list and describe the pull request, continuous integration, continuous deployment, and continuous compliance parameters for pipelines:
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -59,12 +56,12 @@ The following table lists and describes the pull request parameters for pipeline
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`slack-notifications`		|text		|The switch that turns the Slack integration on or off.	|Optional			|	|[slack-notifications](#`pipeline-parm-slack-notifications`)		|text		|The switch that turns the Slack integration on or off |Optional		|
-{: caption="Table 1. Pull request parameters" caption-side="top"}
+{: caption="Table 1. Pull request parameters" caption-side="bottom"}
+{: #cd-pr-parameters}
+{: tab-title="Pull request parameters"}
+{: tab-group="IAM-simple"}
+{: class="simple-tab-table"}
 
-## Continuous integration parameters
-{: #cd-ci-parameters}
-
-The following table lists and describes the continuous integration parameters for pipelines:
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -143,12 +140,11 @@ The following table lists and describes the continuous integration parameters fo
 |`va-scan-retry-count`		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |`va-scan-retry-sleep`	|text		|The number of wait times per retry iteration.	|Optional			|
 |`version`		|text		|The version of the app to deploy.	|Required			|
-{: caption="Table 2. Continuous integration parameters" caption-side="top"}
-
-## Continuous deployment parameters
-{: #cd-parameters}
-
-The following table lists and describes the continuous deployment parameters for pipelines:
+{: caption="Table 2. Continuous integration parameters" caption-side="bottom"}
+{: #cd-ci-parameters}
+{: tab-title="Continuous integration parameters"}
+{: tab-group="IAM-simple"}
+{: class="simple-tab-table"}
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -201,12 +197,11 @@ The following table lists and describes the continuous deployment parameters for
 |[`summary-max-retry-time`](#pipeline-parm-summary-max-retry-time)		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time is generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
 |[`target-environment`](#pipeline-parm-target-environment)		|text		|The target environment that the app is deployed to.	|Required			|
 |`version`		|text		|The version of the app to deploy.	|Required	  	|
-{: caption="Table 3. continuous deployment parameters" caption-side="top"}
-
-## Continuous compliance parameters
-{: #pipelines-cc-parameters}
-
-The following table lists and describes the continuous compliance parameters for pipelines:
+{: caption="Table 3. Continuous deployment parameters" caption-side="bottom"}
+{: #cd-parameters}
+{: tab-title="Continuous deployment parameters"}
+{: tab-group="IAM-simple"}
+{: class="simple-tab-table"}
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -271,7 +266,11 @@ The following table lists and describes the continuous compliance parameters for
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |`sonarqube`		|tool integration		|The Sonarqube tool integration.	|Optional			|
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing Kubernetes cluster (custom configuration). Options: `default` or `custom`. Default is `default`. | Required |
-{: caption="Table 4. Continuous compliance parameters" caption-side="top"}
+{: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}
+{: #pipelines-cc-parameters}
+{: tab-title="Continuous compliance parameters"}
+{: tab-group="IAM-simple"}
+{: class="simple-tab-table"}
 
 ## Specifications
 {: #pipeline-parm-specs}
