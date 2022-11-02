@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-27"
+lastupdated: "2022-11-02"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -36,6 +36,17 @@ The evidence format contains the result of the task (passing or failing), links 
 
 These tools focus only on evidence collection and do not change the behavior of your build process. The DevSecOps reference pipeline does not break due to failed Task results. An image can be built and deployed with failing tests and vulnerabilities if evidence of the checks and failures exists, the team is notified, a change request that is created during the deployment shows evidence of these issues, and the change request is manually approved.
 {: important}
+
+## Evidence flow
+{: #devsecops-evidence-flow}
+
+The following diagram shows how the evidence is handled and how it flows through the stages of continuous integration and continuous deployment.
+
+ ![Evidence flow](images/evidence-flow.png){: caption="Evidence flow" caption-side="bottom"}
+
+ Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
+
+The evidence summary is attached to the change request, which is posted to the change request store. During a manual change request approval, the approver is aware of any issues that are found during the build. Additionally, the summary is submitted to the Security and Compliance Center.
 
 ## v2 evidence (current format)
 {: #devsecops-v2-evidence-current}
@@ -1254,14 +1265,3 @@ interface Summary {
   }]
 }
 ```
-
-### Evidence flow
-{: #devsecops-evidence-flow}
-
-The following diagram shows how the evidence is handled and flows through the stages of continuous integration and continuous deployment.
-
- ![Evidence flow](images/evidence-flow.png){: caption="Evidence flow" caption-side="bottom"}
-
- Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
-
-The evidence summary is attached to the change request, which is posted to the change request store. During a manual change request approval, the approver is aware of any issues that are found during the build. Additionally, the summary is submitted to the Security and Compliance Center.
