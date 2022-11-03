@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-02"
+lastupdated: "2022-11-03"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -267,7 +267,23 @@ Although it does not contain the data retention capabilities of Cloud Object Sto
 
 The folder and file structure of the Git evidence locker is similar to the Cloud Object Storage implementation:
 
- ![Git evidence locker structure](images/git-structure.png){: caption="Git evidence locker structure" caption-side="bottom"}
+```text
+/raw
+├── ci
+|   └── _PIPELINE_RUN_ID_A1
+|   └── _PIPELINE_RUN_ID_A2
+|   └── ..
+|   └── _PIPELINE_RUN_ID_An
+|      ├── artifacts
+|      └── evidences
+│── cd
+|   └── _PIPELINE_RUN_ID_B1
+|   └── _PIPELINE_RUN_ID_B2
+|   └── ..
+|   └── _PIPELINE_RUN_ID_Bn
+|      ├── artifacts
+|      └── evidences
+```
 
 #### {{site.data.keyword.cos_full_notm}}
 {: #devsecops-lockers-cos}
