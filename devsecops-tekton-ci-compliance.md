@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-13"
+lastupdated: "2022-11-05"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -130,7 +130,7 @@ The **Secrets** step specifies which secret vault integrations are added to your
 
 ![DevSecOps secrets options](images/devsecops-secrets-options.png){: caption="DevSecOps secrets options" caption-side="bottom"}
 
-If you plan to use IBM Key Protect or HashiCorp vault for managing your secrets, see the [IBM Key Protect section of the CI setup guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance#cd-devsecops-key-protect-ci).
+If you plan to use IBM Key Protect or HashiCorp Vault for managing your secrets, see the [IBM Key Protect section of the CI setup guide](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-ci-compliance#cd-devsecops-key-protect-ci).
 
 #### IBM Key Protect
 {: #cd-devsecops-key-protect-ci}
@@ -144,12 +144,12 @@ Use [Key Protect](/catalog/services/key-protect) to securely store and apply sec
 - **Resource Group**: Resource Group that the Key Protect service belongs.
 - **Service name**: Key Protect service name.
 
-To comply with best practices for using Hashicorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp `Role ID` and `Secret ID`. By storing these HashiCorp secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
+To comply with best practices for using HashiCorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp `Role ID` and `Secret ID`. By storing these HashiCorp secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
 
 #### IBM Secrets Manager
 {: #cd-devsecops-secrets-manager-ci}
 
-Use [Secrets Manager](/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or Hashicorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
+Use [Secrets Manager](/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
 
 ![DevSecOps IBM Secrets Manager](images/devsecops-secrets-manager.png){: caption="DevSecOps IBM Secrets Manager" caption-side="bottom"}
 

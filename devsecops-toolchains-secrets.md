@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-11-05"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
@@ -22,7 +22,7 @@ For security reasons, these secrets must not belong to or be affiliated with a p
 
 Instead, the secrets that are used for non-{{site.data.keyword.cloud_notm}} resources (such as GitHub Enterprise) must be affiliated with a functional ID within your enterprise with only the appropriate access that is needed by the toolchains. Likewise, secrets for {{site.data.keyword.cloud_notm}} resources must be affiliated with an [IAM service ID API key](/docs/account?topic=account-serviceidapikeys) that is affiliated with an [IAM service ID](/docs/account?topic=account-serviceids). The IAM service ID access permissions should be scoped to the least privilege required by the toolchains.
 
-Managing credentials like these must be done securely and in compliance with best practices in the field of secrets management. In particular, this means vaulting the required secrets by using an approved in-boundary vault provider, such as [Hashicorp](https://www.vaultproject.io){: external} and then linking your toolchain secrets to those resources.
+Managing credentials like these must be done securely and in compliance with best practices in the field of secrets management. In particular, this means vaulting the required secrets by using an approved in-boundary vault provider, such as [HashiCorp Vault](https://www.vaultproject.io){: external} and then linking your toolchain secrets to those resources.
 
 The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable selection of vaulted secrets by using Secrets Integrations for HashiCorp Vault and {{site.data.keyword.keymanagementservicelong}}. By using the Secrets Picker dialog, a toolchain or pipeline editor can easily select named secrets from a bound secrets integration that is then resolved by reference within the toolchain and pipeline. After a secret is chosen, a canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is `{vault::integration-name.secret-name}`. This long form canonical reference is used by the front-end user interface components and importantly, the resolved value of the actual secret is never exposed to a user or permitted service.
 
@@ -44,13 +44,14 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
 | Artifactory API token    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
 | Slack Web Hook           | `slack-webhook`          | **Optional: CI & CD** _This webhook is required if you choose to use the Slack tool integration to post toolchain status notifications_ |
-| HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
-| HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the Hashicorp SOS vault server_ |
+| HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
+| HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
 | SonarQube password or authentication token | `sonarqube-password`              | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
 {: caption="Table 1. DevSecOps Secrets" caption-side="top"}
 
-While you are using Hashicorp vault service, ensure that the vault service uses [AppRole Auth Method](https://www.vaultproject.io/docs/auth/approle){: external} method. When you use the approle authentication method, you need `role-id` and `secret-id` to successfully integrate Hashicorp server with the toolchain. Because `role-id` and `secret-id` are secrets in themselves, it is recommended to store them by using a [{{site.data.keyword.keymanagementservicelong_notm}} tool integration](/docs/ContinuousDelivery?topic=ContinuousDelivery-keyprotect) so that they can be securely retrieved and applied in the toolchain workflow. All other toolchain secrets should be stored and retrieved by using Hashicorp.
+If you are using a HashiCorp Vault server, ensure that the HashiCorp Vault tool integration uses the [AppRole Auth Method](https://www.vaultproject.io/docs/auth/approle){: external} method. 
+When you use the AppRole authentication method, you need `role-id` and `secret-id` to successfully integrate the HashiCorp Vault server with the toolchain. Because `role-id` and `secret-id` are secrets in themselves, it is recommended to store them by using a [{{site.data.keyword.keymanagementservicelong_notm}} tool integration](/docs/ContinuousDelivery?topic=ContinuousDelivery-keyprotect) so that they can be securely retrieved and applied in the toolchain workflow. All other toolchain secrets should be stored and retrieved by using the HashiCorp Vault tool integration.
 
 If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` is used to retrieve the {{site.data.keyword.gitrepos}} Access Token by default. However, if `ibmcloud-api-key` does not have access to `git`, `git-token` must be set.
 {: note}
@@ -64,11 +65,11 @@ Use [{{site.data.keyword.secrets-manager_full}}](/docs/secrets-manager?topic=sec
 
 ![{{site.data.keyword.secrets-manager_short}} tool integration form](images/devsecops-secrets-manager.png){: caption="Figure 1. IBM Secrets Manager Tool Integration" caption-side="bottom"}
 
-The templates also come with a Hashicorp tool integration like the following example:
+The templates also come with a HashiCorp tool integration like the following example:
 
 ![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 2. HashiCorp Vault Tool Integration" caption-side="bottom"}
 
-To use Hashicorp, you must provide the following information:
+To use HashiCorp Vault, you must provide the following information:
 
 * **Name**: A name for this tool integration. This name is displayed in the toolchain.
 * **Server URL**: The server URL for your HashiCorp Vault Instance. For example, `https://<vault-service>.<org>.com:8200`.
@@ -82,6 +83,6 @@ The templates also come with an {{site.data.keyword.keymanagementservicefull}} t
 
 ![{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values](images/kp-int.png "{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values"){: caption="Figure 3. IBM Key Protect tool integration" caption-side="bottom"}
 
-If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the Hashicorp tool card, and use the picker to apply the secrets to those fields.
+If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the HashiCorp tool card, and use the picker to apply the secrets to those fields.
 
-Similarly, any other secrets that are used in the toolchain have a key icon that is attached to the text field. You can use the same picker control to apply the Hashicorp secrets to all the remaining instances.
+Similarly, any other secrets that are used in the toolchain have a key icon that is attached to the text field. You can use the same picker control to apply the HashiCorp secrets to all the remaining instances.
