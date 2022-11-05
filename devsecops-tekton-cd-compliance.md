@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-19"
+lastupdated: "2022-11-05"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -155,7 +155,7 @@ Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect){: external
 - **Resource Group**: Resource Group that the Key Protect service belongs.
 - **Service name**: Key Protect service name.
 
-To comply with best practices for using Hashicorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp `Role ID` and `Secret ID`. By storing these HashiCorp secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
+To comply with best practices for using HashiCorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp `Role ID` and `Secret ID`. By storing these HashiCorp secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
 
 ### IBM Secrets Manager
 {: #cd-devsecops-secrets-manager}
@@ -169,7 +169,7 @@ Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: 
 - **Resource Group**: Resource Group that the Secrets Manager service belongs.
 - **Service name**: Secrets Manager service name.
 
-### Hashicorp Vault
+### HashiCorp Vault
 {: #cd-devsecops-vault}
 
 Use HashiCorp Vault to securely store secrets that are needed by your toolchain. Examples of secrets are API keys, passwords, or any other tokens that enable access to sensitive information. Your toolchain stores references to the HashiCorp secrets, not the literal secret values, which enable advanced capabilities like secret rotation.
@@ -252,7 +252,7 @@ Configure the target Kubernetes cluster where the application is deployed. Choos
 
 Click the **Key** icon to use an existing key from your Secret Provider.
 
-- **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
+- **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or HashiCorp Vault Instance.
 - **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
 - **Secret name**: Name or alias of the secret, that is, API Key.
 
