@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-05"
+lastupdated: "2022-11-09"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
@@ -61,11 +61,11 @@ If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` 
 
 With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you protect your sensitive data and centralize your secrets. You can choose between the vault integrations depending on your requirements as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation provides information about prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select them from various vault integrations that are attached to the toolchain.
 
-Use [{{site.data.keyword.secrets-manager_full}}](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain.
+Use [{{site.data.keyword.secrets-manager_full}}](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain.
 
 ![{{site.data.keyword.secrets-manager_short}} tool integration form](images/devsecops-secrets-manager.png){: caption="Figure 1. IBM Secrets Manager Tool Integration" caption-side="bottom"}
 
-The templates also come with a HashiCorp tool integration like the following example:
+The templates also come with a HashiCorp Vault tool integration like the following example:
 
 ![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 2. HashiCorp Vault Tool Integration" caption-side="bottom"}
 
@@ -83,6 +83,6 @@ The templates also come with an {{site.data.keyword.keymanagementservicefull}} t
 
 ![{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values](images/kp-int.png "{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values"){: caption="Figure 3. IBM Key Protect tool integration" caption-side="bottom"}
 
-If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the HashiCorp tool card, and use the picker to apply the secrets to those fields.
+If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the HashiCorp Vault tool card, and use the picker to apply the secrets to those fields.
 
-Similarly, any other secrets that are used in the toolchain have a key icon that is attached to the text field. You can use the same picker control to apply the HashiCorp secrets to all the remaining instances.
+Similarly, any other secrets that are used in the toolchain have a key icon that is attached to the text field. You can use the same picker control to apply the HashiCorp Vault secrets to all the remaining instances.

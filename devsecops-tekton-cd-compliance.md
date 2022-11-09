@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-05"
+lastupdated: "2022-11-09"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -146,7 +146,7 @@ This document uses IBM Secrets Manager as the vault for secrets.
 ### IBM Key Protect
 {: #cd-devsecops-key-protect}
 
-Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect){: external} to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain. You must create a Key Protect Service Instance before you proceed further. If you already created a Key Protect Service Instance, you can link the same in this step.
+Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect){: external} to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain. You must create a Key Protect Service Instance before you proceed further. If you already created a Key Protect Service Instance, you can link the same in this step.
 
 ![Key Protect](images/devsecops_set-up_key_protect_mgr.png){: caption="Key protect" caption-side="bottom"}
 
@@ -155,12 +155,12 @@ Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect){: external
 - **Resource Group**: Resource Group that the Key Protect service belongs.
 - **Service name**: Key Protect service name.
 
-To comply with best practices for using HashiCorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp `Role ID` and `Secret ID`. By storing these HashiCorp secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
+To comply with best practices for using HashiCorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp Vault `Role ID` and `Secret ID`. By storing these HashiCorp Vault secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
 
 ### IBM Secrets Manager
 {: #cd-devsecops-secrets-manager}
 
-Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or Hashicorp credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you already created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
+Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or Hashicorp Vault credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you already created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
 
 ![DevSecOps secrets manager](images/devsecops-secrets-manager.png){: caption="DevSecOps secrets manager" caption-side="bottom"}
 
@@ -172,7 +172,7 @@ Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: 
 ### HashiCorp Vault
 {: #cd-devsecops-vault}
 
-Use HashiCorp Vault to securely store secrets that are needed by your toolchain. Examples of secrets are API keys, passwords, or any other tokens that enable access to sensitive information. Your toolchain stores references to the HashiCorp secrets, not the literal secret values, which enable advanced capabilities like secret rotation.
+Use HashiCorp Vault to securely store secrets that are needed by your toolchain. Examples of secrets are API keys, passwords, or any other tokens that enable access to sensitive information. Your toolchain stores references to the HashiCorp Vault secrets, not the literal secret values, which enable advanced capabilities like secret rotation.
 
 ![HashiCorp Vault](images/devsecops_hashicorp1_orig.png){: caption="HashiCorp Vault" caption-side="bottom"}
 
@@ -232,7 +232,7 @@ If you decide not to use Cloud Object Storage as an evidence locker, you can als
 
 - **Repository URL**: URL of the Tekton Pipeline Definition Repository configured in your CI Toolchain as captured in [Application Related Repositories](#cd-app-repos).
 
-The Pipeline Repository contains configurations for both CI and CD Toolchains and hence can be kept common across the two toolchains. If you want to use separate pipeline definitions for CD Toolchain Tekton definitions, use the`**Switch to advanced configuration** toggle to clone the repository.
+The Pipeline Repository contains configurations for both CI and CD Toolchains and hence can be kept common across the two toolchains. If you want to use separate pipeline definitions for CD Toolchain Tekton definitions, use the **Switch to advanced configuration** toggle to clone the repository.
 
 ![DevSecOps Tekton Pipeline](images/devsecops_set-up_cd_tekton_pipeline_orig.png){: caption="DevSecOps Tekton Pipeline" caption-side="bottom"}
 
