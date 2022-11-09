@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-09-09"
+lastupdated: "2022-11-09"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -105,7 +105,7 @@ This tutorial uses IBM Secrets Manager as the vault for secrets. You might want 
 
 ![DevSecOps CC Toolchain secrets options](images/devsecops-cc-toolchain-setup-Secrets-selection.png){: caption="DevSecOps secrets options" caption-side="bottom"}
 
-Use [IBM Secrets Manager](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature, or HashiCorp credentials that are part of your toolchain.
+Use [IBM Secrets Manager](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain.
 
 ![DevSecOps IBM Secrets Manager](images/devsecops-cc-toolchain-setup-SM.png){: caption="DevSecOps IBM Secrets Manager" caption-side="bottom"}
 

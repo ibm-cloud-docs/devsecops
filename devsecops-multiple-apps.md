@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-05"
+lastupdated: "2022-11-09"
 
 keywords: DevSecOps, CI toolchain with multiple apps, multiple apps toolchain
 
@@ -33,7 +33,7 @@ Follow these steps:
    * The Inventory repo should enough as a single consolidated repository for recording your build records, because the records are already divided by the `app-name`, so long as that parameter is different nothing is going to get lost or confused. Though you might want to consult the [inventory documentation](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) for ideas on how to handle this repo, since its main function is to help support deployments in the continuous deployment pipeline.
 1. Set up {{site.data.keyword.cos_full}} buckets for each application
    * {{site.data.keyword.cos_short}} is the preferred evidence locker method for the pipeline evidence artifacts and is required for audit compliance. But, it is unfriendly to human readers, because all the artifacts are placed under one directory in the bucket with names like `ci-<toolchain_id>-<artifact_name>`, which are far too long for the user interface to render. For this reason, use one bucket per application to reduce the level of confusion.
-1. Optional: Extra HashiCorp Vault integrations. Since the Vault tool integration supports only one path, you might need more of them depending on how your Vault secrets are configured, since different applications might need different or other credentials from each other.
+1. Optional: Extra HashiCorp Vault integrations. Since the HashiCorp Vault tool integration supports only one path, you might need more of them depending on how your HashiCorp Vault secrets are configured, since different applications might need different or other credentials from each other.
 
 ## CI and PR pipeline changes
 {: #cr-pr-pipeline-changes}
