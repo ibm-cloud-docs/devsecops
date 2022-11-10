@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-03"
+lastupdated: "2022-11-10"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -122,7 +122,7 @@ interface Evidence {
     // scope defines a contextual set for multiple evidence, usually a SHA256 identifier or a CI/CD run ID
     scope: SHA256;  
     
-    // any further IDs can be used to determine evidence origin, see example below
+    // any further IDs can be used to determine evidence origin, see example
     [index: string]: string;
   },
   details: {

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-16"
+lastupdated: "2022-11-10"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -129,7 +129,7 @@ setup:
     # then `my-config` is going to be used for `$prop`
   configmap: $prop
 
-  # the mechanism described above works for secrets as well!
+  # the mechanism described works for secrets as well!
   secret: $my-secrets
 
   # the script is executed inside the checked out app repo
