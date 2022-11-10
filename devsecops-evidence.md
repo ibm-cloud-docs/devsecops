@@ -150,7 +150,7 @@ interface Asset {
     date: string;
     type: 'commit' | 'image' | 'generic';
     origin: {
-      // any IDs can be used to determine asset origin, see example below
+      // any IDs can be used to determine asset origin, see example
       [index: string]: string;
     },
     details: Record<string, string>,
