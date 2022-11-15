@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-11-15"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -228,13 +228,6 @@ Configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-sla
 
 You can add the Slack Tool after toolchain creation.
 {: note}
-
-#### Orion WebIDE
-{: #tutorial-ci-toolchain-webide}
-
-The Eclipse [Orion Web IDE](/docs/ContinuousDelivery?topic=ContinuousDelivery-web_ide) is a browser-based development environment where you can develop for the web in JavaScript, HTML, and CSS with the help of content assist, code completion, and error checking.
-
-No configuration required.
 
 ## Create the CI toolchain
 {: #tutorial-ci-toolchain-summary}

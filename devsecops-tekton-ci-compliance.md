@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-09"
+lastupdated: "2022-11-15"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -302,11 +302,6 @@ You can also set a target environment for the DOI interactions. This parameter i
 {: #cd-devsecops-devops-insights-ci}
 
 Use this option to create a new instance of DevOps Insights to be used for the toolchain. No configuration is required and the toolchain creates a new instance of DevOps Insight if this option is selected. The CI pipeline automatically uses the insights instance that is included in the toolchain.
-
-#### Orion WebIDE
-{: #cd-devsecops-webide-ci}
-
-The Eclipse [Orion Web IDE](/docs/ContinuousDelivery?topic=ContinuousDelivery-web_ide) is a browser-based development environment where you can develop for the web in JavaScript, HTML, and CSS with the help of content assist, code completion, and error checking. 
 
 #### Delivery Pipeline Private Worker
 {: #ci-tool-integration-optional-private-worker}
