@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-14"
+lastupdated: "2022-11-15"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -11,6 +11,7 @@ subcollection: devsecops
 ---
 
 {{site.data.keyword.attribute-definition-list}}
+
 
 # Peer review compliance
 {: #cd-devsecops-peer-review}
@@ -29,7 +30,8 @@ The pipeline collects peer review compliance data during builds and deployments 
 In this diagram, PR1, PR2 are the pull / merge requests that are approved before merging. Similarly, for PR4, PR5, and PR7. However, PR3 and PR6, highlighted in red, are merged without an approval, which is a peer review compliance violation. This is captured as evidence. 
 
  ![Data collection](images/data-collection.svg){: caption="Data collection" caption-side="bottom"}
- 
+
+
 ## Data collected in continuous integration build runs 
 {: #cd-devsecops-ci-data}
 
@@ -51,6 +53,7 @@ A compliance incident typically holds the following information:
 
 Collected data is saved as an [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) artifact, which is uploaded to the evidence locker, and then referred to in the evidence itself. The final evidence result is determined by the approved pull / merge requests. Unapproved, but merged pull / merge requests fail this type of evidence.
 
+
 ## Data that is collected in continuous deployment runs 
 {: #cd-devsecops-cd-data}
 
@@ -64,6 +67,7 @@ Pull request data is collected from the evidence locker and the incident issue r
 
 The app repos are not accessed during this data collection. Because continuous deployment pipelines are assumed to be located in isolated environments, you cannot cross those boundaries.
 {: important}
+
 
 ## Change request content 
 {: #cd-devsecops-cr-content}
@@ -89,3 +93,4 @@ Pull request incidents are considered vulnerabilities because they indicate that
 
 The author of the pull / merge request and the person who closes the pull / merge request incident issue cannot be the same person.
 {: important}
+
