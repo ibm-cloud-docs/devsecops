@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-17"
+lastupdated: "2022-11-16"
 
 keywords: DevSecOps, pipelinectl
 
@@ -18,14 +18,14 @@ subcollection: devsecops
 `pipelinectl` is a lightweight key-value store that can be used in DevSecOps pipelines to share data between tasks and the compliance automation scripts.
 {: shortdesc}
 
-For more information about where this tool is used, see [Setting up your pipeline scripts](/docs/devsecops?topic=devsecops-pipelines-add-steps).
+For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
 
 ## Usage
 {: #pipelinectl-usage}
 
-`pipelinectl` provides a single binary. Its behavior depends on its name (à la [busybox](https://www.busybox.net/about.html){: external}). When invoked as `pipelinectl`, the program must be provided as the first argument, for example `pipelinectl get_data`.
+`pipelinectl` provides a single binary. Its behavior depends on its name (as in [busybox](https://www.busybox.net/about.html){: external}). When invoked as `pipelinectl`, the program must be provided as the first argument, for example `pipelinectl get_data`.
 
-Available aliases/methods:
+Available aliases and methods:
 
 - [set_env](#set_env)
 - [get_env](#get_env)
@@ -150,7 +150,7 @@ Supported properties:
 - `url`: The URL that can be used to clone the repository.
 - `path`: Location of the cloned repository relative to the workspace root.
 
-Other property names can be used as well, but to avoid naming collisions, they must be prefixed with a service-specific identifier, for example instead of using `foo`, `my-service.foo` should be used.
+Other property names can be used as well, but to avoid naming collisions, they must be prefixed with a service-specific identifier, for example instead of using `foo`, use `my-service.foo`.
 
 Example:
 
@@ -183,8 +183,8 @@ command_with_large_output | save_repo app_ui "issues" "result=success" "commit=$
 ```
 {: codeblock}
 
-If multiple values are missing with `=` the command exits with an error, since it cannot determine,
-which property should belong to the value on stdin.
+If multiple values are missing with `=` the command exits with an error, because it cannot determine 
+which property belongs to the value on `stdin`.
 
 Properties without a value but still appending `=` have an empty string as a value.
 
@@ -373,7 +373,7 @@ Some suggested properties that you can use:
 - `digest`: A `sha256` digest.
 - `source`: For example, `http://<some-git-url>/blob/<commithash>/<path-to-file>`
 
-On top of these properties, any properties can be set.
+Any properties can be set on top of these properties.
 
 The `name` property must also contain the tag for the image.
 {: tip}
@@ -412,7 +412,7 @@ command_with_large_output | save_artifact ui_service "issues" "result=success" "
 ```
 {: codeblock}
 
-If multiple values are missing with `=` the command exits with an error, because it cannot determine which property should belong to the value on stdin.
+If multiple values are missing with `=` the command exits with an error, because it cannot determine which property belongs to the value on stdin.
 
 Properties without a value but still appending `=` have an empty string as a value.
 
@@ -498,14 +498,14 @@ Serialize `pipelinectl` data into a transferable JSON file to be used as payload
 
 Example:
 
-The following code saves all the repositories, all the artifacts and <env_variable1>, <env_variable2> into the `foo.json` file:
+The following code saves all the repositories, all the artifacts and `<env_variable1>`, `<env_variable2>` into the `foo.json` file:
 
 ```bash
 pipelinectl serialize --all-repos --all-artifacts <env_variable1> <env_variable2> > foo.json
 ```
 {: codeblock}
 
-> This command is not an alias, need `pipelinectl` explicitly
+> This command is not an alias, you need `pipelinectl` explicitly
 
 ### deserialize
 {: #deserialize}
