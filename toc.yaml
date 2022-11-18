@@ -107,6 +107,7 @@ toc:
       - devsecops-ignore-cra-vulnerabilities.md
       - devsecops-scc-toolchains.md
       - devsecops-configuring-zap-scans.md
+      - devsecops-configuring-mend-scans.md
       - devsecops-iam-permissions.md
       - topicgroup:
           label: Tool integrations
