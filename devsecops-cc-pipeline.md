@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-13"
+lastupdated: "2022-11-18"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline
 
@@ -29,7 +29,7 @@ The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic
 |`setup`		|Set up your build and test environment.		|Yes			|
 |`static-scan`		|Run static scan code on the application code.		|Yes		|
 |`dynamic-scan` 		|Run dynamic scan on the application. 		|Yes			|
-|`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|No			|
+|`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		|
 |`scan-artifact` 		|Scan the built artifacts.   	|Yes			|
 |`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|No			|
 {: caption="Table 1. Continuous compliance pipeline stages and tasks" caption-side="top"}
@@ -107,6 +107,7 @@ To learn more about configuring dynamic scan by using OWASP-ZAP, see [Configurin
 | Code Risk Analyzer vulnerability scan | Finds vulnerabilities for all of the app package dependencies, container base images, and operating system packages. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer CIS check |  Runs configuration checks on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
+| Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){: external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans). |
 {: caption="Table 3. Compliance scans and checks" caption-side="top"}
 
 These scripts are run on all of the app repos that the pipeline is aware of. CC pipeline uses the [`pipelinectl save_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo) interface to register repos found in the inventory entries, then uses the [`list_repos`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_repos) and [`load_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#load_repo) commands to iterate over repos and send them to scanners.
