@@ -67,7 +67,7 @@ You must use `save_repo` to have at least one source repository registered in `p
 
 
 
-The created evidence is based on the values in table 4. The DevSecOps pipeline uploads evidence to the locker and includes the evidence in the evidence summary for Change Requests.
+The created evidence is based on the values in table 3. The DevSecOps pipeline uploads evidence to the locker and includes the evidence in the evidence summary for Change Requests.
 
 | field | value | 
 | ----- | ----- |
@@ -76,7 +76,7 @@ The created evidence is based on the values in table 4. The DevSecOps pipeline u
 | asset type    | `repo` |
 | attachments   | `<scan report containing detected libraries and list of vulnerabilities in JSON>` |
 | attachments   | `<scan summary report in text format>` |
-{: caption="Table 4. Evidence fields and values" caption-side="top"}
+{: caption="Table 3. Evidence fields and values" caption-side="top"}
 
 ### Debugging and logging
 {: #cd-devsecops-mend-debug-log}
@@ -84,7 +84,7 @@ The created evidence is based on the values in table 4. The DevSecOps pipeline u
 | Parameter name | Default value | Description |
 |-|-|-|
 | pipeline-debug | 0 | Debug flag 0 off 1 on | 
-{: caption="Table 5. Debug parameters" caption-side="top"}
+{: caption="Table 4. Debug parameters" caption-side="top"}
 
 ### Accessing your scan results
 {: #cd-devsecops-mend-acc-results}
