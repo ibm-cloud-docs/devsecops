@@ -35,7 +35,7 @@ For more information on setting the minimum number of reviewers required for pul
 
 * [GitHub: Require multiple reviewers for pull requests](https://github.blog/2018-03-23-require-multiple-reviewers/)
 * [GitLab: Merge request approval rules](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/rules.html)
-{:important}
+{: important}
 
 
 ## Data collected in continuous integration build runs 
@@ -99,4 +99,3 @@ Pull request incidents are considered vulnerabilities because they indicate that
 
 The author of the pull/merge request and the person who closes the pull/merge request incident issue cannot be the same person.
 {: important}
-
