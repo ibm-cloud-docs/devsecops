@@ -17,7 +17,6 @@ subcollection: devsecops
 {: #cd-devsecops-peer-review}
 
 To enable the `peer-review` check in your toolchain, set the environment variable `opt-in-pr-collection` to `1` in the CI and CD toolchains.
-{: important}
 
 Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
 {: shortdesc}
