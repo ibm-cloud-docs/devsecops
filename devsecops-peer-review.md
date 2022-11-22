@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-21"
+lastupdated: "2022-11-22"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -15,6 +15,9 @@ subcollection: devsecops
 
 # Peer review compliance
 {: #cd-devsecops-peer-review}
+
+To enable the `peer-review` check in your toolchain, set the environment variable `opt-in-pr-collection` to `1` in the CI and CD toolchains.
+{: important}
 
 Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
 {: shortdesc}
@@ -31,11 +34,10 @@ In this diagram, PR1, PR2 are the pull/merge requests that are approved before m
 
  ![Data collection](images/data-collection.svg){: caption="Data collection" caption-side="bottom"}
 
-For more information on setting the minimum number of reviewers required for pull/merge request, see the following GitHub and GitLab resources:
+By default, the sample application in the CI toolchain attempts to set the minimum number of reviewers to 1. If you want to change the number of reviewers, set the `peer_review_approvers` envronment property as required.  For more information on setting the minimum number of reviewers required for a pull/merge request, see the following GitHub and GitLab resources:
 
 * [GitHub: Require multiple reviewers for pull requests](https://github.blog/2018-03-23-require-multiple-reviewers/)
 * [GitLab: Merge request approval rules](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/rules.html)
-{: important}
 
 
 ## Data collected in continuous integration build runs 
