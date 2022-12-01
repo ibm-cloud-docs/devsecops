@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-11-18"
+lastupdated: "2022-12-01"
 
 keywords: DevSecOps, IBM Cloud, compliance, Mend
 
@@ -29,14 +29,14 @@ Install all of the build dependencies required for your source repositories to b
 
 
 
-### Running the script
+## Running the script
 {: #cd-devsecops-mend-run-script}
 
 
 
 You must use `save_repo` to have at least one source repository registered in `pipelinectl`. 
 
-#### Required Mend Unified Agent parameters
+### Required Mend Unified Agent parameters
 {: #cd-devsecops-mend-params-req}
 
 | Parameter name | Description |
@@ -51,7 +51,7 @@ You must use `save_repo` to have at least one source repository registered in `p
 
 
 
-#### Optional Mend Unified Agent parameters
+### Optional Mend Unified Agent parameters
 {: #cd-devsecops-mend-params-opt}
 
 | Parameter name | Default value | Description |
@@ -62,7 +62,7 @@ You must use `save_repo` to have at least one source repository registered in `p
 | `mend-jar-url` | `https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar` | The scanner JAR file that is downloaded for each pipeline run. |
 {: caption="Table 2. Optional Mend Unified Agent parameters" caption-side="top"}
 
-### Evidence and attachments
+## Evidence and attachments
 {: #cd-devsecops-mend-evid-attach}
 
 
@@ -78,7 +78,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 | attachments   | `<scan summary report in text format>` |
 {: caption="Table 3. Evidence fields and values" caption-side="top"}
 
-### Debugging and logging
+## Debugging and logging
 {: #cd-devsecops-mend-debug-log}
 
 | Parameter name | Default value | Description |
@@ -86,7 +86,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 | pipeline-debug | 0 | Debug flag 0 off 1 on | 
 {: caption="Table 4. Debug parameters" caption-side="top"}
 
-### Accessing your scan results
+## Accessing your scan results
 {: #cd-devsecops-mend-acc-results}
 
 You can access your scan results using any of the following methods:
