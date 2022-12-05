@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-09-30"
+lastupdated: "2022-12-05"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,7 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
+
 
 
 ## 16 September 2022
