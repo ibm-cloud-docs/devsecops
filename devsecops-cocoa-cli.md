@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-19"
+lastupdated: "2022-12-07"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -108,7 +108,7 @@ GHE_REPO=               # The repository name
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 `REQUIRED_CHECKS` Example:
 
@@ -1165,7 +1165,7 @@ Options for Git:
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 By default, the CLI on each invocation ensures that you work with an up-to-date version of a Git locker. This behavior can be disabled by setting `COCOA_USE_CACHE` to any value except `0`, `false`, `no`, or `n`. In this case, the CLI uses its internal cache to look up evidence (much faster), but results might be stale.
 
@@ -1276,7 +1276,7 @@ COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket 
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
@@ -1324,7 +1324,7 @@ GITLAB_URL=       # Git Repos and Issue Tracking URL Example: https://<region>.g
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 Options for Git:
 
@@ -1466,7 +1466,7 @@ Options for Git:
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 By default, the CLI on each invocation ensures that you work with an up-to-date version of a Git locker. This behavior can be disabled by setting `COCOA_USE_CACHE` to any value except `0`, `false`, `no`, or `n`. In this case, the CLI uses its internal cache to look up evidence (much faster), but results might be stale.
 
@@ -1519,7 +1519,7 @@ Options for Git:
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your Gitlab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
@@ -1585,7 +1585,7 @@ Options for Git:
 {: screen}
 
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided `--git-token-path` and  `--git-api-url` take precedence.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 {: screen}
 
 Running the command:
@@ -1819,6 +1819,88 @@ $ cocoa incident process \
   --subject us.icr.io/service-image \
   --drilldown-url us.icr.io/service-image@sha256:digest \
   path/to/scan-result.json
+```
+{: codeblock}
+
+### cocoa incident process-legacy
+{: #incident-process-legacy}
+
+This command creates incident issues in the provided repository for scenarios when a scan file isn't available. Typically, such scenarios would be non-vulnerability related failures like unit-test failure, branch protection failure, acceptance test failure, and image signing failure. These failures would be non-vulnerabilities, yet they would be a deviation from the compliance posture. If issues exist already for incident-subject-tool combinations, the command does not create new ones. By default, `high` severity rating is set to issues created.
+
+If `--set-due-date` is set, the command either creates issues, or updates existing issues with due dates. The due dates are calculated from the grace period of the issue, based on the severity.
+
+If `--close-resolved-issues` flag is set, the command searches for open issues with the same tool, subject and the incident ID as the current run. If there are any issues found, while the `--current-status` was passed as `success`, the command closes those issues.
+
+If `--read-only` is set, the command does not create new issues or amend existing ones. Results are processed, and existing issues are collected for results. The output contains the issue URL list that are supposed to be tracked in issues if the read-only mode is not activated.
+
+
+
+Usage:
+```sh
+cocoa incident process-legacy \
+  <options>
+```
+{: codeblock}
+
+Options:
+
+```sh
+--type             # (Required) Tool type
+--subject          # (Required) Subject of scans (repo, or image name)
+--drilldown-url    # (Required) URL to the point where the incident was found (can be a pipeline run, a commit hash or an image URL with digest)
+--set-grace-period # Should the created incidents have Grace period set
+--git-provider     # Git service provider [github | gitlab] Default is "github"
+--org              # The incident issue repository org
+--repo             # The incident issue repository name
+--label            # Label(s) to add to the incident issue (optional) e.g: --label=foo --label=bar
+--assignee          #(Optional) Assignee(s) for the incident issue (github/gitlab username) e.g: --assignee=jane-doe --assignee=john-smith
+--git-token-path    #(Optional) Github or Gitlab Token's path
+--git-api-url           #(Optional) Github or Gitlab API url
+--close-resolved-issues # (Optional) Checking and closing resolved issues
+--pipeline-run-url      # (Optional) The url to the pipeline run running the CLI command
+--is-prod          # (Optional) Flag for whether or not the command was run in production environment. Default is false.
+--read-only        # (Optional) Process result file in read-only mode (return found and existing issues, do not create new ones, set processed status to failure or success). Default is false
+--custom-exempt-label # (Optional) Defines the custom label with which the incident has been marked as exempted
+--incident-id         # (Required) Defines the incident ID to be used for creating legacy incident
+--current-status      # (Required) Current status to be treated as success or failure [choices: "success", "failure"]
+```
+{: screen}
+
+Environment variables:
+```sh
+INCIDENT_REPO_ORG=    # Can be used instead of --org (either the option or the variable is required)
+INCIDENT_REPO_NAME=   # Can be used instead of --repo (either the option or the variable is required)
+# Required Environment Variables, if using GitHub:
+
+GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
+
+# Required Environment Variables, if using GitLab:
+
+GITLAB_TOKEN=       # Gitlab Token (Optional if using --git-token-path)
+GITLAB_URL=         # Gitlab API url (Optional if using --git-api-url)
+```
+{: screen}
+
+If you are using `gitlab` you can use the the `--git-token-path` field to set your GitLab token and use the `--git-api-url` field to set the GitLab API URL instead of the `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github` you can use the `--git-token-path` field to set your GitHub token and use the `--git-api-url` field to set the GitHub Enterprise API URL (it defaults to `https://github.ibm.com/api/v3`)  instead of the `GHE_TOKEN` and `GH_URL` environment variables.
+If the `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` both pairs are both provided, `--git-token-path` and  `--git-api-url` take precedence.
+
+Return values:
+
+- The command lists incident issue URLs found or created if the `--current-status` was passed in as `failure`. The comand also closes the incident issue URLs matching the same incident-tool-subject combination if the `--current-status` was passed in as `failure`.
+- In `--read-only` mode the command lists details of found incidents if no issue is found for that incident.
+- If there are no issues found, or all found issues has exempt label set, the command exits with zero status.
+- If any of the issues found have no exempt label set, the command exits with a non-zero status.
+- In `--read-only` mode if any new incident is found that has no issue, the command exits with a non-zero status.
+
+Running the command:
+```sh
+$ cocoa incident process-legacy \
+  --type jest \
+  --subject us.icr.io/service-image \
+  --drilldown-url us.icr.io/service-image@sha256:digest \
+  --incident-id com.ibm.unit_tests_master \
+  --current-status success \
+  --close-resolved-issues
 ```
 {: codeblock}
 
@@ -2299,7 +2381,11 @@ Run the command:
 ### cocoa tekton get-pipeline-logs
 {: #tekton-get-pipeline-logs}
 
-Creates log files for every step from a pipeline run and saves it to a directory. Use either the environment variables (`PIPELINE_ID`, `PIPELINE_RUN_ID`) or override the environment variables with explicit flags (`--pipeline-id`, `--pipeline-run-id`).
+Creates log files for every step from a pipeline run and saves it to a directory. Use either the environment variables (`PIPELINE_ID`, `PIPELINE_RUN_ID`) or override the environment variables with explicit flags (`--pipeline-id`, `--pipeline-run-id`). Log files can be retrieved on a per-task and per-step level as well by supplying `--task-name` and `--step-name` flags.
+
+If `--task-name` is provided, the command tries to pull and creates the log files for every step for the given task name.
+
+If `--step-name` is provided along `--task-name`, the command creates the log file for the specific step for the provided `task-name`. `--step-name` without the `--task-name` is an invalid command signature.
 
 Options:
 
@@ -2308,6 +2394,8 @@ Options:
    --pipeline-id      # ID of the pipeline
    --pipeline-run-id  # ID of the pipeline run
 -u --use-task-ref     # (Optional) Can be used to override the default name of the pipeline task to the taskRef, when creating the directory
+   --task-name       # (Optional) use task-name to fetch the logs for --task-name
+   --step-name       # (Optional) use step-name in conjunction with task-name to fetch the log for --step-name
 ```
 {: screen}
 
