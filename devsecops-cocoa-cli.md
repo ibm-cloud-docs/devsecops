@@ -1844,7 +1844,7 @@ cocoa incident process-legacy \
 
 Options:
 
-```sh
+```text
 --type             # (Required) Tool type
 --subject          # (Required) Subject of scans (repo, or image name)
 --drilldown-url    # (Required) URL to the point where the incident was found (can be a pipeline run, a commit hash or an image URL with digest)
@@ -1867,7 +1867,8 @@ Options:
 {: screen}
 
 Environment variables:
-```sh
+
+```text
 INCIDENT_REPO_ORG=    # Can be used instead of --org (either the option or the variable is required)
 INCIDENT_REPO_NAME=   # Can be used instead of --repo (either the option or the variable is required)
 # Required Environment Variables, if using GitHub:
@@ -1893,6 +1894,7 @@ Return values:
 - In `--read-only` mode if any new incident is found that has no issue, the command exits with a non-zero status.
 
 Running the command:
+
 ```sh
 $ cocoa incident process-legacy \
   --type jest \
