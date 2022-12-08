@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-12-07"
+lastupdated: "2022-12-08"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -981,7 +981,7 @@ $ cat data.txt | cocoa change-request attachment update --change-request-id='CHG
 $ cocoa change-request attachment update --change-request-id='CHGXXXXXXX' --change-attachment-id='CTASKXXXXXXX' --data='@<path/to/file>'
 ```
 
-## cocoa evidence command
+## cocoa evidence commands
 {: #evidence-commands}
 
 ### cocoa evidence create
@@ -1217,7 +1217,7 @@ $ cocoa evidence summarize \
 ```
 {: codeblock}
 
-## cocoa artifact command
+## cocoa artifact commands
 {: #artifact-commands}
 
 ### cocoa artifact upload
@@ -1354,7 +1354,7 @@ $ cocoa set-status \
 ```
 {: codeblock}
 
-## cocoa inventory command
+## cocoa inventory commands
 {: #inventory-commands}
 
 ### cocoa inventory add
@@ -1685,7 +1685,7 @@ $ cocoa inventory promote \
 ```
 {: codeblock}
 
-## cocoa incident command
+## cocoa incident commands
 {: #incident-commands}
 
 ### cocoa incident add
@@ -1922,7 +1922,6 @@ $ cocoa incident process-legacy \
 {: codeblock}
 
 ## cocoa locker commands
-
 {: #locker-commands}
 
 The evidence locker is a Git repository, either on GitHub (Enterprise) or GitLab.
