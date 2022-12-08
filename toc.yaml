@@ -92,7 +92,6 @@ toc:
           topics:
           - devsecops-evidence.md
           - devsecops-evidence-summary.md
-          - devsecops-evidence-checks.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
       - topicgroup: 
