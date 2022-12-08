@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-12-07"
+lastupdated: "2022-12-08"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -47,6 +47,9 @@ Command-line options can take various types of input values, such as numbers, st
 
 Although ServiceNow is documented, it is not supported by the default {{site.data.keyword.cloud_notm}} DevSecOps reference implementation. However, if you want to learn about using ServiceNow with the DevSecOps reference implementation, get help from {{site.data.keyword.cloud_notm}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
 {: note}
+
+## cocoa pull request commands
+{: #pull-request-commands}
 
 ### cocoa check pull-request-approval
 {: #pull-request-approval}
@@ -153,7 +156,7 @@ Running the command:
 ```
 {: codeblock}
 
-### cocoa change-request commands
+## cocoa change-request commands
 {: #change-request-commands}
 
 The `cocoa change-request` commands support three different change management providers:
@@ -978,6 +981,9 @@ $ cat data.txt | cocoa change-request attachment update --change-request-id='CHG
 $ cocoa change-request attachment update --change-request-id='CHGXXXXXXX' --change-attachment-id='CTASKXXXXXXX' --data='@<path/to/file>'
 ```
 
+## cocoa evidence commands
+{: #evidence-commands}
+
 ### cocoa evidence create
 {: #evidence-create}
 
@@ -1211,6 +1217,9 @@ $ cocoa evidence summarize \
 ```
 {: codeblock}
 
+## cocoa artifact commands
+{: #artifact-commands}
+
 ### cocoa artifact upload
 {: #artifact-upload}
 
@@ -1294,7 +1303,7 @@ $ cocoa artifact upload \
 
 CLI options can be also set from environment variables except for `backend` and `upload-path`.
 
-### cocoa set-status
+## cocoa set-status
 {: #set-status}
 
 Sets a commit's status. The current implementation is tested on GitHub. See documentation about [GitHub statuses](https://docs.github.com/en/rest/reference/repos#statuses){: external}.
@@ -1344,6 +1353,9 @@ $ cocoa set-status \
  --description="Tekton linter is running."
 ```
 {: codeblock}
+
+## cocoa inventory commands
+{: #inventory-commands}
 
 ### cocoa inventory add
 {: #inventory-add}
@@ -1673,6 +1685,9 @@ $ cocoa inventory promote \
 ```
 {: codeblock}
 
+## cocoa incident commands
+{: #incident-commands}
+
 ### cocoa incident add
 {: #incident-add}
 
@@ -1906,7 +1921,7 @@ $ cocoa incident process-legacy \
 ```
 {: codeblock}
 
-### cocoa locker commands
+## cocoa locker commands
 {: #locker-commands}
 
 The evidence locker is a Git repository, either on GitHub (Enterprise) or GitLab.
@@ -2380,6 +2395,38 @@ Run the command:
 ```
 {: codeblock}
 
+### cocoa locker evidence check
+{: #locker-evidence-check}
+
+Validate the required evidence based on the checks present in the config file `cocoa locker evidence check`.
+
+Required Environment Variables:
+
+Options:
+
+```text
+--org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
+--repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
+--git-provider     # Git service provider ("github", "gitlab", default: "github")
+--git-token-path   # Git token path to read the secret from 
+--git-api-url      # Github or Gitlab API URL
+--config-path      # (required) use this path to read the config file of all the required evidence check
+--summary-path     # (required) use this path to read the summary file of all the evidences
+--pre-deployment   # If present, will check only pre deployment checks, defaults to false
+--post-deployment  # If present, will check only post deployment checks, defaults to false
+```
+{: screen}
+
+Run the command:
+
+```sh
+ cocoa locker evidence check --summary-path=`<summary-path>` --config-path=`<config-path>` --pre-deployment --post-deployment
+```
+{: codeblock}
+
+## cocoa tekton commands
+{: #tekton-commands}
+
 ### cocoa tekton get-pipeline-logs
 {: #tekton-get-pipeline-logs}
 
@@ -2421,6 +2468,9 @@ $ cocoa tekton get-pipeline-logs \
   --use-task-ref
 ```
 {: codeblock}
+
+## cocoa changelog commands
+{: #changelog-commands}
 
 ### cocoa changelog
 {: #changelog}

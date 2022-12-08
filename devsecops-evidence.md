@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-10"
+lastupdated: "2022-12-07"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -65,7 +65,7 @@ The only hierarchy is the type differentiation and some hash grouping similar to
 .
 └── raw/
     ├── assets/
-    │   └── cc/
+    │   └── xx/
     │       └── abcdef123456789/
     │           ├── evidences/
     │           │   ├── 00abcdef123456789
@@ -77,7 +77,15 @@ The only hierarchy is the type differentiation and some hash grouping similar to
     │   │       └── content
     │   └── ab/
     │       └── abcdef123456789/
-    │           └── content        
+    │           └── content
+    ├── cd/
+    │   ├── c9b77749-fd59-4d32-bbdb-18e55db1615d/
+    │          └── summary.json
+    |          └── evdience-checks.json 
+    ├── cc/
+    │   ├── absd7749-fd59-4d32-bbdb-18e55db1615d/
+    │          └── summary.json
+    |          └── evdience-checks.json              
     └── evidences/
         ├── 00/
         │   └── abcdef123456789/
