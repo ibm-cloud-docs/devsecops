@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-12-08"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, IBM Cloud
 
@@ -58,11 +58,12 @@ The DevSecOps reference implementation is composed of the following building blo
 * **Tekton task library**: Reusable Tekton tasks that can be aggregated into custom pipelines. These tasks in particular are used by the reference pipelines.
 * **CI - Develop a secure app with DevSecOps practices**: A template for quickly provisioning a complete continuous integration solution. The template uses Tekton pipelines and integrates with various tools, such as Git repos, secrets storage, image registry, code scans, and object storage.
 * **CD - Deploy a secure app with DevSecOps practices**:  A template for quickly provisioning a complete continuous deployment solution. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools might include Git repos, secrets storage, image registry, and a change management system.
+* **CC - Ensure that your app is compliant**: A template for ensuring that your deployed artifacts and their source repositories are always compliant. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools might include Git repos, secrets storage, image registry, and a change management system.
 
 ## Learning resources
 {: #cd-devsecops-learning-resources}
 
-There a number of useful enablement resources available to help you evaluate and adopt the continuous integration and continuous deployment templates. You might choose to start with the [Deploy a secure app with DevSecOps best practices](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops) tutorial, which takes you through various common continuous integration and continuous deployment paths.
+There a number of useful enablement resources available to help you evaluate and adopt the continuous integration and continuous deployment templates. You might choose to start with the [Deploy a secure app with DevSecOps best practices](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops) tutorial, which takes you through various common continuous integration, continuous deployment, and continuous compliance paths.
 
 Other useful learning aids are available here:
 
