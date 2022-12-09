@@ -12,11 +12,11 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-In the DevSecOps architecture, before deploying the assets, all the pieces of evidence that were collected in the CI pipeline must be validated so that the assets meet compliance requirements.
-{: shortdesc}
-
 # Evidence validation 
 {: #evidence-checks-validation}
+
+In the DevSecOps architecture, before deploying the assets, all the pieces of evidence that were collected in the CI pipeline must be validated so that the assets meet compliance requirements.
+{: shortdesc}
 
 Collecting evidence is an essential aspect of the DevSecOps reference architecture. The CI pipeline collects the pieces of evidence for all the scans or steps for the assets that are performed by the CI pipeline. The CD pipeline deploys the assets that are produced by the CI pipeline.
 
