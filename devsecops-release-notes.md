@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-12-05"
+lastupdated: "2022-12-12"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -19,6 +19,34 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
 
+## 07 December 2022
+{: #devsecops-dec0722}
+{: release-note}
+
+DevSecOps Continuous Integration for Infrastructure as Code is available as a Toolchain template in the Toolchain catalog. For more information, see [Develop and deploy secure IaC with DevSecOps practices](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac).
+
+## 30 November 2022
+{: #devsecops-nov3022}
+{: release-note}
+
+- CRA scans are now part of the `app-preview-pr-listener` in the CI pipeline.
+- Cocoa Tekton `get-pipeline-logs` supports pulling logs for specific stages.
+- Fixed malformed Git GraphQL URL for nonexistent target branch in the inventory repository.
+
+## 25 October 2022
+{: #devsecops-oct2522}
+{: release-note}
+
+- CRA issue parser now contains an **Introduced by** field when creating a new issue found during a scan.
+- Improved error logging to debug long running promotion requests in the CD pipeline.
+
+
+## 5 October 2022
+{: #devsecops-oct0522}
+{: release-note}
+
+- Amber task support for pipelines to notify users that a pipeline has a non-fatal failure. 
+- Performance improvements in the CD pipeline change request flow.
 
 
 ## 16 September 2022
@@ -104,4 +132,3 @@ DevSecOps is a methodology that integrates security practices with the software 
 
 - Enhanced DevSecOps pipeline code to publish CRA results to {{site.data.keyword.DRA_short}} including BOM, vulnerability, and deployment records.
 - Added support for the optional CRA plug-in parameter `--dockerfilepattern`.
-
