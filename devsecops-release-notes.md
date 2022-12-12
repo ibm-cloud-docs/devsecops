@@ -30,7 +30,7 @@ DevSecOps Continuous Integration for Infrastructure as Code is available as a To
 {: release-note}
 
 - CRA scans are now part of the `app-preview-pr-listener` in the CI pipeline.
-- Cocoa Tekton "get-pipeline-logs" supports pulling logs for specific stages.
+- Cocoa Tekton `get-pipeline-logs` supports pulling logs for specific stages.
 - Fixed malformed Git GraphQL URL for nonexistent target branch in the inventory repository.
 
 ## 25 October 2022
@@ -132,4 +132,3 @@ DevSecOps is a methodology that integrates security practices with the software 
 
 - Enhanced DevSecOps pipeline code to publish CRA results to {{site.data.keyword.DRA_short}} including BOM, vulnerability, and deployment records.
 - Added support for the optional CRA plug-in parameter `--dockerfilepattern`.
-
