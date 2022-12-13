@@ -12,14 +12,16 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Issue processing
+# Processing incident and nonincident issues
 {: #issue-processing}
 
 
 The following types of issues are supported:
 
 * Incident issues, which can arise due to vulnerabilities or CVEs.
-* Non-incident issues, these are not from vulnerabilities, but rather represent a deviation from the compliance posture. For example, unit test failures and branch protection check failures. 
+* Nonincident issues, these issues are not from vulnerabilities, but rather represent a deviation from the compliance posture. For example, unit test failures and branch protection check failures. 
+
+Both incident and nonincident issues are covered here.
 {: shortdesc}
 
 ## Adding default assignees for issues
@@ -53,7 +55,7 @@ For more information, see the following documentation:
 
 Issues that are created by the continuous integration (CI) or continuous compliance (CC) pipelines can have default labels.
 
-Issues created by any scanning tool contains a default `severity` label. The severity levels are `informational`, `low`, `medium`, `high` or `critical`. Example labels are as follows: `severity:informational`, `severity:low`, `severity:medium`, `severity:high` or `severity:critical`. In the absence of severity information from the scanning tool, a default `severity:high` label is attached to the issue.
+Issues that are created by any scanning tool contains a default `severity` label. The severity levels are `informational`, `low`, `medium`, `high`, or `critical`. Example labels are as follows: `severity:informational`, `severity:low`, `severity:medium`, `severity:high`, or `severity:critical`. In the absence of severity information from the scanning tool, a default `severity:high` label is attached to the issue.
 
 To set default labels for issues, set the `incident-labels` environment property to one or more labels that are separated by a comma. For example, `First-Label` or `First-Label,Second-Label`.
 

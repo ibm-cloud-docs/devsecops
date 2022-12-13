@@ -73,7 +73,7 @@ Code Risk Analyzer (CRA) detects multiple types of vulnerabilities, like app dep
 
 The type of vulnerability can be of the following types: name `os`, `python`, `js`, `golang`, or `java`.
 
-If the type of vulnerability is of type `os`, an  `os-vulnerability` label is attached to the issue. For any other type of vulnerability, an `app-vulnerability` label is attached to the issue.
+If the type of vulnerability is of type `os`, an `os-vulnerability` label is attached to the issue. For any other type of vulnerability, an `app-vulnerability` label is attached to the issue.
 
 ### Labels for incident issues with available fixes
 {: #label-incident-issues-fix-available}
@@ -122,6 +122,6 @@ Issues due in 10 days
 - <issue url#12>
 ```
 
-The aggregated list is ordered with the issues that are overdue first, and the issues with nearest due dates are listed before those with a later due date.
+The aggregated list is ordered with the issues that are overdue first, and the issues with nearest due dates are listed before issues with a later due date.
 
 The `cc-finish` stage in the CC pipeline queries for the issues based on the criteria and triggers a Slack alert.

@@ -77,6 +77,7 @@ toc:
               label: Managing due dates
               topics:
               - devsecops-due-date-reference.md
+              - devsecops-how-to-configure-grace-period.md
       - topicgroup:
           label: Managing change requests
           topics:
