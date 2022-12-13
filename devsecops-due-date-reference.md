@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-08-10"
+lastupdated: "2022-12-13"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -112,20 +112,28 @@ For issues created on {{site.data.keyword.gitrepos}}, the due date is set in the
 
 The issue description contains the timestamp when the issue was first discovered. For example, `First found on 2022-04-07.`. The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
 
-## More issue options
-{: #due-date-issue-options}
+## Configuring custom grace periods on the CC pipeline
+{: #configure-custom-grace-period}
 
-### Exempt
-{: #due-date-issue-options-exempt}
+The Continuous Compliance (CC) pipeline calculates the due dates of incident issues based on the severity of an issue. You can change the default grace period values and replace them with custom values.
 
-If you want to mark an issue as permanently exempt, add the `exempt` label to the issue so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted. Issues that have the exempt label are open permanently.
+By default, the configuration listed in Table 1 is used:
 
-If you want to mark an issue permanently exempted with a custom label, add that label to the incident issue, and then add the `custom-exempt-label` optional parameter to the CI and CC pipelines with the same value as the custom label.
+To change the default configuration, create a new property in the CC pipeline's environment properties named `grace-period-configuration`. This environment property must be a JSON string and match the following format:
 
-If an issue is marked as exempted, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
+```json
+{
+  "informational": 50,
+  "low": 40,
+  "medium": 30,
+  "high": 20,
+  "critical": 10
+}
+```
+{: codeblock}
+
+If the environment property does not match the expected format or is not a valid JSON string, the pipeline uses the default values.
 {: note}
 
-## Related information
-{: #due-date-related}
-
-For more information, see [Configuring custom grace periods on the CC pipeline](/docs/devsecops?topic=devsecops-configure-custom-grace-period).
+The environment property `grace-period-configuration` sets due dates for issues that do not have a due date set already. For issues that have a due date set, reconfiguring the `grace-period-configuration` does not update those due dates.
+{: note}
