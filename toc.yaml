@@ -78,6 +78,7 @@ toc:
               topics:
               - devsecops-due-date-reference.md
               - devsecops-how-to-configure-grace-period.md
+              - devsecops-how-to-modify-due-date.md
       - topicgroup:
           label: Managing change requests
           topics:
