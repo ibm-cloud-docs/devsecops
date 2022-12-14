@@ -58,12 +58,12 @@
         {
           "date": "07 December 2022",
           "title": "Integration for Infrastructure as Code now available as a Toolchain template",
-          "description": "DevSecOps Continuous Integration for Infrastructure as Code is available as a Toolchain template in the Toolchain catalog. For more information." 
+          "description": "DevSecOps Continuous Integration for Infrastructure as Code is available as a Toolchain template in the Toolchain catalog." 
         },
         {
           "date": "30 November 2022",
           "title": "CRA scans and Cocoa Tekton improvements",
-          "description": "CRA scans are now part of the `app-preview-pr-listener` in the CI pipeline. Also, Cocoa Tekton `get-pipeline-logs` supports pulling logs for specific stages."
+          "description": "CRA scans are now part of the `app-preview-pr-listener` in the CI pipeline. Also, Cocoa Tekton `get-pipeline-logs` now supports pulling logs for specific stages."
         },
         {
           "date": "25 October 2022",
