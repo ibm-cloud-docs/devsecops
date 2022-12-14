@@ -2,8 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-19"
-
+lastupdated: "2022-12-14"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -25,6 +24,8 @@ The script does the following tasks:
 - If issues are found, the script evaluates their grace periods (due dates) and exemption states.
 - Creates an evidence asset in the evidence locker.
 - Creates the [evidence](/docs/devsecops?topic=devsecops-devsecops-evidence) itself, and attaches the issues and provided attachments.
+
+For a status of `success` or `failure`, if no attachments are passed inside `collect-evidence`, the pipeline-logs for that particular task and the stage are captured as an attachment.
 
 The `collect-evidence` script is provided by the pipeline. It does not need to be installed. The script has the following dependencies:
 
