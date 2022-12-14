@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-12-13"
+lastupdated: "2022-12-14"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -20,8 +20,6 @@ The following types of issues are supported:
 
 * Incident issues, which can arise due to vulnerabilities or CVEs.
 * Nonincident issues, these issues are not from vulnerabilities, but rather represent a deviation from the compliance posture. For example, unit test failures and branch protection check failures. 
-
-Both incident and nonincident issues are covered here.
 {: shortdesc}
 
 ## Adding default assignees for issues
@@ -76,7 +74,7 @@ The pipeline takes these usernames and assigns these users to the incident issue
 You can define this environment property per trigger so that each trigger can assign different users.
 {: tip}
 
-### Exemptions
+## Exemptions
 {: #due-date-issue-options-exempt}
 
 If you want to mark an issue as permanently exempt, add the `exempt` label to the issue so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted. Issues that have the exempt label are open permanently.

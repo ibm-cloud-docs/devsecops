@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-12-13"
+lastupdated: "2022-12-14"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -34,10 +34,7 @@ The following diagram shows the possible use cases that are based on these diffe
 
 ![Vulnerability use cases flow](images/devsecops-vulnerability-usecases-flow.png "Vulnerability use cases flow"){: caption="Figure 1. Vulnerability use cases flow" caption-side="bottom"}
 
-## Managing incident issues
-{: #incident-issue-managing}
-
-### Setting the due date for incident issues
+## Setting the due date for incident issues
 {: #incident-issue-due-date-setting}
 
 If the incident issues are found in production, the `Due Date` property might be added to the issue to specify the grace period in which it must be fixed. The [duration of the grace period](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#grace-period-duration) is determined by the severity of the found vulnerability.
