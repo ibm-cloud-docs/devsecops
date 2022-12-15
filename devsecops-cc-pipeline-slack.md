@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-19"
+lastupdated: "2022-12-15"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -18,9 +18,10 @@ subcollection: devsecops
 The Continuous Compliance (CC) pipeline can set due dates for the incident issues. The pipeline can also notify users about issues that have approaching due dates and overdue due dates by using Slack, if Slack integration is enabled.
 {: shortdesc}
 
-For more information, see [Set up a Continuous Integration (CI) toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-devsecops-template#devsecops-ci-tool-integration-optional-slack). For more information about due dates, see [Incident issues with Due Date](/docs/devsecops?topic=devsecops-issues-due-date).
+For more information, see [Set up a Continuous Integration (CI) toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain#tutorial-ci-toolchain-slack). For more information about due dates, see [Incident issues with due date](/docs/devsecops?topic=devsecops-devsecops-issues-due-date.
 
 The issues that are notified are classified as follows:
+
 * Issues having pending due dates within a specific timeframe: issues that are open, have due dates, and are due within a timeframe.
 * Issues having past due dates: issues that are open, have due dates, and the date is passed.
 
