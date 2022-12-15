@@ -80,6 +80,7 @@ toc:
               - devsecops-how-to-configure-grace-period.md
               - devsecops-how-to-modify-due-date.md
               - devsecops-cc-pipeline-slack.md
+          - devsecops-non-incident-issues.md
       - topicgroup:
           label: Managing change requests
           topics:
