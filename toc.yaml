@@ -69,8 +69,9 @@ toc:
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
-          label: Managing incident issues
+          label: Working with issues
           topics: 
+          - devsecops-issue-processing.md
           - devsecops-incident-issues.md
           - topicgroup:
               label: Managing due dates
@@ -78,9 +79,7 @@ toc:
               - devsecops-due-date-reference.md
               - devsecops-how-to-configure-grace-period.md
               - devsecops-how-to-modify-due-date.md
-          - devsecops-how-to-set-incident-labels.md
-          - devsecops-how-to-set-incident-assignees.md
-          - devsecops-cc-pipeline-slack.md
+              - devsecops-cc-pipeline-slack.md
       - topicgroup:
           label: Managing change requests
           topics:

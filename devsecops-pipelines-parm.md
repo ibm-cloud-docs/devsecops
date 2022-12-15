@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-11-02"
+lastupdated: "2022-12-14"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -118,6 +118,7 @@ The following tables list and describe the pull request, continuous integration,
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
+|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`opt-in-sonar`		|tool integration		|The Sonarqube scan integration.	|Optional			|
 |`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
@@ -183,6 +184,7 @@ The following tables list and describe the pull request, continuous integration,
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
+|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -255,6 +257,7 @@ The following tables list and describe the pull request, continuous integration,
 |`opt-in-dynamic-ui-scan`		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
 |`opt-in-sonar`		|tool integration		|The Sonarqube scan integration.	|Optional			|
 |`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
+|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|

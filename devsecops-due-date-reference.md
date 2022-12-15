@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-08-10"
+lastupdated: "2022-12-13"
 
 keywords: DevSecOps, IBM Cloud, incident issues, grace period, due date
 
@@ -111,21 +111,3 @@ For issues created on {{site.data.keyword.gitrepos}}, the due date is set in the
 {: note}
 
 The issue description contains the timestamp when the issue was first discovered. For example, `First found on 2022-04-07.`. The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
-
-## More issue options
-{: #due-date-issue-options}
-
-### Exempt
-{: #due-date-issue-options-exempt}
-
-If you want to mark an issue as permanently exempt, add the `exempt` label to the issue so that the issue doesn't block deployments. However, the issue still appears in the change request for the deployment. As a best practice, link the source of the exemption (for example, the issue ticket) to the issue in a comment so that reviewers understand why the issue is exempted. Issues that have the exempt label are open permanently.
-
-If you want to mark an issue permanently exempted with a custom label, add that label to the incident issue, and then add the `custom-exempt-label` optional parameter to the CI and CC pipelines with the same value as the custom label.
-
-If an issue is marked as exempted, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
-{: note}
-
-## Related information
-{: #due-date-related}
-
-For more information, see [Configuring custom grace periods on the CC pipeline](/docs/devsecops?topic=devsecops-configure-custom-grace-period).

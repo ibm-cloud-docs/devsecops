@@ -56,19 +56,19 @@
       "view_more": "/docs/devsecops?topic=devsecops-release-notes",
       "tiles": [
         {
-          "date": "16 September 2022",
-          "title": "Added the retry_sleep environment property for VA scans",
-          "description": "The retry_sleep environment property is now added for the number of Vulnerability Advisor (VA) scans to attempt for a pipeline run." 
+          "date": "07 December 2022",
+          "title": "Integration for Infrastructure as Code now available as a Toolchain template",
+          "description": "DevSecOps Continuous Integration for Infrastructure as Code is available as a Toolchain template in the Toolchain catalog." 
         },
         {
-          "date": "16 September 2022",
-          "title": "Improved log messaging clarifies evidence status",
-          "description": "Improved log messages so the evidence status is clearer. For example, Evaluated evidence status: <success|failure|pending>" 
+          "date": "30 November 2022",
+          "title": "CRA scans and Cocoa Tekton improvements",
+          "description": "CRA scans are now part of the `app-preview-pr-listener` in the CI pipeline. Also, Cocoa Tekton `get-pipeline-logs` now supports pulling logs for specific stages."
         },
         {
-          "date": "11 August 2022",
-          "title": "Native due date field in GitLab",
-          "description": "Now using the native due date field in GitLab to manage issues."
+          "date": "25 October 2022",
+          "title": "CRA issue parser improvements",
+          "description": "CRA issue parser now contains an `Introduced by` field when creating a new issue found during a scan."
         }
       ]
 }}

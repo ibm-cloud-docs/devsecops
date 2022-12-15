@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-12-14"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Incident issues
+# Managing incident issues
 {: #incident-issues}
 
 From a compliance perspective, creating, storing, and updating incident issues (vulnerability, CVE) as part of the [Continuous Integration](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) and [Continuous Compliance](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline) pipelines are essential for evidence collection.
@@ -34,40 +34,31 @@ The following diagram shows the possible use cases that are based on these diffe
 
 ![Vulnerability use cases flow](images/devsecops-vulnerability-usecases-flow.png "Vulnerability use cases flow"){: caption="Figure 1. Vulnerability use cases flow" caption-side="bottom"}
 
-## Managing incident issues
-{: #incident-issue-managing}
-
-### Setting the due date for incident issues
+## Setting the due date for incident issues
 {: #incident-issue-due-date-setting}
 
 If the incident issues are found in production, the `Due Date` property might be added to the issue to specify the grace period in which it must be fixed. The [duration of the grace period](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#grace-period-duration) is determined by the severity of the found vulnerability.
 
-For more information about customizing the grace periods, see [Configuring custom grace periods on the CC pipeline](/docs/devsecops?topic=devsecops-configure-custom-grace-period).
+For more information about customizing the grace periods, see [Configuring custom grace periods on the CC pipeline](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#configure-custom-grace-period).
 
-For more information about manually setting the due date, see [Postponing the due date of an incident issue](/docs/devsecops?topic=devsecops-due-date-postpone)
+## Labeling incident issues
+{: #label-incident-issues}
 
-### Adding default assignees for incident issues
-{: #incident-issue-assignee}
+Incident issues that are created by the continuous integration (CI) or continuous compliance (CC) pipelines can have default labels.
 
-You can define multiple default assignees for the incident issue by using the `incident-assignees` pipeline parameter. The `incident-assignees` parameter can be used only with GitHub accounts and GitLab Premium accounts. For more information about the usage of the `incident-assignees` parameter, see [Assigning incident issues to users](/docs/devsecops?topic=devsecops-assign-incident-issues).
+### Labels for incident issues discovered by Code Risk Analyzer
+{: #label-incident-issues-cra}
 
-You can also set a default incident issue assignee for the pipeline with the `incident-assignee` pipeline parameter, but note that this parameter is deprecated and will be removed with the v1 evidence (legacy) collection.
+Code Risk Analyzer (CRA) detects multiple types of vulnerabilities, like app dependency and image vulnerability.
 
-### Filtering incident issues
-{: #incident-issue-filtering}
+The type of vulnerability can be of the following types: name `os`, `python`, `js`, `golang`, or `java`.
 
-You can filter and search for incident issues by using default and custom labels. The following default labels are assigned to the incident issues upon creation or update:
-- The [scan type](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#due-date-supported-tools) that is used for the issue processing is added to the incident issue as a tool label (for example, `tool:cra`, `tool:va`, `tool:sonarqube`).
-- A severity label is also assigned to the incident issues by default. The severity categories are defined based on the scan results and can be one of the following: `severity:critical`, `severity:high`, `severity:medium`, `severity:low`, `severity:informational`.
-- The `has-exempt` is a VA tool-specific label that is assigned to the incident issue if it is exempted based on the scan result. If the `exempt` status is not included in the scan result, the incident issue can be exempted manually by assigning the `exempt` label and adding a link to the source of the exempt issue ticket in a comment. For more information, see [More issue options - Exempt](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#due-date-issue-options-exempt). If an issue is marked with the `exempt` label, rerun the CI pipeline. Otherwise, the pipeline does not produce new evidence.
+If the type of vulnerability is of type `os`, an `os-vulnerability` label is attached to the issue. For any other type of vulnerability, an `app-vulnerability` label is attached to the issue.
 
-You can also add a default label for incident issues with the `incident-labels` pipeline parameter. For more information about this topic, see [Labeling incident issues](/docs/devsecops?topic=devsecops-label-incident-issues).
+### Labels for incident issues with available fixes
+{: #label-incident-issues-fix-available}
 
-### Searching on {{site.data.keyword.gitrepos}}
-{: #devsecops-search-in-issues}
+For incident issues that are created by the continuous integration (CI) pipeline or continuous compliance (CC) pipeline, the scanner might have remediation information as a part of the scan result. If remediation information is available, a `fix-available` label is added to the incident issue with a link to the fix description inside the issue description.
 
-When you use {{site.data.keyword.gitrepos}}, you can search for issues in various ways in the UI. For example, you can filter by texts in the title or the body, even in comments, or you can filter by any label.
-
-For more information, see the following documentation:
-- How to [search on GitLab](https://docs.gitlab.com/ee/user/search/#search-issues-and-merge-requests){: external}.
-- How to [search on GitHub](https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests){: external}.
+However, the absence of the `fix-available` label does not mean that the issue is not actionable because not every scanner includes the fix information in the scan result. The scanner suggests the fix information, and that information comes from wherever the scanner sources this "fix" data. Some scanners might not have up-to-date "fix" dictionaries or do not contain information for a fix.
+{: note}
