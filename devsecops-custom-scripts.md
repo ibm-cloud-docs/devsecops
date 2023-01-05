@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-10"
+  years: 2021, 2023
+lastupdated: "2023-01-05"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -20,7 +20,7 @@ Custom scripts are extension points in the pipeline where adopters, teams, and u
 
 Custom scripts control the pipeline stages. You can use a configuration file (`pipeline-config.yaml`) to configure the behavior of stages, script content, and the base image that runs the scripts. The scripts and configuration for pipeline stages are loaded from a Git repository (repo) that can either be the application (app) repo (similar to `.travis.yml` or `Jenkinsfile`) or a custom repo.
 
-When any of the custom scripts are invoked, the complete URL of the custom script file, including the file name and the commit hash, is printed at the beginning of the pipeline logs as follows: `The custom script can be viewed using the following link: 'https://<source repo url>/<organization name>/<repository name>/blob/<commit hash>/.pipeline-config.yaml'`. This positioning improves traceability.
+When any of the custom scripts are started, the complete URL of the custom script file, including the file name and the commit hash, is printed at the beginning of the pipeline logs as follows: `The custom script can be viewed using the following link: 'https://<source repo url>/<organization name>/<repository name>/blob/<commit hash>/.pipeline-config.yaml'`. This positioning improves traceability.
 
 ## Stages
 {: #cd-devsecops-scripts-stages}
@@ -229,7 +229,7 @@ kubectl create secret docker-registry regcred \
   --docker-username="$(get_env my-artifactory-user)" \
   --docker-email="$(get_env my-artifactory-email)" \
   --docker-password="$(get_env my-artifactory-password)" \
-   | jq -r '.data[".dockerconfigjson"]' | base64 -d
+   | jq -r '.data[".dockerconfigjson"]'
 
 {"auths":{"us.icr.io":{"username":"user@ibm.com","password":"secret-password","email":"user@ibm.com","auth":"dXNlckBpYm0uY29tOnNlY3JldC1wYXNzd29yZA=="}}}
 ```
