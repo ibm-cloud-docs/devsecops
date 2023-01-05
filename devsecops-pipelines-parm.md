@@ -120,7 +120,7 @@ The following tables list and describe the pull request, continuous integration,
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
-|`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -256,7 +256,7 @@ The following tables list and describe the pull request, continuous integration,
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|text	|To enable the owasp zap UI scan.	 |Optional			|
 |`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
-|`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
