@@ -44,7 +44,7 @@ toc:
             navtitle: "Part 3: Set up a CD toolchain"
           - topic: devsecops-tutorial-cc-toolchain.md
             navtitle: "Part 4: Set up a CC toolchain"
-      - /apps/apps-tutorial-apps-devsecops
+      - include: ../apps/tutorials/tutorial-devsecops-refarch.md
       - topicgroup:
           label: Develop and deploy secure IaC with DevSecOps practices
           topics:
@@ -122,7 +122,7 @@ toc:
       - topicgroup:
           label: Tool integrations
           topics:
-          - /ContinuousDelivery/ContinuousDelivery-scc
+          - include: ../ContinuousDelivery/scc_integration.md
           - devsecops-sonarqube-integration.md
       - topicgroup:
           label: Enhancing security
