@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-12-14"
+  years: 2021, 2023
+lastupdated: "2023-01-05"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -114,13 +114,13 @@ The following tables list and describe the pull request, continuous integration,
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`onepipeline-dockerconfigjson`		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
-|`opt-in-dynamic-api-scan`		|tool integration		|To enable the owasp zap API scan. 	|Optional			|
+|`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
-|`opt-in-dynamic-ui-scan`		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
+|`opt-in-dynamic-ui-scan`		|text		|To enable the owasp zap UI scan.	 |Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
-|`opt-in-sonar`		|tool integration		|The Sonarqube scan integration.	|Optional			|
-|`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
+|`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -252,11 +252,11 @@ The following tables list and describe the pull request, continuous integration,
 |`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
-|`opt-in-dynamic-api-scan`		|tool integration		|To enable the owasp zap API scan. 	|Optional			|
+|`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
-|`opt-in-dynamic-ui-scan`		|tool integration		|To enable the owasp zap UI scan.	 |Optional			|
-|`opt-in-sonar`		|tool integration		|The Sonarqube scan integration.	|Optional			|
-|`opt-in-sonar-hotspots`		|text		|The Sonarqube scan for hotspots detection.	|Optional			|
+|`opt-in-dynamic-ui-scan`		|text	|To enable the owasp zap UI scan.	 |Optional			|
+|`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
