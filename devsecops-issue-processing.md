@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-12-15"
+  years: 2022, 2023
+lastupdated: "2023-01-10"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -33,7 +33,7 @@ You can also set a default issue assignee for the pipeline with the `incident-as
 {: #issue-filtering}
 
 You can filter and search for issues by using default and custom labels. The following default labels are assigned to the issues upon creation or update:
-- The [scan type](/docs/devsecops?topic=devsecops-devsecops-issues-due-date#due-date-supported-tools) that is used for the issue processing is added to the incident issue as a tool label (for example, `tool:cra`, `tool:va`, `tool:sonarqube`).
+- The [scan type](/docs/devsecops?topic=devsecops-incident-issues#due-date-supported-tools) that is used for the issue processing is added to the incident issue as a tool label (for example, `tool:cra`, `tool:va`, `tool:sonarqube`).
 - A severity label is also assigned to issues. The severity categories are defined based on the scan results and can be one of the following: `severity:critical`, `severity:high`, `severity:medium`, `severity:low`, `severity:informational`.
 - The `has-exempt` is a VA tool-specific label that is assigned to the issue if it is exempted based on the scan result. If the `exempt` status is not included in the scan result, you can exempt the issue manually by assigning the `exempt` label and adding a link to the source of the exempt issue ticket in a comment. For more information, see [Exemptions](#due-date-issue-options-exempt). If an issue is marked `exempt`, rerun the CI pipeline. Otherwise, the pipeline does not produce new evidence.
 

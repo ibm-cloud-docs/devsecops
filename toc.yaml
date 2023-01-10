@@ -73,13 +73,6 @@ toc:
           topics: 
           - devsecops-issue-processing.md
           - devsecops-incident-issues.md
-          - topicgroup:
-              label: Managing due dates
-              topics:
-              - devsecops-due-date-reference.md
-              - devsecops-how-to-configure-grace-period.md
-              - devsecops-how-to-modify-due-date.md
-              - devsecops-cc-pipeline-slack.md
           - devsecops-non-incident-issues.md
       - topicgroup:
           label: Managing change requests
