@@ -73,7 +73,7 @@ collect-evidence --help
 ### Return value
 {: #collect-evidence-return-value}
 
-`collect-evidence` outputs the evaluated evidence status string on STDOUT (one of `success`, `failure`, or `pending`). This evaluated value depends on the processed result attachments, found incident issues, and possible remediation of those issues, for example having a due date set or an exempt label. For more information, see [Incident issues](/docs/devsecops?topic=devsecops-incident-issues) and [Incident issues with due date](/docs/devsecops?topic=devsecops-incident-issues#devsecops-devsecops-issues-due-date).
+`collect-evidence` outputs the evaluated evidence status string on STDOUT (one of `success`, `failure`, or `pending`). This evaluated value depends on the processed result attachments, found incident issues, and possible remediation of those issues, for example having a due date set or an exempt label. For more information, see [Incident issues](/docs/devsecops?topic=devsecops-incident-issues).
 
 ```bash
 # example on how to read the output into a variable in bash
