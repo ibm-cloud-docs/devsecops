@@ -10,20 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:video: .video}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:term: .term}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Omitting vulnerabilities found by the Code Risk Analyzer
 {: #devsecops-omit-vulnerabilities}

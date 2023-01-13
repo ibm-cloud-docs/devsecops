@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-12-05"
+  years: 2021, 2023
+lastupdated: "2023-01-13"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -11,7 +11,6 @@ subcollection: devsecops
 ---
 
 {{site.data.keyword.attribute-definition-list}}
-
 
 # Continuous integration pipeline for Infrastructure as Code
 {: #cd-devsecops-iac-ci-pipeline}

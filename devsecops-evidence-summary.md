@@ -1,6 +1,5 @@
 ---
 
-
 copyright:
   years: 2022
 lastupdated: "2022-10-27"
