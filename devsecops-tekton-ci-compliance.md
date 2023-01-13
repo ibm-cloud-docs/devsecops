@@ -351,7 +351,7 @@ It contains two pipelines:
 {: #cd-devsecops-tekton-ci-run-pipeline}
 
 To start the PR pipeline, you should create a merge request in your application repository. To achieve this, do the following:
-1. On the CI toolchain page, click the application repository tile. By default it gets created with a name **compliance-app-<timestamp>**.
+1. On the CI toolchain page, click the application repository tile. By default, it gets created with a name **`compliance-app-<timestamp>`**.
 1. Create a branch from master.
 1. Update some code like in app or readme file and save changes.
 1. Submit merge request.
