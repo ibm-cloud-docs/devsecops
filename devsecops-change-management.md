@@ -8,7 +8,6 @@ keywords: DevSecOps, automate change management, change management, ibm cloud
 
 subcollection: devsecops
 
-
 ---
 
 {{site.data.keyword.attribute-definition-list}}

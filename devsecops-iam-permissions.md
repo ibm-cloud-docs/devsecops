@@ -12,7 +12,6 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-
 # Managing IAM access for toolchains
 {: #iam-permissions}
 

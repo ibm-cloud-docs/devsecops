@@ -10,18 +10,7 @@ subcollection: devsecops
 
 ---
 
-{:shortdesc: .shortdesc}
-{:table: .aria-labeledby="caption"}
-{:external: target="_blank" .external}
-{:codeblock: .codeblock}
-{:pre: .pre}
-{:screen: .screen}
-{:tip: .tip}
-{:note: .note}
-{:important: .important}
-{:download: .download}
-{:help: data-hd-content-type='help'}
-{:support: data-reuse='support'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Using the {{site.data.keyword.compliance_short}} with DevSecOps toolchains
 {: #cd-devsecops-scc-toolchains}

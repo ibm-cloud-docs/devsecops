@@ -12,7 +12,6 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-
 # Peer review compliance
 {: #cd-devsecops-peer-review}
 
