@@ -25,7 +25,7 @@ Aligned with the requirements of the Financial Services industry, {{site.data.ke
 DevSecOps uses {{site.data.keyword.contdelivery_short}} ({{site.data.keyword.gitrepos}}, Tekton Pipelines, {{site.data.keyword.DRA_short}}, and Code Risk Analyzer), Secrets Manager, Key Protect, Cloud Object Storage, Container Registry and Vulnerability Advisor. Out of the box, DevSecOps also leverages popular scanning tools such as SonarQube, Gosec, OWAS Zap (dynamic scan), any unit test framework, and GPG signing. It can also be used with more tools such as external Git providers and artifact stores. DevSecOps supports hybrid deployments, in particular by using private pipeline workers, and can be interfaced with other deployment tools such as Satellite Config and ArgoCD.
 
 ## Background
-{: #cd-devsecops-background}
+{: #devsecops-background}
 
 Agile and DevOps provide for automation and greater development velocity, software quality, and consistency and reliability in the delivery processes while they remove the potential for human error. DevSecOps integrates a set of security and compliance controls into the DevOps processes. This feature allows organizations to deliver rapidly and often while they maintain a strong security posture and continuous state of audit-readiness.
 
