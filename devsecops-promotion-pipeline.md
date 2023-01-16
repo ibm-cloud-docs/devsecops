@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-26"
+  years: 2021, 2022, 2023
+lastupdated: "2023-01-16"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -24,8 +24,9 @@ The promotion pipeline promotes inventory entries from one environment to anothe
 1. Get inputs for the promotion and the promotion pull/merge request.
 2. Promote the inventory entries from the source environment to the target environment.
 3. Create the promotion pull/merge request. Edit the pull/merge request to indicate which changes to perform. Watch for optional and mandatory fields.
-4. Merge the pull/merge request.
-5. Send a Slack notification if the feature is turned on.
+4. Optional step: Validate and set the evidence status on the promotion pull/merge request.
+5. Merge the pull/merge request.
+6. Send a Slack notification if the feature is turned on.
 
 ## Running the promotion pipeline
 {: #cd-devsecops-promotion-pipelinerun}
@@ -43,6 +44,8 @@ For more information about the inventory and promotion process, see [Inventory p
 {: #cd-devsecops-promotion-pipelinepr}
 
 The information from the body of the promotion pull/merge request is used to create the change request. Files that are changed by the promotion pull/merge request represent the entries, such as images, that are deployed by the continuous deployment pipeline. If the changes were made because of an emergency, the promotion pull/merge request is marked with an emergency label. The change request that is created by the continuous deployment pipeline is also marked as `emergency`.
+
+Set `opt-in-promotion-validation` to 1, to perform Promotion PR validation after the promotion pull/merge request is created. While the validation is in progress. merging of the promotion pull/merge request is blocked. Once the validation is completed, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
     
 ## Inputs
 {: #cd-devsecops-promotion-pipelineinputs}
@@ -79,6 +82,8 @@ You must edit and modify the pull/merge request if the optional parameters were 
 {: caption="Table 2.Optional parameters" caption-side="top"}
 
  ![Promotion pull and merge request](images/promotion-pull-request.png){: caption="Promotion pull and merge request" caption-side="bottom"}
+ 
+ ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Evidence status on promotion pull and merge request" caption-side="bottom"}
 
 ## Next step
  {: #devsecops-promotion-pipeline-next}
