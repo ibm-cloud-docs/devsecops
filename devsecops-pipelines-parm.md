@@ -280,7 +280,7 @@ The following tables list and describe the pull request, continuous integration,
 |`opt-in-promotion-validation`		|text	|Enables validation of evidence status after inventory PR creation. Status is set on the PR.	 |Optional			|
 {: caption="Table 5. Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
-{: tab-title=“Promotion parameters"}
+{: tab-title="Promotion parameters"}
 {: tab-group="IAM-simple"}
 {: class="simple-tab-table"}
 
