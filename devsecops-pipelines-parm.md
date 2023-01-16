@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-01-05"
+lastupdated: "2023-01-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -15,13 +15,13 @@ subcollection: devsecops
 # Pipeline parameters
 {: #cd-devsecops-pipeline-parm}
 
-Parameters are provided out of the box for the pull request, continuous integration, continuous deployment, and continuous compliance pipelines.
+Parameters are provided out of the box for the pull request, continuous integration, continuous deployment, continuous compliance, and promotion pipelines.
 {: shortdesc}
 
 You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 {: tip}
 
-The following tables list and describe the pull request, continuous integration, continuous deployment, and continuous compliance parameters for pipelines:
+The following tables list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines:
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -272,6 +272,15 @@ The following tables list and describe the pull request, continuous integration,
 {: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
+{: tab-group="IAM-simple"}
+{: class="simple-tab-table"}
+
+|Name |Type	|Description |Required or Optional |
+|:----------|:------------------------------|:------------------|:----------|
+|`opt-in-promotion-validation`		|text	|Enables validation of evidence status after inventory PR creation. Status is set on the PR.	 |Optional			|
+{: caption="Table 5. Promotion parameters" caption-side="bottom"}
+{: #pipelines-promotion-parameters}
+{: tab-title="Promotion parameters"}
 {: tab-group="IAM-simple"}
 {: class="simple-tab-table"}
 
