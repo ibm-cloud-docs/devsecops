@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-12-08"
+  years: 2021, 2022, 2023
+lastupdated: "2023-01-16"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1335,11 +1335,14 @@ GITLAB_URL=       # Git Repos and Issue Tracking URL Example: https://<region>.g
 If you are using `gitlab`, use `--git-token-path` field to set your GitLab Token and `--git-api-url` field to set the GitLab API URL instead of `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
+If you are using `gitlab` and the specified commit is associated with a merge request, use the optional `--ref` field to set the merge request’s source branch. For more information, see [Set the pipeline status of a commit](https://docs.gitlab.com/ee/api/commits.html#set-the-pipeline-status-of-a-commit){: external}.
+
 Options for Git:
 
 ```text
---git-token-path    #(Optional) Github or Gitlab Token's path
---git-api-url           #(Optional) Github or Gitlab API url
+--git-token-path    #(Optional) GitHub or GitLab token's path
+--git-api-url       #(Optional) GitHub or GitLab API url
+--ref               #(Optional, GitLab only) merge request's source branch to which the status refers
 ```
 {: screen}
 
