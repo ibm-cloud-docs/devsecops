@@ -123,7 +123,8 @@ toc:
       - topicgroup:
           label: Enhancing security
           topics:
-          - include: ../security-compliance/getting-started.md 
+          - include: ../security-compliance/getting-started.md
+            navtitle: Managing security and compliance
           - devsecops-data-security.md
   - navgroup:
       id: reference
