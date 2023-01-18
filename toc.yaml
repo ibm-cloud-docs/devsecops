@@ -94,6 +94,14 @@ toc:
           - devsecops-promote-branches.md
           - devsecops-force-redeployment.md
           - devsecops-rollback-deployment.md
+      - topicgroup:
+          label: Configuring scanning tools
+          topics:
+          - devsecops-configuring-zap-scans.md
+          - devsecops-sonarqube-integration.md
+          - devsecops-configuring-mend-scans.md
+          - devsecops-ignore-cra-vulnerabilities.md
+          - devsecops-get-va-rating-from-xforce.md
       - devsecops-pipelines-add-triggers.md
       - devsecops-async-sub-pipelines.md
       - devsecops-async-update-webhook.md
@@ -106,16 +114,12 @@ toc:
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
       - devsecops-partition-inventory-cc-pipeline.md
-      - devsecops-ignore-cra-vulnerabilities.md
       - devsecops-scc-toolchains.md
-      - devsecops-configuring-zap-scans.md
-      - devsecops-configuring-mend-scans.md
       - devsecops-iam-permissions.md
       - topicgroup:
           label: Tool integrations
           topics:
           - include: ../ContinuousDelivery/scc_integration.md
-          - devsecops-sonarqube-integration.md
       - topicgroup:
           label: Enhancing security
           topics:
