@@ -123,7 +123,7 @@ toc:
       - topicgroup:
           label: Enhancing security
           topics:
-          - devsecops-security-compliance.md
+          - include: ../security-compliance/getting-started.md 
           - devsecops-data-security.md
   - navgroup:
       id: reference
