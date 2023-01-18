@@ -252,7 +252,7 @@ The following tables list and describe the pull request, continuous integration,
 |`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
-|`opt-in-auto-close` |text		|Enables auto-closing of issues coming from vulnerabilities, once the vulnerability is no longer detected by the CC pipeline run..	|Optional			|
+|`opt-in-auto-close` |text		|Enables auto-closing of issues coming from vulnerabilities, once the vulnerability is no longer detected by the CC pipeline run.	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|text	|To enable the owasp zap UI scan.	 |Optional			|
