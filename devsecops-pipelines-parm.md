@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2023
-lastupdated: "2023-01-16"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-01-18"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -76,7 +76,7 @@ The following tables list and describe the pull request, continuous integration,
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
 |[`cluster-name`](#pipeline-parm-cluster-name)		|text		|The name of the Docker build cluster.	|Required			|
-|[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)	|text		|The baseimage for running the built-in pipeline code.	|Optional	
+|[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)	|text		|The base image for running the built-in pipeline code.	|Optional	
 |`cos-api-key`		|text		|The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		|text		|The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker.  For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). |Optional			|
@@ -91,7 +91,7 @@ The following tables list and describe the pull request, continuous integration,
 |`cra-maven-exclude-scopes`       |text   |Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  |Optional   |
 |`cra-nodejs-create-package-lock`		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
-|[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.	|Optional			|
+|[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue is marked as exempted.	|Optional			|
 |`custom-image-tag`		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
@@ -252,6 +252,7 @@ The following tables list and describe the pull request, continuous integration,
 |`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
+|`opt-in-auto-close` |text		|Enables auto-closing of issues coming from vulnerabilities, once the vulnerability is no longer detected by the CC pipeline run..	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|text	|To enable the owasp zap UI scan.	 |Optional			|
