@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022, 2023
-lastupdated: "2023-01-16"
+lastupdated: "2023-01-23"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1794,6 +1794,7 @@ Options:
 --git-token-path   #(Optional) Github or Gitlab Token's path
 --git-api-url      #(Optional) Github or Gitlab API url
 --custom-exempt-label # (Optional) Defines the custom label with which the incident issue has been marked as exempted
+--custom-comment   # (Optional) Additional text to be added to issue comments
 ```
 {: screen}
 
@@ -1881,6 +1882,7 @@ Options:
 --custom-exempt-label # (Optional) Defines the custom label with which the incident has been marked as exempted
 --incident-id         # (Required) Defines the incident ID to be used for creating legacy incident
 --current-status      # (Required) Current status to be treated as success or failure [choices: "success", "failure"]
+--custom-comment   # (Optional) Additional text to be added to issue comments
 ```
 {: screen}
 
