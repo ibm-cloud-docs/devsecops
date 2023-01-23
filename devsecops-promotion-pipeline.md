@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022, 2023
-lastupdated: "2023-01-16"
+lastupdated: "2023-01-20"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -45,7 +45,9 @@ For more information about the inventory and promotion process, see [Inventory p
 
 The information from the body of the promotion pull/merge request is used to create the change request. Files that are changed by the promotion pull/merge request represent the entries, such as images, that are deployed by the continuous deployment pipeline. If the changes were made because of an emergency, the promotion pull/merge request is marked with an emergency label. The change request that is created by the continuous deployment pipeline is also marked as `emergency`.
 
-Set `opt-in-promotion-validation` to 1, to perform Promotion PR validation after the promotion pull/merge request is created. While the validation is in progress. merging of the promotion pull/merge request is blocked. Once the validation is completed, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
+The evidence collected in continous integration pipeline is summarized and attached to the change request in the continous deployment pipeline. You can optionally perform the evidence aggregation and summary generation in the promotion pipeline as well and set the evidence statuses on the promotion pull/merge request (PR) after the PR is created. This action allows for early validation of the promotion PR, before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green) or choose to fix the problem in the continous integration pipeline (when the evidence status is red). 
+
+Set `opt-in-promotion-validation` to 1, to perform the promotion PR validation. While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation is completed, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
     
 ## Inputs
 {: #cd-devsecops-promotion-pipelineinputs}
@@ -83,6 +85,7 @@ You must edit and modify the pull/merge request if the optional parameters were 
 
  ![Promotion pull and merge request](images/promotion-pull-request.png){: caption="Promotion pull and merge request" caption-side="bottom"}
  
+ When the (optional) promotion PR validation runs, the evidence status is set on the pull/merge request.
  ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Evidence status on promotion pull and merge request" caption-side="bottom"}
 
 ## Next step
