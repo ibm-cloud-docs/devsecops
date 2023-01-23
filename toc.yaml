@@ -107,7 +107,8 @@ toc:
       - devsecops-async-update-webhook.md
       - topicgroup: 
           label: Working with Git repos
-          topics: 
+          topics:
+          - devsecops-git-submodules.md 
           - devsecops-config-github.md
           - devsecops-set-pr-status.md
       - devsecops-webhook-payloads.md
