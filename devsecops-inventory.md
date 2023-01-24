@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-26"
+  years: 2021, 2023
+lastupdated: "2023-01-24"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -134,6 +134,8 @@ The inventory contains several branches other than the `master` branch. These br
 {: #ci-writes-to-inventory}
 
 The `master` branch is populated from continuous integration builds. The last commit in the target (in this case named `staging`) contains a tag that shows that it was the last concluded deployment.
+
+You can skip writing to inventory by customizing the release script. For more information, see [Release to inventory](docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-inventoryrel).
 
 ![Continuous integration writes to inventory](images/inventory-1.svg ){: caption="Continuous integration writes to inventory" caption-side="bottom"}
 

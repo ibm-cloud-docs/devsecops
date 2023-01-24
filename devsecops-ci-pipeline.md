@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-22"
+  years: 2021, 2023
+lastupdated: "2023-01-24"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap
 
@@ -161,6 +161,11 @@ For more information about the ZAP API scan and ZAP UI scans, see [Configuring Z
 {: #devsecops-ci-pipeline-inventoryrel}
 
 Use the release to inventory user script stage to add artifacts to the inventory by using the `cocoa inventory add` CLI command. For more information about the command, see the topic for [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#inventory-add).
+
+If you want to skip the inventory update if there are problems in the pipeline, use the following environment variables to check the status of the pipeline. Check their status before updating the inventory:
+
+* `skip-inventory-update-on-failure`	Opt-in environment variable from pipeline to specify whether inventory update should be done.
+* `one-pipeline-status`					Is set to `1` if there is any stage failure in the pipeline run.
 
 You can use the `pipelinectl` interface to access your repos and artifacts by using the `list_repos`, `load_repo`, `list_artifacts`, and `load_artifact` commands. For more information about the commands, see the [pipelinectl](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) documentation.
 
