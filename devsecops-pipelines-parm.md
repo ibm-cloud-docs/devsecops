@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-01-18"
+lastupdated: "2023-01-24"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -130,6 +130,7 @@ The following tables list and describe the pull request, continuous integration,
 | `repository` |text |The URL of your application's source code repository. | Optional |
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|
 |[`signing-key`](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
+|`skip-inventory-update-on-failure`	|text		|The switch that stops inventory update on a failed CI run.  |Optional			|
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |[`sonarqube`](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing Kubernetes cluster (custom configuration). Options: `default` or `custom`. Default is `default`. | Required |
@@ -193,7 +194,7 @@ The following tables list and describe the pull request, continuous integration,
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |`region`		|text		|The target region where the app is deployed.	|Optional			|
-|[`slack-notifications`](#pipeline-parm-slack-notifications)	|text		|The switch that turns the Slack integration on or off.  |Optional			|
+|[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
 |[`summary-retry-attempts`](#pipeline-parm-summary-retry-attempts)		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
 |[`summary-max-retry-time`](#pipeline-parm-summary-max-retry-time)		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time is generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
@@ -370,7 +371,7 @@ This parameter is for the promotion pull request. The reason why the change is n
 {: #pipeline-parm-signing-key}
 
 This parameter is for the CI pipeline. It is a secret type parameter that holds the base64-encoded private key for signing images by using `.pfx` file data.
-
+ 
 ### slack-notifications
 {: #pipeline-parm-slack-notifications}
 

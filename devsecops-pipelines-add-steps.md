@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-08-17"
+  years: 2021, 2023
+lastupdated: "2023-01-24"
 
 keywords: DevSecOps
 
@@ -210,10 +210,27 @@ The release stage provides flexibility if you want to add other artifacts to the
 
 In this stage, you can use the CLI `cocoa inventory add` command, and the data from `pipelinectl` commands, to create the inventory entries.
 
+If there are problems in the pipeline run, you migh want to skip inventory update to avoid a problematic inventory. To skip inventory update use the following environment variables:
+
+* `skip-inventory-update-on-failure`	Opt-in environment variable from pipeline to specify whether the inventory is updated.
+* `one-pipeline-status`					Set to `1` if there is a stage failure in the pipeline run.
+
+Check these variables before calling `cocoa inventory add` in this stage.
+
 ### Example
 {: #cd-devsecops-add-pipeline-release-example}
 
 ```bash
+# Check the status of pipeline and then release the artifacts to inventory
+
+ONE_PIPELINE_STATUS=$(get_env one-pipeline-status 0)
+if [ -n "$(get_env skip-inventory-update-on-failure "")" ]; then
+    if [ $ONE_PIPELINE_STATUS -eq 1 ]; then
+          echo "Skipping release stage as some of the pipeline stages are not successful."
+          exit 1
+    fi
+fi
+
 #
 # `list_artifacts` returns the list of the reference names of saved artifacts
 #
