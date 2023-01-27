@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-01-24"
+lastupdated: "2023-01-27"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -25,7 +25,7 @@ The following tables list and describe the pull request, continuous integration,
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
-|`artifactory-dockerconfigjson` 		|SECRET 		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.	 			|Optional			|
+|`artifactory-dockerconfigjson` 		|SECRET 		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.	 			|Required			|
 |`baseimage-auth-email`		|text 		|The email credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			|
 |`baseimage-auth-host`		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-password`		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
@@ -66,7 +66,7 @@ The following tables list and describe the pull request, continuous integration,
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`app-name` 		|text 		|The name of your application that is specified in the toolchain settings.			|Required			|
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
 |`baseimage-auth-email`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
@@ -151,7 +151,7 @@ The following tables list and describe the pull request, continuous integration,
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`artifact-token`		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
 |[`assignee`](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[`backout-plan`](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
@@ -209,7 +209,7 @@ The following tables list and describe the pull request, continuous integration,
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`app-url` 		|text 		|The URL of your application that is deployed on the target. Recommended to use staging application url.			|Required			|
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
 |`baseimage-auth-email`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
