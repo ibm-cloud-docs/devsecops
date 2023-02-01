@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-01-27"
+lastupdated: "2023-02-01"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -43,6 +43,7 @@ The following tables list and describe the pull request, continuous integration,
 |`cra-maven-exclude-scopes`       |text   |Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  |Optional   |
 |`cra-nodejs-create-package-lock`		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
+|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
@@ -113,6 +114,7 @@ The following tables list and describe the pull request, continuous integration,
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
+|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`onepipeline-dockerconfigjson`		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
@@ -167,6 +169,7 @@ The following tables list and describe the pull request, continuous integration,
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|
 |`cos-endpoint`		|text		|The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker.  For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). |Optional			|
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that will be appended to the Change Request Description.	|Optional			|
+|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
 |`doi-logicalappname`		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			|
@@ -237,7 +240,7 @@ The following tables list and describe the pull request, continuous integration,
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.    |Optional    |
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
-|`dind-image`		|text		|Base image to run sidecars	|Optional			|
+|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
@@ -279,6 +282,7 @@ The following tables list and describe the pull request, continuous integration,
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
+|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`opt-in-promotion-validation`		|text	|Enables validation of evidence status after inventory PR creation. Status is set on the PR.	 |Optional			|
 {: caption="Table 5. Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
