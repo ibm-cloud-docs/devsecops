@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2022
-lastupdated: "2022-03-18"
+copyright: 
+  years: 2023, 2023
+lastupdated: "2023-02-02"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, cloud object storage, satellite
 
@@ -21,7 +21,7 @@ You can deploy your application on one of three targets: single cluster, multipl
 ## Deploying to a single cluster
 {: #custom-deployment-target-single-cluster}
 
-You can select `Single Cluster` as the deployment target when you want to deploy your application on {{site.data.keyword.containerlong_notm}} or Red Hat&reg; OpenShift&reg; on {{site.data.keyword.cloud_notm}}. [DevSecOps](#x9892260){: term} provides scripts to deploy your application on the cluster. You might need to customize these scripts according to your application and cluster requirements.
+You can select `Single Cluster` as the deployment target when you want to deploy your application on Red Hat&reg; OpenShift&reg; on {{site.data.keyword.cloud_notm}}. [DevSecOps](#x9892260){: term} provides scripts to deploy your application on the cluster. You might need to customize these scripts according to your application and cluster requirements.
 
 These scripts are located in the deployment repo and are specified in the `pipeline-config.yml` file.
 
@@ -51,9 +51,9 @@ DevSecOps provides an option to deploy your application to multiple clusters usi
 
 [{{site.data.keyword.satellitelong_notm}}](https://www.ibm.com/cloud/satellite){: external} is an extension of the {{site.data.keyword.cloud_notm}} Public that can run inside the customer's data center or out at the edge. Each {{site.data.keyword.satellitelong_notm}} location is connected by using {{site.data.keyword.satellitelong_notm}} Link, which provides the connection to the {{site.data.keyword.cloud}} control plane. It provides audit, packet capture, and visibility to the security team, while a configuration utility provides a global view of applications and services. {{site.data.keyword.satellitelong_notm}} Link provides a simple way to manage the connection between {{site.data.keyword.cloud_notm}} and the {{site.data.keyword.satelliteshort}} location with visibility into all the traffic that goes back and forth with control of the endpoints on both sides of the link.
  
-Users can have groups of clusters (either {{site.data.keyword.containerlong_notm}} or Red Hat&reg; OpenShift&reg;) in a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig). You can use [{{site.data.keyword.satelliteshort}} Config](/docs/satellite?topic=satellite-cluster-config) to deploy the application into a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig).
+Users can have groups of Red Hat&reg; OpenShift&reg; clusters in a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig). You can use [{{site.data.keyword.satelliteshort}} Config](/docs/satellite?topic=satellite-cluster-config) to deploy the application into a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig).
 
-Follow a two-step process to enable your {{site.data.keyword.containerlong_notm}} clusters or Red Hat&reg; OpenShift&reg; clusters to leverage {{site.data.keyword.satelliteshort}} Config to perform simultaneous deployments.
+Follow a two-step process to enable your Red Hat&reg; OpenShift&reg; clusters to leverage {{site.data.keyword.satelliteshort}} Config to perform simultaneous deployments.
 
 1. [Create a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-groups), which is a logical grouping of clusters that run on a {{site.data.keyword.satelliteshort}} location.
 
@@ -74,7 +74,7 @@ As an advanced configuration, you can also deploy the application to the compute
 
 * This toolchain uses [{{site.data.keyword.satelliteshort}} Config](/docs/satellite?topic=satellite-cluster-config) to deploy an application to a group of clusters. 
 * This toolchain assumes that you have a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) with the required clusters. 
-* This toolchain supports a {{site.data.keyword.satelliteshort}} cluster group that contains only one type of cluster (either {{site.data.keyword.containerlong_notm}} cluster or Red Hat OpenShift).
+* This toolchain supports a {{site.data.keyword.satelliteshort}} cluster group that contains only one type of cluster (Red Hat&reg; OpenShift&reg;).
 
 ### Deployment
 {: #custom-deployment-target-scripts}
@@ -108,7 +108,7 @@ deploy:
 Deploy to a custom target if you want to:
 
 * Deploy your application on your own choice of infrastructure, such as Virtual Server Instances (VSI).
-* Perform custom tasks, such as updating some configurations in a Kubernetes cluster.
+* Perform custom tasks, such as updating some configurations in a Red Hat&reg; OpenShift&reg; cluster.
 
 In these cases, select "custom" as a deployment target.
 
