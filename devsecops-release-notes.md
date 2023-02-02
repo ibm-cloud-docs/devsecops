@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-12-12"
+  years: 2022, 2023
+lastupdated: "2023-01-31"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,16 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
+
+## 31 January 2023
+{: #devsecops-jan3123}
+{: release-note}
+
+- **Validation of inventory promotion pull request** - Provides evidence aggregation and summarization for the new state into which the inventory enters when the promotion PR is merged. Aggregation involves evidence collection and summarization from all the CI pipelines responsible for the inventory updates. The feature gives an early validation of the inventory promotion before the PR is merged to the target branch (environment). Based on the status of the PR, you can either move ahead with the promotion (when all the evidence results are GREEN), or fix the evidence (when the evidence is marked in RED) in the CI Pipelines before proceeding with promotion PR merge. For more information, see [Promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline).
+
+- **Support for Git submodule clone** - Enhances the ability of the CI Pipeline to clone the Git submodules for the application repositories that reference submodules. For more information, see [Configuring cloning of git submodules](/docs/devsecops?topic=devsecops-cd-devsecops-clone-submodules).
+
+- **Prevent CI Pipeline from updating inventory for a RED build** - Gives the ability to detect failure within the CI pipeline and prevent the pipeline from updating the Inventory. For more information, see [Continuous integration parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
 
 ## 07 December 2022
 {: #devsecops-dec0722}
