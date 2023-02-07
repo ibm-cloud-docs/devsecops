@@ -169,6 +169,7 @@ If you want to skip the inventory update if there are problems in the pipeline, 
 
 You can use the `pipelinectl` interface to access your repos and artifacts by using the `list_repos`, `load_repo`, `list_artifacts`, and `load_artifact` commands. For more information about the commands, see the [pipelinectl](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) documentation.
 
+
 ## Collecting compliance data on build
 {: #devsecops-ci-pipeline-collectdata}
 
