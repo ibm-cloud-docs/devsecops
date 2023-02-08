@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years:  2021, 2022
-lastupdated: "2022-08-23"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-02-08"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -22,7 +22,7 @@ subcollection: devsecops
 
 Aligned with the requirements of the Financial Services industry, {{site.data.keyword.contdelivery_short}} provides a reference implementation of [NIST Configuration Management](https://csrc.nist.gov/Projects/risk-management/sp800-53-controls/release-search#!/controls?version=5.1&family=CM){: external} controls as a service. You can configure this service in a few clicks by using templates.
 
-DevSecOps uses {{site.data.keyword.contdelivery_short}} ({{site.data.keyword.gitrepos}}, Tekton Pipelines, {{site.data.keyword.DRA_short}}, and Code Risk Analyzer), Secrets Manager, Key Protect, Cloud Object Storage, Container Registry and Vulnerability Advisor. Out of the box, DevSecOps also leverages popular scanning tools such as SonarQube, Gosec, OWAS Zap (dynamic scan), any unit test framework, and GPG signing. It can also be used with more tools such as external Git providers and artifact stores. DevSecOps supports hybrid deployments, in particular by using private pipeline workers, and can be interfaced with other deployment tools such as Satellite Config and ArgoCD.
+DevSecOps uses {{site.data.keyword.contdelivery_short}} ({{site.data.keyword.gitrepos}}, Tekton Pipelines, {{site.data.keyword.DRA_short}}, and Code Risk Analyzer), Secrets Manager, Key Protect, Cloud Object Storage, Container Registry and Vulnerability Advisor. Out of the box, DevSecOps also leverages popular scanning tools such as SonarQube, Gosec, OWASP Zap (dynamic scan), any unit test framework, and GPG signing. It can also be used with more tools such as external Git providers and artifact stores. DevSecOps supports hybrid deployments, in particular by using private pipeline workers, and can be interfaced with other deployment tools such as Satellite Config and ArgoCD.
 
 ## Background
 {: #devsecops-background}
