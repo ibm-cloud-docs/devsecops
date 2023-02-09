@@ -60,7 +60,6 @@ toc:
       - devsecops-tekton-ci-compliance.md
       - devsecops-tekton-cd-compliance.md
       - devsecops-image-signing.md
-      - devsecops-cos-configure.md
       - devsecops-pipelines-add-steps.md
       - devsecops-add-new-pipeline-to-existing-toolchain.md
       - devsecops-apps-byoa.md
@@ -87,6 +86,7 @@ toc:
           - devsecops-evidence-checks.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
+          - devsecops-cos-configure.md
       - topicgroup: 
           label: Managing inventory
           topics:
