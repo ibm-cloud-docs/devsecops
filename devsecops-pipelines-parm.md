@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-02-01"
+lastupdated: "2023-02-09"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -21,7 +21,7 @@ Parameters are provided out of the box for the pull request, continuous integrat
 You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 {: tip}
 
-The following tables list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines:
+Tables 1 to 5 list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines:
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -116,9 +116,9 @@ The following tables list and describe the pull request, continuous integration,
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`onepipeline-dockerconfigjson`		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
-|`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
-|`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
-|`opt-in-dynamic-ui-scan`		|text		|To enable the owasp zap UI scan.	 |Optional			|
+|`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
+|`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
+|`opt-in-dynamic-ui-scan`		|text		|To enable the OWASP Zap UI scan.	 |Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
@@ -257,9 +257,9 @@ The following tables list and describe the pull request, continuous integration,
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`opt-in-auto-close` |text		|Enables auto-closing of issues coming from vulnerabilities, once the vulnerability is no longer detected by the CC pipeline run.	|Optional			|
-|`opt-in-dynamic-api-scan`		|text		|To enable the owasp zap API scan. 	|Optional			|
-|`opt-in-dynamic-scan`		|tool integration		|To enable the owasp zap scan.	 |Optional			|
-|`opt-in-dynamic-ui-scan`		|text	|To enable the owasp zap UI scan.	 |Optional			|
+|`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
+|`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
+|`opt-in-dynamic-ui-scan`		|text	|To enable the OWASP Zap UI scan.	 |Optional			|
 |`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
 |`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
