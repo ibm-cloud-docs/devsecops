@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-08"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-02-10"
 
 keywords: DevSecOps, image signing, GPG key, secure toolchain, compliance, IBM Cloud
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Image signing: generating a GPG key
+# Generating a GPG key
 {: #devsecops-image-signing}
 
 Images that are built by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration toolchain and recorded in the inventory must be signed before they are deployed to production. The continuous integration pipeline uses [Skopeo](https://github.com/containers/skopeo){: external} as the default tool to provide image signing capability.

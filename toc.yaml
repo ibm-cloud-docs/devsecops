@@ -59,7 +59,10 @@ toc:
       topics:
       - devsecops-tekton-ci-compliance.md
       - devsecops-tekton-cd-compliance.md
-      - devsecops-image-signing.md
+      - topicgroup:
+          label: Configuring image signing
+          topics:
+          - devsecops-image-signing.md
       - devsecops-pipelines-add-steps.md
       - devsecops-add-new-pipeline-to-existing-toolchain.md
       - devsecops-apps-byoa.md
