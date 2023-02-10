@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-02-01"
+lastupdated: "2023-02-10"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -156,6 +156,7 @@ The parameters to configure the scripts for the deployment action are described 
 | -------- | ----- | ----------- |
 | `schematics-workspace-name` | `<schematics-workspace-prefix><toolchain name>-<pipeline id>` | Workspace to use or to create if it does not exist. If the workspace exists, it must be a workspace created without a link to a Git repository. For more information, see [Schematics Workspace creation](/docs/schematics?topic=schematics-schematics-cli-reference#schematics-workspace-new). This restriction is because the script uploads the IaC configuration artifact as a `tar` file by using [Schematics Workspace upload](/docs/schematics?topic=schematics-schematics-cli-reference#schematics-workspace-upload).{: attention} |
 | `schematics-workspace-prefix` | | Prefix used for workspace creation when no workspace is specified for the deployment action. |
+| `schematics-workspace-resource-group` | Defaults to the resource group of the toolchain. | Resource group to be used for the schematics workspace creation. |
 | `schematics-workspace-netrc` | Computed from known repositories. | Value for the `netrc` configuration of the schematics workspace to be created. For more information, see [Supporting to download modules from private remote host](/docs/schematics?topic=schematics-download-modules-pvt-git). |
 | `schematics-workspace-terraform-version` | `terraform_v1.0` | Terraform version used for the schematics workspace to be created. See [Overview of Schematics images and packaged Terraform providers](/docs/schematics?topic=schematics-version-constraints#schematics-image-ov). |
 {: caption="Table 8. Configuration parameters to use Schematics as deployment tool" caption-side="top"}
