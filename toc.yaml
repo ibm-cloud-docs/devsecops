@@ -104,6 +104,7 @@ toc:
           - devsecops-promote-branches.md
           - devsecops-force-redeployment.md
           - devsecops-rollback-deployment.md
+          - devsecops-partition-inventory-cc-pipeline.md
       - topicgroup:
           label: Configuring scanning tools
           topics:
@@ -120,7 +121,6 @@ toc:
           - devsecops-set-pr-status.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
-      - devsecops-partition-inventory-cc-pipeline.md
       - devsecops-scc-toolchains.md
       - devsecops-iam-permissions.md
       - topicgroup:
