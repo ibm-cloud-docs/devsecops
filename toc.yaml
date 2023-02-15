@@ -63,10 +63,17 @@ toc:
           label: Configuring image signing
           topics:
           - devsecops-image-signing.md
-      - devsecops-pipelines-add-steps.md
-      - devsecops-add-new-pipeline-to-existing-toolchain.md
+      - topicgroup:
+         label: Working with Tekton pipelines
+         topics:
+         - devsecops-pipelines-add-steps.md
+         - devsecops-add-new-pipeline-to-existing-toolchain.md
+         - devsecops-stage-results.md
+         - devsecops-pipelines-add-triggers.md
+         - devsecops-async-sub-pipelines.md
+         - devsecops-async-update-webhook.md
+         - devsecops-webhook-payloads.md
       - devsecops-apps-byoa.md
-      - devsecops-stage-results.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
@@ -105,16 +112,12 @@ toc:
           - devsecops-configuring-mend-scans.md
           - devsecops-ignore-cra-vulnerabilities.md
           - devsecops-get-va-rating-from-xforce.md
-      - devsecops-pipelines-add-triggers.md
-      - devsecops-async-sub-pipelines.md
-      - devsecops-async-update-webhook.md
       - topicgroup: 
           label: Working with Git repos
           topics:
           - devsecops-git-submodules.md 
           - devsecops-config-github.md
           - devsecops-set-pr-status.md
-      - devsecops-webhook-payloads.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
       - devsecops-partition-inventory-cc-pipeline.md
