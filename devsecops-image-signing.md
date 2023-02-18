@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-02-10"
+lastupdated: "2023-02-18"
 
 keywords: DevSecOps, image signing, GPG key, secure toolchain, compliance, IBM Cloud
 
@@ -18,14 +18,12 @@ subcollection: devsecops
 Images that are built by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration toolchain and recorded in the inventory must be signed before they are deployed to production. The continuous integration pipeline uses [Skopeo](https://github.com/containers/skopeo){: external} as the default tool to provide image signing capability.
 {: shortdesc}
 
-Create and store a GPG key that is used by the DevSecOps continuous integration pipeline by using either of the following methods:
-* Automated
-* Manual
+Create and store a GPG key that is used by the DevSecOps continuous integration pipeline either automatically or manually.
 
-## Automated generation of GPG key
+## Automatically generate a GPG key
 {: #devsecops-image-signing-auto}
 
-With this method, the template generates the GPG key for you. Provide the **name** and **email** as required for the key generation by completing these steps:
+Using this method, the template generates the GPG key for you. Provide the **name** and **email** as required for the key generation by completing these steps:
 
 1. Go to the image signing stage, and click **New**.
 
@@ -42,7 +40,7 @@ With this method, the template generates the GPG key for you. Provide the **name
 The copied key is in `base64` format. Decrypt the key before you import it to your [key ring](/docs/key-protect?topic=key-protect-grouping-keys&interface=ui).
 {: note}
 
-## Manual generation of GPG key
+## Manually generate a GPG key
 {: #devsecops-image-signing-manual}
 
 ### Download and install GPG command-line tools
