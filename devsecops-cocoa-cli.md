@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022, 2023
-lastupdated: "2023-01-23"
+copyright: 
+  years: 2023, 2023
+lastupdated: "2023-02-23"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -18,10 +18,34 @@ subcollection: devsecops
 DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
 {: shortdesc}
 
+
+
+## Retrying failed API calls 
+{: #cd-devsecops-cli-api}
+
+The Cocoa CLI retries three times any API call that fails with a response status between `500` and `599`. You can override this behavior by providing following environment variables:
+
+* `MAX_RETRY_ATTEMPTS` - The number of retry attempts Cocoa CLI makes before it gives up. For example, `MAX_RETRY_ATTEMPTS`=`5`
+* `RETRY_STATUS_CODE` - The response status codes for which the retry happens. For example, `RETRY_STATUS_CODE`=`404,500`
+
+```sh
+export MAX_RETRY_ATTEMPTS=5                 # Retry API calls 5 times.
+export RETRY_STATUS_CODE=404,500            # Retry API calls for response code 404 and 500.
+```
+
+## Elapsed time for command execution
+{: #cd-devsecops-cli-elapse}
+
+Cocoa CLI can display the elapsed time of any command in seconds by setting `DISPLAY_ELAPSED_TIME` to a nonempty string as follows:
+
+```sh
+export DISPLAY_ELAPSED_TIME=1`                # Display a snippet showing the total execution time of the cli command, example `Elapsed time: 5.32 seconds`
+```
+
 ## CLI interface
 {: #devsecops-cli-interface}
 
-The CLI uses a multipart structure on the command line that must be specified in this order:
+The CLI uses a multipart structure on the command line that you must specify in the following order:
 
 ```sh
 cocoa <command> <subcommand> [options]
