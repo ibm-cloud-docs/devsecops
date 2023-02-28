@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-12-08"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, IBM Cloud
 
@@ -30,7 +30,7 @@ You can use the pipelines to deploy to public cloud or hybrid target environment
 
 The following diagram shows the implementation workflow.
 
-![Reference implementation workflow](images/cm-arch.png "Reference implementation workflow"){: caption="Figure 1. Reference implementation workflow" caption-side="bottom"}
+![Reference implementation workflow](images/cm-arch.png "Figure 1. Reference implementation workflow"){: caption="Figure 1. Reference implementation workflow" caption-side="bottom"}
 
 ### Main features
 {: #cd-devsecops-features}

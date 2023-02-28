@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-01-18"
+lastupdated: "2023-02-28"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -53,13 +53,13 @@ Any of the methods in this tutorial takes you to the guided setup experience. Yo
 
 A progress indicator shows the steps to complete the configuration. You can use the progress indicator to navigate to a previous step. The configuration options for the current step are displayed in the main area of the page.
 
-![DevSecOps Continuous Deployment toolchain welcome page](images/devsecops-cd-welcome.png){: caption="DevSecOps Continuous Deployment toolchain welcome page" caption-side="bottom"}
+![DevSecOps Continuous Deployment toolchain welcome page](images/devsecops-cd-welcome.png){: caption="Figure 1. DevSecOps Continuous Deployment toolchain welcome page" caption-side="bottom"}
 
 To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
 
 Some steps include a **Switch to advanced configuration** toggle. These steps by default present you with the minimum configuration needed. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal all options for the underlying integration.
 
-![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced configuration toggle" caption-side="bottom"}
+![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="Figure 2. DevSecOps Advanced configuration toggle" caption-side="bottom"}
 
 When all the steps are successfully completed, you create the toolchain by clicking **Create** on the **Summary** step.
 
@@ -86,7 +86,7 @@ Review the default information for the toolchain settings. The toolchain's name 
 
 Choose the associated CI toolchain in the dropdown to copy some of the CI configuration to aid in the setup of this CD toolchain.
 
-![DevSecOps associated CI toolchain](images/devsecops-associated-ci-toolchain.png){: caption="DevSecOps associated CI toolchain" caption-side="bottom"}
+![DevSecOps associated CI toolchain](images/devsecops-associated-ci-toolchain.png){: caption="Figure 3. DevSecOps associated CI toolchain" caption-side="bottom"}
 
 **Warning**: This action might overwrite some of the values that you already entered.
 
@@ -246,7 +246,7 @@ On the **Summary** page, click **Create**, and wait for the toolchain to be crea
 Configure the individual toolchain integrations after the pipeline is created.
 {: tip}
 
-![DevSecOps CD Toolchain Created](images/devsecops-cd-terraform-toolchain-created.png){: caption="DevSecOps CD Toolchain Created" caption-side="bottom"}
+![DevSecOps CD Toolchain Created](images/devsecops-cd-terraform-toolchain-created.png){: caption="Figure 4. DevSecOps CD Toolchain Created" caption-side="bottom"}
 
 ## Explore the CD toolchain
 {: #devsecops-tutorial-iac-cd-explore}
@@ -290,7 +290,7 @@ For this tutorial, specify the key protect instance name to be created on produc
 
 To do so, select **Environment Properties** in the cd-pipeline and click **Add**.
 
-![CD Pipeline configuration](images/devsecops-cd-terraform-toolchain-environment-properties.png){: caption="CD pipeline configuration" caption-side="bottom"} 
+![CD Pipeline configuration](images/devsecops-cd-terraform-toolchain-environment-properties.png){: caption="Figure 5. CD pipeline configuration" caption-side="bottom"} 
 
 Add a property of type `Text Value` and name `TF_VAR_key_protect_instance`.
 Set a meaningful value that indicates the delivery to production environment such as `key-protect-production-202210191453`.
@@ -311,7 +311,7 @@ The branch of the pipeline configuration repository is defined as `master` in th
 
 To do so, select **Environment Properties** in the cd-pipeline and click `edit` to change the value to `main`
 
-![CD Pipeline configuration branch](images/devsecops-cd-terraform-toolchain-pipeline-config-branch.png){: caption="CD Pipeline configuration branch" caption-side="bottom"}
+![CD Pipeline configuration branch](images/devsecops-cd-terraform-toolchain-pipeline-config-branch.png){: caption="Figure 6. CD Pipeline configuration branch" caption-side="bottom"}
 
 ### Run the CD pipeline
 {: #devsecops-tutorial-iac-cd-toolchain-pipe-run}
@@ -326,8 +326,8 @@ You can also trigger the CD pipeline manually anytime, but if there are no chang
 
 A successful CD pipeline run looks like this:
 
-![DevSecOps CD Pipeline Successful](images/devsecops-cd-explore-pipeline-success.png){: caption="DevSecOps CD Pipeline Successful" caption-side="bottom"}
+![DevSecOps CD Pipeline Successful](images/devsecops-cd-explore-pipeline-success.png){: caption="Figure 7. DevSecOps CD Pipeline Successful" caption-side="bottom"}
 
 After a successful CD pipeline run, you can find the KeyProtect instance service in the resource list.
 
-![KeyProtect service instance created](images/devsecops-cd-terraform-toolchain-keyprotect-created.png){: caption="KeyProtect service instance created" caption-side="bottom"}
+![KeyProtect service instance created](images/devsecops-cd-terraform-toolchain-keyprotect-created.png){: caption="Figure 8. KeyProtect service instance created" caption-side="bottom"}

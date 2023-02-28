@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps
 
@@ -37,4 +37,4 @@ Add the required branch protection rules:
 1. Toggle **Allow force push** so that this option is unavailable.
 1. Click **Protect**.
 
- ![Branch protection rules](images/grit-branch-protection-rules-screenshot.png){: caption="Branch protection rules" caption-side="bottom"}
+ ![Branch protection rules](images/grit-branch-protection-rules-screenshot.png){: caption="Figure 1. Branch protection rules" caption-side="bottom"}

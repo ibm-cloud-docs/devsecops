@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-26"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -85,7 +85,7 @@ In the deploy stage, the pipeline deploys the built artifacts into an environmen
 
 * Variables from the pipeline UI (`get_env`)
 
- ![Edit property](images/target-environment.png){: caption="Edit property" caption-side="bottom"}
+ ![Edit property](images/target-environment.png){: caption="Figure 1. Edit property" caption-side="bottom"}
 
 * [Pipeline trigger webhook](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads)
 

@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-26"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps
 
@@ -108,7 +108,7 @@ Promotion and deployment can happen from any branch to another one.
 
 The current, deployed state holds the content to deploy to an environment. Every promoted commit in the target branches contains the relevant pipeline run ID and Change Request ID, as a tag. Some commits can have multiple tags, such as when a failed deployment is run again. The Inventory stores each piece of information to replay the deployments.
 
-![Inventory landscape](images/devsecops-inventory-landscape.svg "Inventory landscape"){: caption="Figure 2. Inventory landscape" caption-side="bottom"}
+![Inventory landscape](images/devsecops-inventory-landscape.svg "Inventory landscape"){: caption="Figure 1. Inventory landscape" caption-side="bottom"}
 
 #### Use of tags
 {: #cd-devsecops-pipelines-inventory-tags}
@@ -130,7 +130,7 @@ Teams do not need to set up a different branch for each region, such as `prod-us
 
 In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`, and each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
-![Single target - multiple region setup](images/inventory-single-target-multi-region.svg "Single target - multiple region setup"){: caption="Figure 3. Single target - multiple region setup" caption-side="bottom"}
+![Single target - multiple region setup](images/inventory-single-target-multi-region.svg "Single target - multiple region setup"){: caption="Figure 2. Single target - multiple region setup" caption-side="bottom"}
 
 #### Example scenario
 {: #cd-devsecops-pipelines-inventory-example}

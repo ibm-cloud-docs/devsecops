@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-12-07"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -30,7 +30,7 @@ Evidence differs from artifacts that are created by pipeline stage steps, such a
 
 Any generic test, check, or scan can produce evidence within a pipeline stage by using the steps within DevSecOps tools or pipelines that are shown in the following image. The DevSecOps tools must be able to receive the result of the task, create the evidence, and then store it in the evidence locker.
 
- ![Evidence creation](images/evidence-creation.png){: caption="Evidence creation" caption-side="bottom"}
+ ![Evidence creation](images/evidence-creation.png){: caption="Figure 1. Evidence creation" caption-side="bottom"}
 
 The evidence format contains the result of the task (passing or failing), links to the created artifacts, and links to any incident issue that is created based on the Task result.
 
@@ -42,7 +42,7 @@ These tools focus only on evidence collection and do not change the behavior of 
 
 The following diagram shows how the evidence is handled and how it flows through the stages of continuous integration and continuous deployment.
 
- ![Evidence flow](images/evidence-flow.png){: caption="Evidence flow" caption-side="bottom"}
+ ![Evidence flow](images/evidence-flow.png){: caption="Figure 2. Evidence flow" caption-side="bottom"}
 
  Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
 
@@ -311,7 +311,7 @@ The DevOps architecture divides these flows into four stages by distinguishing b
 
 Evidence is collected from the steps in each stage [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script. The following image shows the current steps in the reference pipelines that produce evidence.
 
- ![Evidence collection](images/CI-CD-evidence.png){: caption="Evidence collection" caption-side="bottom"}
+ ![Evidence collection](images/CI-CD-evidence.png){: caption="Figure 3. Evidence collection" caption-side="bottom"}
 
 #### Code stage
 {: #devsecops-collection-code}

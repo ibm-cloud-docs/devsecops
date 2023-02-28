@@ -1,9 +1,8 @@
 ---
 
-copyright:
+copyright: 
   years: 2022, 2023
-lastupdated: "2023-01-10"
-
+lastupdated: "2023-02-28"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -190,7 +189,7 @@ The issue description contains the timestamp when the issue was first discovered
 
 If you want to postpone the due date of an incident issue, you can ask for a review from a security focal. Depending on the review, you can postpone the due date by modifying the `Due date` field in the {{site.data.keyword.gitrepos}} incident issues meta fields. 
 
-![Setting and updating due date on {{site.data.keyword.gitrepos}}](images/devsecops-native-due-date.png){: caption="Setting and updating due date on {{site.data.keyword.gitrepos}}" caption-side="bottom"}
+![Setting and updating due date on {{site.data.keyword.gitrepos}}](images/devsecops-native-due-date.png){: caption="Figure 2. Setting and updating due date on {{site.data.keyword.gitrepos}}" caption-side="bottom"}
 
 Be sure to reference the security-focal review in the issue, such as providing a link to it in a comment.
 {: important}
