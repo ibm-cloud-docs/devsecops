@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022, 2023
-lastupdated: "2023-01-20"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -83,10 +83,10 @@ You must edit and modify the pull/merge request if the optional parameters were 
 |Backout Plan | The steps to back out if the deployment fails. | Optional |
 {: caption="Table 2.Optional parameters" caption-side="top"}
 
- ![Promotion pull and merge request](images/promotion-pull-request.png){: caption="Promotion pull and merge request" caption-side="bottom"}
+ ![Promotion pull and merge request](images/promotion-pull-request.png){: caption="Figure 1. Promotion pull and merge request" caption-side="bottom"}
  
  When the (optional) promotion PR validation runs, the evidence status is set on the pull/merge request.
- ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Evidence status on promotion pull and merge request" caption-side="bottom"}
+ ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Figure 2. Evidence status on promotion pull and merge request" caption-side="bottom"}
 
 ## Next step
  {: #devsecops-promotion-pipeline-next}

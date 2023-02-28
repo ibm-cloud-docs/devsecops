@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-26"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -80,4 +80,3 @@ You can start the DevSecOps reference continuous deployment pipeline by using a 
  ![Pre-approved change request](images/pre-approved-cr.png){: caption="Figure 2. Pre-approved change request" caption-side="bottom"}
 
 If the **change-request-id** property is set, the pipeline skips data collection for the change request and moves ahead to check the approval state of the change request. If the **change-request-id** is set to `notAvailable` by default, a change request is automatically created by the continuous deployment pipeline.
-

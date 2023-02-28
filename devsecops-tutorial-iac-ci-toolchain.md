@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022
-lastupdated: "2022-12-02"
+  years: 2022, 2023
+lastupdated: "2023-02-28"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -45,7 +45,7 @@ The CI toolchain implements the following best practices:
 * Stores the built artifacts metadate in inventory repository.
 * Automatically builds and validates any code that is merged into the target Git repository branch.
 
-![DevSecOps IaC Continuous Integration toolchain](images/devsecops-ci-terraform-toolchain-diagram.png){: caption="DevSecOps Continuous Integration toolchain" caption-side="bottom"}
+![DevSecOps IaC Continuous Integration toolchain](images/devsecops-ci-terraform-toolchain-diagram.png){: caption="Figure 1. DevSecOps Continuous Integration toolchain" caption-side="bottom"}
 
 ## Guided setup overview for the CI toolchain
 {: #devsecops-tutorial-iac-ci-setup}
@@ -54,13 +54,13 @@ The {{site.data.keyword.contdelivery_short}} service provides templates to guide
 
 A progress indicator shows the steps to complete the configuration. Use the progress indicator to navigate to previous steps. The configuration options for the current step are displayed in the main area of the page.
 
-![DevSecOps IaC Continuous Integration toolchain welcome page](images/devsecops-ci-terraform-welcome-page.png){: caption="DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
+![DevSecOps IaC Continuous Integration toolchain welcome page](images/devsecops-ci-terraform-welcome-page.png){: caption="Figure 2. DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
 
 To advance to the next step, click **Start**. You can advance to the next step only when the configuration for the current step is complete and valid. Navigate to the previous step by clicking **Back**.
 
 Some steps include a **Switch to advanced configuration** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal all options for the underlying integration.
 
-![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced configuration toggle" caption-side="bottom"}
+![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="Figure 3. DevSecOps Advanced configuration toggle" caption-side="bottom"}
 
 When all the steps are successfully completed, create the toolchain by clicking **Create** on the **Summary** step.
 
@@ -219,7 +219,7 @@ Other toolchain integrations can be configured after the pipeline is created.
 
 The DevSecOps CI IaC toolchain looks like this:
 
-![DevSecOps IaC Continuous Integration toolchain](images/devsecops-ci-terraform-explore-pipeline-created.png){: caption="DevSecOps Continuous Integration toolchain" caption-side="bottom"}
+![DevSecOps IaC Continuous Integration toolchain](images/devsecops-ci-terraform-explore-pipeline-created.png){: caption="Figure 4. DevSecOps Continuous Integration toolchain" caption-side="bottom"}
 
 The toolchain contains two pipelines:
 
@@ -245,7 +245,7 @@ The corresponding Merge Request that is in your application repository is in `Pe
 
 When the PR pipeline run is successful, click it to explore numerous steps completed.
 
-![DevSecOps IaC PR pipeline successful](images/devsecops-ci-terraform-explore-pr-pipeline-success.png){: caption="DevSecOps PR pipeline successful" caption-side="bottom"}
+![DevSecOps IaC PR pipeline successful](images/devsecops-ci-terraform-explore-pr-pipeline-success.png){: caption="Figure 5. DevSecOps PR pipeline successful" caption-side="bottom"}
 
 1. Navigate back to the merge request.
 1. Merge the request so that your changes are copied to the main branch of your application repository: the CI pipeline is automatically triggered.
@@ -264,7 +264,7 @@ In this tutorial, the CI Pipeline is triggered after you merge your code changes
 
 When the CI pipeline run completes, click it to explore the completed steps.
 
-![DevSecOps IaC CI Pipeline Successful](images/devsecops-ci-terraform-explore-ci-pipeline-success.png){: caption="DevSecOps CI pipeline" caption-side="bottom"}
+![DevSecOps IaC CI Pipeline Successful](images/devsecops-ci-terraform-explore-ci-pipeline-success.png){: caption="Figure 6. DevSecOps CI pipeline" caption-side="bottom"}
 
 Evidence from all compliance checks in the CI pipeline is uploaded to the evidence-locker repository, but also to the Cloud Object Storage bucket if you enabled it during setup.
 

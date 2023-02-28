@@ -1,8 +1,8 @@
 ---
 
-copyright:
-   years: 2022
-lastupdated: "2022-11-15"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-02-28"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -59,13 +59,13 @@ The {{site.data.keyword.contdelivery_short}} service provides templates that gui
 
 A progress indicator shows the steps to complete the configuration. You can use the progress indicator to navigate to a previous step with a mouse click. The configuration options for the current step are displayed in the main area of the page.
 
-![DevSecOps Continuous Integration toolchain welcome page](images/devsecops-ci-welcome-page.png){: caption="DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
+![DevSecOps Continuous Integration toolchain welcome page](images/devsecops-ci-welcome-page.png){: caption="Figure 1. DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
 
 To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
 
 Some steps include a **Switch to advanced configuration** toggle. These steps by default present you with the minimum recommended configuration needed. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal all options for the underlying integration.
 
-![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="DevSecOps Advanced configuration toggle" caption-side="bottom"}
+![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="Figure 2. DevSecOps Advanced configuration toggle" caption-side="bottom"}
 
 After all the steps are successfully completed, you create the toolchain by clicking **Create** on the Summary step.
 
@@ -244,7 +244,7 @@ Other toolchain integrations can be configured after the pipeline is created.
 
 The DevSecOps CI toolchain looks like this:
 
-![DevSecOps Continuous Integration Toolchain](images/devsecops-ci-explore-pipeline-created.png){: caption="DevSecOps Continuous Integration Toolchain" caption-side="bottom"}
+![DevSecOps Continuous Integration Toolchain](images/devsecops-ci-explore-pipeline-created.png){: caption="Figure 3. DevSecOps Continuous Integration Toolchain" caption-side="bottom"}
 
 It contains two pipelines:
 * **ci-pr-pipeline (PR)**: triggers when a new Merge Request (MR) is submitted in the app repository.
@@ -265,7 +265,7 @@ The corresponding Merge Request that is in your application repository is in `Pe
 
 After the PR Pipeline run is successful, you can click it to explore numerous steps completed.
 
-![DevSecOps PR Pipeline Successful](images/devsecops-ci-explore-pr-pipeline-success.png){: caption="DevSecOps PR Pipeline Successful" caption-side="bottom"}
+![DevSecOps PR Pipeline Successful](images/devsecops-ci-explore-pr-pipeline-success.png){: caption="Figure 4. DevSecOps PR Pipeline Successful" caption-side="bottom"}
 
 1. Navigate back to the merge request.
 1. Merge the request so that your changes are copied to the master branch of your application repository: the CI pipeline is automatically triggered.
@@ -283,12 +283,12 @@ In this tutorial, the CI Pipeline was triggered after you merged your code chang
 
 After the CI Pipeline run is successful, you can click it to explore the completed steps.
 
-![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="DevSecOps CI pipeline" caption-side="bottom"}
+![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="Figure 5. DevSecOps CI pipeline" caption-side="bottom"}
 
 Evidence from all compliance checks in the CI pipeline is uploaded to the evidence-locker repository, but also to the COS bucket if enabled during setup.
 Evidence is also published to DevOps Insights. You can navigate to DOI by clicking the DevOps Insights tool card in the toolchain. You can review the collected evidence on the Quality Dashboard page.
 
-![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI evidence" caption-side="bottom"}
+![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="Figure 6. DevSecOps CI evidence" caption-side="bottom"}
 
 To evaluate if you have any failures in your pipeline run, you need to check the final step of your pipeline, which has a pipeline evaluator.
 {: note}

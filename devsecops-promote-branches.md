@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-26"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-02-28"
 
 keywords: DevSecOps
 
@@ -29,13 +29,13 @@ To promote code changes from the source (master) branch to the target (staging, 
    * Select **Manual Promotion Trigger**.
    * Click **Run**. The pipeline-run creates a merge request to promote your code changes from the source branch to the target branch.
  
-   ![Manual Promotion Trigger](images/manual-promotion-trigger.png){: caption="Manual Promotion Trigger" caption-side="bottom"}
+   ![Manual Promotion Trigger](images/manual-promotion-trigger.png){: caption="Figure 1. Manual Promotion Trigger" caption-side="bottom"}
 
 1. Approve and merge the pull request.
 
    * Click the pipeline-run and check the execution log of the promotion pipeline.
  
-   ![MR execution log](images/pr-exec-log.png){: caption="MR execution log" caption-side="bottom"}
+   ![MR execution log](images/pr-exec-log.png){: caption="Figure 2. MR execution log" caption-side="bottom"}
  
    * Locate the URL of the merge request and open the merge request.
    * Populate the [required fields](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelineoutputs) (Priority, Change Request assignee, Additional Description, and other fields).
@@ -48,7 +48,7 @@ Now that your changes are promoted to the target branch, you can deploy them by 
 
 The source and target environments are defined at the continuous deployment pipeline level.
 
-![continuous deployment pipeline properties](images/cd-env-props.png){: caption="continuous deployment pipeline properties" caption-side="bottom"}
+![continuous deployment pipeline properties](images/cd-env-props.png){: caption="Figure 3. Continuous deployment pipeline properties" caption-side="bottom"}
 
 Depending on the continuous deployment pipeline [trigger settings](/docs/devsecops?topic=devsecops-cd-devsecops-triggers), the pipeline is either automatically triggered after a merge request is merged or the pipeline is merged manually. To manually merge the pipeline, click **Run Pipeline** and choose the trigger to run.
  
@@ -56,6 +56,6 @@ The pipeline starts and tags the current commit in the inventory repo with the P
 
 The pipeline attempts to deploy the content. During the deployment, the change request ID is attached to the commit that the pipeline works with as a tag. A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you promoted.
 
-![{{site.data.keyword.gitrepos}} repo tags](images/grit-repo-tags.png){: caption="{{site.data.keyword.gitrepos}} repo tags" caption-side="bottom"}
+![{{site.data.keyword.gitrepos}} repo tags](images/grit-repo-tags.png){: caption="Figure 4. {{site.data.keyword.gitrepos}} repo tags" caption-side="bottom"}
 
 For more information about the inventory workflow, see [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines#cd-devsecops-pipelines-inventory-workflow).
