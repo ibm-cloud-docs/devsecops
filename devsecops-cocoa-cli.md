@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-02-23"
+lastupdated: "2023-03-01"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -23,7 +23,7 @@ DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevS
 ## Retrying failed API calls 
 {: #cd-devsecops-cli-api}
 
-The Cocoa CLI retries three times any API call that fails with a response status between `500` and `599`. You can override this behavior by providing following environment variables:
+The Cocoa CLI retries any API call that fails with a response status between `500` and `599` three times. You can override this behavior by providing following environment variables:
 
 * `MAX_RETRY_ATTEMPTS` - The number of retry attempts Cocoa CLI makes before it gives up. For example, `MAX_RETRY_ATTEMPTS`=`5`
 * `RETRY_STATUS_CODE` - The response status codes for which the retry happens. For example, `RETRY_STATUS_CODE`=`404,500`
