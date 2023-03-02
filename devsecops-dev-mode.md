@@ -38,11 +38,11 @@ Develop, implement, and test changes made to the `.pipeline-config.yaml` file by
 Take the following steps to set up `development mode` pipeline:
 
 1. Go to the **Triggers** page of your CI or CD pipeline.
-1. Duplicate the **Manual Trigger**. Click ![Menu icon](images/icon_threedots.png) > **Duplicate**.
+1. Duplicate the manual trigger. Click **Manual Trigger** > **Duplicate**.
 
    ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 1. Duplicate manual trigger" caption-side="bottom"}
 
-1. Name the Trigger. For example, `Manual-Dev-Mode`.
+1. Name the trigger. For example, `Manual-Dev-Mode`.
 1. Change the `EventListener` to `dev-mode-listener` (for CI) or `dev-mode-cd-listener` (for CD).
 
    ![Dev Mode Trigger](images/dev-mode-trigger.png){: caption="Figure 2. Change event listener" caption-side="bottom"}
