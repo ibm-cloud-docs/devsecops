@@ -73,6 +73,7 @@ toc:
          - devsecops-async-sub-pipelines.md
          - devsecops-async-update-webhook.md
          - devsecops-webhook-payloads.md
+         - dev-mode.md
       - devsecops-apps-byoa.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
