@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-02-09"
+lastupdated: "2023-03-03"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -99,6 +99,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
+|`doi-ibmcloud-api-key`  |text  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional |
 |`doi-logicalappname`		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			|
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
@@ -172,6 +173,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
+|`doi-ibmcloud-api-key`  |text  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional |
 |`doi-logicalappname`		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			|
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
@@ -242,6 +244,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
+|`doi-ibmcloud-api-key`  |text  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional  |
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |`environment-tag`     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
