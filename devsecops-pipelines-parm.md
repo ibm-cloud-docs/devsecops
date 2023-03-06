@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-03-03"
+lastupdated: "2023-03-06"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -50,7 +50,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
-|`onepipeline-dockerconfigjson`		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
+|`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Optional			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
@@ -116,7 +116,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
-|`onepipeline-dockerconfigjson`		|SECRET		|Deprecated. The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
+|`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|text		|To enable the OWASP Zap UI scan.	 |Optional			|
