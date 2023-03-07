@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-03-07"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -42,7 +42,7 @@ The CI toolchain implements the following best practices:
 * Runs a static code scanner on the infrastructure code repositories and performs Terraform linting checks on the Infrastructure code.
 * Runs compliance checks on the infrastructure code to detect secrets and security vulnerabilities.
 * Builds artifacts on every Git commit.
-* Stores the built artifacts metadate in inventory repository.
+* Stores the built artifacts metadata in inventory repository.
 * Automatically builds and validates any code that is merged into the target Git repository branch.
 
 ![DevSecOps IaC Continuous Integration toolchain](images/devsecops-ci-terraform-toolchain-diagram.png){: caption="Figure 1. DevSecOps Continuous Integration toolchain" caption-side="bottom"}
