@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-03-07"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -25,14 +25,54 @@ Therefore, the incident issues are bound to assets and created according to the 
 ## Incident issue processing
 {: #incident-issue-processing-ci-cc}
 
-Even though the CI and CC pipelines have common steps, the issue processing of these pipelines have some differences:
+Even though the CI and CC pipelines have common steps, the issue processing of these pipelines has some differences:
 
 * Incident issues that are created during the CI pipeline do not carry a due date, while incident issues that are created during the CC pipeline do.
 * Incident issues that are created during the CI pipeline are found during the build, while incident issues that are created during the CC pipeline are found in the production environment.
 
-The following diagram shows the possible use cases that are based on these differences:
+Figures 1 - 6 show the possible use cases that are based on these differences.
 
-![Vulnerability use cases flow](images/devsecops-vulnerability-usecases-flow.png "Vulnerability use cases flow"){: caption="Figure 1. Vulnerability use cases flow" caption-side="bottom"}
+### DevSecOps/one pipeline lifecycle
+{: #incident-issue-lifecycle}
+
+The DevSecOps/one pipeline lifecycle extends from code PRs to production scans.
+
+![Vulnerability use cases flow](images/vuln-uc-0.svg "DevSecOps/one pipeline lifecycle"){: caption="Figure 1. DevSecOps/one pipeline lifecycle" caption-side="bottom"}
+
+#### Use case 1: vulnerability found in the build
+{: #incident-issue-uc1}
+
+The new build introduces a vulnerability, which is not accepted. Deployment is blocked unless the change request is an emergency CR that is manually approved.
+
+![Vulnerability found in the build](images/vuln-uc-1.svg "Vulnerability found in the build"){: caption="Figure 2. Vulnerability found in the build" caption-side="bottom"}
+
+#### Use case 2: vulnerability found in the build that is also in production
+{: #incident-issue-uc2}
+
+The new build contains a vulnerability that is also in the currently deployed production. This vulnerability gives teams a timeline to fix the issue, but does not prevent the deployment of new features or fixes.
+
+![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Figure 3. Vulnerability found in the build that is also in production" caption-side="bottom"}
+
+#### Use case 2A: vulnerability that is found in production allows PRs
+{: #incident-issue-uc2a}
+
+The vulnerability in production does not prevent PRs from merging.
+
+![Vulnerability found in production allows PRs](images/vuln-uc-2a.svg "Vulnerability found in production allows PRs"){: caption="Figure 4. Vulnerability found in production allows PRs" caption-side="bottom"}
+
+#### Use case 3: false positives and PCEs
+{: #incident-issue-uc3}
+
+If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted". The issue can be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
+
+![False positives and PCEs](images/vuln-uc-3.svg "False positives and PCEs"){: caption="Figure 5. False positives and PCEs" caption-side="bottom"}
+
+#### Use case 4: automatically closing fixed issues
+{: #incident-issue-uc4}
+
+Periodically running the CC pipeline can close issues that are open and have a due date set. Also, the relevant vulnerability cannot be found in scans.
+
+![Automatically closing fixed issues](images/vuln-uc-4.svg "Automatically closing fixed issues"){: caption="Figure 6. Automatically closing fixed issues" caption-side="bottom"}
 
 ## Setting the due date for incident issues
 {: #incident-issue-due-date-setting}
@@ -66,7 +106,7 @@ The absence of the `fix-available` label does not mean that the issue is not act
 ## Incident issues with due date
 {: #devsecops-issues-due-date}
 
-When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence. If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The timeframe that is given to fix the problem in production is called the _**grace period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
+When you use the [collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) script, incident issues are created and attached to the collected evidence. If issues are found in production, they can have a specified time period in which they must be fixed so that deployments are not blocked. The time frame that is given to fix the problem in production is called the _**grace period**_. However, for better readability, _**Due Date**_ is now available in incident issues so that users know the date when the fix is due without calculating it from the grace period.
 
 If an issue such as vulnerability or CVE is found in production, and the same problem is also found in a build, the build does not make the situation worse. The feature can be deployed, and the team can focus on fixing the issue in production.
 
