@@ -49,7 +49,7 @@ The new build introduces a vulnerability, which is not accepted. Deployment is b
 ### Use case 2: vulnerability found in the build that is also in production
 {: #incident-issue-uc2}
 
-The new build contains a vulnerability that is also in the currently deployed production. This vulnerability gives teams a timeline to fix the issue, but does not prevent the deployment of new features or fixes.
+The new build contains a vulnerability that is also in the currently deployed production. Teams have a timeline to fix the issue, but new features or fixes can still be deployed.
 
 ![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Figure 3. Vulnerability found in the build that is also in production" caption-side="bottom"}
 
@@ -63,7 +63,7 @@ The vulnerability in production does not prevent PRs from merging.
 ### Use case 3: false positives and PCEs
 {: #incident-issue-uc3}
 
-If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted". The issue can be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
+If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted**. The issue can be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
 
 ![False positives and PCEs](images/vuln-uc-3.svg "False positives and PCEs"){: caption="Figure 5. False positives and PCEs" caption-side="bottom"}
 
