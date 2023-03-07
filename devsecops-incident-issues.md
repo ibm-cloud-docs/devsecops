@@ -39,35 +39,35 @@ The DevSecOps/one pipeline lifecycle extends from code PRs to production scans.
 
 ![Vulnerability use cases flow](images/vuln-uc-0.svg "DevSecOps/one pipeline lifecycle"){: caption="Figure 1. DevSecOps/one pipeline lifecycle" caption-side="bottom"}
 
-#### Use case 1: vulnerability found in the build
+### Use case 1: vulnerability found in the build
 {: #incident-issue-uc1}
 
 The new build introduces a vulnerability, which is not accepted. Deployment is blocked unless the change request is an emergency CR that is manually approved.
 
 ![Vulnerability found in the build](images/vuln-uc-1.svg "Vulnerability found in the build"){: caption="Figure 2. Vulnerability found in the build" caption-side="bottom"}
 
-#### Use case 2: vulnerability found in the build that is also in production
+### Use case 2: vulnerability found in the build that is also in production
 {: #incident-issue-uc2}
 
 The new build contains a vulnerability that is also in the currently deployed production. This vulnerability gives teams a timeline to fix the issue, but does not prevent the deployment of new features or fixes.
 
 ![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Figure 3. Vulnerability found in the build that is also in production" caption-side="bottom"}
 
-#### Use case 2A: vulnerability that is found in production allows PRs
+### Use case 2A: vulnerability that is found in production allows PRs
 {: #incident-issue-uc2a}
 
 The vulnerability in production does not prevent PRs from merging.
 
 ![Vulnerability found in production allows PRs](images/vuln-uc-2a.svg "Vulnerability found in production allows PRs"){: caption="Figure 4. Vulnerability found in production allows PRs" caption-side="bottom"}
 
-#### Use case 3: false positives and PCEs
+### Use case 3: false positives and PCEs
 {: #incident-issue-uc3}
 
 If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted". The issue can be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
 
 ![False positives and PCEs](images/vuln-uc-3.svg "False positives and PCEs"){: caption="Figure 5. False positives and PCEs" caption-side="bottom"}
 
-#### Use case 4: automatically closing fixed issues
+### Use case 4: automatically closing fixed issues
 {: #incident-issue-uc4}
 
 Periodically running the CC pipeline can close issues that are open and have a due date set. Also, the relevant vulnerability cannot be found in scans.

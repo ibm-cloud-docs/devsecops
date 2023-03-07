@@ -38,7 +38,7 @@ Develop, implement, and test changes made to the `.pipeline-config.yaml` file by
 Take the following steps to set up `development mode` pipeline:
 
 1. Go to the **Triggers** page of your CI or CD pipeline.
-1. Duplicate the manual trigger. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertial.svg) on the **Manual Trigger** and click **Duplicate**.
+1. Duplicate the manual trigger. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg) on the **Manual Trigger** and click **Duplicate**.
 
    ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 1. Duplicate manual trigger" caption-side="bottom"}
 
