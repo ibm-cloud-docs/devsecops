@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-02"
+lastupdated: "2023-03-07"
 
 keywords: DevSecOps, development mode, IBM Cloud, pipelines
 
@@ -38,7 +38,7 @@ Develop, implement, and test changes made to the `.pipeline-config.yaml` file by
 Take the following steps to set up `development mode` pipeline:
 
 1. Go to the **Triggers** page of your CI or CD pipeline.
-1. Duplicate the manual trigger. Click **Manual Trigger** > **Duplicate**.
+1. Duplicate the manual trigger. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertial.svg) on the **Manual Trigger** and click **Duplicate**.
 
    ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 1. Duplicate manual trigger" caption-side="bottom"}
 
@@ -63,7 +63,7 @@ The `development-mode` pipeline runs the code that is in the `.pipeline-config.y
 
 All other security and compliance tasks do not run, reducing the pipeline execution time.
 
-![Standard and development modes compared](images/comparison.png){: caption="Figure 2. Standard and development modes compared" caption-side="bottom"}
+![Standard and development modes compared](images/comparison.png){: caption="Figure 3. Standard and development modes compared" caption-side="bottom"}
 
 ## Returning to standard mode
 {: #devsecops-devmode-standard}
