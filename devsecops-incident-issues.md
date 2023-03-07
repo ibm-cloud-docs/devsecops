@@ -63,7 +63,7 @@ The vulnerability in production does not prevent PRs from merging.
 ### Use case 3: false positives and PCEs
 {: #incident-issue-uc3}
 
-If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted**. The issue can be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
+If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted**. The issue can then be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
 
 ![False positives and PCEs](images/vuln-uc-3.svg "False positives and PCEs"){: caption="Figure 5. False positives and PCEs" caption-side="bottom"}
 
