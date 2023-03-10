@@ -15,7 +15,7 @@ subcollection: devsecops
 # Verifying image signatures
 {: #devsecops-image-verify}
 
-Ensure that the integrity of images that are built in the Continuous Integration (CI) pipeline is maintained before deployment by verifying image signatures.
+Maintain the integrity of images that are built in the Continuous Integration (CI) pipeline before deployment by verifying image signatures.
 {: shortdesc}
 
 ## Prerequisites
@@ -29,7 +29,8 @@ To verify the signature of an image, you must have the GPG public key. Follow th
 A new `prod-verify-artifact` stage verifies the signature of an image in the Continuous Delivery (CD) pipeline. This stage performs the following steps:
 
 1. Decodes the user-provided encoded GPG public key into a temporary file.
-2. Creates a docker container policy (`/etc/containers/policy.json`) with the public key.
+2. Creates a Docker container policy (`/etc/containers/policy.json`) with the public key.
+
    ```JSON
     {
       "default": [

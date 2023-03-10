@@ -15,7 +15,7 @@ subcollection: devsecops
 # Getting the public key for signature verification
 {: #devsecops-publickey}
 
-To verify the signature of signed images in a Continuous Deployment (CD) pipeline, you need a GPG public key. 
+Use a GPG public key to verify the signature of signed images in a Continuous Deployment (CD) pipeline,. 
 {: shortdesc}
 
 You can get a GPG public key as follows:
@@ -37,7 +37,7 @@ You can get a GPG public key as follows:
 ## Getting the GPG public key by using your local computer
 {: #devsecops-publickey-local}
 
-If you have the GPG private key in your key ring, you can export the public key directly
+If you have the GPG private key in your key ring, you can export the public key directly.
    
 1. Check whether your machine has the GPG keyring, run the following command:
 
@@ -159,7 +159,7 @@ Export and copy the GPG key to the clipboard as follows:
 1. Give an appropriate name in the **Key name** field. The stored GPG key can be retrieved later by using this name.
 1. Copy the key that you exported in the **Key material** field.
 
-      Ensure that there is no extra line at the end of the key when you copy the key and paste it in **Key material** field.
+      Ensure that there is no extra line at the end of the key when you copy the key and paste it in the **Key material** field.
       {: note}
 
 1. Select the **Choose a key ring** option as default. 
@@ -199,7 +199,7 @@ You must single `base64` encode the GPG key before you store it in your {{site.d
 1. Click the **Add** icon ![Add icon](../icons/add.svg) to add new key to the instance.
 1. Select **Other secret type** option.
 
-   ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Figure 52. Other secret type" caption-side="bottom"}
+   ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Figure 2. Other secret type" caption-side="bottom"}
 
 1. Select **Select a key type** as **Standard Key**.
 1. Give an appropriate name in the **Name** field. The stored GPG key can be retrieved later by this name.
@@ -208,7 +208,7 @@ You must single `base64` encode the GPG key before you store it in your {{site.d
     Ensure that there is no extra line at the end of the key when you copy the key and paste it in **Secret value** field.
     {: note}
 
-1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking the**Add** icon ![Add icon](../icons/add.svg).
+1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking the **Add** icon ![Add icon](../icons/add.svg).
 
    ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Figure 3. Add the key" caption-side="bottom"}
 
