@@ -15,7 +15,7 @@ subcollection: devsecops
 # Getting the public key for signature verification
 {: #devsecops-publickey}
 
-Use a GPG public key to verify the signature of signed images in a Continuous Deployment (CD) pipeline,. 
+Use a GPG public key to verify the signature of signed images in a Continuous Deployment (CD) pipeline. 
 {: shortdesc}
 
 You can get a GPG public key as follows:
