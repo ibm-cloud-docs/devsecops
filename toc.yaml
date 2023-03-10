@@ -63,6 +63,8 @@ toc:
           label: Configuring image signing
           topics:
           - devsecops-image-signing.md
+          - devsecops-get-public-key.md
+          - devsecops-image-verify.md
       - topicgroup:
          label: Working with Tekton pipelines
          topics:
