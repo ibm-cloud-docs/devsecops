@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-10"
+lastupdated: "2023-03-13"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting the public key for signature verification
+# Getting a public key for signature verification
 {: #devsecops-publickey}
 
 Use a GPG public key to verify the signature of signed images in a Continuous Deployment (CD) pipeline. 
@@ -23,10 +23,10 @@ You can get a GPG public key as follows:
 * Using the continuous integration (CI) pipeline.
 * Using your local computer.
 
-## Getting the GPG public key by using the continuous integration (CI) pipeline
+## Getting a GPG public key by using the continuous integration (CI) pipeline
 {: #devsecops-publickey-ci}
 
-1. To get the public key, add the environment variable `print-code-signing-certificate` with a value of 1 in your CI pipeline. After you run the CI pipeline, the GPG public key is printed on the console in the `build-sign-artifact` stage. You can then copy the public key into a file and encode it in base64 format by running the following command:
+1. To get a public key, add the environment variable `print-code-signing-certificate` with a value of 1 in your CI pipeline. After you run the CI pipeline, the GPG public key is printed on the console in the `build-sign-artifact` stage. You can then copy the public key into a file and encode it in base64 format by running the following command:
 
     ```bash
     cat copied_key.txt | base64 
@@ -34,12 +34,12 @@ You can get a GPG public key as follows:
 
 1. Copy the encoded key into your continuous deployment (CD) pipeline.
 
-## Getting the GPG public key by using your local computer
+## Getting a GPG public key by using your local computer
 {: #devsecops-publickey-local}
 
 If you have the GPG private key in your key ring, you can export the public key directly.
    
-1. Check whether your machine has the GPG keyring, run the following command:
+1. Check whether your machine has a GPG key ring. Key rings are groupings of keys that allow those groupings to be managed independently. For more information, see [Grouping keys together using key rings](/docs/key-protect?topic=key-protect-grouping-keys&interface=ui). Run the following command:
 
     ```bash
      gpg --list-keys
@@ -155,14 +155,14 @@ Export and copy the GPG key to the clipboard as follows:
 1. In your {{site.data.keyword.cloud_notm}} console, select the {{site.data.keyword.keymanagementserviceshort}} instance where you want to store the GPG key that you generated.
 1. Click the **Add** icon ![Add icon](../icons/add.svg) to add new key to the instance.
 1. Select **Import your own key** option.
-1. Select **Select a key type** as **Standard Key**.
+1. Select key type as **Standard Key**.
 1. Give an appropriate name in the **Key name** field. The stored GPG key can be retrieved later by using this name.
 1. Copy the key that you exported in the **Key material** field.
 
       Ensure that there is no extra line at the end of the key when you copy the key and paste it in the **Key material** field.
       {: note}
 
-1. Select the **Choose a key ring** option as default. 
+1. Expand the **Advanced Options** section and select the **Choose a key ring** option as default. 
 1. Add the key to your key protect by clicking **Add key**.
 
    ![Add the key to key protect](images/devsecops_set-up_store_key_protect.png){: caption="Figure 1. Add the key to key protect" caption-side="bottom"}
@@ -195,20 +195,20 @@ You must single `base64` encode the GPG key before you store it in your {{site.d
        gpg --armor --export <Email Address> | base64
        ```
 
-1. In your {{site.data.keyword.cloud_notm}} console, select the {{site.data.keyword.secrets-manager_short}} instance where you want to store GPG Key generated from the previous steps.
+1. In your {{site.data.keyword.cloud_notm}} console, select the {{site.data.keyword.secrets-manager_short}} instance where you want to store the GPG Key that you generated in the previous steps.
 1. Click the **Add** icon ![Add icon](../icons/add.svg) to add new key to the instance.
-1. Select **Other secret type** option.
+1. Select the **Other secret type** option.
 
    ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Figure 2. Other secret type" caption-side="bottom"}
 
-1. Select **Select a key type** as **Standard Key**.
-1. Give an appropriate name in the **Name** field. The stored GPG key can be retrieved later by this name.
-1. Choose the option as **Secret value** and paste the key as exported earlier in the **Secret Value** field.
+1. Select key type as **Standard Key**.
+1. Give an appropriate name in the **Name** field. The stored GPG key can be retrieved later by using this name.
+1. Choose the option as **Secret value** and paste the key as exported earlier in the **Secret value** field.
 
     Ensure that there is no extra line at the end of the key when you copy the key and paste it in **Secret value** field.
     {: note}
 
-1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking the **Add** icon ![Add icon](../icons/add.svg).
+1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking **Add**.
 
    ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Figure 3. Add the key" caption-side="bottom"}
 
@@ -217,7 +217,7 @@ For more information on {{site.data.keyword.secrets-manager_short}}, see [Gettin
 ### Export the private key and store it directly in the CI pipeline
 {: #devsecops-privatekey-export}
 
-Use this method for testing only. Use `keyprotect` or `secrets manager` for storing the keys.
+Use this method for testing only. Use `keyprotect` or `secrets manager` for storing keys.
 {: important}
 
 You must single `base64` encode the GPG key before storing it as a secured pipeline property.
