@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-18"
+  years: 2021, 2023
+lastupdated: "2023-03-14"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline
 
@@ -64,7 +64,8 @@ You can list these entries in the custom stages by using the following `pipeline
 * [list_repos](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_repos)
 * [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts)
 
-> Note: If you are retrieving the branch information in your CC pipeline by using the `pipelinectl` command `load_repo "$repo" branch`, it always returns `master` as branch.  Therefore, use `commit hashes` rather than branches.
+If you retrieve the branch information in your CC pipeline by using the `pipelinectl` command `load_repo "$repo" branch`, it always returns `master` as branch.  Therefore, use `commit hashes` rather than branches.
+{: note}
 
 ## Setup stage
 {: #devsecops-cc-pipeline-setup}
