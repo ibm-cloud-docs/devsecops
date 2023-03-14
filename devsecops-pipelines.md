@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-03-14"
 
 keywords: DevSecOps
 
@@ -45,7 +45,7 @@ To keep the final pipeline status in sync with the compliance results, a task at
 ## Pull request pipeline
 {: #cd-devsecops-pipelines-pr-pipeline}
 
-The pull request pipeline runs pre-set compliance status checks on a pull request for the specified application (app) repository (repo). These status checks might prevent you from merging the pull request into the master branch if the checks are unsuccessful. Open or update a pull request against the master branch to trigger the pull request pipeline run. Users can run their own setup for the pipeline and tests in custom stages. For more information about the pull request pipeline, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
+The pull request pipeline runs pre-set compliance status checks on a pull request for the specified application (app) repository (repo). These status checks might prevent you from merging the pull request into the default active branch, usually `master`, if the checks are unsuccessful. Open or update a pull request against the default active branch to trigger the pull request pipeline run. Users can run their own setup for the pipeline and tests in custom stages. For more information about the pull request pipeline, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
 ## Continuous integration pipeline
 {: #cd-devsecops-pipelines-ci-pipeline}
@@ -79,9 +79,12 @@ See [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 ### Continuous integration writes to Inventory
 {: #cd-devsecops-pipelines-inventory-writes}
 
-The inventory contains several branches, including the master branch. These branches can represent deployment stages, environments, or regions, or a combination of these options, depending on the setup and usage.
+The inventory contains several branches, including the default branch. These branches can represent deployment stages, environments, or regions, or a combination of these options, depending on the setup and usage.
 
-The master branch is populated from continuous integration builds. The last commit in the target, such as `staging`, has a tag that shows that it was the last concluded deployment.
+The default branch is populated from continuous integration builds. The last commit in the target, such as `staging`, has a tag that shows that it was the last concluded deployment.
+
+If the default branch for the inventory is switched out to a different branch, you must rebase the commits from the previous default branch into the new default branch to make the Git commit history linear.
+{: note}
 
 ### Promotion
 {: #cd-devsecops-pipelines-inventory-promotion}

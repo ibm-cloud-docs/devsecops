@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-03-14"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -63,6 +63,8 @@ Set `opt-in-promotion-validation` to 1, to perform the promotion PR validation. 
 |impact 		|More notes about what this change implementation impacts.   	|`''`		|Optional		|
 |backout-plan		|The plan that describes how the change is rolled back in a failure. 		|`''`		|Optional		|
 |slack-notifications		|The switch to turn the Slack Integration on or off  	|0		|Optional		|
+|customer-impact		|Impact of the change on the customers. 		|`critical`, `high`, `moderate`, `low`, or `no_impact`		|Optional		|
+
 {: caption="Table 1. Promotion pipeline inputs" caption-side="top"}
 
 ## Outputs and effects
@@ -80,10 +82,11 @@ You must edit and modify the pull/merge request if the optional parameters were 
 |Additional Description | The description about the changes in the application. | Optional |
 |Purpose | The purpose of the changes that are made to the application. | Optional |
 |Explanation of Impact | The impact of the change to the application behavior or environment. | Optional |
+|Customer Impact| One of the following values: `Critical`, `High`, `Moderate`, `Low`, `No_Impact` | Required |
 |Backout Plan | The steps to back out if the deployment fails. | Optional |
 {: caption="Table 2.Optional parameters" caption-side="top"}
 
- ![Promotion pull and merge request](images/promotion-pull-request.png){: caption="Figure 1. Promotion pull and merge request" caption-side="bottom"}
+ ![Promotion pull and merge request](images/promotion-pr.png){: caption="Figure 1. Promotion pull and merge request" caption-side="bottom"}
  
  When the (optional) promotion PR validation runs, the evidence status is set on the pull/merge request.
  ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Figure 2. Evidence status on promotion pull and merge request" caption-side="bottom"}

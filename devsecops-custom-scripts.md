@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2023
-lastupdated: "2023-01-05"
+copyright: 
+  years: 2023, 2023
+lastupdated: "2023-03-14"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -38,7 +38,7 @@ Stages in pull request, continuous integration, and continuous deployment pipeli
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
 
-* `setup`: Run scripts to complete setup tasks such as setting up an environment for a pipeline run, installing dependencies, and checking environments.
+* `setup`: Run scripts to complete setup tasks that are done outside the pipeline run context. These tasks persist for the entire pipeline run. For example, setting up an external environment, setting up branch protection rules, performing health checks, checking environments, or initializing external services.
 * `test`: Run unit tests, include all of your tests that run on your codebase, and pre-deploy time.
 * `static-scan`: Run a static code analyzer tool.
 * `dynamic-scan`: Run dynamic scan on the application.
