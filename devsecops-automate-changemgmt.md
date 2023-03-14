@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-03-14"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -32,12 +32,18 @@ Use the pull request template that is provided in the inventory for promotion pu
  
 The promotion pull request template contains the following fields:
 
-* **Priority** Required. The priority of the change. Valid values are: `critical`, `high`, `moderate`, `low`, and `planning`.
-* **Change Request assignee** Required. The email address of the person that the change request is assigned to.
-* **Additional Description** Describes the change process. Extra content from the automation process is appended here.
-* **Purpose/Goal** Describes the purpose of the change.
-* **Explanation of Impact** Describes the possible impact of the change.
-* **Backout Plan** Describes the rollback or backout plan.
+* `Priority` Required. The priority of the change. Valid values are: `critical`, `high`, `moderate`, `low`, and `planning`.
+* `Change Request assignee` Required. The email address of the person that the change request is assigned to.
+* `Additional Description` Describes the change process. Extra content from the automation process is appended here.
+* `Purpose/Goal` Describes the purpose of the change.
+* `Explanation of Impact` Describes the possible impact of the change.
+* `Customer Impact` Required. Describes the impact of the change for the customer. Valid values are: `critical`, `high`, `moderate`, `low`, `no_impact` 
+* `Backout Plan` Describes the rollback or backout plan.
+
+Along with these fields, you must set two additional fields from the environment properties:
+
+* `target-environment-purpose` (Required) Valid values are: `production`, `pre_prod`. Any non-production deployment would qualify as `pre_prod`.
+* `target-environment-detail` (Required) A string which describes the `target-environment` where the change is deployed.
 
 For more information on change request data, see [Data included in change requests](/docs/devsecops?topic=devsecops-cd-devsecops-cr-data).
  

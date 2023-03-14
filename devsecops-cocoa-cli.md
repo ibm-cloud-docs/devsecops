@@ -544,6 +544,7 @@ The following fields can be parsed from the pull request body:
 --purpose
 --backout-plan
 --type
+--customer-impact
 ```
 {: screen}
 
@@ -571,6 +572,8 @@ Options:
 --type             # change request type, option: standard, emergency
 --emergency-label  # emergency label to look for in the pull request
 --file             # file name to print the cr data to (optional, prints to stdout by default)
+--service-environment # service environment of the change, valid options: production, pre_prod
+--service-environment-detail # brief description of the service environment where change is deployed.
 ```
 {: screen}
 
@@ -1709,6 +1712,7 @@ $ cocoa inventory promote \
   --description='desc' \
   --purpose='purpose' \
   --impact='impact' \
+  --customer-impact='impact' \
   --backout-plan='rollback'
 ```
 {: codeblock}

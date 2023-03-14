@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-03-13"
+lastupdated: "2023-03-14"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -170,6 +170,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-api-key`		|text		|The Cloud Object Storage API key.	|Optional			|
 |`cos-bucket-name`		|text		|The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|
 |`cos-endpoint`		|text		|The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker.  For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). |Optional			|
+|[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that will be appended to the Change Request Description.	|Optional			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
@@ -205,7 +206,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
 |[`summary-retry-attempts`](#pipeline-parm-summary-retry-attempts)		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
 |[`summary-max-retry-time`](#pipeline-parm-summary-max-retry-time)		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time is generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
-|[`target-environment`](#pipeline-parm-target-environment)		|text		|The target environment that the app is deployed to.	|Required			|
+|[`target-environment`](#pipeline-parm-target-environment)		|text		|The target environment that the app is deployed.	|Required			|
+|[`target-environment-purpose`](#pipeline-parm-target-environment-purpose)		|text		|The context of the environment where the app is deployed. Valid values: `pre_prod`, `production`	|Required |
+|[`target-environment-detail`](#pipeline-parm-target-environment-detail)		|text		|Description of the target environment where the app is deployed. |Required |	
 |`version`		|text		|The version of the app to deploy.	|Required	  	|
 {: caption="Table 3. Continuous deployment parameters" caption-side="bottom"}
 {: #cd-parameters}
@@ -351,6 +354,11 @@ Example:
 
 This is an optional parameter for the CI and CC pipelines. If you marked an incident issue permanently exempted with a custom label, then this parameter should hold the value of the custom label.
 
+### customer-impact
+{: #pipeline-parm-customer-impact}
+
+This parameter is for the promotion pull request, it records the impact of the change request on the customer. By default the parameter is the pipe separated string `'Critical | High | Moderate | Low | No_Impact'`. Edit the default string to select one of the options.
+
 ### description
 {: #pipeline-parm-description}
 
@@ -433,5 +441,15 @@ Use a retry method to upload the evidence summary to make sure it is successful.
 {: #pipeline-parm-target-environment}
 
 The target environment that the app is deployed to, which is the target inventory branch of the promotion. The default value is `prod`. This value can be overwritten with the usage of a webhook trigger by adding the `target-environment` property to the payload.
+
+### target-environment-purpose
+{: #pipeline-parm-target-environment-purpose}
+
+This parameter is for the CD pipeline. `target-environment-purpose` determines the context of the target environment and how it is used. Valid values are `pre_prod` and `production`. Mark anything that is not a `production` related change as `pre_prod`.
+
+### target-environment-detail
+{: #pipeline-parm-target-environment-detail}
+
+This parameter is for the CD pipeline, it describes the target environment.
 
 
