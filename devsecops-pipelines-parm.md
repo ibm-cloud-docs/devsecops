@@ -15,13 +15,13 @@ subcollection: devsecops
 # Pipeline parameters
 {: #cd-devsecops-pipeline-parm}
 
-Parameters are provided outfor the pull request, continuous integration, continuous deployment, continuous compliance, and promotion pipelines.
+Parameters are provided for the pull request, continuous integration, continuous deployment, continuous compliance, and promotion pipelines.
 {: shortdesc}
 
 You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 {: tip}
 
-Tables 1 to 5 list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines:
+Tables 1 to 5 list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines.
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
