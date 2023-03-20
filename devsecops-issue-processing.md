@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-01-10"
+lastupdated: "2023-03-20"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -14,7 +14,6 @@ subcollection: devsecops
 
 # Processing incident and nonincident issues
 {: #issue-processing}
-
 
 The following types of issues are supported:
 
@@ -83,3 +82,8 @@ If you want to mark an issue permanently exempted with a custom label, add that 
 
 If an issue is marked as exempted, the CI pipeline needs to be rerun. Otherwise, it does not produce new evidence.
 {: note}
+
+## Best practices for issue management
+{: #issue-mgt-practice}
+
+Scanning tools offer exclude or ignore list functions that can hide certain issues. Using these functions is not recommended practice because they bypass proper risk management procedures by burying ignore lists in app code. Ignore lists might be outside control of security focals. Instead, use DevSecOps CI, CD, and CC pipelines to manage security and compliance risk by automatically tracking deviations and incidents in Git issues. Pipelines also capture exemptions, due-dates, assignees and labels, which is the best practice to transparently manage issues.
