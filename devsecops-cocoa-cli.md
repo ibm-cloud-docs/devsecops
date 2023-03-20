@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2023-03-20"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1068,6 +1068,39 @@ $ cat raw-summary.json | cocoa evidence format-summary -i - -o - | tee formatted
 $ cat raw-summary.json | cocoa evidence format-summary | tee formatted-summary.txt
 # Reading to and from file:
 $ cocoa evidence format-summary --input=raw-summary.json --output=formatted-summary.txt
+```
+{: codeblock}
+
+### cocoa evidence markdown-summary
+{: #evidence-markdown-summary}
+
+Formats the evidence summary into a markdown format that can be fed as a GitHub or GitLab pull request comment.
+	
+The input is raw summary and can be in one of two formats:
+	
+* Summary in JSON format (output of the cocoa evidence summary command).
+* Aggregated summary, which is a JSON array of individual app summaries.
+
+When an aggregated summary is passed as input, the output groups the evidence status based on the apps in the summaries.
+
+Optional flag:
+- `--detailed`: A detailed markdown summary is generated if the flag is set to true (`true` by default, set to `false` for a trimmed down summary).
+
+Running the command:
+
+```sh
+$ cocoa evidence markdown-summary \
+  --input=<filepath> \          # (default: -, referring to stdin) If present, the formatted evidence will be read from the given file.
+  --output=<filepath>           # (default: -, referring to stdout) If present, the formatted evidence will be saved to the given file.
+```
+{: codeblock}
+
+```sh
+# Reading from stdin and printing to stdout:
+$ cat raw-summary.json | cocoa evidence markdown-summary -i - -o - | tee markdown-summary.md
+$ cat aggr-summary.json | cocoa evidence markdown-summary | tee markdown-summary.md
+# Reading to and from file:
+$ cocoa evidence markdown-summary --input=raw-summary.json --output=markdown-summary.md
 ```
 {: codeblock}
 
@@ -2584,5 +2617,64 @@ Running the command:
 $ cocoa changelog \
   --org=<github-organization> \
   --repo=<github-repo-name>
+```
+{: codeblock}
+
+## cocoa comment commands
+{: #comment-commands}
+
+### cocoa comment add
+{: #comment-add}
+
+Adds a comment to an issue or pull request in GitLab or GitHub.
+
+Options:
+
+```text
+--content           	# (Required) The content to be added as comment to issue or pr
+--id       		# (Required) The issue number or pull request number
+--type             	# (Optional) The type (issue or pr), default is issue
+--org               	# The git repo org
+--repo              	# The git repo name
+--git-provider     	# (Optional) Git service provider [github | gitlab] Default is "github"
+--git-token-path    	# (Optional) Github or Gitlab Token's path
+--git-api-url       	# (Optional) Github or Gitlab API url
+```
+{: screen}
+
+Required Environment Variables:
+
+```text
+GHE_ORG=                    # Can be used instead of --org (either the option or the variable is required)
+GHE_REPO=                   # Can be used instead of --repo (either the option or the variable is required)
+```
+{: screen}
+
+Required environment variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+{: screen}
+
+Required environment variables, if you are using GitLab:
+
+```text
+GITLAB_TOKEN=        # Git Repos and Issue Tracking API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider)
+```
+{: screen}
+
+If you are using `gitlab`, use the `--git-token-path` field to set your GitLab token and use the `--git-api-url` field to set the GitLab API URL instead of the `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use the `--git-token-path` field to set your GitHub Token and use the `--git-api-url` field to set the GitHub Enterprise API URL instead of the `GHE_TOKEN` and `GH_URL` environment variables. If both `gitlab` and `github` are provided, `--git-token-path` and `--git-api-url` take precedence.
+
+Running the command:
+
+```sh
+$ cocoa comment add --id 1 \
+                    --content "This is a test comment" \
+                    --type pr \
+                    --git-provider gitlab \
+                    --org <github-organization> \
+					--repo <github-repo-name>
 ```
 {: codeblock}
