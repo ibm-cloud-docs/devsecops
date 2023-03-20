@@ -1076,9 +1076,9 @@ $ cocoa evidence format-summary --input=raw-summary.json --output=formatted-summ
 
 Formats the evidence summary into a markdown format that can be fed as a GitHub or GitLab pull request comment.
 	
-The input is raw summary and can be in one of two formats:
+The input is a raw summary and can be in one of two formats:
 	
-* Summary in JSON format (output of the cocoa evidence summary command).
+* Summary in JSON format (output of the `cocoa evidence summarize` command).
 * Aggregated summary, which is a JSON array of individual app summaries.
 
 When an aggregated summary is passed as input, the output groups the evidence status based on the apps in the summaries.
