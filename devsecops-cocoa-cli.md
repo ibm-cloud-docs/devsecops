@@ -2665,7 +2665,7 @@ GITLAB_URL=          # Git Repos and Issue Tracking URL Example: https://<region
 ```
 {: screen}
 
-If you are using `gitlab`, use the `--git-token-path` field to set your GitLab token and use the `--git-api-url` field to set the GitLab API URL instead of the `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use the `--git-token-path` field to set your GitHub Token and use the `--git-api-url` field to set the GitHub Enterprise API URL instead of the `GHE_TOKEN` and `GH_URL` environment variables. If both `gitlab` and `github` are provided, `--git-token-path` and `--git-api-url` take precedence.
+If you are using `gitlab`, use the `--git-token-path` field to set your GitLab token and use the `--git-api-url` field to set the GitLab API URL instead of the `GITLAB_TOKEN` and `GITLAB_URL` environment variables. If you are using `github`, use the `--git-token-path` field to set your GitHub Token and use the `--git-api-url` field to set the GitHub Enterprise API URL instead of the `GHE_TOKEN` and `GH_URL` environment variables. If both environment properties and command line parameters are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
 
