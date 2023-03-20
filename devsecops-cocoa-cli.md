@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2023-03-20"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -34,6 +34,7 @@ export RETRY_STATUS_CODE=409,422,500            # Retry API calls for response c
 ```
 
 The retries are exponentially spaced in time, so setting up higher retry attempts causes the retries to be spaced further apart.
+
 ## Elapsed time for command execution
 {: #cd-devsecops-cli-elapse}
 
@@ -1070,6 +1071,8 @@ $ cat raw-summary.json | cocoa evidence format-summary | tee formatted-summary.t
 $ cocoa evidence format-summary --input=raw-summary.json --output=formatted-summary.txt
 ```
 {: codeblock}
+
+
 
 ### cocoa evidence upload
 {: #evidence-upload}
@@ -2586,3 +2589,5 @@ $ cocoa changelog \
   --repo=<github-repo-name>
 ```
 {: codeblock}
+
+
