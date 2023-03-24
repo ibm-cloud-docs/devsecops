@@ -26,7 +26,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`artifactory-dockerconfigjson` 		|SECRET 		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.	 			|Required			|
-| `base-branch` |text | The target branch where the PR is merged (typically `master`). If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  |
+| `base-branch` |text | The target branch where the PR is merged. Typically, `master` is the default base branch. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the trigger.| Required  |
 | `base-repo` |text | The URL of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  |
 | `base-repo-name` |text | The name of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  |
 | `base-repo-owner` |text | The owner of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  |
