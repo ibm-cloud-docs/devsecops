@@ -123,7 +123,6 @@ toc:
           - devsecops-git-submodules.md 
           - devsecops-config-github.md
           - devsecops-set-pr-status.md
-          - devsecops-config-toolchain-git-integration.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
       - devsecops-scc-toolchains.md
