@@ -294,7 +294,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing Kubernetes cluster (custom configuration). Options: `default` or `custom`. Default is `default`. | Required |
 |`opt-in-cra-auto-remediation`		|text		|Specifies if {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			|
 |`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
-|`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
+|`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the current major version is different (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
 {: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
