@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-03-24"
+lastupdated: "2023-03-27"
 
 keywords: DevSecOps, IBM Cloud, compliance, Contrast
 
@@ -46,8 +46,8 @@ The parameters in Table 1 are required regardless of the language that you are u
 | Parameter name | Description |
 |-|-|
 | `contrast-api-key` | Use the `API Key` that is under your profile page in the Contrast dashboard. |
-| `contrast-auth-header` | Click **Copy** on the **Authorization Header** that is under your profile page in the Contrast dashboard. |
-| `contrast-base-url` | The base URL of the Contrast SAST API, which is `https://app.contrastsecurity.com/Contrast/api/sast/v{version_number}`. To replace the `{version_number}`, go to [Contrast API documentation](https://api.contrastsecurity.com/){: external} and select **Scan** for Contrast SAST. You can see a specific version number. |
+| `contrast-auth-header` | Click the **Copy** link that is under the **Authorization Header** of your profile page in the Contrast dashboard. |
+| `contrast-base-url` | Default value is `https://app.contrastsecurity.com/Contrast/api/sast`. |
 | `contrast-org-id` | The identifier of the organization. You can get `Org ID` from your profile page in the Contrast dashboard. |
 | `contrast-service-key` | Use the `Service Key` that is under your profile page in the Contrast dashboard. |
 | `contrast-username` | This is the Contrast login username.  |
