@@ -114,6 +114,7 @@ toc:
           - devsecops-configuring-zap-scans.md
           - devsecops-sonarqube-integration.md
           - devsecops-configuring-mend-scans.md
+          - devsecops-configuring-contrast-sast.md
           - devsecops-ignore-cra-vulnerabilities.md
           - devsecops-get-va-rating-from-xforce.md
       - topicgroup: 

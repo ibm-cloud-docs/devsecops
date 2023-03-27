@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-03-27"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -97,7 +97,14 @@ Enter the name of the IBM-hosted {{site.data.keyword.gitrepos}} repository that 
 
 The region of the repository remains the same as the region of the toolchain.
 
-If you want to link an existing Application Repository for the toolchain, select the **Bring your own application** option, and provide it as input to the **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing GRI{{site.data.keyword.gitrepos}}T repositories. If you want to know more about **Bring your own application**, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+If you want to link an existing Application Repository for the toolchain, select the **Bring your own application** option, and provide it as input to the **Repository URL** field. As noted earlier, the toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. If you want to know more about **Bring your own application**, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+
+#### Git integration
+{: #devsecops-ci-tool-git}
+
+ To see the default method of authentication that is is used to access the Git provider, click **Switch to advanced configuration**. The default value of `Auth Type` is **OAuth**.  
+
+ To use a personal access token in your Git integration, select **Personal Access Token**. You must also provide a personal access token value for the field `Personal Access Token`, which has appropriate permissions for the repository.
 
 ### Inventory
 {: #devsecops-ci-tool-inventory}
