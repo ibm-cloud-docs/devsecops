@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2023-03-28"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -29,9 +29,9 @@ Stages in pull request, continuous integration, and continuous deployment pipeli
 
 * **Pull request pipeline stages**: `setup`, `test`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
-* **Continuous integration pipeline stages**: `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, and `release`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
+* **Continuous integration pipeline stages**: `setup`, `peer-review`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, and `release`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-* **continuous deployment pipeline stages**: `setup`, `deploy`, and `acceptance-test`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+* **continuous deployment pipeline stages**: `setup`, `verify-artifact`, `deploy`, and `acceptance-test`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
 * **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, and `scan-artifact`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
@@ -41,6 +41,7 @@ Stages in pull request, continuous integration, and continuous deployment pipeli
 * `setup`: Run scripts to complete setup tasks that are done outside the pipeline run context. These tasks persist for the entire pipeline run. For example, setting up an external environment, setting up branch protection rules, performing health checks, checking environments, or initializing external services.
 * `test`: Run unit tests, include all of your tests that run on your codebase, and pre-deploy time.
 * `static-scan`: Run a static code analyzer tool.
+* `peer-review`: Run scripts to check whether the pull request is reviewed and has the minimum number of required approvals.
 * `dynamic-scan`: Run dynamic scan on the application.
 * `containerize`: Create the artifacts that are required by your app, such as Docker images, RPMs, and Java Archive (JARS) files.
 * `scan-artifact`: Scan the artifacts, for example, by using Container Registry Vulnerability Advisor for Docker images.
@@ -48,6 +49,7 @@ Stages in pull request, continuous integration, and continuous deployment pipeli
 * `release`: Add artifacts to the inventory by marking them available for deployment.
 * `deploy`: Deploy artifacts to an environment such as test and dev or staging and prod.
 * `acceptance-test`: Run tests on deployed artifacts. You can also include your post-deployment tests in this stage.
+* `verify-artifact`: Run scripts to check whether the artifacts that are signed in the CI pipeline have valid signatures.
 
 ## Configuration in `pipeline-config.yaml`
 {: #cd-devsecops-scripts-config}
