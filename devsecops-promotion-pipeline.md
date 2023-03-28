@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2023-03-28"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -64,7 +64,6 @@ Set `opt-in-promotion-validation` to 1, to perform the promotion PR validation. 
 |backout-plan		|The plan that describes how the change is rolled back in a failure. 		|`''`		|Optional		|
 |slack-notifications		|The switch to turn the Slack Integration on or off  	|0		|Optional		|
 |customer-impact		|Impact of the change on the customers. 		|`critical`, `high`, `moderate`, `low`, or `no_impact`		|Optional		|
-
 {: caption="Table 1. Promotion pipeline inputs" caption-side="top"}
 
 ## Outputs and effects
