@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2022
-lastupdated: "2023-03-30"
+  years: 2021, 2023
+lastupdated: "2023-04-04"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -19,7 +19,7 @@ subcollection: devsecops
 The DevSecOps reference architecture streamlines compliance and audit-readiness by using building blocks like Tekton task library and toolchain templates.
 {: shortdesc}
 
-Because the continuous integration, continuous deployment and continuous compliance processes are standardized, application development teams can be sure that they are following security best practices. The [DevSecOps](#x9892260){: term} reference architecture provides a set of predefined continuous integration, continuous deployment and continuous compliance toolchain templates. These templates use a collection of tool integrations and customizable reference Tekton pipelines for build, scan, test, change management, and deploy. The pipelines definitions are managed and updated by IBM periodically unless you change the default setting when creating the toolchains. 
+Because the continuous integration, continuous deployment, and continuous compliance processes are standardized, application development teams can be sure that they are following security best practices. The [DevSecOps](#x9892260){: term} reference architecture provides a set of predefined continuous integration, continuous deployment, and continuous compliance toolchain templates. These templates use a collection of tool integrations and customizable reference Tekton pipelines for build, scan, test, change management, and deploy. The pipelines definitions are managed and updated by IBM periodically unless you change the default setting when you create the toolchains. 
 
 The Tekton pipelines provide a framework of custom scripts that you can use to ensure the compliant and automated orchestration of code and configuration changes. The pipelines can also help to maintain a GitOps release inventory, while it collects and stores evidence that can be used to generate auditable change requests.
 
@@ -53,25 +53,25 @@ You can have multiple continuous deployment pipelines that pull from a shared in
 
 The DevSecOps reference implementation is composed of the following building blocks:
 
-* **Continuous Integration (CI) Toolchain - Develop a secure app with DevSecOps practices**: A template for quickly provisioning a complete continuous integration solution. The template uses Tekton pipelines and integrates with various tools, such as Git repos, secrets storage, image registry, code scans, and object storage. The users of CI (Continuous Integration) DevSecOps Toolchain utilizes the guided wizard provided by the toolchain template to setup the toolchain and integrate different tools with their CI toolchain. Once the toolchain is setup, users can customize the toolchain for instance to:
+* **Continuous Integration (CI) toolchain - Develop a secure app with DevSecOps practices**: A template that quickly provisions a complete CI solution. The template uses Tekton pipelines and integrates with various tools, such as Git repos, secrets storage, image registry, code scans, and object storage. The CI DevSecOps toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CI toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
 
-     - Integrate additional tools supported by the Continuous Delivery Service, update pipeline triggers 
-     - Update pipeline triggers provided by the toolchain or add additional triggers to your pipelines
-     - Update environment properties for your pipelines or add additional properties for your pipelines  
+     - Integrate more tools supported by the Continuous Delivery service. For example, update pipeline triggers.
+     - Update pipeline triggers that are provided by the toolchain or add more triggers to your pipelines.
+     - Update environment properties for your pipelines or add more properties to your pipelines. 
 
-* **Continuous Deployment (CD) Toolchain - Deploy a secure app with DevSecOps practices**:  A template for quickly provisioning a complete continuous deployment solution. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The users of CD (Continuous Deployment) DevSecOps Toolchain utilizes the guided wizard provided by the toolchain template to setup the toolchain and integrate different tools with their CD toolchain. Once the toolchain is setup, users can customize the toolchain for instance to:
+* **Continuous Deployment (CD) toolchain - Deploy a secure app with DevSecOps practices**:  A template that quickly provisions a complete CD solution. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The CD DevSecOps Toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CD toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
 
-    - Integrate additional tools supported by the Continuous Delivery Service, update pipeline triggers 
-    - Update pipeline triggers provided by the toolchain or add additional triggers to your pipelines
-    - Update environment properties for your pipelines or add additional properties for your pipelines
+    - Integrate more tools supported by the CD Service. For example, update pipeline triggers. 
+    - Update pipeline triggers that are provided by the toolchain or add more triggers to your pipelines.
+    - Update environment properties for your pipelines or add more properties for your pipelines.
 
-* **Continuous Compliance (CC) Toolchain - Ensure running a secure and compliant application**: A template for ensuring that your deployed artifacts and their source repositories are always compliant. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The users of CC (Continuous Compliance) DevSecOps Toolchain utilizes the guided wizard provided by the toolchain template to setup the toolchain and integrate different tools with their CC toolchain. Once the toolchain is setup, users can customize the toolchain for instance to:
+* **Continuous Compliance (CC) toolchain - Ensure that you are running a secure and compliant application**: A template that ensures that your deployed artifacts and their source repositories are always compliant. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The CC DevSecOps Toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CC toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
 
-     - Integrate additional tools supported by the Continuous Delivery Service, update pipeline triggers 
-     - Update pipeline triggers provided by the toolchain or add additional triggers to your pipelines
-     - Update environment properties for your pipelines or add additional properties for your pipelines
+     - Integrate more tools supported by the CD Service. For example, update pipeline triggers. 
+     - Update pipeline triggers provided by the toolchain or adds more triggers to your pipelines
+     - Update environment properties for your pipelines or add more properties for your pipelines
 
-* **Compliance Pipelines**: The tekton pipeline definitions are referenced from a GRIT (Git Repos and Issue Tracking) repository hosted in the IBM Cloud Region. These reference implementation of tekton definitions are managed and updated periodically by IBM. While IBM Cloud Continuous Delivery pipelines provides flexibility to customize pipeline definitions, it is strongly recommended that users of the DevSecOps Toolchains link only to the reference implementation of compliance pipelines as it adheres to DevSecOps best practices.
+* **Compliance Pipelines**: The Tekton pipeline definitions are referenced from a {{site.data.keyword.gitrepos}} repository that is hosted in the {{site.data.keyword.cloud_notm}} region. These reference implementations of tekton definitions are managed and updated periodically by IBM. While CD pipelines provide the flexibility to customize pipeline definitions, you must link DevSecOps toolchains to the reference implementation of compliance pipelines only as that implementation adheres to DevSecOps best practices.
 
 ## Learning resources
 {: #cd-devsecops-learning-resources}
