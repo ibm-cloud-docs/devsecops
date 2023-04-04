@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-03-13"
+lastupdated: "2023-04-03"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -102,7 +102,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `opt-in-cra-tf-validate` | | Flag to run compliance check by using the `ibmcloud cra terraform-validate` tool. |
 | `cra-tf-policy-file` | | Path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
 | `cra-tf-ignore-goals` | | Comma-separated list of goals to ignore from the `ibmcloud cra terraform-validate` report. |
-| `cra-tf-ignore-goals-file` | | Path to the JSON file that contains the list of goals to ignore from the `ibmcloud cra terraform-validate` report. |
+| `cra-tf-ignore-goals-file` | | Path to the JSON file that contains the list of goals to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-goals-file](#devsecops-iac-ci-pipeline-ignore-goals).  |
 | `opt-in-tfsec` | | Flag to run compliance checks by using `tfsec` tool. |
 | `tfsec-args` | | `tfsec` command arguments. |
 | `opt-in-checkov` | | Flag to run compliance checks by using the `checkov` tool. |
@@ -113,6 +113,25 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
 For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+
+### Format for `cra-tf-ignore-goals-file`
+{: #devsecops-iac-ci-pipeline-ignore-goals}
+
+The expected format for the file that is defined by the `cra-tf-ignore-goals-file format`. The format is similar to the format (without the `scc_goal_parameters` and `rego_rules` fields) that is in [Example profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-profile).
+
+Sample content for `cra-tf-ignore-goals-file` file:
+```
+{
+    "scc_goals": [
+        {
+            "scc_goal_id": "3000258"
+        },
+        {
+            "scc_goal_id": "3000260"
+        }
+    ]
+}
+```
 
 ## Build artifact
 {: #devsecops-iac-ci-pipeline-build}
@@ -159,7 +178,7 @@ The parameters to configure the scripts for the deployment action are described 
 | `schematics-workspace-resource-group` | Defaults to the resource group of the toolchain. | Resource group to be used for the schematics workspace creation. |
 | `schematics-workspace-region` | Defaults to the region of the toolchain. | Region to be used for the schematics workspace creation. |
 | `schematics-workspace-netrc` | Computed from known repositories. | Value for the `netrc` configuration of the schematics workspace to be created. For more information, see [Supporting to download modules from private remote host](/docs/schematics?topic=schematics-download-modules-pvt-git). |
-| `schematics-workspace-terraform-version` | `terraform_v1.0` | Terraform version used for the schematics workspace to be created. See [Overview of Schematics images and packaged Terraform providers](/docs/schematics?topic=schematics-version-constraints#schematics-image-ov). |
+| `schematics-workspace-terraform-version` | `terraform_v1.1` | Terraform version used for the schematics workspace to be created. See [Overview of Schematics images and packaged Terraform providers](/docs/schematics?topic=schematics-version-constraints#schematics-image-ov). |
 {: caption="Table 8. Configuration parameters to use Schematics as deployment tool" caption-side="top"}
 
 To configure the scripts in the IaC CD deployment process, define the parameter that is scoped for a given inventory entry. To specify `Schematics as deployment tool` related environment properties for a given scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the all the schematics-related environment entries.
