@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-03-27"
+lastupdated: "2023-04-04"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -79,7 +79,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
-|[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`1PL code` |Optional			|
+|[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`master` |Optional			|
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
@@ -233,7 +233,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
-|`branch`		|text		|The Git repo branch.	|Optional			|
+|`branch`		|text		|The Git repo branch of the repository that contains the source code of your application. Default value: `master`. |Optional			|
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
