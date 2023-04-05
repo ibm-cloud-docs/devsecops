@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-04"
+lastupdated: "2023-04-05"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -71,7 +71,11 @@ The DevSecOps reference implementation is composed of the following building blo
      - Update pipeline triggers provided by the toolchain or adds more triggers to your pipelines
      - Update environment properties for your pipelines or add more properties for your pipelines
 
-* **Compliance Pipelines**: The Tekton pipeline definitions are referenced from a {{site.data.keyword.gitrepos}} repository that is hosted in the {{site.data.keyword.cloud_notm}} region. These reference implementations of tekton definitions are managed and updated periodically by IBM. While CD pipelines provide the flexibility to customize pipeline definitions, you must link DevSecOps toolchains to the reference implementation of compliance pipelines only as that implementation adheres to DevSecOps best practices.
+* **Compliance Pipelines**: The Tekton pipeline definitions are referenced from a {{site.data.keyword.gitrepos}} repository that is hosted in the {{site.data.keyword.cloud_notm}} region. For instance, the pipeline definitions hosted in the Dallas region are in [compliance-pipelines](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-pipelines). During the pipeline runs, these definitions are used by the underlying Tekton worker nodes to run the pipeline. 
+
+These reference implementations of Tekton definitions are managed and updated periodically by IBM. During a new release, IBM updates the definitions in repositories hosted within different cloud regions. Predefined Tekton pipelines are configured to pull the latest pipeline definitions, which are automatically updated by IBM to provide fixes, including security fixes to all pipeline material. If new pipeline features become available, see [Release notes for DevSecOps](/docs/devsecops?topic=devsecops-release-notes).
+
+Although {{site.data.keyword.cloud_notm}} Continuous Delivery pipelines provide the flexibility to customize pipeline definitions, you should link DevSecOps toolchains to their reference implementation of compliance pipelines to maximize the benefits of IBM DevSecOps best practices.
 
 ## Learning resources
 {: #cd-devsecops-learning-resources}
