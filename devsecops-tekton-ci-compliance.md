@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-03-27"
+lastupdated: "2023-04-05"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -27,6 +27,7 @@ Complete these steps to set up the Tekton continuous integration pipelines with 
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure them.
 * Optional. [Configure Cloud Object Storage](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
 * [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
+
 
 ## Guided setup overview for the CI toolchain
 {: #cd-devsecops-tekton-ci-guided}
@@ -305,13 +306,15 @@ For example, if the URL is: `https://cloud.ibm.com/devops/toolchains/aaaaaaa-bbb
 
 You can also set a target environment for the DOI interactions. This parameter is optional. If you provide this parameter, it is used instead of the target environment from the inventory.
 
-#### DevOps Insights
+#### DevOps insights
 {: #cd-devsecops-devops-insights-ci}
 
 Use this option to create a new instance of DevOps Insights to be used for the toolchain. No configuration is required and the toolchain creates a new instance of DevOps Insight if this option is selected. The CI pipeline automatically uses the insights instance that is included in the toolchain.
 
-#### Delivery Pipeline Private Worker
-{: #ci-tool-integration-optional-private-worker}
+#### Delivery pipeline private worker
+{: #ci-tool-integration-private-worker}
+
+
 
 The [Delivery Pipeline Private Worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run Delivery Pipeline workloads in isolation.
 
