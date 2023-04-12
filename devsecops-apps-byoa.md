@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-09-16"
+  years: 2021, 2023
+lastupdated: "2023-04-12"
 
 keywords: DevSecOps
 
@@ -18,7 +18,12 @@ subcollection: devsecops
 You can bring your own application to a DevSecOps toolchain for continuous integration and continuous deployment. 
 {: shortdesc}
 
-Create your DevSecOps toolchain by using the default sample app that is provided. This sample app hosts a Node.js server that provides a static web page. The source code of the sample app contains a `.pipeline-config.yaml` file. The `.pipeline-config.yaml` file is the core configuration file that is used by continuous integration and continuous deployment toolchains for all of the stages in the pipeline run process.
+Create your DevSecOps toolchain by using the default sample app that is provided. This Node.js based [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app) hosts a Node.js server that provides a static web page.  Alternatively, use one of the following samples to start with a different flavor:
+
+- [code-engine-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/code-engine-compliance-app)
+- [python-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/python-compliance-app)
+
+The source code of each sample app contains a `.pipeline-config.yaml` file. The `.pipeline-config.yaml` file is the core configuration file that is used by continuous integration and continuous deployment toolchains for all of the stages in the pipeline run process.
 
 Add a `.pipeline-config.yaml` configuration file that contains the following properties that are required by each stage:
 
