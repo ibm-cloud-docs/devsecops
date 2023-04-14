@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-03-07"
+lastupdated: "2023-04-14"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -17,7 +17,7 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Part 2: Setup a CI toolchain for Infrastructure as Code (Terraform)
+# Part 2: Set up a CI toolchain for Infrastructure as Code (Terraform)
 {: #devsecops-tutorial-iac-ci}
 {: toc-content-type="tutorial"}
 {: toc-services="schematics, ContinuousDelivery"}
@@ -29,10 +29,7 @@ This tutorial is part 2 of a 3-part tutorial series where you learn {{site.data.
 ## Before you begin
 {: #devsecops-tutorial-iac-ci-prereqs}
 
-Before you begin part 2 of this tutorial series, ensure that you complete the following prerequisites:
-
-1. Complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac).
-1. View the [Getting started with DevSecOps in IBM Cloud - Part 1](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-1) video.
+Before you begin part 2 of this tutorial series, ensure that you complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac).
 
 ## Continuous Integration (CI) toolchain for Infrastructure as Code (IaC) introduction
 {: #devsecops-tutorial-iac-ci-intro} 

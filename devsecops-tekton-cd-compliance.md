@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-04-14"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -30,13 +30,9 @@ Complete these steps to set up the Tekton continuous deployment pipelines with c
 ## Guided setup overview for the CD toolchain
 {: #cd-tekton-cd-guided}
 
-View the following video tutorial to get an overview of the setup process:
-
-![Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Deployment Toolchain](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-2){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
+The progress indicator in Figure 1 guides you through the toolchain configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
 ![DevSecOps continuous deployment toolchain welcome page](images/devsecops-cd-welcome.png){: caption="Figure 1. DevSecOps continuous deployment toolchain welcome page" caption-side="bottom"}
-
-A progress indicator shows your progress in completing the configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
 The configuration options for the current step are displayed in the main area of the page.
 
