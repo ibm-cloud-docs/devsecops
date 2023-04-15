@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-05"
+lastupdated: "2023-04-14"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -29,12 +29,11 @@ Complete these steps to set up the Tekton continuous integration pipelines with 
 * [Validate recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
 
 
+
 ## Guided setup overview for the CI toolchain
 {: #cd-devsecops-tekton-ci-guided}
 
-View the following video tutorial to get an overview of the setup process:
-
-![Getting Started with DevSecOps in IBM Cloud - Part 1 - Continuous Integration Toolchain](https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-1){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
+The progress indicator in Figure 1 guides you through the toolchain configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
 ![DevSecOps Continuous Integration toolchain welcome page](images/devsecops-ci-welcome-page.png){: caption="Figure 1. DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
 

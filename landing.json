@@ -1,6 +1,6 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2022-09-30",
+    "lastupdated": "2023-04-14",
     "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
       {
@@ -32,18 +32,6 @@
         "title": "Working with incident issues",
         "description": "Learn how to create, store, and update incident issues as part of the Continuous Integration and Continuous Compliance pipelines.",
         "href": "/docs/devsecops?topic=devsecops-incident-issues"
-      }
-    ],
-    "section_videos": [
-      {
-        "title": "Getting Started with DevSecOps in IBM Cloud - Part 1 - Continuous Integration Toolchain",
-        "href": "https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-1", 
-        "thumbnail": "/images/CI_toolchain_thumbnail.png" 
-      },
-      {
-        "title": "Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Deployment Toolchain",
-        "href": "https://video.ibm.com/embed/channel/23944579/video/Getting-Started-with-DevSecOps-2",
-        "thumbnail": "/images/CD_toolchain_thumbnail.png"
       }
     ],
     "section_learn": {
