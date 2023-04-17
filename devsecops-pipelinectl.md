@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-16"
+  years: 2021, 2023
+lastupdated: "2023-04-17"
 
 keywords: DevSecOps, pipelinectl
 
@@ -20,6 +20,8 @@ subcollection: devsecops
 
 For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
 
+
+  
 ## Usage
 {: #pipelinectl-usage}
 
