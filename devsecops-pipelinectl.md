@@ -485,7 +485,7 @@ Outputs the following lines to the console:
 ```
 {: screen}
 
-### serialize
+### Serialize
 {: #serialize}
 
 Serialize `pipelinectl` data into a transferable JSON file to be used as payload for pipeline webhook triggers. It can serialize repositories set by `save_repo`, artifacts set by `save_artifact`, and environment variables set by `set_env`.
@@ -507,7 +507,7 @@ pipelinectl serialize --all-repos --all-artifacts <env_variable1> <env_variable2
 ```
 {: codeblock}
 
-> This command is not an alias, you need `pipelinectl` explicitly
+> This command is not an alias. You need `pipelinectl` explicitly
 
 ### deserialize
 {: #deserialize}
