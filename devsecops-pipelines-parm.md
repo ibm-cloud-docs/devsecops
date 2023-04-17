@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-04-04"
+lastupdated: "2023-04-17"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -121,6 +121,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
+|`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
@@ -200,6 +201,10 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`impact`](#pipeline-parm-impact)		|text		|Additional notes on what this change implementation impacts.	|Optional			|
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
+|`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
+|`incident-assignees`		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
+|`incident-label`		|text		|The label for new incident issues.	|Optional			|
+|`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`opt-out-v1-evidence`  |text  |Opts out from v1 evidence collection. |Required |
@@ -270,6 +275,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
+|`incident-label`		|text		|The label for new incident issues.	|Optional			|
+|`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
