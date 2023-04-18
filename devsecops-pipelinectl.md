@@ -1,8 +1,8 @@
 ---
 
-copyright:
+copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-17"
+lastupdated: "2023-04-18"
 
 keywords: DevSecOps, pipelinectl
 
