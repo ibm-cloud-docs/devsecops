@@ -15,7 +15,7 @@ subcollection: devsecops
 # pipelinectl
 {: #devsecops-pipelinectl}
 
-`pipelinectl` is a lightweight key-value store that can be used in DevSecOps pipelines to share data between tasks and the compliance automation scripts.
+`pipelinectl` is a lightweight key-value store that you can use in DevSecOps pipelines to share data between tasks and the compliance automation scripts.
 {: shortdesc}
 
 For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
