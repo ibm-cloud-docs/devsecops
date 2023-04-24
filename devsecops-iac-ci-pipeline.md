@@ -1,8 +1,8 @@
 ---
 
-copyright:
+copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-03"
+lastupdated: "2023-04-24"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -120,7 +120,8 @@ For more information about the expected output from user script stages, see [Cus
 The expected format for the file that is defined by the `cra-tf-ignore-goals-file format`. The format is similar to the format (without the `scc_goal_parameters` and `rego_rules` fields) that is in [Example profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-profile).
 
 Sample content for `cra-tf-ignore-goals-file` file:
-```
+
+```bash
 {
     "scc_goals": [
         {

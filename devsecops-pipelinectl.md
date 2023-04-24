@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-16"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-04-18"
 
 keywords: DevSecOps, pipelinectl
 
@@ -15,11 +15,13 @@ subcollection: devsecops
 # pipelinectl
 {: #devsecops-pipelinectl}
 
-`pipelinectl` is a lightweight key-value store that can be used in DevSecOps pipelines to share data between tasks and the compliance automation scripts.
+`pipelinectl` is a lightweight key-value store that you can use in DevSecOps pipelines to share data between tasks and the compliance automation scripts.
 {: shortdesc}
 
 For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
 
+
+  
 ## Usage
 {: #pipelinectl-usage}
 
@@ -483,7 +485,7 @@ Outputs the following lines to the console:
 ```
 {: screen}
 
-### serialize
+### Serialize
 {: #serialize}
 
 Serialize `pipelinectl` data into a transferable JSON file to be used as payload for pipeline webhook triggers. It can serialize repositories set by `save_repo`, artifacts set by `save_artifact`, and environment variables set by `set_env`.
@@ -505,7 +507,7 @@ pipelinectl serialize --all-repos --all-artifacts <env_variable1> <env_variable2
 ```
 {: codeblock}
 
-> This command is not an alias, you need `pipelinectl` explicitly
+> This command is not an alias. You need `pipelinectl` explicitly
 
 ### deserialize
 {: #deserialize}
