@@ -155,8 +155,7 @@ toc:
       - devsecops-async-stages.md
       - devsecops-custom-scripts.md
       - devsecops-common-scripts.md
-      - devsecops-images.md<staging>
-      - devsecops-integrate-external-ci-process.md/staging>
+      - devsecops-images.md
       - topicgroup:
           label: Command reference
           topics:
