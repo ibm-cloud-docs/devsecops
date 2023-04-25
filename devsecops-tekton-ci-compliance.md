@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-14"
+lastupdated: "2023-04-25"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -33,11 +33,14 @@ Complete these steps to set up the Tekton continuous integration pipelines with 
 ## Guided setup overview for the CI toolchain
 {: #cd-devsecops-tekton-ci-guided}
 
+View the following video tutorial to get an overview of the setup process:
+
+![Getting Started with DevSecOps in IBM Cloud - Part 1 - Continuous Deployment Toolchain](https://video.ibm.com/embed/recorded/130714354){: video output="iframe" data-script="none" id="mediacenterplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
+
 The progress indicator in Figure 1 guides you through the toolchain configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
 ![DevSecOps Continuous Integration toolchain welcome page](images/devsecops-ci-welcome-page.png){: caption="Figure 1. DevSecOps Continuous Integration toolchain welcome page" caption-side="bottom"}
 
-A progress indicator shows your progress in completing the configuration. If you need to return to a previous step, you can use the progress indicator to navigate to a previous step. 
 
 The configuration options for the current step are displayed in the main area of the page.
 
