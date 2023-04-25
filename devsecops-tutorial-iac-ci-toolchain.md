@@ -32,7 +32,7 @@ This tutorial is part 2 of a 3-part tutorial series where you learn {{site.data.
 Before you begin part 2 of this tutorial series, ensure that you complete the following prerequisites:
 
 1. Complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac).
-1. View the [Getting started with DevSecOps in IBM Cloud - Part 1]((https://video.ibm.com/embed/recorded/130714354) video.
+1. View the [Getting started with DevSecOps in IBM Cloud - Part 1](https://video.ibm.com/embed/recorded/130714354) video.
 
 ## Continuous Integration (CI) toolchain for Infrastructure as Code (IaC) introduction
 {: #devsecops-tutorial-iac-ci-intro} 
