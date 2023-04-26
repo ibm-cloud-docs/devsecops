@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-07-14"
+copyright: 
+  years: 2021, 2023
+lastupdated: "2023-04-26"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Configuring {{site.data.keyword.cos_full_notm}} for storing evidence
 {: #cd-devsecops-cos-config}
 
-Complete these steps to create a {{site.data.keyword.cos_full_notm}} instance and {{site.data.keyword.cos_full_notm}} bucket to store evidence that is used by the {{site.data.keyword.cloud_notm}} DevSecOps pipelines.
+Complete these steps to create an {{site.data.keyword.cos_full_notm}} instance and {{site.data.keyword.cos_full_notm}} bucket to store evidence that is used by the {{site.data.keyword.cloud_notm}} DevSecOps pipelines.
 {: shortdesc}
 
 ## Create a Cloud {{site.data.keyword.cos_short}} instance
