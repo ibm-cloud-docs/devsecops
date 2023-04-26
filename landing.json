@@ -34,6 +34,18 @@
         "href": "/docs/devsecops?topic=devsecops-incident-issues"
       }
     ],
+    "section_videos": [
+      {
+        "title": "Getting Started with DevSecOps in IBM Cloud - Part 1 - Continuous Integration Toolchain",
+        "href": "https://video.ibm.com/embed/recorded/130714354", 
+        "thumbnail": "/images/CI_toolchain_thumbnail.png" 
+      },
+      {
+        "title": "Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Deployment Toolchain",
+        "href": "https://video.ibm.com/embed/recorded/130714358",
+        "thumbnail": "/images/CD_toolchain_thumbnail.png"
+      }
+    ],
     "section_learn": {
       "developer": "https://developer.ibm.com/depmodels/cloud/",
       "architecture": "https://www.ibm.com/cloud/architecture",
