@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-08-02"
 
 keywords: DevSecOps, triggers
 

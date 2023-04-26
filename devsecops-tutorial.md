@@ -2,7 +2,7 @@
 
 copyright:
    years: 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-07-14"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
