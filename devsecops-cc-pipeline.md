@@ -2,9 +2,9 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-03-27"
+lastupdated: "2023-04-26"
 
-keywords: DevSecOps, cc pipeline, continuous compliance pipeline, sast
+keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
 subcollection: devsecops
 
