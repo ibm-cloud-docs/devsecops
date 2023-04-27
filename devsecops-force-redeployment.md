@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-09-26"
+lastupdated: "2022-08-02"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
