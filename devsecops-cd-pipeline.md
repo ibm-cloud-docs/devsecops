@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-03-13"
+lastupdated: "2023-05-02"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -30,7 +30,7 @@ Review the following table to learn more about the stages and tasks that are par
 |`change-request`		|Generate the change request and create the evidence summary. 		|No		|
 |`deployment`		|Deploy the build artifacts to the environment, such as staging or production.		|Yes		|
 |`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			|
-|`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|No			|
+|`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|Yes			|
 {: caption="Table 1. Pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
