@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-04-26"
+lastupdated: "2023-05-02"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -37,7 +37,7 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 |`acceptance-test`		|Run acceptance and integration tests on the deployed built artifacts on the dev environment.		|Yes		|
 |`scan-artifact` 		|Scan the built artifacts.   	|Yes			|
 |`release` 		|Add the built artifacts to the inventory. 		|Yes			|
-|`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|No			|
+|`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			|
 {: caption="Table 1. Continuous integration stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.

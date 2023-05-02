@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-18"
+  years: 2021, 2023
+lastupdated: "2023-05-02"
 
 keywords: DevSecOps
 
@@ -29,6 +29,7 @@ Attempts to merge a pull request into the master branch might be blocked because
 |`setup`		 |Set up your build and test environment.			|Yes|
 |`unit-tests`|Run unit tests and app tests on app code.		|Yes |
 |`compliance-checks` 	 |Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		|
+|`finish`| Consolidate the pipeline status. | Yes |
 {: caption="Table 1. Pipeline order" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).

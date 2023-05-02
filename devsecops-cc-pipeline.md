@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-04-26"
+lastupdated: "2023-05-02"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -31,7 +31,7 @@ The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic
 |`dynamic-scan` 		|Run dynamic scan on the application. 		|Yes			|
 |`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		|
 |`scan-artifact` 		|Scan the built artifacts.   	|Yes			|
-|`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|No			|
+|`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			|
 {: caption="Table 1. Continuous compliance pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.

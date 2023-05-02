@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-28"
+lastupdated: "2023-05-02"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -27,13 +27,13 @@ When any of the custom scripts are started, the complete URL of the custom scrip
 
 Stages in pull request, continuous integration, and continuous deployment pipelines run custom scripts.
 
-* **Pull request pipeline stages**: `setup`, `test`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
+* **Pull request pipeline stages**: `setup`, `test`, and `pr-custom-finish`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
-* **Continuous integration pipeline stages**: `setup`, `peer-review`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, and `release`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
+* **Continuous integration pipeline stages**: `setup`, `peer-review`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, and `ci-custom-finish`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-* **continuous deployment pipeline stages**: `setup`, `verify-artifact`, `deploy`, and `acceptance-test`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+* **continuous deployment pipeline stages**: `setup`, `verify-artifact`, `deploy`, `acceptance-test`, and `cd-custom-finish`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
-* **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, and `scan-artifact`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
+* **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, `scan-artifact`, and `cc-custom-finish`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
@@ -50,6 +50,10 @@ Stages in pull request, continuous integration, and continuous deployment pipeli
 * `deploy`: Deploy artifacts to an environment such as test and dev or staging and prod.
 * `acceptance-test`: Run tests on deployed artifacts. You can also include your post-deployment tests in this stage.
 * `verify-artifact`: Run scripts to check whether the artifacts that are signed in the CI pipeline have valid signatures.
+* `pr-custom-finish`: This stage is for the PR pipeline and is always executed, irrespective of pipeline status. `pr-custom-finish` can be used for custom actions that are based on the pipeline run status.
+* `ci-custom-finish`: This stage is for the CI pipeline and is always executed, irrespective of pipeline status. `ci-custom-finish` can be used for custom actions that are based on the pipeline run status.
+* `cd-custom-finish`: This stage is for the CD pipeline and is always executed, irrespective of pipeline status. `cd-custom-finish` be used for custom actions that are based on the pipeline run status.
+* `cc-custom-finish`: This stage is for the CC pipeline and is always executed, irrespective of pipeline status. `cc-custom-finish` can be used for custom actions that are based on the pipeline run status.
 
 ## Configuration in `pipeline-config.yaml`
 {: #cd-devsecops-scripts-config}
