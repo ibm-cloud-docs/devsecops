@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2023-05-03"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -297,6 +297,7 @@ The following table includes the default ENV variables for the context of custom
 | `TRIGGER_PAYLOAD` (DEPRECATED) | The payload that is received by way of the pipeline trigger event, if there was one. For more information about working with payloads, see [Accessing arguments from webhook payloads](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads). |
 | `TRIGGERED_BY` | Information about who triggered the pipeline. This value can be an email address or a time-triggered pipeline run.  |
 | `WORKSPACE` | The path to the shared workspace. |
+| `PIPELINE_STATUS` | Status of the pipeline run, can be "Succeeded", "Failed", or blank. `PIPELINE_STATUS` is available in custom finish stages only (`pr-custom-finish`, `ci-custom-finish`, `cd-custom-finish`, or `cc-custom-finish` ) |
 {: caption="Table 2. Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
@@ -337,6 +338,27 @@ image_digest=$(cat "${WORKSPACE}"/image-digest)
 ```
 {: codeblock}
 
+### Custom finish stages
+{: #devsecops-scripts-custom-finish}
+
+The finish stage has three steps:
+
+| Step | Description |
+|:--|:--|
+| `default-finish` | Executes tasks that are related to collection and upload of log files, artifacts, and evidence to the evidence locker. |
+| `prepare-custom-finish` | Sets up the required tools to run the custom finish stage. | 
+| `custom-finish` | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
+{: caption="Table 3. Steps in finish stage" caption-side="top"}
+
+The `custom-finish` step gives you the status of pipeline runs by using the `PIPELINE_STATUS` environment variable . The value of `custom-finish` is either "Succeeded",  "Failed", or blank. Check for "Succeeded" (case sensitive). `custom-finish` comes from the underlying Tekton framework.
+
+`default-finish` determines whether the pipeline is succesful based on evidence gathered. You can get the return value of `default-finish` step by using the following snippet in `custom-finish` step:
+
+```bash
+default_finish_exit_code=$(cat $(steps.step-default-finish.exitCode.path))
+```
+{: codeblock}
+
 ## Stage output
 {: #cd-devsecops-scripts-stageoutput}
 
@@ -351,7 +373,7 @@ Some data is expected to be available by other stages on the workspace, so be su
 |`containerize`		|[Add artifact names and digests to the pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).		|`save_artifact`		|Yes		|
 |`sign-artifact` 		|Add the image signature from the GPG signing output.   	|`save_artifact`			|Yes		|
 |`acceptance-test` 		|To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`			|No		|
-{: caption="Table 3. Stage output" caption-side="top"}
+{: caption="Table 4. Stage output" caption-side="top"}
 
 ### Stage results API
 {: #cd-devsecops-scripts-resultsapi}
@@ -366,7 +388,7 @@ The following tasks and stages are available:
 |**Continuous integration pipeline stages**| `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default. |
 |**continuous deployment pipeline stages**| `setup`, `deploy`, `acceptance-test`, `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request`. The `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request` stages are not custom stages. They are provided by the pipelines by default.|
 |**Continuous compliance pipeline stages**| `setup`, `test`, `static-scan`, `scan-artifact`, `acceptance-test`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default.|
-{: caption="Table 1. Tasks and stages" caption-side="bottom"}
+{: caption="Table 5. Tasks and stages" caption-side="bottom"}
 
 #### Example usage
 {: #devsecops-scripts-resultsapi-example}
