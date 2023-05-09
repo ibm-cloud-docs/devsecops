@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-05-03"
+lastupdated: "2023-05-09"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -27,13 +27,13 @@ When any of the custom scripts are started, the complete URL of the custom scrip
 
 Stages in pull request, continuous integration, and continuous deployment pipelines run custom scripts.
 
-* **Pull request pipeline stages**: `setup`, `test`, and `pr-custom-finish`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
+* **Pull request pipeline stages**: `setup`, `test`, and `finish`. For more information, see [Pull request pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline).
 
-* **Continuous integration pipeline stages**: `setup`, `peer-review`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, and `ci-custom-finish`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
+* **Continuous integration pipeline stages**: `setup`, `peer-review`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, and `finish`. For more information, see [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
-* **continuous deployment pipeline stages**: `setup`, `verify-artifact`, `deploy`, `acceptance-test`, and `cd-custom-finish`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+* **continuous deployment pipeline stages**: `setup`, `verify-artifact`, `deploy`, `acceptance-test`, and `finish`. For more information, see [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
 
-* **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, `scan-artifact`, and `cc-custom-finish`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
+* **Continuous compliance pipeline stages**: `setup`, `static-scan`, `dynamic-scan`, `scan-artifact`, and `finish`. For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
 ### Stage descriptions
 {: #cd-devsecops-stage-desc}
@@ -50,10 +50,7 @@ Stages in pull request, continuous integration, and continuous deployment pipeli
 * `deploy`: Deploy artifacts to an environment such as test and dev or staging and prod.
 * `acceptance-test`: Run tests on deployed artifacts. You can also include your post-deployment tests in this stage.
 * `verify-artifact`: Run scripts to check whether the artifacts that are signed in the CI pipeline have valid signatures.
-* `pr-custom-finish`: This stage is for the PR pipeline and is always executed, irrespective of pipeline status. `pr-custom-finish` can be used for custom actions that are based on the pipeline run status.
-* `ci-custom-finish`: This stage is for the CI pipeline and is always executed, irrespective of pipeline status. `ci-custom-finish` can be used for custom actions that are based on the pipeline run status.
-* `cd-custom-finish`: This stage is for the CD pipeline and is always executed, irrespective of pipeline status. `cd-custom-finish` be used for custom actions that are based on the pipeline run status.
-* `cc-custom-finish`: This stage is for the CC pipeline and is always executed, irrespective of pipeline status. `cc-custom-finish` can be used for custom actions that are based on the pipeline run status.
+* `finish`: This stage is customizable stage and is always executed, irrespective of pipeline status. 
 
 ## Configuration in `pipeline-config.yaml`
 {: #cd-devsecops-scripts-config}
@@ -297,7 +294,7 @@ The following table includes the default ENV variables for the context of custom
 | `TRIGGER_PAYLOAD` (DEPRECATED) | The payload that is received by way of the pipeline trigger event, if there was one. For more information about working with payloads, see [Accessing arguments from webhook payloads](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads). |
 | `TRIGGERED_BY` | Information about who triggered the pipeline. This value can be an email address or a time-triggered pipeline run.  |
 | `WORKSPACE` | The path to the shared workspace. |
-| `PIPELINE_STATUS` | Status of the pipeline run, can be "Succeeded", "Failed", or blank. `PIPELINE_STATUS` is available in custom finish stages only (`pr-custom-finish`, `ci-custom-finish`, `cd-custom-finish`, or `cc-custom-finish` ) |
+| `PIPELINE_STATUS` | Status of the pipeline run, can be "Succeeded", "Failed", or blank. `PIPELINE_STATUS` is available in finish stages only |
 {: caption="Table 2. Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
@@ -345,17 +342,18 @@ The finish stage has three steps:
 
 | Step | Description |
 |:--|:--|
-| `default-finish` | Executes tasks that are related to collection and upload of log files, artifacts, and evidence to the evidence locker. |
-| `prepare-custom-finish` | Sets up the required tools to run the custom finish stage. | 
-| `custom-finish` | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
+| `evaluate` | Non customizable step that executes tasks that are related to collection and upload of log files, artifacts, and evidence to the evidence locker. |
+| `prepare` | Non customizable step that sets up the required tools to run the custom finish stage. | 
+| `finish` | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
 {: caption="Table 3. Steps in finish stage" caption-side="top"}
 
-The `custom-finish` step gives you the status of pipeline runs by using the `PIPELINE_STATUS` environment variable . The value of `custom-finish` is either "Succeeded",  "Failed", or blank. Check for "Succeeded" (case sensitive). `custom-finish` comes from the underlying Tekton framework.
-
-`default-finish` determines whether the pipeline is succesful based on evidence gathered. You can get the return value of `default-finish` step by using the following snippet in `custom-finish` step:
+This pipeline status can be determined in two ways 
+1. User can get the overall status of the pipeline run from environment variable PIPELINE_STATUS . The value can be "Succeeded" , "Failed"  or "" (Case Sensitive).
+ `PIPELINE_STATUS` comes from the underlying Tekton framework.
+2. Since `evaluate` step does the evaluation of pipeline run from the perspective of Evidences, this evaluation may differ from the value set in PIPELINE_STATUS. To see the Pipeline Status based on evidence evaluation, user can get the status using tekton step result. Please refer to the following snippet:
 
 ```bash
-default_finish_exit_code=$(cat $(steps.step-default-finish.exitCode.path))
+evaluate_exit_code=$(cat $(steps.step-evaluate.exitCode.path))
 ```
 {: codeblock}
 
