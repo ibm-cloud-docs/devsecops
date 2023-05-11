@@ -91,8 +91,8 @@ GHE_REPO=               # The repository name
 INCIDENT_ISSUE_REPO=    # The incident issue repo name
 EMERGENCY_LABEL=        # Emergency Label name
 GIT_COMMIT=             # Commit hash of the Pull Request
-<! -- GITLAB_TOKEN=           # Git Repos and Issue Tracking API Token (Required if you are using 'gitlab' as provider)
-GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider) removed temporarily from above env var list. gitlab is not supported-->
+GITLAB_TOKEN=           # Git Repos and Issue Tracking API Token (Required if you are using 'gitlab' as provider)
+GITLAB_URL=             # Git Repos and Issue Tracking URL Example: https://<region>.git.cloud.ibm.com/api/v4 (Required if you are using 'gitlab' as provider) removed temporarily from above env var list. gitlab is not supported
 ```
 {: screen}
 
@@ -102,8 +102,8 @@ Options:
 
 ```text
 --label                 # Label to add to possible pr incident issue
---git-provider          # SCM provider (GitHub <! --or GitLab-->)
---git-token-path        # (Optional) GitHub <! --or GitLab Token's path-->
+--git-provider          # SCM provider (GitHub or GitLab)
+--git-token-path        # (Optional) GitHub or GitLab Token's path
 --git-api-url           # (Optional) GitHub or GitLab API url
 ```
 {: screen}
