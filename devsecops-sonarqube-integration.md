@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-10-19"
+  years: 2015, 2023
+lastupdated: "2023-05-19"
 
 keywords: tool integrations, IBM Cloud Public, Sonarqube
 
@@ -67,7 +67,7 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |dev-region		|Text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.			|Required			|
 |opt-in-sonar		|Text 		|The option to enable the SonarQube scan.		|Required			|
 |sonarqube		|Tool integration		|The SonarQube tool integration.	|Optional			|
-|sonarqube-config		|Text		|Runs a SonarQube scan in an isolated Docker-in-Docker container or in an existing Kubernetes cluster.	|Required			|
+|sonarqube-config		|Text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). |Required			|
 |opt-in-sonar-hotspots		|Text		|The Sonarqube scan for detecting hotspots.	|Optional			|
 {: caption="Table 1. Continuous integration pipeline parameters}
 
