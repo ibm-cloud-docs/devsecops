@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-05-22"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -230,7 +230,7 @@ To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information, see [Getting started with {{site.data.keyword.compliance_short}}](/docs/security-compliance?topic=security-compliance-getting-started).
 
-Use the {{site.data.keyword.cloud_notm}} Security Best Practices v1.0.0 profile for DevSecOps toolchains.
+Use the {{site.data.keyword.cloud_notm}} Security Best Practices with version `1.0.0` or above and {{site.data.keyword.cloud_notm}} for Financial Services with version `1.2.0` or above profile for DevSecOps toolchains.
 {: tip}
 
 Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external}.

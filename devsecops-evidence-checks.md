@@ -2,9 +2,9 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-12-09"
+lastupdated: "2023-21-05"
 
-keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud
+keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
 subcollection: devsecops
 
@@ -20,17 +20,24 @@ In the DevSecOps architecture, before deploying the assets, all the pieces of ev
 
 Collecting evidence is an essential aspect of the DevSecOps reference architecture. The CI pipeline collects the pieces of evidence for all the scans or steps for the assets that are performed by the CI pipeline. The CD pipeline deploys the assets that are produced by the CI pipeline.
 
-Validating evidence is categorized as follows:
+You can validate the evidence in one of the following ways:
 
-- Pre-deployment checks validate the evidence that is produced by the CI pipeline and gates the deployment based on these checks.
-- Post-deployment checks validate the evidence that is produced by the CD pipeline and evaluates the pipeline based on these checks.
+  1. Using the Security and Compliance Center (SCC) profile.
+  2. Using a config file.
 
-## Config file
+## Using the SCC profile
+{: #evidence-checks-scc}
+
+Use SCC to embed security checks into your everyday workflows to monitor for security and compliance. By monitoring for risks, you can identify security vulnerabilities, work to mitigate the impact, and fix the issues. The toolchain must have SCC integration and `Use profile with attachment` enabled, based on the SCC profile and version. All controls are validated based on the collected evidence for all the resources in the attachment. The toolchain supports both the {{site.data.keyword.cloud}} Security Best Practices with version `1.0.0` or above and {{site.data.keyword.cloud}} for Financial Services with version `1.2.0` or above profile. If you want a subset of specified controls, create a custom profile using these profiles and select a subset of controls. The toolchain is validated against that profile. For more information, see [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc).
+
+## Using a config file
 {: #evidence-checks-config-file}
 
-The config file contains the pre-deployment and post-deployment checks. Pre-deployment checks gate the deployment. If all the checks are validated successfully, the change request is auto-approved. If any of the checks fail, the change request is not auto-approved, and deployment is blocked. In the case of an `emergency` change request, the deployment is not blocked. The config file is part of the change request.
+Validating evidence by using a config file works as follows as follows:
 
-The finishing step validates the post-deployment evidence checks and evaluates the CD pipeline. The checks are stored in the evidence locker next to the `summary.json` file.
+- Pre-deployment checks validate the evidence that is produced by the CI pipeline and gates the deployment based on these checks. If all the checks are validated successfully, the change request is auto-approved. If any of the checks fail, the change request is not auto-approved and deployment is blocked. In the case of an `emergency` change request, the deployment is not blocked. The config file is part of the change request.
+- Post-deployment checks validate the evidence that is produced by the CD pipeline and evaluates the pipeline based on these checks.
+- The finishing step validates the post-deployment evidence checks and evaluates the CD pipeline. The checks are stored in the evidence locker beside the `summary.json` file.
 
 For each asset type, different evidence types might need to be collected. So, in the checks you can define the asset type and based on that asset, the evidence that is collected for a tool is as follows:
 
