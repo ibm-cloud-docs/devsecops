@@ -18,10 +18,10 @@ subcollection: devsecops
 Use the evidence pruner to clean up all the evidence that is generated before a specific time.
 {: shortdesc}
 
-Collecting evidence an essential aspect of the DevSecOps reference architecture. Compliance evidence creates the audit trail that auditors look for during a compliance audit. One of the goals of DevSecOps is to automate evidence generation and storage in auditable evidence lockers. The primary locker for the evidence is the Git Repository. Because DevSecOps generates a large volume of evidence, the repository keeps growing. Old evidence must be cleaned up. The evidence pruner cleans up all the evidence tht is generated before a specific time. Cloud Object Storage buckets that store evidence have a retention policy of 365 days. Similiarly, you must clean up the evidence in the Git repository that is older than 365 days.
+Collecting evidence an essential aspect of the DevSecOps reference architecture. Compliance evidence creates the audit trail that auditors look for during a compliance audit. One of the goals of DevSecOps is to automate evidence generation and storage in auditable evidence lockers. The primary locker for the evidence is the Git repository. Because DevSecOps generates a large volume of evidence, the repository keeps growing. Old evidence must be cleaned up. The evidence pruner cleans up all the evidence that is generated before a specific time. Cloud Object Storage buckets that store evidence have a retention policy of 365 days. Similiarly, you must clean up the evidence in the Git repository that is older than 365 days.
 
 You can roll back up to the point in time that evidence is retained in the evidence locker. If you clean the evidence and then later you try to roll back to a specified version, the rollback does not work. You might need to rebuild the app on the commit on which you want to roll back.
-{ :attention}
+{: attention}
 
 ## Parameters
 {: #evidence-prune-parm}
