@@ -210,7 +210,7 @@ With this option, you can customize the deployment step to deploy your applicati
 ### Change request management
 {: #tutorial-cd-toolchain-change-request}
 
-Use a {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+Use an {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
 
 ### DevOps Insights toolchain
 {: #tutorial-cd-toolchain-insights}
@@ -247,7 +247,7 @@ To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must
 
 You can also configure the {{site.data.keyword.compliance_short}} integration to trigger a validation after a deployment. For more information, see [Getting started with {{site.data.keyword.compliance_short}}](/docs/security-compliance?topic=security-compliance-getting-started).
 
-Use the {{site.data.keyword.cloud_notm}} Security Best Practices with version`1.0.0` or above and {{site.data.keyword.cloud_notm}} for Financial Services with version `1.2.0` or above profile for DevSecOps toolchains.
+Use the {{site.data.keyword.cloud_notm}} Security Best Practices with version`1.0.0` or above or the {{site.data.keyword.cloud_notm}} for Financial Services with version `1.2.0` or above profile for DevSecOps toolchains.
 {: tip}
 
 Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external}.

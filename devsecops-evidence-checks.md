@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2022
-lastupdated: "2023-21-05"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-05-22"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -22,13 +22,13 @@ Collecting evidence is an essential aspect of the DevSecOps reference architectu
 
 You can validate the evidence in one of the following ways:
 
-  1. Using the Security and Compliance Center (SCC) profile.
-  2. Using a config file.
+1. Using the Security and Compliance Center (SCC) profile.
+2. Using a config file.
 
 ## Using the SCC profile
 {: #evidence-checks-scc}
 
-Use SCC to embed security checks into your everyday workflows to monitor for security and compliance. By monitoring for risks, you can identify security vulnerabilities, work to mitigate the impact, and fix the issues. The toolchain must have SCC integration and `Use profile with attachment` enabled, based on the SCC profile and version. All controls are validated based on the collected evidence for all the resources in the attachment. The toolchain supports both the {{site.data.keyword.cloud}} Security Best Practices with version `1.0.0` or above and {{site.data.keyword.cloud}} for Financial Services with version `1.2.0` or above profile. If you want a subset of specified controls, create a custom profile using these profiles and select a subset of controls. The toolchain is validated against that profile. For more information, see [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc).
+Use SCC to embed security checks into your everyday workflows to monitor for security and compliance. By monitoring for risks, you can identify security vulnerabilities, work to mitigate the impact, and fix the issues. The toolchain must have SCC integration and `Use profile with attachment` enabled, based on the SCC profile and version. All controls are validated based on the collected evidence for all the resources in the attachment. The toolchain supports both the {{site.data.keyword.cloud}} Security Best Practices with version `1.0.0` or above or the {{site.data.keyword.cloud}} for Financial Services with version `1.2.0` or above profile. If you want a subset of specified controls, create a custom profile using these profiles and select a subset of controls. The toolchain is validated against that profile. For more information, see [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc).
 
 ## Using a config file
 {: #evidence-checks-config-file}
