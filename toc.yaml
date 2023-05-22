@@ -100,6 +100,7 @@ toc:
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
+          - devsecops-evidence-pruner.md
       - topicgroup: 
           label: Managing inventory
           topics:
