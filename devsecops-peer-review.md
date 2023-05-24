@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-05-24"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -15,10 +15,13 @@ subcollection: devsecops
 # Peer review compliance
 {: #cd-devsecops-peer-review}
 
-To enable the `peer-review` check in your toolchain, set the environment variable `opt-in-pr-collection` to `1` in the CI and CD toolchains.
-
 Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
 {: shortdesc}
+
+The `peer-review` check is enabled by default in Continuous Integration (CI) toolchain and optional in Continuous Delivery (CD) toolchain.
+
+* To enable the `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `1` in the CD toolchain.
+* To disable the `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `0` in the CI and CD toolchains.
 
 The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.
 
