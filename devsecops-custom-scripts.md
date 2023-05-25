@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-05-09"
+lastupdated: "2023-05-25"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -347,15 +347,10 @@ The finish stage has three steps:
 | `finish` | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
 {: caption="Table 3. Steps in finish stage" caption-side="top"}
 
-This pipeline status can be determined in two ways 
-1. User can get the overall status of the pipeline run from environment variable PIPELINE_STATUS . The value can be "Succeeded" , "Failed"  or "" (Case Sensitive).
- `PIPELINE_STATUS` comes from the underlying Tekton framework.
-2. Since `evaluate` step does the evaluation of pipeline run from the perspective of Evidences, this evaluation may differ from the value set in PIPELINE_STATUS. To see the Pipeline Status based on evidence evaluation, user can get the status using tekton step result. Please refer to the following snippet:
+This pipeline status can be determined in two ways:
 
-```bash
-evaluate_exit_code=$(cat $(steps.step-evaluate.exitCode.path))
-```
-{: codeblock}
+1. You can get the overall status of the pipeline run from the environment variable `PIPELINE_STATUS`. The value can be "Succeeded" , "Failed"  or "" (case sensitive). `PIPELINE_STATUS` comes from the underlying Tekton framework.
+2. Because the `evaluate` step evaluaties a pipeline run from the perspective of evidence, this evaluation might differ from the value set in `PIPELINE_STATUS`. To see the pipeline status based on evidence evaluation, use the environment variable `finish_evaluate_exit_code`.
 
 ## Stage output
 {: #cd-devsecops-scripts-stageoutput}
