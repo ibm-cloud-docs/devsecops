@@ -350,7 +350,7 @@ The finish stage has three steps:
 This pipeline status can be determined in two ways:
 
 1. You can get the overall status of the pipeline run from the environment variable `PIPELINE_STATUS`. The value can be "Succeeded" , "Failed"  or "" (case sensitive). `PIPELINE_STATUS` comes from the underlying Tekton framework.
-2. Because the `evaluate` step evaluaties a pipeline run from the perspective of evidence, this evaluation might differ from the value set in `PIPELINE_STATUS`. To see the pipeline status based on evidence evaluation, use the environment variable `finish_evaluate_exit_code`.
+2. Because the `evaluate` step evaluates a pipeline run from the perspective of evidence, this evaluation might differ from the value set in `PIPELINE_STATUS`. To see the pipeline status based on evidence evaluation, use the environment variable `finish_evaluate_exit_code`.
 
 ## Stage output
 {: #cd-devsecops-scripts-stageoutput}

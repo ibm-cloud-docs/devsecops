@@ -20,8 +20,8 @@ Peer code reviews are a key component of delivering secure and compliant softwar
 
 The `peer-review` check is enabled by default in Continuous Integration (CI) toolchain and optional in Continuous Delivery (CD) toolchain.
 
-* To enable `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `1` in the CD toolchain.
-* To disable `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `0` in the CI and CD toolchains.
+* To enable the `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `1` in the CD toolchain.
+* To disable the `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `0` in the CI and CD toolchains.
 
 The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.
 
