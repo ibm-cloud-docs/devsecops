@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-23"
+lastupdated: "2023-05-25"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -49,7 +49,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
-
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
@@ -104,7 +103,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue is marked as exempted.	|Optional			|
 |`custom-image-tag`		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
- 
+
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
@@ -115,7 +114,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
-
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
@@ -264,7 +262,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-nodejs-create-package-lock`		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.    |Optional    |
- 
+
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
@@ -274,7 +272,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |`environment-tag`     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
 |`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
-
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
