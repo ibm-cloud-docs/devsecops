@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-03-07"
+lastupdated: "2023-05-29"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -201,6 +201,7 @@ Currently, the following tools are supported for issue processing:
 
 * CRA
 * VA
+* Detect secrets
 * OWASP-ZAP API scanner
 * OWASP-ZAP UI scanner
 * SonarQube
