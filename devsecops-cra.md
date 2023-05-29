@@ -27,7 +27,7 @@ CRA scans perform the following tasks:
 1. Analyzes Kubernetes files for compliance with certain rules.
 1. Analyzes Terraform plans for compliance with certain rules.
 
-# Configuring CRA scans
+##  Configuring CRA scans
 {: #cd-devsecops-cra-scans-cfg}
 
 No specific pipeline environment variables are needed to generate the Bill of Materials and to discover vulnerabilities. 
