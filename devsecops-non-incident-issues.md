@@ -36,6 +36,5 @@ Currently, nonincident issue handling handles the following scenarios:
   
 - Failing unit test
 - Failing acceptance test
-- Failing detect secrets
 - Failing image signing
 - Failing branch protection check
