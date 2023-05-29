@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-05-26"
+lastupdated: "2023-05-29"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -23,9 +23,9 @@ Code Risk Analyzer is available in all {{site.data.keyword.cloud_notm}} regions 
 CRA scans perform the following tasks:
 
 1. Generates a Bill of Materials (BOM) file that lists the dependencies and available license information of all third-party OS packages and application packages. You can also generate this output in CycloneDX-specific format.
-2. Discovers vulnerabilities in packages that are listed in the BOM file. You can also view the generated report in CycloneDX-specific format, or use vulnerability auto-remediation for Node.js, Maven, or Gradle applications.
-3. Analyzes Kubernetes files for compliance with certain rules.
-4. Analyzes Terraform plans for compliance with certain rules.
+1. Discovers vulnerabilities in packages that are listed in the BOM file. You can also view the generated report in CycloneDX-specific format, or use vulnerability auto-remediation for Node.js, Maven, or Gradle applications.
+1. Analyzes Kubernetes files for compliance with certain rules.
+1. Analyzes Terraform plans for compliance with certain rules.
 
 # Configuring CRA scans
 {: #cd-devsecops-cra-scans-cfg}

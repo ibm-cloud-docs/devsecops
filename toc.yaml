@@ -115,7 +115,9 @@ toc:
           - devsecops-configuring-zap-scans.md
           - devsecops-sonarqube-integration.md
           - devsecops-configuring-mend-scans.md
+          - devsecops-cra.md
           - devsecops-ignore-cra-vulnerabilities.md
+          - devsecops-cra-auto-remediation.md
           - devsecops-get-va-rating-from-xforce.md
       - topicgroup: 
           label: Working with Git repos
@@ -137,6 +139,7 @@ toc:
           - include: ../security-compliance/getting-started.md
             navtitle: Managing security and compliance
           - devsecops-data-security.md
+
   - navgroup:
       id: reference
       topics:
