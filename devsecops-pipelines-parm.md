@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-25"
+lastupdated: "2023-05-29"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -47,7 +47,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-maven-exclude-scopes`       |text   |Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  |Optional   |
 |`cra-nodejs-create-package-lock`		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
-
+|[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
+|[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the file that is being scanned. When you identify the file that is taking too long,  update your baseline or use the `--exclude-files` option to skip the problematic files. | Optional |
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
@@ -103,7 +105,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue is marked as exempted.	|Optional			|
 |`custom-image-tag`		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
-
+|[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
+|[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the file that is being scanned. When you identify the file that is taking too long,  update your baseline or use the `--exclude-files` option to skip the problematic files. | Optional |
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
@@ -388,6 +392,20 @@ This parameter is for the promotion pull request, it records the impact of the c
 This parameter is for the promotion pull request. This parameter contains the description of the change, that will be appended to the Change Request Description. By default it is empty.
 
 
+### detect-secrets-baseline-filename
+{: #detect-secrets-baseline-filename}
+
+This parameter specifies a custom file name for the baseline file that is used by detect-secrets. By default, detect-secrets looks for a file that is named `.secrets.baseline` in the repository root directory. However, if you name your baseline file differently, you can provide its file name by using this parameter.
+
+### detect-secrets-exclusion-list
+{: #detect-secrets-exclusion-list}
+
+This parameter is an environment property that overrides the default exclusion list when a run is done without an existing baseline file. This pàrameter identifies files to ignore so that issues are not created that are linked to them.
+
+### detect-secrets-verbose
+{: #detect-secrets-verbose}
+
+This parameter outputs the current file that is being scanned to the logs. This parameter is useful if a file takes too long to scan, as that file can be excluded in the exclusion list or updated in the baseline file. 
 
 ### impact
 {: #pipeline-parm-impact}
