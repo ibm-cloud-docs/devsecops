@@ -57,7 +57,7 @@ The evidence pruning trigger is preconfigured for DevSecOps pipelines that are c
 
    When the evidence pruner trigger is configured with the appropriate environment properties, you can trigger the evidence pruner pipeline similarly to other pipelines. The trigger performs the following steps:
 
-   1. Clones the evidencere rpository.
+   1. Clones the evidence repository.
    1. Generates a list of all files created a specified number of `evidence-retention-days` before the current date.
    1. Deletes an initial batch of files, where the batch size is determined by `evidence-pruner-batch-size`.
    1. Creates a pull request for the evidence repository by using the `evidence-pruner-branch` as the source branch and the default configured branch as the destination.
