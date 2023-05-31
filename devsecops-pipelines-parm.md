@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-29"
+lastupdated: "2023-05-31"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -142,7 +142,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-out-v1-evidence`  |text  |Opts out from v1 evidence collection. |Required |
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
-|`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
+|`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`registry-namespace`		|text		|The container registry namespace for the image.	|Required			|
 |`registry-region`		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|
@@ -266,7 +266,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-nodejs-create-package-lock`		|text		|Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	|Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.    |Optional    |
-
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
