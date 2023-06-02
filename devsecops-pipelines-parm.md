@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-31"
+lastupdated: "2023-06-02"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -49,7 +49,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
-|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the file that is being scanned. When you identify the file that is taking too long,  update your baseline or use the `--exclude-files` option to skip the problematic files. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
@@ -107,7 +107,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`custom-image-tag`		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
 |[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
-|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the file that is being scanned. When you identify the file that is taking too long,  update your baseline or use the `--exclude-files` option to skip the problematic files. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
@@ -404,7 +404,7 @@ This parameter is an environment property that overrides the default exclusion l
 ### detect-secrets-verbose
 {: #detect-secrets-verbose}
 
-This parameter outputs the current file that is being scanned to the logs. This parameter is useful if a file takes too long to scan, as that file can be excluded in the exclusion list or updated in the baseline file. 
+This parameter, when set to 1, logs the name of the current file being scanned.
 
 ### impact
 {: #pipeline-parm-impact}

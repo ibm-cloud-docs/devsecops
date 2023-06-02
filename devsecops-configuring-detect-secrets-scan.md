@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-05-29"
+lastupdated: "2023-06-02"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -18,9 +18,7 @@ subcollection: devsecops
 Detect-secrets is a client-side security tool that detects secrets within a codebase to remediate and prevent secret leaks.
 {: shortdesc}
 
-For more information, see [Yelp/detect-secrets](https://github.com/Yelp/detect-secrets){: external}.
-
-
+For more information, see [IBM/detect-secrets](https://github.com/IBM/detect-secrets){: external}.
 
 Detect-secrets scans the entire current codebase and outputs a snapshot of currently identified secrets. The secrets list is then used to audit the identified secrets as true positives or false positives, the DevSecOps toolchains then create Git issues for the true positives.
 
@@ -60,20 +58,27 @@ Take the following steps to update your baseline:
 
 1. Install detect-secrets on your local computer:
 
-   `pip install detect-secrets`
-
-   Or install by using brew:
-
-    `brew install detect-secrets`
-
-
+   `pip install --upgrade "git+https://github.com/ibm/detect-secrets.git@master#egg=detect-secrets"`
 
 1. Run the following commands to scan, generate, or update the baseline file in your repo:
 
    1. Run the following command to scan the repo folder:
 
-      `detect-secrets scan --baseline .secrets.baseline`
+      `detect-secrets scan --update .secrets.baseline`
 
+      You can use the `--exclude-files` flag when you want to ignore certain files that are known to contain false positives or do not require scanning. The exclusion rules are based on regular expressions format.
+
+      To perform a scan with file and folder exclusions, use the following command:
+
+      `detect-secrets scan --update .secrets.baseline --exclude-files '<folder_to_ignore>|<file_to_ignore>'`
+
+      Example : `detect-secrets scan --update .secrets.baseline --exclude-files "package-lock.json|go.sum"`
+
+      The list of excluded files is recorded in the baseline file. 
+      
+      If no `--exclude-files` option is provided in subsequent scans, detect secrets automatically respects the existing exclude list from the baseline file.
+      
+      However, if you want to specify a new exclude list during the `detect-secrets scan`, the new list overwrites the existing exclude list in the baseline file.
 
 
    1. Run the following command to review and audit the baseline file that is created with the scan step:
@@ -94,12 +99,12 @@ The `detect-secrets-baseline-filename` parameter specifies a custom file name fo
 
 The `detect-secrets-exclusion-list` parameter overrides the default exclusion list when a run is done without an existing baseline file. This pàrameter identifies files to ignore so that issues are not created that are linked to them.
 
-The `detect-secrets-verbose` parameter outputs the current file that is scanned to the logs. This parameter is useful if a file takes too long to scan, as that file can be excluded in the exclusion list or updated in the baseline file. 
+The `detect-secrets-verbose` parameter, when set to 1, logs the name of the current file that is being scanned.
 
 |Name | Type |Description |Required or Optional |
 |:----------|:---------|:------------------------------|:------------------|
 | `detect-secrets-baseline-filename` | String |The name of the baseline file in your app repository. Defaults to `.secrets.baseline`. | Required if your baseline file is not the default name `.secrets.baseline`. |
-| `detect-secrets-exclusion-list` | String | A regex list of files to be excluded in the detect-secrets scan. Defaults to `requirements.txt\|go.mod\|pom.xml\|build.gradle\|package-lock.json`. | Optional, This file list overrides the general exclusion list only when there is no `.secrets.baseline` file present. |
-| `detect-secrets-verbose` | String | Outputs the file that is being scanned. When you identify the file that is taking too long,  update your baseline or use the `--exclude-files` option to skip the problematic files. Defaults to `0`.  | Optional, Debug flag 0 - off, 1 - on. | 
+| `detect-secrets-exclusion-list` | String | A regex list of files to be excluded in the detect-secrets scan. Defaults to `requirements.txt\|go.mod\|go.sum\|pom.xml\|build.gradle\|package-lock.json`. | Optional, This file list overrides the general exclusion list only when there is no `.secrets.baseline` file present. |
+| `detect-secrets-verbose` | String | Outputs the name of the file that is currently that is being scanned. Defaults to `0`.  | Optional, Debug flag 0 - off, 1 - on. | 
 {: caption="Table 1. Secrets-scan parameters" caption-side="top"}
 
