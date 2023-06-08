@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-04-25"
+lastupdated: "2023-06-06"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -33,6 +33,7 @@ Before you begin part 2 of this tutorial series, ensure that you complete the fo
 
 1. Complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).
 1. View the [Getting started with DevSecOps in IBM Cloud - Part 1](https://video.ibm.com/embed/recorded/130714354) video.
+1. Start the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/). The console is the starting point of this tutorial.
 
 ## Continuous Integration (CI) toolchain introduction
 {: #tutorial-ci-toolchain-intro}

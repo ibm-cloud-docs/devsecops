@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-05-25"
+lastupdated: "2023-06-06"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -22,6 +22,12 @@ The `peer-review` check is enabled by default in Continuous Integration (CI) too
 
 * To enable the `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `1` in the CD toolchain.
 * To disable the `peer-review` check in your toolchain, set the environment variable `peer-review-compliance` to `0` in the CI and CD toolchains.
+
+You must conduct peer reviews only on the protected (base) branch, which is where the inventory is updated. If you are running a CI pipeline on a feature branch, set the environment variable `peer-review-compliance` to `0` for that specific trigger to prevent the peer review check on the feature branch.
+{: important}
+
+To ensure compliance with peer review standards, it is assumed that inventory updates in the `ci-finish` stage occur on the `master` branch. However, if your inventory updates are performed on a different branch other than master, you can set the environment variable `inventory-repo-branch` to indicate the branch where the inventory updates are taking place.
+{: important}
 
 The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.
 
