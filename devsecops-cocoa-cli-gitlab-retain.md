@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-05-12"
+lastupdated: "2023-06-09"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -19,30 +19,6 @@ DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevS
 {: shortdesc}
 
 
-
-## Retrying failed API calls 
-{: #cd-devsecops-cli-api}
-
-The Cocoa CLI retries any API call that fails with a response status of `5xx` three times. You can override this behavior by providing following environment variables:
-
-* `MAX_RETRY_ATTEMPTS` - The number of retry attempts Cocoa CLI makes before it gives up. For example, `MAX_RETRY_ATTEMPTS`=`5`
-* `RETRY_STATUS_CODE` - The response status codes for which the retry happens. For example, `RETRY_STATUS_CODE`=`409,422,500` to retry on these three status codes.
-
-```sh
-export MAX_RETRY_ATTEMPTS=5                 # Retry API calls 5 times.
-export RETRY_STATUS_CODE=409,422,500            # Retry API calls for response codes 409, 422 and 500.
-```
-
-The retries are exponentially spaced in time, so setting up higher retry attempts causes the retries to be spaced further apart.
-
-## Elapsed time for command execution
-{: #cd-devsecops-cli-elapse}
-
-Cocoa CLI can display the elapsed time of any command in seconds by setting `DISPLAY_ELAPSED_TIME` to a nonempty string as follows:
-
-```sh
-export DISPLAY_ELAPSED_TIME=1`                # Display a snippet showing the total execution time of the cli command, example `Elapsed time: 5.32 seconds`
-```
 
 ## CLI interface
 {: #devsecops-cli-interface}
@@ -67,6 +43,30 @@ Some commands use environment variables to get API Keys or to configure an optio
 
 Command-line options can take various types of input values, such as numbers, strings, Boolean values, arrays, and JSON objects. The options type is dependent upon the command that you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
 {: tip}
+
+## Retrying failed API calls 
+{: #cd-devsecops-cli-api}
+
+The Cocoa CLI retries any API call that fails with a response status of `5xx` three times. You can override this behavior by providing following environment variables:
+
+* `MAX_RETRY_ATTEMPTS` - The number of retry attempts Cocoa CLI makes before it gives up. For example, `MAX_RETRY_ATTEMPTS`=`5`
+* `RETRY_STATUS_CODE` - The response status codes for which the retry happens. For example, `RETRY_STATUS_CODE`=`409,422,500` to retry on these three status codes.
+
+```sh
+export MAX_RETRY_ATTEMPTS=5                 # Retry API calls 5 times.
+export RETRY_STATUS_CODE=409,422,500            # Retry API calls for response codes 409, 422 and 500.
+```
+
+The retries are exponentially spaced in time, so setting up higher retry attempts causes the retries to be spaced further apart.
+
+## Elapsed time for command execution
+{: #cd-devsecops-cli-elapse}
+
+Cocoa CLI can display the elapsed time of any command in seconds by setting `DISPLAY_ELAPSED_TIME` to a nonempty string as follows:
+
+```sh
+export DISPLAY_ELAPSED_TIME=1`                # Display a snippet showing the total execution time of the cli command, example `Elapsed time: 5.32 seconds`
+```
 
 ## CLI commands
 {: #devsecops-cli-commands}
