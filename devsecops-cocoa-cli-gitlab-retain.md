@@ -1960,9 +1960,13 @@ INCIDENT_REPO_NAME=   # Can be used instead of --repo (either the option or the 
 # Required Environment Variables, if using GitHub:
 
 GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
+```
+{: screen}
 
 # Required Environment Variables, if using GitLab:
+{: #req-env-vars}
 
+```text
 GITLAB_TOKEN=       # Gitlab Token (Optional if using --git-token-path)
 GITLAB_URL=         # Gitlab API url (Optional if using --git-api-url)
 ```
