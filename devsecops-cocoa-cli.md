@@ -1775,6 +1775,8 @@ INCIDENT_REPO_NAME=   # Can be used instead of --repo (either the option or the 
 # Required Environment Variables, if using GitHub:
 
 GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
+```
+{: screen}
 
 If you are using `github` you can use the `--git-token-path` field to set your GitHub token and use the `--git-api-url` field to set the GitHub Enterprise API URL (it defaults to `https://github.ibm.com/api/v3`)  instead of the `GHE_TOKEN` and `GH_URL` environment variables.
 If the `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` both pairs are both provided, `--git-token-path` and  `--git-api-url` take precedence.
