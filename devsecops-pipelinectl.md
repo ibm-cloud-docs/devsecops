@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-18"
+lastupdated: "2023-06-12"
 
 keywords: DevSecOps, pipelinectl
 
@@ -369,15 +369,15 @@ Registers a new build artifact with the pipeline or updates an existing one.
 
 Some suggested properties that you can use:
 
-- `type`: Must be `image`.
-- `name`: A fully qualified image name. For example, something that can be used by `docker pull`.
+- `type`: Can be any artifact type including `image`.
+- `name`: A fully qualified name for the artifact. For example, for an image, something that can be used by `docker pull`.
 - `signature`: A valid signature.
 - `digest`: A `sha256` digest.
 - `source`: For example, `http://<some-git-url>/blob/<commithash>/<path-to-file>`
 
 Any properties can be set on top of these properties.
 
-The `name` property must also contain the tag for the image.
+For an image, the `name` property must also contain the tag for the image.
 {: tip}
 
 Example:

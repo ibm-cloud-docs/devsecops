@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-06-09"
+lastupdated: "2023-06-12"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1831,7 +1831,7 @@ Options:
 ```text
 --org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
---type             # Type of the asset ("commit", "image", "generic")
+--type             # Type of the asset ( All types are supported )
 --version          # Show version number
 --format           # Output format ("id", "json", default: "id")
 --git-provider     # Git service provider ("github")
@@ -1847,19 +1847,19 @@ Options:
 
 Use the `--dry-run` flag if you don't want to add anything to the locker, and you want to check what would be added to the locker.
 
-The type of the asset can be specified with the `--type` flag, currently `commit`, `image`, and `generic` is supported.
+The type of the asset can be specified with the `--type` flag.
 
 The `uri` parameter can be any valid [URI](https://datatracker.ietf.org/doc/html/rfc3986){: external}, but a few formats are treated specially:
 
 - In case `uri` scheme is `docker` (that is, it begins with `docker://`), the command assumes the `--type=image` flag
 - In case `uri` scheme is `git`, or the path ends with a `.git` suffix, the command assumes the `--type=commit` flag
 
-When `type` is not `generic` (that is, `image` or `commit`), the URI must match on the following patterns:
+When `type` is  `image` or `commit`, the URI must match on the following patterns:
 
 - For `commit`, the URI _must_ have a fragment, which _must_ be a 40-character hexadecimal commit sha (for example `https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee`)
 - For `image`, the URI _must_ contain the image digest (for example `docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777`)
 
-When `type` is `generic`, the `--type` flag must be explicitly passed.
+When `type` is anything other than `image` or `commit`, the `--type` flag must be explicitly passed.
 
 More details can be added to the asset by using the `--details` flag, which accepts `key=value` pairs.
 
@@ -1873,7 +1873,7 @@ Some environment variables are automatically picked up to add details about the 
 
 The `--date` flag can be used to override the asset creation date (defaults to the current time), it accepts any string that [`Date.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) accepts.
 
-Related assets can be added by using the `--related` flag (for multiple related assets, the flag can be specified multiple times). Assets can be specified with their internal ID, or by their URI (if they're not of type `generic`).
+Related assets can be added by using the `--related` flag (for multiple related assets, the flag can be specified multiple times). Assets can be specified with their internal ID, or by their URI.
 
 By default, the `id` format (the `--format` flag) prints the internal ID of the created asset. With the `json` format, the whole asset is going to be printed, as a JSON object.
 
@@ -1958,7 +1958,7 @@ Options:
 ```text
 --org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
---type             # Type of the asset ("commit", "image", "generic")
+--type             # Type of the asset
 --version          # Show version number
 --git-provider     # Git service provider ("github")
 --git-token-path   # Git token path to read the secret from 
@@ -2008,7 +2008,7 @@ Options:
 ```text
 --org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
---type             # Type of the asset ("commit", "image", "generic")
+--type             # Type of the asset
 --version          # Show version number
 --git-provider     # Git service provider ("github")
 --git-token-path   # Git token path to read the secret from 

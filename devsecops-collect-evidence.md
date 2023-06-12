@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-01-10"
+lastupdated: "2023-06-12"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -170,6 +170,6 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
 **Required fields:**
 
 - `name`  
-   The image name, including registry, namespace, and image (example: `us.icr.io/team-images/service`).
+   The artifact name. For example, for an image include registry, namespace, and image (example: `us.icr.io/team-images/service`).
 - `digest`  
-   The image digest (example: `sha256:a2292ed2b82c7a51d7d180c3187dbb0f7cc9ab385a68484c4f117e994acd6192`).
+   The artifact digest (example: `sha256:a2292ed2b82c7a51d7d180c3187dbb0f7cc9ab385a68484c4f117e994acd6192`).
