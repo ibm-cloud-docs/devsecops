@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-03-30"
+lastupdated: "2023-06-15"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
@@ -22,13 +22,21 @@ For security reasons, these secrets must not belong to or be affiliated with a p
 
 Instead, the secrets that are used for non-{{site.data.keyword.cloud_notm}} resources (such as GitHub Enterprise) must be affiliated with a functional ID within your enterprise with only the appropriate access that is needed by the toolchains. Likewise, secrets for {{site.data.keyword.cloud_notm}} resources must be affiliated with an [IAM service ID API key](/docs/account?topic=account-serviceidapikeys) that is affiliated with an [IAM service ID](/docs/account?topic=account-serviceids). The IAM service ID access permissions should be scoped to the least privilege required by the toolchains.
 
-Managing credentials like these must be done securely and in compliance with best practices in the field of secrets management. In particular, this means vaulting the required secrets by using an approved in-boundary vault provider, such as [HashiCorp Vault](https://www.vaultproject.io){: external} and then linking your toolchain secrets to those resources.
+Managing credentials like these must be done securely and in compliance with secrets management best practices. In particular, this means vaulting the required secrets by using an approved in-boundary vault provider, such as {{site.data.keyword.secrets-manager_full}}, {{site.data.keyword.keymanagementservicelong}}, or [HashiCorp Vault](https://www.vaultproject.io){: external} and then linking your toolchain secrets to those resources.
 
-The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable selection of vaulted secrets by using Secrets Integrations for HashiCorp Vault, {{site.data.keyword.secrets-manager_full}}, and {{site.data.keyword.keymanagementservicelong}}. By using the Secrets Picker dialog, a toolchain or pipeline editor can easily select named secrets from a bound secrets integration that is then resolved by reference within the toolchain and pipeline. After a secret is chosen, a canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is `{vault::integration-name.secret-name}`. This long form canonical reference, also known as **by name**, is used by the front-end user interface components and importantly, the resolved value of the actual secret is never exposed to a user or permitted service.
+The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable selection of vaulted secrets by using secrets integrations for {{site.data.keyword.secrets-manager_full}}, {{site.data.keyword.keymanagementservicelong}}, or HashiCorp Vault. By using the Secrets Picker dialog, a toolchain or pipeline editor can select named secrets from a bound secrets integration, that is either configured **by CRN** (Cloud Resource Name) or **by name**, that is then resolved by reference at runtime within the toolchain and pipeline. After a secret is chosen, a CRN or canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is either `crn:v1:...secret:<secret-guid>` if it's a Secrets Manager integration configured **by CRN**, or alternatively `{vault::integration-name.secret-name}` if it's a vault integration using any of the supported providers and configured **by name**.
+
+The canonical **by name** reference format, currently does not resolve a secret that includes the period character in the secret name because this character is used to delimit each section of the canonical path.
+{: note}
+
+Regardless of which type of secret reference is used, either **by CRN** or **by name**, the front-end user interface components and Secrets Picker dialog only use a secret reference. The resolved value of a **by CRN** or **by name** secret reference is never exposed to the front-end and is always dynamically resolved at runtime within a toolchain and pipeline based on a permitted [authorization](https://cloud.ibm.com/iam/authorizations){: external} being available (configured using IAM Authorizations and Access Policies).
+
+Within {{site.data.keyword.cloud}}, the dynamic process of resolving **by CRN** and **by name** secrets references in toolchains and pipelines is performed using internal virtual private endpoints (VPE) to all {{site.data.keyword.secrets-manager_full}} and {{site.data.keyword.keymanagementservicelong}} provider instances in all regions. This ensures all request and response data between toolchains, pipelines, and {{site.data.keyword.secrets-manager_full}} and {{site.data.keyword.keymanagementservicelong}} provider instances is kept within the in-boundary private IBM Cloud network and does not travel over any public network channels.
+{: note}
 
 In addition to manually selecting chosen secrets on a one-by-one basis from any bound secrets integrations in a toolchain, the option of using a `Secret Hint` is also available. This option enables a toolchain template to be predefined with suggested secrets names (also known as `Hints`) that are a short form secret reference. The format of a secret hint is `{vault::secret-name}` whereby no secret integration name is included. This provides flexibility to the toolchain author in that all required secret names can be prepopulated into a `toolchain.yml` and then these names are automatically resolved against whatever secrets integrations are configured for the toolchain.
 
-Alternatively, you can configure {{site.data.keyword.secrets-manager_short}} to reference secrets by Cloud Resource Name. For more information, see [Cloud Resource Names (CRN)](/docs/account?topic=account-crn). This format allows for greater flexibility because you can reference secrets from an {{site.data.keyword.secrets-manager_short}} instance in a different account if the correct [authorization](https://cloud.ibm.com/iam/authorizations){: external} is in place. For more information see [Securing your data in {{site.data.keyword.contdelivery_short}}](docs/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security).
+As previously described, you can configure {{site.data.keyword.secrets-manager_short}} to reference secrets **by CRN**. For more information, see [Cloud Resource Names (CRN)](/docs/account?topic=account-crn). This format allows for greater flexibility because you can reference secrets from an {{site.data.keyword.secrets-manager_short}} instance in a different account if the correct [authorization](https://cloud.ibm.com/iam/authorizations){: external} is in place. For more information see [Configuring Secrets Manager](docs/ContinuousDelivery?topic=ContinuousDelivery-secretsmanager).
 
 The secrets that are used in both CI and CD are outlined as follows:
 
@@ -46,6 +54,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
 | Artifactory API token    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
 | Slack Web Hook           | `slack-webhook`          | **Optional: CI & CD** _This webhook is required if you choose to use the Slack tool integration to post toolchain status notifications_ |
+| ServiceNow API Token     | `servicenow-token`       | **Required: CD only** _Used to access Service Now for change management operations_ |
 | HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
