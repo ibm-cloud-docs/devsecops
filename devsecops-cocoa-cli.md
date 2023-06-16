@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-06-12"
+lastupdated: "2023-06-16"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2298,6 +2298,48 @@ Run the command:
 
 ```sh
  cocoa locker evidence check --summary-path=`<summary-path>` --config-path=`<config-path>` --pre-deployment --post-deployment
+```
+{: codeblock}
+
+### cocoa locker evidence publish
+{: #locker-evidence-publish}
+
+Publish the evidence to Git and the Cloud Object Storage (COS) back end (if COS is configured).
+
+`cocoa locker evidence publish` is used for batch processing of evidence.
+
+Required environment variables to configure COS:
+
+```text
+COS_API_KEY=        # Cloud Object Storage API Key
+COS_BUCKET_NAME=    # Bucket Name where the evidence will be uploaded in the COS Instance
+COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket is located
+```
+{: screen}
+
+Options:
+
+```text
+  --version         # Show version number                                
+  --help            # Show help                                          
+  --git-provider    # Git provider of the evidence locker ("github", "gitlab") 
+  --org             # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`            
+  --repo            # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`              
+  --git-token-path  # Git token path to read the secret from              
+  --git-api-url     # Git API URL                                         
+  --evidences-path  # (Required) Use this path to read the evidences to be published
+  --commit-message  # (Optional) Commit message suffix to be used for the commit to the git repository
+```
+{: screen}
+
+Run the command:
+
+```sh
+$ cocoa locker evidence publish \
+      --org=<github-organization> \
+      --repo=<github-repo-name> \
+      --git-provider github \
+      --evidences-path <path/to/file>
 ```
 {: codeblock}
 
