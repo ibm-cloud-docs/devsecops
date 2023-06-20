@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-06-19"
+lastupdated: "2023-06-20"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -73,7 +73,7 @@ You can use any of the methods that are defined for [static code scan](/docs/dev
 The IaC continuous integration pipeline defines more tools that are enabled by using the `opt-in-*` parameters from Table 2 set to `1`.
 
 | Name | Type | Default | Description | Required or optional |
-|--|--|--|--|
+|--|--|--|--|--|
 | `opt-in-terraform-fmt-validate` | text  | | Runs the `terraform fmt` and `terraform validate` commands in `static-scan` stage. | optional |
 | `opt-in-tflint`   | text | |Runs the `tflint` command in `static-scan` stage. | optional |
 | `tflint-version` | text | `v0.46.1` |Indicate the `tflint` version to install if not provided in the image used for `static-scan` stage execution. | optional |
