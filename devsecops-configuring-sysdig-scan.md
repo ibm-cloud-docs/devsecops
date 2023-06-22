@@ -4,7 +4,7 @@ copyright:
   years: 2023, 2023
 lastupdated: "2023-06-22"
 
-keywords: DevSecOps, sysdig, vulnerability-advisor, IBM Cloud
+keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
 subcollection: devsecops
 
@@ -12,21 +12,20 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring Sysdig image scanning
-{: #devsecops-sysdig-scan}
+# Configuring {{site.data.keyword.sysdigsecure_full_notm}} (Sysdig) image scanning
+{: #sysdig-scan}
 
-The Sysdig script runs the Sysdig inline scanner in your DevSecOps pipeline and collects evidence based on the scan results.
+The Sysdig script runs the {{site.data.keyword.sysdigsecure_full}} (Sysdig) inline scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
 {: shortdesc}
 
- The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl##list_artifacts) documentation.
- This is run as a part of scan-artifact stage.
+The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl##list_artifacts) documentation. This is run as a part of scan-artifact stage.
 
-The script runs the sysdig inline scanner image scan on the given image and uploads the results to the given sysdig url instance. 
+The script runs the Sysdig inline scanner image scan on the given image and uploads the results to the given {{site.data.keyword.sysdigsecure_full_notm}} URL instance. 
 
-To create a sysdig instance in IBM cloud please have a look at [Sysdig secure workload protection](/docs/workload-protection?topic=workload-protection-provision).
+To create a sysdig instance in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_full_notm}}](/docs/workload-protection?topic=workload-protection-provision).
 
-### Required Sysdig scan parameters
-{: #devsecops-sysdig-scan-params-req}
+## Required Sysdig scan parameters
+{: #sysdig-scan-params-req}
 
 | Parameter name | Description |
 |-|-|
@@ -34,8 +33,8 @@ To create a sysdig instance in IBM cloud please have a look at [Sysdig secure wo
 | `sysdig-api-token` | Set this to a secret value which needs to be set to Sysdig API token, visible from the Sysdig instance User Profile page. |
 {: caption="Table 1. Required Sysdig scan parameters" caption-side="top"}
 
-### Optional Sysdig scan parameters
-{: #devsecops-sysdig-scan-params-opt}
+## Optional Sysdig scan parameters
+{: #sysdig-scan-params-opt}
 
 | Parameter name | Default value | Description |
 |-|-|-|
@@ -45,9 +44,7 @@ To create a sysdig instance in IBM cloud please have a look at [Sysdig secure wo
 {: caption="Table 2. Optional Sysdig scan parameters" caption-side="top"}
 
 ## Evidence and attachments
-{: #devsecops-sysdig-evid-attach}
-
-
+{: #sysdig-evid-attach}
 
 The created evidence is based on the values in table 3. The DevSecOps pipeline uploads evidence to the locker and includes the evidence in the evidence summary for Change Requests.
 
@@ -61,7 +58,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 {: caption="Table 3. Evidence fields and values" caption-side="top"}
 
 ## Debugging and logging
-{: #devsecops-sysdig-scan-debug-log}
+{: #sysdig-scan-debug-log}
 
 | Parameter name | Default value | Description |
 |-|-|-|
@@ -69,16 +66,17 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 {: caption="Table 4. Debug parameters" caption-side="top"}
 
 ## Accessing your scan results
-{: #devsecops-sysdig-acc-results}
+{: #sysdig-scan-results}
 
 You can access your scan results using any of the following methods:
 
 - Viewing them on the Sysdig UI.
-- Using the [DevSecOps/CoCoa CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) command line tool to download your scan results from the evidence locker by using the information printed in the stage log.  For more information see the following resources:
+- Using the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) command line tool to download your scan results from the evidence locker by using the information printed in the stage log.  For more information see the following resources:
    - [`cocoa locker evidence get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-get)
    - [`cocoa locker attachment get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-attachment-get)
 
 ## Related links
-{: #devsecops-sysdig-links}
-   - [`Security and Compliance Center Workload Protection`](/docs/workload-protection?topic=workload-protection-launch)
-   - [`Sysdig Secure documentation`](https://cloud.ibm.com/docs/workload-protection?topic=workload-protection-sysdig_doc)
+{: #sysdig-links}
+
+   - [Security and Compliance Center Workload Protection](/docs/workload-protection?topic=workload-protection-launch)
+   - [Sysdig Secure documentation](https://cloud.ibm.com/docs/workload-protection?topic=workload-protection-sysdig_doc)
