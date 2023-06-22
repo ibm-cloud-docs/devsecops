@@ -10,7 +10,6 @@ toc:
     product-page: "https://www.ibm.com/cloud/continuous-delivery"
     path: devsecops
     label: DevSecOps
-
   entries:
   - navgroup:
       id: learn
@@ -29,7 +28,6 @@ toc:
           - devsecops-cos-bucket-evidence.md
           - devsecops-push-pull-based-deployment.md
       - devsecops-release-notes.md
-
   - navgroup:
       id: tutorial
       topics:
@@ -53,7 +51,6 @@ toc:
             navtitle: "Part 2: Set up a CI toolchain for IaC"
           - topic: devsecops-tutorial-iac-cd-toolchain.md
             navtitle: "Part 3: Set up a CD toolchain for IaC"
-
   - navgroup:
       id: howto
       topics:
@@ -101,6 +98,7 @@ toc:
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
+          - devsecops-configuring-sysdig-scan.md
       - topicgroup: 
           label: Managing inventory
           topics:
@@ -140,7 +138,6 @@ toc:
           - include: ../security-compliance/getting-started.md
             navtitle: Managing security and compliance
           - devsecops-data-security.md
-
   - navgroup:
       id: reference
       topics:
@@ -174,7 +171,6 @@ toc:
           - link:
               label: IBM Cloud Garage Method
               href: https://www.ibm.com/cloud/garage
-
   - navgroup:
       id: help
       topics:
