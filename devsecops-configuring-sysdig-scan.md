@@ -22,7 +22,7 @@ The Sysdig inline scanner scan runs for each image in the saved artifacts `list_
 
 The script runs the Sysdig inline scanner image scan on the image and uploads the results to the {{site.data.keyword.sysdigsecure_full_notm}} URL instance. 
 
-To create a {{site.data.keyword.sysdigsecure_full_notm}} instance in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_short}}](/docs/workload-protection?topic=workload-protection-provision).
+To create an instance of {{site.data.keyword.sysdigsecure_full_notm}} in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_short}}](/docs/workload-protection?topic=workload-protection-provision).
 
 ## Required {{site.data.keyword.sysdigsecure_short}} scan parameters
 {: #sysdig-scan-params-req}
