@@ -98,7 +98,6 @@ toc:
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
-          - devsecops-configuring-sysdig-scan.md
       - topicgroup: 
           label: Managing inventory
           topics:
@@ -114,6 +113,7 @@ toc:
           - devsecops-configuring-zap-scans.md
           - devsecops-sonarqube-integration.md
           - devsecops-configuring-mend-scans.md
+          - devsecops-configuring-sysdig-scan.md
           - devsecops-cra.md
           - devsecops-ignore-cra-vulnerabilities.md
           - devsecops-cra-auto-remediation.md

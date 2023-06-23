@@ -12,36 +12,36 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring {{site.data.keyword.sysdigsecure_short}} (Sysdig) image scanning
+# Configuring Sysdig image scanning
 {: #sysdig-scan}
 
-The Sysdig script runs the {{site.data.keyword.sysdigsecure_full}} (Sysdig) inline scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
+The Sysdig script runs the Sysdig inline scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
 {: shortdesc}
 
 The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see the [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl##list_artifacts) documentation. This scan is run as a part of scan-artifact stage.
 
-The script runs the Sysdig inline scanner image scan on the image and uploads the results to the {{site.data.keyword.sysdigsecure_full_notm}} URL instance. 
+The script runs the Sysdig inline scanner image scan on the image and uploads the results to the given Sysdig URL instance. 
 
 To create an instance of {{site.data.keyword.sysdigsecure_full_notm}} in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_short}}](/docs/workload-protection?topic=workload-protection-provision).
 
-## Required {{site.data.keyword.sysdigsecure_short}} scan parameters
+## Required Sysdig scan parameters
 {: #sysdig-scan-params-req}
 
 | Parameter name | Description |
 |-|-|
-| `sysdig-scan` |  Set this parameter to an enum value 0 or 1. If the value is set to 1, the {{site.data.keyword.sysdigsecure_short}} scan is called. |
-| `sysdig-api-token` | Set this parameter to a secret value that needs to be set to the {{site.data.keyword.sysdigsecure_short}} API token. The token is visible from the {{site.data.keyword.sysdigsecure_short}} instance's User Profile page. |
-{: caption="Table 1. Required {{site.data.keyword.sysdigsecure_short}} scan parameters" caption-side="top"}
+| `sysdig-scan` |  Set this parameter to an enum value 0 or 1. If the value is set to 1, the sysdig scan is called. |
+| `sysdig-api-token` | Set this parameter to a secret value that needs to be set to the Sysdig API token. The token is visible from the Sysdig instance's User Profile page. |
+{: caption="Table 1. Required Sysdig scan parameters" caption-side="top"}
 
-## Optional {{site.data.keyword.sysdigsecure_short}} scan parameters
+## Optional Sysdig scan parameters
 {: #sysdig-scan-params-opt}
 
 | Parameter name | Default value | Description |
 |-|-|-|
-| `sysdig_url` | `https://secure.sysdig.com` (property is not set)| The URL of the {{site.data.keyword.sysdigsecure_short}} instance to be used for the scan. This value needs to be provided if any other {{site.data.keyword.sysdigsecure_short}} instance is being used. |
-| `sysdig-inline-scanner-image` | `quay.io/sysdig/secure-inline-scan:2` (property is not set)| Enter the {{site.data.keyword.sysdigsecure_short}} inline scanner image to be used for the scan.|
-| `cr-ibmcloud-api-key` | | Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the {{site.data.keyword.sysdigsecure_short}} scan.|
-{: caption="Table 2. Optional {{site.data.keyword.sysdigsecure_short}} scan parameters" caption-side="top"}
+| `sysdig_url` | `https://secure.sysdig.com` (property is not set)| The URL of the Sysdig instance to be used for the scan. This value needs to be provided if any other Sysdig instance is being used. |
+| `sysdig-inline-scanner-image` | `quay.io/sysdig/secure-inline-scan:2` (property is not set)| Enter the Sysdig inline scanner image to be used for the scan.|
+| `cr-ibmcloud-api-key` | | Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.|
+{: caption="Table 2. Optional Sysdig scan parameters" caption-side="top"}
 
 ## Evidence and attachments
 {: #sysdig-evid-attach}
@@ -70,7 +70,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 
 You can access your scan results by using any of the following methods:
 
-- Viewing them on the {{site.data.keyword.sysdigsecure_short}} dashboard.
+- Viewing them on the Sysdig dashboard.
 - Using the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) to download your scan results from the evidence locker by using the information that is printed in the stage log. For more information, see the following resources:
    - [`cocoa locker evidence get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-get)
    - [`cocoa locker attachment get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-attachment-get)
