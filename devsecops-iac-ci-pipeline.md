@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-24"
+lastupdated: "2023-06-26"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -72,12 +72,13 @@ You can use any of the methods that are defined for [static code scan](/docs/dev
 
 The IaC continuous integration pipeline defines more tools that are enabled by using the `opt-in-*` parameters from Table 2 set to `1`.
 
-| Name | Type | Description | Required or optional |
-|--|--|--|--|
-| `opt-in-terraform-fmt-validate`     | text   | Runs the `terraform fmt` and `terraform validate` commands in `static-scan` stage. | optional |
-| `opt-in-tflint`   | text   |Runs the `tflint` command in `static-scan` stage. | optional |
-| `tflint-config` | text | The config file to use for `tflint`. | optional |
-| `tflint-args` | text | The command arguments that are passed to `tflint` during tool invocation. | optional |
+| Name | Type | Default | Description | Required or optional |
+|--|--|--|--|--|
+| `opt-in-terraform-fmt-validate` | text  | | Runs the `terraform fmt` and `terraform validate` commands in `static-scan` stage. | optional |
+| `opt-in-tflint`   | text | |Runs the `tflint` command in `static-scan` stage. | optional |
+| `tflint-version` | text | `v0.46.1` |Indicate the `tflint` version to install if not provided in the image used for `static-scan` stage execution. | optional |
+| `tflint-config` | text | | The config file to use for `tflint`. | optional |
+| `tflint-args` | text | | The command arguments that are passed to `tflint` during tool invocation. | optional |
 {: caption="Table 3. IaC static scan tools parameters" caption-side="top"}
 
 
@@ -101,8 +102,12 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | -------- | ----- | ----------- | 
 | `opt-in-cra-tf-validate` | | Flag to run compliance check by using the `ibmcloud cra terraform-validate` tool. |
 | `cra-tf-policy-file` | | Path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
-| `cra-tf-ignore-goals` | | Comma-separated list of goals to ignore from the `ibmcloud cra terraform-validate` report. |
-| `cra-tf-ignore-goals-file` | | Path to the JSON file that contains the list of goals to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-goals-file](#devsecops-iac-ci-pipeline-ignore-goals).  |
+| `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
+| `cra-tf-scc-v2` | | Flag to configure the Code Risk Analyzer to validate against SCC rules instead of SCC goals if no profile provided. |
+| `cra-tf-ignore-rules` | | Comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
+| `cra-tf-ignore-rules-file` | | Path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
+| `cra-tf-ignore-goals` | | (deprecated) Comma-separated list of goals to ignore from the `ibmcloud cra terraform-validate` report. |
+| `cra-tf-ignore-goals-file` | | (deprecated) Path to the JSON file that contains the list of goals to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-goals-file](#devsecops-iac-ci-pipeline-ignore-goals).  |
 | `opt-in-tfsec` | | Flag to run compliance checks by using `tfsec` tool. |
 | `tfsec-args` | | `tfsec` command arguments. |
 | `opt-in-checkov` | | Flag to run compliance checks by using the `checkov` tool. |
@@ -114,10 +119,30 @@ These scripts are run on all the repos that the pipeline is aware of. To add rep
 
 For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 
+### Format for `cra-tf-ignore-rules-file`
+{: #devsecops-iac-ci-pipeline-ignore-rules}
+
+The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. The format is similar to the format (without the `scc_parameters` field) that is in [Example SCC V2 classic profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-v2-classicprofile).
+
+Sample content for `cra-tf-ignore-rules-file` file:
+
+```bash
+{
+    "scc_rules": [
+        {
+            "scc_rule_id": "rule-8cbd597c-7471-42bd-9c88-36b2696456e9"
+        },
+        {
+            "scc_rule_id": "ule-c97259ee-336d-4c5f-b436-1868107a9558"
+        }
+    ]
+}
+```
+
 ### Format for `cra-tf-ignore-goals-file`
 {: #devsecops-iac-ci-pipeline-ignore-goals}
 
-The expected format for the file that is defined by the `cra-tf-ignore-goals-file format`. The format is similar to the format (without the `scc_goal_parameters` and `rego_rules` fields) that is in [Example profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-profile).
+(Deprecated) The expected format for the file that is defined by the `cra-tf-ignore-goals-file format`. The format is similar to the format (without the `scc_goal_parameters` and `rego_rules` fields) that is in [Example profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-profile).
 
 Sample content for `cra-tf-ignore-goals-file` file:
 
