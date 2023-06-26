@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-06-23"
+lastupdated: "2023-06-26"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -164,7 +164,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`version`		|text		|The version of the app to deploy.	|Required			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then Sysdig scan is enabled. 	|Required			|
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
-|`sysdig_url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |`cr-ibmcloud-api-key`		|text		|Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 {: caption="Table 2. Continuous integration parameters" caption-side="bottom"}
@@ -317,7 +317,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different to the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			|
-|`sysdig_url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |`cr-ibmcloud-api-key`		|text		|Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 {: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}

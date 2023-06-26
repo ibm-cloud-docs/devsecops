@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-06-23"
+lastupdated: "2023-06-26"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -18,7 +18,8 @@ subcollection: devsecops
 The Sysdig script runs the Sysdig inline scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
 {: shortdesc}
 
-The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see the [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl##list_artifacts) documentation. This scan is run as a part of scan-artifact stage.
+The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see the [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl##list_artifacts) documentation. 
+This scan is run as a part of scan-artifact stage of CI and CC pipelines.
 
 The script runs the Sysdig inline scanner image scan on the image and uploads the results to the given Sysdig URL instance. 
 
@@ -38,7 +39,7 @@ To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.
 
 | Parameter name | Default value | Description |
 |-|-|-|
-| `sysdig_url` | `https://secure.sysdig.com` (property is not set)| The URL of the Sysdig instance to be used for the scan. This value needs to be provided if any other Sysdig instance is being used. |
+| `sysdig-url` | `https://secure.sysdig.com` (property is not set)| The URL of the Sysdig instance to be used for the scan. This value needs to be provided if any other Sysdig instance is being used. |
 | `sysdig-inline-scanner-image` | `quay.io/sysdig/secure-inline-scan:2` (property is not set)| Enter the Sysdig inline scanner image to be used for the scan.|
 | `cr-ibmcloud-api-key` | | Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.|
 {: caption="Table 2. Optional Sysdig scan parameters" caption-side="top"}
