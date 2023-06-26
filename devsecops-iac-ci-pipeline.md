@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-06-20"
+lastupdated: "2023-06-26"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
