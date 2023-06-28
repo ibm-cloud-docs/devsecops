@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-06-06"
+lastupdated: "2023-06-28"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -26,7 +26,13 @@ The `peer-review` check is enabled by default in Continuous Integration (CI) too
 You must conduct peer reviews only on the protected (base) branch, which is where the inventory is updated. If you are running a CI pipeline on a feature branch, set the environment variable `peer-review-compliance` to `0` for that specific trigger to prevent the peer review check on the feature branch.
 {: important}
 
+The adherence to peer-review compliance is contingent upon the completion of a successful Continuous Integration (CI) pipeline run and the subsequent entry to inventory. As a result, the initial run of the CI pipeline will skip the peer review compliance check.
+{: important}
+
 To ensure compliance with peer review standards, it is assumed that inventory updates in the `ci-finish` stage occur on the `master` branch. However, if your inventory updates are performed on a different branch other than master, you can set the environment variable `inventory-repo-branch` to indicate the branch where the inventory updates are taking place.
+{: important}
+
+By default, the Continuous Integration (CI) pipeline will automatically perform a commit to the inventory repository at the conclusion of the run, using the application name as the inventory entry. However, if you intend to modify the inventory entry during the release stage, it is recommended to incorporate an environment property named `inventory-entry-name` into your toolchain. This property should contain the modified inventory name for working for peer review process.
 {: important}
 
 The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.
@@ -108,3 +114,8 @@ Pull request incidents are considered vulnerabilities because they indicate that
 
 The author of the pull/merge request and the person who closes the pull/merge request incident issue cannot be the same person.
 {: important}
+
+## Known issues
+{: #pr-known-issues}
+
+* Peer review compliance is reliant on the inclusion of inventory entry in the release step following each iteration of the Continuous Integration (CI) pipeline. Skipping to include the inventory entry for any failed CI pipeline run might result in the peer review evidence for that specific CI pipeline run being disregarded in your Continuous Delivery (CD) pipeline.
