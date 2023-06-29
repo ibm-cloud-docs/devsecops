@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-06-15"
+lastupdated: "2023-06-29"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
@@ -36,7 +36,7 @@ Within {{site.data.keyword.cloud}}, the dynamic process of resolving **by CRN** 
 
 In addition to manually selecting chosen secrets on a one-by-one basis from any bound secrets integrations in a toolchain, the option of using a `Secret Hint` is also available. This option enables a toolchain template to be predefined with suggested secrets names (also known as `Hints`) that are a short form secret reference. The format of a secret hint is `{vault::secret-name}` whereby no secret integration name is included. This provides flexibility to the toolchain author in that all required secret names can be prepopulated into a `toolchain.yml` and then these names are automatically resolved against whatever secrets integrations are configured for the toolchain.
 
-As previously described, you can configure {{site.data.keyword.secrets-manager_short}} to reference secrets **by CRN**. For more information, see [Cloud Resource Names (CRN)](/docs/account?topic=account-crn). This format allows for greater flexibility because you can reference secrets from an {{site.data.keyword.secrets-manager_short}} instance in a different account if the correct [authorization](https://cloud.ibm.com/iam/authorizations){: external} is in place. For more information see [Configuring Secrets Manager](docs/ContinuousDelivery?topic=ContinuousDelivery-secretsmanager).
+As previously described, you can configure {{site.data.keyword.secrets-manager_short}} to reference secrets **by CRN**. For more information, see [Cloud Resource Names (CRN)](/docs/account?topic=account-crn). This format allows for greater flexibility because you can reference secrets from an {{site.data.keyword.secrets-manager_short}} instance in a different account if the correct [authorization](https://cloud.ibm.com/iam/authorizations){: external} is in place. For more information see [Configuring Secrets Manager](/docs/ContinuousDelivery?topic=ContinuousDelivery-secretsmanager).
 
 The secrets that are used in both CI and CD are outlined as follows:
 

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-06-26"
+lastupdated: "2023-06-29"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -18,7 +18,7 @@ subcollection: devsecops
 The Sysdig script runs the Sysdig inline scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
 {: shortdesc}
 
-The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see the [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl##list_artifacts) documentation. 
+The Sysdig inline scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts). 
 This scan is run as a part of scan-artifact stage of CI and CC pipelines.
 
 The script runs the Sysdig inline scanner image scan on the image and uploads the results to the given Sysdig URL instance. 
