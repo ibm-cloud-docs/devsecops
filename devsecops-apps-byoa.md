@@ -22,7 +22,6 @@ Create your DevSecOps toolchain by using the default sample app that is provided
 
 - [code-engine-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/code-engine-compliance-app)
 - [python-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/python-compliance-app)
-- [node-cloudant-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/node-cloudant-compliance-app) - combining application source (Node.js) and dependency definition (Cloudant defined using infrastructure-as-code)
 
 The source code of each sample app contains a `.pipeline-config.yaml` file. The `.pipeline-config.yaml` file is the core configuration file that is used by continuous integration and continuous deployment toolchains for all of the stages in the pipeline run process.
 
