@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-06-16"
+lastupdated: "2023-07-11"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2090,13 +2090,14 @@ Some environment variables are automatically picked up to add details about the 
 The behavior of the command can be altered by using these flags:
 
 - `--dry-run`: Adds nothing to the locker, but shows what would be added.
+- `--cache-mode`: Similar to dry-run. Doesn't actually add the evidence to the locker, but adds the attachments (if any) to the locker. Shows the evidence that would be added.
 - `--format`: controls the output format, `id` or `json` (`id` by default).
 
 Run the command to save results for [`detect-secrets`](https://github.com/IBM/detect-secrets){: external}:
 
 ```sh
 $ cocoa locker evidence add --evidence-type-id com.ibm.detect_secrets \
-                            --evidnece-type-version 1.0.0 \
+                            --evidence-type-version 1.0.0 \
                             --details result=success \
                             --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 ```
