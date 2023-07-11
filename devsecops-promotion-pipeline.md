@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-03-28"
+lastupdated: "2023-07-11"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -24,7 +24,7 @@ The promotion pipeline promotes inventory entries from one environment to anothe
 1. Get inputs for the promotion and the promotion pull/merge request.
 2. Promote the inventory entries from the source environment to the target environment.
 3. Create the promotion pull/merge request. Edit the pull/merge request to indicate which changes to perform. Watch for optional and mandatory fields.
-4. Optional step: Validate and set the evidence status on the promotion pull/merge request.
+4. Optional. Set the evidence statuses, and add the aggregated evidence summary to the promotion pull/merge request.
 5. Merge the pull/merge request.
 6. Send a Slack notification if the feature is turned on.
 
@@ -45,7 +45,8 @@ For more information about the inventory and promotion process, see [Inventory p
 
 The information from the body of the promotion pull/merge request is used to create the change request. Files that are changed by the promotion pull/merge request represent the entries, such as images, that are deployed by the continuous deployment pipeline. If the changes were made because of an emergency, the promotion pull/merge request is marked with an emergency label. The change request that is created by the continuous deployment pipeline is also marked as `emergency`.
 
-The evidence collected in continous integration pipeline is summarized and attached to the change request in the continous deployment pipeline. You can optionally perform the evidence aggregation and summary generation in the promotion pipeline as well and set the evidence statuses on the promotion pull/merge request (PR) after the PR is created. This action allows for early validation of the promotion PR, before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green) or choose to fix the problem in the continous integration pipeline (when the evidence status is red). 
+The evidence that is collected in the continuous integration pipeline is summarized and attached to the change request in the continuous deployment pipeline. You can optionally perform the evidence aggregation and summary generation in the promotion pipeline as well, and set the evidence statuses on the promotion pull/merge request (PR) after the PR is created by setting `opt-in-promotion-validation` to 1. This action allows for early validation of the promotion PR before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green), or choose to fix the problem in the continuous integration pipeline (when the evidence status is red).
+Opting in to the validation also adds the aggregated summary of evidences for one or more apps in the inventory to the promotion pull/merge request as a comment in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repos, and issues created for each of the apps.
 
 Set `opt-in-promotion-validation` to 1, to perform the promotion PR validation. While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation is completed, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
     
@@ -89,6 +90,9 @@ You must edit and modify the pull/merge request if the optional parameters were 
  
  When the (optional) promotion PR validation runs, the evidence status is set on the pull/merge request.
  ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Figure 2. Evidence status on promotion pull and merge request" caption-side="bottom"}
+
+The aggregated evidence summary of the evidences (that can be coming from multiple apps in the inventory) is displayed in tabular format as a comment in the PR.
+![Optional aggregated evidence summary captured in a comment on promotion pull and merge request](images/promotion-pull-request-summary.png){: caption="Figure 3. Aggregated evidence summary in promotion pull and merge request" caption-side="bottom"}
 
 ## Next step
  {: #devsecops-promotion-pipeline-next}
