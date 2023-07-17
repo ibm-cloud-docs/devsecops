@@ -1,8 +1,8 @@
 ---
 
-copyright:
+copyright: 
   years: 2022, 2023
-lastupdated: "2023-04-17"
+lastupdated: "2023-07-17"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -60,6 +60,7 @@ More parameters are required for configuring ZAP API scans. These parameters can
 |`zap-api-port`|String|Port to run the ZAP API scanner when deployed to a cluster, default: `9086`.|Optional|
 |`zap_api_deployment_name`|String|Name of the ZAP API scanner deployment, default: `zap-api-deployment`.|Optional|
 |`zap-api-image`|String|Set this parameter to use a custom ZAP API Scanner image. Otherwise, the IBM default is used.|Optional|
+|`flatten-zap-api-scan-report`|String|Set this parameter to `true` to flatten the ZAP API scan results into one single html and json file. Default `false`.|Optional|
 {: caption="Table 2. ZAP API configuration parameters" caption-side="bottom"}
 
 Create a file `custom-api-script` inside your application repository, at a location of your choice, for example, inside `scripts/zap-custom-scripts` directory. This file can be named differently too, and set the path to this file against the `zap-api-custom-script` parameter.
