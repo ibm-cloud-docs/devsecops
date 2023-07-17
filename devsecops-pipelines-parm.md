@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-06-30"
+lastupdated: "2023-07-17"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -82,6 +82,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
+|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batched mode, which minimizes the network calls. Default `0`|Optional|
 |[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`master` |Optional			|
 | `ciso-ibmcloud-api-key` | SECRET | Overrides `ibmcloud-api-key` for image signing and signature verification. | Optional | 
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
@@ -179,6 +180,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
 |[`assignee`](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[`backout-plan`](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
+|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batched mode, which minimizes the network calls. Default `0`|Optional|
 | `ciso-ibmcloud-api-key` | SECRET | Overrides `ibmcloud-api-key` for image signing and signature verification. | Optional |
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
@@ -251,6 +253,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
+|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batched mode, which minimizes the network calls. Default `0`|Optional|
 |`branch`		|text		|The Git repo branch of the repository that contains the source code of your application. Default value: `master`. |Optional			|
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried  in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
