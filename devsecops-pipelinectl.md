@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-06-12"
+lastupdated: "2023-07-17"
 
 keywords: DevSecOps, pipelinectl
 
@@ -46,6 +46,11 @@ Available aliases and methods:
 - [get_data](#get_data)
 - [serialize](#serialize)
 - [deserialize](#deserialize)
+- [save_asset](#save_asset)
+- [load_asset](#load_asset)
+- [save_evidence](#save_evidence)
+- [load_evidence](#load_evidence)
+- [delete_evidences](#delete_evidences)
 
 ### set_env
 {: #set_env}
@@ -554,6 +559,65 @@ get_data <key> <prop>
 {: codeblock}
 
 Prints `prop` of the entry that is defined by `key`. If `prop` is not provided, it returns all of the `prop`s for the `key`. Returns a nonzero exit code when `key` has no `prop`.
+
+### save_asset
+{: #save_asset}
+  
+```bash
+# <prop>: Type of property; for example, uri, id, blob
+# <value>: Value of the property
+save_asset <prop1> <value1> blob <json_string>
+save_asset <prop1> <value1> <prop2> <value2> blob <json_string>
+```
+
+Saves asset information to the pipelinectl storage to be accessible throughout the pipeline. Arbitrary numbers of properties are allowed. However, `blob` is a reserved property that is mandatory to be passed, and its corresponding value should be a valid json string. The `save_asset` property creates immutable entries. It cannot be called twice for the same combination of `<prop> <value>` pairs.
+
+### load_asset
+{: #load_asset}
+  
+```bash
+# <prop>: Type of property; for example, uri, id
+# <value>: Value of the property
+load_asset # retrieves all assets stored by save_asset
+load_asset <prop1> <value1> # retrieves one asset that matches prop1 = value1 saved during save_asset
+load_asset <prop1> <value1> <prop2> <value2> # retrieves one asset that matches prop1 = value1 AND prop2 = value2 saved during save_asset
+```
+
+Retrieves an asset that matches the provided `<prop> <value>` pairs. If called without a `<prop> <value>` combination, it retrieves all the assets that are saved using `save_asset` in the pipeline inside a json array. The `blob` property is a reserved property, so it cannot be used as a matching property for `load_asset`.
+
+### save_evidence
+{: #save_evidence}
+  
+```bash
+# <prop>: Type of property; for example, blob, sha
+# <value>: Value of the property
+save_evidence <prop1> <value1> blob <json_string>
+save_evidence <prop1> <value1> <prop2> <value2> blob <json_string>
+```
+
+Saves evidence information to the pipelinectl storage to be accessible throughout the pipeline. Arbitrary numbers of properties are allowed. However, the `blob` property is a reserved property that is mandatory to be passed, and its corresponding value should be a valid json string. The `save_evidence` property creates immutable entries. It cannot be called twice for the same combination of `<prop> <value>` pairs.
+
+### load_evidence
+{: #load_evidence}
+  
+```bash
+# <prop>: Type of property; for example, id, sha
+# <value>: Value of the property
+load_evidence # retrieves all evidences that are stored by save_evidence
+load_evidence <prop1> <value1> # retrieves one evidence that matches prop1 = value1 saved during save_evidence
+load_evidence <prop1> <value1> <prop2> <value2> # retrieves one evidence that matches prop1 = value1 AND prop2 = value2 saved during save_evidence
+```
+
+Retrieves an evidence that matches the provided `<prop> <value>` pairs. If called without a `<prop> <value>` combination, it retrieves all the evidences that are saved using `save_evidence` in the pipeline inside a json array. The `blob` property is a reserved property, so it cannot be used as a matching property for `load_evidence`.
+
+### delete_evidences
+{: #delete_evidences}
+
+```bash
+delete_evidences # deletes all the evidences stored inside pipelinectl so far using save_evidence
+```
+
+This command clears out all the evidences stored inside the pipelinectl, which were saved using `save_evidence`.
 
 ### save_string (deprecated)
 {: #save_string}
