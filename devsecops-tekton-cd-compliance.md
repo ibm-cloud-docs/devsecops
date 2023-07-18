@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-25"
+lastupdated: "2023-07-18"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -160,7 +160,7 @@ To comply with best practices for using HashiCorp Vault, this template includes 
 ### IBM Secrets Manager
 {: #cd-devsecops-secrets-manager}
 
-Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or Hashicorp Vault credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you already created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
+Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you already created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
 
 ![DevSecOps secrets manager](images/devsecops-secrets-manager.png){: caption="Figure 9. DevSecOps secrets manager" caption-side="bottom"}
 

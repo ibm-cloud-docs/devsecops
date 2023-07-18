@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-04-25"
+lastupdated: "2023-07-18"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -243,7 +243,7 @@ The newly generated API key can be saved to an existing Key Protect instance.
 ![DevSecOps API key](images/devsecops-ci-api-key-full-access.png){: caption="Figure 14. DevSecOps API key" caption-side="bottom"}
 
 Click the Key Icon to use an existing key from your Secret Provider.
-* **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
+* **Provider**: The Secret Provider that stores your API Key to access the cluster, as linked to your toolchain earlier. It can be a Key Protect Instance, Secret Manager Instance, or HashiCorp Vault Instance.
 * **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
 * **Secret name**: Name or alias of the secret, such as the API Key.
 
@@ -271,7 +271,7 @@ Ensure that the key follows the appropriate encoding as required by the chosen t
 
 Click **Key** to use an existing key from your Secret Provider.
 
-- **Provider**: The Secret Provider, which stores your GPG Key. It can be a Key Protect Instance, Secret Manager Instance, or Hashicorp Vault Instance.
+- **Provider**: The Secret Provider, which stores your GPG Key. It can be a Key Protect Instance, Secret Manager Instance, or HashiCorp Vault Instance.
 - **Resource Group**: Resource Group that the Secrets Manager Provider belongs.
 - **Secret name**: Name or alias of the secret, that is, GPG Key.
 

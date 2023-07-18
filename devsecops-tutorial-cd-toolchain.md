@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-22"
+lastupdated: "2023-07-18"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -136,7 +136,7 @@ For more information about Git repos, see [Configuring your {{site.data.keyword.
 ### Secrets
 {: ##tutorial-cd-toolchain-secrets}
 
-Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An IBM Cloud API key is an example of such a secret. These secrets must be securely stored within an IBM-recommended secrets management tool, such as [IBM Key Protect for IBM Cloud](https://www.ibm.com/cloud/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manager){: external}, or [Hashicorp Vault](https://www.vaultproject.io/){: external}. The secrets management tool can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
+Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An IBM Cloud API key is an example of such a secret. These secrets must be securely stored within an IBM-recommended secrets management tool, such as [IBM Key Protect for IBM Cloud](https://www.ibm.com/cloud/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The secrets management tool can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
 
 This tutorial uses {{site.data.keyword.secrets-manager_full}} as the vault for secrets.
 
