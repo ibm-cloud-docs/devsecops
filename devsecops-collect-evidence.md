@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-17"
+lastupdated: "2023-07-20"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -137,7 +137,7 @@ You can set the evidence type by using the `--evidence-type` parameter. You can 
 - `com.ibm.prod_change_request`
 - `com.ibm.close_change_reques`
 
-### Batched evidence collection
+## Batched evidence collection
 {: #batched-evidence-collection}
 
 Every single piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That potentially could lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
