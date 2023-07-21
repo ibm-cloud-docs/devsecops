@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2023-07-21"
 
 keywords: DevSecOps
 
@@ -101,6 +101,9 @@ After the promotion pull request is merged, the deployment pipeline can start. T
 
 When the deployment finishes, the `latest` tag  is moved ahead.
 
+During the dev-mode trigger, the tags will not be advanced, the purpose of the dev-mode trigger is solely for testing the CD pipeline and it is not recommended for use in the production environment.
+{:warning}
+
 ### Promote to further environments
 {: #cd-devsecops-pipelines-inventory-promote-env}
 
@@ -129,9 +132,9 @@ For example, you can use the same target environment for multiple regions (such 
 
 To specify the deployment region by the continuous deployment pipeline, use the `region` parameter. For more information about this parameter, see [Continuous deployment Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters).
 
-Teams do not need to set up a different branch for each region, such as `prod-us-south` and `prod-eu-de`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch and then use them as Git tags.
+Teams do not need to set up a different branch for each region, such as `us-south-prod` and `eu-de-prod`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch and then use them as Git tags.
 
-In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`, and each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
+In this setup, the prod branch has multiple `latest` tags on the same branch, such as `us-south_prod_latest` and `eu-de_prod_latest`, and each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
 ![Single target - multiple region setup](images/inventory-single-target-multi-region.svg "Single target - multiple region setup"){: caption="Figure 2. Single target - multiple region setup" caption-side="bottom"}
 
