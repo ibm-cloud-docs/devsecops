@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-07-17"
+lastupdated: "2023-07-21"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -141,7 +141,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
 |`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
-|`opt-out-v1-evidence`  |text  |Opts out from v1 evidence collection. |Required |
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	|
@@ -222,7 +221,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
-|`opt-out-v1-evidence`  |text  |Opts out from v1 evidence collection. |Required |
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
