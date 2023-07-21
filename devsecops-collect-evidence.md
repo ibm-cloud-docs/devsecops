@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-20"
+lastupdated: "2023-07-21"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -137,17 +137,7 @@ You can set the evidence type by using the `--evidence-type` parameter. You can 
 - `com.ibm.prod_change_request`
 - `com.ibm.close_change_reques`
 
-## Batched evidence collection
-{: #batched-evidence-collection}
-
-Every single piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That potentially could lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
-
-Add the environment property `batched-evidence-collection` and set it to `1` to enable this flow.
-
-If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
-{: note}
-
-### Asset requirements
+## Asset requirements
 {: #collect-evidence-asset}
 
 Evidence that is collected with this tool is part of the V2 evidence collection work and the related evidence locker updates.
@@ -183,3 +173,13 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
    The artifact name. For example, for an image include registry, namespace, and image (example: `us.icr.io/team-images/service`).
 - `digest`  
    The artifact digest (example: `sha256:a2292ed2b82c7a51d7d180c3187dbb0f7cc9ab385a68484c4f117e994acd6192`).
+
+## Batched evidence collection
+{: #batched-evidence-collection}
+
+Every single piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That potentially could lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
+
+Add the environment property `batched-evidence-collection`` in CI, CD, and CC pipelines, and set it to `1` to enable this flow.
+
+If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
+{: note}
