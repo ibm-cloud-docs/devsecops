@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-07-21"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -189,9 +189,9 @@ The current deployed state contains the content to deploy to an environment. Eve
 
 Multiple `latest` tags are introduced for a single target environment so that multiple continuous deployment pipelines can work on the same target, for different types of use cases. You can use, for example, the same target environment (such as `us-south` or `eu-de`) for multiple regions in the prod target environment and the inventory branch.
 
-You do not need to set up a different branch for each region, such as `prod-us-south` and `prod-eu-de`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch, and then use them as Git tags.
+You do not need to set up a different branch for each region using the `region` property , such as `us-south-prod` and `eu-de-prod`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch, and then use them as Git tags.
 
-In this setup, the prod branch has multiple `latest` tags on the same branch, such as `prod-latest:us-south` and `prod-latest:eu-de`.  Each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
+In this setup, the prod branch has multiple `latest` tags on the same branch, such as `us-south_prod_latest` and `eu-de_prod_latest`.  Each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
 ![Prod branch with multiple latest tags per region](images/inventory-7.svg){: caption="Figure 7. Prod branch with multiple latest tags per region" caption-side="bottom"}
 

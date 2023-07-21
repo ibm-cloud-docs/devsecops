@@ -15,6 +15,9 @@ subcollection: devsecops
 # Turning off legacy v1 evidence collection
 {: #turn-off-v1-evidence}
 
+`v1` evidence summary is deprecated from the release `v9.19.1`, if you are still using v1 evidence then use the version before `v9.19.1`
+{: deprecated}
+
 The v9 pipeline version introduces a new evidence locker model and evidence collection mechanism, called asset-based evidence. This new version works in parallel to the legacy, pipeline-based evidence model. The current configuration is redundant and fails to benefit from the v2 asset based evidence features. To take the next steps, and fully leverage asset based evidence, you can opt out from v1 evidence collection.
 {: shortdesc}
 

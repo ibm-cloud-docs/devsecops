@@ -1,7 +1,7 @@
 ---
 
 copyright: 
-  years: 2023
+  years: 2021, 2023
 lastupdated: "2023-07-21"
 
 keywords: DevSecOps
@@ -10,15 +10,27 @@ subcollection: devsecops
 
 ---
 
-{{site.data.keyword.attribute-definition-list}}
+{:shortdesc: .shortdesc}
+{:table: .aria-labeledby="caption"}
+{:external: target="_blank" .external}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:note: .note}
+{:important: .important}
+{:download: .download}
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 
 # Configuring your GitHub repository
-{: #devsecops-config-github}
+{: #cd-devsecops-config-github}
+
 
 Branch protection policies enforce security, collaboration and ensure your team's code quality and change management standards. This article describes how to set and manage branch policies. [DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-arch) requires you to configure the branch protection rules of your GitHub repository.
 
+
 ## Benefits of Branch Protection
-{: #devsecops-config-github-protection}
 
 - **Improved Code Quality and Collaboration**: Requiring pull requests and approvals through branch protection enhances both code quality and collaboration. This ensures code consistency and adherence to the team's coding standards. Changes undergo review and helps catch bugs and errors early on, resulting in more reliable and maintainable code.
 
@@ -27,12 +39,10 @@ Branch protection policies enforce security, collaboration and ensure your team'
 - **Ensuring Code Integrity**: Pull request status checks validate the code by running automated tests against predefined standards and linters before a pull request can be merged, helping to maintain code integrity by catching bugs and other issues early in the development cycle. 
 
 ## Configuring Branch Protection Rules in GitHub
-{: #devsecops-config-github-rules}
 
 To configure branch protection rules in GitHub for your repository, follow these steps:
 
 ### Accessing Branch Protection Settings
-{: #devsecops-config-github-settings}
 
 1. Navigate to the "Settings" tab of your repository on GitHub.
 2. In the left sidebar, click on "Branches" to access the branch settings page.
@@ -43,7 +53,6 @@ To configure branch protection rules in GitHub for your repository, follow these
 ![GitHub repository settings](images/devsecops_configure-branch-protection_github_settings.png){: caption="Figure 1. GitHub repository settings" caption-side="bottom"}
 
 ### Adding Branch Protection Rules
-{: #devsecops-config-github-addrules}
 
 If no existing rules are set up, click on the `Add rule` button and enter the corresponding branch name into the `**Branch name pattern**` field. Then proceed with the following steps:
 
@@ -56,7 +65,6 @@ If no existing rules are set up, click on the `Add rule` button and enter the co
 Note: Pull Requests **must** be approved before merging them into the master branch. This rule ensures that changes undergo review and scrutiny by team members, promotes collaboration, code quality, and adherence to project standards.
 
 ### Configuring Status Checks
-{: #devsecops-config-github-status}
 
 Status checks are required in One-Pipeline to enforce a comprehensive set of quality and security measures on the code. This ensures that code changes are safe and reliable before they are merged into a protected branch. By requiring status checks to pass before merging, you can prevent broken or untested code from being deployed to production.
 
@@ -91,7 +99,6 @@ Note : One-Pipeline will base the outcome of branch protection checks depending 
 Once you have configured branch protection settings, any attempt to merge a pull request to the protected branch will be rejected unless the required conditions are met.
 
 ### Additional Settings (Optional)
-{: #devsecops-config-github-settings-more}
 
 In addition to the above settings, you have the option to configure the following additional settings for branch protection rules. Please note that the status checks provided by One-Pipeline will not validate or enforce these settings.
 
@@ -102,10 +109,8 @@ In addition to the above settings, you have the option to configure the followin
 These additional settings are optional and can be customized based on your specific requirements and preferences.
 
 ## Setting Branch Protection Rules via CURL Command
-{: #devsecops-config-github-rules-curl}
 
 ### Adding All Branch Protection Rules (Complete Configuration)
-{: #devsecops-config-github-add-all-rules}
 
 Branch protection rules could also be set by the following curl command, after replacing the `$GH_TOKEN`, `$OWNER`, `$REPO`, `$BRANCH` variables. 
 
@@ -118,7 +123,6 @@ This CURL command sets up both the required status checks and pull request revie
 Once these settings have been configured, any attempt to merge a pull request to the `$BRANCH` will be rejected unless the pull request has been approved by at least one other user.
 
 ### Configuring Status Checks Only (Status Checks Configuration)
-{: #devsecops-config-github-checks-only}
 
 If you only want to configure the required status checks, you can use the following CURL command as a reference:
 

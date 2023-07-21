@@ -179,7 +179,7 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
 
 Every single piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That potentially could lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
 
-Add the environment property `batched-evidence-collection`` in CI, CD, and CC pipelines, and set it to `1` to enable this flow.
+Add the environment property `batched-evidence-collection` in CI, CD, and CC pipelines, and set it to `1` to enable this flow.
 
 If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
 {: note}
