@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-10-19"
+  years: 2021, 2023
+lastupdated: "2023-07-31"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -118,3 +118,7 @@ Cloud {{site.data.keyword.cos_short}} bucket names must be globally unique and D
 {: #cd-devsecops-cos-bucket-endpoint}
 
 Use `private` endpoints for most requests originating from within {{site.data.keyword.cloud}} and use  `public` endpoints for most requests originating from outside {{site.data.keyword.cloud}}. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types).
+
+
+For pipelines that are running in the London region, use `direct` endpoints due to the pipeline managed worker infrastructure there.
+{: note}
