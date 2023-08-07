@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-08-07"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -174,6 +174,21 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
 - `digest`  
    The artifact digest (example: `sha256:a2292ed2b82c7a51d7d180c3187dbb0f7cc9ab385a68484c4f117e994acd6192`).
 
+   
+  **Changes required in save_artifact for non-images:** Collect evidence now supports all the asset types. For collect evidence to work on any asset
+type
+ `save_artifact` should explicity save the asset with `type` for eg zip  
+`save_artifact artifact-1 type=zip ...`.
+ In collect evidence script, the `asset-type` should be artifact and type is queried from the artifact. For this to work, cocoa locker asset add has been modified to add asset of any type.  Once saved, the  collect evidence script can be called as below:
+    
+  `collect-evidence --tool-type toolType --evidence-type  artifact --asset-key artifact-1 ...`
+
+  Please refer to our sample application for sample implementation for  `deployment` type https://github.ibm.com/one-pipeline/hello-compliance-app
+
+  With these changes,  collect-evidence script will process all types of artifacts, including both image and non-image artifacts.
+
+
+
 ## Batched evidence collection
 {: #batched-evidence-collection}
 
@@ -183,3 +198,4 @@ Add the environment property `batched-evidence-collection` in CI, CD, and CC pip
 
 If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
 {: note}
+
