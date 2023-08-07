@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-06-29"
+lastupdated: "2023-08-07"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -39,11 +39,14 @@ To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.
 
 | Parameter name | Default value | Description |
 |-|-|-|
-| `sysdig-url` | `https://secure.sysdig.com` (property is not set)| The URL of the Sysdig instance to be used for the scan. This value needs to be provided if any other Sysdig instance is being used. |
+| `sysdig-url` | `https://us-south.security-compliance-secure.cloud.ibm.com` (property is not set)| The URL of the Sysdig instance to be used for the scan. This value needs to be provided if any other Sysdig instance is being used. |
 | `sysdig-inline-scanner-image` | `quay.io/sysdig/secure-inline-scan:2` (property is not set)| Enter the Sysdig inline scanner image to be used for the scan.|
 | `cr-ibmcloud-api-key` | | Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.|
 {: caption="Table 2. Optional Sysdig scan parameters" caption-side="top"}
 
+The various `sysdig-url` values to be used, while using [IBM Cloud Workload Protection service](docs/workload-protection?topic=workload-protection-getting-started) are provided [here](/docs/workload-protection?topic=workload-protection-endpoints).
+External Sysdig secure instances also can be used, such as `https://secure.sysdig.com`. Appropriate `sysdig-url` value needs to be provided.
+ 
 ## Evidence and attachments
 {: #sysdig-evid-attach}
 
@@ -71,7 +74,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 
 You can access your scan results by using any of the following methods:
 
-- Viewing them on the Sysdig dashboard.
+- Viewing them on the Sysdig dashboard. Open the Sysdig Secure dashboard and look for the image just scanned in `Image Results`. 
 - Using the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) to download your scan results from the evidence locker by using the information that is printed in the stage log. For more information, see the following resources:
    - [`cocoa locker evidence get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-get)
    - [`cocoa locker attachment get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-attachment-get)
