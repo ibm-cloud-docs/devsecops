@@ -1,10 +1,10 @@
 ---
 
-copyright:
-  years: 2022
-lastupdated: "2022-08-02"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-08-07"
 
-keywords: DevSecOps, automate change management, change management, ibm cloud
+keywords: DevSecOps, change request, change management, ibm cloud
 
 subcollection: devsecops
 
@@ -35,7 +35,6 @@ Figure 1 shows the data flow and connection between evidence, inventory, and cha
 Every deployment to every environment and region must file a change request on the Change Management System. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
 
 For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
-
 
 ## Change management command order
 {: #devsecops-change-mgmt-order}
