@@ -1,0 +1,7 @@
+{
+"{[cloud]}": "{{site.data.keyword.cloud_notm}}",
+"{[ibm]}": "{{site.data.keyword.IBM_notm}}",
+"{[cra-full]}": "IBM Cloud Code Risk Analyzer",
+"{[cra]}": "Code Risk Analyzer"
+}
+  
