@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-08-15"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -49,6 +49,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
@@ -109,6 +110,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`custom-image-tag`		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
 |[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
@@ -274,6 +276,10 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-nodejs-create-package-lock`		| text		| Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	| Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.    |Optional    |
+|[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
+|[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
@@ -412,7 +418,12 @@ This parameter specifies a custom file name for the baseline file that is used b
 ### detect-secrets-exclusion-list
 {: #detect-secrets-exclusion-list}
 
-This parameter is an environment property that overrides the default exclusion list when a run is done without an existing baseline file. This pàrameter identifies files to ignore so that issues are not created that are linked to them.
+This parameter is an environment property that overrides the default exclusion list when a run is done without an existing baseline file. This parameter identifies files to ignore so that issues are not created that are linked to them.
+
+### detect-secrets-image
+{: #detect-secrets-image}
+
+This parameter can be used to specify a different detect-secrets image to use, such as a custom image or a specific version of the official detect-secrets image.
 
 ### detect-secrets-verbose
 {: #detect-secrets-verbose}
