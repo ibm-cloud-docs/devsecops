@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-11"
+lastupdated: "2023-08-16"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -45,11 +45,37 @@ For more information about the inventory and promotion process, see [Inventory p
 
 The information from the body of the promotion pull/merge request is used to create the change request. Files that are changed by the promotion pull/merge request represent the entries, such as images, that are deployed by the continuous deployment pipeline. If the changes were made because of an emergency, the promotion pull/merge request is marked with an emergency label. The change request that is created by the continuous deployment pipeline is also marked as `emergency`.
 
-The evidence that is collected in the continuous integration pipeline is summarized and attached to the change request in the continuous deployment pipeline. You can optionally perform the evidence aggregation and summary generation in the promotion pipeline as well, and set the evidence statuses on the promotion pull/merge request (PR) after the PR is created by setting `opt-in-promotion-validation` to 1. This action allows for early validation of the promotion PR before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green), or choose to fix the problem in the continuous integration pipeline (when the evidence status is red).
-Opting in to the validation also adds the aggregated summary of evidences for one or more apps in the inventory to the promotion pull/merge request as a comment in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repos, and issues created for each of the apps.
+The evidence that is collected in the continuous integration pipeline is summarized and attached to the change request in the continuous deployment pipeline. 
 
-Set `opt-in-promotion-validation` to 1, to perform the promotion PR validation. While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation is completed, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
-    
+## Promotion validation pipeline
+{: #cd-devsecops-promotion-validation-pipeline}
+
+Once a promotion PR is opened, you can optionally perform the evidence aggregation and summary generation in the Promotion validation pipeline, and set the evidence statuses on the promotion pull/merge request (PR). The PR may be created by the Promotion pipeline or manually in the inventory repo.
+The pipeline enables early validation of the promotion PR before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green), or choose to fix the problem in the continuous integration pipeline (when the evidence status is red).
+Additionaly the validation pipeline also adds the aggregated summary of evidences for one or more apps in the inventory to the promotion pull/merge request as a comment, in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repos, and issues created for each of the apps.
+While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation pipeline completes, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
+
+## How to opt-in into promotion validation?
+{: #cd-devsecops-promotion-validation-pipeline-opt-in}
+
+[Deprecated]{: tag-deprecated} The `opt-in-promotion-validation` option used to automatically kick-off the promotion validation pipeline on a pull request is deprecated in favor of the Git Promotion Validation trigger. If you have this property in the environment settings, you will see the deprecation notice in the pipeline logs and Slack notification.
+
+For all new CD toolchains, Git Promotion Validation trigger is automatically created and set to enabled.
+{: note}
+
+To enable the Git Promotion Validation trigger on an existing pipeline, you can use the following steps.
+1. Go to the **Trigger** page of the CD pipeline that you want to add it to.
+2. Select **Add > Git Repository**  to add a new trigger.
+3. Input the following information required for the the trigger:
+    - Provide a trigger name. For example: Git Promotion Validation Trigger.
+    - Specify `promotion-validation-listener or promotion-validation-listener-gitlab` as the `EventListener`. 
+    - Select the corresponding inventory repository for the pipeline for the **Repository** field.
+    - Select the name of the target environment for the **Branch**.
+    - Check the box for the field **When a pull request is opened or updated**.
+ 4. Click **Add**.
+ 5. Set the trigger to **On**.
+
+
 ## Inputs
 {: #cd-devsecops-promotion-pipelineinputs}
 

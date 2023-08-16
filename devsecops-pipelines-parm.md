@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-08-15"
+lastupdated: "2023-08-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -336,7 +336,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
-|`opt-in-promotion-validation`		|text	|Enables validation of evidence status after inventory PR creation. Status is set on the PR.	 |Optional			|
 {: caption="Table 5. Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
 {: tab-title="Promotion parameters"}
