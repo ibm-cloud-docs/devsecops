@@ -125,11 +125,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
-|`gosec-private-repository-url`   |text   |Your private repository base URL. For example, `https://github.ibm.com`. |Optional |
-|`gosec-private-repository-ssh-key`     |secret   |The SSH key for the private repository. |Optional |
-|`gosec-proxy-virtual-repository-token`     |secret   |The virtual repository token for gosec proxy. |Optional |
-|`gosec-proxy-virtual-repository-user`     |text   |The virtual repository user for gosec proxy. | Optional |
-|`gosec-proxy-virtual-repository-url`     |text   |The virtual repository url for gosec proxy. |Optional |</staging>
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
