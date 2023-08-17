@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-08-16"
+lastupdated: "2023-08-17"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -94,6 +94,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |`cra-cveignore-path`     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore` if value is not provided.   |Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
@@ -124,6 +125,11 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
+|`gosec-private-repository-url`   |text   |Your private repository base URL. For example, `https://github.ibm.com`. |Optional |
+|`gosec-private-repository-ssh-key`     |secret   |The SSH key for the private repository. |Optional |
+|`gosec-proxy-virtual-repository-token`     |secret   |The virtual repository token for gosec proxy. |Optional |
+|`gosec-proxy-virtual-repository-user`     |text   |The virtual repository user for gosec proxy. | Optional |
+|`gosec-proxy-virtual-repository-url`     |text   |The virtual repository url for gosec proxy. |Optional |</staging>
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -161,14 +167,13 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`static-scan-retry-count`](#pipeline-parm-static-scan-retry-count)		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
 |[`static-scan-retry-sleep`](#pipeline-parm-static-scan-retry-sleep)		|text		|The amount of wait time per retry iteration.	|Optional			|
 |`subpipeline-webhook-token` | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |
+|`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://us-south.security-compliance-secure.cloud.ibm.com`	|Optional			|
+|`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |`va-scan-retry-count`		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |`va-scan-retry-sleep`	|text		|The number of wait times per retry iteration.	|Optional			|
 |`version`		|text		|The version of the app to deploy.	|Required			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then Sysdig scan is enabled. 	|Required			|
-|`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
-|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
-|`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
-|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 {: caption="Table 2. Continuous integration parameters" caption-side="bottom"}
 {: #cd-ci-parameters}
 {: tab-title="Continuous integration parameters"}
