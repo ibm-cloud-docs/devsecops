@@ -34,7 +34,7 @@ The DevSecOps Continuous Integration (CI), Continuous Deployment (CD), and Conti
 |OWASP ZAP API Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-api-scanner| 05-06-2023-08-29 | Vulnerable |   |
 |OWASP ZAP UI Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-scanner| 04-07-2022-06-47 | Vulnerable |  |
 |OWASP ZAP UI Proxy|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-proxy| 17-04-2023-03-56 | Vulnerable |  |
-|Detect Secrets|icr.io/git-defenders/detect-secrets| 0.13.1.ibm.60.dss-redhat-ubi| Vulnerable | |
+|Detect Secrets|icr.io/git-defenders/detect-secrets| 0.13.1.ibm.61.dss-redhat-ubi| Vulnerable | |
 |Docker In Docker|icr.io/continuous-delivery/toolchains/devsecops/docker| 20.10.21-dind  | Vulnerable |  |
 |SonarQube|icr.io/continuous-delivery/toolchains/devsecops/sonarqube| 10.0.0-community  | Vulnerable | |
 |SonarQube Scanner CLI|icr.io/continuous-delivery/toolchains/devsecops/sonar-scanner-cli | 4.8 | Vulnerable | |

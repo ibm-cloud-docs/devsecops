@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-03-19"
+lastupdated: "2023-08-07"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -20,7 +20,10 @@ Change management automation is an important part of the DevSecOps pipeline refe
 
 
 
-To automate change management, take the following steps:
+## Before you begin
+{: #cd-devsecops-change-prereq}
+
+Be sure to become familiar with the process and terminology. For more information, see [Automated change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-management).
 
 ## Creating change requests for deployments
 {: #cd-devsecops-change-fields}

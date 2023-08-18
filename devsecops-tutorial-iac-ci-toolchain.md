@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-06-06"
+lastupdated: "2023-08-07"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -97,7 +97,7 @@ Review the default information for the toolchain settings:
 
 You must configure multiple repositories during the guided setup, as described in the following sections.
 
-For each repository, you can either clone the repository that is provided as a sample. Alternatively, you can provide a URL to an existing IBM-hosted {{site.data.keyword.gitrepos}} repository that you own. The toolchain supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+You can clone the sample repositories or you can use your own, but the toolchain supports {{site.data.keyword.gitrepos}} repositories only.
 {: note}
 
 ### Infrastructure code

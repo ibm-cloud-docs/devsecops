@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-22"
+lastupdated: "2023-08-07"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -127,7 +127,7 @@ The [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) reposito
 Provide details of the target environment to scan the deployed artifacts in this step.
 The pipeline runs a number of dynamic scans, and it is recommended to use your staging environment.
 IBM Cloud API key: The API key that you created and used during your CI toolchain setup. Optionally you can create a new key and store it in your preferred choice of secrets vault.
-Environment tag in your inventory: It is the [tag in your Inventory repository that reflects the state of your current deployed environment. This tag is the snapshot of current running application on target.
+Environment tag in your inventory: It is the tag in your Inventory repository that reflects the state of your current deployed environment. This tag is the snapshot of current running application on target.
 
 ![DevSecOps CC target definition](images/devsecops-cc-toolchain-setup-specify-target.png){: caption="Figure 6. DevSecOps CC target definition" caption-side="bottom"}
 

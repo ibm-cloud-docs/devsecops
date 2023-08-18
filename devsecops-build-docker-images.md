@@ -91,6 +91,39 @@ done
 The `signature` property is added by the default built-in GPG Image signing task.
 {: tip}
 
+## Working with ICR
+{: #cd-devsecops-work-with-icr}
+
+[IBM Cloud® Container Registry](docs/Registry?topic=Registry-registry_overview#) provides a multi-tenant private image registry that you can use to store and share your container images with users in your IBM Cloud account.
+
+
+### Working with ICR having private endpoint enabled
+{: #cd-devsecops-work-with-icr-private-endpoints}
+
+The environment variable `registry-domain` needs to be added to the pipeline to work with registries enabled with private endpoints.
+ 
+#### Example
+{: #cd-devsecops-icr-private-endpoints-example}
+ 
+ The value of `registry-domain` can be set to `private.de.icr.io`
+ 
+ To use the environment variable, your code might look similar to the following sample:
+ 
+ ```text
+ ICR_REGISTRY_DOMAIN="$(get_env registry-domain "")"
+ if [ -z "$ICR_REGISTRY_DOMAIN" ]; then
+   # Default to icr domain from registry-region
+   ICR_REGISTRY_REGION="$(get-icr-region "$(get_env registry-region "")")"
+   ICR_REGISTRY_DOMAIN="$ICR_REGISTRY_REGION.icr.io"
+ fi
+ IMAGE="$ICR_REGISTRY_DOMAIN/$ICR_REGISTRY_NAMESPACE/$IMAGE_NAME:$IMAGE_TAG"
+ docker login -u iamapikey --password-stdin "$ICR_REGISTRY_DOMAIN" < /config/api-key
+ ```
+ {: codeblock}
+ 
+ The previous sample code is taken from [sample hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/build_setup.sh).
+
+
 For more information, check out the following documentation:
 
 * [Documentation on stages for user-defined scripts](/docs/devsecops?topic=devsecops-custom-scripts)

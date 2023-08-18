@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-05-22"
+lastupdated: "2023-08-16"
 
 keywords: DevSecOps, triggers
 
@@ -22,6 +22,7 @@ DevSecOps continuous integration and continuous deployment pipelines provide a s
 |:----------|:------------------------------|:------------------|:----------|
 |Pull request		|Git PR Trigger		|Runs the pull request pipeline on pull requests within the Application Repository.			|Enabled			|
 |Pull request 		|Manual Trigger 		|Runs the pull request pipeline on a specified commit or branch, on demand.			|Enabled			|
+|Promotion 		|Git Promotion Validation Trigger 		|Runs the promotion validation pipeline when a pull request is opened/updated on the `target-environment` branch of the Inventory.	|Disabled			|
 |Continuous integration		|Git CI Timed Trigger		|Runs the continuous integration pipeline on the `master` branch of the Application Repository every day at 4 AM. |Disabled			|
 |Continuous integration		|Git CI Trigger		|Runs the continuous integration pipeline when a commit is pushed to the master branch of the Application Repository.	|Enabled			|
 |Continuous integration		|Manual Trigger 		|Runs the continuous integration pipeline on a specified commit or branch, on demand.		|Enabled			|

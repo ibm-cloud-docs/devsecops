@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-06-02"
+lastupdated: "2023-08-15"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -97,7 +97,9 @@ If you have an existing baseline file, the scan uses the existing configuration.
 
 The `detect-secrets-baseline-filename` parameter specifies a custom file name for the baseline file that is used by detect-secrets. By default, detect-secrets looks for a file that is named `.secrets.baseline` in the repository root directory. However, if you name your baseline file differently, you can provide its file name by using this parameter.
 
-The `detect-secrets-exclusion-list` parameter overrides the default exclusion list when a run is done without an existing baseline file. This pàrameter identifies files to ignore so that issues are not created that are linked to them.
+The `detect-secrets-exclusion-list` parameter overrides the default exclusion list when a run is done without an existing baseline file. This parameter identifies files to ignore so that issues are not created that are linked to them.
+
+The `detect-secrets-image` parameter can be used to specify a different detect-secrets image to use, such as a custom image or a specific version of the official detect-secrets image.
 
 The `detect-secrets-verbose` parameter, when set to 1, logs the name of the current file that is being scanned.
 
@@ -105,6 +107,7 @@ The `detect-secrets-verbose` parameter, when set to 1, logs the name of the curr
 |:----------|:---------|:------------------------------|:------------------|
 | `detect-secrets-baseline-filename` | String |The name of the baseline file in your app repository. Defaults to `.secrets.baseline`. | Required if your baseline file is not the default name `.secrets.baseline`. |
 | `detect-secrets-exclusion-list` | String | A regex list of files to be excluded in the detect-secrets scan. Defaults to `requirements.txt\|go.mod\|go.sum\|pom.xml\|build.gradle\|package-lock.json`. | Optional, This file list overrides the general exclusion list only when there is no `.secrets.baseline` file present. |
+|`detect-secrets-image` | String | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 | `detect-secrets-verbose` | String | Outputs the name of the file that is currently that is being scanned. Defaults to `0`.  | Optional, Debug flag 0 - off, 1 - on. | 
 {: caption="Table 1. Secrets-scan parameters" caption-side="top"}
 

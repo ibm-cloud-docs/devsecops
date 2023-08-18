@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-08-17"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -49,6 +49,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
@@ -93,6 +94,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |`cra-cveignore-path`     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore` if value is not provided.   |Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
@@ -109,6 +111,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`custom-image-tag`		|text		|The custom tag for the image in a comma-separated list.	|Optional			|
 |[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
@@ -159,14 +162,13 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`static-scan-retry-count`](#pipeline-parm-static-scan-retry-count)		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|
 |[`static-scan-retry-sleep`](#pipeline-parm-static-scan-retry-sleep)		|text		|The amount of wait time per retry iteration.	|Optional			|
 |`subpipeline-webhook-token` | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |
+|`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://us-south.security-compliance-secure.cloud.ibm.com`	|Optional			|
+|`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |`va-scan-retry-count`		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |`va-scan-retry-sleep`	|text		|The number of wait times per retry iteration.	|Optional			|
 |`version`		|text		|The version of the app to deploy.	|Required			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then Sysdig scan is enabled. 	|Required			|
-|`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
-|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
-|`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
-|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 {: caption="Table 2. Continuous integration parameters" caption-side="bottom"}
 {: #cd-ci-parameters}
 {: tab-title="Continuous integration parameters"}
@@ -274,6 +276,10 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-nodejs-create-package-lock`		| text		| Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	| Optional			|
 |`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
 |[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue has been marked as exempted.    |Optional    |
+|[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
+|[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
@@ -330,7 +336,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
-|`opt-in-promotion-validation`		|text	|Enables validation of evidence status after inventory PR creation. Status is set on the PR.	 |Optional			|
 {: caption="Table 5. Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
 {: tab-title="Promotion parameters"}
@@ -412,7 +417,12 @@ This parameter specifies a custom file name for the baseline file that is used b
 ### detect-secrets-exclusion-list
 {: #detect-secrets-exclusion-list}
 
-This parameter is an environment property that overrides the default exclusion list when a run is done without an existing baseline file. This pàrameter identifies files to ignore so that issues are not created that are linked to them.
+This parameter is an environment property that overrides the default exclusion list when a run is done without an existing baseline file. This parameter identifies files to ignore so that issues are not created that are linked to them.
+
+### detect-secrets-image
+{: #detect-secrets-image}
+
+This parameter can be used to specify a different detect-secrets image to use, such as a custom image or a specific version of the official detect-secrets image.
 
 ### detect-secrets-verbose
 {: #detect-secrets-verbose}
