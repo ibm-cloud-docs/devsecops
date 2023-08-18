@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-08-17"
+lastupdated: "2023-08-18"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -102,7 +102,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cra-dockerfile-pattern`             | text   | Ability to add Dockerfiles with a different naming convention, such as `enterprise-linux.Dockerfile` | Optional |
 |`cra-exclude-devdependencies`		| text		| Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	| Optional			|
 |`cra-gradle-exclude-configs`     | text   | Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   | Optional   |
-| `cra-generate-cyclonedx-format`      | text   | If set to `1`, CRA also generates the BOM in `cyclonedx` format (defaults to `0`). | Optional |
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |
 |`cra-maven-exclude-scopes`       | text   | Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  | Optional   |
 |`cra-nodejs-create-package-lock`		| text		| Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	| Optional			|
@@ -152,6 +151,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`registry-region`		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|
 | `repository` |text |The URL of your application's source code repository. | Optional |
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|
+|`sbom-validation`		|text		|Enable sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation scan is enabled.	|Optional			|
 |[`signing-key`](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |`skip-inventory-update-on-failure`	|text		|The switch that stops inventory update on a failed CI run.  |Optional			|
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
@@ -322,6 +322,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-cra-auto-remediation`		|text		|Specifies if {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			|
 |`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
 |`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different to the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
+|`sbom-validation`		|text		|Enable sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation scan is enabled.	|Optional			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			|
 |`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-07-11"
+lastupdated: "2023-08-18"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1764,6 +1764,7 @@ Options:
 --incident-id         # (Required) Defines the incident ID to be used for creating legacy incident
 --current-status      # (Required) Current status to be treated as success or failure [choices: "success", "failure"]
 --custom-comment   # (Optional) Additional text to be added to issue comments
+--additional-comment  # (Optional) Additional comment for the issue on every run
 ```
 {: screen}
 
