@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-05-25"
+lastupdated: "2023-08-22"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -185,7 +185,7 @@ To view the `.pipeline-config.yaml` configuration file that is used by default f
 ## Secrets, parameters, and properties
 {: #cd-devsecops-scripts-secrets}
 
-Use [pipelinectl commands](/docs/devsecops?topic=devsecops-pipelinectl) to read or write data from the pipeline at run time. You can read and write secrets, variables, repo data, artifact data, and evidence result artifacts (such as test result files) by way of the pipelinectl interface.
+Use [pipelinectl commands](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) to read or write data from the pipeline at run time. You can read and write secrets, variables, repo data, artifact data, and evidence result artifacts (such as test result files) by way of the pipelinectl interface.
 
 You do not need to install the pipelinectl tool for your scripts or base images, the reference pipeline provides the binary files for the context of your script.
 {: tip}
@@ -355,7 +355,7 @@ This pipeline status can be determined in two ways:
 ## Stage output
 {: #cd-devsecops-scripts-stageoutput}
 
-Some data is expected to be available by other stages on the workspace, so be sure to create them by using the [`pipelinectl` commands](/docs/devsecops?topic=devsecops-pipelinectl). To make the required outputs available to the other stages and scripts in the pipeline, use pipelinectl's save methods, like save_repo, save_artifact, save_result, and set_env.
+Some data is expected to be available by other stages on the workspace, so be sure to create them by using the [`pipelinectl` commands](/docs/devsecops?topic=devsecops-devsecops-pipelinectl). To make the required outputs available to the other stages and scripts in the pipeline, use pipelinectl's save methods, like save_repo, save_artifact, save_result, and set_env.
 
 |Source stage |Description	|`Pipelinectl` method |Required |
 |:----------|:------------------------------|:------------------|:----------|
