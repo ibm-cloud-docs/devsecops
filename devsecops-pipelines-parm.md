@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-08-18"
+lastupdated: "2023-08-22"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -186,7 +186,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call before giving up. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default native Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
-|[`change-management-duration`](#pipeline-parm-change-management-duration)    | text   | The planned end time of the change. | Optional |
+|[`change-request-duration`](#pipeline-parm-change-request-duration)    | text   | The planned end time of the change. | Optional |
 |`change-management-repo`  | text   | The URL of the change management repository.  | Optional |
 |[`change-request-id`](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous deployment pipeline. |Optional			|
 |[`cluster`](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			|
@@ -361,8 +361,8 @@ This parameter is for the promotion pull request. Plan of how the change will be
 
 This is an optional parameter for the CI pipeline. It determines which branch we pull the code from the app repository. By default, it's `master`. 
 
-### change-management-duration
-{: #pipeline-parm-change-management-duration}
+### change-request-duration
+{: #pipeline-parm-change-request-duration}
 
 This is an optional parameter for the CD pipeline. The value of it will be the created change request's maintenance duration. By default it's `30 min`.
 
