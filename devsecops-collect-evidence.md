@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-08-07"
+lastupdated: "2023-08-18"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -62,6 +62,8 @@ The following parameter is optional:
    The file to be processed as result and attached to the evidence. The parameter can be specified multiple times for multiple files.
 - `--meta`  
    Arbitrary metadata to be added to the evidence. The parameter accepts 'key=value' pairs and can be specified multiple times.
+-  `--additional-comment`
+   The comment that is added to an issue if a pipeline has failed.
 
 Use the following command to get help:
 
