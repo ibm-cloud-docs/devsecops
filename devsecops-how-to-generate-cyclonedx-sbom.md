@@ -35,8 +35,9 @@ The `sbom-utility` tool validates the software bill of materials (SBOM) by compl
     * A timestamp
     * A `name` and `bom-ref` for each component field
     
-After the tool is run, the result is added as an attachment to `com.ibm.code_bom_check` as evidence. 
-    
+In order to collect evidence for sbom validation, set `sbom-validation-collect-evidence` to `1`.The evidence is collected as an attachment to `com.ibm.code_bom_check` as evidence type and tool type as `sbom-utility`. 
+{: note}
+
 For more information, see the [`sbom-utility` tool docs](https://github.com/CycloneDX/sbom-utility/blob/main/sbom-validation-tests.md). 
 
 ## Continuous deployment pipeline
@@ -54,3 +55,6 @@ During the CC summarization the SBOM attachment is treated as follows:
 
 - If an SBOM attachment is found for the evidence type `com.ibm.code_bom_check`, the attachment is downloaded and it is used for the CC evidence for `com.ibm.code_bom_check`. Fresh SBOM regeneration does not happen.
 - If an SBOM attachment is not found for the evidence type `com.ibm.code_bom_check`, then `ibmcloud cra bom-generate` is run to generate the fresh BOM at that point in both `standard` and `cyclonedx` format. This freshly-created `BOM` is used for the CC evidence for `com.ibm.code_bom_check`.
+
+In order to collect evidence for sbom validation, set `sbom-validation-collect-evidence` to 1. The evidence will be collected as an attachment to `com.ibm.code_bom_check` as evidence type and tool type as `sbom-utility`.  
+{: note}
