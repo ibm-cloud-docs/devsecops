@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-08-07"
+lastupdated: "2023-08-25"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -12,8 +12,8 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring Sysdig image scanning
-{: #sysdig-scan}
+# Configuring Sysdig Image scans
+{: #cd-devsecops-sysdig-scans}
 
 The Sysdig script runs the Sysdig inline scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
 {: shortdesc}

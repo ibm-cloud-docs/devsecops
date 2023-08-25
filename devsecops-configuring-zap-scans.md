@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-07-17"
+lastupdated: "2023-08-25"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Configuring ZAP scans
-{: #zap-scans}
+{: #cd-devsecops-zap-scans}
 
 Zed Attack Proxy (ZAP) is a free and open source penetration testing (PEN) tool that is maintained under the umbrella of OWASP. ZAP is a "man-in-the-middle" proxy that sits between the tester's web browser and a web server. ZAP intercepts packets, modifies the content if needed, and forwards those packets to the web server.
 {: shortdesc}
