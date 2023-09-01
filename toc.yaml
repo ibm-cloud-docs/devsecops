@@ -114,9 +114,7 @@ toc:
           - devsecops-sonarqube-integration.md
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-sysdig-scan.md
-          - devsecops-cra.md
-          - devsecops-ignore-cra-vulnerabilities.md
-          - devsecops-cra-auto-remediation.md
+          - devsecops-configuring-cra-scan.md
           - devsecops-get-va-rating-from-xforce.md
       - topicgroup: 
           label: Working with Git repos
