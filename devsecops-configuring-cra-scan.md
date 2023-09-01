@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-08-25"
+lastupdated: "2023-09-01"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -40,7 +40,6 @@ If your Dockerfile requires ARGS, set an individual ARG as an environment variab
 | Environment variables | Description | Required or optional | Purpose |
 |----|----|----|----|
 | `cra-custom-script-path` | Path to the script in your repo. | Optional | Sets environment variables that are needed by the Docker script. |
-
 {: caption="Table 1. Docker script environment variables" caption-side="bottom"}
 
 By default, Terraform files are not analyzed. To scan your Terraform file, you must set the following pipeline environment variables.
@@ -49,7 +48,6 @@ By default, Terraform files are not analyzed. To scan your Terraform file, you m
 |----|----|----|----|
 | `opt-in-tfsec` | True or false. Set to false by default. | Optional | Scans Terraform files for security. |
 | `opt-in-cra-tf-validate` | True or false. Set to false by default. | Optional | Validates Terraform files. |
-
 {: caption="Table 2. Terraform analysis environment variables" caption-side="bottom"}
 
 ## Omitting vulnerabilities to deploy your app
