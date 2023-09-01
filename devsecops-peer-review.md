@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-08-23"
+lastupdated: "2023-09-01"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -20,10 +20,12 @@ Peer code reviews are a key component of delivering secure and compliant softwar
 
 ## Managing Peer-review Check in CI/CD Toolchains
 {: #devsecops-manage-peer-review}
+
 This documentation provides instructions for enabling and disabling the Peer-review check within Continuous Integration (CI) and optional within Continuous Delivery (CD) toolchains.
 
 ### Continuous Integration (CI) Toolchain
 {: #devsecops-ci-toolchain}
+
 By default, the peer-review check is enabled in the CI toolchain. To modify this setting:
 
 * To enable the peer-review check, set the value of the `peer-review-compliance` environment variable to 1.
@@ -38,7 +40,7 @@ The following environment variables allow you to manage the Peer-review check wi
 
 * To enable the peer review validation for all pull requests associated with your current deployment, set the `peer-review-compliance` environment variable to `1`. By default, this variable is set to `0`. To bypass this validation, set `peer-review-compliance` to `0`.
 
-## important points
+## Important points
 {: #devsecops-important-points}
 
 You must conduct peer reviews only on the protected (base) branch, which is where the inventory is updated. If you are running a CI pipeline on a feature branch, set the environment variable `peer-review-compliance` to `0` for that specific trigger to prevent the peer review check on the feature branch.
