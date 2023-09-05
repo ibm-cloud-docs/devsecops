@@ -111,11 +111,11 @@ toc:
           topics:
           - devsecops-configuring-detect-secrets-scan.md
           - devsecops-configuring-zap-scans.md
-          - devsecops-sonarqube-integration.md
+          - devsecops-configuring-sonarqube-scan.md
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
-          - devsecops-get-va-rating-from-xforce.md
+          - devsecops-configuring-va-scan.md
       - topicgroup: 
           label: Working with Git repos
           topics:
