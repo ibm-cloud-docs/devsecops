@@ -160,9 +160,12 @@ toc:
           label: Command reference
           topics:
           - devsecops-pipelinectl.md
-          - devsecops-cocoa-cli.md
           - devsecops-collect-evidence.md
           - devsecops-set-commit-status.md
+          - topicgroup:
+              label: Cocoa Command reference
+              topics:
+              - devsecops-cocoa-cli.md
       - topicgroup:
           label: Related links
           topics:
