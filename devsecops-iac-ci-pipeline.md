@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-09-08"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -103,11 +103,8 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `opt-in-cra-tf-validate` | | Flag to run compliance check by using the `ibmcloud cra terraform-validate` tool. |
 | `cra-tf-policy-file` | | Path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
 | `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
-| `cra-tf-scc-v2` | | Flag to configure the Code Risk Analyzer to validate against SCC rules instead of SCC goals if no profile provided. |
 | `cra-tf-ignore-rules` | | Comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
 | `cra-tf-ignore-rules-file` | | Path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
-| `cra-tf-ignore-goals` | | (deprecated) Comma-separated list of goals to ignore from the `ibmcloud cra terraform-validate` report. |
-| `cra-tf-ignore-goals-file` | | (deprecated) Path to the JSON file that contains the list of goals to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-goals-file](#devsecops-iac-ci-pipeline-ignore-goals).  |
 | `opt-in-tfsec` | | Flag to run compliance checks by using `tfsec` tool. |
 | `tfsec-args` | | `tfsec` command arguments. |
 | `opt-in-checkov` | | Flag to run compliance checks by using the `checkov` tool. |
@@ -133,27 +130,7 @@ Sample content for `cra-tf-ignore-rules-file` file:
             "scc_rule_id": "rule-8cbd597c-7471-42bd-9c88-36b2696456e9"
         },
         {
-            "scc_rule_id": "ule-c97259ee-336d-4c5f-b436-1868107a9558"
-        }
-    ]
-}
-```
-
-### Format for `cra-tf-ignore-goals-file`
-{: #devsecops-iac-ci-pipeline-ignore-goals}
-
-(Deprecated) The expected format for the file that is defined by the `cra-tf-ignore-goals-file format`. The format is similar to the format (without the `scc_goal_parameters` and `rego_rules` fields) that is in [Example profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-profile).
-
-Sample content for `cra-tf-ignore-goals-file` file:
-
-```bash
-{
-    "scc_goals": [
-        {
-            "scc_goal_id": "3000258"
-        },
-        {
-            "scc_goal_id": "3000260"
+            "scc_rule_id": "rule-c97259ee-336d-4c5f-b436-1868107a9558"
         }
     ]
 }
