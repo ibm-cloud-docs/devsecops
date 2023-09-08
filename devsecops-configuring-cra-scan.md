@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-09-01"
+lastupdated: "2023-09-08"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -14,10 +14,10 @@ subcollection: devsecops
 
 # Scanning code for risk
 {: #cd-devsecops-cra-scans}
-You can use {[cra-full]} to analyze your code for vulnerabilities and validate compliance against specified rules. 
+You can use IBM Cloud Code Risk Analyzer to analyze your code for vulnerabilities and validate compliance against specified rules. 
 {: shortdesc} 
 
-When {[cra]} evaluates your app:
+When Code Risk Analyzer evaluates your app:
 * A software bill of materials (SBOM) is generated that lists the dependencies and available license information of all third-party packages.
    This can be generated in `cycloneDX-specific` format if needed.
    {: tip}
@@ -28,13 +28,13 @@ When {[cra]} evaluates your app:
    
 * All of your Kubernetes files are analyzed for compliance.
 * All of your Terraform plans are analyzed for compliance.
-{[cra]} is available in all {[cloud]} regions where toolchains are supported. For more information, see [the plug-in documentation](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin).
+Code Risk Analyzer is available in all {{site.data.keyword.cloud_notm}} regions where toolchains are supported. For more information, see [the plug-in documentation](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin).
 {: note}
 
 ## Configuring scans
 {: #cd-devsecops-cra-scans-cfg}
 
-To generate the SBOM file, a {[cra]} scan accesses artifacts in the specified directory path and performs deep discovery to identify all of the dependencies; including trasitive dependencies. There are no specific pipeline environment variables that are needed to generate the SBOM file and discover vulnerabilities, but if the path contains a Dockerfile, the base image is pulled and images are built for each build stage specified in the file.
+To generate the SBOM file, a Code Risk Analyzer scan accesses artifacts in the specified directory path and performs deep discovery to identify all of the dependencies; including trasitive dependencies. There are no specific pipeline environment variables that are needed to generate the SBOM file and discover vulnerabilities, but if the path contains a Dockerfile, the base image is pulled and images are built for each build stage specified in the file.
 
 If your Dockerfile requires ARGS, set an individual ARG as an environment variable in a custom script and provide the location of the custom script as the pipeline vairable.
 | Environment variables | Description | Required or optional | Purpose |
@@ -53,7 +53,7 @@ By default, Terraform files are not analyzed. To scan your Terraform file, you m
 ## Omitting vulnerabilities to deploy your app
 {: #devsecops-omit-vulnerabilities}
 
-The {[cra]} is designed to find vulnerable packages before an adivsory board does. In exceptional circumstances, you might need to deploy your application even if vulnerable packages have been detected and have not yet been fixed. Whenever possible, you should update the packages or remove them before redeploying your code.
+The Code Risk Analyzer is designed to find vulnerable packages before an adivsory board does. In exceptional circumstances, you might need to deploy your application even if vulnerable packages have been detected and have not yet been fixed. Whenever possible, you should update the packages or remove them before redeploying your code.
 
 To ignore specific files and complete your push to production, you can create a file called `.cra/.cveignore` in the scanned repository's root with the following schema:
 
@@ -98,12 +98,12 @@ You can learn more about the Code Risk Analyzer [plug-in's docs](/docs/code-risk
 ## Automatically remediating vulnerabilities
 {: #cd-devsecops-auto-remediate}
 
-You can use the {[cra]} as part of the Continuous Compliance (CC) pipeline to not only find but automatically remediate vulnerabiltiies. The {[cra]} works as part of the `compliance-check` step of the pipeline. By default, auto-remediation is turned off.
+You can use the Code Risk Analyzer as part of the Continuous Compliance (CC) pipeline to not only find but automatically remediate vulnerabiltiies. The Code Risk Analyzer works as part of the `compliance-check` step of the pipeline. By default, auto-remediation is turned off.
 
 Auto-remediation is available for the CC pipeline only.
 {: note}
 
-When auto-remediation is turned on, the {[cra]} attempts to update a vulnerable package to a non-vunlnerable version by creating a pull request with the identified fixes against the default branch of your repo. By default, the {[cra]} will update minor and patch versions for the main vulnerable package as well as dependent packages, but does not update the major version of a package. If the pull request is acceptable, you can manually approve and merge it. Each time the pipeline is run, a new pull request is generated, so be sure to review and merge as they are opened to avoid duplications.
+When auto-remediation is turned on, the Code Risk Analyzer attempts to update a vulnerable package to a non-vunlnerable version by creating a pull request with the identified fixes against the default branch of your repo. By default, the Code Risk Analyzer will update minor and patch versions for the main vulnerable package as well as dependent packages, but does not update the major version of a package. If the pull request is acceptable, you can manually approve and merge it. Each time the pipeline is run, a new pull request is generated, so be sure to review and merge as they are opened to avoid duplications.
 
 Auto-remediation is available for the both Enterprise GitHub and GitLab repositories and can modify the files specified in the following table.
 

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-08-25"
+lastupdated: "2023-09-08"
 
 keywords: DevSecOps, x-force, vulnerability-advisor, IBM Cloud
 
@@ -20,7 +20,7 @@ The IBM Cloud Vulnerability Advisor checks the security status of container imag
 ## Getting the severity for a vulnerability from IBM X-Force
 {: #devsecops-xforce-vuln}
 
-The {[cloud]} Vulnerability Advisor does not provide a severity rating for the detected vulnerabilities. This causes the DevSecOps CI Pipelines to assign a default `HIGH` rating to all CVEs that are detected by Vulnerability Advisor.
+The {{site.data.keyword.cloud_notm}} Vulnerability Advisor does not provide a severity rating for the detected vulnerabilities. This causes the DevSecOps CI Pipelines to assign a default `HIGH` rating to all CVEs that are detected by Vulnerability Advisor.
 {: shortdesc}
 
 To get accurate severity ratings for vulnerabilities, pipelines can use {{site.data.keyword.IBM_notm}} X-Force. To activate this feature, you need to get an {{site.data.keyword.IBM_notm}} X-Force account and credentials. For more information, see [{{site.data.keyword.IBM_notm}} X-Force Exchange API](https://api.xforce.ibmcloud.com/doc/){: external}
