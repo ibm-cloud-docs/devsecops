@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-08-15"
+lastupdated: "2023-08-25"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -12,8 +12,8 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring detect-secrets scan
-{: #devsecops-detect-secrets-scan}
+# Configuring detect-secrets scans
+{: #cd-devsecops-detect-secrets-scans}
 
 Detect-secrets is a client-side security tool that detects secrets within a codebase to remediate and prevent secret leaks.
 {: shortdesc}

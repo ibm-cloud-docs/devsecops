@@ -73,6 +73,7 @@ toc:
          - devsecops-async-update-webhook.md
          - devsecops-webhook-payloads.md
          - devsecops-dev-mode.md
+         - devsecops-run-concurrently.md
       - devsecops-apps-byoa.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
@@ -111,13 +112,11 @@ toc:
           topics:
           - devsecops-configuring-detect-secrets-scan.md
           - devsecops-configuring-zap-scans.md
-          - devsecops-sonarqube-integration.md
+          - devsecops-configuring-sonarqube-scan.md
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-sysdig-scan.md
-          - devsecops-cra.md
-          - devsecops-ignore-cra-vulnerabilities.md
-          - devsecops-cra-auto-remediation.md
-          - devsecops-get-va-rating-from-xforce.md
+          - devsecops-configuring-cra-scan.md
+          - devsecops-configuring-va-scan.md
       - topicgroup: 
           label: Working with Git repos
           topics:
@@ -162,9 +161,12 @@ toc:
           label: Command reference
           topics:
           - devsecops-pipelinectl.md
-          - devsecops-cocoa-cli.md
           - devsecops-collect-evidence.md
           - devsecops-set-commit-status.md
+          - topicgroup:
+              label: Cocoa Command reference
+              topics:
+              - devsecops-cocoa-cli.md
       - topicgroup:
           label: Related links
           topics:
