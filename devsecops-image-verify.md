@@ -24,7 +24,7 @@ Maintain the integrity of images that are built in the Continuous Integration (C
 
 Before you start working with image verification, be sure that you have the following prerequistes.
 
-* You must have the GPG public key. For help generating your GPG key, see [the documentation]({[link]}-devsecops-publickey).
+* You must have the GPG public key. For help generating your GPG key, see [the documentation](/docs/devsecops?topic=devsecops-devsecops-publickey).
 * You must add the environment variable `code-signing-certificate` with the base 64-encoded GPG public key. 
 
 ## Verifying images

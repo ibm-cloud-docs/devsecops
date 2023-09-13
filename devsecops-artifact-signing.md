@@ -26,7 +26,7 @@ The required runtime environment must be available within the image to support t
 
 Before you get started with non-image artifact signing, you must have the following prerequistes.
 
-1. To sign an artifact, you must have the GPG private key. To generate a key, you can use the [documentation]({[link]}-devsecops-image-signing). 
+1. To sign an artifact, you must have the GPG private key. To generate a key, you can use the [documentation](/docs/devsecops?topic=devsecops-devsecops-image-signing). 
 2. Your `.pipline-config.yaml` file must be updated with the following stage configuration.
 
    ```bash
