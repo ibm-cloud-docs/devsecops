@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2023-09-14"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -27,6 +27,7 @@ The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic
 |:----------|:------------------------------|:------------------|
 |`start` 		|Set up the pipeline environment. 		|No		|
 |`setup`		|Set up your build and test environment.		|Yes			|
+|`detect-secrets`		|Run detect secrets scan on the application code.		|Yes		|
 |`static-scan`		|Run static scan code on the application code.		|Yes		|
 |`dynamic-scan` 		|Run dynamic scan on the application. 		|Yes			|
 |`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		|
@@ -78,6 +79,11 @@ get_env pipeline_namespace
 
 This command returns either `cc`, `cd`, `ci`, or `pr`, depending on which pipeline is running. This way, you can reuse the setup script between pipelines if necessary.
 
+## Detect Secrets scan 
+{: #devsecops-cc-pipeline-detect-secrets}
+
+The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans).
+
 ## Static code scan
 {: #devsecops-cc-pipeline-codescan}
 
@@ -104,7 +110,6 @@ To learn more about configuring dynamic scan by using OWASP-ZAP, see [Configurin
 
 | Scan or check |  Description |
 |---------|------------|
-| Detect secrets | The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. |
 | Code Risk Analyzer vulnerability scan | Finds vulnerabilities for all of the app package dependencies, container base images, and operating system packages. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer CIS check |  Runs configuration checks on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |

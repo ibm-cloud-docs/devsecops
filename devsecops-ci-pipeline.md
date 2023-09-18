@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2023-09-14"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -27,6 +27,7 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 |:----------|:------------------------------|:------------------|
 |`start` 		|Set up the pipeline environment. 		|No		|
 |`setup`		|Set up your build and test environment.		|Yes			|
+|`detect-secrets`		|Run detect secrets scan on the application code.		|Yes		|
 |`test`		|Run unit tests and application tests on application code. 		|Yes		|
 |`static-scan`		|Run static scan code on the application code.		|Yes		|
 |`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes			|
@@ -41,6 +42,11 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 {: caption="Table 1. Continuous integration stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
+
+## Detect Secrets scan
+{: #devsecops-ci-pipeline-detect-secrets}
+
+The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans)
 
 ## Static code scan
 {: #devsecops-ci-pipeline-static-codescan}
@@ -69,7 +75,6 @@ For more information about integrating SonarQube with the continuous integration
 
 | Scan or check |  Description |
 |---------|------------|
-| Detect secrets | The [IBM Detect Secrets](https://github.com/IBM/detect-secrets){: external} tool identifies where secrets are visible in app code. |
 | Code Risk Analyzer vulnerability scan | Finds vulnerabilities for all of the app package dependencies, container base images, and operating system packages. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer CIS check |  Runs configuration checks on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
