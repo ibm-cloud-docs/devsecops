@@ -101,7 +101,7 @@ toc:
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md<evidence
           - topicgroup:
-            label: Gathering evidence
+            label: Gathering evidence for audits
             topics:
             - topic: evidence/change-request.md
               navtitle: Change requests</evidence>
