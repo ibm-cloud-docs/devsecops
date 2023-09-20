@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-09-08"
+lastupdated: "2023-09-20"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -198,6 +198,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|
+|[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that will be appended to the Change Request Description.	|Optional			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
@@ -404,6 +405,11 @@ This is an optional parameter for the CI and CC pipelines. If you marked an inci
 {: #pipeline-parm-customer-impact}
 
 This parameter is for the promotion pull request, it records the impact of the change request on the customer. By default the parameter is the pipe separated string `'Critical | High | Moderate | Low | No_Impact'`. Edit the default string to select one of the options.
+
+### deployment-impact
+{: #pipeline-parm-deployment-impact}
+
+This parameter is for the promotion pull request, it records the impact of the change request on the deployment. By default the parameter is the pipe separated string `'Small | Large'`. Edit the default string to select one of the options.
 
 ### description
 {: #pipeline-parm-description}
