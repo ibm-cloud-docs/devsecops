@@ -128,6 +128,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|`ibmcloud-enable-session-keep-alive` | select | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
@@ -295,6 +296,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|`ibmcloud-enable-session-keep-alive` | select | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
