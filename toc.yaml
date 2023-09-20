@@ -133,6 +133,11 @@ toc:
           topics:
           - include: ../ContinuousDelivery/scc_integration.md
       - topicgroup:
+          label: Gathering evidence
+          topics:
+          - topic: evidence/change-request.md
+            navtitle: Change requests
+      - topicgroup:
           label: Enhancing security
           topics:
           - include: ../security-compliance/getting-started.md
