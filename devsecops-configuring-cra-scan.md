@@ -50,6 +50,13 @@ By default, Terraform files are not analyzed. To scan your Terraform file, you m
 | `opt-in-cra-tf-validate` | True or false. Set to false by default. | Optional | Validates Terraform files. |
 {: caption="Table 2. Terraform analysis environment variables" caption-side="bottom"}
 
+The Code Risk Analyzer scan utilizes the API key provided to log in to the IBMCloud CLI and triggers a Docker build. The existing IBM Cloud CLI session is continued to be used for the remainder of this CRA step. However, the IBM Cloud CLI session expires after 20 minutes for a standard API key login. If the build process takes longer than 20 minutes, the CRA step will fail with a 401 error message since the session has expired. An environment variable `ibmcloud-enable-session-keep-alive` has been introduced to keep the IBMCloud CLI session alive for such long operations.
+
+| Environment variables | Description | Type | Required or optional | Purpose |
+|----|----|----|----|
+| `ibmcloud-enable-session-keep-alive` | 0 or 1. Set to 0 by default. | enum | Optional | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan. |
+{: caption="Table 3. IBMCloud Live Session for long running job " caption-side="bottom"}
+
 ## Omitting vulnerabilities to deploy your app
 {: #devsecops-omit-vulnerabilities}
 
