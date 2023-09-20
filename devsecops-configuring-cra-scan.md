@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-09-08"
+lastupdated: "2023-09-20"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -122,4 +122,5 @@ To start automatically remediating vulnerabilities, set the following optional e
 | `opt-in-cra-auto-remediation-force` | Forces a major package update as part of the pull request that is opened. | `false`  \n To force a major package update, set this variable to `true`. |
 | `opt-in-cra-auto-remediation-enabled-repos` | Specifies specific repos where you want to enable auto-remediation. | Enabled for all repositories that are returned when `list_repos` is called. To specify specific repos, provide a comma-separated list of repo names. |
 {: caption="Table 2. Supported ecosystems" caption-side="bottom"}
+
 
