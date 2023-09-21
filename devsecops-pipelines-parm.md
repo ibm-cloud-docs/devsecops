@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-09-08"
+lastupdated: "2023-09-20"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -128,6 +128,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|`ibmcloud-enable-session-keep-alive` | select | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
@@ -198,6 +199,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|
+|[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that will be appended to the Change Request Description.	|Optional			|
 |`dind-image`		|text		|Base image to run sidecars.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
@@ -294,6 +296,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|`ibmcloud-enable-session-keep-alive` | select | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The one or more assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
@@ -404,6 +407,11 @@ This is an optional parameter for the CI and CC pipelines. If you marked an inci
 {: #pipeline-parm-customer-impact}
 
 This parameter is for the promotion pull request, it records the impact of the change request on the customer. By default the parameter is the pipe separated string `'Critical | High | Moderate | Low | No_Impact'`. Edit the default string to select one of the options.
+
+### deployment-impact
+{: #pipeline-parm-deployment-impact}
+
+This parameter is for the promotion pull request, it records the impact of the change request on the deployment. By default the parameter is the pipe separated string `'Small | Large'`. Edit the default string to select one of the options.
 
 ### description
 {: #pipeline-parm-description}

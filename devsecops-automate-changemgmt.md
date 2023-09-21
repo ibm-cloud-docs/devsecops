@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-08-07"
+lastupdated: "2023-09-20"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -40,7 +40,8 @@ The promotion pull request template contains the following fields:
 * **Additional Description** Describes the change process. Extra content from the automation process is appended here.
 * **Purpose/Goal** Describes the purpose of the change.
 * **Explanation of Impact** Describes the possible impact of the change.
-* **Customer Impact** Required. Describes the impact of the change for the customer. Valid values are: `critical`, `high`, `moderate`, `low`, `no_impact` 
+* **Customer Impact** Required. Describes the impact of the change for the customer. Valid values are: `critical`, `high`, `moderate`, `low`, `no_impact`
+* **Deployment Impact** Required. Descrives the impact of the change upon deployment of the change. Valid values are: `small`, `large`
 * **Backout Plan** Describes the rollback or backout plan.
 
 Along with these fields, you must set two additional fields from the environment properties:

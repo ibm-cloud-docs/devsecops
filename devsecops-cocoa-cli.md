@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-08-18"
+lastupdated: "2023-09-20"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -499,6 +499,7 @@ The following fields can be parsed from the pull request body:
 --backout-plan
 --type
 --customer-impact
+--deployment-impact
 ```
 {: screen}
 
@@ -1580,6 +1581,7 @@ $ cocoa inventory promote \
   --purpose='purpose' \
   --impact='impact' \
   --customer-impact='impact' \
+  --deployment-impact='small' \
   --backout-plan='rollback'
 ```
 {: codeblock}

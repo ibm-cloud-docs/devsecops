@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-08-16"
+lastupdated: "2023-09-20"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -109,6 +109,7 @@ You must edit and modify the pull/merge request if the optional parameters were 
 |Purpose | The purpose of the changes that are made to the application. | Optional |
 |Explanation of Impact | The impact of the change to the application behavior or environment. | Optional |
 |Customer Impact| One of the following values: `Critical`, `High`, `Moderate`, `Low`, `No_Impact` | Required |
+|Deployment Impact| One of the following values: `Small`, `Large` | Required |
 |Backout Plan | The steps to back out if the deployment fails. | Optional |
 {: caption="Table 2.Optional parameters" caption-side="top"}
 
