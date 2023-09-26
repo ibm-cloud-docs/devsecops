@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-05-22"
+lastupdated: "2023-09-26"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -226,6 +226,18 @@ To define the config file path, set `evidence-checks-config-path` to the file pa
             ],
             "ignore": []
           }
+        },
+        {
+          "evidence_type_id": "com.ibm.cloud.verify_signature",
+          "rules": {
+            "required": [],
+            "optional": [
+              {
+                "tool": "*"
+              }
+            ],
+            "ignore": []
+          }
         }
       ]
     },
@@ -395,6 +407,18 @@ To define the config file path, set `evidence-checks-config-path` to the file pa
         },
         {
           "evidence_type_id": "com.ibm.dynamic_scan",
+          "rules": {
+            "required": [],
+            "optional": [
+              {
+                "tool": "*"
+              }
+            ],
+            "ignore": []
+          }
+        },
+        {
+          "evidence_type_id": "com.ibm.cloud.verify_signature",
           "rules": {
             "required": [],
             "optional": [

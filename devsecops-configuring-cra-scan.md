@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-09-20"
+lastupdated: "2023-09-21"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -56,6 +56,15 @@ The Code Risk Analyzer scan utilizes the API key provided to log in to the IBMCl
 |----|----|----|----|----|
 | `ibmcloud-enable-session-keep-alive` | 0 or 1. Set to 0 by default. | select | Optional | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan. |
 {: caption="Table 3. IBMCloud Live Session for long running job " caption-side="bottom"}
+
+By default, The Code Risk Analyzer deployment-analyze command runs [configuration checks](/docs/cli?topic=cli-cra-cli-plugin#deployment-command) on Kubernetes deployment manifests.
+The Code Risk Analyzer deployment-analyze command runs with the `--strict` option set.
+To ignore files during Code Risk Analyzer deployment-analyze scan, the following environment variable has to be used.
+
+| Environment variables | Description |  Required or optional | Purpose |
+|----|----|----|----|
+| `cra-cis-fileignore-path` | The path of the .fileignore file in your repo. | Optional | Specify the path of the .fileignore file which contains the information of files to ignore during Code Risk Analyzer deployment-analyze scan. |
+{: caption="Table 4. IBMCloud CRA CIS scan environment variables " caption-side="bottom"}
 
 ## Omitting vulnerabilities to deploy your app
 {: #devsecops-omit-vulnerabilities}
