@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Supported scanning tools
-{: #cd-devsecops-sysdig-scans}
+{: #cd-devsecops-supported-scanning-tools}
 
 The following table lists the various scanning tools that are integrated into DevSecOps pipelines to provide continuous security checks and monitoring. These scans run at various stages of the Continuous Integration (CI), Continuous Development (CD), and Continuous Deployment (CC) pipelines.
 {: shortdesc}
