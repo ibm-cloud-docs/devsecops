@@ -111,6 +111,7 @@ toc:
       - topicgroup:
           label: Configuring scanning tools
           topics:
+          - devsecops-list-supported-scan-tools.md
           - devsecops-configuring-detect-secrets-scan.md
           - devsecops-configuring-zap-scans.md
           - devsecops-configuring-sonarqube-scan.md
