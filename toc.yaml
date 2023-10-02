@@ -37,7 +37,7 @@ toc:
           - topic: devsecops-tutorial.md
             navtitle: "Part 1: Set up prerequisites"
           - topic: devsecops-tutorial-ci-toolchain.md
-            navtitle: "Part 2: Set up a CI toolchain" 
+            navtitle: "Part 2: Set up a CI toolchain"
           - topic: devsecops-tutorial-cd-toolchain.md
             navtitle: "Part 3: Set up a CD toolchain"
           - topic: devsecops-tutorial-cc-toolchain.md
@@ -80,7 +80,7 @@ toc:
       - devsecops-custom-deployment.md
       - topicgroup:
           label: Working with issues
-          topics: 
+          topics:
           - devsecops-issue-processing.md
           - devsecops-incident-issues.md
           - devsecops-non-incident-issues.md
@@ -100,7 +100,7 @@ toc:
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
-      - topicgroup: 
+      - topicgroup:
           label: Managing inventory
           topics:
           - devsecops-inventory.md
@@ -119,10 +119,10 @@ toc:
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
           - devsecops-configuring-va-scan.md
-      - topicgroup: 
+      - topicgroup:
           label: Working with Git repos
           topics:
-          - devsecops-git-submodules.md 
+          - devsecops-git-submodules.md
           - devsecops-config-github.md
           - devsecops-set-pr-status.md
       - devsecops-toolchains-secrets.md
