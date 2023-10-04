@@ -145,6 +145,7 @@ toc:
       - topicgroup:
           label: Delivery pipelines
           topics:
+          - devsecops-pipelines-config.yaml
           - devsecops-pipelines-status.md
           - devsecops-pr-pipeline.md
           - devsecops-ci-pipeline.md
