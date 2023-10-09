@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-09-20"
+lastupdated: "2023-10-09"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2073,6 +2073,7 @@ Some optional flags can be specified as well:
 - `--asset`: specifies which assets (by their URI or internal ID) are relevant for the evidence, see `cocoa locker asset` commands. The flag can be specified multiple times. The asset must be already present in the locker.
 - `--attachment`: specifies file attachments to the evidence. Each attachment must point to an existing file, and each attachment name must be unique (that is, `--attachment a/foo.json --attachment b/foo.json` is not permitted).
 - `--issue`: list of issue URLs, which can be used to track activities that are related to the findings. The flag can be passed multiple times.
+- `--findings-path`: Use this path to pass the array of JSON findings which is the output from Incident process command.
 - `--scope`: a unique identifier that can be used to correlate evidence from multiple sources.
 - `--comment-on-issues`: add a comment with details about the created evidence to the incident issues provided by using `--issue` flag
    - Since the issues can be either on `github`, the provider is parsed from the issue URLs
@@ -2114,7 +2115,8 @@ $ cocoa locker evidence add --evidence-type-id com.ibm.unit_test \
                             --details failure \
                             --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
                             --attachment path/to/results/junit.xml \
-                            --issue https://github.ibm.com/foo/bar/issues/123
+                            --issue https://github.ibm.com/foo/bar/issues/123 \
+                            --findings-path <path/to/file>
 ```
 {: codeblock}
 
