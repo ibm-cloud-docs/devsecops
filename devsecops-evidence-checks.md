@@ -18,7 +18,7 @@ subcollection: devsecops
 In the DevSecOps architecture, before deploying the assets, all the pieces of evidence that were collected in the CI pipeline must be validated so that the assets meet compliance requirements.
 {: shortdesc}
 
-Collecting evidence is an essential aspect of the DevSecOps reference architecture. The CI pipeline collects the pieces of evidence for all the scans or steps for the assets that are performed by the CI pipeline. The CD pipeline deploys the assets that are produced by the CI pipeline.
+Collecting evidence is an essential aspect of the DevSecOps reference architecture. The CI pipeline collects the pieces of evidence for all the scans or steps for the assets that are performed by the CI pipeline. The Continuous Deployment (CD) pipeline deploys the assets that are produced by the CI pipeline and Continuous Compliance (CC) pipeline scans the asset deployed by the CD pipeline.
 
 You can validate the evidence in one of the following ways:
 
@@ -65,7 +65,17 @@ For each asset type, different evidence types might need to be collected. So, in
          - Tool (tool type, for example `servicenow-v3`, `*`, or any tool)
        - Ignore (evidence is not validated)
 
-To enable the `validation of evidence` in your toolchain, set the environment variable `opt-in-evidence-checks` to `1` in the CD toolchain.
+### Enable evidence validation and evaluation using config file
+{: #enable-evidence-checks-config-file}
+
+To enable the `validation of evidence` in your toolchain, set the environment variable `opt-in-evidence-checks` to `1` in the CD and CC toolchain.
+
+
+
+Pipeline evaluation will also occur when the check is enabled in both the CD and CC, utilizing the configuration file.
+
+### Configure config file
+{: #configure-evidence-checks-config-file}
 
 To define the config file path, set `evidence-checks-config-path` to the file path present in the `pipeline-config-repo`, otherwise the default config file is used. Different deployment environments might have different config files. For example, `stage` might have evidence checks that differ from the production evidence checks. If `evidence-checks-config-path` is not defined, the config file searches for the file with the name `<region>.<target>.validation.json`, `<target>.validation.JSON`, or `validation.json` in the `pipeline-config-repo`.
 
@@ -541,3 +551,24 @@ To define the config file path, set `evidence-checks-config-path` to the file pa
 }
 
 ```
+
+### Default tool value for the verious stages in the DevSecOps
+{: #default-supported-tool-in-evidence-checks-config-file}
+
+| Evidence type ID  | Default supported tool |
+|:----------|:------------------------------|
+|`com.ibm.branch_protection` | `cocoa-branch-protection` |
+|`com.ibm.unit_tests` | `jest` |
+|`com.ibm.detect_secrets` | `detect-secrets` |
+|`com.ibm.code_vulnerability_scan` | For apps: `cra-tf`, `cra`, `mend` </br>For infrastructure as code: `tfsec`, `checkov`|
+|`com.ibm.code_bom_check` | `cra-bom`, `sbom-utility` |
+|`com.ibm.code_cis_check` | `cra-cis` |
+|`com.ibm.peer_review` | `peer-review` |
+|`com.ibm.static_scan` | For apps: `sonarqube` </br> For infrastructure as code: `terraform-fmt`, `terraform-validate`, `tflint` |
+|`com.ibm.cloud.image_signing` | `artifact-signing` |
+|`com.ibm.acceptance_tests` | `jest` |
+|`com.ibm.dynamic_scan` | `owasp-zap`, `owasp-zap-ui` |
+|`com.ibm.cloud.image_vulnerability_scan` | `va`, `sysdig`, `xray` |
+|`com.ibm.prod_change_request` | `servicenow-v3`, `gitlab` |
+|`com.ibm.close_change_request` | `servicenow-v3`, `gitlab` |
+{: caption="Table 1. Supported tool for evidence" caption-side="top"}

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-09-20"
+lastupdated: "2023-10-02"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -51,7 +51,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
 |[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
-|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
+|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
@@ -135,7 +135,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
-|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
+|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
 |`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
@@ -201,7 +201,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|
 |[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that will be appended to the Change Request Description.	|Optional			|
-|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
+|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
 |`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional |
@@ -285,7 +285,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
-|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
+|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
 |`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
 |`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional  |
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
@@ -340,7 +340,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
-|`dind-image`		|text		|Base image to run sidecars.	|Optional			|
+|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
 {: caption="Table 5. Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
 {: tab-title="Promotion parameters"}
@@ -438,6 +438,11 @@ This parameter can be used to specify a different detect-secrets image to use, s
 {: #detect-secrets-verbose}
 
 This parameter, when set to 1, logs the name of the current file being scanned.
+
+### dind-image
+{: #dind-image}
+
+This parameter is used for setting custom dind image. Please set this parameter to use custom dind image tag
 
 ### impact
 {: #pipeline-parm-impact}
