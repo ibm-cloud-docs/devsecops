@@ -101,11 +101,11 @@ toc:
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
               - topic: evidence/review-baseline.md
-                navtitle: Review baseline configuration</evidence>
+                navtitle: Baseline configuration review</evidence>
               - topic: evidence/compare-baseline.md
-                navtitle: Compare baseline configurations</evidence>
+                navtitle: Baseline configuration comparisons </evidence>
               - topic: evidence/ci-inventory.md
-                navtitle: Inventory</evidence>
+                navtitle: Inventory commitment details</evidence>
               - topic: evidence/view-agg-status.md
                 navtitle: Aggregated summary of evidence</evidence>
       - topicgroup:
