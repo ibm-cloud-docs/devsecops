@@ -100,6 +100,8 @@ toc:
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
+              - topic: evidence/ci-inventory.md
+                navtitle: Inventory</evidence>
       - topicgroup:
           label: Managing inventory
           topics:
