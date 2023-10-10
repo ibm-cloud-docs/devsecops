@@ -100,8 +100,14 @@ toc:
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
+              - topic: evidence/review-baseline.md
+                navtitle: Review baseline configuration</evidence>
+              - topic: evidence/compare-baseline.md
+                navtitle: Compare baseline configurations</evidence>
               - topic: evidence/ci-inventory.md
                 navtitle: Inventory</evidence>
+              - topic: evidence/view-agg-status.md
+                navtitle: Aggregated summary of evidence</evidence>
       - topicgroup:
           label: Managing inventory
           topics:

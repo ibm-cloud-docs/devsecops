@@ -2,7 +2,7 @@
 
 copyright:
   years:  2020, 2023
-lastupdated: "2023-10-09"
+lastupdated: "2023-10-10"
 
 subcollection: devsecops
 
@@ -16,7 +16,7 @@ subcollection: devsecops
 When you are going through an audit, you must provide evidence that your development and production environments are meeting the criteria in the regulatory standards that you claim compliance with.
 
 ## Before you begin
-{: #before-evidence-cr}
+{: #before-evidence-ci}
 
 Before you can start gathering evidence, be sure that you have the following prerequisites:
 
@@ -24,6 +24,7 @@ Before you can start gathering evidence, be sure that you have the following pre
 * The Viewer role or higher on the Continuous Delivery service. For more information, see [Managing access for toolchains in resource groups](/docs/ContinuousDelivery?topic=ContinuousDelivery-toolchains-iam-security).
 
 ## Viewing inventory commitment details
+{: #gather-evidence-cr}
 
 If your auditor requests proof of change logs, you can use the following steps to create a screen capture of your configuration.
 
