@@ -108,6 +108,10 @@ toc:
                 navtitle: Inventory commitment details</evidence>
               - topic: evidence/view-agg-status.md
                 navtitle: Aggregated summary of evidence</evidence>
+              - topic: evidence/peer-review-pull.md.md
+                navtitle: Peer review of a pull request </evidence>
+              - topic: evidence/environment-builds.md
+                navtitle: Development and production builds </evidence>
       - topicgroup:
           label: Managing inventory
           topics:
