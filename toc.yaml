@@ -120,8 +120,14 @@ toc:
                 navtitle: Quality dashboard reports </evidence>
               - topic: evidence/different-branches.md
                 navtitle: Separate staging and production branches </evidence>
-              - topic: evidence/open-source-usage..md
+              - topic: evidence/open-source-usage.md
                 navtitle: Open Source usage restrictions </evidence>
+              - topic: evidence/periodic-review.md
+                navtitle: Periodic review </evidence>
+              - topic: evidence/setting-restrictions.md
+                navtitle: Setting various levels of restrictions </evidence>
+              - topic: evidence/check-run.md
+                navtitle: CIS check and Static and Dynamic scans </evidence>
       - topicgroup:
           label: Managing inventory
           topics:
