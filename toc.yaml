@@ -106,12 +106,22 @@ toc:
                 navtitle: Baseline configuration comparisons </evidence>
               - topic: evidence/ci-inventory.md
                 navtitle: Inventory commitment details</evidence>
+              - topic: evidence/ci-inventory-update.md
+                navtitle: Inventory commitment updates</evidence>
               - topic: evidence/view-agg-status.md
                 navtitle: Aggregated summary of evidence</evidence>
               - topic: evidence/peer-review-pull.md.md
                 navtitle: Peer review of a pull request </evidence>
               - topic: evidence/environment-builds.md
                 navtitle: Development and production builds </evidence>
+              - topic: evidence/production-history.md
+                navtitle: Production commitment history </evidence>
+              - topic: evidence/quality-reports.md
+                navtitle: Quality dashboard reports </evidence>
+              - topic: evidence/different-branches.md
+                navtitle: Separate staging and production branches </evidence>
+              - topic: evidence/open-source-usage..md
+                navtitle: Open Source usage restrictions </evidence>
       - topicgroup:
           label: Managing inventory
           topics:
