@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-10-09"
+lastupdated: "2023-10-13"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -217,6 +217,14 @@ Required Environment Variables for ServiceNow v3:
 ```text
 IAM_ACCESS_TOKEN= # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=   # ServiceNow API URL
+```
+{: codeblock}
+
+Required Environment Variables for Gitlab:
+
+```text
+GITLAB_TOKEN= # Gitlab token. (Optional if you are using --git-token-path)
+GITLAB_URL=   # Change management API URL (Optional if you are using --git-api-url)
 ```
 {: screen}
 
