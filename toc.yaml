@@ -100,32 +100,26 @@ toc:
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
-              - topic: evidence/review-baseline.md
-                navtitle: Baseline configuration review</evidence>
-              - topic: evidence/compare-baseline.md
-                navtitle: Baseline configuration comparisons </evidence>
-              - topic: evidence/ci-inventory.md
-                navtitle: Inventory commitment details</evidence>
               - topic: evidence/ci-inventory-update.md
                 navtitle: Inventory commitment updates</evidence>
               - topic: evidence/view-agg-status.md
                 navtitle: Aggregated summary of evidence</evidence>
               - topic: evidence/peer-review-pull.md.md
-                navtitle: Peer review of a pull request </evidence>
+                navtitle: Peer review of a pull request
               - topic: evidence/environment-builds.md
-                navtitle: Development and production builds </evidence>
+                navtitle: Development and production builds
               - topic: evidence/production-history.md
-                navtitle: Production commitment history </evidence>
+                navtitle: Production commitment history
               - topic: evidence/quality-reports.md
-                navtitle: Quality dashboard reports </evidence>
+                navtitle: Quality dashboard reports
               - topic: evidence/different-branches.md
-                navtitle: Separate staging and production branches </evidence>
+                navtitle: Separate staging and production branches
               - topic: evidence/open-source-usage.md
-                navtitle: Open Source usage restrictions </evidence>
+                navtitle: Open Source usage restrictions
               - topic: evidence/periodic-review.md
-                navtitle: Periodic review </evidence>
+                navtitle: Periodic review
               - topic: evidence/setting-restrictions.md
-                navtitle: Setting various levels of restrictions </evidence>
+                navtitle: Setting various levels of restrictions
               - topic: evidence/check-run.md
                 navtitle: CIS check and Static and Dynamic scans </evidence>
       - topicgroup:
