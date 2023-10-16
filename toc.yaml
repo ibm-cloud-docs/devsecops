@@ -74,8 +74,6 @@ toc:
          - devsecops-async-update-webhook.md
          - devsecops-webhook-payloads.md
          - devsecops-dev-mode.md
-         - devsecops-run-concurrently.md
-      - devsecops-apps-byoa.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
