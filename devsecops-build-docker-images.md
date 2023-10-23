@@ -94,7 +94,7 @@ The `signature` property is added by the default built-in GPG Image signing task
 ## Working with ICR
 {: #cd-devsecops-work-with-icr}
 
-[IBM Cloud® Container Registry](docs/Registry?topic=Registry-registry_overview#) provides a multi-tenant private image registry that you can use to store and share your container images with users in your IBM Cloud account.
+[IBM Cloud® Container Registry](docs/Registry?topic=Registry-registry_overview) provides a multi-tenant private image registry that you can use to store and share your container images with users in your IBM Cloud account.
 
 
 ### Working with ICR having private endpoint enabled
