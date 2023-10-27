@@ -74,6 +74,12 @@ toc:
          - devsecops-async-update-webhook.md
          - devsecops-webhook-payloads.md
          - devsecops-dev-mode.md
+      - topicgroup:
+          label: Adopting DevSecOps for your own application or microservice
+          topics:
+          - devsecops-apps-byoa.md
+          - devsecops-basics-pipelines-customization.md
+          - devsecops-advanced-pipelines-customization.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
