@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-08-25"
+lastupdated: "2023-10-23"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -44,9 +44,11 @@ To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.
 | `cr-ibmcloud-api-key` | | Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.|
 {: caption="Table 2. Optional Sysdig scan parameters" caption-side="top"}
 
-The various `sysdig-url` values to be used, while using [IBM Cloud Workload Protection service](docs/workload-protection?topic=workload-protection-getting-started) are provided [here](/docs/workload-protection?topic=workload-protection-endpoints).
+The various `sysdig-url` values to be used, while using [IBM Cloud Workload Protection service](/docs/workload-protection?topic=workload-protection-getting-started) are provided [here](/docs/workload-protection?topic=workload-protection-endpoints).
 External Sysdig secure instances also can be used, such as `https://secure.sysdig.com`. Appropriate `sysdig-url` value needs to be provided.
  
+
+
 ## Evidence and attachments
 {: #sysdig-evid-attach}
 

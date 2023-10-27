@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-10-02"
+lastupdated: "2023-10-13"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -25,7 +25,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
-|`artifactory-dockerconfigjson` 		|SECRET 		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.	 			|Required			|
+|`artifactory-dockerconfigjson` 		|SECRET 		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.	 			|Optional			|
 | `base-branch` |text | The target branch where the PR is merged. Typically, `master` is the default base branch. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the trigger.| Required  |
 | `base-repo` |text | The URL of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  |
 | `base-repo-name` |text | The name of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  |
@@ -78,7 +78,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`app-name` 		|text 		|The name of your application that is specified in the toolchain settings.			|Required			|
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |`baseimage-auth-email`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
@@ -165,12 +165,12 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`static-scan-retry-sleep`](#pipeline-parm-static-scan-retry-sleep)		|text		|The amount of wait time per retry iteration.	|Optional			|
 |`subpipeline-webhook-token` | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
-|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://us-south.security-compliance-secure.cloud.ibm.com`	|Optional			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
+|[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then Sysdig scan is enabled. 	|Required			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://us-south.security-compliance-secure.cloud.ibm.com`	|Optional			|
 |`va-scan-retry-count`		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |`va-scan-retry-sleep`	|text		|The number of wait times per retry iteration.	|Optional			|
 |`version`		|text		|The version of the app to deploy.	|Required			|
-|[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then Sysdig scan is enabled. 	|Required			|
 {: caption="Table 2. Continuous integration parameters" caption-side="bottom"}
 {: #cd-ci-parameters}
 {: tab-title="Continuous integration parameters"}
@@ -180,7 +180,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`artifact-token`		|SECRET		|The token where artifacts are stored	|Required if artifact repo is in different source provider.			|
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |[`assignee`](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			|
 |[`backout-plan`](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back in case of a failure.			|Optional			|
 |`batched-evidence-collection`|text|Set this flag to enable evidence collection in batched mode, which minimizes the network calls. Default `0`|Optional|
@@ -234,7 +234,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |`region`		|text		|The target region where the app is deployed.	|Optional			|
-|[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
 |[`summary-retry-attempts`](#pipeline-parm-summary-retry-attempts)		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
 |[`summary-max-retry-time`](#pipeline-parm-summary-max-retry-time)		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time is generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
@@ -251,7 +250,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`app-url` 		|text 		|The URL of your application that is deployed on the target. Recommended to use staging application url.			|Required			|
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Required			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
 |`baseimage-auth-email`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required by the Code Risk Analyzer scan.	|Optional			|	
@@ -266,6 +265,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |`cra-cveignore-path`     |text   |File path to the cveignore, relative to the application repository root. Default file path is `.cra/.cveignore` if value is not provided.   |Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
@@ -306,6 +306,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |`opt-in-auto-close` |text		|Enables auto-closing of issues coming from vulnerabilities, once the vulnerability is no longer detected by the CC pipeline run.	|Optional			|
+|`opt-in-cra-auto-remediation`		|text		|Specifies if {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			|
+|`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
+|`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different to the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
 |`opt-in-dynamic-ui-scan`		|text	|To enable the OWASP Zap UI scan.	 |Optional			|
@@ -320,18 +323,14 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  |
 |`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|
+|`sbom-validation-collect-evidence`   |text   | Enable evidence collection for sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation collects evidence.   |Optional     |
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
 |`sonarqube`		|tool integration		|The Sonarqube tool integration.	|Optional			|
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)).| Required |
-|`opt-in-cra-auto-remediation`		|text		|Specifies if {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			|
-|`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
-|`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different to the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
-|`sbom-validation-collect-evidence`   |text   | Enable evidence collection for sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation collects evidence.   |Optional     |
-|[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			|
-|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. Default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
-|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.	|Optional			|
+|[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. Default value is `https://secure.sysdig.com`	|Optional			|
 {: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
