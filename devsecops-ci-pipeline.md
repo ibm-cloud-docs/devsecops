@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-09-21"
+lastupdated: "2023-10-30"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -59,7 +59,7 @@ You can use any of the following methods to add static code to your pipeline:
 
 * If you don't have your own SonarQube instance, the pipeline creates a SonarQube instance during the pipeline run. You can access this instance after the static-scan stage successfully runs.
 
-
+* By using the `opt-in-gosec` parameter to run the gosec scan for golang security checks.
 
 * Add your own static scan code to the static-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
@@ -68,7 +68,24 @@ You can use any of the following methods to add static code to your pipeline:
 
 For more information about integrating SonarQube with the continuous integration pipeline, see [Configuring SonarQube](/docs/devsecops?topic=devsecops-sonarqube).
 
+### Adding gosec scan integration to your pipelines
+{: #devsecops-ci-pipeline-gosec-add}
 
+Use [gosec](https://github.com/securego/gosec){: external} to inspect golang source code in your scanned repositories.
+
+To enable gosec scan, provide the following parameter, and set the value to `1`. 
+
+| Name | Type | Description | Required or optional |
+|--|--|--|--|
+| `opt-in-gosec`     | text   | option to enable gosec scan | optional |
+{: caption="Table 2. gosec scan parameters" caption-side="top"}
+
+More information about setting up the gosec scan in the continous integration pipeline, see [Configuring GoSec](/docs/devsecops?topic=devsecops-devsecops-gosec)
+  
+### Using other static scanners
+{: #devsecops-ci-pipeline-other-static-scans}
+
+If you want to use your own static scan implementation instead, you can modify your `.pipeline-config.yaml` file and add your own [custom script](/docs/devsecops?topic=devsecops-custom-scripts) to the `static-scan` stage.
 
 ## Scans and checks in compliance checks
 {: #devsecops-ci-pipeline-compliancechecks}
@@ -80,7 +97,7 @@ For more information about integrating SonarQube with the continuous integration
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
 | Repository compliance checking | Checks that branch protection settings are correct. For example, the master/main branch should always restrict the force push. For more information, see [Configuring your {{site.data.keyword.gitrepos}} repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).|
 | Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){: external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans). |
-{: caption="Table 5. Compliance scans and checks" caption-side="top"}
+{: caption="Table 3. Compliance scans and checks" caption-side="top"}
     
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
 
