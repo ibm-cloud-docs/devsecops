@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-09-26"
+lastupdated: "2023-10-30"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -564,7 +564,7 @@ To define the config file path, set `evidence-checks-config-path` to the file pa
 |`com.ibm.code_bom_check` | `cra-bom`, `sbom-utility` |
 |`com.ibm.code_cis_check` | `cra-cis` |
 |`com.ibm.peer_review` | `peer-review` |
-|`com.ibm.static_scan` | For apps: `sonarqube` </br> For infrastructure as code: `terraform-fmt`, `terraform-validate`, `tflint` |
+|`com.ibm.static_scan` | For apps: `sonarqube`, `gosec` </br> For infrastructure as code: `terraform-fmt`, `terraform-validate`, `tflint` |
 |`com.ibm.cloud.image_signing` | `artifact-signing` |
 |`com.ibm.acceptance_tests` | `jest` |
 |`com.ibm.dynamic_scan` | `owasp-zap`, `owasp-zap-ui` |

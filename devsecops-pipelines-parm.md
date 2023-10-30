@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-10-13"
+lastupdated: "2023-10-30"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -124,6 +124,12 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
+|`gosec-additional-flags` | text | Additional flags to be appended to the start of the gosec command. |Optional			|
+|`gosec-private-repository-url`   |text   |Your private repository base URL. For example, `https://github.ibm.com`. |Optional |
+|`gosec-private-repository-ssh-key`     |secret   |The SSH key for the private repository. |Optional |
+|`gosec-proxy-virtual-repository-token`     |secret   |The virtual repository token for gosec proxy. |Optional |
+|`gosec-proxy-virtual-repository-user`     |text   |The virtual repository user for gosec proxy. | Optional |
+|`gosec-proxy-virtual-repository-url`     |text   |The virtual repository url for gosec proxy. |Optional |
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -136,6 +142,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-repo`  	|tool integration		|The incident issues repo URL.	|Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
+|`opt-in-gosec`		|text		|Enables the gosec static scan.	|Optional			|
 |`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
 |`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
