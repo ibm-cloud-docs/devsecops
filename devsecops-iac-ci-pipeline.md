@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-09-08"
+lastupdated: "2023-11-06"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -100,16 +100,17 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 
 | Property | Default | Description | 
 | -------- | ----- | ----------- | 
-| `opt-in-cra-tf-validate` | | Flag to run compliance check by using the `ibmcloud cra terraform-validate` tool. |
-| `cra-tf-policy-file` | | Path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
-| `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
-| `cra-tf-ignore-rules` | | Comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
-| `cra-tf-ignore-rules-file` | | Path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
-| `opt-in-tfsec` | | Flag to run compliance checks by using `tfsec` tool. |
-| `tfsec-args` | | `tfsec` command arguments. |
-| `opt-in-checkov` | | Flag to run compliance checks by using the `checkov` tool. |
-| `checkov-image` | `bridgecrew/checkov`| Image that performs the `checkov` compliance check. |
-| `checkov-args` | | `checkov` command arguments. |
+| `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
+| `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
+| `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | The [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
+| `cra-tf-ignore-rules` | | The comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
+| `cra-tf-ignore-rules-file` | | The path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
+| `opt-in-tfsec` | | The flag to run compliance checks by using `tfsec` tool. |
+| `tfsec-version` | `v1.21.0`` | The `tfsec` version to use. |
+| `tfsec-args` | | The `tfsec` command arguments. |
+| `opt-in-checkov` | | The flag to run compliance checks by using the `checkov` tool. |
+| `checkov-image` | `bridgecrew/checkov`| The image that performs the `checkov` compliance check. |
+| `checkov-args` | | The `checkov` command arguments. |
 {: caption="Table 5. IaC compliance scans and checks configuration parameters" caption-side="top"}
 
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).

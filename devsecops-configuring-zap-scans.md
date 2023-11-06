@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-08-25"
+lastupdated: "2023-11-06"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -41,6 +41,7 @@ You can set and customize the following parameters to configure ZAP scans to run
 |`zap-dind-localhost`|String|Hostname for ZAP Scanners when running in DinD, default: `localhost`.|Optional|
 |`zap-namespace`|String|Namespace to deploy ZAP API and UI scanners in the cluster, default: `zap`.|Optional for running ZAP in cluster, `Not required` for ZAP running in DinD.|
 |`zap-polling-interval`|String|Interval for the scanners to poll ZAP for completion of the scanning, default: `120s`.|Optional|
+|`zap-artifact`|String|The asset key for the artifact that is to be zap scanned and for which collect-evidence is to be invoked, The default value is `app-image`.|Optional|
 |`zap_evidence_type`|String|The evidence type for evidence gathering for scans performed by ZAP, default: `com.ibm.dynamic_scan`.|Optional|
 |`show-container-log`|String|Flag to enable or disable the container logging capability for the ZAP scanners when running in DinD, default: `false`.|Optional|
 |`show-zap-log`|String|Flag to enable or disable ZAP server logging capability, default: `false`.|Optional|
