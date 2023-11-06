@@ -54,7 +54,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | GitHub Access Token       | `git-token`              | **Optional: CI & CD** _Used to authenticate with GitHub and provide access to the repositories_ |
 | Artifactory API token    | `artifactory-token`      | **Required: CI & CD** _Used to access images used by pipeline tasks_|
 | Slack Web Hook           | `slack-webhook`          | **Optional: CI & CD** _This webhook is required if you choose to use the Slack tool integration to post toolchain status notifications_ |
-| ServiceNow API Token     | `servicenow-token`       | **Required: CD only** _Used to access Service Now for change management operations_ |
+| ServiceNow API Token     | `servicenow-api-token`       | **Required: CD only** _Used to access Service Now for change management operations_ |
 | HashiCorp Vault Role ID   | `role-id`                | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | HashiCorp Vault Secret ID | `secret-id`              | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key    | `cos-api-key`            | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
