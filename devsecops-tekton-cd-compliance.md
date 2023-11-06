@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-18"
+lastupdated: "2023-11-06"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -349,10 +349,6 @@ Use this option if you want to create a new instance of DevOps Insights to be us
 To integrate the toolchain with the Security and Compliance Service, you need to provide a project name and the evidence locker repository name for the Security and Compliance data collector.
 
 ![DevSecOps Security and Compliance](images/devsecops-cd-scc-disabled.png){: caption="Figure 22. DevSecOps Security and Compliance" caption-side="bottom"}
-
-You can also configure the Security and Compliance integration to trigger a validation after a deployment:
-
-![DevSecOps Security and Compliance Enabled](images/devsecops-cd-scc-enabled.png){: caption="Figure 23. DevSecOps Security and Compliance Enabled" caption-side="bottom"}
 
 
 Read more about the Security and Compliance Center [here](https://cloud.ibm.com/security-compliance/overview){: external}.
