@@ -46,7 +46,7 @@ To build, test, and deploy your application, DevSecOps pipelines use two reposit
 - `app-repo`: The application repository, which contains the source code for your application.
 - `config-repo`: The configuration repository, which contains your pipeline configuration YAML files and scripts.
 
-In the [DevSecOps sample app](https://us-east.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master/scripts), these two repositories are the same. Most of the DevSecOps adopters start with this pattern. But, as you onboard more microservices, a dedicated and separate pipeline configuration repository might be needed. Because the application repository and the configuration repository are the same in the sample app, the repository is cloned twice when the pipelines are run, which can lead to errors. Therefore, it's a best practice to have a separate configuration repository to host configuration files and scripts that can be shared and reused among different DevSecOps toolchains and pipelines. For more information about customizing the configuration repository, see the [advanced customization steps](/docs/devsecops?topic=devsecops-advanced-pipelines-customization).
+In the [DevSecOps sample app](https://us-east.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master/scripts), these two repositories are the same. Most of the DevSecOps adopters start with this pattern. But, as you onboard more microservices, a dedicated and separate pipeline configuration repository might be needed. Because the application repository and the configuration repository are the same in the sample app, the repository is cloned twice when the pipelines are run, which can lead to errors. Therefore, it's a best practice to have a separate configuration repository to host configuration files and scripts that can be shared and reused among different DevSecOps toolchains and pipelines. For more information about customizing the configuration repository, see the [advanced customization steps](/docs/devsecops?topic=devsecops-cd-devsecops-advanced-pipelines-customization).
 
 DevSecOps scripts consider the `app-repo` and the `config-repo` to be two separate repositories. The scripts clone the repositories twice during the start stage of the pipeline. These clones are referred to as the `app-repo` and the `one-pipeline-config-repo`. Each stage is run in the context of the `config repo`.
 {: important}
@@ -60,7 +60,7 @@ For simplicity, create and test a DevSecOps CI toolchain with the [sample Node a
 There are three main ways to onboard your first application into an existing DevSecOps CI toolchain:
 - Option 1: Add your application repo to the toolchain and use the sample application repo as the configuration repo.
 - Option 2: Replace the sample application repo with your application repo.
-- Option 3: Add your application repo to the toolchain and use a dedicated configuration repository. For more information about this option, see the [advanced customization steps](/docs/devsecops?topic=devsecops-advanced-pipelines-customization).
+- Option 3: Add your application repo to the toolchain and use a dedicated configuration repository. For more information about this option, see the [advanced customization steps](/docs/devsecops?topic=devsecops-cd-devsecops-advanced-pipelines-customization).
 
 DevSecOps toolchains use Gitlab repositories that are managed by {{site.data.keyword.IBM_notm}}, also known as GRIT. Other Git providers can be used instead. Your app repo might be hosted on GitHub or Gitlab, for example.
 
@@ -83,7 +83,7 @@ Next, specify the sample application repo as your configuration repo by completi
 1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **DevOps** > **Toolchains**, and select the toolchain that you want to edit.
 1. Click **pr-pipeline**.
 1. Click **Settings** and go to the **Environment properties** tab.
-1. Edit the value of the `pipeline-config-repo` property to point to the sample application repository URL. 
+1. Edit the value of the `pipeline-config-repo` property to point to the sample application repository URL.
 1. Go back to your CI toolchain.
 1. Click **ci-pipeline**.
 1. Click **Settings** and go to the **Environment properties** tab.
@@ -98,7 +98,7 @@ To replace the sample app repo with your own app repo, complete the following st
 
 1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **DevOps** > **Toolchains**, and select the CI toolchain that you want to edit.
 1. Find the sample application source code repository and select **Configure**.
-1. Replace the repository URL with your application source code repository URL. 
+1. Replace the repository URL with your application source code repository URL.
 1. Click **Save integration**.
 
 After you replace the sample app repo, make sure that the new app repo contains a `.pipeline-config.yaml` file and corresponding scripts. Either copy the `.pipeline-config.yaml` file and scripts from the sample app repository to your application repository, or use [this sample configuration file](https://eu-de.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml).
@@ -269,4 +269,3 @@ scan-artifact:
 {: #get-support-devsecops}
 
 As you customize your DevSecOps pipelines, get help directly from the {{site.data.keyword_cloud_notm}} development teams by [joining us on Slack](https://join.slack.com/t/ibm-devops-services/shared_invite/zt-1znyhz8ld-5Gdy~biKLe233Chrvgdzxw).
-
