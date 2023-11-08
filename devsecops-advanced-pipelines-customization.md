@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-09-29"
+lastupdated: "2023-11-08"
 
 keywords: DevSecOps
 
@@ -55,6 +55,17 @@ The Continuous Delivery service determines billing based on the number of author
 If you are creating an application that is composed of multiple microservices, most DevSecOps repositories - except the evidence repository - can be shared across the microservices.
 
 For more information, see [how DevSecOps pipelines use repositories](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization#devsecops-repos).
+
+#### Shared configuration repository considerations
+The DevSecOps sample applications come with a co-located .pipeline-config.yaml configuration file and corresponding scripts.
+When onboarding multiple microservices, a best practice is to separate source code repositories from DevSecOps configuration files and scripts. Store these in a separate and dedicated common configuration repository that can be used by your CI, CD, or CC pipelines.
+
+This consists of:
+- A dedicated Git repository to host a common scripts library and .pipeline-config.yaml file(s).
+- A single .pipeline-config.yaml file that's common to all services. If it's too complex, or not possible, use different .pipeline-config.yaml files.
+- Customization on a per folder basis. Implement your .pipeline-config.yaml file(s) to point to different scripts folders in your config repo. Organize your scripts in separate CI, CD, and CC folders, or based on the service language (Go, Python, NodeJS), service, application name, or whatever best fits your needs. 
+
+Change your pipeline(s) to use this shared configuration repository by setting the value of the `pipeline-config-repo` pipeline property (optionally, the `pipeline-config-branch`) to the shared configuration repository URL.
 
 #### Inventory repository considerations
 {: #inventory-repo-considerations}
