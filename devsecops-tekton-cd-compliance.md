@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-11-06"
+lastupdated: "2023-11-08"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -346,12 +346,12 @@ Use this option if you want to create a new instance of DevOps Insights to be us
 ### Security and Compliance
 {: #cd-devsecops-sec}
 
-To integrate the toolchain with the Security and Compliance Service, you need to provide a project name and the evidence locker repository name for the Security and Compliance data collector.
+To integrate the toolchain with the Security and Compliance Service, you need to provide a name and the evidence locker repository name for the Security and Compliance data collector.
 
 ![DevSecOps Security and Compliance](images/devsecops-cd-scc-disabled.png){: caption="Figure 22. DevSecOps Security and Compliance" caption-side="bottom"}
 
 
-Read more about the Security and Compliance Center [here](https://cloud.ibm.com/security-compliance/overview){: external}.
+Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) process. 
 
 ### Private worker
 {: #cd-devsecops-private-worker}
