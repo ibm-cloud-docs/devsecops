@@ -80,7 +80,7 @@ toc:
           topics:
           - devsecops-apps-byoa.md
           - devsecops-basics-pipelines-customization.md
-          - devsecops-cd-devsecops-advanced-pipelines-customization.md
+          - devsecops-advanced-pipelines-customization.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
