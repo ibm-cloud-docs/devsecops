@@ -242,7 +242,7 @@ After you create your toolchain, you can toggle sending notifications with the `
 {: #tutorial-cd-toolchain-scc}
 
 To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
-* A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
+* A name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
 * The evidence namespace for the type of the toolchain, which is either **Continuous Deployment** or **Continuous Compliance**.
 
 Use the {{site.data.keyword.cloud_notm}} Framework for Financial Services profile for DevSecOps toolchains.
