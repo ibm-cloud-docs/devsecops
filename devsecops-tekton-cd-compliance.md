@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-11-08"
+lastupdated: "2023-11-09"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -351,7 +351,7 @@ To integrate the toolchain with the Security and Compliance Service, you need to
 ![DevSecOps Security and Compliance](images/devsecops-cd-scc-disabled.png){: caption="Figure 22. DevSecOps Security and Compliance" caption-side="bottom"}
 
 
-Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) process. 
+Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process. 
 
 ### Private worker
 {: #cd-devsecops-private-worker}

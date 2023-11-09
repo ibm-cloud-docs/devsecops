@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-11-06"
+lastupdated: "2023-11-09"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -228,10 +228,10 @@ To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must
 * A project name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
 * The evidence namespace for the type of the toolchain, which is either **Continuous Deployment** or **Continuous Compliance**.
 
-Use the {{site.data.keyword.cloud_notm}} for Financial Services profile for DevSecOps toolchains.
+Use the {{site.data.keyword.cloud_notm}} Framework for Financial Services profile for DevSecOps toolchains.
 {: tip}
 
-Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external}.
+Learn more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
 
 ## Create the CC toolchain
 {: #tutorial-cc-toolchain-summary}
