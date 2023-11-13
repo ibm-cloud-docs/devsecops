@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023
-lastupdated: "2023-09-29"
+lastupdated: "2023-11-08"
 
 keywords: DevSecOps
 
@@ -13,12 +13,12 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Advanced DevSecOps pipeline customization
-{: #cd-devsecops-advanced-pipelines-customization}
+{: #cd-devsecops-cd-devsecops-advanced-pipelines-customization}
 
 Learn about the advanced features of DevSecOps adoption after you onboard your first application or microservice.
 {: shortdesc}
 
-Make sure that you review the [basics of DevSecOps pipeline customization](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization). There, you can learn about the different templates that are available, support options, and other important information to get you started with DevSecOps. 
+Make sure that you review the [basics of DevSecOps pipeline customization](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization). There, you can learn about the different templates that are available, support options, and other important information to get you started with DevSecOps.
 
 ## Design choices
 {: #design-choices}
@@ -29,7 +29,7 @@ While you are onboarding more applications and microservices to DevSecOps, you m
 - Do I need one pipeline per microservice?
 - Do I need to use a shared DevSecOps repository for inventory and issues or do I need separate repositories?
 
-The following information and best practices are meant to help you make these design choices. 
+The following information and best practices are meant to help you make these design choices.
 
 ### Toolchains and pipelines considerations
 {: #toolchains-pipelines-considerations}
@@ -37,7 +37,7 @@ The following information and best practices are meant to help you make these de
 Most applications are made of multiple microservices with different source repositories. Usually, a single toolchain is used to host microservices that are logically grouped. In general, use one toolchain and one pipeline, or as few pipelines as possible, but multiple triggers. Within each pipeline, you can duplicate and configure as many triggers as you need, up to 1024 triggers per pipeline. This strategy helps enforce common processes, scripts, and configuration files. For more information, see [configuring multiple apps on one CI toolchain](/docs/devsecops?topic=devsecops-cd-devsecops-multiple-apps).
 
 This approach has the following advantages:
-- Using fewer pipelines avoids duplication and decreases errors. Updates are also easier to maintain, for example, when an environment property or secret is added, edited, or deleted. 
+- Using fewer pipelines avoids duplication and decreases errors. Updates are also easier to maintain, for example, when an environment property or secret is added, edited, or deleted.
 - Onboarding a service is quicker with this approach. Add a Git integration for your microservice, duplicate the Git and manual triggers and modify them as needed. Then, make sure your `.pipeline-config.yaml` file and scripts are implemented for your microservice.
 
 This approach has the following drawbacks:
@@ -55,11 +55,22 @@ The Continuous Delivery service determines billing based on the number of author
 If you are creating an application that is composed of multiple microservices, most DevSecOps repositories - except the evidence repository - can be shared across the microservices.
 
 For more information, see [how DevSecOps pipelines use repositories](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization#devsecops-repos).
-  
+
+#### Shared configuration repository considerations
+The DevSecOps sample applications come with a co-located .pipeline-config.yaml configuration file and corresponding scripts.
+When onboarding multiple microservices, a best practice is to separate source code repositories from DevSecOps configuration files and scripts. Store these in a separate and dedicated common configuration repository that can be used by your CI, CD, or CC pipelines.
+
+This consists of:
+- A dedicated Git repository to host a common scripts library and .pipeline-config.yaml file(s).
+- A single .pipeline-config.yaml file that's common to all services. If it's too complex, or not possible, use different .pipeline-config.yaml files.
+- Customization on a per folder basis. Implement your .pipeline-config.yaml file(s) to point to different scripts folders in your config repo. Organize your scripts in separate CI, CD, and CC folders, or based on the service language (Go, Python, NodeJS), service, application name, or whatever best fits your needs. 
+
+Change your pipeline(s) to use this shared configuration repository by setting the value of the `pipeline-config-repo` pipeline property (optionally, the `pipeline-config-branch`) to the shared configuration repository URL.
+
 #### Inventory repository considerations
 {: #inventory-repo-considerations}
 
-A single inventory repository can be shared among many pipelines and toolchains. Several CI toolchains, pipelines, and triggers can contribute to the same inventory repository. CI pipelines push updates to the inventory repository, usually during the release stage. The inventory repository is then used as the source input for the CD pipeline. In general, it's a best practice to group inventory repositories into the same toolchain to reduce the number of change requests that are eventually created. 
+A single inventory repository can be shared among many pipelines and toolchains. Several CI toolchains, pipelines, and triggers can contribute to the same inventory repository. CI pipelines push updates to the inventory repository, usually during the release stage. The inventory repository is then used as the source input for the CD pipeline. In general, it's a best practice to group inventory repositories into the same toolchain to reduce the number of change requests that are eventually created.
 
 Using a shared inventory repository is an architectural decision that needs to be made before you start onboarding microservices because this decision affects the number of change requests that are created when a pipeline runs. For example, let's say you want to onboard 10 microservices to DevSecOps. You can have 10 different CD toolchains, with 10 different inventory repositories, which results in 10 different change requests each time a CD pipeline runs. It's easier to manage these 10 different microservices if they share a common inventory repository and a common CD toolchain. This results in only one change request even if you make updates to multiple microservices because they are all sharing the inventory repository and toolchain.
 
@@ -68,26 +79,26 @@ Using a shared inventory repository is an architectural decision that needs to b
 
 Your issues repository is where all vulnerability issues for your microservices are tracked. If you decide to use a shared inventory repository, you might want to use a shared issues repository as well.
 
-Setting `incident-assigness` and `incident-labels` at the pipeline or trigger level helps automatically assign issus to the correct team. For more information, see [continuous deployment parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm). 
+Setting `incident-assigness` and `incident-labels` at the pipeline or trigger level helps automatically assign issus to the correct team. For more information, see [continuous deployment parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
 
 #### Evidence repository considerations
 {: #evidence-repo-considerations}
 
-Your evidence repository contains compliance information and provides a paper trail to use during compliance audits. 
+Your evidence repository contains compliance information and provides a paper trail to use during compliance audits.
 
-Even if your inventory repository and issues repository are shared, do not ever use the same evidence repository for multiple toolchains. Evidence repositories tend to grow larger in size because of the amount of evidence that is generated by DevSecOps pipelines. Using the same evidence repository for multiple toolchains results in an even larger evidence repository, which can lead to performance issues with your pipelines. Make sure that you regularly [prune your evidence repository](/docs/devsecops?topic=devsecops-devsecops-prune-evidence) to remove outdated evidence and keep the repository as small as possible. 
+Even if your inventory repository and issues repository are shared, do not ever use the same evidence repository for multiple toolchains. Evidence repositories tend to grow larger in size because of the amount of evidence that is generated by DevSecOps pipelines. Using the same evidence repository for multiple toolchains results in an even larger evidence repository, which can lead to performance issues with your pipelines. Make sure that you regularly [prune your evidence repository](/docs/devsecops?topic=devsecops-devsecops-prune-evidence) to remove outdated evidence and keep the repository as small as possible.
 {: important}
 
 ### {{site.data.keyword.cos_full_notm}} considerations
 {: #cos-bucket-considerations}
 
-If you are using a shared inventory repository and a shared issues repository, you can use a shared instance of {{site.data.keyword.cos_full}} as well. Complete the following steps: 
+If you are using a shared inventory repository and a shared issues repository, you can use a shared instance of {{site.data.keyword.cos_full}} as well. Complete the following steps:
 
-1. Create an [instance of {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage/basics?topic=cloud-object-storage-provision) to use across toolchains and pipelines. 
-1. Within that shared {{site.data.keyword.cos_full_notm}} instance, create one {{site.data.keyword.cos_short}} bucket per microservice. 
-1. Set up pipelines and triggers, if applicable, to use the {{site.data.keyword.cos_full_notm}} bucket by setting the `cos-bucket-name` environment property. 
+1. Create an [instance of {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage/basics?topic=cloud-object-storage-provision) to use across toolchains and pipelines.
+1. Within that shared {{site.data.keyword.cos_full_notm}} instance, create one {{site.data.keyword.cos_short}} bucket per microservice.
+1. Set up pipelines and triggers, if applicable, to use the {{site.data.keyword.cos_full_notm}} bucket by setting the `cos-bucket-name` environment property.
 
-All microservices within the same CI, CD, and CC pipelines share one {{site.data.keyword.cos_short}} bucket, regardless of the deployment environment. The {{site.data.keyword.cos_short}} bucket functions similarly to the evidence repository, but without the performance issues that can occur with a large evidence repository. Because performance issues don't occur with a large {{site.data.keyword.cos_short}} bucket, you don't need to prune evidence from {{site.data.keyword.cos_short}} buckets. 
+All microservices within the same CI, CD, and CC pipelines share one {{site.data.keyword.cos_short}} bucket, regardless of the deployment environment. The {{site.data.keyword.cos_short}} bucket functions similarly to the evidence repository, but without the performance issues that can occur with a large evidence repository. Because performance issues don't occur with a large {{site.data.keyword.cos_short}} bucket, you don't need to prune evidence from {{site.data.keyword.cos_short}} buckets.
 {: important}
 
 ### Deploying to multiple environments
@@ -102,23 +113,23 @@ The following optional designs might fit your architecture:
 - Use one manual trigger per target environment. Duplicate a trigger, then edit the environment properties to fit the new environment.
 - Use a Git configuration repository with one folder per target environment, where specific configuration settings are stored in files.
 
-## Working with default and custom scripts 
+## Working with default and custom scripts
 {: #default-and-custom-scripts}
 
-Most of the security and compliance scripts come with [default scripts](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons) that are run if no custom scripts are provided for a stage. It can sometimes be difficult to determine which script is run, where to find the corresponding source script, and how to override the default scripts. 
+Most of the security and compliance scripts come with [default scripts](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons) that are run if no custom scripts are provided for a stage. It can sometimes be difficult to determine which script is run, where to find the corresponding source script, and how to override the default scripts.
 
 ### Identify which script is run
 {: #id-script}
 
-To identify which script is run for a stage, open the pipeline run (preferably a CI pipeline). Expand a task, then click `run-stage` to open the logs. The beginning of the `run-stage` logs provides information about the scripts that were used in the stage, including which repository the script is located in. In the logs, you can scroll to find more details about the scripts that were run. For example, the `code-compliance-checks` task might have the following information in the `run-stage` log, which includes environment properties for the stage: 
+To identify which script is run for a stage, open the pipeline run (preferably a CI pipeline). Expand a task, then click `run-stage` to open the logs. The beginning of the `run-stage` logs provides information about the scripts that were used in the stage, including which repository the script is located in. In the logs, you can scroll to find more details about the scripts that were run. For example, the `code-compliance-checks` task might have the following information in the `run-stage` log, which includes environment properties for the stage:
 
 ``` bash
 compliance-checks:
   image: icr.io/continuous-delivery/pipeline/pipeline-base-ubi:3.18
-  dind: true 
-  abort_on_failure: false 
-  image_pull_policy: IfNotPresent 
-  script: 
+  dind: true
+  abort_on_failure: false
+  image_pull_policy: IfNotPresent
+  script:
     #!/bin/sh
 
     "/opt/commons/compliance-checks/run.sh"
@@ -126,25 +137,25 @@ compliance-checks:
 
 In that example, the script that is run is `/opt/commons/compliance-checks/run.sh`, which is located in the [commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons). Use this commons library as a source to copy code that can be customized for specific edge cases. In the example, `compliance-checks/run.sh` is located in the [compliance-commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/compliance-checks/run.sh).
 
-### Overriding default scripts 
+### Overriding default scripts
 {: #override-default-scripts}
 
-To override default scripts, complete the following steps: 
+To override default scripts, complete the following steps:
 1. In the stage log, copy the snippet that identifies a default script:
 
 ``` bash
 compliance-checks:
   image: icr.io/continuous-delivery/pipeline/pipeline-base-ubi:3.18
-  dind: true 
-  abort_on_failure: false 
-  image_pull_policy: IfNotPresent 
-  script: 
+  dind: true
+  abort_on_failure: false
+  image_pull_policy: IfNotPresent
+  script:
     #!/bin/sh
 
     "/opt/commons/compliance-checks/run.sh"
 ```
-1. Paste the snippet into your `.pipeline-config.yaml` file. 
-1. Add your custom code before or after the script is called. 
+1. Paste the snippet into your `.pipeline-config.yaml` file.
+1. Add your custom code before or after the script is called.
 1. Edit, delete, or add properties as needed.
 
 The following example shows the updated script in your `.pipeline-config.yaml` file:

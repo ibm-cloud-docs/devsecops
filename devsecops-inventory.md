@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-11-13"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -339,3 +339,23 @@ For more information about working with Git repos, see these example scenarios:
 * [Promoting changes from the master branch](/docs/devsecops?topic=devsecops-cd-devsecops-promote-master)
 * [Deploying content to staging again](/docs/devsecops?topic=devsecops-cd-devsecops-redeploy-staging)
 * [Rolling back apps from production](/docs/devsecops?topic=devsecops-cd-devsecops-apps-rollback)
+
+
+## How to Exclude Files and Directories in the Inventory
+
+By default, One-Pipeline excludes `.md` files in the inventory by default. Create a file named `.inventoryignore` in your Inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root. However, if you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
+
+For example, if your file is named `.custominventoryignore`, add an environment variable `inventory-ignore-file` with the value `custominventoryignore`.
+
+Here is an example content for the `.custominventoryignore` file:
+
+```
+.md
+sample_file
+sample_directory/
+```
+
+In the above file:
+- `.md`: Excludes all files with the `.md` extension. Ensure you dont add `*` at the start, like `*.md`, as regex is not supported.
+- `sample_file`: Excludes the specific file throughout the entire repository.
+- `sample_directory/`: Excludes the entire directory. Avoid adding `*` at the end, use `sample_directory/*`, as regex is not supported.

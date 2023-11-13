@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-18"
+lastupdated: "2023-11-13"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -157,7 +157,7 @@ Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect){: external
 
 To comply with best practices for using HashiCorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp Vault `Role ID` and `Secret ID`. By storing these HashiCorp Vault secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
 
-### IBM Secrets Manager
+### IBM Cloud Secrets Manager
 {: #cd-devsecops-secrets-manager}
 
 Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you already created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
@@ -346,16 +346,12 @@ Use this option if you want to create a new instance of DevOps Insights to be us
 ### Security and Compliance
 {: #cd-devsecops-sec}
 
-To integrate the toolchain with the Security and Compliance Service, you need to provide a project name and the evidence locker repository name for the Security and Compliance data collector.
+To integrate the toolchain with the Security and Compliance Service, you need to provide a name and the evidence locker repository name for the Security and Compliance data collector.
 
 ![DevSecOps Security and Compliance](images/devsecops-cd-scc-disabled.png){: caption="Figure 22. DevSecOps Security and Compliance" caption-side="bottom"}
 
-You can also configure the Security and Compliance integration to trigger a validation after a deployment:
 
-![DevSecOps Security and Compliance Enabled](images/devsecops-cd-scc-enabled.png){: caption="Figure 23. DevSecOps Security and Compliance Enabled" caption-side="bottom"}
-
-
-Read more about the Security and Compliance Center [here](https://cloud.ibm.com/security-compliance/overview){: external}.
+Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process. 
 
 ### Private worker
 {: #cd-devsecops-private-worker}
