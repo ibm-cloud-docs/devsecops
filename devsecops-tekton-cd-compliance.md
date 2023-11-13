@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-11-09"
+lastupdated: "2023-11-13"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -157,7 +157,7 @@ Use [Key Protect](https://cloud.ibm.com/catalog/services/key-protect){: external
 
 To comply with best practices for using HashiCorp Vault, this template includes a Key Protect tool integration to securely manage the HashiCorp Vault `Role ID` and `Secret ID`. By storing these HashiCorp Vault secrets in Key Protect as a prerequisite for users to create toolchains, you protect access to HashiCorp Vault, which is the default secrets repo for most consumers.
 
-### IBM Secrets Manager
+### IBM Cloud Secrets Manager
 {: #cd-devsecops-secrets-manager}
 
 Use [Secrets Manager](https://cloud.ibm.com/catalog/services/secrets-manager){: external} to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain. You must create a Secrets Manager Service Instance before you proceed further. If you already created a Secrets Manager Service Instance as prerequisite, you can link the same in this step.
