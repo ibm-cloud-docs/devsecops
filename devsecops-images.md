@@ -29,13 +29,13 @@ The DevSecOps Continuous Integration (CI), Continuous Deployment (CD), and Conti
 
 |Tool Type | IBM Cloud Container Registry Repository | Latest version	| Vulnerability Status | Vulnerability Description |
 |:----------|:----------|:----------|:----------|:----------|
-|Baseimage| icr.io/continuous-delivery/toolchains/devsecops/baseimage| 2.83.0_commons-0.32.5 | Non-Vulnerable |  |
-|DevSecOps Baseimage| icr.io/continuous-delivery/toolchains/devsecops/devsecops-baseimage| 2.83.0_commons-0.32.5 | Non-Vulnerable | |
-|OWASP ZAP API Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-api-scanner| 05-06-2023-08-29 | Vulnerable |   |
+|Baseimage| icr.io/continuous-delivery/toolchains/devsecops/baseimage| 2.108.7_commons-0.51.1 | Vulnerable |  |
+|DevSecOps Baseimage| icr.io/continuous-delivery/toolchains/devsecops/devsecops-baseimage | 2.108.7_commons-0.51.1 | Vulnerable | |
+|OWASP ZAP API Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-api-scanner| 31-07-2023-09-43 | Vulnerable |   |
 |OWASP ZAP UI Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-scanner| 04-07-2022-06-47 | Vulnerable |  |
-|OWASP ZAP UI Proxy|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-proxy| 17-04-2023-03-56 | Vulnerable |  |
+|OWASP ZAP UI Proxy|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-proxy| 31-07-2023-09-06 | Vulnerable |  |
 |Detect Secrets|icr.io/git-defenders/detect-secrets| 0.13.1.ibm.61.dss-redhat-ubi| Vulnerable | |
-|Docker In Docker|icr.io/continuous-delivery/toolchains/devsecops/docker| 20.10.21-dind  | Vulnerable |  |
+|Docker In Docker|icr.io/continuous-delivery/base-images/multiarch-dind| 20231109-0005  | Vulnerable |  |
 |SonarQube|icr.io/continuous-delivery/toolchains/devsecops/sonarqube| 10.0.0-community  | Vulnerable | |
 |SonarQube Scanner CLI|icr.io/continuous-delivery/toolchains/devsecops/sonar-scanner-cli | 4.8 | Vulnerable | |
 {: caption="Table 1. DevSecOps Images" caption-side="bottom"}
