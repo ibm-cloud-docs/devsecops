@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2023
-lastupdated: "2023-11-16"
+lastupdated: "2023-11-22"
 
 keywords: DevSecOps, xray, jfrog, IBM Cloud
 
@@ -25,12 +25,12 @@ To run the Xray scan, you need a JFrog artifactory with Xray set up, then add th
 
 | Name | Type | Description |Required or Optional |
 |----------|------------------------------|------------------|----------|
-|[`xray-opt-in`](#xray-opt-in) |text   |To turn on Xray scans, add this parameter with any value. |Optional |
-|[`xray-api-url`](#xray-api-url)  |text   |The JFrog artifactory URL with Xray set up. |Optional |
-|[`xray-artifactory`](#xray-artifactory) |tool integration | The JFrog artifactory integration's with Xray set up. |Optional |
+|[`xray-opt-in`](#xray-opt-in) |text   |To turn on Xray scans, add this parameter with any value. |Required |
+|[`xray-api-url`](#xray-api-url)  |text   |The JFrog artifactory URL with Xray set up. |Required |
+|[`xray-artifactory`](#xray-artifactory) |tool integration | The JFrog artifactory integration's with Xray set up. |Required |
 |[`xray-retry-count`](#xray-retry-count) |text   |The number of retries to wait between checking xray report readiness. |Optional |
 |[`xray-retry-sleep`](#xray-retry-sleep)  |text   |The amount of wait time between retries. |Optional |
-|[`xray-watch-name`](#xray-watch-name) |text   |The Xray watch name. |Optional |</staging>
+|[`xray-watch-name`](#xray-watch-name) |text   |The Xray watch name. |Required |
 {: caption="Table 1. xray scan environment variables" caption-side="top"}
 
 ### xray-opt-in
