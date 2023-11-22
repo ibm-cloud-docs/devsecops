@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-11-06"
+lastupdated: "2023-11-22"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -126,8 +126,11 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`gosec-additional-flags` | text | Additional flags to be appended to the start of the gosec command. |Optional			|
-|`gosec-private-repository-url`   |text   |Your private repository base URL. For example, `https://github.ibm.com`. |Optional |
+|`gosec-private-repository-url`   |text   | (deprecated) Your private repository base URL. For example, `https://github.ibm.com`. |Optional |
+| `gosec-private-repository-host`    | text   | Your private repository host. For example, `github.ibm.com` | Optional |
 |`gosec-private-repository-ssh-key`     |secret   |The SSH key for the private repository. |Optional |
+| `gosec-private-repository-user` | text | User for the private repository with https access (default to `x-oauth-basic`) | Optional |
+| `gosec-private-repository-token` | secret | The token used for https access to private repository (default to the token configured for the first git integration in the toolchain whose repository URL is hosted on `gosec-private-repository-host`'s value) | Optional |
 |`gosec-proxy-virtual-repository-token`     |secret   |The virtual repository token for gosec proxy. |Optional |
 |`gosec-proxy-virtual-repository-user`     |text   |The virtual repository user for gosec proxy. | Optional |
 |`gosec-proxy-virtual-repository-url`     |text   |The virtual repository url for gosec proxy. |Optional |
