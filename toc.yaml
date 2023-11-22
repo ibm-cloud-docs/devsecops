@@ -176,12 +176,6 @@ toc:
               label: Cocoa Command reference
               topics:
               - devsecops-cocoa-cli.md
-      - topicgroup:
-          label: Related links
-          topics:
-          - link:
-              label: IBM Cloud Garage Method
-              href: https://www.ibm.com/cloud/garage
   - navgroup:
       id: help
       topics:
