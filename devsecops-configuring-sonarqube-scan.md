@@ -20,8 +20,8 @@ SonarQube provides an overview of the overall health and quality of your source 
 
 Configure SonarQube to continuously analyze and measure the quality of your source code:
 
-1. From the {{site.data.keyword.cloud_notm}} console, click the menu icon ![Hamburger icon](images/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click the toolchain to open its Overview page. Alternatively, on your app's Overview page, on the Continuous delivery card, click **View toolchain**. Then, click **Overview**. 
- 
+1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon ![Hamburger icon](images/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click the toolchain to open its Overview page. Alternatively, on your app's Overview page, on the Continuous delivery card, click **View toolchain**. Then, click **Overview**.
+
    a. Click **Add a Tool**.
 
    b. In the Tool Integrations section, click **SonarQube**.
@@ -44,7 +44,7 @@ Configure SonarQube to continuously analyze and measure the quality of your sour
 ### Default SonarQube instance
 {: #sonarqube-ci-pipeline-default}
 
-If `sonarqube-config` is set to `default`, then default configuration is used, a SonarQube scan runs as Docker-in-Docker and the instance is not available after the run. 
+If `sonarqube-config` is set to `default`, then default configuration is used, a SonarQube scan runs as Docker-in-Docker and the instance is not available after the run.
 
 ### SonarQube instance on the dev cluster
 {: #sonarqube-ci-pipeline-cluster}
@@ -76,16 +76,19 @@ For more information about pipelines parameters, see [Pipeline parameters](/docs
 If you add multiple SonarQube tool integrations to your pipeline, you can switch between them by changing the value of the SonarQube pipeline parameter, which is a tool integration parameter.
 {: tip}
 
+DevSecOps Pipelines filters out the problems reported by SonarQube scan. The pipelines exclusively create Compliance Incidences for problems that are not of type `CODE_SMELL` or `BUG`. The pipeline also skips problems for which the status is `CLOSED`.
+{: note}
+
 ### Updating the quality gate
 {: #sonarqube-cipipeline-gate}
 
 If you use the SonarQube instance that the pipeline created, you can update the default quality gate.
 
-1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task. 
+1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task.
 
    ![SonarQube dashboard](images/sonar-quality-gate.png){: caption="Figure 1. SonarQube dashboards" caption-side="bottom"}
 
-1. Click **Quality Gates** > **Create**. 
+1. Click **Quality Gates** > **Create**.
 1. Set your Quality Gate by using one of the following options:
 
    * Click  **Set as Default** to set the newly created quality gate as the default.
@@ -98,7 +101,7 @@ To learn more about SonarQube, see [SonarQube Documentation](https://docs.sonarq
 ### Using your own configuration file
 {: #sonarqube-config-file}
 
-You can modify the default configuration without using your own SonarQube instance. Create a `sonar-project.properties` file in the repo that you want to create the configuration file in. If our script detects an existing `configuration sonar-project.properties` file in the repo, it uses that file instead of the default file. For more information about possible analysis parameters in the configuration file, see [Analysis Parameters](https://docs.sonarqube.org/latest/analysis/analysis-parameters/){: external} here. 
+You can modify the default configuration without using your own SonarQube instance. Create a `sonar-project.properties` file in the repo that you want to create the configuration file in. If our script detects an existing `configuration sonar-project.properties` file in the repo, it uses that file instead of the default file. For more information about possible analysis parameters in the configuration file, see [Analysis Parameters](https://docs.sonarqube.org/latest/analysis/analysis-parameters/){: external} here.
 
 Make sure that you add the correct login credentials and host URL to the configuration file.
 {: important}
@@ -111,4 +114,4 @@ You can modify your `.pipeline-config.yaml` file to add your own custom script t
 ## Learn more about SonarQube
 {: #sonarqube-learn-more}
 
-To learn more about SonarQube, see [Integrate your SonarQube analysis into your toolchain](https://www.ibm.com/blogs/cloud-archive/2017/06/integrate-sonarqube-analysis-into-your-toolchain/){: external}. 
+To learn more about SonarQube, see [Integrate your SonarQube analysis into your toolchain](https://www.ibm.com/blogs/cloud-archive/2017/06/integrate-sonarqube-analysis-into-your-toolchain/){: external}.
