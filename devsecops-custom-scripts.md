@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-08-22"
+lastupdated: "2023-11-22"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -295,6 +295,9 @@ The following table includes the default ENV variables for the context of custom
 | `TRIGGERED_BY` | Information about who triggered the pipeline. This value can be an email address or a time-triggered pipeline run.  |
 | `WORKSPACE` | The path to the shared workspace. |
 | `PIPELINE_STATUS` | Status of the pipeline run, can be "Succeeded", "Failed", or blank. `PIPELINE_STATUS` is available in finish stages only |
+| `INVENTORY_URL` | The inventory repository url. |
+| `EVIDENCE_LOCKER_URL` | The evidence repository url. |
+| `INCIDENT_ISSUES_URL` | The issues repository url. |
 {: caption="Table 2. Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
