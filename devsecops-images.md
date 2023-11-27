@@ -38,4 +38,4 @@ The DevSecOps Continuous Integration (CI), Continuous Deployment (CD), and Conti
 |Docker In Docker|icr.io/continuous-delivery/base-images/multiarch-dind| 20231109-0005  | Vulnerable |  |
 |SonarQube|icr.io/continuous-delivery/toolchains/devsecops/sonarqube| 10.0.0-community  | Vulnerable | |
 |SonarQube Scanner CLI|icr.io/continuous-delivery/toolchains/devsecops/sonar-scanner-cli | 4.8 | Vulnerable | |
-{: caption="Table 1. DevSecOps Images" caption-side="bottom"}
+{: caption="Table 1. DevSecOps images" caption-side="bottom"}
