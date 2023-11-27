@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-10-13"
+lastupdated: "2023-11-27"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1683,17 +1683,18 @@ Options:
 ```text
 --type             # (Required) Scan type [cra | va]
 --subject          # (Required) Subject of scans (repo, or image name)
---drilldown-url    # (Required) URL to the point where the incident was found (can be a pipelien run, a commit hash or an image URL with digest)
+--drilldown-url    # (Required) URL to the point where the incident was found (can be a pipeline run, a commit hash or an image URL with digest)
 --set-grace-period # Should the created incidents have Grace period set
 --git-provider     # Git service provider [github] Default is "github"
 --org              # The incident issue repository org
 --repo             # The incident issue repository name
 --label            # Label(s) to add to the incident issue (optional) e.g: --label=foo --label=bar
---assignee         #(Optional) Assignee(s) for the incident issue (github username) e.g: --assigne=jane-doe --assignee=john-smith
+--assignee         #(Optional) Assignee(s) for the incident issue (github username) e.g: --assignee=jane-doe --assignee=john-smith
 --git-token-path   #(Optional) Github Token's path
 --git-api-url      #(Optional) Github API url
 --custom-exempt-label # (Optional) Defines the custom label with which the incident issue has been marked as exempted
 --custom-comment   # (Optional) Additional text to be added to issue comments
+--format           # (Optional) Format of the output ("list", "json", default: "list")
 ```
 {: screen}
 
@@ -1717,9 +1718,23 @@ If both of them are provided, `--git-token-path` and `--git-api-url` take preced
 
 Return values:
 
-- The command lists incident issue URLs found or created according to the result file and subject.
 - If no issues are found, or all found issues have either Exempt or Grace period set, the command exits with zero status.
 - If any of the issues that are found have no Exempt or Grace Period set, the command exits with a nonzero status.
+- If format==list - The command lists incident issue URLs found or created according to the result file and subject.
+- If format==json - The command prints a JSON containing an array of findings objects(additional issue information) for each of the issues found, created and auto-closed according to the result file and subject.
+- Structure of findings JSON object corresponding to an issue:
+
+```json
+{
+ "id": string,
+ "due_date": string,
+ "severity": string,
+ "first_found": "string" (optional),
+ "url": string,
+ "found_status": ("new", "existing", "autoclosed", "readonly")
+}
+```
+{: codeblock}
 
 Running the command:
 
@@ -1774,6 +1789,7 @@ Options:
 --incident-id         # (Required) Defines the incident ID to be used for creating legacy incident
 --current-status      # (Required) Current status to be treated as success or failure [choices: "success", "failure"]
 --custom-comment   # (Optional) Additional text to be added to issue comments
+--format           # (Optional) Format of the output ("list", "json", default: "list")
 --additional-comment  # (Optional) Additional comment for the issue on every run
 ```
 {: screen}
@@ -1794,11 +1810,26 @@ If the `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` both pairs ar
 
 Return values:
 
-- The command lists incident issue URLs found or created if the `--current-status` was passed in as `failure`. The comand also closes the incident issue URLs matching the same incident-tool-subject combination if the `--current-status` was passed in as `failure`.
+- The command lists incident issue URLs found or created if the `--current-status` was passed in as `failure`. The command also closes the incident issue URLs matching the same incident-tool-subject combination if the `--current-status` was passed in as `failure`.
 - In `--read-only` mode the command lists details of found incidents if no issue is found for that incident.
 - If there are no issues found, or all found issues has exempt label set, the command exits with zero status.
 - If any of the issues found have no exempt label set, the command exits with a non-zero status.
 - In `--read-only` mode if any new incident is found that has no issue, the command exits with a non-zero status.
+- If format==list - The command lists incident issue URLs found or created if the `--current-status` was passed in as `failure`.
+- If format==json - The command prints a JSON containing an array of findings objects(additional issue information) for each of the issues found, created and auto-closed according to the result file and subject.
+- Structure of findings JSON object corresponding to an issue:
+
+```json
+{
+ "id": string,
+ "due_date": string,
+ "severity": string,
+ "first_found": "string" (optional),
+ "url": string,
+ "found_status": ("new", "existing", "autoclosed", "readonly")
+}
+```
+{: codeblock}
 
 Running the command:
 
