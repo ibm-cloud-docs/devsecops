@@ -157,6 +157,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`opt-out-ci-set-commit-status` 		|text		| If this parameter has any value, the commit status value of the source code repository is not set by the CI pipeline according to the CI pipeline execution's result (success or failure).	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
+|`peer-review-compliance`		|text		|Set the `peer-review-compliance` environment variable to 1 in your CI and CD Pipeline to activate the peer-review check. Similarly, in the CD pipeline, this configuration executes peer review validation for all pull requests linked to your current deployment. |Optional			|
+|`peer-review-collection`		|text		|To retrieve a list of pull requests and their associated titles for your ongoing deployment, Set this value to 1	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	|
