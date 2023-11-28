@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-11-22"
+lastupdated: "2023-11-28"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -134,6 +134,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`gosec-proxy-virtual-repository-token`     |secret   |The virtual repository token for gosec proxy. |Optional |
 |`gosec-proxy-virtual-repository-user`     |text   |The virtual repository user for gosec proxy. | Optional |
 |`gosec-proxy-virtual-repository-url`     |text   |The virtual repository url for gosec proxy. |Optional |
+|`gosec-scan-image`     |text   |Specifies an alternative gosec image, including custom images or specific versions of the official image. |Optional |
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -156,6 +157,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
 |`opt-out-ci-set-commit-status` 		|text		| If this parameter has any value, the commit status value of the source code repository is not set by the CI pipeline according to the CI pipeline execution's result (success or failure).	|Optional			|
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
+|`peer-review-compliance`		|text		|Set the `peer-review-compliance` environment variable to 1 in your CI and CD Pipeline to activate the peer-review check. Similarly, in the CD pipeline, this configuration executes peer review validation for all pull requests linked to your current deployment. |Optional			|
+|`peer-review-collection`		|text		|To retrieve a list of pull requests and their associated titles for your ongoing deployment, Set this value to 1	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	|
@@ -211,6 +214,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`cr-pipeline-name`		|text		|The name of the pipeline creating the change request.	|Optional			|
+|`cr-pipeline-version`		|text		|The version of the pipeline creating the change request.	|Optional			|
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|
 |[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|
@@ -246,6 +251,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.	|Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
+|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |`region`		|text		|The target region where the app is deployed.	|Optional			|
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
@@ -335,6 +341,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
+|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  |
 |`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|
