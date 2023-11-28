@@ -134,6 +134,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`gosec-proxy-virtual-repository-token`     |secret   |The virtual repository token for gosec proxy. |Optional |
 |`gosec-proxy-virtual-repository-user`     |text   |The virtual repository user for gosec proxy. | Optional |
 |`gosec-proxy-virtual-repository-url`     |text   |The virtual repository url for gosec proxy. |Optional |
+|`gosec-scan-image`     |text   |Specifies an alternative gosec image, including custom images or specific versions of the official image. |Optional |
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
@@ -248,6 +249,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.	|Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
+|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
 |`region`		|text		|The target region where the app is deployed.	|Optional			|
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
@@ -337,6 +339,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
+|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  |
 |`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			|

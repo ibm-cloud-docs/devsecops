@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-11-22"
+lastupdated: "2023-11-28"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -64,18 +64,23 @@ If GOPROXY must be specified, all of the following parameters must be provided.
 ## Optional parameters
 {: #devsecops-gosec-params-opt}
 
+The `gosec-scan-image` parameter can be used to specify a different gosec image to use, such as a custom image or a specific version of the official gosec image.
+
+Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops-gosec-examples) section below 
+
 | Parameter name | Default value | Description |
 |-|-|-|
 | `gosec-additional-flags` | text | Additional flags to be appended to the start of the gosec command. |
+| `gosec-scan-image` | text | Specifies an alternative gosec image, including custom images or specific versions of the official image. |
 {: caption="Table 4. gosec optional parameters" caption-side="top"}
 
 ### Examples
 {: #devsecops-gosec-examples}
 
-Define the value of `gosec-additional-flags` as `-exclude-dir $DIR1 -exclude-dir $DIR2 -nosec=true` and the gosec command run is updated as:
+Define the value of `gosec-additional-flags` as `-exclude-dir=<your_folder_1> -exclude-dir=<your_folder_2> -nosec=true` and the gosec command run is updated as:
 
 ```bash
-./gosec -exclude-dir $DIR1 -exclude-dir $DIR2 -nosec=true -no-fail -fmt=json -out=gosec-results.json -stdout -verbose=text ./...   
+./gosec -exclude-dir=<your_folder_1> -exclude-dir=<your_folder_2> -nosec=true -no-fail -fmt=json -out=gosec-results.json -stdout -verbose=text ./...   
 ```
 {: codeblock}
 
