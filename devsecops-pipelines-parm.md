@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-11-22"
+lastupdated: "2023-11-28"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -211,6 +211,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`cr-pipeline-name`		|text		|The name of the pipeline creating the change request.	|Optional			|
+|`cr-pipeline-version`		|text		|The version of the pipeline creating the change request.	|Optional			|
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|
 |[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|
