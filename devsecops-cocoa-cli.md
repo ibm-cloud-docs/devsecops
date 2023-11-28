@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-11-27"
+lastupdated: "2023-11-28"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -277,6 +277,8 @@ Options:
 --deployment-ready # readiness for deployment (choices: 'yes', 'no', default: 'yes')
 --type             # change request type, option: standard, emergency
 --provider         # (Optional) Change Management service provider (choices: 'servicenow', 'servicenow-v3', default: 'servicenow')
+--pipeline-name    # (Optional) name of the pipeline used for identifying the pipeline 
+--pipeline-version # (Optional) version of pipeline used (value must match regular expression [0-9.]+)
 ```
 {: screen}
 
@@ -537,6 +539,8 @@ Options:
 --file             # file name to print the cr data to (optional, prints to stdout by default)
 --service-environment # service environment of the change, valid options: production, pre_prod
 --service-environment-detail # brief description of the service environment where change is deployed.
+--pipeline-name    # (Required) name of the pipeline used (for example 'onepipeline | continuous-delivery')
+--pipeline-version # version of pipeline used (for example '9.22.3')
 ```
 {: screen}
 
