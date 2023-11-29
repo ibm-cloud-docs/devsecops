@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-11-29"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -56,7 +56,7 @@ The script `collect-evidence` requires the following parameters:
    The evidence status and can be one of the following:
    `success`, `pending`, `failure`
 - `--assets`
-   Specify multiple asset-key and asset-type pairs. For example, use --assets asset-key1:asset-type1 --assets asset-key2:asset-type2. If you use this option, do not specify asset-key and asset-type separately.
+   Specify multiple asset-key and asset-type pairs. For example, you can use `--assets asset-key1:asset-type1 --assets asset-key2:asset-type2`. If you use this option, do not specify asset-key and asset-type separately.
 
 The following parameter is optional:
 
@@ -207,7 +207,7 @@ If you are enabling this flag, ensure that your stage images contain `git` becau
 {: #multi-asset-evidence-collection}
 
 
-The Collect-evidence feature facilitates the simultaneous collection of evidence for multiple assets. Users initiate evidence collection by utilizing the `--assets` flag, specifying multiple asset-key and asset-type pairs. For instance, input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2. If opting for this choice, refrain from separately indicating asset-key and asset-type.
+By using collect-evidence, you can configure the simultaneous collection of evidence for multiple assets. You initiate evidence collection by utilizing the `--assets` flag, which specifies multiple asset-key and asset-type pairs. For example, `input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2`   . If opting for this choice, refrain from separately indicating asset-key and asset-type.
 
 Key points regarding the multi-asset collection:
 
