@@ -207,14 +207,14 @@ If you are enabling this flag, ensure that your stage images contain `git` becau
 {: #multi-asset-evidence-collection}
 
 
-By using collect-evidence, you can configure the simultaneous collection of evidence for multiple assets. You initiate evidence collection by utilizing the `--assets` flag, which specifies multiple asset-key and asset-type pairs. For example, `input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2`   . If opting for this choice, refrain from separately indicating asset-key and asset-type.
+By using collect-evidence, you can configure the simultaneous collection of evidence for multiple assets. You initiate evidence collection by utilizing the `--assets` flag, which specifies multiple asset-key and asset-type pairs. For example, `input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2`. If you choose this option, don't indicate asset-key and asset-type separately.
 
-Key points regarding the multi-asset collection:
+Remember these key points regarding the multi-asset collection:
 
-- `status`, `attachment`, `tool-type`, `evidence-type`, and `upload-logs` remain constant across all assets.
-- By default, when multiple assets are designated, evidence processing follows the legacy flow. If a single asset is specified, evidence processing occurs through a flow specific to the tool/attachment.
-- In the event of failure, issues are created per asset. These issues are closed upon successful rerun of evidence collection, and closure correlates with the specified assets.
-- A singular evidence file is generated, featuring an ID encompassing all combined assets.
+- `status`, `attachment`, `tool-type`, `evidence-type`, and `upload-logs` are constant across all assets.
+- By default, when you designate multiple assets, evidence processing follows the legacy flow. If you specify a single asset, evidence processing occurs through a flow that is specific to the tool or attachment.
+- In the event of failure, issues are created per asset. These issues are closed upon successful rerun of evidence collection. Closure correlates with the assets that you specified.
+- A singular evidence file is generated, which features an ID that encompasses all combined assets.
 
 
 
