@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-11-29"
+lastupdated: "2023-11-30"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -203,18 +203,6 @@ Add the environment property `batched-evidence-collection` in CI, CD, and CC pip
 If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
 {: note}
 
-## Multipe assets in collect-evidence 
-{: #multi-asset-evidence-collection}
-
-
-By using collect-evidence, you can configure the simultaneous collection of evidence for multiple assets. You initiate evidence collection by utilizing the `--assets` flag, which specifies multiple asset-key and asset-type pairs. For example, `input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2`. If you choose this option, don't indicate asset-key and asset-type separately.
-
-Remember these key points regarding the multi-asset collection:
-
-- `status`, `attachment`, `tool-type`, `evidence-type`, and `upload-logs` are constant across all assets.
-- By default, when you designate multiple assets, evidence processing follows the legacy flow. If you specify a single asset, evidence processing occurs through a flow that is specific to the tool or attachment.
-- In the event of failure, issues are created per asset. These issues are closed upon successful rerun of evidence collection. Closure correlates with the assets that you specified.
-- A singular evidence file is generated, which features an ID that encompasses all combined assets.
 
 
 
