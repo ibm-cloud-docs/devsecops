@@ -36,6 +36,7 @@ You need the following resources to onboard an application in a DevSecOps toolch
 
 - [Node sample application](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app)
 - [CodeEngine compliance sample application](https://us-south.git.cloud.ibm.com/open-toolchain/code-engine-compliance-app)
+- [Go compliance sample application](https://us-south.git.cloud.ibm.com/open-toolchain/go-gin-compliance-app)
 - [Python compliance sample application](https://us-south.git.cloud.ibm.com/open-toolchain/python-compliance-app)
 - [Node / Cloudant compliance sample application](https://us-south.git.cloud.ibm.com/open-toolchain/node-cloudant-compliance-app)
 

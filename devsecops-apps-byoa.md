@@ -21,8 +21,9 @@ You can bring your own application to a DevSecOps toolchain for continuous integ
 Create your DevSecOps toolchain by using the default sample app that is provided. The [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app) hosts a Node.js server that provides a static web page. Alternatively, you can begin with one of the following samples:
 
 - [Code-engine-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/code-engine-compliance-app)
+- [Go-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/go-gin-compliance-app)
 - [Python-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/python-compliance-app)
-- [Node-cloudant-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/node-cloudant-compliance-app). This app combines the application source Node.js and the dependency definition, which is Cloudant defined as Infrastructure-as-Code.
+- [Node-cloudant-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/node-cloudant-compliance-app): This application combines the application source Node.js and the dependency definition, which is Cloudant defined as Infrastructure-as-Code.
 
 ## Adding stage parameters
 {: #stage-parameters}
