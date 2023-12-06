@@ -1,8 +1,14 @@
 {
     "title": "IBM Cloud DevSecOps docs",
     "lastupdated": "2023-11-30",
-    "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs. To learn more about creating a set of DevOps toolchains and pipelines, see [DevSecOps Application Lifecycle Management deployable architecture](/docs/devsecops-alm?topic=devsecops-alm-devsecops-alm-overview).",
+    "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
+      {
+
+        "title": "Introduction to DevSecOps",
+        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous deployment processes.",
+        "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
+      },
       {
         "title": "Part 1: Set up prerequisites to deploy a secure app with DevSecOps",
         "description": "Part 1 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
@@ -24,14 +30,9 @@
         "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
-        "title": "Introduction to DevSecOps",
-        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous deployment processes.",
-        "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
-      },
-      {
-        "title": "Working with incident issues",
-        "description": "Learn how to create, store, and update incident issues as part of the Continuous Integration and Continuous Compliance pipelines.",
-        "href": "/docs/devsecops?topic=devsecops-incident-issues"
+        "title": "Overview of DevSecOps Application Lifecycle Management deployable architecture",
+        "description": "Learn how to plan, create, deploy, and update, and update a set of DevSecOps toolchains and pipelines.",
+        "href": "/docs/devsecops-alm?topic=devsecops-alm-devsecops-alm-overview"
       }
     ],
     "section_videos": [
