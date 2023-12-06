@@ -31,7 +31,7 @@
       },
       {
         "title": "Overview of DevSecOps Application Lifecycle Management deployable architecture",
-        "description": "Learn how to plan, create, deploy, and update, and update a set of DevSecOps toolchains and pipelines.",
+        "description": "Learn how to plan, create, deploy, and update a set of DevSecOps toolchains and pipelines.",
         "href": "/docs/devsecops-alm?topic=devsecops-alm-devsecops-alm-overview"
       }
     ],
