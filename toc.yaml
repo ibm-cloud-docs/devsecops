@@ -125,6 +125,7 @@ toc:
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
           - devsecops-configuring-va-scan.md
+          - devsecops-configuring-slsa-attestation.md
       - topicgroup:
           label: Working with Git repos
           topics:

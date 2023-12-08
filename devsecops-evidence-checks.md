@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-10-30"
+lastupdated: "2023-12-08"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -201,6 +201,18 @@ To define the config file path, set `evidence-checks-config-path` to the file pa
     {
       "asset_type": "image",
       "evidences": [
+        {
+          "evidence_type_id": "com.ibm.cloud.slsa",
+          "rules": {
+            "required": [],
+            "optional": [
+              {
+                "tool": "*"
+              }
+            ],
+            "ignore": []
+          }
+        },
         {
           "evidence_type_id": "com.ibm.cloud.image_signing",
           "rules": {
@@ -571,4 +583,5 @@ To define the config file path, set `evidence-checks-config-path` to the file pa
 |`com.ibm.cloud.image_vulnerability_scan` | `va`, `sysdig`, `xray` |
 |`com.ibm.prod_change_request` | `servicenow-v3`, `gitlab` |
 |`com.ibm.close_change_request` | `servicenow-v3`, `gitlab` |
+|`com.ibm.cloud.slsa` | `tekton-chains` |
 {: caption="Table 1. Supported tool for evidence" caption-side="top"}
