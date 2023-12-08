@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-08-18"
+lastupdated: "2023-11-30"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -55,6 +55,8 @@ The script `collect-evidence` requires the following parameters:
 - `--status`  
    The evidence status and can be one of the following:
    `success`, `pending`, `failure`
+- `--assets`
+   Specify multiple asset-key and asset-type pairs. For example, you can use `--assets asset-key1:asset-type1 --assets asset-key2:asset-type2`. If you use this option, do not specify asset-key and asset-type separately.
 
 The following parameter is optional:
 
@@ -200,4 +202,8 @@ Add the environment property `batched-evidence-collection` in CI, CD, and CC pip
 
 If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
 {: note}
+
+
+
+
 

@@ -1,8 +1,14 @@
 {
     "title": "IBM Cloud DevSecOps docs",
-    "lastupdated": "2023-04-14",
+    "lastupdated": "2023-11-30",
     "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
     "section_recommended": [
+      {
+
+        "title": "Introduction to DevSecOps",
+        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous deployment processes.",
+        "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
+      },
       {
         "title": "Part 1: Set up prerequisites to deploy a secure app with DevSecOps",
         "description": "Part 1 of a 4-part tutorial series: Learn about DevSecOps by using a complete reference implementation that is available as a service and powered by IBM Cloud Continuous Delivery.",
@@ -24,21 +30,16 @@
         "href": "/docs/devsecops?topic=devsecops-tutorial-cc-toolchain"
       },
       {
-        "title": "Introduction to DevSecOps",
-        "description": "Learn about DevSecOps, which includes the automation of security and compliance controls as part of continuous integration and continuous deployment processes.",
-        "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
-      },
-      {
-        "title": "Working with incident issues",
-        "description": "Learn how to create, store, and update incident issues as part of the Continuous Integration and Continuous Compliance pipelines.",
-        "href": "/docs/devsecops?topic=devsecops-incident-issues"
+        "title": "Overview of DevSecOps Application Lifecycle Management deployable architecture",
+        "description": "Learn how to plan, create, deploy, and update a set of DevSecOps toolchains and pipelines.",
+        "href": "/docs/devsecops-alm?topic=devsecops-alm-devsecops-alm-overview"
       }
     ],
     "section_videos": [
       {
         "title": "Getting Started with DevSecOps in IBM Cloud - Part 1 - Continuous Integration Toolchain",
-        "href": "https://video.ibm.com/embed/recorded/130714354", 
-        "thumbnail": "/images/CI_toolchain_thumbnail.png" 
+        "href": "https://video.ibm.com/embed/recorded/130714354",
+        "thumbnail": "/images/CI_toolchain_thumbnail.png"
       },
       {
         "title": "Getting Started with DevSecOps in IBM Cloud - Part 2 - Continuous Deployment Toolchain",
@@ -58,7 +59,7 @@
         {
           "date": "07 December 2022",
           "title": "Integration for Infrastructure as Code now available as a Toolchain template",
-          "description": "DevSecOps Continuous Integration for Infrastructure as Code is available as a Toolchain template in the Toolchain catalog." 
+          "description": "DevSecOps Continuous Integration for Infrastructure as Code is available as a Toolchain template in the Toolchain catalog."
         },
         {
           "date": "30 November 2022",

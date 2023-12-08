@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-09-13"
+lastupdated: "2023-12-06"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -88,14 +88,14 @@ Before you can work with image verification, be sure that you have the following
 1. Modify your pipeline configuration to enable the verifcation process. Add the following code snippet to your `.pipeline-config.yaml` file.
 
    ```bash
-   verify-artifact::
-   image: icr.io/continuous-delivery/pipeline/image-signing:1.0.0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
-   image_pull_policy: IfNotPresent
-   abort_on_failure: false
-   dind: true
-   script: |
-      #!/usr/bin/env bash
-      source /opt/commons/verify-artifact/verify_non_image_artifact.sh
+   verify-artifact:
+     image: icr.io/continuous-delivery/pipeline/image-signing:1.0.0@sha256:e9d8e354668ba3d40be2aaee08298d2aa7f0e1c8a1829cca4094ec93830e3e6a
+     image_pull_policy: IfNotPresent
+     abort_on_failure: false
+     dind: true
+     script: |
+       #!/usr/bin/env bash
+       source /opt/commons/verify-artifact/verify_non_image_artifact.sh
    ```
    {: codeblock}
 

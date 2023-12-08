@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-07-21"
+lastupdated: "2023-12-05"
 
 keywords: DevSecOps
 
@@ -15,13 +15,15 @@ subcollection: devsecops
 # Understanding DevSecOps pipelines
 {: #cd-devsecops-pipelines}
 
-The various pipelines that are provided in the reference continuous integration and continuous deployment toolchains are based on the {{site.data.keyword.contdelivery_short}} support for Tekton Pipelines.
+The various pipelines that are provided in the reference continuous integration and continuous deployment toolchains are based on the {{site.data.keyword.contdelivery_short}} support for Tekton Pipelines. To learn more about Tekton Pipelines, see [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines). 
 {: shortdesc}
 
-To learn more about Tekton Pipelines, see [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines). You do not need to be a Tekton expert to use the reference pipelines. These pipelines are predefined with a basic structure that includes placeholders for custom scripts for steps such as builds, automated tests, and deployment.  Users can declare their custom scripts for their own pipelines and set values for various environment properties for a specific pipeline.
+You don't need to be a Tekton expert to use the reference pipelines. Reference pipelines are predefined with a basic structure that includes placeholders for custom scripts for steps such as builds, automated tests, and deployment. Users can declare their custom scripts for their own pipelines and set values for various environment properties for a specific pipeline.
+{: note}
 
-## Pipeline statuses
+## Pipeline status types
 {: #cd-devsecops-pipelines-statuses}
+
 
 It's important to understand the error or failure conditions for a reference pipeline at certain points. Conceptually, two different types of status result from a task run in a compliance pipeline:
 
