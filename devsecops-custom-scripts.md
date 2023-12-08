@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-11-22"
+lastupdated: "2023-12-08"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -106,6 +106,21 @@ test:
     * `secret-name`: The direct Secret name syntax. The stage runner tries to access and mount the Secret named `secret-name`.
 
     * `$prop-name`: The indirect Secret name syntax. The Secret name is located in the environment-properties configmap that contains every environment value that is set on the pipeline UI. For example, if the environment-properties configmap contains the `my-secret` entry property, `my-secret` is used for `$prop`.
+
+* `runAfter`: Run the current stage after the stage that specified in this property completes. Set the value with the stage name that you used in `.pipeline-config.yaml`. Use this property sparingly and confirm that the stage that is specified by this property exists in the pipeline. If the stage does not exist, the pipeline can go into a deadlock.
+
+* `skip`: If set to `true`, bypass the current stage, if possible, in v10 pipelines. Not all stages can be bypassed. The following table lists the stages that can be skipped during the pipeline run. 
+
+  | Pipeline | Stages |
+  |-|-|
+  |PR pipeline|`code-unit-tests`, `code-compliance-tests` and `code-pr-finish`|
+  |CI pipeline|`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `code-dynamic-scan`, `deploy-acceptance-tests`, `deploy-release` and `code-ci-finish`|
+  |CD pipeline|`prod-verify-artifact`, `prod-acceptance-tests` and `prod-finish`|
+  |CC pipeline|`cc-static-scan`, `cc-dynamic-scan`, `cc-compliance-checks`, `cc-scan-artifact` and `cc-finish`|
+  |App-preview PR pipeline|`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `deploy-acceptance-tests` and `app-preview-pr-finish` |
+  |Dev-mode CI pipeline|`code-unit-tests`, `code-static-scan`, `deploy-release` and `code-ci-finish`|
+  |Dev-mode CD pipeline|`prod-acceptance-tests` and `prod-finish`|
+  {: caption="Table 1. Stages that can be skipped in pipeline runs" caption-side="top"}
 
 #### Example configuration
 {: #cd-devsecops-scripts-sample-config}
@@ -268,7 +283,7 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/image` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/artifact` | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/signature` | The image artifact signature. |
-{: caption="Table 1. 'config' Values" caption-side="top"}
+{: caption="Table 2. 'config' Values" caption-side="top"}
 
 These values are phased out and replaced by the stage I/O interface by way of pipelinectl.
 {: deprecated}
@@ -298,7 +313,7 @@ The following table includes the default ENV variables for the context of custom
 | `INVENTORY_URL` | The inventory repository url. |
 | `EVIDENCE_LOCKER_URL` | The evidence repository url. |
 | `INCIDENT_ISSUES_URL` | The issues repository url. |
-{: caption="Table 2. Environment variables" caption-side="top"}
+{: caption="Table 3. Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
 
@@ -348,7 +363,7 @@ The finish stage has three steps:
 | `evaluate` | Non customizable step that executes tasks that are related to collection and upload of log files, artifacts, and evidence to the evidence locker. |
 | `prepare` | Non customizable step that sets up the required tools to run the custom finish stage. | 
 | `finish` | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
-{: caption="Table 3. Steps in finish stage" caption-side="top"}
+{: caption="Table 4. Steps in finish stage" caption-side="top"}
 
 This pipeline status can be determined in two ways:
 
@@ -369,7 +384,7 @@ Some data is expected to be available by other stages on the workspace, so be su
 |`containerize`		|[Add artifact names and digests to the pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).		|`save_artifact`		|Yes		|
 |`sign-artifact` 		|Add the image signature from the GPG signing output.   	|`save_artifact`			|Yes		|
 |`acceptance-test` 		|To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`			|No		|
-{: caption="Table 4. Stage output" caption-side="top"}
+{: caption="Table 5. Stage output" caption-side="top"}
 
 ### Stage results API
 {: #cd-devsecops-scripts-resultsapi}
@@ -384,7 +399,7 @@ The following tasks and stages are available:
 |**Continuous integration pipeline stages**| `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default. |
 |**continuous deployment pipeline stages**| `setup`, `deploy`, `acceptance-test`, `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request`. The `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request` stages are not custom stages. They are provided by the pipelines by default.|
 |**Continuous compliance pipeline stages**| `setup`, `test`, `static-scan`, `scan-artifact`, `acceptance-test`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default.|
-{: caption="Table 5. Tasks and stages" caption-side="bottom"}
+{: caption="Table 6. Tasks and stages" caption-side="bottom"}
 
 #### Example usage
 {: #devsecops-scripts-resultsapi-example}
