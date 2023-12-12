@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-12-08"
+lastupdated: "2023-12-12"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -35,6 +35,9 @@ Like Agile and DevOps, DevSecOps introduces a culture change and removes the tra
 {: #why-devsecops}
 
 With DevSecOps, developers can continue to deliver updates frequently with a minimal amount of friction. Integration of automated security scans and controls into the DevOps pipelines provides confidence with evidence to the change management process. This integration also supports automated approvals of new deployments to production when all secure criteria are met and specific checks pass. Introducing security and compliance early into the development and deployment process reduces costs and risk by identifying problems early before the software reaches a production environment. This approach is often referred to as "shift-left". Moreover, even if secure best practices are part of the training in every organization, developers might lack deep expertise at the security level. Applying DevSecOps and shift-left to the delivery lifecycle reduces the risk of naively releasing known vulnerabilities into production.
+
+### Standardization across organizations
+{: #standardization}
 
 Organizations can take advantage of the significant benefits of using a standard set of processes for continuous integration and continuous delivery by multiple disparate teams that develop heterogeneous offerings and components. These benefits include consistency and economies of scales. When a single set of prescriptive reference pipelines that are instrumented for compliance are used for all of the components across an organization, developers spend less time to develop automation solutions and can focus on feature development. The development leaders and security officers can be confident that the necessary controls are in place to ensure secure, compliant software and provide evidence that can be used in an audit. Security audits within an organization can be streamlined when a standard implementation is used, as opposed to each component or offering team that uses their own compliance implementation.
 
