@@ -138,12 +138,17 @@ toc:
           - devsecops-set-pr-status.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
-      - devsecops-scc-toolchains.md
       - devsecops-iam-permissions.md
       - topicgroup:
           label: Tool integrations
           topics:
-          - include: ../ContinuousDelivery/scc_integration.md
+          - topicgroup:
+              label: Security and Compliance Center
+              topics:
+                - include: ../ContinuousDelivery/scc_integration.md
+                  navtitle: Configuring your toolchain
+                - topic: devsecops-scc-toolchains.md
+                  navtitle: Viewing and understanding results
       - topicgroup:
           label: Enhancing security
           topics:
