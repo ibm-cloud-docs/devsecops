@@ -1,8 +1,8 @@
 ---
 
-copyright:
-  years: 2021, 2022
-lastupdated: "2022-02-23"
+copyright: 
+  years: 2022, 2023
+lastupdated: "2023-12-12"
 
 keywords: getting help, getting support, DevSecOps, continuous delivery, devops
 
