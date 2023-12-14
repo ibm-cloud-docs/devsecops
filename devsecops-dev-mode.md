@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-03-07"
+lastupdated: "2023-12-12"
 
 keywords: DevSecOps, development mode, IBM Cloud, pipelines
 
@@ -64,6 +64,41 @@ The `development-mode` pipeline runs the code that is in the `.pipeline-config.y
 All other security and compliance tasks do not run, reducing the pipeline execution time.
 
 ![Standard and development modes compared](images/comparison.png){: caption="Figure 3. Standard and development modes compared" caption-side="bottom"}
+
+##Development mode for CI pipeline
+{: #devsecops-devmod-ci_pipeline}
+
+The CI pipeline builds deployable artifacts from application repositories.
+
+The following table lists the stages in development mode of the CI pipeline.
+
+| Dev-mod-ci pipeline stage  | Stage description |
+|:------|:------------|
+| `code-ci-start` |Set up the pipeline environment. This process includes the cloning of the configuration and application repositories to the pipeline local file system. |
+|`code-setup` | Set up your build and test environments to prepare them for the following pipeline stages. |
+|`code-unit-tests`| Run unit tests and application tests on the application code. |
+|`build-artifact`| Build the artifacts and images. |
+|`deploy-dev`| Deploy the built artifacts to the dev environment. |
+|`deploy-acceptance-tests`| Run acceptance and integration tests on the deployed built artifacts on the dev environment |
+|`deploy-release`| Add the built artifacts to the inventory. The Continuous Delivery pipeline uses this inventory. |
+|`code-ci-finish`| Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks that were previously executed in the pipeline fail, this stage also fails. This stage represents the “fail safe” behavior to ensure that compliance issues are remediated before a PR can be merged or a build can be deployed. |
+{: caption="Table 1. Development stages of the CI pipeline" caption-side="top"}
+
+## Development mode for CD pipeline
+
+The CD pipeline deploys the build to an environment, such as staging or production.
+
+The following table lists the stages in development mode of the CD pipeline.
+
+|CD Pipeline Stage |Stage Description |
+|:------|:------------|
+|`prod-start`| Calculate deployment delta. |
+|`prod-setup` | Set up your build and test environments. |
+|`prod-verify-artifact` | Verifiy signatures of images that are built in the CI pipeline. |
+|`prod-deployment`|Deploy the build to an environment.|
+|`prod-acceptance-tests`|Run acceptance tests.|
+|`prod-finish`|Publish acceptance tests, deploy record, collect CycloneDX SBOM, and close change requests.|
+{: caption="Table 2. Development stages of the CD pipeline" caption-side="top"}
 
 ## Returning to standard mode
 {: #devsecops-devmode-standard}

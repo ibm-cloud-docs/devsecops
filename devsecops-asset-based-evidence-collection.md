@@ -12,12 +12,14 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Asset creation and Evidence collection in DevSecOps – A Comprehensive Guide
+# Asset creation and Evidence collection in DevSecOps
 {: #devsecops-asset-evidence-collection}
 
-In the realm of DevSecOps process, Asset Creation and Evidence Collection ensures that security seamlessly integrates with every phase of the software development lifecycle. This approach embodies the concept of "shift-left," where security is not an afterthought but an inherent part of the development process. DevSecOps, with its DevSecOps Continuous Integration and Continuous Delivery (CI/CD), empowers teams to identify vulnerabilities at the earliest stages, facilitating the release of compliant software.
+In the realm of DevSecOps process, asset creation and Evidence collection ensures that security seamlessly integrates with every phase of the software development lifecycle. This approach embodies the concept of "shift-left," where security is not an afterthought but an inherent part of the development process. DevSecOps, with its DevSecOps Continuous Integration and Continuous Delivery (CI/CD), empowers teams to identify vulnerabilities at the earliest stages, facilitating the release of compliant software.
 
-## Defining an Asset in DevSecOps
+Asset creation and evidence collection play a pivotal role in the Onepipeline ecosystem. To remain compliant with security standards, it's imperative to follow the guidelines outlined in this comprehensive guide. By doing so, you can ensure that your software development process is not only efficient but also secure from the ground up.
+
+## Defining an asset in DevSecOps
 {: #devsecops-asset-definition}
 
 In the context of DevSecOps, an asset is a fundamental entity that is subjected to rigorous testing and scanning. These assets encompass various forms such as existing Git commits in repositories to Docker images. An asset is a focal point of the evidence collection process, representing the object on which a scan or test has been conducted. Remarkably, DevSecOps's flexibility extends beyond traditional code and images, including abstract entities like pipeline runs or COS (Cloud Object Storage) buckets, as long as evidence can be gathered for them.
@@ -218,8 +220,3 @@ Examples:
 
 In the CD pipeline, the deployment should refer to a provenance field instead of an artifact to download the artifact
 {: note}
-
-## Conclusion:
-{: #devsecops-evidence-asset-conclusion}
-
-Asset creation and evidence collection play a pivotal role in the Onepipeline ecosystem. To remain compliant with security standards, it's imperative to follow the guidelines outlined in this comprehensive guide. By doing so, you can ensure that your software development process is not only efficient but also secure from the ground up.

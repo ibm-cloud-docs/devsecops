@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-11-30"
+lastupdated: "2023-12-13"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -61,7 +61,7 @@ The script `collect-evidence` requires the following parameters:
 The following parameter is optional:
 
 - `--attachment`  
-   The file to be processed as result and attached to the evidence. The parameter can be specified multiple times for multiple files.
+   The file to be processed as a result and attached to the evidence. The parameter can be specified multiple times for multiple files.
 - `--meta`  
    Arbitrary metadata to be added to the evidence. The parameter accepts 'key=value' pairs and can be specified multiple times.
 -  `--additional-comment`
@@ -181,27 +181,40 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
    
   **Changes required in save_artifact for non-images:** Collect evidence now supports all the asset types. For collect evidence to work on any asset
 type
- `save_artifact` should explicity save the asset with `type` for eg zip  
+ `save_artifact` should explicitly save the asset with `type` for example, zip  
 `save_artifact artifact-1 type=zip ...`.
- In collect evidence script, the `asset-type` should be artifact and type is queried from the artifact. For this to work, cocoa locker asset add has been modified to add asset of any type.  Once saved, the  collect evidence script can be called as below:
+ In collect evidence script, the `asset-type` should be artifact and the type is queried from the artifact. For this process to work, cocoa locker asset add was modified to add asset of any type. Once saved, the  collect evidence script can be called as below:
     
   `collect-evidence --tool-type toolType --evidence-type  artifact --asset-key artifact-1 ...`
 
   Please refer to our sample application for sample implementation for  `deployment` type https://github.ibm.com/one-pipeline/hello-compliance-app
 
-  With these changes,  collect-evidence script will process all types of artifacts, including both image and non-image artifacts.
+  With these changes, collect-evidence script processes all types of artifacts, including both image and non-image artifacts.
 
 
 
 ## Batched evidence collection
 {: #batched-evidence-collection}
 
-Every single piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That potentially could lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
+Every piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That could potentially lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
 
 Add the environment property `batched-evidence-collection` in CI, CD, and CC pipelines, and set it to `1` to enable this flow.
 
 If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
 {: note}
+
+
+## Multiple assets in collect-evidence 
+{: #multi-asset-evidence-collection}
+
+By using collect-evidence, you can configure the simultaneous collection of evidence for multiple assets. You initiate evidence collection by using the `--assets` flag, which specifies multiple asset-key and asset-type pairs. For example, `input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2`. If you choose this option, don't indicate asset-key and asset-type separately.
+
+Remember these key points about the multi-asset collection:
+
+- `status`, `attachment`, `tool-type`, `evidence-type`, and `upload-logs` are constant across all assets.
+- By default, when you designate multiple assets, evidence processing follows the legacy flow. If you specify a single asset, evidence processing occurs through a flow that is specific to the tool or attachment.
+- In case of failure, issues are created per asset. These issues are closed upon successful rerun of evidence collection. Closure correlates with the assets that you specified.
+- A singular evidence file is generated, which features an ID that encompasses all combined assets.
 
 
 

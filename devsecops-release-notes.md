@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-10-30"
+lastupdated: "2023-12-08"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -19,8 +19,16 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
 
+## 08 Dec 2023
+{: #devsecops-Dec2023}
+{: release-note}
+
+- **Amber status for deployment with errors** - Deployment of manually-approved CR with red evidence now shows amber status.
+
+- **Batch processing of evidence collection** - During a pipeline run, all the evidences are collected locally to the pipeline and proceed at the end of the pipeline run. This process results in performance improvement. For more information, see [Batched evidence collection](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#batched-evidence-collection).
+
 ## 30 October 2023
-{: #devsecops-oct3023}
+{: #devsecops-oct2023}
 {: release-note}
 
 - **Isolated workarea for individual stages in a pipeline** - A new environment property $STAGE_WORKSPACE pointing to a stage specific location is available. Any data written to this location is accessible exclusively to the present stage and remains inaccessible to other stages.
@@ -31,13 +39,13 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 
 - **Ability to configure stages in specific order** - Users can specify a order by defining `runAfter: <task name>`. This will make the current task to wait till the previous task completes, even when both tasks are scheduled to run concurrently
 
-- **Concurrent execution of DevSecOps Pipeline stages** - The devsecops pipelines have been restructed to run independent stages concurrently. This speeds up overall pipeline run considerably. For more information, see [Improve compliance pipeline performance using concurrent tasks](/docs/devsecops?topic=devsecops-devsecops-conc).
+- **Concurrent execution of DevSecOps Pipeline stages** - The devsecops pipelines have been restructured to run independent stages concurrently. This speeds up overall pipeline run considerably. For more information, see [Improve compliance pipeline performance using concurrent tasks](/docs/devsecops?topic=devsecops-devsecops-conc).
 
 - **Validation of SBOM** - Validation of SBOM by default.
 
 - **Addition of GoSec Tool within Static Scan Stage for CI Pipeline** - GoSec security scan has been integrated to the compliance checks stage for Go applications. For more information, see [Configuring GoSec scans](/docs/devsecops?topic=devsecops-devsecops-gosec).
 
-- **Addition of peer-review stage** - Added a new peer review stage to verfy whether the peer review has been performed on all the commits in integration branch. For more information, see [Peer review compliance](/docs/devsecops?topic=devsecops-cd-devsecops-peer-review).
+- **Addition of peer-review stage** - Added a new peer review stage to verify whether the peer review has been performed on all the commits in integration branch. For more information, see [Peer review compliance](/docs/devsecops?topic=devsecops-cd-devsecops-peer-review).
 
 - **Support for management of non image based assets** - Pipeline support for the development of generic assets that can be of any type. e.g tar, zip, etc.
 
@@ -47,7 +55,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 
 - **Added new pipeline to perform inventory PR validation** - A new pipeline has been created to seperate out inventory PR validation in CD toolchain. For more information, see [How to opt-in into promotion validation?](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-opt-in)
 
-- **Auto remediation of vulnerabilities using CRA in CC Pipeline** - Added ability to auto remediate vulnurabilities using CRA. For more information, see [Automatically remediating vulnerabilities](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#cd-devsecops-auto-remediate)
+- **Auto remediation of vulnerabilities using CRA in CC Pipeline** - Added ability to auto remediate vulnerabilities using CRA. For more information, see [Automatically remediating vulnerabilities](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#cd-devsecops-auto-remediate)
 
 - **Generation of SBOM in cyclonedx format and its validation** - Added ability to generate and merge SBOM using cyclonedx format and also the bom is validated using `sbom-utility` tool. For more information, see [Generating the software bill of materials (SBOM) in cyclonedx format](/docs/devsecops?topic=devsecops-generate-cyclonedx-sbom)
 

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-12-08"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -140,6 +140,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
 |`ibmcloud-enable-session-keep-alive` | select | Keep the IBMCloud CLI session alive for long running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			|
+|`icr-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for IBM Container Registry. This parameter is used by SLSA attestation.			|Optional			|
 |`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
 |`incident-assignees`		|text		|The assignees for the incident issues (one or more usernames that are separated by a comma). Note that this parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
 |`incident-label`		|text		|The label for new incident issues.	|Optional			|
@@ -171,6 +172,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`signing-key`](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|
 |`skip-inventory-update-on-failure`	|text		|The switch that stops inventory update on a failed CI run.  |Optional			|
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
+|`slsa-attestation`	|select		|The switch that enables SLSA attestations.  |Optional			|
+| `slsa-attestation-public-key` | SECRET | The base64-encoded public key to verify SLSA attestation reports. | Optional |
 |[`sonarqube`](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|
 |[`sonarqube_standby`](#pipeline-parm-sonarqube)		|tool integration		|The standby Sonarqube tool integration that can be used as a fallback.	|Optional			|
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). | Required |

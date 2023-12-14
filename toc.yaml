@@ -18,7 +18,11 @@ toc:
           label: What is DevSecOps?
           href: https://www.ibm.com/cloud/learn/devsecops
       - devsecops_intro.md
-      - devsecops-arch.md
+      - topicgroup:
+          label: DevSecOps architecture
+          topics:
+          - devsecops-arch.md
+          - building-blocks.md
       - devsecops-pipelines.md
       - topicgroup:
           label: DevSecOps practices
@@ -125,6 +129,7 @@ toc:
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
           - devsecops-configuring-va-scan.md
+          - devsecops-configuring-slsa-attestation.md
       - topicgroup:
           label: Working with Git repos
           topics:
@@ -133,12 +138,17 @@ toc:
           - devsecops-set-pr-status.md
       - devsecops-toolchains-secrets.md
       - devsecops-multiple-apps.md
-      - devsecops-scc-toolchains.md
       - devsecops-iam-permissions.md
       - topicgroup:
           label: Tool integrations
           topics:
-          - include: ../ContinuousDelivery/scc_integration.md
+          - topicgroup:
+              label: Security and Compliance Center
+              topics:
+                - include: ../ContinuousDelivery/scc_integration.md
+                  navtitle: Configuring your toolchain
+                - topic: devsecops-scc-toolchains.md
+                  navtitle: Viewing and understanding results
       - topicgroup:
           label: Enhancing security
           topics:
