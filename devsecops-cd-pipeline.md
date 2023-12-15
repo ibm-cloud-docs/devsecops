@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2023-12-15"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -64,6 +64,10 @@ The deployment Bill of Material (BOM) represents all of the artifacts that are d
 
 An evidence summary is created from all of the evidence that was created during the relevant build that led to a deployment. Evidence that is created during the deployment itself is also added to the summary. The evidence summary is added to the change request's description.
 
+You can identify the type of environment as `pre-prod` or `production` based on whether the flag `target-environment-purpose` is set to `pre_prod` or `production`. Evidences are captured in the evidence summary of the production deployment when you set the `pre-prod-evidence-collection` to `1` in `production`, and if the collection was gathered during the pre-prod deployment.
+
+For more information, see [Evidence summary](/docs/devsecops?topic=devsecops-devsecops-evidence-summary#evidence-v2-summary).
+
 ## Prepare and create change request
 {: #cd-devsecops-pipeline-prepcr}
 
@@ -71,12 +75,14 @@ Everything that changes the [baseline](/docs/devsecops?topic=devsecops-cd-devsec
 
 This step creates the change request by attaching the available compliance data based on the [promotion pull request](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelinepr) fields. [Deployment readiness](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt#cd-devsecops-cr-approve) is calculated based on the available evidence in the collected compliance status.
 
+If the pre-prod evidences are captured in the production deployement, pre-prod change requests are linked to the production change request. For more information, see [Data included in change requests](/docs/devsecops?topic=devsecops-cd-devsecops-cr-data).
+
 ## Check change request approval
 {: #cd-devsecops-pipeline-checkcr}
 
-If every compliance check, such as unit tests, Code Risk Analyzer tasks, branch protection, and detect secrets, is successful, the change request is approved automatically, and the task runs successfully.
+If every compliance check is successful, such as unit tests, Code Risk Analyzer tasks, branch protection, and detect secrets, the change request is approved automatically and the task runs successfully. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
 
-If a compliance check fails, the change request state is not approved. You can approve the change request manually and add the `change-request-id` to the environment properties to use the previously created change request in the next run. You can also approve the change request manually and add an emergency label.
+If a compliance check fails, the change request state is not approved. You can [approve the change request manually](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr) and add the `change-request-id` to the environment properties to use the previously created change request in the next run. You can also approve the change request manually and add an emergency label.
 
 ## Deployment
 {: #cd-devsecops-pipeline-deployment}

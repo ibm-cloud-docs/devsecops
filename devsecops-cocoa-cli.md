@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2023
-lastupdated: "2023-11-28"
+lastupdated: "2023-12-15"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -541,6 +541,7 @@ Options:
 --service-environment-detail # brief description of the service environment where change is deployed.
 --pipeline-name    # (Required) name of the pipeline used (for example 'onepipeline | continuous-delivery')
 --pipeline-version # version of pipeline used (for example '9.22.3')
+--validation-record # Pre-prod change request numbers or NA if there is no pre-prod change request for the deployment
 ```
 {: screen}
 
@@ -2041,6 +2042,32 @@ Example output:
    "type": "image",
    "related": []
 }
+```
+{: codeblock}
+
+### cocoa locker asset summary get < URI >
+{: #locker-asset-summary-get}
+
+Collects evidence summary for the given asset from the evidence locker.
+
+Options:
+
+```text
+--scope                   # (Required) Pipeline run ID of the CI piepline where the asset is built
+--environment             # (Required) Name of the environment from which evidences are fetched, if the `service-environment` is `pre_prod`       
+                            This value must be the same as the `target-ennvironment`. Or, if `service-environment` is `prod`, then this value must be the same as the `sporce-ennvironment`
+--service-environment     # Service environment of the asset get summary in deployed environment 
+                            (choices: 'pre_prod', 'dev', 'prod',  default: 'pre_prod')
+```
+{: screen}
+
+Run the command:
+
+```sh
+ cocoa locker asset summary get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
+  --scope 11a1aa11-1a11-11a1-aa11-a11a1a1111a1 \
+  --environment prod \
+  --service-environment prod
 ```
 {: codeblock}
 

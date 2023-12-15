@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2023
-lastupdated: "2023-12-08"
+lastupdated: "2023-12-15"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -253,6 +253,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.	|Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
+|`pre-prod-evidence-collection`	|text		| Set this flag to collect the pre-prod evidences and the change requests in the production deployment (`target-environment-purpose` set to `production`). Default value is `0`. |Optional |
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			|
