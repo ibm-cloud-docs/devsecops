@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-10-27"
+lastupdated: "2023-12-04"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -48,7 +48,39 @@ Use the [`collect-evidence`](/docs/devsecops?topic=devsecops-devsecops-collect-e
 
 In contrast to `v1`, `v2` evidence is stored in a flat hierarchy, where each piece of evidence is identified by its own hash. This hash provides a layer of integrity protection. That is, any modification of the evidence content can be detected. As each piece of evidence is related to one or more assets, the evidence summarization algorithms discover the relevant evidence based on assets (as opposed to pipelines run IDs in `v1`).
 
-Evidence is summarized in the CD pipeline, based on the `provenance` field of each inventory item. For more information, see [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
+Evidence is summarized, based on the following.
+
+- **Pipeline Run ID**: Evidences are scoped based on the pipeline run ID. Scoping sets the context of an evidence.
+- **Asset**: An asset is a fundamental entity that is subjected to rigorous testing and scanning. These assets encompass various forms, such as existing Git commits in repositories to Docker images.
+
+In the CI pipeline, evidence is summarized, based on the following.
+
+- The scope is `pipeline_run_id` of the **current CI run** for the evidence summarization.
+- The asset list gets computed by using the [list_artifact](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts) command that list all the saved artifacts in that run.
+
+In the CD pipeline, evidence is summarized, based on the following.
+
+- The `provenance` field of each inventory item acts as the `asset` for the summarization.
+  We have three types of asset lists: 
+    - **Delta asset list**: Assets which **got modified** from the last deployment in the deployment environment.
+    -	**Non-delta asset list**: Assets which are **not modified** from the last deployment in the deployment environment.
+    -	**Full asset list**: Assets from all the inventory entries coresponding to the deployment environment.
+
+- The `pipeline_run_id` field of each inventory item acts as the `scope` for the summarization.
+    - The CI scope read from the `pipeline_run_id` of the inventory entries.
+    - Thw current `pipeline_run_id` as the CD pipeline scope.
+
+In the CC pipeline, evidence is summarized, based on the following.
+
+- The `provenance` field of each inventory item as the `asset` for the summarization. Assets from all the inventory entries that corespond to the latest on the deployed environment.
+
+- The `pipeline_run_id` field of each inventory item acts as the `scope` for the summarization
+    - The CI scope read from the `pipeline_run_id` of the inventory entries.
+    - The CD scope read from the `CD-pipeline_run_id` tag that is created at the [inventory conclude](/docs/devsecops?topic=devsecops-cd-devsecops-inventory#inventory-conclude).
+    - The current `pipeline_run_id` as the CC pipeline scope.
+
+For more information, see [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
+For more information on `prod` summarization based on pre-prod evidences, see [Collecting evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-collect).
 
 The `v2` evidence summary is calculated by default. 
 
