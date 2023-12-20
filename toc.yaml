@@ -31,6 +31,13 @@ toc:
           - devsecops-peer-review.md
           - devsecops-cos-bucket-evidence.md
           - devsecops-push-pull-based-deployment.md
+      - topicgroup:
+          label: Adopting DevSecOps for your own application or microservice
+          topics:
+          - devsecops-apps-byoa.md
+          - devsecops-custom-scripts.md
+          - devsecops-basics-pipelines-customization.md
+          - devsecops-advanced-pipelines-customization.md
       - devsecops-release-notes.md
   - navgroup:
       id: tutorial
@@ -79,12 +86,6 @@ toc:
          - devsecops-webhook-payloads.md
          - devsecops-dev-mode.md
          - devsecops-run-concurrently.md
-      - topicgroup:
-          label: Adopting DevSecOps for your own application or microservice
-          topics:
-          - devsecops-apps-byoa.md
-          - devsecops-basics-pipelines-customization.md
-          - devsecops-advanced-pipelines-customization.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
       - topicgroup:
@@ -173,7 +174,6 @@ toc:
           - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
       - devsecops-async-stages.md
-      - devsecops-custom-scripts.md
       - devsecops-common-scripts.md
       - devsecops-images.md
       - topicgroup:
