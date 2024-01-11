@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2021, 2023
-lastupdated: "2023-09-01"
+copyright:
+  years: 2021, 2024
+lastupdated: "2024-01-11"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Peer review compliance
 {: #cd-devsecops-peer-review}
 
-Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production. 
+Peer code reviews are a key component of delivering secure and compliant software. The DevSecOps reference implementation helps to enforce the review of code changes before they are merged and promoted to production.
 {: shortdesc}
 
 ## Managing Peer-review Check in CI/CD Toolchains
@@ -63,7 +63,7 @@ The code repository (repo) must have at least two members: one member who has ad
 
 The pipeline collects peer review compliance data during builds and deployments to create the audit trail from code pull/merge request merges to change requests.
 
-In this diagram, PR1, PR2 are the pull/merge requests that are approved before merging. Similarly, for PR4, PR5, and PR7. However, PR3 and PR6, highlighted in red, are merged without an approval, which is a peer review compliance violation. This is captured as evidence. 
+In this diagram, PR1, PR2 are the pull/merge requests that are approved before merging. Similarly, for PR4, PR5, and PR7. However, PR3 and PR6, highlighted in red, are merged without an approval, which is a peer review compliance violation. This is captured as evidence.
 
  ![Data collection](images/data-collection.svg){: caption="Figure 1. Data collection" caption-side="bottom"}
 
@@ -73,12 +73,12 @@ By default, the sample application in the CI toolchain attempts to set the minim
 * [GitLab: Merge request approval rules](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/rules.html)
 
 
-## Data collected in continuous integration build runs 
+## Data collected in continuous integration build runs
 {: #cd-devsecops-ci-data}
 
 This data collection contains a list of all of the commits for the pull/merge requests that were merged in app repos since the last build.
 
-Pull request data is collected directly from the app repos. Data for each pull/merge request that is related to commits between the repo commit that triggered the previous build and the currently available commit is collected. 
+Pull request data is collected directly from the app repos. Data for each pull/merge request that is related to commits between the repo commit that triggered the previous build and the currently available commit is collected.
 
 Commits that do not contain a pull/merge request create a compliance incident issue in the following releases of the pipeline. You cannot commit directly to the master branch.
 {: important}
@@ -95,10 +95,10 @@ A compliance incident typically holds the following information:
 Collected data is saved as an [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) artifact, which is uploaded to the evidence locker, and then referred to in the evidence itself. The final evidence result is determined by the approved pull/merge requests. Unapproved, but merged pull/merge requests fail this type of evidence.
 
 
-## Data that is collected in continuous deployment runs 
+## Data that is collected in continuous deployment runs
 {: #cd-devsecops-cd-data}
 
-This data collection contains a list of all of the pull/merge requests that were merged in app repos since the last deployment. 
+This data collection contains a list of all of the pull/merge requests that were merged in app repos since the last deployment.
 
 Pull request data is collected from the evidence locker and the incident issue repo.
 
@@ -110,7 +110,7 @@ The app repos are not accessed during this data collection. Because continuous d
 {: important}
 
 
-## Change request content 
+## Change request content
 {: #cd-devsecops-cr-content}
 
 The following data is included in the automatically generated change request:
@@ -134,6 +134,25 @@ Pull request incidents are considered vulnerabilities because they indicate that
 
 The author of the pull/merge request and the person who closes the pull/merge request incident issue cannot be the same person.
 {: important}
+
+## Troubleshooting
+
+Case 1:
+
+##### Problem
+
+Failure in `collect_peer_review_commits` in `prod-start` stage of the CD pipeline results in other stages failing with errors.
+When the following error occurs in the `prod_start` stage
+```
+| ERROR | 2023-12-20T07:00:48.978Z | index.ts:25:14 | The inventory entry has no such property ('pipeline_run_id').
+```
+
+##### Solution
+
+Users who possess inventory entries that are not supported by the one-pipeline must add an [ignore file in the inventory](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-inventory#how-to-exclude-files-and-directories-in-the-inventory). This action ensures that those files are not considered for any computations.
+
+
+
 
 ## Known issues
 {: #pr-known-issues}
