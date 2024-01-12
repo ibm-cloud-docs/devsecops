@@ -149,6 +149,9 @@ Except for the start stage, each stage of a CI, CD, or CC pipeline can be custom
 
 Though Bash scripts are provided as samples, you can build, test, and deploy your application by using other languages like Python or Go. Make sure you're using the correct `image` for each stage. Refer to the [Docker images in DevSecOps pipelines section](#docker-images-in-devsecops-pipelines).
 
+ Refer to the table [Stages and tasks](#devsecops-ci-pipeline-stages) that summarize various stages of the CI Pipeline. The table also provides a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection that is required by the stage execution.
+
+
 #### Migrating from Jenkins or Travis to DevSecOps
 {: #migrate-from-jenkins-travis}
 
@@ -206,6 +209,8 @@ The DevSecOps pipeline provides the path to the root folder of [the commons libr
 ```bash
 source "${COMMONS_PATH}/<script folder in commons>/<script file name>
 ```
+
+Refer to the table [Stages and tasks](#devsecops-cd-pipeline-stages) that summarizes various stages of the CD Pipeline. The table also provide a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection required by the stage execution.
 
 ### Environment properties
 {: #pipeline-parameters}

@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-12-15"
+  years: 2021, 2024
+lastupdated: "2024-01-12"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -21,16 +21,30 @@ The continuous deployment pipeline generates all of the evidence and change requ
 ## Stages and tasks
 {: #cd-devsecops-pipeline-stages}
 
-Review the following table to learn more about the stages and tasks that are part of the continuous deployment pipeline.
+The table below lists the tasks run in a CD Pipeline. In addition the table also provides an overview of each of these stages:
 
-|Task or stage |Short description	|Customizable in `.pipeline-config.yaml` |
-|:----------|:------------------------------|:------------------|
-|`start` 		|Set up the pipeline environment. 		|No		|
-|`setup`		|Set up your build and test environment.		|Yes			|
-|`change-request`		|Generate the change request and create the evidence summary. 		|No		|
-|`deployment`		|Deploy the build artifacts to the environment, such as staging or production.		|Yes		|
-|`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			|
-|`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|Yes			|
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file. 
+
+- **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
+
+- **Customisation permissible**: This indicates whether users have the flexibility to modify or replace the default behavior of the stage by inserting a custom script in the `.pipeline-config.yaml` file.
+
+- **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
+
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection. 
+
+- **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
+
+|Task or stage |Short description	|Customisation permissible in `.pipeline-config.yaml` | Default Reference Implementation |Evidence Collection |Skip permissible |
+|:----------|:------------------------------|:------------------|:------------------|:------------------|:------------------|
+|`start` 		|Set up the pipeline environment. 		|No		| Yes | NA | No |
+|`setup`		|Set up your build and test environment.		|Yes			| No | NA | No |
+|`verify-peer-review`		|Set up your build and test environment.		|Yes			| No | Pipeline | Yes |
+|`verify-artifact`		|Set up your build and test environment.		|Yes			| No | Pipeline | Yes |
+|`change-request`		|Generate the change request and create the evidence summary. 		|No		| Yes | Pipeline | No |
+|`deployment`		|Deploy the build artifacts to the environment, such as staging or production.		|Yes		| No | NA | No |
+|`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			| No | **User** | Yes | 
+|`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|Yes			| Yes | Pipeline | Yes |
 {: caption="Table 1. Pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
