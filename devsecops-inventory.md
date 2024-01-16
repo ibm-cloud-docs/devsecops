@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-11-21"
+  years: 2021, 2024
+lastupdated: "2024-01-16"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -24,7 +24,7 @@ Learn about the inventory concepts such as inventory structure, content model, r
 The Inventory model tracks the following items:
 
 * What artifact is deployed to which environment or region
-* Where was an artifact that is built (pipeline run, commit sha)
+* Where is the location of an artifact that is built (pipeline run, commit sha)
 * What is the signature of the built artifact
 
 Based on this data, you can track evidence during artifact builds and deployments and help Change Management and Compliance audits.
