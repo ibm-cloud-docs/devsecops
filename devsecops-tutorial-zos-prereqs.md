@@ -1,16 +1,16 @@
 ---
 
 copyright: 
-  years: 2022, 2024
+  years: 2024
 lastupdated: "2024-01-17"
 
-keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
+keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters, z/OS
 
 
 subcollection: devsecops
 
 content-type: tutorial
-services: containers, ContinuousDelivery
+services: z/OS, containers, ContinuousDelivery
 account-plan: paid
 completion-time: 1h
 
@@ -19,7 +19,7 @@ completion-time: 1h
 {{site.data.keyword.attribute-definition-list}}
 
 # Part 1: Set up prerequisites
-{: #tutorial-cd-devsecops}
+{: #tutorial-zos-prereqs}
 {: toc-content-type="tutorial"}
 {: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
@@ -28,7 +28,7 @@ This tutorial is part 1 of a 4-part tutorial series where you learn {{site.data.
 {: shortdesc}
 
 ## Before you begin
-{: #devsecops-tutorial-prereqs}
+{: #devsecops-tutorial-zos-prereqs}
 
 See the following documentation to get more information about DevSecOps and its implementation in {{site.data.keyword.contdelivery_short}}:
 
@@ -53,13 +53,28 @@ Ensure that all of the secret values that you need are stored in a secrets manag
 {: #tutorial-part1-cluster}
 {: step}
 
-Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
+Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. While you are evaluating the service, you can use the **Free** pricing plan. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
 
 ## Create a {{site.data.keyword.registryshort_notm}} namespace
 {: #tutorial-part1-namespace}
 {: step}
 
 Create an [{{site.data.keyword.registrylong}} namespace](/registry/namespaces){: external}. {{site.data.keyword.registrylong_notm}} provides a multi-tenant private image registry that you can use to store and share your container images with users in your {{site.data.keyword.cloud_notm}} account. Select the location for your namespace, and click **Create**. [Learn more.](/docs/Registry?topic=Registry-getting-started)
+
+## Create a {{site.data.keyword.cos_full_notm}} instance and bucket
+{: #tutorial-part1-cos}
+{: step}
+
+Create an [{{site.data.keyword.cos_full_notm}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). The Cloud Object storage offers highly scalable, resilient and secure service to store and manage your data. [Learn more.](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
+
+## Create a z/OS virtual server instance
+{: #tutorial-part1-namespace}
+{: step}
+
+IBM® Wazi as a Service is a cloud-ready z/OS environment that fully integrates into any enterprise-wide standard DevOps pipeline. You can use the z/OS development and test stock image, or create and deploy a custom image with Wazi Image Builder. Then, you can create and set up a z/OS virtual server instance in IBM Cloud Virtual Private Cloud (VPC) from the IBM Cloud console.
+
+Follow the [Wazi as a Service journey map](https://www.ibm.com/docs/en/wazi-aas/1.0.0?topic=use-cases){: external} to get started.
+
 
 ## Complete optional steps
 {: #tutorial-part1-optional}
@@ -71,7 +86,6 @@ Complete any or all of the following optional steps. If you don't complete these
 1. Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Save the API key value by either copying, downloading it or adding it to your vault. Alternatively, you can create the API key during the template-guided setup process.
 1. Validate that the [recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
 1. [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
-1. Create an [{{site.data.keyword.cos_full_notm}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). [Learn more.](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
 1. Create an [{{site.data.keyword.satellitelong_notm}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) if you want to deploy your application to multiple clusters that are grouped as a {{site.data.keyword.satelliteshort}} cluster group by using {{site.data.keyword.satelliteshort}} Config. [Learn more.](/docs/satellite?topic=satellite-cluster-config)
 
 If you want to automatically set up the DevSecOps infrastructure for your toolchains by using an [{{site.data.keyword.bplong}} workspace](/docs/schematics?topic=schematics-about-schematics) and a Terraform-based quick start template, skip the previous steps and go to [Set up your DevSecOps infrastructure and CI toolchain for deploying a secure app](/docs/apps?topic=apps-tutorial-apps-devsecops). After the prerequisites and CI toolchain are successfully configured, proceed to the [Continuous Deployment (CD) toolchain introduction](#devsecops-cd-toolchain-intro).
