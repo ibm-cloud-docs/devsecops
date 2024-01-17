@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2021, 2024
-lastupdated: "2024-01-12"
+lastupdated: "2024-01-17"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -58,20 +58,20 @@ To access the deployment delta in your deployment scripts, you can use the follo
 
 ```bash
 # return a JSON file path with an array of inventory entries that were changed
-get_env DEPLOYMENT_DELTA_PATH 
+get_env DEPLOYMENT_DELTA_PATH
 
 # return a JSON file path with an array of inventory entries that were deleted
-get_env DEPLOYMENT_DELTA_DELETIONS_PATH 
+get_env DEPLOYMENT_DELTA_DELETIONS_PATH
 
 # returns a JSON file path with an array of all inventory entries
-get_env INVENTORY_ENTRIES_PATH 
+get_env INVENTORY_ENTRIES_PATH
 
 ```
 
 ## Calculate deployment BOM
 {: #cd-devsecops-pipeline-bom}
 
-The deployment Bill of Material (BOM) represents all of the artifacts that are deployed as part of a single change request. After the deployment delta is calculated, the pipeline creates the deployment BOM based on these items. 
+The deployment Bill of Material (BOM) represents all of the artifacts that are deployed as part of a single change request. After the deployment delta is calculated, the pipeline creates the deployment BOM based on these items.
 
 ## Collect evidence summary
 {: #cd-devsecops-pipeline-collect}
@@ -86,6 +86,11 @@ For more information, see [Evidence summary](/docs/devsecops?topic=devsecops-dev
 {: #cd-devsecops-pipeline-prepcr}
 
 Everything that changes the [baseline](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) must be traced by way of a change request. These changes include updates to the existing code level, changes to the configuration, and updates of the worker nodes. Collection of [peer review compliance](/docs/devsecops?topic=devsecops-cd-devsecops-peer-review) data is based on the data that is accessible in the inventory, the evidence locker, and the incident issue repo.
+
+Use`get_env CHANGE_REQUEST_ID` to leverage the value of Change Request ID in the subsequent stages.
+
+ Do not change the value of the variable using `set_env` as this is intended for internal implementation only.
+ {: important}
 
 This step creates the change request by attaching the available compliance data based on the [promotion pull request](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelinepr) fields. [Deployment readiness](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt#cd-devsecops-cr-approve) is calculated based on the available evidence in the collected compliance status.
 
