@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2023
-lastupdated: "2023-12-12"
+  years: 2022, 2024
+lastupdated: "2024-01-17"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -53,7 +53,7 @@ Ensure that all of the secret values that you need are stored in a secrets manag
 {: #tutorial-part1-cluster}
 {: step}
 
-Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. While you are evaluating the service, you can use the **Free** pricing plan. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
+Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
 
 ## Create a {{site.data.keyword.registryshort_notm}} namespace
 {: #tutorial-part1-namespace}
