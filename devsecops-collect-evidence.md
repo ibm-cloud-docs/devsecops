@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-12-13"
+  years: 2021, 2024
+lastupdated: "2024-01-17"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -116,7 +116,17 @@ The current implementation currently supports the following tools (provided as t
 - `xray` JFrog Xray - Vulnerability Scanning & Container Security
 - `owasp-zap` OWASP Zed Attack Proxy (ZAP)
 - `owasp-zap-ui` OWASP Zed Attack Proxy UI (ZAP UI)
-- `sonarqube` 'SonarQube scan
+- `sonarqube` SonarQube scan
+- `peer-review` Peer Review Scan
+- `twistlock` TwistLock
+- `mend` Mend Scan
+- `checkov` Checkov Scan
+- `cra-tf` Code Risk Analyzer for Terraform
+- `tfsec` Terraform Security Scanner
+- `fips-scanner` Fips (Federal Information Processing Standards) Scanner
+- `contrast-sast` Contrast Sast (Static Application security testing)
+- `detect-secrets` Detect Secrets
+- `sysdig` Sysdig Scan
 
 If the `collect-evidence` script is called with a tool type that is not supported, the script doesn't attempt to process the attachments. Additionally, the issue handling is skipped, and the evidence collection is not stopped. 
 
@@ -197,10 +207,12 @@ type
 {: #batched-evidence-collection}
 
 Every piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That could potentially lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
+At the time of evidence collection, the evidence is not saved in the evidence locker, but written to a local cache to be retrieved and saved to the locker at a later point. Due to this the evidence cannot be viewed using the `cocoa locker evidence get` command at this point.
+However the attachments (if any) are saved to the evidence locker during evidence collection and can be viewed using the attachment URL or `cocoa locker attachment get` command.
 
-Add the environment property `batched-evidence-collection` in CI, CD, and CC pipelines, and set it to `1` to enable this flow.
+This feature is controlled by the flag `batched-evidence-collection` and is enabled by default in CI, CD, and CC pipelines. You can disable it by setting the environment property `batched-evidence-collection` to 0.
 
-If you are enabling this flag, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
+When the flag is enabled, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
 {: note}
 
 
