@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-12-15"
+  years: 2023, 2024
+lastupdated: "2024-01-17"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1670,6 +1670,17 @@ Currently supported scan result files:
 - OWASP ZAP (option `--type owasp-zap`)
 - OWASP ZAP UI (option `--type owasp-zap-ui`)
 - Twistlock (option `--type twistlock`)
+- Peer Review Scan (option `--type peer-review`)
+- GoLang Security Scan (option `--type gosec`)
+- SonarQube Scan (option `--type sonarqube`)
+- Mend Scan (option `--type mend`)
+- Checkov (option `--type checkov`)
+- CRA Vulnerability scan for Terraform (option `--type cra-tf`)
+- Terraform Security Scan (option `--type tfsec`)
+- Fips Scanner (option `--type fips-scanner`)
+- Contrast Sast (option `--type contrast-sast`)
+- Detect Secrets (option `--type detect-secrets`)
+- Sysdig (option `--type sysdig`)
 
 For more information on Container Registry VA and result format, see [Vulnerability Advisor for IBM Cloud Container Registry](https://cloud.ibm.com/apidocs/container-registry/va){: external}.
 For more information on the CRA Vulnerability scanner, see the [Configuring Code Risk Analyzer](https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-configure-cra-repos){: external}documentation.

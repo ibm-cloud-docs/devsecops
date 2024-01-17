@@ -15,7 +15,7 @@ subcollection: devsecops
 # Pull request pipeline
 {: #cd-devsecops-pr-pipeline}
 
-Pull request pipeline runs set compliance status checks on a pull request for the specified application repository.
+Pull request pipeline runs a set of compliance status checks on a pull request for the specified application repository.
 {: shortdesc}
 
 Attempts to merge a pull request into the master branch might be blocked because of failed compliance status checks. Opening or updating a pull request against the master branch triggers the pull request pipeline to run. You can run your own setup for the pipelines and tests in [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
@@ -23,14 +23,28 @@ Attempts to merge a pull request into the master branch might be blocked because
 ## Stages and tasks
 {: #cd-devsecops-pipeline-order}
 
-|Task or stage |Short description	|Customizable in `.pipeline-config.yaml` |
-|:----------|:------------------------------|:------------------|
-|`start` 		 |Set up the pipeline environment. 		|No		|
-|`setup`		 |Set up your build and test environment.			|Yes|
-|`detect-secrets`		|Run detect secrets scan on the application code.		|Yes		|
-|`unit-tests`|Run unit tests and app tests on app code.		|Yes |
-|`compliance-checks` 	 |Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		|
-|`finish`| Consolidate the pipeline status. | Yes |
+The table below lists the tasks run in a PR Pipeline. In addition, the table also provides an overview of each of these stages:
+
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
+
+- **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
+
+- **Customisation permissible**: This indicates whether users have the flexibility to modify or replace the default behavior of the stage by inserting a custom script in the `.pipeline-config.yaml` file.
+
+- **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
+
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection.
+
+- **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the ``.pipeline-config.yaml``. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
+
+|Task or stage |Short description	| Customisation permissible in `.pipeline-config.yaml` | Default Reference Implementation | Evidence Collection Requirement|Skip permissible|
+|:----------|:------------------------------|:------------------|--|--|--|
+|`start` 		 |Set up the pipeline environment. 		|No		|Yes | NA | No |
+|`setup`		 |Set up your build and test environment.			|Yes| No | NA |No|
+|`detect-secrets`		|Run detect secrets scan on the application code.		|Yes		| Yes | NA |No|
+|`unit-tests`|Run unit tests and app tests on app code.		|Yes | No | NA |Yes|
+|`compliance-checks` 	 |Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		| Yes | NA |Yes|
+|`finish`| Consolidate the pipeline status. | Yes | Yes | NA |Yes|
 {: caption="Table 1. Pipeline order" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).

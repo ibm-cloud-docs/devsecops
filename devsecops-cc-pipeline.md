@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2023-11-29"
+  years: 2021, 2024
+lastupdated: "2024-01-12"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -22,20 +22,52 @@ The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic
 
 ## Stages and tasks
 {: #devsecops-cc-pipeline-stages}
+The table below lists the tasks run in a CC Pipeline. In addition the table also provides an overview of each of these stages:
 
-|Task or stage |Short description	|Customizable in `.pipeline-config.yaml` |
-|:----------|:------------------------------|:------------------|
-|`start` 		|Set up the pipeline environment. 		|No		|
-|`setup`		|Set up your build and test environment.		|Yes			|
-|`detect-secrets`		|Run detect secrets scan on the application code.		|Yes		|
-|`static-scan`		|Run static scan code on the application code.		|Yes		|
-|`dynamic-scan` 		|Run dynamic scan on the application. 		|Yes			|
-|`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		|
-|`scan-artifact` 		|Scan the built artifacts.   	|Yes			|
-|`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			|
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file. 
+
+- **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
+
+- **Customisation permissible**: This indicates whether users have the flexibility to modify or replace the default behavior of the stage by inserting a custom script in the `.pipeline-config.yaml` file.
+
+- **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
+
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection. 
+
+- **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
+
+|Task or stage |Short description	|Customisation permissible in `.pipeline-config.yaml` | Default Reference Implementation |Evidence Collection |Skip permissible |
+|:----------|:------------------------------|:------------------|--|--|--|
+|`start` 		|Set up the pipeline environment. 		|No		| Yes | Pipeline | No |
+|`setup`		|Set up your build and test environment.		|Yes			| No | No | No |
+|`detect-secrets`		|Run detect secrets scan on the application code.		|Yes		| Yes | Pipeline | No |
+|`static-scan`		|Run static scan code on the application code.		|Yes		| Yes | Pipeline | Yes |
+|`dynamic-scan` 		|Run dynamic scan on the application. 		|Yes			| Yes | Pipeline | Yes |
+|`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		| Yes | Pipeline | Yes |
+|`scan-artifact` 		|Scan the built artifacts.   	|Yes			| Yes | Pipeline | Yes |
+|`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			| Yes | Pipeline | Yes |
 {: caption="Table 1. Continuous compliance pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
+
+## Stages and evidences
+{: #devsecops-cc-pipeline-evidences}
+
+The table below provides a relationship between various types of evidence and the specific stages within the pipeline where their collection takes place.
+
+|Task or stage |Evidence Type |
+|:----------|:------------------------------|
+|`start` 		| NA |
+|`setup`		| NA |
+|`detect-secrets`		| `com.ibm.detect_secrets` |
+|`static-scan`		|`com.ibm.static_scan` |
+|`compliance-checks` 		| `com.ibm.code_bom_check`, `com.ibm.code_cis_check`, `com.ibm.code_vulnerability_scan`, `com.ibm.branch_protection` |
+|`dynamic-scan` 		| `com.ibm.dynamic_scan` |
+|`scan-artifact` 		| `com.ibm.cloud.image_vulnerability_scan`|
+|`finish` 		| `com.ibm.pipeline_logs`, `com.ibm.pipeline_run_data` |
+{: caption="Table 2. Continuous integration stages and associated evidences" caption-side="top"}
+
+For more information about how to collect evidences within the customizable user stages by using the `collect-evidence` script, see [collect-evidence script](/docs/devsecops?topic=devsecops-collect-evidence).
 
 ## Processing inventory for artifacts and repositories
 {: #devsecops-cc-pipeline-start}

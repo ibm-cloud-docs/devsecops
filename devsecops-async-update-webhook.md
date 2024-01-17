@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-03-29"
+  years: 2022, 2023
+lastupdated: "2023-01-16"
 
 keywords: DevSecOps, async stage webhooks, ibm cloud
 
@@ -26,7 +26,7 @@ subcollection: devsecops
 # Updating the async stage webhooks
 {: #update-async-webhook}
 
-If you need to update the async webhook token in the pipeline for some reason (for example secret token update), take the following steps:
+If you need to update the async webhook token in the pipeline, for example, to update a secret token, complete the following steps:
 {: shortdesc}
 
 1. Find the async webhook trigger, it is added to the triggers of your pipeline, named "Subpipeline Webhook Trigger"

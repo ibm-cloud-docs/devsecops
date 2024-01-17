@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-09-08"
+  years: 2023, 2024
+lastupdated: "2024-01-11"
 
 keywords: DevSecOps, x-force, vulnerability-advisor, IBM Cloud
 
@@ -30,7 +30,7 @@ When you have the necessary credentials, add the following environment variables
 | Name | Type | Description |
  |--|--|--|
  | `xforce-url` | TEXT | The API URL for {{site.data.keyword.IBM_notm}} X-Force, used to get vulnerability ratings. Example: `https://api.xforce.ibmcloud.com/vulnerabilities/` |
- | `xforce-api-key` | TEXT | X-Force API key. |
+ | `xforce-api-key` | SECRET | X-Force API key. |
  | `xforce-password` | SECRET | X-Force Password. |
 {: caption="Table 1. Vulnernability environment variables" caption-side="top"}
 
