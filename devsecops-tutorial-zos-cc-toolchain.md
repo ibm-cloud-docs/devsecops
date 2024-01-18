@@ -1,8 +1,8 @@
----
+<zos>---
 
 copyright: 
   years: 2024
-lastupdated: "2024-01-17"
+lastupdated: "2024-01-18"
 
 keywords: tekton, pipeline, toolchain, CC, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters, z/OS
 
@@ -331,3 +331,4 @@ You might notice that the CI and CC pipeline have many common steps. The scans a
 | The `summary.json` file is not generated at the end of each CI pipeline run. | The `summary.json` file is not generated at the end of each CI pipeline run. |
 | It includes steps like app image creation, image signing, and deploy to dev cluster. This in turn creates inputs for the CD pipeline.  | It runs only scans and checks that are needed for compliance testing. |
 {: caption="Table 1. Differences in the CI and CC pipelines" caption-side="bottom"}
+</zos>

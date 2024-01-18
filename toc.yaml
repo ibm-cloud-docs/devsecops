@@ -52,7 +52,7 @@ toc:
           - topic: devsecops-tutorial-cd-toolchain.md
             navtitle: "Part 3: Set up a CD toolchain"
           - topic: devsecops-tutorial-cc-toolchain.md
-            navtitle: "Part 4: Set up a CC toolchain"
+            navtitle: "Part 4: Set up a CC toolchain"<zos>
       - topicgroup:
           label: Develop and deploy a z/OS app with DevSecOps practices
           topics:
@@ -63,7 +63,7 @@ toc:
           - topic: devsecops-tutorial-zos-cd-toolchain.md
             navtitle: "Part 3: Set up a CD toolchain for z/OS"
           - topic: devsecops-tutorial-zos-cc-toolchain.md
-            navtitle: "Part 4: Set up a CC toolchain for z/OS"
+            navtitle: "Part 4: Set up a CC toolchain for z/OS"</zos>
       - topicgroup:
           label: Develop and deploy secure IaC with DevSecOps practices
           topics:
