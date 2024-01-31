@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-12-08"
+lastupdated: "2024-01-24"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,28 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: shortdesc}
+## 24 January 2024
+{: #devsecops-Jan2024}
+{: release-note}
+
+Switching from SNYK to Clair database
+:   The Code Risk Analyzer tool now uses the Clair database to identify the vulnerabilities.
+
+Removal of `pipeline.data`
+:   `pipeline.data`, which is used to share environment variables across the pipeline, is no longer available.
+
+Pre-prod evidence collection
+:   According to the FedRAMP requirements, pre-prod change requests must be linked to the production change request and pre-prod evidence should be included in the production change of the request summary. To meet these requirements, we've developed a new feature to collect pre-prod evidence. For more information, see [Collect evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-collect).
+
+SLSA attestation
+:   You can now attest images built in CI pipeline with SLSA level 3 attestation. For more information, see [Configuring collection of SLSA attestations for images](/docs/devsecops?topic=devsecops-cd-devsecops-slsa).
+
+Collection evidences for multiple assets
+:   You can now collect evidence for multiple assets. For more information, see [Multiple assets in collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#multi-asset-evidence-collection).
+
+Support for Security and Compliance Center push API
+:   You can now push results to Security Control Center. For more information please see the [Security and Compliance Center integration docs](/docs/devsecops?topic=devsecops-cd-devsecops-scc-toolchains).
+
 
 ## 08 Dec 2023
 {: #devsecops-Dec2023}
@@ -98,7 +120,7 @@ DevSecOps Continuous Integration for Infrastructure as Code is available as a To
 {: #devsecops-oct0522}
 {: release-note}
 
-- Amber task support for pipelines to notify users that a pipeline has a non-fatal failure. 
+- Amber task support for pipelines to notify users that a pipeline has a non-fatal failure.
 - Performance improvements in the CD pipeline change request flow.
 
 
@@ -129,7 +151,7 @@ DevSecOps Continuous Integration for Infrastructure as Code is available as a To
 {: #devsecops-jun2422}
 {: release-note}
 
-- Enabled DevOps Insights integration for the continuous compliance (CC) template. 
+- Enabled DevOps Insights integration for the continuous compliance (CC) template.
 
 If you have an existing CC toolchain, you can set the [`doi-toolchain-id`](/docs/devsecops?topic=devsecops-tutorial-cc-toolchain#tutorial-cc-toolchain-insights) and `doi-environment` properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain.
 {: note}
@@ -155,7 +177,7 @@ The deployment BOM that is attached in a generated Change Request was missing in
 {: #devsecops-may1322}
 {: release-note}
 
-Added support to the Continuous Integration and Continuous Compliance pipelines for [incident issues](/docs/devsecops?topic=devsecops-incident-issues), such as vulnerabilities and CVEs that are related to creating, storing, updating, and closing those issues. With this feature, you can set due dates for issues, add default assignees, and filter issues by using labels. 
+Added support to the Continuous Integration and Continuous Compliance pipelines for [incident issues](/docs/devsecops?topic=devsecops-incident-issues), such as vulnerabilities and CVEs that are related to creating, storing, updating, and closing those issues. With this feature, you can set due dates for issues, add default assignees, and filter issues by using labels.
 
 ## 24 March 2022
 {: #devsecops-mar2422}

@@ -83,6 +83,7 @@ If you want to automatically set up the DevSecOps infrastructure for your toolch
 * [Getting started with clusters](/docs/containers?topic=containers-getting-started)
 * [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
 * [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started)
+* [Getting started with IBM Wazi as a Service](https://www.ibm.com/docs/en/wazi-aas/1.0.0?topic=overview){: external}
 
 ## Looking for help?
 {: #tutorial-part1-help}
