@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-01-16"
+lastupdated: "2024-02-08"
 
 keywords: DevSecOps, inventory model, inventory
 
@@ -363,7 +363,7 @@ For more information about working with Git repos, see these example scenarios:
 
 ## How to Exclude Files and Directories in the Inventory
 
-By default, One-Pipeline excludes `.md` files in the inventory by default. Create a file named `.inventoryignore` in your Inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root. However, if you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
+By default, One-Pipeline excludes hidden files and `.md` files in the inventory by default. Create a file named `.inventoryignore` in your Inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root. However, if you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
 
 For example, if your file is named `.custominventoryignore`, add an environment variable `inventory-ignore-file` with the value `custominventoryignore`.
 

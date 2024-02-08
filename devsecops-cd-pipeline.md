@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-01-31"
+lastupdated: "2024-02-08"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -39,8 +39,8 @@ The table below lists the tasks run in a CD Pipeline. In addition the table also
 |:----------|:------------------------------|:------------------|:------------------|:------------------|:------------------|
 |`start` 		|Set up the pipeline environment. 		|No		| Yes | NA | No |
 |`setup`		|Set up your build and test environment.		|Yes			| No | NA | No |
-|`verify-peer-review`		|Reviews whether the pull requests intended for the current deployment have been approved. This stage generates a list of pull requests linked to the ongoing deployment. If any pull requests remain unapproved, the deployment is halted.	|Yes			| Yes | Pipeline | Yes |
-|`verify-artifact`		|Validate the correct signing of the image scheduled for deployment. If the image lacks a proper signature, the deployment is obstructed, and the corresponding evidence collection process will be initiated.		|Yes			| Yes | Pipeline | Yes |
+|`verify-peer-review`		|Ensure that the pull requests intended for the current deployment have been approved. This stage will generate a list of pull requests linked to the ongoing deployment. If any pull requests remain unapproved, the deployment will be halted.	|Yes			| Yes | Pipeline | Yes |
+|`verify-artifact`		|Validate the correct signing of the image scheduled for deployment. If the image lacks proper signature, the deployment will be obstructed, and the corresponding evidence collection process will be initiated.		|Yes			| Yes | Pipeline | Yes |
 |`change-request`		|Generate the change request and create the evidence summary. 		|No		| Yes | Pipeline | No |
 |`deployment`		|Deploy the build artifacts to the environment, such as staging or production.		|Yes		| No | NA | No |
 |`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			| No | **User** | Yes |
