@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-01-11"
+lastupdated: "2024-02-14"
 
 keywords: DevSecOps, x-force, vulnerability-advisor, IBM Cloud
 
@@ -14,6 +14,14 @@ subcollection: devsecops
 
 # Configuring IBM Cloud Vulnerability Advisor scans
 {: #cd-devsecops-va-scans}
+
+To scan container images in `icr.io` and report on the vulnerabilities that are present in those images, you can use the IBM Cloud Vulnerability Advisor. This scan is run as part of the scan-artifact stage of CI and CC pipelines. This scan runs for each [container image](https://github.ibm.com/docs/devsecops?topic=devsecops-devsecops-pipelinectl#pipelinectl-container-images) in `icr.io` you have saved to the pipeline by using the save_artifact method. For more information, see [save_artifact](https://github.ibm.com/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact).
+
+The following keys are required for save_artifact to scan each image with the IBM Cloud Vulnerability Advisor:
+
+- `type`: must be set to the image
+- `name`: A fully qualified name for the container image. For example, names used for pulling the docker.
+- `digest`: The sha256 digest for the container image
 
 The IBM Cloud Vulnerability Advisor checks the security status of container images that are provided by IBM, third parties, or added to your organization's registry namespace. The DevSecOps CI/CC pielines uses the IBM Cloud VA Scan to detect vulnerabilities within the Docker Container Images generated and scanned within the pipelines.
 
