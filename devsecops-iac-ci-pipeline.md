@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-11-06"
+  years: 2021, 2024
+lastupdated: "2024-02-15"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -183,7 +183,7 @@ The parameters to configure the scripts for the deployment action are described 
 | `schematics-workspace-resource-group` | Defaults to the resource group of the toolchain. | Resource group to be used for the schematics workspace creation. |
 | `schematics-workspace-region` | Defaults to the region of the toolchain. | Region to be used for the schematics workspace creation. |
 | `schematics-workspace-netrc` | Computed from known repositories. | Value for the `netrc` configuration of the schematics workspace to be created. For more information, see [Supporting to download modules from private remote host](/docs/schematics?topic=schematics-download-modules-pvt-git). |
-| `schematics-workspace-terraform-version` | `terraform_v1.1` | Terraform version used for the schematics workspace to be created. See [Overview of Schematics images and packaged Terraform providers](/docs/schematics?topic=schematics-version-constraints#schematics-image-ov). |
+| `schematics-workspace-terraform-version` | Defaults to the schematics terraform version retrieved using `ibmcloud schematics version --output JSON` | Terraform version used for the schematics workspace to be created. See [Overview of Schematics images and packaged Terraform providers](/docs/schematics?topic=schematics-version-constraints#schematics-image-ov). |
 {: caption="Table 8. Configuration parameters to use Schematics as deployment tool" caption-side="top"}
 
 To configure the scripts in the IaC CD deployment process, define the parameter that is scoped for a given inventory entry. To specify `Schematics as deployment tool` related environment properties for a given scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the all the schematics-related environment entries (except `schematics-ibmcloud-api-key`).

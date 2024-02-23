@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2022, 2023
-lastupdated: "2023-08-07"
+copyright:
+  years: 2022, 2024
+lastupdated: "2024-02-20"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -36,7 +36,7 @@ Before you begin part 2 of this tutorial series, ensure that you complete the fo
 1. Start the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/). The console is the starting point of this tutorial.
 
 ## Continuous Integration (CI) toolchain for Infrastructure as Code (IaC) introduction
-{: #devsecops-tutorial-iac-ci-intro} 
+{: #devsecops-tutorial-iac-ci-intro}
 
 The CI toolchain implements the following best practices:
 
@@ -76,7 +76,7 @@ Use one of the following options to access the template for the CI toolchain:
 
 * Click **Create toolchain**.
 
-   [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https://github.ibm.com/one-pipeline/iac-compliance-ci-toolchain&env_id=ibm:yp:us-south){: external}
+   [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https://us-south.git.cloud.ibm.com/open-toolchain/iac-compliance-ci-toolchain&env_id=ibm:yp:us-south){: external}
 
 * From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/){: external}, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the **Create a Toolchain** page, click **CI - Develop secure infrastructure as code with DevSecOps practices**.
 
@@ -95,7 +95,7 @@ Review the default information for the toolchain settings:
 {: #devsecops-tutorial-iac-ci-tools}
 {: step}
 
-You must configure multiple repositories during the guided setup, as described in the following sections.
+ Configure multiple repositories during the guided setup, as described in the following sections.
 
 You can clone the sample repositories or you can use your own, but the toolchain supports {{site.data.keyword.gitrepos}} repositories only.
 {: note}
@@ -112,7 +112,7 @@ Enter a name for the IBM-hosted {{site.data.keyword.gitrepos}} repository that i
 
 The region of the repository remains the same as the region of the toolchain.
 
-If you want to link an existing infrastructure code repository for the toolchain, select **Bring your own infrastructure code**, and provide it as input to the **Repository URL** field. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. For more information, see [Bringing your own infrastructure code to DevSecOps](https://github.ibm.com/one-pipeline/hello-iac-sample/blob/main/README.md){: external}.
+To link an existing infrastructure code repository for the toolchain, select **Bring your own infrastructure code**, and provide it as input to the **Repository URL** field. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. For more information, see [Bringing your own infrastructure code to DevSecOps](https://us-south.git.cloud.ibm.com/open-toolchain/hello-iac-sample/blob/main/README.md){: external}.
 
 ### Inventory
 {: #devsecops-tutorial-iac-ci-inventory}
@@ -279,7 +279,7 @@ Custom scripts are extension points in the pipeline where adopters, teams, and u
 
 Custom scripts control the pipeline stages. Use the `pipeline-config.yaml` configuration file to configure the behavior of stages, script content, and the base image that runs the scripts. The scripts and configuration for pipeline stages are loaded from a Git repository (repo) that can either be the application (app) repo (similar to `.travis.yml` or `Jenkinsfile`) or a custom repo.
 
-For more information on customizing the CI pipelines, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts). 
+For more information on customizing the CI pipelines, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
 
 ### Wrapping up
 {: #devsecops-tutorial-iac-ci-done}

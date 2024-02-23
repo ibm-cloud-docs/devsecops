@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2023, 2023
-lastupdated: "2023-12-20"
+copyright:
+  years: 2023, 2024
+lastupdated: "2024-02-01"
 
 keywords: DevSecOps, custom scripts, scripts, pipeline stages
 
@@ -21,6 +21,8 @@ subcollection: devsecops
 This section lists the stages in Pull Request (PR), Continuous Integration (CI), Continuous Deployment (CD) and Continuous Compliance (CC) pipelines.
 
 ### Pull Request (PR) pipeline stages
+{: #cd-devsecops-pipeline-stages}
+
 The PR pipeline runs compliance checks on a pull request for a given application repository and acts as a safeguard for merging into the main branch. The PR pipeline is triggered by opening or updating a pull request against a given branch.
 
 For more information, see [Pull Request (PR) pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline) documentation.
@@ -37,6 +39,8 @@ For more information, see [Pull Request (PR) pipeline](/docs/devsecops?topic=dev
 {: #pr-pipeline}
 
 ### Continuous Integration (CI) pipeline stages
+{: #cd-devsecops-ci-pipeline-stages}
+
 The CI pipeline builds deployable artifacts from application repositories. It scans, tests, and signs built artifacts while also collecting evidence on each stage to be released in the inventory and tracked through the deployment and change management.
 
 For more information, see [Continuous Integration (CI) pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) documentation.
@@ -61,6 +65,8 @@ For more information, see [Continuous Integration (CI) pipeline](/docs/devsecops
 {: #ci-pipeline}
 
 ### Continuous Deployment (CD) pipeline stages
+{: #cd-devsecops-cd-pipeline-stages}
+
 The CD pipeline compiles all the content for evidence and the change request summary. It deploys the build to an environment, such as staging or production, while uploading all evidence to the evidence locker.
 
 For more information, see [Continuous Deployment (CD) pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline) documentation.
@@ -78,6 +84,8 @@ For more information, see [Continuous Deployment (CD) pipeline](/docs/devsecops?
 {: #cd-pipeline}
 
 ### Continuous Compliance (CC) pipeline stages
+{: #cd-devsecops-cc-pipeline-stages}
+
 The CC pipeline performs periodic scans on deployed artifacts and their source repositories. It scans the latest deployed state in the inventory and creates, updates or auto-closes incident issues in the incident repository.
 
 For more information, see [Continuous Compliance (CC) pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline) documentation.
@@ -96,6 +104,8 @@ For more information, see [Continuous Compliance (CC) pipeline](/docs/devsecops?
 {: #cc-pipeline}
 
 ### Pipeline compliance checks
+{: #cd-devsecops-pipeline-compliance-checks}
+
 The following scans and checks are performed during the code-compliance-checks task within the PR, CI, and CC pipelines.
 | Tool |Scan or Check |
 |:---|:---|
@@ -124,9 +134,11 @@ The following scans and checks are performed during the code-compliance-checks t
 * `deploy`: Deploy artifacts to an environment such as test and dev or staging and prod.
 * `acceptance-test`: Run tests on deployed artifacts. You can also include your post-deployment tests in this stage.
 * `verify-artifact`: Run scripts to check whether the artifacts that are signed in the CI pipeline have valid signatures.
-* `finish`: This stage is customizable stage and is always executed, irrespective of pipeline status. 
+* `finish`: This stage is customizable stage and is always executed, irrespective of pipeline status.
 
 ## Customizing pipelines using custom scripts
+{: #cd-devsecops-pipelines-custom-customize}
+
 Custom scripts are extension points in the pipeline where adopters, teams, and users can provide scripts to run custom tasks that are required by their continuous integration and continuous deployment strategies.
 {: shortdesc}
 
@@ -193,18 +205,18 @@ test:
 
 * `runAfter`: Run the current stage after the stage that specified in this property completes. Set the value with the stage name that you used in `.pipeline-config.yaml`. Use this property sparingly and confirm that the stage that is specified by this property exists in the pipeline. If the stage does not exist, the pipeline can go into a deadlock.
 
-* `skip`: If set to `true`, bypass the current stage, if possible, in v10 pipelines. Not all stages can be bypassed. The following table lists the stages that can be skipped during the pipeline run. 
+* `skip`: If set to `true`, bypass the current stage, if possible, in v10 pipelines. Not all stages can be bypassed. The following table lists the stages that can be skipped during the pipeline run.
 
-  | Pipeline | Stages |
-  |-|-|
-  |PR pipeline|`code-unit-tests`, `code-compliance-tests` and `code-pr-finish`|
-  |CI pipeline|`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `code-dynamic-scan`, `deploy-acceptance-tests`, `deploy-release` and `code-ci-finish`|
-  |CD pipeline|`prod-verify-artifact`, `prod-acceptance-tests` and `prod-finish`|
-  |CC pipeline|`cc-static-scan`, `cc-dynamic-scan`, `cc-compliance-checks`, `cc-scan-artifact` and `cc-finish`|
-  |App-preview PR pipeline|`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `deploy-acceptance-tests` and `app-preview-pr-finish` |
-  |Dev-mode CI pipeline|`code-unit-tests`, `code-static-scan`, `deploy-release` and `code-ci-finish`|
-  |Dev-mode CD pipeline|`prod-acceptance-tests` and `prod-finish`|
-  {: caption="Table 1. Stages that can be skipped in pipeline runs" caption-side="top"}
+| Pipeline | Stages |
+|-|-|
+PR pipeline|`code-unit-tests`, `code-compliance-tests` and `code-pr-finish`|
+|CI pipeline|`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `code-dynamic-scan`, `deploy-acceptance-tests`, `deploy-release` and `code-ci-finish`|
+|CD pipeline|`prod-verify-artifact`, `prod-acceptance-tests` and `prod-finish`|
+|CC pipeline|`cc-static-scan`, `cc-dynamic-scan`, `cc-compliance-checks`, `cc-scan-artifact` and `cc-finish`|
+|App-preview PR pipeline|`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `deploy-acceptance-tests` and `app-preview-pr-finish` |
+|Dev-mode CI pipeline|`code-unit-tests`, `code-static-scan`, `deploy-release` and `code-ci-finish`|
+|Dev-mode CD pipeline|`prod-acceptance-tests` and `prod-finish`|
+{: caption="Table 1. Stages that can be skipped in pipeline runs" caption-side="top"}
 
 #### Example configuration
 {: #cd-devsecops-scripts-sample-config}
@@ -445,7 +457,7 @@ The finish stage has three steps:
 | Step | Description |
 |:--|:--|
 | `evaluate` | Non customizable step that executes tasks that are related to collection and upload of log files, artifacts, and evidence to the evidence locker. |
-| `prepare` | Non customizable step that sets up the required tools to run the custom finish stage. | 
+| `prepare` | Non customizable step that sets up the required tools to run the custom finish stage. |
 | `finish` | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
 {: caption="Table 4. Steps in finish stage" caption-side="top"}
 

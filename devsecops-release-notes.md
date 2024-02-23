@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2023
-lastupdated: "2024-01-24"
+  years: 2022, 2024
+lastupdated: "2024-02-20"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -17,7 +17,28 @@ content-type: release-note
 {: #release-notes}
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
-{: shortdesc}
+{: #shortdesc}
+
+## 22 February 2024
+{: #devsecops-Feb2024}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.23.7 and open-v10.4.7
+{: #devsecops-open-v10.4.7-open-v9.23.7}
+
+Mandatory Image signature validation
+:   Image signature validation is mandatory for deployments.
+
+`:status-yellow:` icon in slack
+:   Added new warning icon `:status-yellow:` in Slack notifications
+
+### Updates for DevSecOps version - open-v9.23.6 and open-v10.4.6
+{: #devsecops-open-v10.4.6-open-v9.23.6}
+
+Validation of pipeline stages
+:   At the start of the pipeline, validation of pipeline stages occur with respect to required, optional stage configuration.
+
+
 ## 24 January 2024
 {: #devsecops-Jan2024}
 {: release-note}

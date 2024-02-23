@@ -182,6 +182,8 @@ toc:
           - devsecops-pipelinectl.md
           - devsecops-collect-evidence.md
           - devsecops-set-commit-status.md
+          - devsecops-get-repo-params.md
+          - devsecops-retry.md
           - topicgroup:
               label: Cocoa Command reference
               topics:

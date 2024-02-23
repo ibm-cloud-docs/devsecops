@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-01-17"
+lastupdated: "2024-02-08"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -23,7 +23,7 @@ The continuous deployment pipeline generates all of the evidence and change requ
 
 The table below lists the tasks run in a CD Pipeline. In addition the table also provides an overview of each of these stages:
 
-- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file. 
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 
 - **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
 
@@ -31,7 +31,7 @@ The table below lists the tasks run in a CD Pipeline. In addition the table also
 
 - **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
 
-- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection. 
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection.
 
 - **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
 
@@ -39,11 +39,11 @@ The table below lists the tasks run in a CD Pipeline. In addition the table also
 |:----------|:------------------------------|:------------------|:------------------|:------------------|:------------------|
 |`start` 		|Set up the pipeline environment. 		|No		| Yes | NA | No |
 |`setup`		|Set up your build and test environment.		|Yes			| No | NA | No |
-|`verify-peer-review`		|Set up your build and test environment.		|Yes			| No | Pipeline | Yes |
-|`verify-artifact`		|Set up your build and test environment.		|Yes			| No | Pipeline | Yes |
+|`verify-peer-review`		|Ensure that the pull requests intended for the current deployment have been approved. This stage will generate a list of pull requests linked to the ongoing deployment. If any pull requests remain unapproved, the deployment will be halted.	|Yes			| Yes | Pipeline | Yes |
+|`verify-artifact`		|Validate the correct signing of the image scheduled for deployment. If the image lacks proper signature, the deployment will be obstructed, and the corresponding evidence collection process will be initiated.		|Yes			| Yes | Pipeline | Yes |
 |`change-request`		|Generate the change request and create the evidence summary. 		|No		| Yes | Pipeline | No |
 |`deployment`		|Deploy the build artifacts to the environment, such as staging or production.		|Yes		| No | NA | No |
-|`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			| No | **User** | Yes | 
+|`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			| No | **User** | Yes |
 |`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|Yes			| Yes | Pipeline | Yes |
 {: caption="Table 1. Pipeline stages and tasks" caption-side="top"}
 
