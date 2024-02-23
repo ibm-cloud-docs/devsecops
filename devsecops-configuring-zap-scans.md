@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2022, 2023
-lastupdated: "2023-11-06"
+copyright:
+  years: 2022, 2024
+lastupdated: "2024-02-23"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -76,7 +76,7 @@ Use the file `custom-api-script` to modify the request that goes into the ZAP sc
 |`authenticationType`|String|Authentication mechanism for request headers. Supported auth mechanisms are `Bearer`, `Basic`, or `ApiKey`.|Optional|
 |`apiKey`|String|If `authenticationType` is not sent, this API key is used for IAM authentication that is sent in Authorization header for all requests. If `authenticationType` is set to `Bearer`, the header that is formed is `Authorization: Bearer <apiKey>`. If `authenticationType` is set to `ApiKey`, the header that is formed is `Authorization: <apiKey>`. Field is ignored for `authenticationType` as `Basic`.|Optional|
 |`username`|String|Username to be used for `authenticationType` `Basic`.|Required if `authenticationType` as `Basic`|
-|`password`|String|Password to be used for `authenticationType` `Basic`.|Required if `authenticationType` as `Basic`|   
+|`password`|String|Password to be used for `authenticationType` `Basic`.|Required if `authenticationType` as `Basic`|
 {: caption="Table 3. Parameters in the request payload" caption-side="bottom"}
 
 For sensitive information like credentials, you must read these values from a vault or a secret store.
@@ -87,7 +87,7 @@ For sensitive information like credentials, you must read these values from a va
 
 Similar to configuring ZAP API scans, create or update the file `trigger_zap_scans` inside your application repository, at a location of your choice, for example, inside a `scripts` directory.
 
-Set the values for the corresponding parameters by adding these lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`. For more information about a reference implementation, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app). 
+Set the values for the corresponding parameters by adding these lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`. For more information about a reference implementation, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app).
 
 Set the `zap-ui-scan` parameter to `true` for ZAP UI scan to run.
 {: note}
@@ -116,7 +116,7 @@ To hold any configuration information for the test framework, create a folder `c
 
 For a reference implementation that uses Protractor as the test framework, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
 
-## Managing ZAP Scan results 
+## Managing ZAP Scan results
 {: #zap-scan-results}
 
 Based on the value of the parameters `opt-in-dynamic-api-scan` and `opt-in-dynamic-ui-scan`, we can choose to selectively run either the API scan or the UI scan or both.
@@ -155,13 +155,33 @@ fi
 
 A sample implementation can be found in the `trigger_zap_scans` file inside the `scripts/zap` directory inside [this repository](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
 
-## Configuring ZAP scan for CC pipeline 
+## Configuring ZAP scan for CC pipeline
 {: #zap-scan-for-cc}
 
-Table 5 lists the additional parameters that are required to run ZAP scans inside the [CC pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-dynamic-scan).
+The following table lists the additional parameters that are required to run ZAP scans inside the [CC pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-dynamic-scan).
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |`app-url`|String|URL of the deployed application on which the ZAP scan runs. Use the `staging` url of the application.|Required|
 |`repo-url`|String|URL of the repository of the deployed application.|Optional, if `inventory repo` has all the artifacts from only one application repo.|
 {: caption="Table 5. ZAP parameters in the CC pipeline" caption-side="bottom"}
+
+## Configuring Zap UI scans to use custom UI test images without zipping UI tests
+{: #zap-ui-scan-custom}
+
+The following table lists the additional parameters that are required to configure ZAP UI scans to use custom UI test images.
+
+|Name |Type	|Description |Required or Optional |
+|:----------|:------------------------------|:------------------|:----------|
+|`zap-custom-ui-deployment-name`|String|Custom UI docker container name .|Optional|
+|`zap-custom-ui-docker-run-param`|String|Docker run parameters to run the custom UI image.|Optional|
+|`zap-custom-ui-exit-code-ignored`|String|Zap UI exits with the custom UI exit code but it exit code will be ignored if this variable is set to `true`.|Optional|
+|`zap-custom-ui-image`|String|Custom UI docker image that runs tests.|Required|
+|`zap-custom-ui-post-script`|String|Script to be executed after running the custom UI image.|Optional|
+|`zap-custom-ui-pre-script`|String|Script to be executed before running the custom UI image.|Optional|
+|`zap-custom-ui-progress-script`|String| Script to be executed while running the custom UI image.|Optional|
+|`zap-custom-ui-timeout-in-sec`|String|Zap UI scan exits after this time.|Optional
+{: caption="Table 6. ZAP parameters in the CC pipeline" caption-side="bottom"}
+
+This custom UI scan step is to use user's custom UI docker images for tesing zap UI scans, instead of putting the docker image information in zip file which is the default case
+`zap-custom-ui-image` is required environment variable to be set for configuring ZAP UI scans to use custom UI test images.
