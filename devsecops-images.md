@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-11-27"
+  years: 2021, 2024
+lastupdated: "2024-03-04"
 
 keywords: DevSecOps, images, IBM Cloud, OWASP ZAP, Sonarqube
 
@@ -31,9 +31,9 @@ The DevSecOps Continuous Integration (CI), Continuous Deployment (CD), and Conti
 |:----------|:----------|:----------|:----------|:----------|
 |Baseimage| icr.io/continuous-delivery/toolchains/devsecops/baseimage| 2.108.7_commons-0.51.1 | Vulnerable |  |
 |DevSecOps Baseimage| icr.io/continuous-delivery/toolchains/devsecops/devsecops-baseimage | 2.108.7_commons-0.51.1 | Vulnerable | |
-|OWASP ZAP API Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-api-scanner| 31-07-2023-09-43 | Vulnerable |   |
-|OWASP ZAP UI Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-scanner| 04-07-2022-06-47 | Vulnerable |  |
-|OWASP ZAP UI Proxy|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-proxy| 31-07-2023-09-06 | Vulnerable |  |
+|OWASP ZAP API Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-api-scanner| 02-02-2024-10-17 | Vulnerable |   |
+|OWASP ZAP UI Scanner|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-scanner| 23-01-2024-07-29 | Vulnerable |  |
+|OWASP ZAP UI Proxy|icr.io/continuous-delivery/toolchains/devsecops/owasp-zap-ui-proxy| 14-12-2023-18-37 | Vulnerable |  |
 |Detect Secrets|icr.io/git-defenders/detect-secrets| 0.13.1.ibm.61.dss-redhat-ubi| Vulnerable | |
 |Docker In Docker|icr.io/continuous-delivery/base-images/multiarch-dind| 20231109-0005  | Vulnerable |  |
 |SonarQube|icr.io/continuous-delivery/toolchains/devsecops/sonarqube| 10.0.0-community  | Vulnerable | |
