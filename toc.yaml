@@ -65,6 +65,7 @@ toc:
   - navgroup:
       id: howto
       topics:
+      - devsecops-configuring-en.md
       - devsecops-tekton-ci-compliance.md
       - devsecops-tekton-cd-compliance.md
       - topicgroup:
