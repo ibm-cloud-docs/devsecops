@@ -1,7 +1,7 @@
 ---
 copyright:
   years: 2024, 2024
-lastupdated: "2024-02-23"
+lastupdated: "2024-03-07"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -38,6 +38,13 @@ If you don't have an event notification instance in your account, refer [Creatin
 5. On the Overview page of your toolchain, under the IBM Cloud Tools section, locate, and click **Event Notifications**.
 
 For further guidance on adding event notification integration to your toolchain, refer to [Enabling Notifications](https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-event-notifications-cd&interface=ui#event-notifications-enable-cd).
+
+## Including Environment Property
+{: #devsecops-env-configure}
+After integrating event notifications into your toolchain, incorporate an environment property named `event-notifications` and assign the value to `1`, across your PR, CI, CD, and CC toolchains.
+
+
+
 
 ## Configuring the Event Notifications Instance
 {: #devsecops-en-configure}
