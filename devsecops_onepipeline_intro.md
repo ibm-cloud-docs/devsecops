@@ -17,12 +17,13 @@ subcollection: devsecops
 
 OnePipeline helps streamline internal compliance audits by standardizing CI/CD processes for services adhering to the IBM Cloud Service Framework (see also System architecture). OnePipeline provides a set of predefined CI/CD templates kept current as the Service Framework addresses FS-Cloud, then FedRAMP and more in the future.
 
+
 ## DevSecOps vs OnePipeline {{site.data.keyword.contdelivery_short}}
 {: #devsecops_onepipeline_difference}
 
 |                    | OnePipeline (Internal)                                                      | Devsecops (External)                |
 |--------------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
-| Tools          | Change,management tool used here is Service Now                                   | Change management tool used here is  Github  |
+| Tools          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
 | Repository     | github.ibm.com                         |  github.com                                     |
 | Image sign-in       |  Users use internal sign-in methods like W3ID.  | GPT is used to sign image |
 {: row-headers}
