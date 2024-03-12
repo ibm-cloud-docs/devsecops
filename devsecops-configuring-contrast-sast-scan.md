@@ -11,6 +11,7 @@
 | `contrast-sast-base-url` | `https://app.contrastsecurity.com/Contrast/api/sast` | Base URL of the Contrast server API | 
 | `contrast-sast-artifactory-token` | This value defaults to the Artifactory ID token in your Toolchain Artifactory integration settings | Your Artifactory `ID Token`. |
 | `contrast-sast-artifactory-user` | This value defaults to the user ID in your Toolchain Artifactory integration settings | Username that is associated with your Artifactory ID token. |
+| `contrast-sast-jar-url` | https://na.artifactory.swg-devops.com/artifactory/css-whitesource-team-java-contrast-agent-maven-local/sast-local-scan-runner-1.0.2.jar | URL for the JAR file to be used for Contrast SAST scanning. |
 | `contrast-sast-scan-labels` | | Add one or more labels to your scan. You can find the labels in the **LABEL** column for the scan in the Contrast UI. Separate multiple labels by using commas. |
 | `contrast-sast-scan-timeout` | The default timeout is `30` (30 minutes) | Integrer value representing the time, in minutes, the Contrast SAST scan will spend executing a scan against a source repository before timing out. Set this to an integrer value greater than or equal to `30`. |
 | `contrast-sast-project-name` | A concatenated string that includes the GitHub org and repository name, such as `one-pipeline/compliance-commons-internal`. | The scan project name for the scan, as it is displayed in the Contrast UI. |
