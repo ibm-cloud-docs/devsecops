@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-01-17"
+lastupdated: "2024-03-07"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -198,6 +198,10 @@ Each provider requires different environment variable configuration:
 - `servicenow-v3`:
    - `IAM_ACCESS_TOKEN` - IBMCloud IAM OAuth Token
    - `SERVICENOW_URL` - ServiceNow V3 API URL
+ - `github-enterprise`:
+   - `GHE_TOKEN` - GitHub Enterprise Token
+   - `GITHUB_CHANGE_MANAGEMENT_REPO` - GitHub Change Management Repository
+   - `GITHUB_CHANGE_MANAGEMENT_ORG` - GitHub Change Management Org
 
 ### cocoa change-request get
 {: #change-request-get}
@@ -219,6 +223,15 @@ IAM_ACCESS_TOKEN= # Access token obtained from the IAM service corresponding to 
 SERVICENOW_URL=   # ServiceNow API URL
 ```
 {: codeblock}
+	
+Required Environment Variables for GitHub Enterprise:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Required Environment Variables for Gitlab:
 
@@ -276,7 +289,7 @@ Options:
 --planned-end      # planned end time of the change (required format: YYYY-MM-DD HH:mm:ss, e.g 2020-05-13 13:00:12, in UTC)
 --deployment-ready # readiness for deployment (choices: 'yes', 'no', default: 'yes')
 --type             # change request type, option: standard, emergency
---provider         # (Optional) Change Management service provider (choices: 'servicenow', 'servicenow-v3', default: 'servicenow')
+--provider         # (Optional) Change Management service provider (choices: 'servicenow', 'servicenow-v3', 'github-enterprise', 'gitlab' default: 'servicenow')
 --pipeline-name    # (Optional) name of the pipeline used for identifying the pipeline 
 --pipeline-version # (Optional) version of pipeline used (value must match regular expression [0-9.]+)
 ```
@@ -329,6 +342,15 @@ SERVICENOW_URL=     # ServiceNow API URL
 ```
 {: screen}
 
+Required Environment Variables for GitHub Enterprise:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
+	
 Running the command:
 
 ```sh
@@ -390,6 +412,15 @@ IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding 
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Running the command:
 
@@ -434,6 +465,15 @@ IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding 
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Running the command:
 
@@ -474,6 +514,15 @@ Required Environment Variables, if you are using ServiceNow v3 provider:
 ```text
 IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
+```
+{: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
 
@@ -585,6 +634,15 @@ IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding 
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Running the command:
 
@@ -624,6 +682,15 @@ Required Environment Variables, if you are using ServiceNow v3 provider:
 ```text
 IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
+```
+{: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
 
@@ -672,6 +739,15 @@ IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding 
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Running the command:
 
@@ -708,6 +784,15 @@ Required Environment Variables, if you are using ServiceNow v3 provider:
 ```text
 IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
+```
+{: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
 
@@ -752,6 +837,15 @@ IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding 
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Running the command:
 
@@ -779,7 +873,7 @@ Options:
 --description      # A more detailed description for the Change Task. [string]
 --name             # Name of the Change Task. [string] [required]
 --data             # Data for the Change Task or a path prefixed with @ to read the data from. [string] [default: "@/dev/stdin"]
---provider         # (Optional) Change Management service provider (choices: 'servicenow', 'servicenow-v3', default: 'servicenow')
+--provider         # (Optional) Change Management service provider (choices: 'servicenow', 'github-enterprise', 'servicenow-v3', default: 'servicenow')
 ```
 {: screen}
 
@@ -796,6 +890,15 @@ Required Environment Variables, if you are using ServiceNow v3 provider:
 ```text
 IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
+```
+{: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
 
@@ -840,6 +943,15 @@ IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding 
 SERVICENOW_URL=      # ServiceNow API URL
 ```
 {: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
+```
+{: screen}
 
 Running the command:
 
@@ -872,6 +984,15 @@ Required Environment Variables, if you are using ServiceNow v3 provider:
 ```text
 IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
+```
+{: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
 
@@ -910,6 +1031,15 @@ Required Environment Variables, if you are using ServiceNow v3 provider:
 ```text
 IAM_ACCESS_TOKEN=    # Access token obtained from the IAM service corresponding to `pnp-ibmcloud-api-key`.
 SERVICENOW_URL=      # ServiceNow API URL
+```
+{: screen}
+	
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (only required when parsing from pr)
+GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --org is not provided)
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
 
