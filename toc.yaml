@@ -18,7 +18,6 @@ toc:
           label: What is DevSecOps?
           href: https://www.ibm.com/cloud/learn/devsecops
       - devsecops_intro.md
-      - devsecops_onepipeline_intro.md
       - topicgroup:
           label: DevSecOps architecture
           topics:
