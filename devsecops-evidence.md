@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-02-28"
+  years: 2021, 2024
+lastupdated: "2024-03-12"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -143,6 +143,17 @@ interface Evidence {
   attachments: Record<string, string> | EvidenceAssetAttachment[];
   assets: string[] | EvidenceAssetAttachment[];
   issues: IssueURL[],
+  findings?: IncidentFinding[];
+}
+
+export interface IncidentFinding {
+  id: string;
+  url: string;
+  due_date: string;
+  first_found?: string;
+  severity: ("high", "medium", "low", "critical, "informational");
+  has_exempt: boolean;
+  found_status: ("new", "existing", "autoclosed", "readonly");
 }
 
 export interface EvidenceAssetAttachment {
@@ -231,6 +242,35 @@ interface Asset {
     "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
     "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
     "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
+  ],
+  "findings": [
+    {
+      "id": "CVE-2022-42011",
+      "due_date": "2024-04-20",
+      "severity": "medium",
+      "first_found": "2024-03-06",
+      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
+      "found_status": "new",
+      "has_exempt": true
+    },
+    {
+      "id": "CVE-2022-42010",
+      "due_date": "2024-04-20",
+      "severity": "medium",
+      "first_found": "2024-03-06",
+      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
+      "found_status": "existing",
+      "has_exempt": false
+    },
+    {
+      "id": "CVE-2023-34969",
+      "due_date": "2024-04-20",
+      "severity": "medium",
+      "first_found": "2024-03-06",
+      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
+      "found_status": "existing",
+      "has_exempt": true
+    }
   ],
   "attachments": [
     {

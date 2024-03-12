@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-03-07"
+lastupdated: "2024-03-12"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1874,10 +1874,11 @@ Return values:
 {
  "id": string,
  "due_date": string,
- "severity": string,
+ "severity": ("high", "medium", "low", "critical, "informational"),
  "first_found": "string" (optional),
  "url": string,
- "found_status": ("new", "existing", "autoclosed", "readonly")
+ "found_status": ("new", "existing", "autoclosed", "readonly"),
+ "has_exempt": boolean
 }
 ```
 {: codeblock}
@@ -1969,10 +1970,11 @@ Return values:
 {
  "id": string,
  "due_date": string,
- "severity": string,
+ "severity": ("high", "medium", "low", "critical, "informational"),
  "first_found": "string" (optional),
  "url": string,
- "found_status": ("new", "existing", "autoclosed", "readonly")
+ "found_status": ("new", "existing", "autoclosed", "readonly"),
+ "has_exempt": boolean
 }
 ```
 {: codeblock}
