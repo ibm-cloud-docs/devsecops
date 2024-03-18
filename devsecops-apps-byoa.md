@@ -211,7 +211,4 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
     ```
     {: codeblock}
 
-## Related information
-{: #byoa-related}
-
-For more information about the stages, see [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+    For more information about the stages, see [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).

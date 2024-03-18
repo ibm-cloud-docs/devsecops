@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-08"
+lastupdated: "2024-03-18"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -59,7 +59,6 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 {: caption="Table 1. Americas infrastructure availability - Dallas" caption-side="bottom"}
 {: summary="This table has row and column headers. The row headers identify the service. The column headers identify where that service is located. To understand where a service is located in the table, navigate to the row, and find the for the location you are interested in."}
 {: #table01}
-{: tab-title="Dallas"}
 {: tab-group="Americas"}
 {: class="comparison-tab-table"}
 {: row-headers}
