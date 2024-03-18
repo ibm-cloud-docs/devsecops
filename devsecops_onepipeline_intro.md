@@ -45,13 +45,13 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | Contrast or SonarQube* | | Contrast or SonarQube* |
 | Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | OWASP ZAP | | OWASP ZAP |
 | Interactive Scan (IAST) | | !Contrast** | | Contrast** |
-| Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Container Image Scans | | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Artifact Signing | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Signature Validation | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Generate Aggregate SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Change Management| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Vulnerability Remediation | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
+| Container Image Scans | | AquaSec, Twistlock, Vulnerability Advisor | | AquaSec, Twistlock, Vulnerability Advisor |
+| Artifact Signing | | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
+| Signature Validation | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Generate Aggregate SBOM | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Change Management| | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Vulnerability Remediation | | | | ![Checkmark icon](../icons/checkmark-icon.svg) |
 {: caption="Table 1. Americas infrastructure availability - Dallas" caption-side="bottom"}
 {: summary="This table has row and column headers. The row headers identify the service. The column headers identify where that service is located. To understand where a service is located in the table, navigate to the row, and find the for the location you are interested in."}
 {: #table01}
