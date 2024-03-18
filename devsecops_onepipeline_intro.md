@@ -41,8 +41,8 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Open Source Scanning | Code Risk Analyzer, Mend | Code Risk Analyzer, Mend | ![Checkmark icon](../icons/checkmark-icon.svg) | Code Risk Analyzer, Mend |
-| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Open Source Scanning | Code Risk Analyzer, Mend | Code Risk Analyzer, Mend | | Code Risk Analyzer, Mend |
+| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | Contrast or SonarQube* | | Contrast or SonarQube* |
 | Interactive Scan (IAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Container Image Scans | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
