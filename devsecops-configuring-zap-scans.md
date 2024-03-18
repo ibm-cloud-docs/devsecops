@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-02-23"
+lastupdated: "2024-03-12"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -36,6 +36,7 @@ You can set and customize the following parameters to configure ZAP scans to run
 |`target-api-key`|String|API Key for IAM authentication.|Optional, but if provided, `iam-token-endpoint` must also be provided.|
 |`target-application-server-url`|String|The base URL of the application server for zap to scan. It can be the same as the URL of the deployed application.|Required|
 |`filter-options`|String|Set it to filter out alerts based on severity. Possible values: `Critical`, `High`, `Medium`, `Low`, `Informational`. Defaults to `Informational`, can be a comma-separated list.|Optional|
+|`zap-custom-api-policy-file-path`|String|Relative path in the repository to the custom policy file(XML format) for ZAP API scans. If this is not set, the default policy `API-Minimal.policy` will be used.|Optional|
 |`zap-ui-scan`|String|Flag to determine whether the scan is the UI scan or the API scan. Possible values: `true`, `false`. Setting this flag to `true` runs the UI scan, setting it to false runs the API scan. This parameter works with `opt-in-dynamic-api-scan` and `opt-in-dynamic-ui-scan` parameters.|Required|
 |`zap_dind`|String|Flag to switch between deploying ZAP to a cluster or running DinD. Default: `true`. Possible values: `true`, `false`. Setting it to `true` runs ZAP as DinD, setting it to `false` deploys ZAP to a cluster for which `cluster-name`, `ibmcloud-api`, and `ibmcloud-api-key` must be set.|Optional|
 |`zap-dind-localhost`|String|Hostname for ZAP Scanners when running in DinD, default: `localhost`.|Optional|

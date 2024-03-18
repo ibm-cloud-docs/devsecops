@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2023
-lastupdated: "2023-10-02"
+  years: 2023, 2024
+lastupdated: "2024-03-12"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -28,6 +28,7 @@ When Code Risk Analyzer evaluates your app:
 
 * All of your Kubernetes files are analyzed for compliance.
 * All of your Terraform plans are analyzed for compliance.
+
 Code Risk Analyzer is available in all {{site.data.keyword.cloud_notm}} regions where toolchains are supported. For more information, see [the plug-in documentation](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin).
 {: note}
 
@@ -41,6 +42,8 @@ If your Dockerfile requires ARGS, set an individual ARG as an environment variab
 |----|----|----|----|
 | `cra-custom-script-path` | Path to the script in your repo. | Optional | Sets environment variables that are needed by the Docker script. |
 {: caption="Table 1. Docker script environment variables" caption-side="bottom"}
+
+For more information, see [custom scripts](https://cloud.ibm.com/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#devsecops-custom-script-examples)
 
 By default, Terraform files are not analyzed. To scan your Terraform file, you must set the following pipeline environment variables.
 
