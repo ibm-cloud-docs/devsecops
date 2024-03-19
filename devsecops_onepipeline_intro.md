@@ -23,11 +23,11 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 
 |                    | OnePipeline (Internal)                                                      | Devsecops (External)                |
 |--------------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
-| Tools          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
-| Repository     | github.ibm.com                         |  GRIT                                    |
-| Image sign-in       |  Users use internal sign-in methods like W3ID.  | Garasign is used to sign image |
+| **Tools**          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
+| **Repository**     | github.ibm.com                         |  GRIT                                    |
+| **Image sign-in**       |  Users use internal sign-in methods like W3ID.  | Garasign is used to sign image |
 {: row-headers}
-{: caption="Table 1. Example platform management roles and actions for services in an account" caption-side="bottom"}
+{: caption=" Table 1. Features differences between OnePipeline (Internal) and DevSecOps(External)" caption-side="bottom"}
 {: summary="The first row of the table describes separate options that you can choose to your required service. The remaining cells provide the major differences between DevSecOps and OnePipeLine."}
 {: #diffdevsecopsstable1}
 
