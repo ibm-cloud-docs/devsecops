@@ -21,12 +21,12 @@ Deployment models help you to understand your application deployment process acr
 ## Push-based deployment
 {: #deployment-model-push}
 
-The push-based deployment model deploys your application on a single cluster. It does not require any operator installation on your cluster. 
+The push-based deployment model deploys your application on a single cluster. It does not require any operator installation on your cluster.
 
 For a push-based deployment, complete these steps:
 
 1. Log in to your Kubernetes or {{site.data.keyword.openshiftlong_notm}} cluster.
-2. Apply the deployment files by using the native [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/){: external} tool.
+2. Apply the deployment files by using the default [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/){: external} tool.
 
 ## Pull-based deployment
 {: #deployment-model-pull}
