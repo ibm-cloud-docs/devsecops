@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-08"
+lastupdated: "2024-03-19"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -23,11 +23,11 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 
 |                    | OnePipeline (Internal)                                                      | Devsecops (External)                |
 |--------------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
-| Tools          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
-| Repository     | github.ibm.com                         |  github.com                                     |
-| Image sign-in       |  Users use internal sign-in methods like W3ID.  | GPT is used to sign image |
+| **Tools**          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
+| **Repository**     | github.ibm.com                         |  GRIT                                    |
+| **Image sign-in**       |  Users use internal sign-in methods like W3ID.  | Garasign is used to sign image |
 {: row-headers}
-{: caption="Table 1. Example platform management roles and actions for services in an account" caption-side="bottom"}
+{: caption=" Table 1. Features differences between OnePipeline (Internal) and DevSecOps(External)" caption-side="bottom"}
 {: summary="The first row of the table describes separate options that you can choose to your required service. The remaining cells provide the major differences between DevSecOps and OnePipeLine."}
 {: #diffdevsecopsstable1}
 
@@ -36,38 +36,24 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 ## Security and Compliance Features of OnePipeLine
 {: #scc-features-onepipeline-table}
 
-| Features | Pull Request(PR) Pipeline  | Pull Request(PR) Pipeline  | Pull Request(PR) Pipeline  | Pull Request(PR) Pipeline  |
+| Features | Pull Request(PR) Pipeline  | Pull Request(PR) Pipeline  | Continuous Integration (CI) Pipeline  | Continuous Delivery (CD) Pipeline |
 |-----|-----|-----|-----|-----|
-| Bare Metal Server | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Block Storage | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Citrix NetScaler VPX | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-{: caption="Table 1. Americas infrastructure availability - Dallas" caption-side="bottom"}
-{: summary="This table has row and column headers. The row headers identify the service. The column headers identify where that service is located. To understand where a service is located in the table, navigate to the row, and find the for the location you are interested in."}
+| Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Open Source Scanning | Code Risk Analyzer, Mend | Code Risk Analyzer, Mend | | Code Risk Analyzer, Mend |
+| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | Contrast or SonarQube* | | Contrast or SonarQube* |
+| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | OWASP ZAP | | OWASP ZAP |
+| Interactive Scan (IAST) | | !Contrast** | | Contrast** |
+| Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
+| Container Image Scans | | AquaSec, Twistlock, Vulnerability Advisor | | AquaSec, Twistlock, Vulnerability Advisor |
+| Artifact Signing | | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
+| Signature Validation | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Generate Aggregate SBOM | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Change Management| | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Vulnerability Remediation | | | | ![Checkmark icon](../icons/checkmark-icon.svg) |
+{: caption="Security and Compliance features available in OnePipeline "}
+{: summary="This table has row and column headers. The row headers identify the various components. The column headers identify the features."}
 {: #table01}
-{: tab-title="Dallas"}
-{: tab-group="Americas"}
 {: class="comparison-tab-table"}
 {: row-headers}
-
-
-# Standardization across organizations
-{: #standardization}
-
-Organizations can take advantage of the significant benefits of using a standard set of processes for continuous integration and continuous delivery by multiple disparate teams that develop heterogeneous offerings and components. These benefits include consistency and economies of scales. When a single set of prescriptive reference pipelines that are instrumented for compliance are used for all of the components across an organization, developers spend less time to develop automation solutions and can focus on feature development. The development leaders and security officers can be confident that the necessary controls are in place to ensure secure, compliant software and provide evidence that can be used in an audit. Security audits within an organization can be streamlined when a standard implementation is used, as opposed to each component or offering team that uses their own compliance implementation.
-
-Ready to incorporate DevSecOps? Check out our tutorial series that guides you to [deploy a secure app with DevSecOps best practices](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops). You can also learn more about the [benefits of DevSecOps](https://www.ibm.com/topics/devsecops#Benefits+of+DevSecOps){: external} and related [solutions](https://www.ibm.com/topics/devsecops#Related+solutions){: external}.

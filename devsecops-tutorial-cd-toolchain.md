@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2022, 2023
-lastupdated: "2023-11-09"
+copyright:
+  years: 2022, 2024
+lastupdated: "2024-03-21"
 
 keywords: tekton, pipeline, toolchain, CD, CI, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
 
@@ -84,7 +84,7 @@ Start the CD toolchain configuration by using one of the following options:
 
 Review the default information for the toolchain settings. The toolchain's name identifies it in {{site.data.keyword.cloud_notm}}. Make sure that the toolchain's name is unique within your toolchains for the same region and resource group in {{site.data.keyword.cloud_notm}}.
 
-The toolchain region can differ from cluster and registry region. 
+The toolchain region can differ from cluster and registry region.
 {: note}
 
 You can optionally choose the associated CI toolchain in the dropdown. This copies some of the CI configuration to aid in the setup of this CD toolchain.
@@ -173,7 +173,7 @@ The endpoint field is optional. It is recommended to select or provide the endpo
 ### Deployment target
 {: #tutorial-cd-toolchain-target}
 
-Configure the target where the application is deployed. The toolchain provides with an option to either deploy your application to **Single cluster** or to **Multiple clusters** by using {{site.data.keyword.satelliteshort}} Config. If you want to deploy your application to targets like VSI (Virtual Server Instance) or customize deployment process, use the **Custom** option. 
+Configure the target where the application is deployed. The toolchain provides with an option to either deploy your application to **Push-based deployment** or to **Pull based deployment** by using {{site.data.keyword.satelliteshort}} Config. If you want to deploy your application to targets like VSI (Virtual Server Instance) or customize deployment process, use the **Custom** option.
 
 ### IBM Cloud API Key
 {: #tutorial-cd-toolchain-api-key}
@@ -186,19 +186,19 @@ The API key is used to interact with the ibmcloud CLI tool in several tasks.
 The newly generated API key can be immediately saved to a secrets vault.
 {: tip}
 
-### Single cluster deployment target
-{: #tutorial-cd-toolchain-single-cluster-target}
+### Push-based deployment
+{: #tutorial-cd-toolchain-push-based-deployment}
 
 With this option, you can deploy your application to an existing Kubernetes cluster on {{site.data.keyword.cloud_notm}}. The toolchain currently supports Kubernetes cluster that is managed by {{site.data.keyword.containerlong_notm}} or a Red Hat OpenShift cluster. After the {{site.data.keyword.cloud_notm}} API Key field is completed, select the **Resource group** and **Cluster region** field where your target cluster is created. Select the target **Cluster name** after you choose the appropriate value for the resource group and cluster region fields.
 
 Provide the name of **Cluster namespace** where you want to deploy your application. If the namespace exists, your application is deployed in that namespace, else toolchain creates a new namespace with the name during the first deployment of the application.
 
-### Multiple clusters deployment target
-{: #tutorial-cd-toolchain-multiple-clusters-target}
+### Pull based deployment
+{: #tutorial-cd-toolchain-pull-based-deployment}
 
 With this option, you can deploy your application to a group of {{site.data.keyword.containerlong_notm}} clusters or Red Hat OpenShift clusters on {{site.data.keyword.cloud_notm}}.
 
-The toolchain uses [Satellite Config](/docs/satellite?topic=satellite-cluster-config) to group multiple clusters in a cluster group and simultaneously deploy the application to all the clusters. [Learn more](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-groups) about setting up cluster groups for multiple clusters. 
+The toolchain uses [Satellite Config](/docs/satellite?topic=satellite-cluster-config) to group multiple clusters in a cluster group and simultaneously deploy the application to all the clusters. [Learn more](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-groups) about setting up cluster groups for multiple clusters.
 
 After your cluster group is set up, provide the name of **Cluster namespace** where you want to deploy your application. If the namespace exists, your application is deployed in that namespace. Otherwise, elthese toolchain creates a new namespace with the name during the first deployment of the application.
 
@@ -248,7 +248,7 @@ To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must
 Use the {{site.data.keyword.cloud_notm}} Framework for Financial Services profile for DevSecOps toolchains.
 {: tip}
 
-Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process. 
+Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
 
 ## Create the CD toolchain
 {: #tutorial-cd-toolchain-summary}
@@ -273,9 +273,9 @@ Now that the CD Toolchain is created, click the **cd-pipeline** card to open and
 Make sure that the [CI Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) ran successfully before you run the Promotion Pipeline.
 {: note}
 
-The Promotion Pipeline creates a Pull Request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod). 
+The Promotion Pipeline creates a Pull Request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod).
 
-* On the **cd-pipeline Dashboard**, click **Run pipeline**, and select the **Manual Promotion Trigger**. Click **Run** to trigger the pipeline. 
+* On the **cd-pipeline Dashboard**, click **Run pipeline**, and select the **Manual Promotion Trigger**. Click **Run** to trigger the pipeline.
 * Wait for the Promotion Pipeline run to complete and check execution log.
 * After the Promotion Pipeline finishes successfully, the `promote` Task log provides a link to the pull Request in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment>`.
 

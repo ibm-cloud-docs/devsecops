@@ -44,12 +44,22 @@ Configure SonarQube to continuously analyze and measure the quality of your sour
 ### Default SonarQube instance
 {: #sonarqube-ci-pipeline-default}
 
-If `sonarqube-config` is set to `default`, then default configuration is used, a SonarQube scan runs as Docker-in-Docker and the instance is not available after the run.
+- If `sonarqube-config` is set to `default`, then SonarQube is used by default to scan.  This scan runs as Docker-in-Docker.
+
+The instance used is available only during the run. Therefore,  you can't access the dashboard. {: important}
+
+- By default, the pipeline uses SonarQube community edition which has only limited checks.Many vulnerability rules and hostspot issues are not covered under Comunity Edition.
+
+To verify if a vulnerability is checked in communit edition, refer to [thread in Sonarqube community question](https://community.sonarsource.com/t/sonarqube-community-edition/39879)
+
+- The default implementation which is the SonarQube community Edition instance registered with CISO is not an ITSS-approved edition.SonarQube Enterprise Edition is the only ITSS-approved edition.
+
+To download SonarQube, refer [SonarQube Downloads](https://www.sonarsource.com/products/sonarqube/downloads/)
 
 ### SonarQube instance on the dev cluster
 {: #sonarqube-ci-pipeline-cluster}
 
-If `sonarqube-config` is set to `cluster`, the pipeline creates a SonarQube instance during the pipeline run in the dev cluster. You can access this instance after the static-scan stage successfully runs.
+If `sonarqube-config` is set to `cluster`, the pipeline creates a SonarQube instance during the pipeline run in the dev cluster. You can access this instance after the static-scan stage successfully runs.You can access the SonarQube dashboard locally by port forwarding.
 
 ### Existing SonarQube instance
 {: #sonarqube-ci-pipeline-existing}
@@ -76,8 +86,17 @@ For more information about pipelines parameters, see [Pipeline parameters](/docs
 If you add multiple SonarQube tool integrations to your pipeline, you can switch between them by changing the value of the SonarQube pipeline parameter, which is a tool integration parameter.
 {: tip}
 
-DevSecOps Pipelines filters out the problems reported by SonarQube scan. The pipelines exclusively create Compliance Incidences for problems that are not of type `CODE_SMELL` or `BUG`. The pipeline also skips problems for which the status is `CLOSED`.
-{: note}
+### Plug-ins installed in SonarQube
+{: #sonarqube-cipipeline-plugins-installed}
+
+DevSecOps Pipelines uses SonarQube Version 10.0 by default.
+
+To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube/latest/instance-administration/plugin-version-matrix/)
+
+### Issues reported from SonarQube
+{: #sonarqube-cipipeline-issues-reported}
+
+DevSecOps Pipelines filters out the problems that reported during SonarQube scan. The pipelines exclusively create Compliance Incidences for problems that are not of type `CODE_SMELL` or `BUG`. The pipeline also skips problems for which the status is `CLOSED`.
 
 ### Updating the quality gate
 {: #sonarqube-cipipeline-gate}

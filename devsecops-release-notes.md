@@ -19,6 +19,27 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 21 March 2024
+{: #devsecops-Mar2024}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.24.0 and open-v10.5.0
+{: #devsecops-open-v10.5.0-open-v9.24.0}
+
+Support for complex tfvars formats in Devsecops IaC
+:   `tfvars` parameters in JSON format are now supported.
+
+Exempt status if found issues in evidence sumary 
+:   Evidence summary now indicates the exemption status of the detected issues.
+
+### Updates for DevSecOps version - open-v9.23.8 and open-v10.4.8
+{: #devsecops-open-v10.4.8-open-v9.23.8}
+
+Fallback to defaults for stage parameters in `.pipeline-config.yaml`
+:   In `.pipeline-config.yaml`, all stage parameters fallback to `defaults.yaml` if they are not specified to a dedicated stage.
+
+
+
 ## 22 February 2024
 {: #devsecops-Feb2024}
 {: release-note}

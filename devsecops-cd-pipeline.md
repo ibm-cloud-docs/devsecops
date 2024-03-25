@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-02-08"
+lastupdated: "2024-03-21"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -45,6 +45,7 @@ The table below lists the tasks run in a CD Pipeline. In addition the table also
 |`deployment`		|Deploy the build artifacts to the environment, such as staging or production.		|Yes		| No | NA | No |
 |`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			| No | **User** | Yes |
 |`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|Yes			| Yes | Pipeline | Yes |
+|`rollback` |This is a step inside `prod-finish`, which gets executed whenever a rollback scenario is encountered | Yes | Yes | NA | No |
 {: caption="Table 1. Pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
@@ -126,10 +127,25 @@ You can run a set of automated tests to validate that the deployment was success
 
 The details for the deployment are uploaded to the closing summary change task and then the task closes the change request. The `close_category` is added to the close change request task, with the following values:
 
-* Successful
-* Successful with issues (if the summary has issues)
+* Successful (if was deploy ready, and CD deployment succeeded)
+* Successful with issues (if the summary has issues, it was not deploy ready and CD deployment happened with emergency)
 
 ## Inventory conclude
 {: #cd-devsecops-pipeline-inventory}
 
 For more information about inventory conclude, see [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
+
+## Inline Rollback
+{: #cd-devsecops-inline-rollback}
+
+To run Inline rollback successfully, ensure that the `rollback-enabled` environment property is set to `1` and there is a **failure** in the Deployment or Acceptance test. If a rollback scenario is detected, CD Pipeline runs the segment that is defined against `rollback` inside the `.pipeline-config.yaml` provided by the user. If a `rollback` segment is not inside the `.pipeline-config.yaml` file from the user, a default implementation is provided which prompts the user to supply a rollback script before converting this step to amber state.
+
+### Properties that get set in the inline rollback scenario
+{: #cd-devsecops-inline-rollback-properties}
+
+- `rollback-status` says the status of the rollback step execution. Possible values `[notRun, success, failure]`
+- `rollback-exit-code` is the exit code of the rollback step. This is kept empty if rollback wasn't even run.
+- `default-rollback-executed` is executed when the property is set to `true` if the default implementation that prompts user to supply a rollback script. The value of this property is set to empty by default.
+- `pipeline-execution-status` sets the status of the overall pipeline run. Possible values `[successful_deployment, failed_deployment_failed_rollback, failed_deployment_successful_rollback]`
+
+
