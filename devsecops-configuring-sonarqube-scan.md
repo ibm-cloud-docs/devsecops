@@ -48,9 +48,9 @@ Configure SonarQube to continuously analyze and measure the quality of your sour
 
 The instance used is available only during the run. Therefore,  you can't access the dashboard. {: important}
 
-- By default, the pipeline uses SonarQube community edition which has only limited checks.Many vulnerability rules and hostspot issues are not covered under Comunity Edition.
+- By default, the pipeline uses SonarQube community edition which has only limited checks.Many vulnerability rules and hostspot issues are not covered under Community Edition.
 
-To verify if a vulnerability is checked in communit edition, refer to [thread in Sonarqube community question](https://community.sonarsource.com/t/sonarqube-community-edition/39879)
+- To verify if a vulnerability is checked in community edition, refer to [thread in Sonarqube community question](https://community.sonarsource.com/t/sonarqube-community-edition/39879)
 
 - The default implementation which is the SonarQube community Edition instance registered with CISO is not an ITSS-approved edition.SonarQube Enterprise Edition is the only ITSS-approved edition.
 
