@@ -253,7 +253,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.	|Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
-|`pnp-ibmcloud-api-key` | secret | Overwrites the `ibmcloud-api-key` that is used by the ServiceNow V3 api services. | Required	  	|
 |`pre-prod-evidence-collection`	|text		| Set this flag to collect the pre-prod evidences and the change requests in the production deployment (`target-environment-purpose` set to `production`). Default value is `0`. |Optional |
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			|
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
@@ -261,7 +260,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`region`		|text		|The target region where the app is deployed.	|Optional			|
 |`rollback-enabled` |text |Flag to set whether inline rollback capability to be enabled or not. Default "0" |Optional |
 |`sbom-validation-collect-evidence`   |text   | Enable verifying the status of sbom validation scan in the CI pipeline. If this value is set to 1, then the status of sbom validation(success or failure) scan is CI is verified.  |Optional     |
-|[`servicenow-crn-mask`](/docs/service-framework?topic=service-framework-architecture-arch-#arch001a-3-identify-crn) | text | A full Cloud Resource Name (CRN), service and environment that is affected by the change request. Service name and environment information arrequired. | Required  |
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|
 |[`summary-retry-attempts`](#pipeline-parm-summary-retry-attempts)		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|
 |[`summary-max-retry-time`](#pipeline-parm-summary-max-retry-time)		|text		|Set the maximum backoff time for the evidence summary upload. The actual backoff time is generated exponentially with each retry until it reaches the maximum backoff time set with this parameter. The default is `32`.  |Optional			|
