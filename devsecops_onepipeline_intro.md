@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-19"
+lastupdated: "2024-03-25"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -36,7 +36,7 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 ## Security and Compliance Features of OnePipeLine
 {: #scc-features-onepipeline-table}
 
-| Features | Pull Request(PR) Pipeline  | Pull Request(PR) Pipeline  | Continuous Integration (CI) Pipeline  | Continuous Delivery (CD) Pipeline |
+| Features | Pull Request(PR) Pipeline  | Continuous Integration (CI) Pipeline  | Continuous Delivery (CD) Pipeline   |Continuous Compliance (CC) Pipeline |
 |-----|-----|-----|-----|-----|
 | Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
