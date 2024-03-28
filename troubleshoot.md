@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2023-11-20"
+  years: 2021, 2024
+lastupdated: "2024-03-28"
 
 keywords: troubleshoot, DevSecOps
 
@@ -239,7 +239,7 @@ The error occurs when the CI pipeline configuration does not contain a task defi
 ```
 {: codeblock}
 
-For more information about the stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information about the stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ## Troubleshooting {{site.data.keyword.contdelivery_short}}
 {: #troubleshoot-cd-related}

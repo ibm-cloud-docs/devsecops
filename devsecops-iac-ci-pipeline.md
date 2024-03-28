@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-02-15"
+lastupdated: "2024-03-28"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -38,7 +38,7 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 |`finish` |Collects, creates, and uploads the logs files, artifacts, and evidence to the evidence locker.   |No|
 {: caption="Table 1. Continuous integration for IaC stages and tasks" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
 
 ## Parameters to configure Terraform context and variables
 {: #devsecops-iac-ci-terra-var}
@@ -115,7 +115,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
-For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ### Format for `cra-tf-ignore-rules-file`
 {: #devsecops-iac-ci-pipeline-ignore-rules}
@@ -150,7 +150,7 @@ The default build feature can be configured by using specific parameters from Ta
 | `build-ignore-file` | | Path to an ignore list file (used for `tar --exclude-from`) |
 {: caption="Table 6. Build artifact configuration parameters" caption-side="top"}
 
-For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts#cd-devsecops-scripts-secrets).
+For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-secrets).
 
 ## Artifact sign
 {: #devsecops-iac-ci-pipeline-artifactsign}
@@ -167,7 +167,7 @@ To use a different sign process, customize this stage by using the `.pipeline-co
 ## Deploy to development
 {: #devsecops-iac-ci-pipeline-devdeploy}
 
-The deploy stage deploys configuration artifact into a development environment. You can provide your variables and credentials for this stage from [variables in the pipeline UI](/docs/devsecops?topic=devsecops-custom-scripts#cd-devsecops-scripts-secrets) and the [pipeline trigger webhook payload](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads).
+The deploy stage deploys configuration artifact into a development environment. You can provide your variables and credentials for this stage from [variables in the pipeline UI](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-secrets) and the [pipeline trigger webhook payload](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads).
 
 The scripts that are provided as part of the common base image can help perform a deployment by using schematics or Terraform CLI.
 The parameters to configure the scripts for the deployment action are described in Table 8 and Table 9.

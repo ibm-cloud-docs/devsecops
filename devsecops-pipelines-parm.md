@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-27"
+lastupdated: "2024-03-28"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -18,7 +18,7 @@ subcollection: devsecops
 Parameters are provided for the pull request, continuous integration, continuous deployment, continuous compliance, and promotion pipelines.
 {: shortdesc}
 
-You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 {: tip}
 
 Tables 1 to 5 list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines.

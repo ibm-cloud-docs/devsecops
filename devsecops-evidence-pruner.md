@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-06-16"
+  years: 2023, 2024
+lastupdated: "2024-03-28"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud, evidence pruner
 
@@ -75,7 +75,7 @@ The evidence pruning trigger is preconfigured for DevSecOps pipelines that are c
 ### Customizing the trigger
 {: #devsecops-prune-evidence-custom}
 
-The evidence pruning tool is implemented by using [Custom tasks](/docs/devsecops?topic=devsecops-custom-scripts) in DevSecOps pipelines. You must use the default implementation. However, you can also extend or replace the default implementation with a custom implementation. Customize the default by introducing a stage definition in `.pipeline-config.yaml`, which instructs the pipeline to override the default stage definition. 
+The evidence pruning tool is implemented by using [Custom tasks](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) in DevSecOps pipelines. You must use the default implementation. However, you can also extend or replace the default implementation with a custom implementation. Customize the default by introducing a stage definition in `.pipeline-config.yaml`, which instructs the pipeline to override the default stage definition. 
 
 The following code snippet starts the default implementation of the evidence pruning script that is located at `/opt/commons/prune-evidence/run.sh` within the `compliance-baseimage` Docker image. If you want to customize the default implementation, substitute this snippet with your own implementations.
 

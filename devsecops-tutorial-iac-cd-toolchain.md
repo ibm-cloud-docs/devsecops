@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2023
-lastupdated: "2023-11-09"
+  years: 2022, 2024
+lastupdated: "2024-03-28"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -128,7 +128,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 
 For this tutorial, the pipeline configuration repository is the same as the one defined for the DevSecOps CI for Infrastructure as Code (IaC). Select *Use existing deployment configuration repository* and select the repository that is used for the pipeline configuration of the CI Toolchain.
 
-For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ### Secrets
 {: ##devsecops-tutorial-iac-cd-secrets}

@@ -15,7 +15,7 @@ subcollection: devsecops
 # Using the Stage Results API in custom scripts
 {: #cd-devsecops-stage-results}
 
-You can use the [Stage Results API](/docs/devsecops?topic=devsecops-custom-scripts) to access the results of specific stages and custom stages.
+You can use the [Stage Results API](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) to access the results of specific stages and custom stages.
 {: shortdesc}
 
 1. Type `get_data result` to print which stages have saved results:

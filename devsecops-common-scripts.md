@@ -34,7 +34,7 @@ To see which script is running, examine the logs from a stage that is running a 
 
 The custom script can be viewed using the following link: '<SCRIPT URL>'
 
-You can customize this stage in your pipeline config. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+You can customize this stage in your pipeline config. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 The script(s) used in this stage can be found at the following location(s):
 

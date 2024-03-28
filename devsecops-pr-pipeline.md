@@ -18,7 +18,7 @@ subcollection: devsecops
 Pull request pipeline runs a set of compliance status checks on a pull request for the specified application repository.
 {: shortdesc}
 
-Attempts to merge a pull request into the master branch might be blocked because of failed compliance status checks. Opening or updating a pull request against the master branch triggers the pull request pipeline to run. You can run your own setup for the pipelines and tests in [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+Attempts to merge a pull request into the master branch might be blocked because of failed compliance status checks. Opening or updating a pull request against the master branch triggers the pull request pipeline to run. You can run your own setup for the pipelines and tests in [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ## Stages and tasks
 {: #cd-devsecops-pipeline-order}
@@ -47,7 +47,7 @@ The table below lists the tasks run in a PR Pipeline. In addition, the table als
 |`finish`| Consolidate the pipeline status. | Yes | Yes | NA |Yes|
 {: caption="Table 1. Pipeline order" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
 
 ## Detect Secrets scan
 {: #cd-devsecops-pr-pipeline-detect-secrets}
@@ -68,7 +68,7 @@ The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies 
     
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-pipelinectl) interface that is provided in your setup stage.
 
-For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ## Task jobs
 {: #cd-devsecops-pipeline-jobs}

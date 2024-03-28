@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-11-28"
+  years: 2023, 2024
+lastupdated: "2024-03-28"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -93,4 +93,4 @@ For more information on the analysis parameters in the configuration file, see [
 ### Using another static scan implementation
 {: #devsecops-gosec-otherscan}
 
-If you want to use your own static scan implementation, modify your `.pipeline-config.yaml` file and add your own custom script to the `static-scan` stage. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+If you want to use your own static scan implementation, modify your `.pipeline-config.yaml` file and add your own custom script to the `static-scan` stage. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
