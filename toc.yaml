@@ -101,6 +101,7 @@ toc:
          - devsecops-run-concurrently.md
       - devsecops-build-docker-images.md
       - devsecops-custom-deployment.md
+      - devsecops-preprocessor.md
       - topicgroup:
           label: Working with issues
           topics:
