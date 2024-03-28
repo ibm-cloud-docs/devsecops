@@ -138,7 +138,7 @@ If the `pipeline-config-repo` variable is not set, DevSecOps pipelines assume it
 ### Using custom scripts with DevSecOps
 {: #byos-devsecops}
 
-The `pipeline-config.yaml` file is the key component that orchestrates and customizes the DevSecOps pipeline behavior. The file uses scripts to build, test, and deploy your application. The file defines how the stages are configured, and which scripts are run. For more information, see [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+The `pipeline-config.yaml` file is the key component that orchestrates and customizes the DevSecOps pipeline behavior. The file uses scripts to build, test, and deploy your application. The file defines how the stages are configured, and which scripts are run. For more information, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 There are two major categories of scripts that are used by DevSecOps pipelines:
 - Application-related scripts that are used to build, test, and deploy your application. These scripts are your own responsibility and out of scope for DevSecOps support. As these scripts don’t have a default implementation, you must add them to your application or configuration repository. You might need to pull the scripts from Jenkins or another source.
@@ -254,7 +254,7 @@ scan-artifact:
 
 By default, DevSecOps pipelines use [{{site.data.keyword.IBM_notm}} Continuous Delivery images](/docs/ContinuousDelivery?topic=ContinuousDelivery-pipeline_versioned_base_images#image_version_contents). These images contain some of the most common tools such as Node and Java to run your scripts. You can also use other vendor's images or your own custom images that contain your preferred tools.
 
-Docker images that are used by DevSecOps pipelines are specified in the [`.pipeline-config.yaml`](/docs/devsecops?topic=devsecops-custom-scripts#cd-devsecops-scripts-configparm) file. Each stage can use a different image.
+Docker images that are used by DevSecOps pipelines are specified in the [`.pipeline-config.yaml`](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-configparm) file. Each stage can use a different image.
 
 #### Changing the image version
 {: #change-image-version}

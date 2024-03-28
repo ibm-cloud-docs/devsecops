@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-03-27"
+lastupdated: "2024-03-28"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -48,7 +48,7 @@ The table below lists the tasks run in a CD Pipeline. In addition the table also
 |`rollback` |This is a step inside `prod-finish`, which gets executed whenever a rollback scenario is encountered | Yes | Yes | NA | No |
 {: caption="Table 1. Pipeline stages and tasks" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
 ## Deployment delta
 {: #cd-devsecops-pipeline-delta}
@@ -124,7 +124,7 @@ In the deploy stage, the pipeline deploys the built artifacts into an environmen
 
 * [Pipeline trigger webhook](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads)
 
-For more information about how to access these variables, see [Custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information about how to access these variables, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ## Acceptance test
 {: #cd-devsecops-pipeline-acctest}

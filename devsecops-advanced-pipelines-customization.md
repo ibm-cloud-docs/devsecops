@@ -177,7 +177,7 @@ compliance-checks:
     ./scripts/my-custom-script2.sh
 ```
 
-For more information, see [custom scripts](/docs/devsecops?topic=devsecops-custom-scripts).
+For more information, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
 
 ## Terraform templates to use DevSecOps toolchains-as-code
 {: #tf-templates-tac}
