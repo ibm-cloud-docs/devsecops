@@ -44,7 +44,7 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Open Source Scanning | Code Risk Analyzer, Mend | Code Risk Analyzer, Mend | | Code Risk Analyzer, Mend |
 | Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | Contrast or SonarQube* | | Contrast or SonarQube* |
 | Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | OWASP ZAP | | OWASP ZAP |
-| Interactive Scan (IAST) | | !Contrast** | | Contrast** |
+| Interactive Scan (IAST) | | Contrast** | | Contrast** |
 | Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
 | Container Image Scans | | AquaSec, Twistlock, Vulnerability Advisor | | AquaSec, Twistlock, Vulnerability Advisor |
 | Artifact Signing | | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
