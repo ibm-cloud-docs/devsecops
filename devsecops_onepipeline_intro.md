@@ -38,9 +38,9 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 
 | Features | Pull Request(PR) Pipeline  | Continuous Integration (CI) Pipeline  | Continuous Delivery (CD) Pipeline   |Continuous Compliance (CC) Pipeline |
 |-----|-----|-----|-----|-----|
-| Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
-| Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
+| Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
+| Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
+| Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Open Source Scanning | Code Risk Analyzer, Mend | Code Risk Analyzer, Mend | | Code Risk Analyzer, Mend |
 | Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | Contrast or SonarQube* | | Contrast or SonarQube* |
 | Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | OWASP ZAP | | OWASP ZAP |
@@ -52,6 +52,7 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Generate Aggregate SBOM | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Change Management| | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Vulnerability Remediation | | | | ![Checkmark icon](../icons/checkmark-icon.svg) |
+| Issue Management | | ![Checkmark icon](../icons/checkmark-icon.svg)| | ![Checkmark icon](../icons/checkmark-icon.svg) |
 {: caption="Security and Compliance features available in OnePipeline "}
 {: summary="This table has row and column headers. The row headers identify the various components. The column headers identify the features."}
 {: #table01}
