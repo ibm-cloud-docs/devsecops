@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-25"
+lastupdated: "2024-03-29"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -24,8 +24,8 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 |                    | OnePipeline (Internal)                                                      | Devsecops (External)                |
 |--------------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
 | **Tools**          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
-| **Repository**     | github.ibm.com                         |  GRIT                                    |
-| **Image sign-in**       |  Users use internal sign-in methods like W3ID.  | Garasign is used to sign image |
+| **Repository**     | github.ibm.com                         |  Git Repo and Issues Tracking (GRIT)                                    |
+| **Artefact sign-in**       |   Garasign   |GPG (GNU Privacy Guard) key|
 {: row-headers}
 {: caption=" Table 1. Features differences between OnePipeline (Internal) and DevSecOps(External)" caption-side="bottom"}
 {: summary="The first row of the table describes separate options that you can choose to your required service. The remaining cells provide the major differences between DevSecOps and OnePipeLine."}
