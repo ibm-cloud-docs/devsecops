@@ -79,7 +79,7 @@ toc:
       topics:
       - devsecops-configuring-en.md
       - devsecops-tekton-ci-compliance.md
-      - devsecops-tekton-cd-compliance.md
+      - devsecops-tekton-cd-compliance.md 
       - topicgroup:
           label: Configuring image signing
           topics:
