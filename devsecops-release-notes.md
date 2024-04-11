@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-02-20"
+lastupdated: "2024-02-16"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -13,51 +13,11 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for DevSecOps
+# Release notes
 {: #release-notes}
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
-{: #shortdesc}
-
-## 21 March 2024
-{: #devsecops-Mar2024}
-{: release-note}
-
-### Updates for DevSecOps version - open-v9.24.0 and open-v10.5.0
-{: #devsecops-open-v10.5.0-open-v9.24.0}
-
-Support for complex tfvars formats in Devsecops IaC
-:   `tfvars` parameters in JSON format are now supported.
-
-Exempt status if found issues in evidence sumary 
-:   Evidence summary now indicates the exemption status of the detected issues.
-
-### Updates for DevSecOps version - open-v9.23.8 and open-v10.4.8
-{: #devsecops-open-v10.4.8-open-v9.23.8}
-
-Fallback to defaults for stage parameters in `.pipeline-config.yaml`
-:   In `.pipeline-config.yaml`, all stage parameters fallback to `defaults.yaml` if they are not specified to a dedicated stage.
-
-
-
-## 22 February 2024
-{: #devsecops-Feb2024}
-{: release-note}
-
-### Updates for DevSecOps version - open-v9.23.7 and open-v10.4.7
-{: #devsecops-open-v10.4.7-open-v9.23.7}
-
-Mandatory Image signature validation
-:   Image signature validation is mandatory for deployments.
-
-`:status-yellow:` icon in slack
-:   Added new warning icon `:status-yellow:` in Slack notifications
-
-### Updates for DevSecOps version - open-v9.23.6 and open-v10.4.6
-{: #devsecops-open-v10.4.6-open-v9.23.6}
-
-Validation of pipeline stages
-:   At the start of the pipeline, validation of pipeline stages occur with respect to required, optional stage configuration.
+{: shortdesc}
 
 
 ## 24 January 2024
@@ -81,6 +41,10 @@ Collection evidences for multiple assets
 
 Support for Security and Compliance Center push API
 :   You can now push results to Security Control Center. For more information please see the [Security and Compliance Center integration docs](/docs/devsecops?topic=devsecops-cd-devsecops-scc-toolchains).
+
+Support for Container Image Multi-Scanner
+:   You can now scan container images with IBM developed Container Image Multi-Scanner(CIMS). For more information, see [Configuring Container Image Multi-Scanner scans](/docs/devsecops?topic=devsecops-cd-devsecops-cims).
+
 
 
 ## 08 Dec 2023
@@ -115,7 +79,7 @@ Support for Security and Compliance Center push API
 
 - **Addition of SysDig Tool scanning within the Artifact Scan Stage for CI Pipeline** - Integrated Sysdig secure tool to scan container images. For more information, see [Configuring Sysdig Image scans](/docs/devsecops?topic=devsecops-cd-devsecops-sysdig-scans).
 
-- **Customizable finish stage** - Modified the last stage of the pipeline to run always irrespective of pipeline status, and added ability to have a customizable step in the last stage for the use of housekeeping in case of a pipeline failure. For more information, see [Custom finish stages](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#devsecops-scripts-custom-finish)
+- **Customizable finish stage** - Modified the last stage of the pipeline to run always irrespective of pipeline status, and added ability to have a customizable step in the last stage for the use of housekeeping in case of a pipeline failure. For more information, see [Custom finish stages](/docs/devsecops?topic=devsecops-custom-scripts#devsecops-scripts-custom-finish)
 
 - **Added new pipeline to perform inventory PR validation** - A new pipeline has been created to seperate out inventory PR validation in CD toolchain. For more information, see [How to opt-in into promotion validation?](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-opt-in)
 

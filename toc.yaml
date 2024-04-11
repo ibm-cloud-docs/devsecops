@@ -17,27 +17,19 @@ toc:
       - link:
           label: What is DevSecOps?
           href: https://www.ibm.com/cloud/learn/devsecops
-      - devsecops_intro.md 
+      - devsecops_intro.md
       - topicgroup:
           label: DevSecOps architecture
           topics:
           - devsecops-arch.md
           - building-blocks.md
       - devsecops-pipelines.md
+      - devsecops-cos-bucket-evidence.md
       - topicgroup:
-          label: DevSecOps practices
+          label: Best practices
           topics:
           - devsecops-change-management.md
           - devsecops-peer-review.md
-          - devsecops-cos-bucket-evidence.md
-          - devsecops-push-pull-based-deployment.md
-      - topicgroup:
-          label: Adopting DevSecOps for your own application or microservice
-          topics:
-          - devsecops-apps-byoa.md
-          - devsecops-custom-scripts.md
-          - devsecops-basics-pipelines-customization.md
-          - devsecops-advanced-pipelines-customization.md
       - devsecops-release-notes.md
   - navgroup:
       id: tutorial
@@ -77,6 +69,13 @@ toc:
   - navgroup:
       id: howto
       topics:
+      - topicgroup:
+          label: Adopting DevSecOps for your own application or microservice
+          topics:
+          - devsecops-apps-byoa.md
+          - devsecops-custom-scripts.md
+          - devsecops-basics-pipelines-customization.md
+          - devsecops-advanced-pipelines-customization.md
       - devsecops-configuring-en.md
       - devsecops-tekton-ci-compliance.md
       - devsecops-tekton-cd-compliance.md
