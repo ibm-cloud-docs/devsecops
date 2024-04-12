@@ -61,7 +61,15 @@ By default, the Contrast-SAST scan allocates 2 gigabytes of memory to the scan. 
 Example requesting 4 gigabytes of memory to be allocated for the scanner: 
   - `contrast-sast-scan-memory`=`4`
 
+## Excluding source repository files and folders from scanning
+{: #cd-devsecops-contrast-sast-scan-src-repo-path-excludes}
+
+You have the option to exclude specified files or folders within each source code repository from the Contrast-SAST multi-language source scans.
+
+Refer to the [Supply Chain Security Contrast-SAST feature documentation](https://pages.github.ibm.com/Supply-Chain-Security/AppSec-External-Docs/appsec/contrast/sast/local-scanning-new-sast-agent/#exclusion-of-files-folders-feature) for additional details and instructions. 
+
 ## Enabling false positive results handling automation
+{: #cd-devsecops-contrast-sast-scan-false-positives-automation}
 
 The Contrast-SAST product does not currently include the ability to designate vulnerabilities detected by the scan to be excluded from the scan results returned from the Contrast server. This feature processes the vulnerabilities after the scan results are returned from the Contrast server, in order to provide adopters an approach to removing designated vulnerabilities from the scan results uploaded to evidence and used for GitHub issue management. This is a beta feature, and is subject to change or removal in future versions.
 {: note}
