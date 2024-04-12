@@ -53,11 +53,6 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Change Management| | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Vulnerability Remediation | | | | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | Issue Management | | ![Checkmark icon](../icons/checkmark-icon.svg)| | ![Checkmark icon](../icons/checkmark-icon.svg) |
-{: caption="Security and Compliance features available in OnePipeline "}
-{: summary="This table has row and column headers. The row headers identify the various components. The column headers identify the features."}
-{: #table01}
-{: class="comparison-tab-table"}
-{: row-headers}
 
 [^tabletext]:Code Risk Analyzer, Mend.
 
@@ -66,3 +61,8 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 [^tabletext3]: OWASP ZAP
 
 [^tabletext4]: AquaSec, Twistlock, Vulnerability Advisor
+{: caption="Security and Compliance features available in OnePipeline "}
+{: summary="This table has row and column headers. The row headers identify the various components. The column headers identify the features."}
+{: #table01}
+{: class="comparison-tab-table"}
+{: row-headers}
