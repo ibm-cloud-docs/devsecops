@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-29"
+lastupdated: "2024-04-12"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -41,12 +41,12 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
-| Open Source Scanning | Code Risk Analyzer, Mend | Code Risk Analyzer, Mend | | Code Risk Analyzer, Mend |
-| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | Contrast or SonarQube* | | Contrast or SonarQube* |
-| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | OWASP ZAP | | OWASP ZAP |
-| Interactive Scan (IAST) | | Contrast** | | Contrast** |
+| Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext]** | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext]** | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext]** |
+| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]**  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]**  |
+| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]**  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]**  |
+| Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]**  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]** | |  |
 | Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
-| Container Image Scans | | AquaSec, Twistlock, Vulnerability Advisor | | AquaSec, Twistlock, Vulnerability Advisor |
+| Container Image Scans | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext4]** | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext4]** |
 | Artifact Signing | | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
 | Signature Validation | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Generate Aggregate SBOM | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
@@ -58,3 +58,11 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 {: #table01}
 {: class="comparison-tab-table"}
 {: row-headers}
+
+[^tabletext]:Code Risk Analyzer, Mend.
+
+[^tabletext2]: Contrast or SonarQube*
+
+[^tabletext3]: OWASP ZAP
+
+[^tabletext4]: AquaSec, Twistlock, Vulnerability Advisor
