@@ -43,7 +43,7 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^1] | ![Checkmark icon](../icons/checkmark-icon.svg) [^1] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^1] |
 | Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]  |
-| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]**  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  |
+| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  |
 | Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] |
 | Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
 | Container Image Scans | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext4]| | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext4] |
