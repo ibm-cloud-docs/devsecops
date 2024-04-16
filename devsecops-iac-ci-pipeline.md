@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-03-28"
+lastupdated: "2024-04-16"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -52,7 +52,7 @@ For Terraform definitions that define infrastructure-as-code source, the context
 | `tfvars-repository` | Infrastructure source code Git repository. | Git repository that contains `tfavars` files. The repository must be declared in the toolchain.|
 | `tfvars-branch` | `main` | Branch of the Git repository that contains the `tfvars` files. |
 | `tfvars-files` | | Files that contain Terraform variables values. |
-| `terraform-version` | `1.2.9` | Terraform CLI tool version to install if not present in the image used for the stages. |
+| `terraform-version` | `1.2.9` | Terraform CLI tool version to install if not present in the image used for the stages.You can also provide versions like 1.5.0-1. Here is the [list of Terraform versions].(https://releases.hashicorp.com/terraform/)  |
 {: caption="Table 2. Parameters to configure Terraform context and variables" caption-side="top"}
 
 The same parameters apply for the scripts that are used in an IaC CD deployment process. Because the CD process can process multiple inventory entries, you can scope a parameter for an inventory entry. To specify Terraform context and variables for a scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the environment entries `tf-dir`, `TF_VAR_<XXXX>`, `tfvars-repository`, `tfvars-branch`, and `tfvars-files`.
