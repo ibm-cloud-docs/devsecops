@@ -78,7 +78,7 @@ toc:
           - devsecops-advanced-pipelines-customization.md
       - devsecops-configuring-en.md
       - devsecops-tekton-ci-compliance.md
-      - devsecops-tekton-cd-compliance.md
+      - devsecops-tekton-cd-compliance.md 
       - topicgroup:
           label: Configuring image signing
           topics:
@@ -127,6 +127,7 @@ toc:
           topics:
           - devsecops-inventory.md
           - devsecops-promote-branches.md
+          - devsecops-partial-promotion.md
           - devsecops-force-redeployment.md
           - devsecops-rollback-deployment.md
           - devsecops-partition-inventory-cc-pipeline.md
