@@ -73,9 +73,9 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 
 [^tabletext4a] : Contrast
 
-[^tabletext5]: AquaSec, Twistlock, Vulnerability Advisor
+[^tabletext5]: AquaTrivy, Twistlock, Vulnerability Advisor
 
-[^tabletext5a]: AquaSec, Twistlock, Vulnerability Advisor
+[^tabletext5a]: AquaTrivy, Twistlock, Vulnerability Advisor
 {: caption="Security and Compliance features available in OnePipeline "}
 {: summary="This table has row and column headers. The row headers identify the various components. The column headers identify the features."}
 {: #table01}
