@@ -1,16 +1,17 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-04-12"
+  years: 2021, 2024
+lastupdated: "2024-04-18"
 
-keywords: IBM Cloud DevOps, DevSecOps
+keywords: DevSecOps
 
 subcollection: devsecops
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
+
 
 # OnePipeline and DevSecOps
 {: #OnePipeline_intro}
@@ -41,7 +42,7 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
-| Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] |
+| Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext1a] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext1b] |
 | Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]  |
 | Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  |
 | Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] |
@@ -55,6 +56,10 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Issue Management | | ![Checkmark icon](../icons/checkmark-icon.svg)| | ![Checkmark icon](../icons/checkmark-icon.svg) |
 
 [^tabletext]:Code Risk Analyzer, Mend.
+
+[^tabletext1a]:Code Risk Analyzer, Mend.
+
+[^tabletext1b]:Code Risk Analyzer, Mend.
 
 [^tabletext2]: Contrast or SonarQube*
 
