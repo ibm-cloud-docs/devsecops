@@ -69,9 +69,9 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 
 [^tabletext3a]: OWASP ZAP
 
-[^tabletext4] : Contrast
+[^tabletext4] : Contrast**
 
-[^tabletext4a] : Contrast
+[^tabletext4a] : Contrast**
 
 [^tabletext5]: AquaTrivy, Twistlock, Vulnerability Advisor
 
