@@ -45,7 +45,7 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext1a] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext1b] |
 | Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2a]  |
 | Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3a]  |
-| Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2b]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2c] |
+| Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2b]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2c]  |
 | Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
 | Container Image Scans | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext5]| | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext5a] |
 | Artifact Signing | | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
@@ -65,13 +65,13 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 
 [^tabletext2a]: Contrast or SonarQube*
 
+[^tabletext2b] : Contrast**
+
+[^tabletext2c] : Contrast**
+
 [^tabletext3]: OWASP ZAP
 
 [^tabletext3a]: OWASP ZAP
-
-[^tabletext2b] : Contrast **
-
-[^tabletext2c] : Contrast **
 
 [^tabletext5]: AquaTrivy, Twistlock, Vulnerability Advisor
 
