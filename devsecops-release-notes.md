@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-02-20"
+lastupdated: "2024-04-20"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -19,6 +19,55 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 18 April 2024
+{: #devsecops-Apr2024}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.27.0 and open-v10.8.0
+{: #devsecops-open-v10.8.0-open-v9.27.0}
+
+Sysdig secure tool uses new vulnerability engine
+:   Sysdig secure tool integration now uses new vulnerability engine in DevSecOps.
+
+Evidence for peer review in CC pipeline
+:   CC pipeline will now collect evidence for peer review validation.
+
+Support for `eu-es` region
+:   DevSecOps toolchains support `eu-es` region.
+
+### Updates for DevSecOps version - open-v9.26.0 and open-v10.7.0
+{: #devsecops-open-v10.7.0-open-v9.26.0}
+
+Incorrect behavior with CD finish task
+:   Earlier, CD finish task had different behavior. This issue is fixed now.
+
+### Updates for DevSecOps version - open-v9.25.1 and open-v10.6.2
+{: #devsecops-open-v10.6.2-open-v9.25.1}
+
+Environment property `IAM_ACCESS_TOKEN` has been removed
+:   Environment property `IAM_ACCESS_TOKEN` has been depreceated in this release.
+
+Failed evidence will be collected if verification certificate is not available
+:   During the artifact verification stage, if the verification certificate is not available- DevsecOps collects failed evidence.
+
+### Updates for DevSecOps version - open-v10.6.1
+{: #devsecops-open-v10.6.1}
+
+Support for inline rollback in dev mode cd pipelines
+:   Development mode of cd pipelines is updated to support inline rollback.
+
+### Updates for DevSecOps version - open-v9.25.0 and open-v10.6.0
+{: #devsecops-open-v10.6.0-open-v9.25.0}
+
+Support for inline rollback, if there is deployment failure
+:   Continuous Deployment now supports inline rollback when a deployment fails. For more information, see [Inline Rollback](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-inline-rollback).
+
+Deprecated environment property `IAM_ACCESS_TOKEN`
+:   The environment property `IAM_ACCESS_TOKEN` is deprecated. If this token is needed by users, it can be retrieved by using `get_env iam-access-token`.
+
+Ability to run `detect-secrets` tool in docker mode and in non-docker mode
+:   `detect-secrets` tool can be run in non-docker mode by defining `detect-secrets-docker` to `0`. By default `detect-secrets` runs in docker mode.
+
 ## 21 March 2024
 {: #devsecops-Mar2024}
 {: release-note}
@@ -29,7 +78,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 Support for complex tfvars formats in Devsecops IaC
 :   `tfvars` parameters in JSON format are now supported.
 
-Exempt status if found issues in evidence sumary 
+Exempt status if found issues in evidence summary
 :   Evidence summary now indicates the exemption status of the detected issues.
 
 ### Updates for DevSecOps version - open-v9.23.8 and open-v10.4.8
