@@ -1,16 +1,17 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-04-12"
+  years: 2021, 2024
+lastupdated: "2024-04-18"
 
-keywords: IBM Cloud DevOps, DevSecOps
+keywords: DevSecOps
 
 subcollection: devsecops
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
+
 
 # OnePipeline and DevSecOps
 {: #OnePipeline_intro}
@@ -41,12 +42,12 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Code Peer Review| ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
-| Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] |
-| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]  |
-| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  |
-| Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] |
+| Open Source Scanning | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext] | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext1a] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext1b] |
+| Static Scan (SAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2] | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2a]  |
+| Dynamic Scans (DAST) | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext3a]  |
+| Interactive Scan (IAST) | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2b]  | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext2c]  |
 | Generate Individual SBOM | ![Checkmark icon](../icons/checkmark-icon.svg) | | |  |
-| Container Image Scans | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext4]| | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext4] |
+| Container Image Scans | | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext5]| | ![Checkmark icon](../icons/checkmark-icon.svg) [^tabletext5a] |
 | Artifact Signing | | ![Checkmark icon](../icons/checkmark-icon.svg) | | |
 | Signature Validation | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
 | Generate Aggregate SBOM | | | ![Checkmark icon](../icons/checkmark-icon.svg) |  |
@@ -54,13 +55,27 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 | Vulnerability Remediation | | | | ![Checkmark icon](../icons/checkmark-icon.svg) |
 | Issue Management | | ![Checkmark icon](../icons/checkmark-icon.svg)| | ![Checkmark icon](../icons/checkmark-icon.svg) |
 
-[^tabletext]:Code Risk Analyzer, Mend.
+[^tabletext]:Code Risk Analyzer, Mend
+
+[^tabletext1a]:Code Risk Analyzer, Mend
+
+[^tabletext1b]:Code Risk Analyzer, Mend
 
 [^tabletext2]: Contrast or SonarQube*
 
+[^tabletext2a]: Contrast or SonarQube*
+
+[^tabletext2b] : Contrast**
+
+[^tabletext2c] : Contrast**
+
 [^tabletext3]: OWASP ZAP
 
-[^tabletext4]: AquaSec, Twistlock, Vulnerability Advisor
+[^tabletext3a]: OWASP ZAP
+
+[^tabletext5]: AquaTrivy, Twistlock, Vulnerability Advisor
+
+[^tabletext5a]: AquaTrivy, Twistlock, Vulnerability Advisor
 {: caption="Security and Compliance features available in OnePipeline "}
 {: summary="This table has row and column headers. The row headers identify the various components. The column headers identify the features."}
 {: #table01}
