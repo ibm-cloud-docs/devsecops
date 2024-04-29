@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-04-18"
+lastupdated: "2024-04-29"
 
 keywords: DevSecOps
 
@@ -16,28 +16,39 @@ subcollection: devsecops
 # OnePipeline and DevSecOps
 {: #OnePipeline_intro}
 
-OnePipeline helps streamline internal compliance audits by standardizing CI/CD processes for services adhering to the IBM Cloud Service Framework (see also System architecture). OnePipeline provides a set of predefined CI/CD templates kept current as the Service Framework addresses FS-Cloud, then FedRAMP and more in the future.
+`OnePipeline` helps streamline internal compliance audits by standardizing CI/CD processes for services adhering to the IBM Cloud Service Framework (see also the [reference implementation workflow](/docs/devsecops?topic=devsecops-cd-devsecops-arch)). OnePipeline provides a set of predefined CI/CD templates kept current as the Service Framework addresses FS-Cloud, then FedRAMP and more in the future.
 
 
 ## DevSecOps vs OnePipeline {{site.data.keyword.contdelivery_short}}
+{: #OnePipeline_vs_devsecops}
+
+### Overview
+{: #OnePipeline_overview}
+
+`OnePipeline` and `DevSecOps` both use the **same** reference implementation. Process and tools are mostly **identical**, except for repositories, change management tool, and artifact signing.
+
+This means that both flavors are equivalent in terms of **FS-Cloud** and **FedRAMP compliance**.
+
+### Details
 {: #devsecops_onepipeline_difference}
 
-|                    | OnePipeline (Internal)                                                      | Devsecops (External)                |
+|                    | OnePipeline (Internal)                                                      | DevSecOps (External)                |
 |--------------------|--------------------------------------------------------------------------------------|-----------------------------------------------------|
-| **Tools**          | Change management tool used here is Service Now                                   | Change management tool used here is  Github  |
-| **Repository**     | github.ibm.com                         |  Git Repo and Issues Tracking (GRIT)                                    |
-| **Artefact sign-in**       |   Garasign   |GPG (GNU Privacy Guard) key|
+| **Change management**          | ServiceNow                                   | Git Repo and Issues Tracking (GRIT)  |
+| **Repository**     | github.ibm.com (*)                        |  Git Repo and Issues Tracking (GRIT) (*)                                   |
+| **Artifact signing**       |   Garasign   |GPG (GNU Privacy Guard) |
 {: row-headers}
 {: caption=" Table 1. Features differences between OnePipeline (Internal) and DevSecOps(External)" caption-side="bottom"}
 {: summary="The first row of the table describes separate options that you can choose to your required service. The remaining cells provide the major differences between DevSecOps and OnePipeLine."}
+(*) Adopters may use a mix of other repository providers like Gitlab, Bitbucket and more. Refer to the [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-integrations&interface=ui).
 {: #diffdevsecopsstable1}
 
 
 
-## Security and Compliance Features of OnePipeLine
+## Security and Compliance Features of OnePipeLine / DevSecOps
 {: #scc-features-onepipeline-table}
 
-| Features | Pull Request(PR) Pipeline  | Continuous Integration (CI) Pipeline  | Continuous Delivery (CD) Pipeline   |Continuous Compliance (CC) Pipeline |
+| Feature | Pull Request(PR) Pipeline  | Continuous Integration (CI) Pipeline  | Continuous Delivery (CD) Pipeline   |Continuous Compliance (CC) Pipeline |
 |-----|-----|-----|-----|-----|
 | Branch Protection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
 | Secret Detection | ![Checkmark icon](../icons/checkmark-icon.svg) | ![Checkmark icon](../icons/checkmark-icon.svg) |  |  |
@@ -81,3 +92,10 @@ OnePipeline helps streamline internal compliance audits by standardizing CI/CD p
 {: #table01}
 {: class="comparison-tab-table"}
 {: row-headers}
+
+Refer to this [DevSecOps Pipelines stages and custom scripts explained](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages) for a complete list of `OnePipeline` and `DevSecOps` Pipelines stages and custom scripts.
+
+## Supported scanning tools
+{: #supported-scanning-tools}
+
+Refer to this [Supported scanning tools](/docs/devsecops?topic=devsecops-cd-devsecops-supported-scanning-tools) for a complete list of supported scanning tools.
