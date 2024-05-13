@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-28"
+lastupdated: "2024-05-13"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -34,6 +34,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-password`		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.			|Optional			|
+|`branch-protection-rules-path`		|text		|Set the path to a JSON file containing the customized list of the required compliance checks, relative to the integrated app repository.			|Optional			|
+|`branch-protection-status-check-prefix`		|text		|The prefix text for branch protection status check (Defaults to `tekton`)	|Optional			|
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
@@ -86,6 +88,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required for the Code Risk Analyzer scan.			|Optional			|
 |`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional|
 |[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`master` |Optional			|
+|`branch-protection-rules-path`		|text		|Set the path to a JSON file containing the customized list of the required compliance checks, relative to the integrated app repository.			|Optional			|
+|`branch-protection-status-check-prefix`		|text		|The prefix text for branch protection status check (Defaults to `tekton`)	|Optional			|
 | `ciso-ibmcloud-api-key` | SECRET | Overrides `ibmcloud-api-key` for image signing and signature verification. | Optional |
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |
@@ -164,6 +168,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	|
+|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`registry-namespace`		|text		|The Container Registry namespace for the image.	|Required			|
 |`registry-region`		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|

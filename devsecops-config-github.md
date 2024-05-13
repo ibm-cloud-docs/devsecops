@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023
-lastupdated: "2023-07-21"
+  years: 2024
+lastupdated: "2024-05-13"
 
 keywords: DevSecOps
 
@@ -20,7 +20,7 @@ Branch protection policies enforce security, collaboration and ensure your team'
 ## Benefits of Branch Protection
 {: #devsecops-config-github-protection}
 
-- **Improved Code Quality and Collaboration**: Requiring pull requests and approvals through branch protection enhances both code quality and collaboration. This ensures code consistency and adherence to the team's coding standards. Changes undergo review and helps catch bugs and errors early on, resulting in more reliable and maintainable code.
+- **Improved Code Quality and Collaboration**: Requiring pull requests and approvals through branch protection enhances code quality and collaboration. This ensures code consistency and adherence to the team's coding standards. Changes undergo review and helps catch bugs and errors early on, resulting in more reliable and maintainable code.
 
 - **Increased Visibility of Changes**: Requiring pull requests provides increased visibility into code changes, making it easier to track modifications and identify potential issues.
 
@@ -58,13 +58,13 @@ Note: Pull Requests **must** be approved before merging them into the master bra
 ### Configuring Status Checks
 {: #devsecops-config-github-status}
 
-Status checks are required in One-Pipeline to enforce a comprehensive set of quality and security measures on the code. This ensures that code changes are safe and reliable before they are merged into a protected branch. By requiring status checks to pass before merging, you can prevent broken or untested code from being deployed to production.
+Status checks are required in DevSecOps to enforce a comprehensive set of quality and security measures on the code. This ensures that code changes are safe and reliable before they are merged into a protected branch. By requiring status checks to pass before merging, you can prevent broken or untested code from being deployed to production.
 
 When a pull request is submitted, the PR/CI pipeline automatically triggers a series of tests, validations, and other checks to verify the proposed changes.
 
 Only when all the required status checks pass successfully will the pull request be considered eligible for merging into the protected branch.
 
-By leveraging status checks within One-Pipeline, you can maintain code quality, adhere to coding standards, and ensure the absence of vulnerabilities or critical flaws before incorporating changes into your project's protected branch.
+By leveraging status checks within DevSecOps, you can maintain code quality, adhere to coding standards, and ensure the absence of vulnerabilities or critical flaws before incorporating changes into your project's protected branch.
 
 For more information on configuring status checks, refer to the [Configuring Status Checks Only (Status Checks Configuration)](#configuring-status-checks-only-status-checks-configuration) section for a reference implementation.
 
@@ -86,14 +86,44 @@ After enabling the `Require status checks to pass before merging` option, you ne
 
 The status checks shown must pass before merging a pull request. 
 
-Note : One-Pipeline will base the outcome of branch protection checks depending on the results of status checks that have the `tekton/` prefix. 
+The above checks are the default expected pull request status checks in pipeline.
+
+#### Setting Customized List of Compliance Checks 
+You may also bring in your own list of status checks to be validated against by the pipeline. To achieve this, first set your list of required status checks in the repo, and also set the `branch-protection-rules-path` value setting it's path to a JSON file containing the same list status checks, that is relative to your app repository. 
+
+|`branch-protection-rules-path`		|text		|Set the path to a JSON file containing the customized list of the required compliance checks, relative to the integrated app repository.	|Optional			|
+
+The JSON file is of this format
+
+```
+[{
+  "type": "branch-protection",
+  "name": "code-review",
+  "params": {
+    "checks": [
+      "tekton/code-branch-protection",
+      "tekton/code-unit-tests",
+      "tekton/code-cis-check",
+      "tekton/code-vulnerability-scan",
+      "tekton/code-detect-secrets"
+    ]
+  }
+}]
+```
+
+Note :  DevSecOps by default will base the outcome of branch protection checks depending on the results of status checks that have the `tekton/` prefix. 
+
+#### Setting Customized Prefix for Compliance Checks 
+If you wish to change the `tekton` prefix to something else in GitHub, you should set a value for `branch-protection-status-check-prefix` environment property in your pipeline.
+
+|`branch-protection-status-check-prefix`		|text		|The prefix text for branch protection status check (Defaults to `tekton`)	|Optional			|
 
 Once you have configured branch protection settings, any attempt to merge a pull request to the protected branch will be rejected unless the required conditions are met.
 
-### Additional Settings (Optional)
+### Optional Settings
 {: #devsecops-config-github-settings-more}
 
-In addition to the above settings, you have the option to configure the following additional settings for branch protection rules. Please note that the status checks provided by One-Pipeline will not validate or enforce these settings.
+In addition to the above settings, you have the option to configure the following additional settings for branch protection rules. Please note that the status checks provided by  DevSecOps will not validate or enforce these settings.
 
 - **Require signed commits:** This setting requires that all commits to the protected branch be signed, preventing malicious changes from being made to the code.
 
@@ -107,10 +137,10 @@ These additional settings are optional and can be customized based on your speci
 ### Adding All Branch Protection Rules (Complete Configuration)
 {: #devsecops-config-github-add-all-rules}
 
-Branch protection rules could also be set by the following curl command, after replacing the `$GH_TOKEN`, `$OWNER`, `$REPO`, `$BRANCH` variables. 
+Branch protection rules could also be set by the following curl command, after replacing the `$GH_TOKEN`, `$OWNER`, `$APP_API_URL` `$REPO`, `$BRANCH` variables. 
 
 ``` bash
-curl -u ":$GH_TOKEN" https://github.ibm.com/api/v3/repos/$OWNER/$REPO/branches/$BRANCH/protection -XPUT -d '{"required_pull_request_reviews":{"dismiss_stale_reviews":true},"required_status_checks":{"strict":true,"contexts":["tekton/code-branch-protection","tekton/code-unit-tests","tekton/code-cis-check","tekton/code-vulnerability-scan","tekton/code-detect-secrets"]},"enforce_admins":null,"restrictions":null}'
+curl -u ":$GH_TOKEN" $APP_API_URL/repos/$OWNER/$REPO/branches/$BRANCH/protection -XPUT -d '{"required_pull_request_reviews":{"dismiss_stale_reviews":true},"required_status_checks":{"strict":true,"contexts":["tekton/code-branch-protection","tekton/code-unit-tests","tekton/code-cis-check","tekton/code-vulnerability-scan","tekton/code-detect-secrets"]},"enforce_admins":null,"restrictions":null}'
 ```
 
 This CURL command sets up both the required status checks and pull request review settings.
@@ -127,6 +157,6 @@ curl -H "Authorization: Bearer $(cat ${APP_TOKEN_PATH})" "${APP_API_URL}/repos/$
     -XPUT -d '{"required_pull_request_reviews":{"dismiss_stale_reviews":true},"required_status_checks":{"strict":true,"contexts":["tekton/code-branch-protection","tekton/code-unit-tests","tekton/code-cis-check","tekton/code-vulnerability-scan","tekton/code-detect-secrets"]},"enforce_admins":null,"restrictions":null}'
 ```
 
-In our reference implementation, we have already provided a sample configuration for the [hello-compliance-app](https://github.ibm.com/one-pipeline/hello-compliance-app/blob/0ef6c3e981bf85f26c813a11aae6947455dc273c/scripts/code_setup.sh#L18) repository, so you can use it as a starting point and customize it according to your needs.
+In our reference implementation, we have already provided a sample configuration for the [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/code_setup.sh?ref_type=heads#L23) repository, so you can use it as a starting point and customize it according to your needs.
 
 By following this example, you can configure the necessary branch protection rules and status checks, ensuring code quality and adherence to security measures for your repository.
