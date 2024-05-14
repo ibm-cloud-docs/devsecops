@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-12-15"
+lastupdated: "2024-05-13"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -32,9 +32,24 @@ The [`cocoa incident process-legacy`](/docs/devsecops?topic=devsecops-cd-devseco
 - If the `current-status` is `failure`, the command looks for an open issue of a similar title coming from the same tool against the same subject. If the command finds such an issue, it updates the issue with an additional comment. However, if an existing issue matching the `title-tool-subject` is not found, the command creates an incident, attaches a default severity of `High`, however no due date is set.
 - If the `current-status` is `success`, the command looks for an open issue that matches the `title-tool-subject` combination, and if such an issue is found, it is closed automatically. If such an issue is not found, then the issue is a no-op.
 
+The lifecycle of nonincident issue flow is depicted below.
+
+![Lifecycle of nonincident issues](images/Issue-mgmt-non-vuln-flow-user-journey.jpg "Lifecycle of nonincident issues"){: caption="Lifecycle of nonincident issues" caption-side="bottom"}
+
+User journey of encountering a nonincident issue and it's resolution for CI and PR pipelines is depicted below.
+
+![Nonincident issues lifecycle in CI pipeline](images/Issue-mgmt-CI-non-vuln-flow.jpg "Nonincident issues lifecycle in CI pipeline"){: caption="Nonincident issues lifecycle in CI pipeline" caption-side="bottom"}
+
+![Nonincident issues lifecycle in PR pipeline](images/Issue-mgmt-PR-non-vuln-flow.jpg "Nonincident issues lifecycle in PR pipeline"){: caption="Nonincident issues lifecycle in PR pipeline" caption-side="bottom"}
+
 Currently, nonincident issue handling handles the following scenarios:
   
 - Failing unit test
 - Failing acceptance test
 - Failing image signing
 - Failing branch protection check
+- Any scanning tool failure
+- Infrastructure failure and outage
+- Any tool which is do not have an incident parser
+
+![Causes of creation of nonincident issues](images/Issue-mgmt-non-vuln-flow-causes.jpg "Causes of creation of nonincident issues"){: caption="Causes of creation of nonincident issues" caption-side="bottom"}

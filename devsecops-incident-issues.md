@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2023
-lastupdated: "2023-10-30"
+  years: 2022, 2024
+lastupdated: "2024-05-13"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -32,10 +32,10 @@ Even though the CI and CC pipelines have common steps, the issue processing of t
 
 Figures 1 - 6 show the possible use cases that are based on these differences.
 
-### DevSecOps/one pipeline lifecycle
+### Issue lifecycle
 {: #incident-issue-lifecycle}
 
-The DevSecOps/one pipeline lifecycle extends from code PRs to production scans.
+The issue lifecycle extends from code PRs to production scans.
 
 ![Vulnerability use cases flow](images/vuln-uc-0.svg "DevSecOps/one pipeline lifecycle"){: caption="Figure 1. DevSecOps/one pipeline lifecycle" caption-side="bottom"}
 
@@ -46,12 +46,20 @@ The new build introduces a vulnerability, which is not accepted. Deployment is b
 
 ![Vulnerability found in the build](images/vuln-uc-1.svg "Vulnerability found in the build"){: caption="Figure 2. Vulnerability found in the build" caption-side="bottom"}
 
+This build pipeline flow incase of a vulnerability found, and the corresponding user actions has been explained below.
+
+![Build pipeline has detected a vulnerability](images/issue-mgmt-CI-flow-vuln.jpg "Build pipeline has detected a vulnerability"){: caption="Build pipeline has detected a vulnerability" caption-side="bottom"}
+
 ### Use case 2: vulnerability found in the build that is also in production
 {: #incident-issue-uc2}
 
 The new build contains a vulnerability that is also in the currently deployed production. Teams have a timeline to fix the issue, but new features or fixes can still be deployed.
 
 ![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Figure 3. Vulnerability found in the build that is also in production" caption-side="bottom"}
+
+CC pipeline sets the timeline to fix any such vulnerabilities found in production. It will only fail when the timeline to fix the vulnerability has expired. The flow has been outlined below.
+
+![Vulnerability found in production](images/issue-mgmt-CC-flow-vuln.jpg "Vulnerability found in production"){: caption="Vulnerability found in production" caption-side="bottom"}
 
 ### Use case 2A: vulnerability that is found in production allows PRs
 {: #incident-issue-uc2a}
@@ -60,12 +68,12 @@ The vulnerability in production does not prevent PRs from merging.
 
 ![Vulnerability found in production allows PRs](images/vuln-uc-2a.svg "Vulnerability found in production allows PRs"){: caption="Figure 4. Vulnerability found in production allows PRs" caption-side="bottom"}
 
-### Use case 3: false positives and PCEs
+### Use case 3: false positives
 {: #incident-issue-uc3}
 
-If the team categorizes an issue as false positive, or the team gets a PCE for a vulnerability, the issue can be labeled as **Exempted**. The issue can then be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
+If the team categorizes an issue as false positive,  the issue can be labeled as **Exempted**. The issue can then be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
 
-![False positives and PCEs](images/vuln-uc-3.svg "False positives and PCEs"){: caption="Figure 5. False positives and PCEs" caption-side="bottom"}
+![False positives](images/vuln-uc-3.svg "False positives"){: caption="Figure 5. False positives" caption-side="bottom"}
 
 ### Use case 4: automatically closing fixed issues
 {: #incident-issue-uc4}
@@ -73,6 +81,10 @@ If the team categorizes an issue as false positive, or the team gets a PCE for a
 Periodically running the CC pipeline can close issues that are open and have a due date set. Also, the relevant vulnerability cannot be found in scans.
 
 ![Automatically closing fixed issues](images/vuln-uc-4.svg "Automatically closing fixed issues"){: caption="Figure 6. Automatically closing fixed issues" caption-side="bottom"}
+
+The following diagram explains the flowchart of CC pipeline detecting which issues to close, and which issues to create fresh.
+
+![CC pipeline automatically closing fixed issues](images/issue-mgmt-CC-flow-vuln-autoclosing.jpg "CC pipeline automatically closing fixed issues"){: caption="Figure 6. CC pipeline automatically closing fixed issues" caption-side="bottom"}
 
 ## Setting the due date for incident issues
 {: #incident-issue-due-date-setting}
@@ -238,10 +250,7 @@ Be sure to reference the security-focal review in the issue, such as providing a
 
 
 
-### Postponing the due date of an issue that has a PCE
-{: #due-date-change-pce}
 
-If you have an issue that has a Public Cloud Security Exception (PCE), you can change its due date to be the same as the expiration date of the PCE so that evidence collection continues up to the PCE expiration date.
 
 ## Slack alerts for pending and overdue issues for CC pipeline
 {: #devsecops-cc-pipeline-slack-alerts}
