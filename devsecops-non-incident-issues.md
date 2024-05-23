@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2024-05-13"
+lastupdated: "2024-05-23"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -34,13 +34,13 @@ The [`cocoa incident process-legacy`](/docs/devsecops?topic=devsecops-cd-devseco
 
 The lifecycle of nonincident issue flow is depicted below.
 
-![Lifecycle of nonincident issues](images/Issue-mgmt-non-vuln-flow-user-journey.jpg "Lifecycle of nonincident issues"){: caption="Lifecycle of nonincident issues" caption-side="bottom"}
+![Lifecycle of nonincident issues](images/issue-mgmt-non-vuln-flow-user-journey.jpg "Lifecycle of nonincident issues"){: caption="Lifecycle of nonincident issues" caption-side="bottom"}
 
 User journey of encountering a nonincident issue and it's resolution for CI and PR pipelines is depicted below.
 
-![Nonincident issues lifecycle in CI pipeline](images/Issue-mgmt-CI-non-vuln-flow.jpg "Nonincident issues lifecycle in CI pipeline"){: caption="Nonincident issues lifecycle in CI pipeline" caption-side="bottom"}
+![Nonincident issues lifecycle in CI pipeline](images/issue-mgmt-CI-non-vuln-flow.jpg "Nonincident issues lifecycle in CI pipeline"){: caption="Nonincident issues lifecycle in CI pipeline" caption-side="bottom"}
 
-![Nonincident issues lifecycle in PR pipeline](images/Issue-mgmt-PR-non-vuln-flow.jpg "Nonincident issues lifecycle in PR pipeline"){: caption="Nonincident issues lifecycle in PR pipeline" caption-side="bottom"}
+![Nonincident issues lifecycle in PR pipeline](images/issue-mgmt-PR-non-vuln-flow.jpg "Nonincident issues lifecycle in PR pipeline"){: caption="Nonincident issues lifecycle in PR pipeline" caption-side="bottom"}
 
 Currently, nonincident issue handling handles the following scenarios:
   
@@ -52,4 +52,4 @@ Currently, nonincident issue handling handles the following scenarios:
 - Infrastructure failure and outage
 - Any tool which is do not have an incident parser
 
-![Causes of creation of nonincident issues](images/Issue-mgmt-non-vuln-flow-causes.jpg "Causes of creation of nonincident issues"){: caption="Causes of creation of nonincident issues" caption-side="bottom"}
+![Causes of creation of nonincident issues](images/issue-mgmt-non-vuln-flow-causes.jpg "Causes of creation of nonincident issues"){: caption="Causes of creation of nonincident issues" caption-side="bottom"}
