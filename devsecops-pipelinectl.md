@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-07-17"
+  years: 2021, 2024
+lastupdated: "2024-05-23"
 
 keywords: DevSecOps, pipelinectl
 
@@ -529,7 +529,7 @@ pipelinectl deserialize ./foo.json
 > This command is not an alias, need `pipelinectl` explicitly
 
 ## Low-level methods
-{: #low-level methods}
+{: #low-level-methods}
 
 These methods are only exposed for the sake of completeness. Use the methods only on rare occasions.
 
