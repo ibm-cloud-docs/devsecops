@@ -42,6 +42,9 @@ User journey of encountering a nonincident issue and it's resolution for CI and 
 
 ![Nonincident issues lifecycle in PR pipeline](images/issue-mgmt-PR-non-vuln-flow.jpg "Nonincident issues lifecycle in PR pipeline"){: caption="Nonincident issues lifecycle in PR pipeline" caption-side="bottom"}
 
+![Causes of creation of nonincident issues](images/issue-mgmt-non-vuln-flow-causes.jpg "Causes of creation of nonincident issues"){: caption="Causes of creation of nonincident issues" caption-side="bottom"}
+
+
 Currently, nonincident issue handling handles the following scenarios:
 
 - Failing unit test
