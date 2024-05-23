@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-11"
+lastupdated: "2024-05-23"
 
 keywords: DevSecOps, ibm cloud, tekton, classic, pipeline
 
@@ -26,11 +26,11 @@ To add a pipeline to an existing toolchain, complete these steps:
 
 2. Search and click **Delivery Pipeline** tool integration tile.
 
-   ![Set up your pipeline](images/setup-new-pipeline.png){: caption="Figure 2. Set up your pipeline" caption-side="bottom"}
+3. Choose between `Classic pipeline` that is defined through the UI, or the new Tekton-based 'pipeline as code' that is defined in a Git repository.
 
-3. Choose between Classic pipeline that is defined through the UI, or the new Tekton-based 'pipeline as code' that is defined in a Git repository. 
+   ![Set up your pipeline](images/setup-new-pipeline.png){: caption=" Drop-down menu to choose the pipeline" caption-side="bottom"}
 
-   Tekton pipelines are currently available only with Private Workers.
+   Tekton pipelines are available only with Private Workers.
    {:  important}
 
 4. Name your pipeline, choose the pipeline configuration method, and then select **Create Integration**. This action takes you to the pipeline configuration page to finish setting it up.

@@ -28,7 +28,7 @@ Nonincident issues do not have a due date assigned to them by default. Any pipel
 For nonincident issues that are found during a CI run, a combination of the `evidence_type` and the app repo branch is used to construct the issue title so that a unit test failure found on branch `master` is dealt with separately from a unit test failure on branch `dev`. A similar combination is used for such issues that are found from the CC pipeline. Issues coming from CD pipeline have a different grouping criteria, where the combination of the evidence type id, target environment, and the pipeline namespace is used to construct the title of the issue. This different grouping criteria ensure that the issues found on CI and CC are not interfered by the CD run for similar tests like an acceptance test. The different criteria also ensure that issues found for a target environment `prod` is dealt separately from an issue that is found on target environment `staging`.
 
 The [`cocoa incident process-legacy`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#incident-process-legacy) command has two modes of action based on whether the `current-status` of the run was a success or failure:
-  
+
 - If the `current-status` is `failure`, the command looks for an open issue of a similar title coming from the same tool against the same subject. If the command finds such an issue, it updates the issue with an additional comment. However, if an existing issue matching the `title-tool-subject` is not found, the command creates an incident, attaches a default severity of `High`, however no due date is set.
 - If the `current-status` is `success`, the command looks for an open issue that matches the `title-tool-subject` combination, and if such an issue is found, it is closed automatically. If such an issue is not found, then the issue is a no-op.
 
@@ -43,7 +43,7 @@ User journey of encountering a nonincident issue and it's resolution for CI and 
 ![Nonincident issues lifecycle in PR pipeline](images/issue-mgmt-PR-non-vuln-flow.jpg "Nonincident issues lifecycle in PR pipeline"){: caption="Nonincident issues lifecycle in PR pipeline" caption-side="bottom"}
 
 Currently, nonincident issue handling handles the following scenarios:
-  
+
 - Failing unit test
 - Failing acceptance test
 - Failing image signing
@@ -51,5 +51,3 @@ Currently, nonincident issue handling handles the following scenarios:
 - Any scanning tool failure
 - Infrastructure failure and outage
 - Any tool which is do not have an incident parser
-
-![Causes of creation of nonincident issues](images/issue-mgmt-non-vuln-flow-causes.jpg "Causes of creation of nonincident issues"){: caption="Causes of creation of nonincident issues" caption-side="bottom"}
