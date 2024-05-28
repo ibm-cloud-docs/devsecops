@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2023-01-24"
+  years: 2024
+lastupdated: "2024-05-28"
 
-keywords: DevSecOps
+keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
 subcollection: devsecops
 
@@ -12,27 +12,27 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Adding test and build steps to pipelines
+#  Adding the test results and building scripts to the pipeline
 {: #cd-devsecops-add-pipeline-steps}
 
-You can connect your existing test and build flow to the continuous integration pipeline by adding the results of your new or existing test and build scripts to the DevSecOps pipeline continuous integration flow.
+ Connect your existing test and build flow to the Continuous Integration pipeline by adding the results of your new or existing test and build scripts to the DevSecOps pipeline Continuous Integration flow.
 {: shortdesc}
 
 You can use the following stages within the continuous integration pipeline to add test and build steps:
 
-* Setup stage
-* Test stage
-* Containerize stage (build)
-* Release stage
+* **Setup**
+* **Test**
+* **Containerize**  (build)
+* **Release**
 
-## Setup
+## Pipeline Setup
 {: #cd-devsecops-add-pipeline-setup}
 
-You can use the Setup stage to set up your test and build environment and pull information into the pipeline. For example, you can use multiple app-related repos in a single build. You can clone all of the repos that you need and make the pipeline aware of those repos in compliance-related checks and scans.
+ Use the **Setup** stage to set up your test and build environment and pull information into the pipeline. For example, you can use multiple app-related repos in a single build. You can clone all the repos that you need and make the pipeline aware of those repos in compliance-related checks and scans.
 
-The default app repo cloned by the pipeline internally and added to the pipeline by using the `save_repo pipelinectl` interface with the reference name `app-repo`. The default repo is either provided by the repo pipeline UI parameter or selected by its toolchain binding name, if you set up the pipeline from the toolchain template.
+The default app repo that is cloned by the pipeline internally and added to the pipeline by using the `save_repo pipelinectl` interface with the reference name `app-repo`. The default repo is either provided by the repo pipeline UI parameter or selected by its toolchain binding name, if you set up the pipeline from the toolchain template.
 
-If you want to use more repos, clone them in the setup stage and use the same `save_repo` interface to add them to the pipeline.
+If you want to use more repos, clone them in the **setup** stage and use the same `save_repo` interface to add them to the pipeline.
 
 ### Example
 {: #cd-devsecops-add-pipeline-setupexample}
@@ -63,7 +63,7 @@ save_repo <repo-reference-name> \
 
 This way the rest of the pipeline can scan these repos for compliance violations and vulnerabilities.
 
-Paths saved by using `save_repo` must be relative to the workspace path.
+Paths that are saved by using `save_repo` must be relative to the workspace path.
 {: important}
 
 You don't need to install the `pipelinectl` tool for your scripts or base images, the reference pipeline provides the binaries for the context of your script.
@@ -71,7 +71,7 @@ You don't need to install the `pipelinectl` tool for your scripts or base images
 ## Test
 {: #cd-devsecops-add-pipeline-test}
 
-This stage is where you run your tests on your code repos. You can access your repos added in the setup stage using the `list_repos` and `load_repo` pipelinectl interfaces.
+This stage is where you run your tests on your code repos. You can access your repos added in the setup stage by using the `list_repos` and `load_repo` `pipelinectl` interfaces.
 
 ### Example
 {: #cd-devsecops-add-pipeline-test-example}
@@ -87,9 +87,9 @@ list_repos | while IFS= read -r repository ; do
     #
     # load_repo returns a property of a saved repository
     #
-    # Usage: 
-    # load_repo <repo-reference-name> <property> 
-    # 
+    # Usage:
+    # load_repo <repo-reference-name> <property>
+    #
     url="$(load_repo "$repository" url)"
     sha="$(load_repo "$repository" commit)"
     branch="$(load_repo "$repository" branch)"
@@ -98,9 +98,9 @@ list_repos | while IFS= read -r repository ; do
     #
     # use your repos to test, etc
     #
-    run_tests 
+    run_tests
     result=$?
-    
+
     if [ $result != 0 ]; then
         exit_code=$result
     fi
@@ -109,12 +109,12 @@ done
 exit $exit_code
 ```
 
-The unit-test compliance control is determined by the exit code of the stage script itself. If your tests pass, exit with 0, if not, return a non-zero exit code at the end.
+The unit-test compliance control is based on the exit code of the stage script. If your tests pass, exit with `0`. If not, return a nonzero exit code at the end.
 
 ### Saving results
 {: #cd-devsecops-add-pipeline-save-results}
 
-Your tests might generate some report artifacts, such as a test results JSON or XML. To attach those to the created compliance evidence as evidence artifacts, use the save_result pipelinectl interface in this stage.
+Your tests might generate some report artifacts, such as a test results in JSON or XML. Use the `save_result pipelinectl` interface in this stage to attach the tests to the created compliance evidence as evidence artifacts.
 
 
 ```bash
@@ -129,10 +129,10 @@ test_runner -o results.json
 save_result test results.json
 ```
 
-The first parameter of save_results must be the DevSecOps pipeline config stage name, like test, scan-artifact or acceptance-test. Otherwise the evidence collector won't be able to find it and attach it to the proper piece of evidence.
+The first parameter of save_results must be the DevSecOps pipeline config stage name, like test, scan-artifact or acceptance-test. Otherwise, the evidence collector won't be able to find it and attach it to the proper piece of evidence.
 {: important}
 
-Using the `save_result` pipelinectl interface ensures that the pipeline finds your result artifacts, they are uploaded to the evidence locker, and attached to the compliance evidence that is created by the pipeline.
+Using the `save_result` pipelinectl interface ensures that the pipeline finds your result artifacts, they are uploaded to the evidence locker, and attached to the compliance evidence created by the pipeline.
 
 Example evidence created for the unit tests while using `save_result`:
 
@@ -168,7 +168,9 @@ Example evidence created for the unit tests while using `save_result`:
 ## Build or containerize
 {: #cd-devsecops-add-pipeline-build}
 
-In this stage you can build your artifacts. The pipeline provides some default features for docker image type artifacts, but you're able to build any kind of artifacts here. What is important, is to save the created artifacts for the pipeline, so later it can run scans on it, or use them in your release stage.
+
+In this stage, you can build your artifacts. The pipeline provides some default features for docker image type artifacts, but you're able to build any artifacts here. Save the created artifacts for the pipeline, so that later it can run scans on it, or use the artifacts in your release stage.
+
 
 To provide information on your built artifacts, use the `save_artifact` pipelinectl interface.
 
@@ -195,12 +197,12 @@ save_artifact <artifact-reference-name> \
     type=image" \
     name="${IMAGE_URL}" \
     digest="${IMAGE_DIGEST}"
-```    
+```
 
 The preferred format for image name is `image-URL:build-tag`, for example, `wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/compliance-baseimage:2.8.0`.
 {: important]
 
-If you build Docker images, use the `save_artifact` interface to send those images for the default built-in image signing and CR VA scanning tasks.
+If you build Docker images, use the `save_artifact` interface to send those images for the default built-in image signing and CR IBM Informix Virtual Appliance scanning tasks.
 
 ## Release
 {: #cd-devsecops-add-pipeline-release}
@@ -210,10 +212,10 @@ The release stage provides flexibility if you want to add other artifacts to the
 
 In this stage, you can use the CLI `cocoa inventory add` command, and the data from `pipelinectl` commands, to create the inventory entries.
 
-If there are problems in the pipeline run, you migh want to skip inventory update to avoid a problematic inventory. To skip inventory update use the following environment variables:
+If there are problems in the pipeline run, you might choose to skip an inventory update to avoid a problematic inventory. To skip inventory update, use the following environment variables:
 
 * `skip-inventory-update-on-failure`	Opt-in environment variable from pipeline to specify whether the inventory is updated.
-* `one-pipeline-status`					Set to `1` if there is a stage failure in the pipeline run.
+* `one-pipeline-status`					Set to `1` , if there is a stage failure in the pipeline run.
 
 Check these variables before calling `cocoa inventory add` in this stage.
 
@@ -236,7 +238,7 @@ fi
 #
 list_artifacts | while IFS= read -r artifact ; do
     #
-    # Add a new value to the inventory repository. `cocoa inventory add` creates a new file with the name option, 
+    # Add a new value to the inventory repository. `cocoa inventory add` creates a new file with the name option,
     # if does not exist otherwise overwrites it.
     #
     cocoa inventory add \
@@ -254,7 +256,7 @@ list_artifacts | while IFS= read -r artifact ; do
 done
 ```
 
-To use the CLI, you must install it in your scripts, or use a base image that has the CLI pre-installed.
+To use the CLI, you must install it in your scripts, or use a base image that has the CLI preinstalled.
 
 ## Related information
 {: #cd-devsecops-add-pipeline-related}

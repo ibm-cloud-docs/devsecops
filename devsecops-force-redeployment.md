@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-08-02"
+lastupdated: "2024-05-28"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -12,17 +12,19 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Forced redeployment of an application
-{: #forced-redeployment}
+#  Redeploying  an application manually
+{: #manual-redeployment}
 
-Sometimes, a running application in an environment crashes or behaves abnormally due to changes in the infrastructure configuration and requires a redeployment. In such cases, you can use the continuous deployment pipeline to deploy the existing state of the inventory to the target environment by setting a new environment variable for the continuous deployment pipeline.
+Sometimes, an application running in an environment can crash or behave strangely due to changes in the infrastructure configuration. This can be resolved by redeployment. Duringf redeployment, use the continuous deployment (CD) pipeline to deploy the existing state of the inventory to the target environment by setting a new environment variable for the continuous deployment pipeline.
 {: shortdesc}
 
 Set the `force-redeploy` environment variable with the value as `true` while the **Manual CD** pipeline run is triggered.
+{: note}
 
-During redeployment, the branch in your inventory repository that corresponds to the environment (for example prod, stage) does not contain any new items, and the `<target-environment>_latest` tag points to the current commit. The presence of the `force-redeploy` flag tells the CD Pipeline to ignore checking any new changes and proceed with the current stage of the inventory.
 
-The summary of steps that are followed by the CD Pipeline for forced redeployment include:
+When you redeploy, the branch in your inventory repository that corresponds to the environment (for example,  production and staging) does not contain any new items, and the `<target-environment>_latest` tag points to the current commit. The presence of the `force-redeploy` flag tells the CD Pipeline to ignore checking any new changes and proceed with the current stage of the inventory.
+
+Here's a quick summary of the procedure followed by the CD Pipeline to redeployment manuallly:
 
 1. The CD Pipeline starts and tags the current commit with the pipeline run ID.
 2. The pipeline picks up the content of the corresponding environment branch from that tag.

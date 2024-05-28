@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-05-22"
+lastupdated: "2024-05-28"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -19,9 +19,7 @@ The following table lists the various scanning tools that are integrated into De
 {: shortdesc}
 
 | Type of scan | Scan | Description | Stage |
-|-|-|-|-|
-| [IBM Cloud Code Risk Analyzer](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) | Code Risk Analyzer (CRA) analyzes your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of CI/CC pipelines | Static scan |<staging>
-| [IBM Cloud Code Risk Analyzer](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) | Code Risk Analyzer (CRA) analyzes your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of CI/CC pipelines | Static scan |
+|-|-|-|-| 
 | [Contrast SAST](/docs/devsecops?topic=devsecops-devsecops-contrast-sast-scans) | The Contrast static application security testing (SAST) script runs the source code scanning in your DevSecOps pipeline | `static scan` stage of CI/CC pipelines | Static scan |
 | [Detect Secrets](/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans) | Detect-secrets is a client-side security tool that detects secrets within a codebase to remediate and prevent secret leaks. | `detect secrets` stage of CI/CC pipelines | Static Scan |
 | [FIPS](/docs/devsecops?topic=devsecops-cd-devsecops-fips-scans) | Federal Information Processing Standard (FIPS) scanner is a static code scanner that scans the source code | `static scan` stage of CI/CC pipelines | Static scan |

@@ -1,4 +1,3 @@
----
 toc:
   properties:
     subcollection: devsecops
@@ -17,19 +16,33 @@ toc:
       - link:
           label: What is DevSecOps?
           href: https://www.ibm.com/cloud/learn/devsecops
-      - devsecops_intro.md
+      - devsecops_intro.md 
       - topicgroup:
           label: DevSecOps architecture
           topics:
           - devsecops-arch.md
           - building-blocks.md
       - devsecops-pipelines.md
-      - devsecops-cos-bucket-evidence.md
       - topicgroup:
-          label: Best practices
+          label: DevSecOps practices
           topics:
           - devsecops-change-management.md
           - devsecops-peer-review.md
+          - devsecops-cos-bucket-evidence.md
+          - devsecops-push-pull-based-deployment.md
+      - topicgroup:
+          label: Adopting DevSecOps for your own application or microservice
+          topics:
+          - devsecops-apps-byoa.md
+          - topicgroup:
+              label: Understanding DevSecOps Pipelines stages and custom scripts
+              topics:
+              - devsecops-custom-scripts-pipeline.md
+              - devsecops-custom-scripts-customize.md
+              - devsecops-custom-scripts-secrets.md
+              - pipeline-stage-output.md
+          - devsecops-basics-pipelines-customization.md
+          - devsecops-advanced-pipelines-customization.md
       - devsecops-release-notes.md
   - navgroup:
       id: tutorial
@@ -69,6 +82,9 @@ toc:
   - navgroup:
       id: howto
       topics:
+      - devsecops-configuring-en.md
+      - devsecops-tekton-ci-compliance.md
+      - devsecops-tekton-cd-compliance.md 
       - topicgroup:
           label: Adopting DevSecOps for your own application or microservice
           topics:
@@ -76,30 +92,26 @@ toc:
           - devsecops-custom-scripts.md
           - devsecops-basics-pipelines-customization.md
           - devsecops-advanced-pipelines-customization.md
-      - devsecops-configuring-en.md
-      - devsecops-tekton-ci-compliance.md
-      - devsecops-tekton-cd-compliance.md 
       - topicgroup:
           label: Configuring image signing
           topics:
-          - devsecops-image-signing.md
+          - devsecops-image-signing.md 
+          - devsecops-taas-private-worker.md
           - devsecops-artifact-signing.md
+          - devsecops-decoding-gpg-key.md 
           - devsecops-get-public-key.md
           - devsecops-image-verify.md
       - topicgroup:
-         label: Working with Tekton pipelines
-         topics:
-         - devsecops-pipelines-add-steps.md
-         - devsecops-add-new-pipeline-to-existing-toolchain.md
-         - devsecops-stage-results.md
-         - devsecops-pipelines-add-triggers.md
-         - devsecops-async-sub-pipelines.md
-         - devsecops-async-update-webhook.md
-         - devsecops-webhook-payloads.md
-         - devsecops-dev-mode.md
-         - devsecops-run-concurrently.md
-      - devsecops-build-docker-images.md
-      - devsecops-custom-deployment.md
+          label: Working with Tekton pipelines
+          topics:
+          - devsecops-pipelines-add-steps.md
+          - devsecops-add-new-pipeline-to-existing-toolchain.md
+          - devsecops-stage-results.md
+          - devsecops-pipelines-add-triggers.md
+          - devsecops-async-sub-pipelines.md
+          - devsecops-async-update-webhook.md
+          - devsecops-dev-mode.md 
+          - devsecops-custom-deployment.md
       - topicgroup:
           label: Working with issues
           topics:
@@ -123,14 +135,16 @@ toc:
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
       - topicgroup:
-          label: Managing inventory
+          label: inventory
           topics:
           - devsecops-inventory.md
           - devsecops-promote-branches.md
-          - devsecops-partial-promotion.md
-          - devsecops-force-redeployment.md
-          - devsecops-rollback-deployment.md
           - devsecops-partition-inventory-cc-pipeline.md
+          - topicgroup:
+                label: Using Inventory with DevSecOps
+                topics:
+                - devsecops-force-redeployment.md
+                - devsecops-rollback-deployment.md
       - topicgroup:
           label: Configuring scanning tools
           topics:
@@ -138,37 +152,45 @@ toc:
           - devsecops-configuring-detect-secrets-scan.md
           - devsecops-configuring-zap-scans.md
           - devsecops-configure-gosec-scan.md
+          - devsecops-configuring-fips-scan.md
           - devsecops-configuring-sonarqube-scan.md
+          - topicgroup:
+                label: Configuring scanning tools
+                topics:
+                  - devsecops-configuring-cims.md
+                  - devsecops-configuring-scan-properties.md
+                  - devsecops-results-filtering-properties.md
           - devsecops-configuring-mend-scans.md
+          - devsecops-configuring-contrast-sast-scan.md
+          - devsecops-configuring-xray-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
           - devsecops-configuring-va-scan.md
           - devsecops-configuring-slsa-attestation.md
+      - devsecops-build-docker-images.md
       - topicgroup:
-          label: Working with Git repos
+          label: Configuring Git repos for DevSecOps
           topics:
-          - devsecops-git-submodules.md
           - devsecops-config-github.md
+          - devsecops-git-submodules.md
           - devsecops-set-pr-status.md
-      - devsecops-toolchains-secrets.md
+      - topicgroup:
+          label: Managing secrets in your toolchain
+          topics:
+          - ddevsecops-managing-secrets-best-practices.md
+          - devsecops-managing-secrets-crn.md
       - devsecops-multiple-apps.md
       - devsecops-iam-permissions.md
       - topicgroup:
-          label: Tool integrations
+          label: Enhancing security with Security and Compliance Center
           topics:
-          - topicgroup:
-              label: Security and Compliance Center
-              topics:
-                - include: ../ContinuousDelivery/scc_integration.md
-                  navtitle: Configuring your toolchain
-                - topic: devsecops-scc-toolchains.md
-                  navtitle: Viewing and understanding results
-      - topicgroup:
-          label: Enhancing security
-          topics:
-          - include: ../security-compliance/getting-started.md
-            navtitle: Managing security and compliance
-          - devsecops-data-security.md
+            - include: ../ContinuousDelivery/scc_integration.md
+              navtitle: Configuring your toolchain
+            - topic: devsecops-scc-toolchains.md
+              navtitle: Viewing and understanding results
+            - include: ../security-compliance/getting-started.md
+              navtitle: Managing security and compliance
+            - devsecops-data-security.md
   - navgroup:
       id: reference
       topics:

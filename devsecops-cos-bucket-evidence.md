@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-02-15"
+  years: 2024
+lastupdated: "2024-05-28"
 
-keywords: DevSecOps, COS, secure toolchain, compliance, bucket
+keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
 subcollection: devsecops
 
@@ -124,3 +124,12 @@ Use `private` endpoints for most requests that originate from within {{site.data
 
 For pipelines that are running in the London region, use `direct` endpoints due to the pipeline-managed worker infrastructure there.
 {: note}
+
+## Best practices for multiple applications
+{: #best-practices-multiple-apps}
+
+This is a list of tips and best practices to follow when you configure multiple applications on your CI toolchain as this involves multiple properties and their information. They are:
+
+* It is best to name the triggers by the application name and then its purpose, so people can easily filter on them in the dashboard. For example, `hello-world Git <branch> Trigger`.
+
+* Seek to maximize the usage of the trigger properties in the manual triggers to reduce the need to insert input values. It also has the helpful effect of moving those values to the top of the properties list, so there's no need to search for the properties that need to change.

@@ -1,10 +1,10 @@
 ---
 
-copyright: 
-  years: 2023, 2023
-lastupdated: "2023-09-18"
+copyright:
+  years: 2024
+lastupdated: "2024-05-28"
 
-keywords: DevSecOps, IBM Cloud, git clone, submodules
+keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
 subcollection: devsecops
 
@@ -15,16 +15,18 @@ subcollection: devsecops
 # Configuring cloning of Git submodules
 {: #cd-devsecops-clone-submodules}
 
-By default, the Git clone in the pipelines do not clone the submodules in a repository (repo). However, you can enable cloning the submodules in the user repositories (application repo and one-pipeline configuration repo) by setting either one of the opt-in flags.
+The process of create a copy of your Git repository (repo) in your local computer is called a *Git cloning*. The copy that is created in your local computer is called as *Git Clone*.
+
+By default, the Git clones in the pipelines do not clone the submodules in a repository. However, you can enable cloning the submodules in the user repositories (application repo and one-pipeline configuration repo) by setting either one of the opt-in flags.
 {: shortdesc}
 
-Currently, `git clone` in pipelines uses HTTPS, SSH is not supported. To clone the submodules, the ``.gitmodules`` file in the Git repository must use either HTTPS URLs or relative URLs.
+Currently, Git clone in pipelines uses HTTPS, SSH is not supported. To clone the submodules, the ``.gitmodules`` file in the Git repository must use either HTTPS URLs or relative URLs.
 {: note}
 
 The opt-in flags are as follows:
 
-* Set the opt-in flag `opt-in-clone-submodules` to 1 to enable cloning of the submodules.
-* Set the opt-in flag `opt-in-clone-remote-submodules` to 1 to enable cloning of the submodules by using the status of the submodule’s remote-tracking branch to update the submodule, rather than the superproject’s recorded SHA-1.
+* `opt-in-clone-submodules`
+* `opt-in-clone-remote-submodules`
 
 ## Opt-in parameters
 {: #cd-devsecops-submodule-params}
