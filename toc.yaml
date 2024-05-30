@@ -141,7 +141,7 @@ toc:
           - devsecops-cos-configure.md
           - devsecops-evidence-pruner.md
       - topicgroup:
-          label: inventory
+          label: Inventory
           topics:
           - devsecops-inventory.md
           - devsecops-promote-branches.md
@@ -163,9 +163,9 @@ toc:
           - topicgroup:
                 label: Configuring scanning tools
                 topics:
-                  - devsecops-configuring-cims.md
-                  - devsecops-configuring-scan-properties.md
-                  - devsecops-results-filtering-properties.md
+                - devsecops-configuring-cims.md
+                - devsecops-configuring-scan-properties.md
+                - devsecops-results-filtering-properties.md
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
           - devsecops-configuring-xray-scan.md
