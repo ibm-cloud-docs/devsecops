@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-04-29"
+lastupdated: "2024-05-30"
 
 keywords: DevSecOps
 
@@ -15,6 +15,8 @@ subcollection: devsecops
 
 # OnePipeline and DevSecOps
 {: #OnePipeline_intro}
+
+[OnePipeline]{: tag-blue} [Internal]{: tag-red}
 
 `OnePipeline` helps streamline internal compliance audits by standardizing CI/CD processes for services adhering to the IBM Cloud Service Framework (see also the [reference implementation workflow](/docs/devsecops?topic=devsecops-cd-devsecops-arch)). OnePipeline provides a set of predefined CI/CD templates kept current as the Service Framework addresses FS-Cloud, then FedRAMP and more in the future.
 
