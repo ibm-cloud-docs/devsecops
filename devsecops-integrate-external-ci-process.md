@@ -15,6 +15,8 @@ subcollection: devsecops
 # Integrating the DevSecOps continuous deployment process with an external continuous integration process
 {: #devsecops-int-ext-ci-process}
 
+[Internal]{: tag-red}
+
 A new `build-inventory-evidence` script integrates an external continuous integration (CI) process and pipelines that are built that uses Jenkins and Travis, for example, with the IBM reference implementation of the DevSecOps continuous deployment (CD) process and pipeline.
 {: shortdesc}
 
