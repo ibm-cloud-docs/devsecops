@@ -261,5 +261,6 @@ toc:
   - navgroup:
       id: help
       topics:
-      - support.md 
+      - support.md
+      - faq.md
       - troubleshoot.md
