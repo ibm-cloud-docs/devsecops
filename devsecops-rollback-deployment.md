@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-08-17"
+  years: 2024
+lastupdated: "2024-05-30"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -52,7 +52,7 @@ The following commands show the scenario by using `git` commands:
       67cc8babdff3e09c1f0e632f897798c1b5424f38
       6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
       22a575d48008299116ea426bdac45417d9df6238
-      cb6f4d53c17f0c2554c039708989c403eb0ead18     
+      cb6f4d53c17f0c2554c039708989c403eb0ead18
 ```
 
 1. Revert the inventory state to `refs/tags/8`.
@@ -90,9 +90,9 @@ The following commands show the scenario by using `git` commands:
 
 1. Create a pull request for the rollback promotion pull request.
 1. Review the pull request and merge the pull request.
-1. Trigger the **Manual CD** pipeline run within the CD Toolchain. 
+1. Trigger the **Manual CD** pipeline run within the CD Toolchain.
 
-The summary of steps that the CD Pipeline follows for forced redeployment include: 
+The summary of steps that the CD Pipeline follows for forced redeployment include:
 
 1. The CD Pipeline starts and tags the current commit with the pipeline run ID.
 2. The pipeline picks up the content of the corresponding environment branch from that tag.
