@@ -216,8 +216,7 @@ toc:
       - devsecops-triggers.md
       - devsecops-async-stages.md
       - devsecops-common-scripts.md
-      - devsecops-images.md<staging>
-      - devsecops-nist.md
+      - devsecops-images.md
       - devsecops-asset-based-evidence-collection.md 
       - topicgroup:
           label: Command reference
