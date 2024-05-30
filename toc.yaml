@@ -167,7 +167,7 @@ toc:
               - topic: evidence/setting-restrictions.md
                 navtitle: Setting various levels of restrictions
               - topic: evidence/check-run.md
-                navtitle: CIS check and Static and Dynamic scans</evidence>
+                navtitle: CIS check and Static and Dynamic scans
       - topicgroup:
           label: Inventory
           topics:
