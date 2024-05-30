@@ -83,7 +83,7 @@ These variables can be used as shell variables within your scripts
 
 The `get_repo_specific_token` function is designed to retrieve the token associated with the given repo URL. A repository token is used to authenticate and authorize access to specific repo.
 
-It picks the value of (git-token-<repo_name>-<repo_org>) variable from the environment properties table.
+It picks the value of (git-token-[repo_name]-[repo_org]) variable from the environment properties table.
 
 ### Example
 {: #get_repo_specific_token_example}
