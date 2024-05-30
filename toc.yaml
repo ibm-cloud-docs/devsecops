@@ -92,10 +92,10 @@ toc:
           - topicgroup:
             label: Understanding DevSecOps Pipelines stages and custom scripts
             topics:
-             - devsecops-custom-scripts-pipeline.md
-             - devsecops-custom-scripts-customize.md
-             - devsecops-custom-scripts-secrets.md
-             - devsecops-custom-scripts-pipeline-stage-output.md
+            - devsecops-custom-scripts-pipeline.md
+            - devsecops-custom-scripts-customize.md
+            - devsecops-custom-scripts-secrets.md
+            - devsecops-custom-scripts-pipeline-stage-output.md
           - devsecops-basics-pipelines-customization.md
           - devsecops-advanced-pipelines-customization.md
       - topicgroup:
@@ -216,7 +216,9 @@ toc:
       - devsecops-triggers.md
       - devsecops-async-stages.md
       - devsecops-common-scripts.md
-      - devsecops-images.md
+      - devsecops-images.md<staging>
+      - devsecops-nist.md
+      - devsecops-asset-based-evidence-collection.md 
       - topicgroup:
           label: Command reference
           topics:

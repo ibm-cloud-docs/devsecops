@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-05-21"
+  years: 2024, 2024
+lastupdated: "2024-05-30"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -331,5 +331,3 @@ Sample resulting evidence entry:
 }
 ```
 {: codeblock}
-
-</staging>
