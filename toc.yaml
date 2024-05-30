@@ -90,12 +90,12 @@ toc:
           topics:
           - devsecops-apps-byoa.md
           - topicgroup:
-            label: Understanding DevSecOps Pipelines stages and custom scripts
-            topics:
-            - devsecops-custom-scripts-pipeline.md
-            - devsecops-custom-scripts-customize.md
-            - devsecops-custom-scripts-secrets.md
-            - devsecops-custom-scripts-pipeline-stage-output.md
+              label: Understanding DevSecOps Pipelines stages and custom scripts
+              topics:
+              - devsecops-custom-scripts-pipeline.md
+              - devsecops-custom-scripts-customize.md
+              - devsecops-custom-scripts-secrets.md
+              - devsecops-custom-scripts-pipeline-stage-output.md
           - devsecops-basics-pipelines-customization.md
           - devsecops-advanced-pipelines-customization.md
       - topicgroup:
@@ -138,8 +138,36 @@ toc:
           - devsecops-evidence-checks.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
-          - devsecops-cos-configure.md
-          - devsecops-evidence-pruner.md
+          - devsecops-cos-configure.md 
+          - topicgroup:
+              label: Gathering evidence for audits
+              topics:
+              - topic: evidence/change-request.md
+                navtitle: Change requests
+              - topic: evidence/baseline-config.md
+                navtitle: Baseline configuration
+              - topic: evidence/ci-inventory.md
+                navtitle: Inventory commitment details
+              - topic: evidence/view-agg-status.md
+                navtitle: Aggregated summary of evidence
+              - topic: evidence/peer-review-pull.md.md
+                navtitle: Peer review of a pull request
+              - topic: evidence/environment-builds.md
+                navtitle: Development and production builds
+              - topic: evidence/production-history.md
+                navtitle: Production commitment history
+              - topic: evidence/quality-reports.md
+                navtitle: Quality dashboard reports
+              - topic: evidence/different-branches.md
+                navtitle: Separate staging and production branches
+              - topic: evidence/open-source-usage.md
+                navtitle: Open Source usage restrictions
+              - topic: evidence/periodic-review.md
+                navtitle: Periodic review
+              - topic: evidence/setting-restrictions.md
+                navtitle: Setting various levels of restrictions
+              - topic: evidence/check-run.md
+                navtitle: CIS check and Static and Dynamic scans</evidence>
       - topicgroup:
           label: Inventory
           topics:
@@ -216,7 +244,7 @@ toc:
       - devsecops-triggers.md
       - devsecops-async-stages.md
       - devsecops-common-scripts.md
-      - devsecops-images.md
+      - devsecops-images.md 
       - devsecops-asset-based-evidence-collection.md 
       - topicgroup:
           label: Command reference
@@ -233,5 +261,5 @@ toc:
   - navgroup:
       id: help
       topics:
-      - support.md
+      - support.md 
       - troubleshoot.md
