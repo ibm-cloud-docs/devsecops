@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-12-12"
+  years: 2023, 2024
+lastupdated: "2024-05-31"
 
 keywords: DevSecOps, development mode, IBM Cloud, pipelines
 
@@ -12,33 +12,33 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Running pipelines in `development mode`
+# Running pipelines in development mode
 {: #devsecops-devmode}
 
-`development mode` for CI and CD pipelines tests the implementation of your DevSecOps configuration (yaml) file, without running any security or compliance-related task. `development mode` also reduces pipeline execution time.
+Development mode for CI and CD pipelines tests the implementation of your DevSecOps configuration (yaml) file, without running any security or compliance-related task. Development mode also reduces pipeline execution time.
 {: shortdesc}
 
-Use `development mode` for development purposes only. `development mode` is not a replacement for the official DevSecOps CI and CD pipelines, which remain the reference implementations.
+Use development mode only for development purposes. Development mode is not a replacement for the official DevSecOps CI and CD pipelines, which remain the reference implementations.
 {: attention}
 
 Develop, implement, and test changes made to the `.pipeline-config.yaml` file by using a simplified pipeline. This pipeline has the following characteristics:
 
-- Runs the various stages of the `.pipeline-config.yaml` file only.
-- Skips the compliance and security-related tasks to optimize the time to run your code.
+* Runs the various stages of the `.pipeline-config.yaml` file only.
+* Skips the compliance and security-related tasks to optimize the time to run your code.
 
 ## Prerequisites
 {: #devsecops-devmode-preq}
 
-- An existing DevSecOps CI or CD toolchain.
-- A `.pipeline-config.yaml` and the corresponding build, test, and deploy scripts.
+* An existing DevSecOps CI or CD toolchain.
+* A `.pipeline-config.yaml` and the corresponding build, test, and deploy scripts.
 
-## Setting up `development mode`
+## Setting up development mode
 {: #devsecops-devmode-setup}
 
-Take the following steps to set up `development mode` pipeline:
+Complete the following steps to set up development mode for a pipeline:
 
 1. Go to the **Triggers** page of your CI or CD pipeline.
-1. Duplicate the manual trigger. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg) on the **Manual Trigger** and click **Duplicate**.
+1. Locate the Manual Trigger, click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg), and then click **Duplicate**.
 
    ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 1. Duplicate manual trigger" caption-side="bottom"}
 
@@ -49,23 +49,40 @@ Take the following steps to set up `development mode` pipeline:
 
 1. Save your changes.
 
-## Run the `development-mode` pipeline
+### Setting up development mode in the IaC pipeline
+{: #devsecops-iac-devmode-setup}
+
+Complete the following steps to set up development mode in the Infrastructure as Code (IaC) pipeline:
+
+1. Go to the **Triggers** page of your CI pipeline.
+1. Locate the Manual Trigger, click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg), and then click **Duplicate**.
+
+   ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 3. Duplicate manual trigger" caption-side="bottom"}
+
+1. Name the trigger. For example, `Manual-IaC-Dev-Mode`.
+1. Change the `EventListener` to  `iac-dev-mode-listener`.
+
+   ![Dev Mode Trigger](images/iac-dev-mode-trigger.png){: caption="Figure 4. Change iac event listener" caption-side="bottom"}
+
+1. Save your changes.
+
+## Running the development-mode pipeline
 {: #devsecops-devmode-run}
 
-Take the following steps to run the `development mode` pipeline:
+Complete the following steps to run the development mode pipeline:
 
 1. Go to the **PipelineRuns** page. 
 1. Click **Run Pipeline** and select the `Manual-Dev-Mode` trigger that you created.
 1. Click **Run**.
 
-The `development-mode` pipeline runs the code that is in the `.pipeline-config.yaml` file only.
+The development-mode pipeline runs the code that is in the `.pipeline-config.yaml` file only.
 {: note}
 
 All other security and compliance tasks do not run, reducing the pipeline execution time.
 
-![Standard and development modes compared](images/comparison.png){: caption="Figure 3. Standard and development modes compared" caption-side="bottom"}
+![Standard and development modes compared](images/comparison.png){: caption="Figure 5. Standard and development modes compared" caption-side="bottom"}
 
-##Development mode for CI pipeline
+## Development mode for CI pipeline
 {: #devsecops-devmod-ci_pipeline}
 
 The CI pipeline builds deployable artifacts from application repositories.
@@ -85,6 +102,7 @@ The following table lists the stages in development mode of the CI pipeline.
 {: caption="Table 1. Development stages of the CI pipeline" caption-side="top"}
 
 ## Development mode for CD pipeline
+{: #devsecops-devmod-cd_pipeline}
 
 The CD pipeline deploys the build to an environment, such as staging or production.
 
