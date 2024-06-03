@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-03-28"
+lastupdated: "2024-06-03"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -15,10 +15,10 @@ subcollection: devsecops, ci pipeline
 # Continuous integration pipeline
 {: #cd-devsecops-ci-pipeline}
 
-The continuous integration pipeline builds the deployable artifacts from the application repositories.
+The continuous integration pipeline builds the deployable artifacts from the applications' repositories.
 {: shortdesc}
 
-Before it builds artifacts, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management.
+Before it builds an artifact, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management.
 
 ## Stages and tasks
 {: #devsecops-ci-pipeline-stages}
@@ -26,7 +26,7 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 
 The table below lists the tasks run in a CI Pipeline. In addition the table also provides an overview of each of these stages:
 
-- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file. 
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 
 - **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
 
@@ -34,7 +34,7 @@ The table below lists the tasks run in a CI Pipeline. In addition the table also
 
 - **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
 
-- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection. 
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection.
 
 - **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
 
@@ -113,7 +113,7 @@ For more information about integrating SonarQube with the continuous integration
 
 Use [gosec](https://github.com/securego/gosec){: external} to inspect golang source code in your scanned repositories.
 
-To enable gosec scan, provide the following parameter, and set the value to `1`. 
+To enable gosec scan, provide the following parameter, and set the value to `1`.
 
 | Name | Type | Description | Required or optional |
 |--|--|--|--|
@@ -121,7 +121,7 @@ To enable gosec scan, provide the following parameter, and set the value to `1`.
 {: caption="Table 2. gosec scan parameters" caption-side="top"}
 
 More information about setting up the gosec scan in the continous integration pipeline, see [Configuring GoSec](/docs/devsecops?topic=devsecops-devsecops-gosec)
-  
+
 ### Using other static scanners
 {: #devsecops-ci-pipeline-other-static-scans}
 
@@ -138,7 +138,7 @@ If you want to use your own static scan implementation instead, you can modify y
 | Repository compliance checking | Checks that branch protection settings are correct. For example, the master/main branch should always restrict the force push. For more information, see [Configuring your {{site.data.keyword.gitrepos}} repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).|
 | Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){: external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans). |
 {: caption="Table 3. Compliance scans and checks" caption-side="top"}
-    
+
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
 
 For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).

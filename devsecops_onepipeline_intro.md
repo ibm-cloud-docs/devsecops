@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-05-30"
+lastupdated: "2024-06-03"
 
 keywords: DevSecOps
 
@@ -42,6 +42,7 @@ This means that both flavors are equivalent in terms of **FS-Cloud** and **FedRA
 {: row-headers}
 {: caption=" Table 1. Features differences between OnePipeline (Internal) and DevSecOps(External)" caption-side="bottom"}
 {: summary="The first row of the table describes separate options that you can choose to your required service. The remaining cells provide the major differences between DevSecOps and OnePipeLine."}
+
 (*) Adopters may use a mix of other repository providers like Gitlab, Bitbucket and more. Refer to the [documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-integrations&interface=ui).
 {: #diffdevsecopsstable1}
 
@@ -95,9 +96,9 @@ This means that both flavors are equivalent in terms of **FS-Cloud** and **FedRA
 {: class="comparison-tab-table"}
 {: row-headers}
 
-Refer to this [DevSecOps Pipelines stages and custom scripts explained](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages) for a complete list of `OnePipeline` and `DevSecOps` Pipelines stages and custom scripts.
+For more information refer to, [DevSecOps Pipelines stages and custom scripts explained](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages) for a complete list of `OnePipeline` and `DevSecOps` Pipelines stages and custom scripts.
 
 ## Supported scanning tools
 {: #supported-scanning-tools}
 
-Refer to this [Supported scanning tools](/docs/devsecops?topic=devsecops-cd-devsecops-supported-scanning-tools) for a complete list of supported scanning tools.
+To learn more about scanning tools, refer to [Supported scanning tools](/docs/devsecops?topic=devsecops-cd-devsecops-supported-scanning-tools) for a complete list of supported scanning tools.
