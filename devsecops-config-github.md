@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-28"
+lastupdated: "2024-06-05"
 
 keywords: DevSecOps
 
@@ -21,14 +21,7 @@ The {{site.data.keyword.gitrepos}} tool integration is based on GitLab Community
 
 Branch protection policies enforce security, collaboration, and helps ensure that your team adheres to code quality and change management standards. This topic helps you set and manage branch policies. [DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-arch) requires you to configure the branch protection rules of your GitHub repository.
 
-## Benefits of Branch Protection
-{: #devsecops-config-github-protection}
 
-- **Improved Code Quality and Collaboration**: Requiring pull requests and approvals through branch protection enhances both code quality and collaboration. This step ensures code consistency and adherence to the team's coding standards. Changes undergo review, which helps detect bugs and errors early on to make the code more reliable and maintainable.
-
-- **Increased Visibility of Changes**: Requiring pull requests provides increased visibility into code changes. This step simplifies tracking modifications and identifying potential issues.
-
-- **Ensuring Code Integrity**: Pull request status-checks validate the code by running automated tests against predefined standards and linters before a pull request can be merged. This step maintains code integrity by catching bugs and other issues early in the development cycle.
 
 ## Configuring Branch Protection Rules in GitHub
 {: #devsecops-config-github-rules}
