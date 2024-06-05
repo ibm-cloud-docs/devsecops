@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-03"
+lastupdated: "2024-06-05"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -18,7 +18,7 @@ subcollection: devsecops, ci pipeline
 The continuous integration pipeline builds the deployable artifacts from the applications' repositories.
 {: shortdesc}
 
-Before it builds an artifact, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the continuous integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management.
+Before it builds an artifact, the pipeline checks that the code is scanned and tested, in the same way that pull requests are processed. Built artifacts are also scanned for vulnerabilities and signed in the pipeline before they are marked ready for release and deployment in the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory). Unlike the pull request pipeline, the Continuous Integration pipeline collects evidence and result artifacts on each stage of the build, such as testing, scanning, and signing. This data correlates to the built artifacts and can be tracked through the deployment process and change management.
 
 ## Stages and tasks
 {: #devsecops-ci-pipeline-stages}

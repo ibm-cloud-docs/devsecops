@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-05-28"
+lastupdated: "2024-05-24"
 
 keywords: DevSecOps
 
@@ -21,7 +21,7 @@ In DevSecOps, your inventory acts as a critical centralized list of all the buil
 
 * **Application Dependencies**: These are third-party services, APIs, and microservices that your cloud applications rely on to function flawlessly.
 
-* **{{site.data.keyword.keymanagementservicelong}} Secrets**: This refers to sensitive information essential for system operation, such as passwords, API keys, and encryption keys. These require meticulous control and secure storage within {{site.data.keyword.keymanagementservicelong_notm}}.
+* **{{site.data.keyword.keymanagementservicefull}} Secrets**: This refers to sensitive information essential for system operation, such as passwords, API keys, and encryption keys. These require meticulous control and secure storage within {{site.data.keyword.keymanagementservicelong_notm}}.
 {: shortdesc}
 
 ##  Structure and content of an inventory
