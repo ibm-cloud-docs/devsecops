@@ -1,32 +1,32 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-05-30"
+  years: 2022
+lastupdated: "2022-08-17"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
-subcollection: devsecops
+subcollection: devsecops-working
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Rolling back a deployment
+# Rollback a deployment
 {: #rollback-deployment}
 
-Sometimes, a new deployment to an environment behaves abnormally and requires a rollback to a last known good version. In such cases, you can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
+Sometimes, a new deployment to an environment behaves unusually and might require a rollback to a last known working version. In such cases, use the continuous deployment (CD) pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
 {: shortdesc}
 
-To roll back the deployment, complete these steps:
+To roll back the deployment, follow these steps:
 
-1. Select the version of the deployment (identified by commit-id) in the inventory to roll back to.
+1. Select the version of the deployment (identified by commit-ID) in the inventory to roll back to.
 1. Revert the repository state to the identified commit.
 1. Create a pull request to promote the reverted state.
 
 The following commands show the scenario by using `git` commands:
 
-1. List the commits and tags to identify the commit ID (version) to roll back to. For example, we identify `refs/tags/8` to be the most recent good deployment.
+1. List the commits and tags to identify the commit ID (version) to roll back to. For example,  `refs/tags/8` is identified as recent working deployment.
 
 ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -44,7 +44,7 @@ The following commands show the scenario by using `git` commands:
       1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
 ```
 
-1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
+2. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
 ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -55,14 +55,14 @@ The following commands show the scenario by using `git` commands:
       cb6f4d53c17f0c2554c039708989c403eb0ead18
 ```
 
-1. Revert the inventory state to `refs/tags/8`.
+3. Revert the inventory state to `refs/tags/8`.
 
 ```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
 ```
 
-1. Commit the new state of the inventory.
+4. Commit the new state of the inventory.
 
 ```bash
      # /c/usr/devsecops/compliance-inventory (master|REVERTING)
@@ -72,7 +72,7 @@ The following commands show the scenario by using `git` commands:
       rewrite compliance-app (94%)
 ```
 
-1. Push to the update to the master branch.
+5. Push to the update to the master branch.
 
 ```bash
     # /c/usr/devsecops/compliance-inventory (master)
@@ -88,11 +88,11 @@ The following commands show the scenario by using `git` commands:
       Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
 
-1. Create a pull request for the rollback promotion pull request.
-1. Review the pull request and merge the pull request.
-1. Trigger the **Manual CD** pipeline run within the CD Toolchain.
+6. Create a pull request for the rollback promotion pull request.
+7. Review the pull request and merge the pull request.
+8. Trigger the **Manual CD** pipeline run within the CD Toolchain.
 
-The summary of steps that the CD Pipeline follows for forced redeployment include:
+The summary of the steps that the CD Pipeline follows for manual redeployment is as follows:
 
 1. The CD Pipeline starts and tags the current commit with the pipeline run ID.
 2. The pipeline picks up the content of the corresponding environment branch from that tag.

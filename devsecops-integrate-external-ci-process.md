@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-05-21"
+years: 2024, 2024
+lastupdated: "2024-05-30"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -14,6 +14,8 @@ subcollection: devsecops
 
 # Integrating the DevSecOps continuous deployment process with an external continuous integration process
 {: #devsecops-int-ext-ci-process}
+
+[Internal]{: tag-red}
 
 A new `build-inventory-evidence` script integrates an external continuous integration (CI) process and pipelines that are built that uses Jenkins and Travis, for example, with the IBM reference implementation of the DevSecOps continuous deployment (CD) process and pipeline.
 {: shortdesc}
@@ -331,5 +333,3 @@ Sample resulting evidence entry:
 }
 ```
 {: codeblock}
-
-</staging>

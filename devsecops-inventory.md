@@ -1,45 +1,52 @@
 ---
 
-copyright: 
+copyright:
   years: 2021, 2024
-lastupdated: "2024-02-08"
+lastupdated: "2024-05-24"
 
-keywords: DevSecOps, inventory model, inventory
+keywords: DevSecOps
 
-subcollection: devsecops
+subcollection: devsecops-working
 
 ---
 
-{{site.data.keyword.attribute-definition-list}}
-
-# Inventory
+# Understanding inventory for DevSecOps
 {: #cd-devsecops-inventory}
 
-Learn about the inventory concepts such as inventory structure, content model, role, and purpose.
+In DevSecOps, your inventory acts as a critical centralized list of all the building blocks that make up your software system. It becomes the single information point of for everything you need to develop, deploy, and maintain your applications securely on IBM Cloud. Here's what typically gets included in this inventory:
+
+* **{{site.data.keyword.cloud_notm}} resources**: This includes passes virtual servers, serverless functions, Cloudant databases, and any other services you've provisioned across your {{site.data.keyword.cloud_notm}} environment.
+
+* **Infrastructure as Code (IaC) details**: This includes Terraform configurations, environment variables stored in {{site.data.keyword.ibmcf_full}} Artifactory, and other settings that dictate how your {{site.data.keyword.cloud_notm}} resources are configured and secured.
+
+* **Application Dependencies**: These are third-party services, APIs, and microservices that your cloud applications rely on to function flawlessly.
+
+* **{{site.data.keyword.keymanagementservicefull}} Secrets**: This refers to sensitive information essential for system operation, such as passwords, API keys, and encryption keys. These require meticulous control and secure storage within {{site.data.keyword.keymanagementservicelong_notm}}.
 {: shortdesc}
 
-## Inventory structure and content
+##  Structure and content of an inventory
 {: #inventory-structure}
 
-The Inventory model tracks the following items:
+The inventory model tracks the following items of the artifact:
 
-* What artifact is deployed to which environment or region
-* Where is the location of an artifact that is built (pipeline run, commit sha)
-* What is the signature of the built artifact
+* Name of the artifact
+* Environment or region it will get deployed to.
+* Build Location of an artifact (pipeline run, commit sha)
+* Signature of the built artifact
 
-Based on this data, you can track evidence during artifact builds and deployments and help Change Management and Compliance audits.
+ Track evidence during artifact builds and deployments. This also helps with Change management and Compliance audits.
 
 ### Branches
 {: #inventory-branches}
 
-The Inventory is implemented in a Git repository (repo). Git itself helps to track and audit changes.
+The inventory is implemented in a Git repository (repo). Git is self-sufficient in tracking and auditing changes.
 
 Branches are used as environments. The main branch (`master`) is written and updated by the continuous integration pipeline. Other environments are updated from the master branch by using promotions. For more information about promotions, see the [Promotion](#inventory-promotion) section.
 
-### Content
+### Inventory content
 {: #inventory-content}
 
-The Inventory contains an Inventory Entry for every artifact that participates in deployment. One Inventory Entry points to a single artifact. Inventory entries are JSON files that can be structured in folders and are named by using the entry name.
+The inventory contains an inventory Entry for every artifact that participates in deployment. One inventory Entry points to a single artifact. Inventory entries are JSON files that can be structured in folders and are named by using the entry name.
 
 Inventory folders are part of the entry name.
 {: important}
@@ -47,7 +54,7 @@ Inventory folders are part of the entry name.
 #### Example
 {: #inventory-content-example}
 
-Use the following entry names for a service:
+Choose one name from the following list of entry names as a service name :
 
 * auth/service
 * auth/db
@@ -74,7 +81,7 @@ The content is implemented in the inventory by using the following structure:
 ## Inventory entry format
 {: #inventory-entry-format}
 
-Although the `Entry` type represents the schema of the Inventory Entry by using typescript syntax, you can convert it to use JSON schema.
+Although the `Entry` type represents the schema of the inventory Entry by using typescript syntax, you can convert it to use JSON schema.
 
 ```bash
 interface Entry {
@@ -104,7 +111,7 @@ interface Entry {
 ### Example
 {: #entry-format-example}
 
-Inventory Entry for the image type of asset
+Inventory entry for the image type of asset
 ```bash
 {
   "repository_url": "https://github.com/test-org/compliance-app-20201211", # source code repository url of the image artifact
@@ -123,7 +130,9 @@ Inventory Entry for the image type of asset
 ```
 {: codeblock}
 
-Inventory Entry for the non-image type of asset, like deployment, helm charts
+
+Inventory entry for the nonimage type of asset, like deployment, helm charts
+
 ```bash
 {
   "repository_url": "https://github.com/test-org/compliance-app-20201211",  # source code repository url of the artifact
@@ -150,10 +159,13 @@ Use [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#inven
 
 The inventory contains several branches other than the `master` branch. These branches can represent deployment stages, environments or regions, or a mixture of both. The structure of these branches depends on the setup and usage.
 
-### CI writes to inventory 
+### CI writes to inventory
 {: #ci-writes-to-inventory}
 
 The `master` branch is populated from continuous integration builds. The last commit in the target (in this case named `staging`) contains a tag that shows that it was the last concluded deployment.
+
+If the default branch for the inventory is switched out to a different branch, you must rebase the commits from the previous default branch into the new default branch to make the Git commit history linear.
+{: note}
 
 You can skip writing to inventory by customizing the release script. For more information, see [Release to inventory](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-inventoryrel).
 
@@ -173,10 +185,13 @@ After the promotion pull request is merged, the Deployment pipeline can start. T
 
 ![Deployment pipeline flow showing deployment delta details](images/inventory-3.svg){: caption="Figure3. Deployment pipeline flow showing deployment delta details" caption-side="bottom"}
 
-### Conclude
+### Inventory conclusion
 {: #inventory-conclude}
 
 When the deployment finishes, you can move the `latest` tag ahead.
+
+During the dev mode trigger, the tags will not be advanced. The purpose of the dev mode trigger is solely for testing the CD pipeline only.
+{: attention}
 
 ![Deployment completes](images/inventory-4.svg){: caption="Figure 4. Deployment completes" caption-side="bottom"}
 
@@ -190,18 +205,20 @@ You can promote and deploy from any branch to another one.
 ### Inventory landscape
 {: #inventory-landscape}
 
-The current deployed state contains the content to deploy to an environment. Every promoted commit in the target branches contains the relevant Pipeline Run ID and Change Request ID as a tag. Some commits can have multiple tags, for example, when you are retrying a failed deployment or deploying again. The Inventory holds every piece of information to replay the deployments.
+The current deployed state contains the content to deploy to an environment. Every promoted commit in the target branch contains the relevant Pipeline run ID and Change Request ID as a tag. Some commits can have multiple tags, for example, when you are retrying a failed deployment or deploying again. The Inventory holds every piece of information to replay the deployments.
 
 ![Deployment flow diagram with tags](images/inventory-6.svg){: caption="Figure 6. Deployment flow diagram with tags" caption-side="bottom"}
 
 #### Use of tags
 {: #inventory-tags}
 
-| Tag | Description | 
+The following table shows the available inventory tags.
+
+| Tag | Description |
 |:-----------------|:-----------------|
 | `latest` | Tags the current, successfully deployed, and concluded state of the inventory on a branch. |
 | `pipeline run id` | Tags the current inventory state in the branch, with the pipeline run ID or build number of the actual deployment. To avoid inventory content overlap when parallel deployments are triggered, use this tag to refer to the actual inventory point hash in the branch history. |
-| `change request id [optional]` | Tags the current state of a change request ID to track the change request IDs in the inventory, in a historical representation. |
+| `change request id` (optional) | Tags the current state of a change request ID to track the change request IDs in the inventory, in a historical representation. |
 {: caption="Table 1. Inventory tags" caption-side="top"}
 
 ### Setup for a single target with multiple regions
@@ -209,7 +226,7 @@ The current deployed state contains the content to deploy to an environment. Eve
 
 Multiple `latest` tags are introduced for a single target environment so that multiple continuous deployment pipelines can work on the same target, for different types of use cases. You can use, for example, the same target environment (such as `us-south` or `eu-de`) for multiple regions in the prod target environment and the inventory branch.
 
-You do not need to set up a different branch for each region using the `region` property , such as `us-south-prod` and `eu-de-prod`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch, and then use them as Git tags.
+You do not need to set up a different branch for each region by using the `region` property, such as `us-south-prod` and `eu-de-prod`, and run the promotion redundantly. Instead, specify these additional targets for the same inventory branch, and then use them as Git tags.
 
 In this setup, the prod branch has multiple `latest` tags on the same branch, such as `us-south_prod_latest` and `eu-de_prod_latest`.  Each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
@@ -220,12 +237,12 @@ For example, a set of changes that you plan to deploy everywhere might be releas
 ## Inventory operations
 {: #inventory-operations}
 
-The Inventory contains some basic operations that run by using the CLI or by using pure Git and the GitHub CLI.
+The inventory contains some basic operations that run by using the CLI or by using pure Git and the GitHub CLI.
 
 ### CLI commands
 {: #inventory-cli-commands}
 
-1. Create a promotion pull request from master to the target branch in staging. 
+1. Create a promotion pull request from master to the target branch in staging.
 
    ```bash
    cocoa inventory promote \
@@ -256,30 +273,30 @@ The Inventory contains some basic operations that run by using the CLI or by usi
 
    ```bash
    promote() {
-   
+
      if [ -z $1 ] || [ -z $2 ]; then
        echo "Missing source and target"
        exit 1
      fi
-   
+
      local source="$1"
      local target="$2"
-   
+
      if ! git show-ref "refs/remotes/origin/$target"; then
        # Create a new target branch, from the beginning of master
        git checkout master
        git checkout -b "$target" $(git rev-list --max-parents=0 HEAD)
        git_push
      fi
-   
+
      git checkout "$source"
      git pull --rebase
-   
+
      # Create a promotion branch for the PR
      # this can be discarded after the Promotion PR merge
      git checkout -b "promote-$source-to-$target"
      git push --set-upstream origin "promote-$source-to-$target"
-   
+
      # Create PR from promotion branch to target branch
      gh pr create \
        --base "$target" \
@@ -287,10 +304,10 @@ The Inventory contains some basic operations that run by using the CLI or by usi
        --title "Promote $source to $target" \
        --body "" \
        --repo "https://github.com/org/inventory-repository"
-   
+
      # promotion branch can be deleted once the PR was merged
    }
-   
+
    $ promote master staging
    ```
    {: codeblock}
@@ -301,40 +318,40 @@ The Inventory contains some basic operations that run by using the CLI or by usi
    conclude () {
      local target="$1"
      local tag="$2"
-   
+
      latest="$1-latest"
-   
+
      # remove the latest tag
      git push origin ":refs/tags/$latest"
      # find the commit hash of the target tag
      sha=$(git rev-list -n 1 $tag)
-     
+
      # add the latest tag to the same commit of the target tag
      git tag -fa "$latest" -m "" $sha
      git push --tags --force
    }
-   
+
    $ conclude staging pipeline-run-fe33b05c
    ```
    {: codeblock}
 
-1. Revert staging to an earlier state by using Git and the GitHub CLI. 
+1. Revert staging to an earlier state by using Git and the GitHub CLI.
 
    ```bash
    revert () {
      local branch="$1"
      local commit="$2"
-     
+
      # create a revert branch from the target branch
      git checkout "$branch"
      git pull --rebase
      git checkout -b "$branch-revert"
-   
+
      # revert commits since the target commit, then commit and push
      git revert -n $(git rev-list --no-merges HEAD...$commit)
      git commit -m "revert $branch to $commit"
      git push --set-upstream origin "$branch-revert"
-   
+
      # create PR from revert branch to the target branch
      gh pr create \
        --base "$branch" \
@@ -342,10 +359,10 @@ The Inventory contains some basic operations that run by using the CLI or by usi
        --title "Revert $branch to $commit" \
        --body "" \
        --repo "$REPO"
-   
+
      # revert branch can be deleted once the PR was merged
    }
-   
+
    $ revert staging ba3b8e5ed3320e6b4981077e1a1627f08de4f511
    ```
    {: codeblock}
@@ -361,21 +378,22 @@ For more information about working with Git repos, see these example scenarios:
 * [Rolling back apps from production](/docs/devsecops?topic=devsecops-cd-devsecops-apps-rollback)
 
 
-## How to Exclude Files and Directories in the Inventory
+## How to Exclude Files and Directories in the inventory
+{: #exclude-files-directories-in-the-inventory}
 
-By default, One-Pipeline excludes hidden files and `.md` files in the inventory by default. Create a file named `.inventoryignore` in your Inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root. However, if you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
+One-Pipeline excludes hidden files and `.md` files in the inventory by default. Create a file named `.inventoryignore` in your inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root. However, if you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
 
 For example, if your file is named `.custominventoryignore`, add an environment variable `inventory-ignore-file` with the value `custominventoryignore`.
 
-Here is an example content for the `.custominventoryignore` file:
+Following is an example content for the `.custominventoryignore` file:
 
-```
+``````bash
 .md
 sample_file
 sample_directory/
 ```
 
-In the above file:
-- `.md`: Excludes all files with the `.md` extension. Ensure you dont add `*` at the start, like `*.md`, as regex is not supported.
+In the file before this:
+- `.md`: Excludes all files with the `.md` extension. Do not add `*` at the start, like `*.md`, as regex is not supported.
 - `sample_file`: Excludes the specific file throughout the entire repository.
 - `sample_directory/`: Excludes the entire directory. Avoid adding `*` at the end, use `sample_directory/*`, as regex is not supported.

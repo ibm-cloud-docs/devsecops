@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-01-16"
+lastupdated: "2024-05-28"
 
 keywords: DevSecOps, async stage webhooks, ibm cloud
 
@@ -26,22 +26,24 @@ subcollection: devsecops
 # Updating the async stage webhooks
 {: #update-async-webhook}
 
-If you need to update the async webhook token in the pipeline, for example, to update a secret token, complete the following steps:
+To update the async webhook token in the pipeline, for example, to update a secret token, complete the following steps:
 {: shortdesc}
 
-1. Find the async webhook trigger, it is added to the triggers of your pipeline, named "Subpipeline Webhook Trigger"
-1. Update the "Secret" value of the trigger, and copy its value and save the trigger
-1. In the Pipeline Environment properties, set the new value to the secret `subpipeline-webhook-token`
+1. Search for the async webhook trigger.
+    Your async webhook trigger is added to the triggers of your pipeline, named `Subpipeline Webhook Trigger`. Therefore, we must generate a new secret key from this trigger to use it with the async webhook trigger. {: note}
 
-The pipeline run now picks up the new secret value on the next new run, and will trigger your async stages.
+1. Update the "Secret" value of the trigger. Copy this value and save the trigger.
+1. In your desired pipeline's **Environment properties**, replace the value with the new generated secret value (value copied in the previous step ) to the secret `subpipeline-webhook-token`.
+
+The pipeline run now picks up the new secret value on the next new run, and triggers your async stages. The triggering scripts searches in the content.
+
+Do not change the following default varaiable names :
+- Trigger name "Subpipeline Webhook Trigger" and the
+- Header name `x-async-stage-token` in the trigger
+-  pipeline variable `subpipeline-webhook-token`
 {: important}
 
-The trigger name "Subpipeline Webhook Trigger" and the header name `x-async-stage-token` in the trigger are fixed, do not change these.
-
-The pipeline variable `subpipeline-webhook-token` is also fixed. The triggering scripts will look for its content.
-
 You can change the webhook URL and the worker of the trigger as well, if necessary, also any trigger parameters added to the Subpipeline Webhook Trigger will be available in the async stage.
-{: note}
 
 ## Related information
 {: #devsecops-async-webhook-related}

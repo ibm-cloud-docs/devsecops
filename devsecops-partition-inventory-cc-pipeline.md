@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-04-26"
+  years: 2024, 2024
+lastupdated: "2024-05-28"
 
-keywords: DevSecOps, IBM Cloud, compliance, glob pattern
+keywords: DevSecOps, IBM Cloud, git clone, submodules
 
 subcollection: devsecops
 
@@ -27,8 +27,10 @@ If `inventory-include` is used, only the entries that are provided in that envir
 For more information about glob patterns, see the [glob](https://man7.org/linux/man-pages/man7/glob.7.html){: external} manual.
 {: note}
 
-## Example
+## Demonstration of  Partitioning an inventory with an example
 {: #partion-inventory-cc-pipeline-example}
+
+Here's a quick demonstration of how to partition your inventory.
 
 The following inventory is available:
 
