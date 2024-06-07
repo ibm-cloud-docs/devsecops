@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-05-28"
+lastupdated: "2024-06-07"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Improving compliance pipeline performance in
+# Improving compliance pipeline performance in DevSecOps
 {: #devsecops-conc}
 
 Enable concurrency to make sure the pipeline tasks run simultaneously in OnePipeline toolchains.
@@ -22,16 +22,14 @@ Enable concurrency to make sure the pipeline tasks run simultaneously in OnePipe
 ## Before you begin
 {: #devsecops-conc-prereq}
 
-
-You can directly use IBM-managed workers or TAAS-managed-workers as prerequisites steps are required.
-{: #note}
+Use IBM-managed workers or TAAS-managed-workers directly as this is as prerequisite step.
 
 To use private workers, ensure that the pipeline of the worker nodes must be Tekton version v0.45 or later. For more information, see [Installation instructions](https://tekton.dev/docs/pipelines/install/)
 
-## Enabling concurrency in one pipeline
+## Enabling concurrency in DevsecOps
 {: #devsecops-conc-enable}
 
-To enable concurrency in one pipeline, take the following steps:
+To enable concurrency in DevsecOps, take the following steps:
 
 1. Go to the **Triggers** page of your PR or CI or CD or CC pipeline.
 1. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg) on the repository entry and click **Edit**.
@@ -147,10 +145,10 @@ Dev mode pipeline structures not production ready.
 ![Dev mode CI pipeline structure](images/cd-devsecops-devmode-ci-in-parallel.svg "Dev mode CI pipeline structure"){: caption="Figure 7. Dev mode CI pipeline structure" caption-side="bottom"}
 
 
-## Disabling concurrency in one pipeline
+## Disabling concurrency in DevsecOps
 {: #devsecops-plz-disable}
 
-To disable concurrency in one pipeline, take the following steps:
+To disable concurrency in DevsecOps, take the following steps:
 
 1. Go to the **Triggers** page of your PR or CI or CC pipeline.
 1. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg) on the repository entry and select **Edit**.
