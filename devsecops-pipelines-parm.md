@@ -19,7 +19,7 @@ Parameters are provided for the pull request, continuous integration, continuous
 {: shortdesc}
 
 You can add parameters to the pipelines on the pipeline UI and access them from the [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
-{: tip}
+{: note}
 
 Tables 1 to 5 list and describe the pull request, continuous integration, continuous deployment, continuous compliance, and promotion parameters for pipelines.
 
