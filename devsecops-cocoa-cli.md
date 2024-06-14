@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-03-21"
+lastupdated: "2024-06-14"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2374,7 +2374,7 @@ The evidence locker can be specified by using flags. For more information, see [
 
 The evidence can be configured by using the following flags:
 
-- `--evidence-type-id`: a string that identifies the type of the evidence (for example `com.ibm.unit_test`)
+- `--evidence-type`: a string that identifies the type of the evidence (for example `com.ibm.unit_test`)
 - `--evidence-type-version`: a string that identifies the evidence details schema (for example `1.0.0`, `v2`, and so on)
 
 Some optional flags can be specified as well:
@@ -2384,6 +2384,7 @@ Some optional flags can be specified as well:
 - `--origin`: details about the origin of the evidence can be specified by using `key=value` pairs, for example `--origin job_id=123`, and so on.
 - `--asset`: specifies which assets (by their URI or internal ID) are relevant for the evidence, see `cocoa locker asset` commands. The flag can be specified multiple times. The asset must be already present in the locker.
 - `--attachment`: specifies file attachments to the evidence. Each attachment must point to an existing file, and each attachment name must be unique (that is, `--attachment a/foo.json --attachment b/foo.json` is not permitted).
+- `--attachment-url`: specifies the URLs of attachments that are already stored in the evidence locker. Each URL must point to a unique attachment, ensuring no duplicates. This flag can be specified multiple times to include multiple URLs.
 - `--issue`: list of issue URLs, which can be used to track activities that are related to the findings. The flag can be passed multiple times.
 - `--findings-path`: Use this path to pass the array of JSON findings which is the output from Incident process command.
 - `--scope`: a unique identifier that can be used to correlate evidence from multiple sources.
@@ -2412,7 +2413,7 @@ The behavior of the command can be altered by using these flags:
 Run the command to save results for [`detect-secrets`](https://github.com/IBM/detect-secrets){: external}:
 
 ```sh
-$ cocoa locker evidence add --evidence-type-id com.ibm.detect_secrets \
+$ cocoa locker evidence add --evidence-type com.ibm.detect_secrets \
                             --evidence-type-version 1.0.0 \
                             --details result=success \
                             --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
@@ -2422,13 +2423,23 @@ $ cocoa locker evidence add --evidence-type-id com.ibm.detect_secrets \
 Run the command to save unit test results:
 
 ```sh
-$ cocoa locker evidence add --evidence-type-id com.ibm.unit_test \
+$ cocoa locker evidence add --evidence-type com.ibm.unit_test \
                             --evidence-type-version 1.0.0 \
                             --details failure \
                             --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
                             --attachment path/to/results/junit.xml \
                             --issue https://github.ibm.com/foo/bar/issues/123 \
                             --findings-path <path/to/file>
+```
+{: codeblock}
+
+Run the command to create a new evidence using an attachment that is already existing in the evidence locker:
+
+```sh
+$ cocoa locker evidence add --evidence-type com.ibm.detect_secrets \
+                            --evidence-type-version 1.0.0 \
+                            --attachment-url https://github.ibm.com/foo/bar/blob/master/raw/attachments/5aa5555aa55aa55a555aa5a5aa555555aaaa5aa5aa5555a55a5aa5aa5a5aaaaa/content
+                            --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 ```
 {: codeblock}
 
