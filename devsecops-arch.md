@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-03-08"
+lastupdated: "2024-06-18"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -16,20 +16,19 @@ subcollection: devsecops
 # DevSecOps reference implementation workflow
 {: #cd-devsecops-arch}
 
-
 The DevSecOps reference architecture streamlines compliance and audit-readiness by using building blocks like Tekton task library and toolchain templates.
 {: shortdesc}
 
-Because the continuous integration, continuous deployment, and continuous compliance processes are standardized, application development teams can be sure that they are following security best practices. The DevSecOps reference architecture provides a set of predefined continuous integration, continuous deployment, and continuous compliance toolchain templates. These templates use a collection of tool integrations and reference CI/CD/CC Tekton pipelines definitions managed and updated by IBM for build, scan, test, change management, and deploying your application. Even though pipeline definitions are managed by IBM, pipelines can be customized using a DevSecOps pipeline [configuration file](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+Because the continuous integration, continuous deployment, and continuous compliance processes are standardized, application development teams can be sure that they are following security best practices. The [DevSecOps](#x9892260){: term} reference architecture provides a set of predefined continuous integration, continuous deployment, and continuous compliance toolchain templates. These templates use a collection of tool integrations and customizable reference Tekton pipelines for build, scan, test, change management, and deploy. The pipelines definitions are managed and updated by IBM periodically unless you change the default setting when you create the toolchains.
 
 The Tekton pipelines provide a framework of custom scripts that you can use to ensure the compliant and automated orchestration of code and configuration changes. The pipelines can also help to maintain a GitOps release inventory, while it collects and stores evidence that can be used to generate auditable change requests.
 
 You can use the pipelines to deploy to public cloud or hybrid target environments by using Tekton private pipeline workers. The Tekton pipelines run in predefined container images along with some user scripts. You can run anything that can be scripted, within the boundaries of the Tekton pipelines.
 
-## Shift left continuous integration and continuous deployment design
+## Shift-Left continuous integration, continuous deployment design
 {: #cd-devsecops-design}
 
-"Shift left" is the mantra of DevSecOps. It refers to moving security from the end of the delivery process to the beginning. The following diagram shows the implementation workflow and main features of the DevSecOps architecture.
+The following diagram shows the implementation workflow and main features of the DevSecOps architecture.
 
 ![Reference implementation workflow](images/cm-arch.png "Reference implementation workflow"){: caption="Figure 1. Reference implementation workflow" caption-side="bottom"}
 

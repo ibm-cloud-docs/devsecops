@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-04-20"
+lastupdated: "2024-02-20"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -13,7 +13,7 @@ content-type: release-note
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes
+# Release notes for DevSecOps
 {: #release-notes}
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
@@ -108,8 +108,6 @@ Mandatory Image signature validation
 Validation of pipeline stages
 :   At the start of the pipeline, validation of pipeline stages occur with respect to required, optional stage configuration.
 
-{: shortdesc}
-
 
 ## 24 January 2024
 {: #devsecops-Jan2024}
@@ -132,10 +130,6 @@ Collection evidences for multiple assets
 
 Support for Security and Compliance Center push API
 :   You can now push results to Security Control Center. For more information please see the [Security and Compliance Center integration docs](/docs/devsecops?topic=devsecops-cd-devsecops-scc-toolchains).
-
-Support for Container Image Multi-Scanner
-:   You can now scan container images with IBM developed Container Image Multi-Scanner(CIMS). For more information, see [Configuring Container Image Multi-Scanner scans](/docs/devsecops?topic=devsecops-cd-devsecops-cims).
-
 
 
 ## 08 Dec 2023
@@ -170,7 +164,7 @@ Support for Container Image Multi-Scanner
 
 - **Addition of SysDig Tool scanning within the Artifact Scan Stage for CI Pipeline** - Integrated Sysdig secure tool to scan container images. For more information, see [Configuring Sysdig Image scans](/docs/devsecops?topic=devsecops-cd-devsecops-sysdig-scans).
 
-- **Customizable finish stage** - Modified the last stage of the pipeline to run always irrespective of pipeline status, and added ability to have a customizable step in the last stage for the use of housekeeping in case of a pipeline failure. For more information, see [Custom finish stages](/docs/devsecops?topic=devsecops-custom-scripts#devsecops-scripts-custom-finish)
+- **Customizable finish stage** - Modified the last stage of the pipeline to run always irrespective of pipeline status, and added ability to have a customizable step in the last stage for the use of housekeeping in case of a pipeline failure. For more information, see [Custom finish stages](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#devsecops-scripts-custom-finish)
 
 - **Added new pipeline to perform inventory PR validation** - A new pipeline has been created to seperate out inventory PR validation in CD toolchain. For more information, see [How to opt-in into promotion validation?](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-opt-in)
 
