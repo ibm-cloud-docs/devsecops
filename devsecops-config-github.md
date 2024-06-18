@@ -128,7 +128,6 @@ Note :  DevSecOps by default will base the outcome of branch protection checks d
 
 If you wish to change the `tekton` prefix to something else in GitHub, you should set a value for `branch-protection-status-check-prefix` environment property in your pipeline.
 
-| -------------- | -------------- | -------------- | -------------- |
 |`branch-protection-status-check-prefix`		|text		|The prefix text for branch protection status check (Defaults to `tekton`)	|Optional			|
 {: caption="Table 2. Customized prefix environment property and its other information" caption-side="bottom"}
 
@@ -137,7 +136,7 @@ Once you have configured branch protection settings, any attempt to merge a pull
 ### Optional Settings
 {: #devsecops-config-github-settings-more}
 
-In addition to the above settings, you have the option to configure the following additional settings for branch protection rules. Please note that the status checks provided by   will not validate or enforce these settings.
+In addition to the above settings, you have the option to configure the following additional settings for branch protection rules. Please note that the status checks provided by  DevSecOps will not validate or enforce these settings.
 
 - **Require signed commits:** This setting requires that all commits to the protected branch be signed, preventing malicious changes from being made to the code.
 

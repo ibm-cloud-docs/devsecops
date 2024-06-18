@@ -16,7 +16,7 @@ subcollection: devsecops
 # Improving compliance pipeline performance in DevSecOps
 {: #devsecops-conc}
 
-Enable concurrency to make sure the pipeline tasks run simultaneously in OnePipeline toolchains.
+Enable concurrency to make sure the pipeline tasks run simultaneously in DevSecOps toolchains.
 {: shortdesc}
 
 ## Before you begin

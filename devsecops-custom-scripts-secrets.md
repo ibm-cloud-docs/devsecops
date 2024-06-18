@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Secrets, parameters, and properties
+# Customizing Secrets, parameters, and properties
 {: #cd-devsecops-scripts-secrets}
 
 Use [pipelinectl commands](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) to read or write data from the pipeline at run time. You can read and write secrets, variables, repo data, artifact data, and evidence result artifacts (such as test result files) by way of the pipelinectl interface.
