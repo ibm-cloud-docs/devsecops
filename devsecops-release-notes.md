@@ -19,6 +19,52 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 06 June 2024
+{: #devsecops-June2024}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.30.0 and open-v10.11.0
+{: #devsecops-open-v10.11.0-open-v9.30.0}
+
+Pipeline-run name can be customized
+:   Its now possible to use custom names for pipeline-run name. Customized pipeline-run name can be provided using environment property `pipeline-display-name`
+
+Custom finish stages for promotion and promotion-validation pipelines
+:   Added custom finish stages for promotion and promotion validation pipelines, where user provided script can be executed in finish stage for the purpose of cleanup. This works similar to finish stages in CI, PR, CD, CC pipelines
+
+Required Evidence Check Enhancements
+:   Enhanced the `cocoa locker evidence check` command to support version 2 of the config schema. The updated config schema allows users to specify the application environment or service environment by providing the name and region details along with the required set of evidence to be validated for the given application environment or service environment.
+
+Made Code Risk Aanalyzer scanning optional using environment properties
+:   Three opt-in environment properties have been added as below to provide an option to opt in/out of CRA scans. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans
+
+| Name       | Type | Set of values | Required or optional | Pipelines(PR/CI/CD/CC) | Environment property| Default |Description|
+|----------------------------|------|--------|----------|--------|----|---|-|
+| `cra-bom-generate`         | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | Software Bill of Materials(SBOM) generation will be done by CRA only if this value is set to 1 |
+| `cra-vulnerability-scan`   | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA vulnerability scan will be done only if this value is set to 1  and `cra-bom-generate` is set to 1. If this value is set to 1 and `cra-bom-generate` is set to 0, this scan will be marked as failure |
+| `cra-deploy-analysis`      | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA deployment analysis will be done only if this value is set to 1|
+{: caption="Table 1. Environment property parameters" caption-side="bottom"}
+
+## 09 May 2024
+{: #devsecops-May2024}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.29.0 and open-v10.10.0
+{: #devsecops-open-v10.10.0-open-v9.29.0}
+
+Fixes to `clone_repo` script
+:   `clone_repo` script now reports exact error in case of clone failure.
+
+Removed unwanted error messages for change requests
+:   Removed inappropriate error messages from the log for change management using gitlab
+
+### Updates for DevSecOps version - open-v9.28.1 and open-v10.9.1
+{: #devsecops-open-v10.9.1-open-v9.28.1}
+
+Bug fix release
+:   This release has bug fixes only
+
+
 ## 18 April 2024
 {: #devsecops-Apr2024}
 {: release-note}
