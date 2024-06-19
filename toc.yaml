@@ -187,14 +187,7 @@ toc:
           - devsecops-configuring-zap-scans.md
           - devsecops-configure-gosec-scan.md
           - devsecops-configuring-fips-scan.md
-          - devsecops-configuring-sonarqube-scan.md
-          - topicgroup:
-                label: Configuring the Container Image Multi-Scanner scans(CIMS)
-                topics:
-                - devsecops-configuring-cims.md
-                - devsecops-configuring-scan-properties.md
-                - devsecops-cims-tagging-vulnerablity.md
-                - devsecops-results-filtering-properties.md
+          - devsecops-configuring-sonarqube-scan.md 
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
           - devsecops-configuring-xray-scan.md
