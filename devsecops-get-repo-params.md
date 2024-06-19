@@ -91,8 +91,11 @@ It picks the value of (git-token-[repo_name]-[repo_org]) variable from the envir
 
 let repo_url = "https://github.ibm.com/user_name/compliance-app"
 where:
+```bash
 <repo_name> = compliance-app
 <repo_org> = user_name
+```
+{: codeblock}
 
 ### Function call
 {: #get_repo_specific_token-function-call}
