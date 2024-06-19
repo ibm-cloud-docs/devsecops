@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-06-07"
+lastupdated: "2024-06-19"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -97,6 +97,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`cluster-name`](#pipeline-parm-cluster-name)		|text		|The name of the Docker build cluster.	|Required			|
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)	|text		|The base image for running the built-in pipeline code.	|Optional
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
+|`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional |
+|`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
 |`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from Container Registry for the Sysdig scan.	|Optional			|
@@ -221,6 +223,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`cluster-region`](#pipeline-parm-cluster-region)		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			|
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)	|text		|The base image for running the built-in pipeline code. |Optional			|
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
+|`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional |
+|`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
 |`cr-pipeline-name`		|text		|The name of the pipeline that is creating the change request.	|Optional			|
@@ -295,6 +299,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `cocoa-display-elapsed-time` | text   | Set this parameter to a nonempty value to print the elapsed time in seconds for cocoa CLI command execution. Example: `Elapsed time: 5.32 seconds`.   | Optional |
 |[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)		|text		|The base image for running the built-in pipeline code. |Optional			|
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
+|`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional |
+|`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
 |`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from Container Registry for the Sysdig scan.	|Optional			|
