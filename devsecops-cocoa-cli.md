@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-06-14"
+lastupdated: "2024-06-19"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2089,6 +2089,92 @@ $ cocoa incident process-legacy \
    --current-status success \
    --close-resolved-issues
 ```
+{: codeblock}
+
+## cocoa incident evaluate
+{: #incident-evaluate}
+
+Evaluate the status of the issues based on due_date and exempt label and output the issues findings.
+
+Usage:
+
+```sh
+$ cocoa incident evaluate \
+  <options> \
+  <filePath> 
+```
+
+{: codeblock}
+
+Options:
+
+```text
+--git-provider         # Git service provider [github] Default is "github"
+--org                  # The incident issue repository org
+--repo                 # The incident issue repository name
+--filePath             # Path to the JSON file that contains issues to be evaluated
+--git-token-path       # (Optional) Github Token's path
+--git-api-url          # (Optional) Github API url
+--custom-exempt-label  # (Optional) Defines the custom label with which the incident issue has been marked as exempted
+--is-prod              # (Optional) Whether or not the command was run in prod environment
+--format               # (Optional) Format of the output ("list", "json", default: "list")
+```
+
+{: screen}
+
+Required Environment Variables:
+
+```text
+INCIDENT_REPO_ORG=        # Can be used instead of --org (either the option or the variable is required)
+INCIDENT_REPO_NAME=       # Can be used instead of --repo (either the option or the variable is required)
+```
+
+{: screen}
+
+Required Environment Variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=                # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+
+{: screen}
+
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
+
+Return values:
+
+- If all found issues have either Exempt or Grace period set, the command exits with zero status.
+- If any of the issues that are found have no Exempt or Grace Period set, the command exits with a nonzero status.
+- JSON array of findings.
+- Structure of findings JSON object corresponding to an issue.
+
+```
+json
+{
+  "id": string,
+  "due_date": string,
+  "severity": ("high", "medium", "low", "critical, "informational"),
+  "first_found": "string" (optional),
+  "url": string,
+  "found_status": ("new", "existing", "autoclosed", "readonly"),
+  "has_exempt": boolean
+}
+```
+
+{: codeblock}
+
+Running the command:
+
+```sh
+$ cocoa incident evaluate \
+  --org \
+  --repo \
+  --git-provider \
+  --git-token-path \
+  --filePath
+```
+
 {: codeblock}
 
 ## cocoa locker commands
