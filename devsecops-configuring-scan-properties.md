@@ -2,7 +2,7 @@
 
 copyright:
   years: "2024"
-lastupdated: "2024-05-13"
+lastupdated: "2024-06-19"
 
 keywords: DevSecOps, IBM Cloud, compliance, cims, multiscan, container image
 
@@ -12,10 +12,10 @@ subcollection: devsecops-working
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Configuring scan credentials
+# Configuring tools and scan credentials
 {: #cd-devsecops-scan-credentials-config}
 
-It is important to configure your scan credentials after onboarding. This step adds enhanced securtiy during image scans.
+It is important to configure your tools and scan credentials after onboarding. This step adds enhanced securtiy during image scans.
 To configure your image scan, you need to configure the following:
 - CIMS container scanning image pull credentials
 - Scanning tools and scanning tools credentials
@@ -99,3 +99,16 @@ If you enable Vulnerability Advisor (VA) scanning, you might choose to specify a
 
 You can't pull VA scan results for images on {{site.data.keyword.cloud_notm}} Pak Registry or {{site.data.keyword.cloud_notm}} Pak Staging Registry by using an entitlement key. You must use an {{site.data.keyword.cloud_notm}} API key that is authorized to access the images.
 {: note}
+
+## Scanning multi-arch images
+{: #cims-scanning-multi-arch-images}
+
+When you specify images to scan that are multi-arch images, which refer to a manifest list, CIMS automatically inspects the manifest list. Then, CIMS scans each image in the manifest list separately. You can specify which architectures in the manifest list are to be scanned by using the `multiscan-architectures` pipeline environment property as a comma-separated list. The default value for `multiscan-architectures` is `amd64,ppc64le,s390x,arm64`.
+
+Valid values:
+   - `amd64`
+   - `ppc64le`
+   - `s390x`
+   - `arm64`
+
+CIMS produces separate scan result JSON and CSV files for each architecture that is scanned.

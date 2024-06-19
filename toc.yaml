@@ -189,7 +189,7 @@ toc:
           - devsecops-configuring-fips-scan.md
           - devsecops-configuring-sonarqube-scan.md
           - topicgroup:
-                label: Configuring scanning tools
+                label: Configuring the Container Image Multi-Scanner scans(CIMS)
                 topics:
                 - devsecops-configuring-cims.md
                 - devsecops-configuring-scan-properties.md

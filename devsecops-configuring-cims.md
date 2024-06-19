@@ -13,10 +13,10 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Configuring Container Image Multi-Scanner scans
+# Setting up the Container Image Multi-Scanner scans
 {: #cd-devsecops-cims}
 
-To scan container images to access discovery and reports on the vulnerabilities that are present in those images, you can use the IBM-developed tool Container Image Multi-Scanner (CIMS). This scan is run as part of the scan-artifact stage of CI and CC pipelines. This scan runs for each [container image](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#pipelinectl-container-images) you have saved to the pipeline by using the save_artifact method. For more information, see [save_artifact](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact).
+To scan container images to produce reports on the vulnerabilities that are present in those images, you can use the IBM-developed tool Container Image Multi-Scanner (CIMS). This scan is run as part of the scan-artifact stage of CI and CC pipelines. This scan runs for each [container image](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#pipelinectl-container-images) you have saved to the pipeline by using the save_artifact method. For more information, see [save_artifact](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact).
 
 The following keys are required for save_artifact to scan each image with the Container Image Multi-Scanner:
 
@@ -29,17 +29,17 @@ The following keys are required for save_artifact to scan each image with the Co
 
 You're required to do the following configuration to succesfully multiscan your images:
 
--Set `multiscan` to `true` (or any nonempty string) to enable the image multiscan scanning.
+- Set `multiscan` to `true` (or any nonempty string) to enable the image multiscan scanning.
 
--You can control what image scans the image multiscanner tool runs by using the following optional environment property:
- - `multiscan-tools` - List the image scan types that are run and included in the multiscan results with this property. The default value is `twistlock,va`.
+- You can control what image scans the image multiscanner tool runs by using the following optional environment property:
+    - `multiscan-tools` - List the image scan types that are run and included in the multiscan results with this property. The default value is `twistlock,va`.
 
-   - Valid values:
-     - `twistlock`
-     - `aqua`
-     - `va`
+    - Valid values:
+        - `twistlock`
+        - `aqua`
+        - `va`
 
-   -For example, in `twistlock,va` environment property- If you include the `va` scan type, CIMS pulls Vulnerability Advisor (VA) scan results from the IBM Container Registry for images that are stored in ICR (icr.io, us.icr.io, cp.icr.io, cp.stg.icr.io, and others).  VA scan results are not available for images that are in non-ICR registries such as Artifactory, Quay, and others.
+For example, in `twistlock,va` environment property- If you include the `va` scan type, CIMS pulls Vulnerability Advisor (VA) scan results from the IBM Container Registry for images that are stored in ICR (icr.io, us.icr.io, cp.icr.io, cp.stg.icr.io, and others).  VA scan results are not available for images that are in non-ICR registries such as Artifactory, Quay, and others.
 
 When you enable the CIMS feature, VA scans are not run separately in the pipeline.
 {: note}
