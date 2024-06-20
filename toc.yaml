@@ -40,7 +40,7 @@ toc:
               - devsecops-custom-scripts-pipeline.md
               - devsecops-custom-scripts-customize.md
               - devsecops-custom-scripts-secrets.md
-              - pipeline-stage-output.md
+              - devsecops-custom-scripts-pipeline-stage-output.md
           - devsecops-basics-pipelines-customization.md
           - devsecops-advanced-pipelines-customization.md
       - devsecops-release-notes.md
@@ -82,19 +82,6 @@ toc:
       id: howto
       topics:
       - devsecops-configuring-en.md 
-      - topicgroup:
-          label: Adopting DevSecOps for your own application or microservice
-          topics:
-          - devsecops-apps-byoa.md
-          - topicgroup:
-              label: Understanding DevSecOps Pipelines stages and custom scripts
-              topics:
-              - devsecops-custom-scripts-pipeline.md
-              - devsecops-custom-scripts-customize.md
-              - devsecops-custom-scripts-secrets.md
-              - devsecops-custom-scripts-pipeline-stage-output.md
-          - devsecops-basics-pipelines-customization.md
-          - devsecops-advanced-pipelines-customization.md
       - topicgroup:
           label: Configuring image signing
           topics:
