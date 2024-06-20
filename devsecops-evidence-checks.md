@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-03-07"
+lastupdated: "2024-06-20"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -41,8 +41,1245 @@ Validating evidence by using a config file works as follows as follows:
 
 For each asset type, different evidence types might need to be collected. So, in the checks you can define the asset type and based on that asset, the evidence that is collected for a tool is as follows:
 
+### Enable evidence validation and evaluation using config file
+{: #enable-evidence-checks-config-file}
+
+To enable the `validation of evidence` in your toolchain, set the environment variable `opt-in-evidence-checks` to `1` in the CD and CC toolchain.
+
+### Configure config file
+{: #configure-evidence-checks-config-file}
+
+To define the config file path, set `evidence-checks-config-path` to the file path present in the `pipeline-config-repo`, otherwise the default config file is used. Different deployment environments might have different config files. For example, `stage` might have evidence checks that differ from the production evidence checks. If `evidence-checks-config-path` is not defined, the config file searches for the file with the name `<region>.<target>.validation.json`, `<target>.validation.JSON`, or `validation.json` in the `pipeline-config-repo`.
+
+### There are two versions of this config file:
+
+### Config file Version 2
 ### Pre-deployment (checks that are done before the change request is auto-approved)
 {: #evidence-checks-predep}
+
+- Asset type (for example `image`, `commit`, `*`, or any asset)
+   - Evidence
+     - Evidence type id (for example `com.ibm.static-scan`)
+       - Required (The evidence presents in the `success` state)
+         - Tool (Tool type for which evidence is collected. For example, `SonarQube`, `owasp-zap`, `*`, or any tool)
+       - Recommended (if the evidence is missing/pending/failure, then pipeline will log warning messages)
+         - Tool (Tool type for which evidence is collected. For example, `SonarQube`, `owasp-zap`, `*`, or any tool)
+
+### Post-deployment (checks that evaluate the CD pipeline)
+{: #evidence-checks-postdep}
+
+- Asset type (for example `image`, `commit`, `*`, or any asset)
+   - Evidence 
+     - Evidence type id (for example `com.ibm.acceptance_tests`)
+       - Required (evidence must be present in the `success` state)
+         - Tool (tool type, for example `jest`, `*`, or any tool)
+       - Recommended (if the evidence is missing/pending/failure, then pipeline will log warning messages)
+         - Tool (Tool type for which evidence is collected. For example, `SonarQube`, `owasp-zap`, `*`, or any tool)
+
+
+
+Pipeline evaluation will also occur when the check is enabled in both the CD and CC, utilizing the configuration file.
+
+### Sample config file version 2
+{: #evidence-checks-samp-config-file}
+
+```cmd
+{
+  "version": "2.0",
+  "pre-deployment": [
+    {
+      "evidence_type_id": "com.ibm.prod_change_request",
+      "rules": [
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "stage"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "stage"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.acceptance_tests",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            },
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.branch_protection",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.cloud.slsa",
+      "rules": [
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.dynamic_scan",
+      "rules": [
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.cloud.verify_signature",
+      "rules": [
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.cloud.image_vulnerability_scan",
+      "rules": [
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.peer_review",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.unit_tests",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.static_scan",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.detect_secrets",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.code_vulnerability_scan",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.code_cis_check",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.code_bom_check",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.network_compliance",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.pipeline_run_data",
+      "rules": [
+        {
+          "asset_type": "generic",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.pipeline_logs",
+      "rules": [
+        {
+          "asset_type": "generic",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.code-branch-protection",
+      "rules": [
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.cloud.image_signing",
+      "rules": [
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "master"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "post-deployment": [
+    {
+      "evidence_type_id": "com.ibm.prod_change_request",
+      "rules": [
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "stage"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "stage"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.acceptance_tests",
+      "rules": [
+        {
+          "asset_type": "commit",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "image",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        },
+        {
+          "asset_type": "*",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.pipeline_run_data",
+      "rules": [
+        {
+          "asset_type": "generic",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidence_type_id": "com.ibm.pipeline_logs",
+      "rules": [
+        {
+          "asset_type": "generic",
+          "source_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "target_environments": [
+            {
+              "name": "stage"
+            },
+            {
+              "name": "prod"
+            }
+          ],
+          "required": [],
+          "recommended": [
+            {
+              "name": "tool",
+              "values": [
+                "*"
+              ],
+              "description": "The tool that collected the evidence"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+```
+
+
+### Config file Version 1
+### Pre-deployment (checks that are done before the change request is auto-approved)
+{: #evidence-checks-predep-version1}
 
 - Asset type (for example `image`, `commit`, `*`, or any asset)
    - Evidence
@@ -54,7 +1291,7 @@ For each asset type, different evidence types might need to be collected. So, in
        - Ignore (evidence is not validated)
 
 ### Post-deployment (checks that evaluate the CD pipeline)
-{: #evidence-checks-postdep}
+{: #evidence-checks-postdep-version1}
 
 - Asset type (for example `image`, `commit`, `*`, or any asset)
    - Evidence 
@@ -65,22 +1302,12 @@ For each asset type, different evidence types might need to be collected. So, in
          - Tool (tool type, for example `servicenow-v3`, `*`, or any tool)
        - Ignore (evidence is not validated)
 
-### Enable evidence validation and evaluation using config file
-{: #enable-evidence-checks-config-file}
-
-To enable the `validation of evidence` in your toolchain, set the environment variable `opt-in-evidence-checks` to `1` in the CD and CC toolchain.
-
 
 
 Pipeline evaluation will also occur when the check is enabled in both the CD and CC, utilizing the configuration file.
 
-### Configure config file
-{: #configure-evidence-checks-config-file}
-
-To define the config file path, set `evidence-checks-config-path` to the file path present in the `pipeline-config-repo`, otherwise the default config file is used. Different deployment environments might have different config files. For example, `stage` might have evidence checks that differ from the production evidence checks. If `evidence-checks-config-path` is not defined, the config file searches for the file with the name `<region>.<target>.validation.json`, `<target>.validation.JSON`, or `validation.json` in the `pipeline-config-repo`.
-
-### Sample config file
-{: #evidence-checks-samp-config-file}
+### Sample config file version 1
+{: #evidence-checks-samp-config-file-version1}
 
 ```cmd
 {
