@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-03-12"
+lastupdated: "2024-06-21"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -101,7 +101,7 @@ The following code snippet shows a sample `.cveignore` file:
     "untilRemediationAvailable": true,
   },
   {
-    "cve": "SNYK-JAVA-ORGAPACHEHTTPCOMPONENTS-31517",
+    "cve": "CLAIR-JAVA-ORGAPACHEHTTPCOMPONENTS-31517",
     "expiration": "2022-02-10T22:08:41+04:00",
     "comment": "Additional security measures are in place"
   }
