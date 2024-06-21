@@ -17,8 +17,8 @@ subcollection: devsecops
 
 Some stages run default scripts if they are not specified in the DevSecOps config YAML file.
 
-These scripts are part of a commons library, which can be used as a source to copy code from and 
-customize them for specific edge cases for adopters. This library also serves as an example 
+These scripts are part of a commons library, which can be used as a source to copy code from and
+customize them for specific edge cases for adopters. This library also serves as an example
 of some pipeline mechanics.
 
 Every script that is included in the commons library performs the following actions:
@@ -34,7 +34,7 @@ To see which script is running, examine the logs from a stage that is running a 
 
 The custom script can be viewed using the following link: '<SCRIPT URL>'
 
-You can customize this stage in your pipeline config. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+You can customize this stage in your pipeline config. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 The script(s) used in this stage can be found at the following location(s):
 

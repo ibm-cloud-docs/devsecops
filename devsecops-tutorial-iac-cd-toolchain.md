@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2022, 2024
-lastupdated: "2024-03-28"
+lastupdated: "2024-06-21"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -128,7 +128,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 
 For this tutorial, the pipeline configuration repository is the same as the one defined for the DevSecOps CI for Infrastructure as Code (IaC). Select *Use existing deployment configuration repository* and select the repository that is used for the pipeline configuration of the CI Toolchain.
 
-For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ### Secrets
 {: ##devsecops-tutorial-iac-cd-secrets}
@@ -170,13 +170,13 @@ The endpoint field is optional. Select or provide the endpoint during the setup 
 ### Deployment target
 {: #devsecops-tutorial-iac-cd-target}
 
-For the DevSecOps for Terraform use case, choose the **Custom** deployment option. 
+For the DevSecOps for Terraform use case, choose the **Custom** deployment option.
 
 ### Custom target
 {: #devsecops-tutorial-iac-cd-custom-target}
 
 This option requires the {{site.data.keyword.cloud_notm}} API key that is used within deployment scripts of the pipeline.
-The deployment scripts provided use the Schematics to upload the Terraform configuration artifact to the Schematics workspace and use Schematics CLI `plan` and `apply` commands to deliver the Terraform configuration on {{site.data.keyword.cloud_notm}}. 
+The deployment scripts provided use the Schematics to upload the Terraform configuration artifact to the Schematics workspace and use Schematics CLI `plan` and `apply` commands to deliver the Terraform configuration on {{site.data.keyword.cloud_notm}}.
 
 ### IBM Cloud API Key
 {: #devsecops-tutorial-iac-cd-api-key}
@@ -233,7 +233,7 @@ To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must
 Use the {{site.data.keyword.cloud_notm}} Framework for Financial Services profile for DevSecOps toolchains.
 {: tip}
 
-Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process. 
+Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
 
 ## Create the CD toolchain
 {: #devsecops-tutorial-iac-cd-summary}
@@ -258,9 +258,9 @@ Now that the CD Toolchain is created, click the **cd-pipeline** card to open and
 Make sure that the [CI Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) ran successfully before you run the Promotion Pipeline.
 {: note}
 
-The Promotion Pipeline creates a pull request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod). 
+The Promotion Pipeline creates a pull request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod).
 
-* On the **cd-pipeline Dashboard**, click **Run pipeline**, and select the **Manual Promotion Trigger**. Click **Run** to trigger the pipeline. 
+* On the **cd-pipeline Dashboard**, click **Run pipeline**, and select the **Manual Promotion Trigger**. Click **Run** to trigger the pipeline.
 * Wait for the Promotion Pipeline run to complete and check execution log.
 * After the Promotion Pipeline finishes successfully, the `promote` Task log provides a link to the pull request in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment>`.
 
@@ -288,7 +288,7 @@ For this tutorial, specify the key protect instance name to be created on produc
 
 To do so, select **Environment Properties** in the cd-pipeline and click **Add**.
 
-![CD Pipeline configuration](images/devsecops-cd-terraform-toolchain-environment-properties.png){: caption="Figure 5. CD pipeline configuration" caption-side="bottom"} 
+![CD Pipeline configuration](images/devsecops-cd-terraform-toolchain-environment-properties.png){: caption="Figure 5. CD pipeline configuration" caption-side="bottom"}
 
 Add a property of type `Text Value` and name `TF_VAR_key_protect_instance`.
 Set a meaningful value that indicates the delivery to production environment such as `key-protect-production-202210191453`.

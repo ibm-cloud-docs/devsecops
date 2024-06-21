@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2021, 2024
-lastupdated: "2024-04-16"
+lastupdated: "2024-06-21"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -38,11 +38,12 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 |`finish` |Collects, creates, and uploads the logs files, artifacts, and evidence to the evidence locker.   |No|
 {: caption="Table 1. Continuous integration for IaC stages and tasks" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+e) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
 
 ## Parameters to configure Terraform context and variables
 {: #devsecops-iac-ci-terra-var}
-  
+
 For Terraform definitions that define infrastructure-as-code source, the context and variables that are related to Terraform and Terraform-related scan and checks can be defined by using the parameters that are described in Table 1.
 
 | Property | Default | Description |
@@ -58,17 +59,17 @@ For Terraform definitions that define infrastructure-as-code source, the context
 The same parameters apply for the scripts that are used in an IaC CD deployment process. Because the CD process can process multiple inventory entries, you can scope a parameter for an inventory entry. To specify Terraform context and variables for a scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the environment entries `tf-dir`, `TF_VAR_<XXXX>`, `tfvars-repository`, `tfvars-branch`, and `tfvars-files`.
 
 Example:
-  
+
 ```bash
 hello-iac-sample_TF_VAR_resource_group : Default
 ```
-  
+
 ## Static code scan
 {: #devsecops-iac-ci-pipeline-static-codescan}
 
 The static code scan stage runs a number of static code analyzer tools on the specified IaC repositories. The repos that are provided by the [`pipelinectl save_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo) command and the default app repo are scanned.
 
-You can use any of the methods that are defined for [static code scan](/docs/devsecops?topic=devsecops-devsecops-ci-pipeline#devsecops-ci-pipeline-static-codescan) configurable for application relate continuous integration pipeline. 
+You can use any of the methods that are defined for [static code scan](/docs/devsecops?topic=devsecops-devsecops-ci-pipeline#devsecops-ci-pipeline-static-codescan) configurable for application relate continuous integration pipeline.
 
 The IaC continuous integration pipeline defines more tools that are enabled by using the `opt-in-*` parameters from Table 2 set to `1`.
 
@@ -85,7 +86,7 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 ## Scans and checks in compliance checks
 {: #devsecops-iac-ci-pipeline-compliancechecks}
 
-[Compliance checks](/docs/devsecops?topic=devsecops-devsecops-ci-pipeline#devsecops-ci-pipeline-compliancechecks) defined for application related continuous integration pipeline are also performed for the IaC continuous integration pipeline. 
+[Compliance checks](/docs/devsecops?topic=devsecops-devsecops-ci-pipeline#devsecops-ci-pipeline-compliancechecks) defined for application related continuous integration pipeline are also performed for the IaC continuous integration pipeline.
 
 The IaC CI pipeline performs some additional checks that are enabled by using `opt-in-` features.
 
@@ -94,12 +95,12 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | Scan or check |  Description | Enablement |
 |---------|------------|---------|
 | `cra-tf` | Use the `ibmcloud cra terraform-validate` command from [IBM Cloud CRA tool](/docs/code-risk-analyzer-cli-plugin){: external} to analyze a Terraform plan for compliance | `opt-in-cra-tf-validate` set to `1`. |
-| `tfsec`| Use the [TFsec](https://aquasecurity.github.io/tfsec){: external} tool to find potential misconfigurations and create compliance issues. | `opt-in-tfsec` set to `1` | 
-| `checkov`| Use the [Checkov](https://www.checkov.io){: external} tool to find misconfigurations and create compliance issues. | `opt-in-checkov` set to `1` | 
+| `tfsec`| Use the [TFsec](https://aquasecurity.github.io/tfsec){: external} tool to find potential misconfigurations and create compliance issues. | `opt-in-tfsec` set to `1` |
+| `checkov`| Use the [Checkov](https://www.checkov.io){: external} tool to find misconfigurations and create compliance issues. | `opt-in-checkov` set to `1` |
 {: caption="Table 4. IaC additional compliance scans and checks" caption-side="top"}
 
-| Property | Default | Description | 
-| -------- | ----- | ----------- | 
+| Property | Default | Description |
+| -------- | ----- | ----------- |
 | `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
 | `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
 | `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | The [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
@@ -115,7 +116,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
-For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+For more information about the expected output from user script stages, see [Custom scripts](//docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ### Format for `cra-tf-ignore-rules-file`
 {: #devsecops-iac-ci-pipeline-ignore-rules}
@@ -150,7 +151,7 @@ The default build feature can be configured by using specific parameters from Ta
 | `build-ignore-file` | | Path to an ignore list file (used for `tar --exclude-from`) |
 {: caption="Table 6. Build artifact configuration parameters" caption-side="top"}
 
-For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-secrets).
+For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Artifact sign
 {: #devsecops-iac-ci-pipeline-artifactsign}
@@ -159,7 +160,7 @@ The sign artifact stage provides a default behavior to use a GPG key to create a
 
 | Property | Description |
 | -------- | ----------- |
-| `signing-key` | GPG private key value that is used for the ascii version of detached signatures of one or more artifacts | 
+| `signing-key` | GPG private key value that is used for the ascii version of detached signatures of one or more artifacts |
 {: caption="Table 7. Build artifact GPG key" caption-side="top"}
 
 To use a different sign process, customize this stage by using the `.pipeline-config.yaml` configuration in your project.
@@ -167,13 +168,13 @@ To use a different sign process, customize this stage by using the `.pipeline-co
 ## Deploy to development
 {: #devsecops-iac-ci-pipeline-devdeploy}
 
-The deploy stage deploys configuration artifact into a development environment. You can provide your variables and credentials for this stage from [variables in the pipeline UI](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-secrets) and the [pipeline trigger webhook payload](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads).
+The deploy stage deploys configuration artifact into a development environment. You can provide your variables and credentials for this stage from [variables in the pipeline UI](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and the [pipeline trigger webhook payload](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads).
 
 The scripts that are provided as part of the common base image can help perform a deployment by using schematics or Terraform CLI.
 The parameters to configure the scripts for the deployment action are described in Table 8 and Table 9.
 
 ###  Configuration parameters to use Schematics as deployment tool
-{: #devsecops-iac-ci-pipeline-schema-dep}  
+{: #devsecops-iac-ci-pipeline-schema-dep}
 
 | Property | Default | Description |
 | -------- | ----- | ----------- |
@@ -188,7 +189,7 @@ The parameters to configure the scripts for the deployment action are described 
 
 To configure the scripts in the IaC CD deployment process, define the parameter that is scoped for a given inventory entry. To specify `Schematics as deployment tool` related environment properties for a given scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the all the schematics-related environment entries (except `schematics-ibmcloud-api-key`).
 {: note}
-  
+
 Example:
 
 ```bash
@@ -196,8 +197,8 @@ hello-iac-sample_schematics-workspace-name : workspace-for-deployment-of-hello-i
 ```
 
 #### Configuration to use Terraform CLI as deployment tool
-{: #devsecops-iac-ci-pipeline-terra-cli}  
-  
+{: #devsecops-iac-ci-pipeline-terra-cli}
+
 | Property | Description |
 | -------- | ----------- |
 | `tf-backend-s3-bucket` | Bucket name that stores the state. |
@@ -209,7 +210,7 @@ hello-iac-sample_schematics-workspace-name : workspace-for-deployment-of-hello-i
 {: caption="Table 9. Configuration to use Terraform CLI as deployment tool" caption-side="top"}
 
 Note the following:
-  
+
 - For more information on how to use the Cloud Object Storage endpoint or bucket to store Terraform state, see: [Store Terraform states in Cloud Object Storage](https://www.ibm.com/cloud/blog/store-terraform-states-cloud-object-storage){: external}.
 - To configure the scripts in the IaC CD deployment process, define the parameter that is scoped for an inventory entry. To specify `Terraform CLI as deployment tool`-related environment properties for a scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the all the schematics-related environment entries.
 

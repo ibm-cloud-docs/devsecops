@@ -82,7 +82,7 @@ list_artifacts | while IFS= read -r artifact; do
   $digest=$(load_artifact "$artifact" digest)
   $signature=$(load_artifact "$artifact" signature)
 
-  # update your inventory using these 
+  # update your inventory using these
 
 done
 ```
@@ -101,14 +101,14 @@ The `signature` property is added by the default built-in GPG Image signing task
 {: #cd-devsecops-work-with-icr-private-endpoints}
 
 The environment variable `registry-domain` needs to be added to the pipeline to work with registries enabled with private endpoints.
- 
+
 #### Example
 {: #cd-devsecops-icr-private-endpoints-example}
- 
+
  The value of `registry-domain` can be set to `private.de.icr.io`
- 
+
  To use the environment variable, your code might look similar to the following sample:
- 
+
  ```text
  ICR_REGISTRY_DOMAIN="$(get_env registry-domain "")"
  if [ -z "$ICR_REGISTRY_DOMAIN" ]; then
@@ -120,12 +120,12 @@ The environment variable `registry-domain` needs to be added to the pipeline to 
  docker login -u iamapikey --password-stdin "$ICR_REGISTRY_DOMAIN" < /config/api-key
  ```
  {: codeblock}
- 
+
  The previous sample code is taken from [sample hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/build_setup.sh).
 
 
 For more information, check out the following documentation:
 
-* [Documentation on stages for user-defined scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize)
+* [Documentation on stages for user-defined scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize)
 * [API documentation for pipelinectl](/docs/devsecops?topic=devsecops-cd-devsecops-pipelinectl)
 * [The default built-in GPG Image sign script](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/sign_image.sh){: external}

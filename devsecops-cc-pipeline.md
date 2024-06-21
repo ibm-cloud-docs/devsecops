@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-03-28"
+lastupdated: "2024-06-21"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -24,7 +24,7 @@ The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic
 {: #devsecops-cc-pipeline-stages}
 The table below lists the tasks run in a CC Pipeline. In addition the table also provides an overview of each of these stages:
 
-- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file. 
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 
 - **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
 
@@ -32,7 +32,7 @@ The table below lists the tasks run in a CC Pipeline. In addition the table also
 
 - **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
 
-- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection. 
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps **Pipeline** provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if **User** choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection.
 
 - **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
 
@@ -48,7 +48,7 @@ The table below lists the tasks run in a CC Pipeline. In addition the table also
 |`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			| Yes | Pipeline | Yes |
 {: caption="Table 1. Continuous compliance pipeline stages and tasks" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
 ## Stages and evidences
 {: #devsecops-cc-pipeline-evidences}
@@ -111,7 +111,7 @@ get_env pipeline_namespace
 
 This command returns either `cc`, `cd`, `ci`, or `pr`, depending on which pipeline is running. This way, you can reuse the setup script between pipelines if necessary.
 
-## Detect Secrets scan 
+## Detect Secrets scan
 {: #devsecops-cc-pipeline-detect-secrets}
 
 The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans).
@@ -150,7 +150,7 @@ To learn more about configuring dynamic scan by using OWASP-ZAP, see [Configurin
 
 These scripts are run on all of the app repos that the pipeline is aware of. CC pipeline uses the [`pipelinectl save_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo) interface to register repos found in the inventory entries, then uses the [`list_repos`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_repos) and [`load_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#load_repo) commands to iterate over repos and send them to scanners.
 
-For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Artifact scan and sign
 {: #devsecops-cc-pipeline-artifactscan}

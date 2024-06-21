@@ -254,7 +254,7 @@ scan-artifact:
 
 By default, DevSecOps pipelines use [{{site.data.keyword.IBM_notm}} Continuous Delivery images](/docs/ContinuousDelivery?topic=ContinuousDelivery-pipeline_versioned_base_images#image_version_contents). These images contain some of the most common tools such as Node and Java to run your scripts. You can also use other vendor's images or your own custom images that contain your preferred tools.
 
-Docker images that are used by DevSecOps pipelines are specified in the [`.pipeline-config.yaml`](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-configparm) file. Each stage can use a different image.
+Docker images that are used by DevSecOps pipelines are specified in the [`.pipeline-config.yaml`](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) file. Each stage can use a different image.
 
 #### Changing the image version
 {: #change-image-version}
