@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2024-05-28"
+lastupdated: "2022-08-02"
 
 keywords: DevSecOps
 

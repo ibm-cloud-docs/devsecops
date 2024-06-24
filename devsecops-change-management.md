@@ -1,8 +1,8 @@
 ---
 
-copyright:
+copyright: 
   years: 2022, 2024
-lastupdated: "2024-02-22"
+lastupdated: "2024-06-18"
 
 keywords: DevSecOps, change request, change management, ibm cloud
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Best practices for automated change management
+# Automated change management
 {: #cd-devsecops-change-management}
 
 Change management automation is an important part of the DevSecOps pipeline reference implementation. Developers, approvers, and auditors can monitor the compliance aspects of deployments. Every deployment must follow an organization's change management policy.
@@ -20,24 +20,26 @@ Change management automation is an important part of the DevSecOps pipeline refe
 
 The pipelines collect [evidence](/docs/devsecops?topic=devsecops-devsecops-evidence) from every part of the build and deployment lifecycle. Every piece of evidence correlates to a specific build and deployment of the artifacts. So, for each deployed artifact, you can tell if its build or test deployment has incidents. This correlation is implemented through the [inventory model](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
-## Change management data flow
+## The connection between evidence, inventory, and change management
 {: #connection-evidence-inventory-change}
 
-The following image shows the data flow and connection between evidence, inventory, and change management.
+Figure 1 shows the data flow and connection between evidence, inventory, and change management.
 
 ![Connection between evidence, inventory, and change management](images/change-management-data-flow.svg "Flow diagram that shows the relationship between evidence, inventory, and change management"){: caption="Figure 1. Connection between evidence, inventory, and change management" caption-side="bottom"}
 
-1. Continuous Integration (CI) runs build artifacts and leaves evidence of what happened during the creation of those artifacts.
+1. CI runs build artifacts and leaves evidence of what happened during the creation of those artifacts.
 2. CI runs create entries about the created artifacts in the inventory.
 3. Built artifacts in the Inventory are [promoted](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) to deployment environments, like staging or pre-production.
 4. Change management automation uses data from the inventory, the evidence locker, and the promotion PR to create the change request deployments. Change management automaton also leaves evidence of acceptance tests, for example. Successfully deployed and tested artifacts are further promoted to production environments.
 
-Every deployment to every environment and region must file a change request on the Change Management System. Change management automation helps you to create change requests based on all the evidence and information that is collected from the pipelines. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
+Every deployment to every environment and region must file a change request on the Change Management System. Change management automation helps you to create these change requests based on all the evidence and information that is collected from the pipelines.
+
+For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
 
 ## Change management command order
 {: #devsecops-change-mgmt-order}
 
-The sequence of change management command order are an important part of the DevSecOps pipeline implementation, and every deployment must follow an organization's change management policy to ensure compliance. The following command order is a guideline for how to handle change management.
+The sequence of change request steps is as follows:
 
 ### Create change request
 {: #create-change-request}
@@ -74,3 +76,4 @@ Details about the deployment are uploaded to the closing summary change task, an
 
 * `successful`
 * `successful with issues` (if the summary has issues)
+

@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2023, 2024
-lastupdated: "2024-03-28"
+lastupdated: "2024-06-21"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -48,7 +48,7 @@ Downloading dependencies for repositories can be enabled by providing all of the
 | `gosec-private-repository-user` | text | User for the private repository with https access (default to `x-oauth-basic`) | optional |
 | `gosec-private-repository-token` | secret | The token used for https access to private repository (default to the token configured for the first git integration in the toolchain whose repository URL is hosted on `gosec-private-repository-host`'s value) | optional |
 {: caption="Table 2. pipeline parameters" caption-side="top"}
-  
+
 ### Enable GOPROXY
 {: #devsecops-gosec-enable-goproxy}
 
@@ -66,7 +66,7 @@ If GOPROXY must be specified, all of the following parameters must be provided.
 
 The `gosec-scan-image` parameter can be used to specify a different gosec image to use, such as a custom image or a specific version of the official gosec image.
 
-Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops-gosec-examples) section below 
+Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops-gosec-examples) section below
 
 | Parameter name | Default value | Description |
 |-|-|-|
@@ -80,17 +80,17 @@ Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops
 Define the value of `gosec-additional-flags` as `-exclude-dir=<your_folder_1> -exclude-dir=<your_folder_2> -nosec=true` and the gosec command run is updated as:
 
 ```bash
-./gosec -exclude-dir=<your_folder_1> -exclude-dir=<your_folder_2> -nosec=true -no-fail -fmt=json -out=gosec-results.json -stdout -verbose=text ./...   
+./gosec -exclude-dir=<your_folder_1> -exclude-dir=<your_folder_2> -nosec=true -no-fail -fmt=json -out=gosec-results.json -stdout -verbose=text ./...
 ```
 {: codeblock}
 
 ### Using your own configuration file
 {: #devsecops-gosec-config-file}
 
-If you want to modify the default configuration, create a `config.json` file in the target repository. 
+If you want to modify the default configuration, create a `config.json` file in the target repository.
 For more information on the analysis parameters in the configuration file, see [gosec configuration](https://github.com/securego/gosec#configuration){: external}.
 
 ### Using another static scan implementation
 {: #devsecops-gosec-otherscan}
 
-If you want to use your own static scan implementation, modify your `.pipeline-config.yaml` file and add your own custom script to the `static-scan` stage. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+If you want to use your own static scan implementation, modify your `.pipeline-config.yaml` file and add your own custom script to the `static-scan` stage. For more information, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).

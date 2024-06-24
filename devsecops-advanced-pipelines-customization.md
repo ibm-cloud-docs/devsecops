@@ -63,7 +63,7 @@ When onboarding multiple microservices, a best practice is to separate source co
 This consists of:
 - A dedicated Git repository to host a common scripts library and .pipeline-config.yaml file(s).
 - A single .pipeline-config.yaml file that's common to all services. If it's too complex, or not possible, use different .pipeline-config.yaml files.
-- Customization on a per folder basis. Implement your .pipeline-config.yaml file(s) to point to different scripts folders in your config repo. Organize your scripts in separate CI, CD, and CC folders, or based on the service language (Go, Python, NodeJS), service, application name, or whatever best fits your needs. 
+- Customization on a per folder basis. Implement your .pipeline-config.yaml file(s) to point to different scripts folders in your config repo. Organize your scripts in separate CI, CD, and CC folders, or based on the service language (Go, Python, NodeJS), service, application name, or whatever best fits your needs.
 
 Change your pipeline(s) to use this shared configuration repository by setting the value of the `pipeline-config-repo` pipeline property (optionally, the `pipeline-config-branch`) to the shared configuration repository URL.
 
@@ -177,7 +177,7 @@ compliance-checks:
     ./scripts/my-custom-script2.sh
 ```
 
-For more information, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+For more information, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Terraform templates to use DevSecOps toolchains-as-code
 {: #tf-templates-tac}

@@ -18,7 +18,7 @@ subcollection: devsecops
 Pull request pipeline runs a set of compliance status checks on a pull request for the specified application repository.
 {: shortdesc}
 
-Attempts to merge a pull request into the master branch might be blocked because of failed compliance status checks. Opening or updating a pull request against the master branch triggers the pull request pipeline to run. You can run your own setup for the pipelines and tests in [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+Attempts to merge a pull request into the master branch might be blocked because of failed compliance status checks. Opening or updating a pull request against the master branch triggers the pull request pipeline to run. You can run your own setup for the pipelines and tests in [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Stages and tasks
 {: #cd-devsecops-pipeline-order}
@@ -47,7 +47,7 @@ The table below lists the tasks run in a PR Pipeline. In addition, the table als
 |`finish`| Consolidate the pipeline status. | Yes | Yes | NA |Yes|
 {: caption="Table 1. Pipeline order" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
 
 ## Detect Secrets scan
 {: #cd-devsecops-pr-pipeline-detect-secrets}
@@ -57,28 +57,28 @@ The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies 
 ## Scans and checks in compliance checks
 {: #cd-devsecops-cd-pipeline-compliancechecks}
 
-| Scan or check |  Description | 
+| Scan or check |  Description |
 |---------|------------|
 | Code Risk Analyzer vulnerability scan | Finds vulnerabilities for all of the app package dependencies, container base images, and operating system packages. Uses the Code Risk Analyzer tool. |
-| Code Risk Analyzer CIS check |  Runs [configuration checks](/docs/cli?topic=cli-cra-cli-plugin#deployment-command) on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool.| 
+| Code Risk Analyzer CIS check |  Runs [configuration checks](/docs/cli?topic=cli-cra-cli-plugin#deployment-command) on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool.|
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
 | Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){: external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans). |
 | Repository compliance checking | Checks that branch protection settings are correct. |
 {: caption="Table 2. Compliance scans and checks" caption-side="top"}
-    
+
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-pipelinectl) interface that is provided in your setup stage.
 
-For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Task jobs
 {: #cd-devsecops-pipeline-jobs}
 
-| Task job |  Description | 
+| Task job |  Description |
 |---------|------------|
 | `code-pr-start` | Clones app and DevSecOps repos, and sets the initial pending state for status checks on {{site.data.keyword.gitrepos}} repos. |
 | `code-setup` | The placeholder for a user-defined setup custom script where the user can complete their pipeline setup. |
-| `code-detect-secrets` |  Runs the detect secrets scan to identify where secrets are visible in app code. | 
-| `code-unit-tests` |  The placeholder for a user-defined test custom script where the user can run their own tests. | 
+| `code-detect-secrets` |  Runs the detect secrets scan to identify where secrets are visible in app code. |
+| `code-unit-tests` |  The placeholder for a user-defined test custom script where the user can run their own tests. |
 | `code-pr-finish` | Runs all of the required compliance checks, comments the results to the pull request, and sets their result on the {{site.data.keyword.gitrepos}} repos. |
 {: caption="Table 3. Compliance scans and checks" caption-side="top"}
 

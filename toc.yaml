@@ -40,7 +40,7 @@ toc:
               - devsecops-custom-scripts-pipeline.md
               - devsecops-custom-scripts-customize.md
               - devsecops-custom-scripts-secrets.md
-              - pipeline-stage-output.md
+              - devsecops-custom-scripts-pipeline-stage-output.md
           - devsecops-basics-pipelines-customization.md
           - devsecops-advanced-pipelines-customization.md
       - devsecops-release-notes.md
@@ -58,7 +58,6 @@ toc:
             navtitle: "Part 3: Set up a CD toolchain"
           - topic: devsecops-tutorial-cc-toolchain.md
             navtitle: "Part 4: Set up a CC toolchain"
-      - include: ../apps/tutorials/tutorial-devsecops-refarch.md
       - topicgroup:
           label: Develop and deploy a z/OS app with DevSecOps practices
           topics:
@@ -83,19 +82,6 @@ toc:
       id: howto
       topics:
       - devsecops-configuring-en.md 
-      - topicgroup:
-          label: Adopting DevSecOps for your own application or microservice
-          topics:
-          - devsecops-apps-byoa.md
-          - topicgroup:
-              label: Understanding DevSecOps Pipelines stages and custom scripts
-              topics:
-              - devsecops-custom-scripts-pipeline.md
-              - devsecops-custom-scripts-customize.md
-              - devsecops-custom-scripts-secrets.md
-              - devsecops-custom-scripts-pipeline-stage-output.md
-          - devsecops-basics-pipelines-customization.md
-          - devsecops-advanced-pipelines-customization.md
       - topicgroup:
           label: Configuring image signing
           topics:
@@ -188,13 +174,7 @@ toc:
           - devsecops-configuring-zap-scans.md
           - devsecops-configure-gosec-scan.md
           - devsecops-configuring-fips-scan.md
-          - devsecops-configuring-sonarqube-scan.md
-          - topicgroup:
-                label: Configuring scanning tools
-                topics:
-                - devsecops-configuring-cims.md
-                - devsecops-configuring-scan-properties.md
-                - devsecops-results-filtering-properties.md
+          - devsecops-configuring-sonarqube-scan.md 
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
           - devsecops-configuring-xray-scan.md

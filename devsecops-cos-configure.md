@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-04-26"
+  years: 2021, 2024
+lastupdated: "2024-06-19"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -41,6 +41,7 @@ In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You migh
 
 1. In Cloud {{site.data.keyword.cos_short}}, click **Service Credential**.
 2. Click **New Credential**.
+3. Select **Include HMAC Credential** to include HMAC keys in the credential.
 3. Provide the details:
    *  **Name:** Name of the credential.
    *  **Role:** Role for the credential. The **Object writer** and **Reader** role is suggested for handling evidence.
