@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-06-19"
+lastupdated: "2024-06-27"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2484,6 +2484,18 @@ Some optional flags can be specified as well:
        - `GH_URL`: optional, defaults to `https://github.ibm.com/api/v3`
        - `GHE_TOKEN`
 
+Label information for an attachment in evidence JSON:
+
+Each attachment section in the evidence JSON has a label property to hold metadata about the attachment. A default value is assigned to the label and this value depends upon whether the attachment input is a file path or attachment-url.
+Pass a custom label by adding `::label=<value>` at the end of the attachment path or attachment url.
+
+Examples:
+- `--attachment path/to/attachment::label=label_name` - Creates attachment using the file in `path/to/attachment` and sets the label value to `label_name`.
+If label is not passed, the file name is used as the label value by default.
+
+- `--attachment-url url/of/attachment::label=label_name` - Uses the attachment specified in the `attachment-url` and sets the label value to `label_name`.
+If label is not passed, the label value is an empty string by default.
+
 Some environment variables are automatically picked up to add details about the asset origin:
 
 - Setting `TOOLCHAIN_CRN` is the same as specifying `--origin toolchain_crn=$TOOLCHAIN_CRN`
@@ -2529,6 +2541,19 @@ $ cocoa locker evidence add --evidence-type com.ibm.detect_secrets \
 ```
 {: codeblock}
 
+Run the command to save unit test results and add custom label to the attachment:
+
+```sh
+$ cocoa locker evidence add --evidence-type com.ibm.unit_test \
+                            --evidence-type-version 1.0.0 \
+                            --details success \
+                            --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
+                            --issue https://github.ibm.com/foo/bar/issues/123 \
+                            --findings-path <path/to/file> \
+                            --attachment path/to/results/junit.xml::label=unit-test
+```
+{: codeblock}
+
 ### cocoa locker evidence get < evidence-id >
 {: #locker-evidence-get}
 
@@ -2559,23 +2584,35 @@ Example output:
 ```sh
 {
    "id": "0000000011111111222222223333333344444444555555556666666677777777",
-   "evidence_type_id": "image_signing",
+   "evidence_type_id": "com.ibm.unit_tests",
    "evidence_type_version": "1.0.0",
-   "date": "2021-09-08T10:10:43.955Z",
+   "date": "2024-03-27T16:36:48.167Z",
    "origin": {
-    "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/111111111111c2f2222222222b22a7a63:ac2a22a2-2a2a-2222-aaa2-222aa22a2a2a::",
-    "pipeline_run_id": "f333b3bc-3333-3fea-3333-333d3a3b33b3",
-    "pipeline_id": "444aaa4a-b4c4-4444-4f4b-aa4444a444a4"
+     "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:f0ffdc07-616e-40fa-98d5-2f52d5e8ef4d::",
+     "pipeline_id": "b313626a-a612-4c98-ae5c-408af7d7ce58",
+     "pipeline_run_id": "cadb83be-f00d-44af-95d0-1b49deb8abb5",
+     "pipeline_run_url": "https://cloud.ibm.com/devops/pipelines/tekton/b313626a-a612-4c98-ae5c-408af7d7ce58/runs/cadb83be-f00d-44af-95d0-1b49deb8abb5/code-unit-tests/run-stage/?env_id=ibm:yp:us-south",
+     "scope": "82aef875749c6386381a3baff8430df6f5ac2e8434cc91e5287ce65bd71a3985"
    },
    "details": {
-    "result": "success"
+     "result": "pending",
+     "tool": "jest"
    },
    "issues": [],
-   "attachments": {
-    "app-image_signature": "0000000011111111222222223333333344444444555555556666666677777777"
-   },
+   "findings": [],
+   "attachments": [
+      {
+       "hash": "9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b",
+       "url": "https://s3.private.us-south.cloud-object-storage.appdomain.cloud/test/assets/9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b/index.json",
+       "label": "unit-test"
+     }
+   ],
    "assets": [
-    "docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777"
+     {
+       "hash": "7d930918fbb8be80f3a5100f0313c5b2518eba22cc915194cf971d4daf5170be",
+       "uri": "https://github.ibm.com/one-pipeline/compliance-app-march-2024.git#be44f38ec9b290d4f3d4931b37910effac346441",
+       "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/cocoa-development/assets/7d930918fbb8be80f3a5100f0313c5b2518eba22cc915194cf971d4daf5170be/index.json"
+     }
    ]
 }
 ```
@@ -2637,7 +2674,7 @@ Run the command to upload attachment:
 $ cocoa locker evidence add --evidence-type-id com.ibm.unit_test \
                             --evidence-type-version 1.0 \
                             --details result=success \
-                            --attachment path/to/junit.xml
+                            --attachment path/to/junit.xml::label=unit-test
 ```
 {: codeblock}
 
@@ -2646,9 +2683,13 @@ Example output of attachment upload:
 ```sh
 {
    ...
-   "attachments": {
-    "junit.xml": "5aa5555aa55aa55a555aa5a5aa555555aaaa5aa5aa5555a55a5aa5aa5a5aaaaa",
-   },
+   "attachments": [
+    {
+      "hash": "9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b",
+      "url": "https://s3.private.us-south.cloud-object-storage.appdomain.cloud/test/assets/9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b/index.json",
+      "label": "unit-test"
+    }
+   ],
    ...
 }
 ```
