@@ -18,7 +18,7 @@ subcollection: devsecops
 The following table lists the various scanning tools that are integrated into DevSecOps pipelines to provide continuous security checks and monitoring. These scans run at various stages of the Continuous Integration (CI), Continuous Development (CD), and Continuous Deployment (CC) pipelines.
 {: shortdesc}
 
-| Type of scan | Scan | Description | Scan type |
+| Tool | Scan | Description | Scan type |
 |-|-|-|-| 
 | [Mend](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans) | The Mend script runs the Mend Unified Agent dependency scan in your DevSecOps pipeline. | `compliance checks` stage of CI/CC pipelines | Dependency scan |
 | [Contrast SAST](/docs/devsecops?topic=devsecops-devsecops-contrast-sast-scans) | The Contrast static application security testing (SAST) script runs the source code scanning in your DevSecOps pipeline | `static scan` stage of CI/CC pipelines | Static scan |
