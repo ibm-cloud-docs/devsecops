@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-06-19"
+lastupdated: "2024-06-27"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -195,6 +195,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running the Sysdig scan.	|Required			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. The default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then Sysdig scan is enabled. 	|Required			|
+|`sysdig-policies`		|text		|Identifier of sysdig policies with comma seperated values. You can find policy identifier under section `How to scan Images with this policy` (look for the name after `--policy` tag)	|Optional			|
 |`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://us-south.security-compliance-secure.cloud.ibm.com`	|Optional			|
 |`va-scan-retry-count`		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|
 |`va-scan-retry-sleep`	|text		|The number of wait times per retry iteration.	|Optional			|

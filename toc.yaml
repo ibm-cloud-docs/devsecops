@@ -156,7 +156,7 @@ toc:
               - topic: evidence/check-run.md
                 navtitle: CIS check and Static and Dynamic scans
       - topicgroup:
-          label: Inventory
+          label: Managing inventory
           topics:
           - devsecops-inventory.md
           - devsecops-promote-branches.md

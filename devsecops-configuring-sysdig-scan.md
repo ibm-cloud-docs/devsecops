@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2023, 2024
-lastupdated: "2024-04-08"
+lastupdated: "2024-06-27"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -26,10 +26,13 @@ The following keys are required for save_artifact to scan each image with sysdig
 The Sysdig script runs the Sysdig cli scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
 {: shortdesc}
 
-The Sysdig cli scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts). 
+The Sysdig cli scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts).
 This scan is run as a part of scan-artifact stage of CI and CC pipelines.
 
-The script runs the Sysdig cli scanner image scan on the image and uploads the results to the given Sysdig URL instance. 
+The script runs the Sysdig cli scanner image scan on the image and uploads the results to the given Sysdig URL instance.
+
+If there are any policies created in the Sysdig Dashboard with the **Always apply** toggle on, the issues will only be created for vulnerabilities that fail these policies. The `sysdig-policies` variable can also be used to evaluate the results based on specified policies, but the policies with "always apply" will be used regardless to evaluate the results.
+
 
 To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_short}}](/docs/workload-protection?topic=workload-protection-provision).
 
@@ -49,11 +52,12 @@ To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.
 |-|-|-|
 | `sysdig-url` | `https://us-south.security-compliance-secure.cloud.ibm.com` (property is not set)| The URL of the Sysdig instance to be used for the scan. This value needs to be provided if any other Sysdig instance is being used. |
 | `cr-ibmcloud-api-key` | | Overrides `ibmcloud-api-key` if provided, for pulling the image from container registry for the Sysdig scan.|
+| `sysdig-policies` | | Comma separated values of sysdig policies identifier. You can find policy identifier under section `How to scan Images with this policy` (look for the name after `--policy` tag)|
 {: caption="Table 2. Optional Sysdig scan parameters" caption-side="top"}
 
 The various `sysdig-url` values to be used, while using [IBM Cloud Workload Protection service](/docs/workload-protection?topic=workload-protection-getting-started) are provided [here](/docs/workload-protection?topic=workload-protection-endpoints).
 External Sysdig secure instances also can be used, such as `https://secure.sysdig.com`. Appropriate `sysdig-url` value needs to be provided.
- 
+
 
 
 ## Evidence and attachments
@@ -61,7 +65,7 @@ External Sysdig secure instances also can be used, such as `https://secure.sysdi
 
 The created evidence is based on the values in table 3. The DevSecOps pipeline uploads evidence to the locker and includes the evidence in the evidence summary for change requests.
 
-| Field | Value | 
+| Field | Value |
 | ----- | ----- |
 | tool type     | `sysdig` |
 | evidence type | `com.ibm.code_vulnerability_scan` |
@@ -75,7 +79,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 
 | Parameter name | Default value | Description |
 |-|-|-|
-| pipeline-debug | 0 | Debug flag 0 off; 1 on | 
+| pipeline-debug | 0 | Debug flag 0 off; 1 on |
 {: caption="Table 4. Debug parameters" caption-side="top"}
 
 ## Accessing your scan results
@@ -83,7 +87,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 
 You can access your scan results by using any of the following methods:
 
-- Viewing them on the Sysdig dashboard. Open the Sysdig Secure dashboard and look for the image just scanned in `Image Results`. 
+- Viewing them on the Sysdig dashboard. Open the Sysdig Secure dashboard and look for the image just scanned in `Image Results`.
 - Using the [DevSecOps CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) to download your scan results from the evidence locker by using the information that is printed in the stage log. For more information, see the following resources:
    - [`cocoa locker evidence get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-get)
    - [`cocoa locker attachment get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-attachment-get)
