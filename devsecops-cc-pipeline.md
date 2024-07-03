@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-21"
+lastupdated: "2024-07-03"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -67,7 +67,7 @@ The table below provides a relationship between various types of evidence and th
 |`finish` 		| `com.ibm.pipeline_logs`, `com.ibm.pipeline_run_data` |
 {: caption="Table 2. Continuous integration stages and associated evidences" caption-side="top"}
 
-For more information about how to collect evidences within the customizable user stages by using the `collect-evidence` script, see [collect-evidence script](/docs/devsecops?topic=devsecops-collect-evidence).
+For more information about how to collect evidences within the customizable user stages by using the `collect-evidence` script, see [collect-evidence script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
 
 ## Processing inventory for artifacts and repositories
 {: #devsecops-cc-pipeline-start}

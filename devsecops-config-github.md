@@ -13,8 +13,10 @@ subcollection: devsecops-working
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Configuring branch protections for your application repository
-{: #devsecops-config-github}
+
+# Configuring your GitHub repository
+{: #cd-devsecops-config-github}
+
 
 The {{site.data.keyword.gitrepos}} tool integration is based on Github, which is a web-based hosting service for Git repositories (repos). You can have both local and remote copies of your repos. To learn more, see {{site.data.keyword.gitrepos}}{: external}.
 {: shortdesc}

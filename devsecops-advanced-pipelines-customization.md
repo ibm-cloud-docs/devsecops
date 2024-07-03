@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Advanced DevSecOps pipeline customization
-{: #cd-devsecops-cd-devsecops-advanced-pipelines-customization}
+{: #cd-devsecops-advanced-pipelines-customization}
 
 Learn about the advanced features of DevSecOps adoption after you onboard your first application or microservice.
 {: shortdesc}
