@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-06-27"
+lastupdated: "2024-07-05"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -381,6 +381,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
+|inventory-ignore-file 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		|
+|inventory-include 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		|
+|inventory-exclude 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		|
 {: caption="Table 5. Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
 {: tab-title="Promotion parameters"}
