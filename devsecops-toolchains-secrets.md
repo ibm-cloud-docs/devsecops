@@ -15,7 +15,7 @@ subcollection: devsecops
 # Managing secrets in your toolchains
 {: #cd-devsecops-toolchains-secrets}
 
- Tool integrations in your CI and CD toolchains require secrets, for example passwords, API keys, certificates, or other tokens. For example, an {{site.data.keyword.cloud}} API key performs basic pipeline tasks, such as logging in to {{site.data.keyword.cloud_notm}}. Similarly, the service ID API key writes evidence to the bucket in the Cloud Object Store instance.
+ Tool integrations in your CI and CD toolchains require secrets, for example- passwords, API keys, certificates, or other tokens. For example, an {{site.data.keyword.cloud}} API key performs basic pipeline tasks, such as logging in to {{site.data.keyword.cloud_notm}}. Similarly, the service ID API key writes evidence to the bucket in the Cloud Object Store instance.
 {: shortdesc}
 
 For security reasons, these secrets must not reveal a person's identity or account as people often have greater access permissions than the actual toolchain automation requirement. Affiliation with a person's identity or account would also violate the security principle of ["least privilege"](https://en.wikipedia.org/wiki/Principle_of_least_privilege){: external}. Also, people often change roles or even companies and their credentials must be removed which might break the toolchain automation. By using an identity that is affiliated specifically for automation purposes, it provides a separation of duties between automation and people who use the automation.

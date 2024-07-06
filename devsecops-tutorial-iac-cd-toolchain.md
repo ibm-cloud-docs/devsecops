@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-06-21"
+lastupdated: "2024-07-03"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -193,7 +193,7 @@ Save the newly generated API key to a secrets vault.
 ### Change request management
 {: #devsecops-tutorial-iac-cd-change-request}
 
-Use an {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-mgmt).
+Use an {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-management).
 
 ### DevOps insights toolchain
 {: #devsecops-tutorial-iac-cd-insights}

@@ -13,10 +13,12 @@ subcollection: devsecops-working
 {{site.data.keyword.attribute-definition-list}}
 
 
-# Configuring your GitHub repository
-{: #devsecops-config-github}
 
-The {{site.data.keyword.gitrepos}} tool integration is based on GitLab Community Edition, which is a web-based hosting service for Git repositories (repos). You can have both local and remote copies of your repos. To learn more, see {{site.data.keyword.gitrepos}}{: external}.
+# Configuring your GitHub repository
+{: #cd-devsecops-config-github}
+
+
+The {{site.data.keyword.gitrepos}} tool integration is based on Github, which is a web-based hosting service for Git repositories (repos). You can have both local and remote copies of your repos. To learn more, see {{site.data.keyword.gitrepos}}{: external}.
 {: shortdesc}
 
 Branch protection policies enforce security, collaboration, and helps ensure that your team adheres to code quality and change management standards. This topic helps you set and manage branch policies. [DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-arch) requires you to configure the branch protection rules of your GitHub repository.

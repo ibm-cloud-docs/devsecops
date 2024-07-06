@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-09-20"
+  years: 2021, 2024
+lastupdated: "2024-07-05"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -40,6 +40,134 @@ Before you run the continuous deployment pipeline, make sure that the promotion 
 
 For more information about the inventory and promotion process, see [Inventory promotion](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
+## Partially promoting inventory items
+{: #cd-devsecops-promotion-partial-promotion}
+
+The partial promotion method allows the promotion pipeline to promote a select subset of available inventory.
+
+An inventory entry in this context would be a single file (of the inventory type) present in the inventory repo, this would map to a unique filename on the local filesystem
+{: important}
+
+Using the parameters `inventory-include` and `inventory-exclude` enables the partial promotion method. 
+
+When using `inventory-include`, the patterns / filenames provided in that environment property resolve to their respective entries and promoted by the pipeline. Similarly, entries provided in `inventory-exclude` get excluded from promotion.
+
+The format utilises glob pattern (also supports full paths), similarly to what is followed in the CC-pipeline. For more information about glob patterns, see the [glob](https://man7.org/linux/man-pages/man7/glob.7.html){: external} manual.
+
+### Filtering applied in partial promotion
+
+Partial promotion applies two levels of filtering - using the `.inventoryignore` file and applying filtering based on the glob patterns given to `inventory-include` and `inventory-exclude`
+
+#### Using the .inventoryignore file
+To exclude a set of files or folders by default for every partial promotion run as well as CD-pipeline run, you can add the list of files / folders to the `.inventoryignore` file to exclude those entries.
+
+The list of available entries (that the pipeline can promote) is available after filtering the entries out from the `.inventoryignore` file.
+
+The pipeline searches for the `.inventoryignore` file at the repository's root. If you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
+
+
+#### Using the inventory-include parameter
+The list of entries to promote after filtering the entries provided by the `inventory-include` and / or `inventory-exclude`
+
+If both `inventory-include` and `inventory-exclude` are present, `inventory-include` takes precedence, and then `inventory-exclude` excludes items from the subset that is defined by the inclusion list.
+
+If one of these variables are supplied, the pipeline will try to resolve the complete paths of the glob patterns or just direct filenames and go ahead with partial promotion.
+
+Only the common list of entries between the 2 levels of filtering gets promoted by the pipeline. 
+
+### Example usage of inventory-include and inventory-exclude params
+This section shows examples of using glob patterns and also incorporating them in the `inventory-include` and `inventory-exclude` parameters.
+Here is an example directory structure for an inventory repository, containing microservices, (nested) configuration files and helm charts.
+
+```
+cd-pipeline-deps
+my-application-plugin-component-config
+my-application-plugin-component-diagnostic-monitor
+configuration # directory entry
+configuration/my-staging-region # directory entry
+configuration/my-staging-region/environment-1-cluster # directory entry
+configuration/my-staging-region/environment-1-cluster/serviceA-component_config
+configuration/my-staging-region/environment-1-cluster/serviceB-system_config
+configuration/my-staging-region/environment-1-cluster/serviceC-params_config
+configuration/serviceX-dashboard-setup_helm
+configuration/serviceY-releases_helm
+my-application-task-runner
+my-application-dashboard
+my-application-dashboard_deployment
+my-application-module
+my-application-module_deployment
+.inventoryignore
+global_deployment
+README.md
+```
+
+#### To select all sub-module entries of a component
+`inventory-include` set to : `*plugin-component*`
+
+Selected inventory entries : 
+```
+    my-application-plugin-component-config
+    my-application-plugin-component-diagnostic-monitor
+```
+
+
+#### To select all the helm charts in a given configuration folder
+`inventory-include` set to : `configuration/*helm`
+
+Selected inventory entries : 
+```
+    configuration/serviceX-dashboard-setup_helm
+    configuration/serviceY-releases_helm
+```
+
+
+#### To select all the config files of a particular environment
+`inventory-include` set to : `configuration/my-staging-region/environment-1-cluster/*_config`
+
+Selected inventory entries : 
+```
+    configuration/my-staging-region/environment-1-cluster/serviceA-component_config
+    configuration/my-staging-region/environment-1-cluster/serviceB-system_config
+    configuration/my-staging-region/environment-1-cluster/serviceC-params_config
+```
+
+#### To select only one component
+`inventory-include` set to : `my-application-dashboard*`
+
+Selected inventory entries : 
+```
+    my-application-dashboard
+    my-application-dashboard_deployment
+```
+
+#### Using combination of glob patterns in inventory-include
+
+`inventory-include` set to : `*plugin-component*,configuration/*helm`
+
+Selected inventory entries : 
+```
+    my-application-plugin-component-config
+    my-application-plugin-component-diagnostic-monitor
+    configuration/serviceX-dashboard-setup_helm
+    configuration/serviceY-releases_helm
+```
+
+#### Using combination of glob patterns in inventory-exclude
+
+`inventory-exclude` set to : `configuration/**, my-application-dashboard*`
+
+Selected inventory entries : 
+```
+    cd-pipeline-deps
+    my-application-plugin-component-config
+    my-application-plugin-component-diagnostic-monitor
+    my-application-task-runner
+    my-application-module
+    my-application-module_deployment
+    .inventoryignore
+    global_deployment
+```
+
 ## Promotion pull/merge requests
 {: #cd-devsecops-promotion-pipelinepr}
 
@@ -52,7 +180,7 @@ The evidence that is collected in the continuous integration pipeline is summari
 
 Once a promotion PR is opened, you can optionally perform the evidence aggregation and summary generation in the Promotion validation pipeline, and set the evidence statuses on the promotion pull/merge request (PR). The PR may be created by the Promotion pipeline or manually in the inventory repo.
 The pipeline enables early validation of the promotion PR before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green), or choose to fix the problem in the continuous integration pipeline (when the evidence status is red).
-Additionaly the validation pipeline also adds the aggregated summary of evidences for one or more apps in the inventory to the promotion pull/merge request as a comment, in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repos, and issues created for each of the apps.
+Additionally the validation pipeline also adds the aggregated summary of evidences for one or more apps in the inventory to the promotion pull/merge request as a comment, in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repos, and issues created for each of the apps.
 While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation pipeline completes, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
 
 ## How to opt-in into promotion validation?
@@ -88,6 +216,9 @@ To enable the Git Promotion Validation trigger on an existing pipeline, you can 
 |description 		|The description of the change that is appended to the change request description.   	|`''`		|Optional		|
 |purpose 		|The reason why the change is required. 		|`''`		|Optional		|
 |impact 		|More notes about what this change implementation impacts.   	|`''`		|Optional		|
+|inventory-ignore-file 		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|`.inventoryignore`		|Optional		|
+|inventory-include 		|Inventory entries to selectively promote (partial promotion).   	|`''`		|Optional		|
+|inventory-exclude 		|Inventory entries to exclude in partial promotion.   	|`''`		|Optional		|
 |backout-plan		|The plan that describes how the change is rolled back in a failure. 		|`''`		|Optional		|
 |slack-notifications		|The switch to turn the Slack Integration on or off  	|0		|Optional		|
 |customer-impact		|Impact of the change on the customers. 		|`critical`, `high`, `moderate`, `low`, or `no_impact`		|Optional		|

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-06-27"
+lastupdated: "2024-07-03"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2747,13 +2747,16 @@ Options:
 --summary-path     # (required) use this path to read the summary file of all the evidences
 --pre-deployment   # If present, will check only pre deployment checks, defaults to false
 --post-deployment  # If present, will check only post deployment checks, defaults to false
+--source           # (Applies to config file version 2) If present, is tupple of branch:region information(with region as optional) which will be used to filter the rules against `source_environments` field.
+--target           # (Applies to config file version 2) If present, is tupple of branch:region information(with region as optional) which will be used to filter the rules against `target_environments` field.
+--pipeline-run-id  # (Applies to config file version 2) If present, is current pipeline_run_id will be used for checking evidences.
 ```
 {: screen}
 
 Run the command:
 
 ```sh
- cocoa locker evidence check --summary-path=`<summary-path>` --config-path=`<config-path>` --pre-deployment --post-deployment
+ cocoa locker evidence check --summary-path `<summary-path>` --config-path `<config-path>` --pre-deployment --post-deployment --source `<source_branch:region>` --target `<target_branch:region>` --pipeline-run-id `<current_pipeline-run-id>`
 ```
 {: codeblock}
 

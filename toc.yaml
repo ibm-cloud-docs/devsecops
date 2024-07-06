@@ -188,7 +188,6 @@ toc:
           topics:
           - devsecops-config-github.md
           - devsecops-git-submodules.md
-          - devsecops-set-pr-status.md
       - topicgroup:
           label: Managing secrets in your toolchain
           topics:
@@ -239,6 +238,7 @@ toc:
               label: Cocoa Command reference
               topics:
               - devsecops-cocoa-cli.md
+              - devsecops-set-pr-status.md
   - navgroup:
       id: help
       topics:

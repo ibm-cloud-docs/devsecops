@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-21"
+lastupdated: "2024-07-03"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -69,7 +69,7 @@ hello-iac-sample_TF_VAR_resource_group : Default
 
 The static code scan stage runs a number of static code analyzer tools on the specified IaC repositories. The repos that are provided by the [`pipelinectl save_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo) command and the default app repo are scanned.
 
-You can use any of the methods that are defined for [static code scan](/docs/devsecops?topic=devsecops-devsecops-ci-pipeline#devsecops-ci-pipeline-static-codescan) configurable for application relate continuous integration pipeline.
+You can use any of the methods that are defined for [static code scan](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-static-codescan) configurable for application relate continuous integration pipeline.
 
 The IaC continuous integration pipeline defines more tools that are enabled by using the `opt-in-*` parameters from Table 2 set to `1`.
 

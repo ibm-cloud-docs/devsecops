@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2023
-lastupdated: "2023-01-13"
+  years: 2022, 2024
+lastupdated: "2024-07-03"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -71,7 +71,7 @@ Complete any or all of the following optional steps:
 
 * [Getting started with Terraform on IBM Cloud](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-getting-started){: external}
 * [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
-* [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started)
+* [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-help-and-support)
 
 ## Looking for help?
 {: #devsecops-tutorial-iac-part1-help}
