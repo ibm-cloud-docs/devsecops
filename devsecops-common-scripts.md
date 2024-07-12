@@ -68,3 +68,6 @@ This message has three parts:
 3. The third part is the default configuration that is used as the config YAML. You can take this YAML snippet and include it in your DevSecOps config YAML file. This action overrides the default config with yours but still uses the default script from the base image. This method is helpful if you want to implement some other checks before the default ones.
 
 This information is displayed to help adopters identify the scripts that are running in stages by default. Then, they can inspect the scripts, understand what they do, copy the script into their script collection, and update them to fit their use cases.
+
+Refer [here](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization#devsecops-scripts-location) to learn more about the common scripts library. 
+{: note}
