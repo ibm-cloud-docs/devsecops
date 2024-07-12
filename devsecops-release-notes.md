@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-02-20"
+lastupdated: "2024-07-12"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,50 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 10 July 2024
+{: #devsecops-July2024}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.34.1 and open-v10.15.1
+{: #devsecops-open-v10.15.1-open-v9.34.1}
+
+Bug fix release
+:   This release has bug fixes only
+
+### Updates for DevSecOps version - open-v9.34.0 and open-v10.15.0
+{: #devsecops-open-v10.15.0-open-v9.34.0}
+
+Warning on invalid baseline during secrets detection
+:   Checks added to fail detect secrets scan if an corrupt / incompatible baseline file is provided. An issue will now be created if the detect secrets scan finds a baseline file that would not work with the scanner, users would need to rectify the same to proceed with the scan
+
+### Updates for DevSecOps version - open-v9.33.0 and open-v10.14.0
+{: #devsecops-open-v10.14.0-open-v9.33.0}
+
+Bug fix release
+:   This release has bug fixes only
+
+### Updates for DevSecOps version - open-v9.32.0 and open-v10.13.0
+{: #devsecops-open-v10.13.0-open-v9.32.0}
+
+Enhancements for “Required Evidence Check” Feature in the CD/CC Pipeline
+:   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-evidence-checks-validation#config-file-version-2) for documentation using the new schema.
+
+Performance improvements
+:   Improved pipeline performance when Cloud Object Storage(COS) as the evidence locker for one pipeline evidences
+
+Support for Sysdig policies
+:   Added the support for Sysdig policies. Issues are created based on the applied policies.
+
+## 18 June 2024
+{: #devsecops-June2024-2}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.31.0 and open-v10.12.0
+{: #devsecops-open-v10.12.0-open-v9.31.0}
+
+Partial promotion of inventory artifacts
+:   It is now possible to promote a subset of inventory items during promotion. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-partial-promotion for more details
 
 ## 06 June 2024
 {: #devsecops-June2024}
@@ -35,7 +79,7 @@ Custom finish stages for promotion and promotion-validation pipelines
 Required Evidence Check Enhancements
 :   Enhanced the `cocoa locker evidence check` command to support version 2 of the config schema. The updated config schema allows users to specify the application environment or service environment by providing the name and region details along with the required set of evidence to be validated for the given application environment or service environment.
 
-Made Code Risk Aanalyzer scanning optional using environment properties
+Made Code Risk Analyzer scanning optional using environment properties
 :   Three opt-in environment properties have been added as below to provide an option to opt in/out of CRA scans. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans
 
 | Name       | Type | Set of values | Required or optional | Pipelines(PR/CI/CD/CC) | Environment property| Default |Description|
