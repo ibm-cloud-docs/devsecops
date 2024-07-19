@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-07-03"
+lastupdated: "2024-07-19"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2383,9 +2383,11 @@ Options:
 ```text
 --scope                   # (Required) Pipeline run ID of the CI piepline where the asset is built
 --environment             # (Required) Name of the environment from which evidences are fetched, if the `service-environment` is `pre_prod`       
-                            This value must be the same as the `target-ennvironment`. Or, if `service-environment` is `prod`, then this value must be the same as the `sporce-ennvironment`
+                            This value must be the same as the `target-environment`. Or, if `service-environment` is `prod`, then this value must be the same as the `source-environment`
 --service-environment     # Service environment of the asset get summary in deployed environment 
                             (choices: 'pre_prod', 'dev', 'prod',  default: 'pre_prod')
+--latest                  # Fetches the latest evidence summary of the asset for the `service-environment`. 
+                            The summary of the scope passed-in using `--scope` will be excluded. Currently supported for `dev` environment only.                         
 ```
 {: screen}
 
@@ -2396,6 +2398,17 @@ Run the command:
   --scope 11a1aa11-1a11-11a1-aa11-a11a1a1111a1 \
   --environment prod \
   --service-environment prod
+```
+{: codeblock}
+
+Run the command to fetch the latest evidence summary excluding that of the scope passed-in using `--scope`:
+
+```sh
+ cocoa locker asset summary get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
+  --scope 11a1aa11-1a11-11a1-aa11-a11a1a1111a1 \
+  --environment dev \
+  --service-environment dev \
+  --latest
 ```
 {: codeblock}
 

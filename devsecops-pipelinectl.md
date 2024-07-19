@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-05-23"
+lastupdated: "2024-07-19"
 
 keywords: DevSecOps, pipelinectl
 
@@ -566,11 +566,11 @@ Prints `prop` of the entry that is defined by `key`. If `prop` is not provided, 
 ```bash
 # <prop>: Type of property; for example, uri, id, blob
 # <value>: Value of the property
-save_asset <prop1> <value1> blob <json_string>
-save_asset <prop1> <value1> <prop2> <value2> blob <json_string>
+save_asset <prop1> <value1> blob <json_string or path to a json file>
+save_asset <prop1> <value1> <prop2> <value2> blob <json_string  or path to a json file>
 ```
 
-Saves asset information to the pipelinectl storage to be accessible throughout the pipeline. Arbitrary numbers of properties are allowed. However, `blob` is a reserved property that is mandatory to be passed, and its corresponding value should be a valid json string. The `save_asset` property creates immutable entries. It cannot be called twice for the same combination of `<prop> <value>` pairs.
+Saves asset information to the pipelinectl storage to be accessible throughout the pipeline. Arbitrary numbers of properties are allowed. However, `blob` is a reserved property that is mandatory to be passed, and its corresponding value should be a filepath to a valid json file or a valid json string. The `save_asset` property creates immutable entries. It cannot be called twice for the same combination of `<prop> <value>` pairs.
 
 ### load_asset
 {: #load_asset}
@@ -591,11 +591,11 @@ Retrieves an asset that matches the provided `<prop> <value>` pairs. If called w
 ```bash
 # <prop>: Type of property; for example, blob, sha
 # <value>: Value of the property
-save_evidence <prop1> <value1> blob <json_string>
-save_evidence <prop1> <value1> <prop2> <value2> blob <json_string>
+save_evidence <prop1> <value1> blob <json_string  or path to a json file>
+save_evidence <prop1> <value1> <prop2> <value2> blob <json_string  or path to a json file>
 ```
 
-Saves evidence information to the pipelinectl storage to be accessible throughout the pipeline. Arbitrary numbers of properties are allowed. However, the `blob` property is a reserved property that is mandatory to be passed, and its corresponding value should be a valid json string. The `save_evidence` property creates immutable entries. It cannot be called twice for the same combination of `<prop> <value>` pairs.
+Saves evidence information to the pipelinectl storage to be accessible throughout the pipeline. Arbitrary numbers of properties are allowed. However, the `blob` property is a reserved property that is mandatory to be passed, and its corresponding value should be a filepath to a valid json file or a valid json string. The `save_evidence` property creates immutable entries. It cannot be called twice for the same combination of `<prop> <value>` pairs.
 
 ### load_evidence
 {: #load_evidence}
