@@ -2639,6 +2639,7 @@ Returns the evidence summary for one or more assets. When no assets are specifie
 Optional flags:
 - `--latest-only`: Discards evidence if newer evidence is available for an asset (`true` by default, set to `false` to disable this behavior)
 - `--scope`: Considers evidence that has the specified scope only (see `evidence add --scope`), can be specified multiple times
+- `--linked-scope`: Considers evidence that has the specified linked-scope as scope. In addition, adds them to the linked-scopes property in the returned evidence summary. Can be specified multiple times.
 - `--check-immutable-storage`: Checks if every evidence is also present in a Cloud Object Storage bucket and is protected by a retention period of at least 365 days. Appends `com.ibm.immutable_storage` evidence to the summary.
    - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
 - `--dry-run`: Has an effect when combined with `--check-immutable-storage`. If used, `com.ibm.immutable_storage` evidence is only appended to the summary but it does not get uploaded to the evidence locker.
@@ -2650,7 +2651,9 @@ $ cocoa locker evidence summary \
     docker://us.icr.io/foo/bar@sha256:1234567812345678123456781234567812345678123456781234567812345678 \
     docker://us.icr.io/baz/quux@sha256:1234567812345678123456781234567812345678123456781234567812345678 \
     --scope 11a1aa11-1a11-11a1-aa11-a11a1a1111a1 \
-    --scope 22a2aa22-2a22-22a2-aa22-a22a2a2222a2
+    --scope 22a2aa22-2a22-22a2-aa22-a22a2a2222a2 \
+    --linked-scope 33a3aa33-3a33-33a3-33a3-a33a3a3333a3 \
+    --linked-scope 12bqab22-1a23-1a23-1a23-b22a3a2222a3
 ```
 {: codeblock}
 
