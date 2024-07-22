@@ -1,10 +1,10 @@
 ---
 
-copyright: 
-  years: 2022, 2024
-lastupdated: "2024-07-03"
+copyright:
+  years: 2023, 2024
+lastupdated: "2024-03-28"
 
-keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, satellite, custom target, multiple clusters
+keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters
 
 
 subcollection: devsecops
@@ -18,83 +18,75 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Part 1: Set up prerequisites
+# Setting up prerequisites
 {: #tutorial-cd-devsecops}
 {: toc-content-type="tutorial"}
 {: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-This tutorial is part 1 of a 4-part tutorial series where you learn {{site.data.keyword.cloud}} DevSecOps best practices by using a complete reference implementation that is available as a service and powered by {{site.data.keyword.contdelivery_full}}. In part 1 of this tutorial series, you review some background information and set up prerequisites.
+This tutorial walks you through how to set up prerequisites and learn more about {{site.data.keyword.cloud}} DevSecOps by using a complete reference implementation that is available as a service and powered by {{site.data.keyword.contdelivery_full}}.
 {: shortdesc}
+
+This tutorial uses an example of `Node.js` app, but you can also deploy other language-based apps.
+{: note}
 
 ## Before you begin
 {: #devsecops-tutorial-prereqs}
 
-See the following documentation to get more information about DevSecOps and its implementation in {{site.data.keyword.contdelivery_short}}:
-
-* [What is DevSecOps](https://www.ibm.com/cloud/learn/devsecops)
-* [DevSecOps architecture](/docs/devsecops?topic=devsecops-cd-devsecops-arch)
+* [DevSecOps reference implementation](/docs/devsecops?topic=devsecops-cd-devsecops-arch)
 * [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro)
 * [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines)
+
+For more information, see [DevSecOps](https://www.ibm.com/topics/devsecops){: external} architecture and its implementation in {{site.data.keyword.contdelivery_short}}.
 
 ## Set up an {{site.data.keyword.cloud_notm}} account
 {: #tutorial-part1-account}
 {: step}
 
-Set up an [{{site.data.keyword.cloud_notm}} account](/registration){: external}. Depending on your {{site.data.keyword.cloud_notm}} account type, access to certain resources might be limited. Depending on your account plan limits, certain capabilities that are required by some DevSecOps toolchains might not be available. For more information, see [Setting up your {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-account-getting-started) and [Upgrading your account](/docs/account?topic=account-upgrading-account).
+To get started, you must set up an [{{site.data.keyword.cloud}} account](/registration){: external}. Depending on your {{site.data.keyword.cloud_notm}} account plan, access to certain resources by DevSecOps toolchains might be limited. For more information, see [Setting up your {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-account-getting-started), and [Upgrading your account](/docs/account?topic=account-upgrading-account).
 
-## Store secrets values in a secrets management vault
+## Store secrets values
 {: #tutorial-part1-secrets}
 {: step}
 
-Ensure that all of the secret values that you need are stored in a secrets management vault. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can help you to choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one. For information about {{site.data.keyword.secrets-manager_full}}, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
+Storing secrets values is [essential](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-best-practices-using) to the DevSecOps process. As a user, storing an instance is required to manage and protect systems access that are inside or outside of {{site.data.keyword.cloud_notm}}. Choosing one of the secret management options helps you to protect your sensitive data and centralize your secrets. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can help you choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one. For more information, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
 
 ## Create a Kubernetes cluster
 {: #tutorial-part1-cluster}
 {: step}
 
-Create a [Kubernetes cluster](/kubernetes/catalog/cluster/create){: external}. The cluster might take some time to provision. As the cluster is created, it progresses through these stages: Deploying, Pending, and Ready. [Learn more.](/docs/containers?topic=containers-clusters).
+Create a [Kubernetes cluster](/kubernetes/catalog/create){: external}. The cluster takes time to provision. For more information about provisioning clusters, see [Preparing your account to create clusters](/docs/containers?topic=containers-clusters).
 
 ## Create a {{site.data.keyword.registryshort_notm}} namespace
 {: #tutorial-part1-namespace}
 {: step}
 
-Create an [{{site.data.keyword.registrylong}} namespace](/registry/namespaces){: external}. {{site.data.keyword.registrylong_notm}} provides a multi-tenant private image registry that you can use to store and share your container images with users in your {{site.data.keyword.cloud_notm}} account. Select the location for your namespace, and click **Create**. [Learn more.](/docs/Registry?topic=Registry-getting-started)
+Create an [{{site.data.keyword.registrylong}} namespace](/registry/namespaces){: external}. The {{site.data.keyword.registrylong_notm}} provides a multi-tenant private artifact registry that you can use to store and share your container artifacts with users in your {{site.data.keyword.cloud_notm}} account. For more information about {{site.data.keyword.registrylong_notm}}, see [Getting started with {{site.data.keyword.registryshort_notm}}](/docs/Registry?topic=Registry-getting-started).
 
-## Complete optional steps
-{: #tutorial-part1-optional}
+## Apply the steps
+{: #tutorial-part1-other}
 {: step}
 
-Complete any or all of the following optional steps. If you don't complete these steps now, you can complete them in the next tutorial.
+If applicable to your use case, you can complete any or all the following steps.
 
-1. Create an [image signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with the proper encoding to sign your application docker images.
-1. Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Save the API key value by either copying, downloading it or adding it to your vault. Alternatively, you can create the API key during the template-guided setup process.
-1. Validate that the [recommended IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to corresponding integrations.
-1. [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
-1. Create an [{{site.data.keyword.cos_full_notm}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). [Learn more.](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)
-1. Create an [{{site.data.keyword.satellitelong_notm}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) if you want to deploy your application to multiple clusters that are grouped as a {{site.data.keyword.satelliteshort}} cluster group by using {{site.data.keyword.satelliteshort}} Config. [Learn more.](/docs/satellite?topic=satellite-cluster-config)
+- Create an [artifact key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with the right encoding to sign in to your applications.
+- Create and save an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Alternatively, you can create the API key during the template-guided setup process.
+- Validate that the [IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to the corresponding integrations.
+- Install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
+- Create an [{{site.data.keyword.cos_full}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). For more information, see [What is {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)?
+- Create an [{{site.data.keyword.satellitelong_notm}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) to deploy your application into {{site.data.keyword.satellitelong_notm}} cluster group. For more information, see [Understanding {{site.data.keyword.satelliteshort}} config](/docs/satellite?topic=satellite-cluster-config).
 
-## Related content
-{: #tutorial-part1-related}
-
-* [Getting started with clusters](/docs/containers?topic=containers-getting-started)
-* [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
-* [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-help-and-support)
-* [Getting started with IBM Wazi as a Service](https://www.ibm.com/docs/en/wazi-aas/1.0.0?topic=overview){: external}
-
-## Looking for help?
-{: #tutorial-part1-help}
-
-Get help fast directly from the {{site.data.keyword.cloud_notm}} {{site.data.keyword.contdelivery_short}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
-
-For more support options, see [Getting help and support for {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-gettinghelp).
+You can automatically set up the DevSecOps infrastructure for your toolchains by using an [{{site.data.keyword.bplong}} workspace](/docs/schematics?topic=schematics-learn-about-schematics) and a Terraform template by skipping the steps and going directly to [DevSecOps infrastructure and Continuous Integration (CI) toolchain for deploying a secure app set up](/docs/apps?topic=apps-tutorial-cd-devsecops). After the prerequisites and CI toolchain are successfully configured, continue to the [Continuous Deployment (CD) toolchain introduction](#devsecops-cd-toolchain-intro).
+{: tip}
 
 ## Next steps
 {: #tutorial-part1-next}
 
-When you have your prerequisites in place, continue to the next tutorial in the series:
+After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-ci-toolchai).
 
-[Part 2: Set up a Continuous Integration (CI) toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
+For additional information about related topics, review the following documentation: 
 
-This tutorial uses an example Node.js app, but you can also deploy other language-based apps.
-{: note}
+* [Getting started with clusters](/docs/containers?topic=containers-getting-started)
+* [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
+* [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-getting-started)
+* [Getting started with {{site.data.keyword.waziaas_full_notm}}](https://www.ibm.com/docs/en/wazi-aas/1.0.0?topic=overview){: external}

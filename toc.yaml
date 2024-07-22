@@ -24,12 +24,16 @@ toc:
           - building-blocks.md
       - devsecops-pipelines.md
       - topicgroup:
-          label: DevSecOps practices
+          label: Best practices
           topics:
           - devsecops-change-management.md
           - devsecops-peer-review.md
           - devsecops-cos-bucket-evidence.md
           - devsecops-push-pull-based-deployment.md
+          - devsecops-bp-secure-app.md
+          - devsecops-bp-ci-toolchain.md
+          - devsecops-bp-ci-iac.md
+          - devsecops-bp-cc-toolchain.md
       - topicgroup:
           label: Adopting DevSecOps for your own application or microservice
           topics:
@@ -50,14 +54,11 @@ toc:
       - topicgroup:
           label: Deploy a secure app with DevSecOps
           topics:
-          - topic: devsecops-tutorial.md
-            navtitle: "Part 1: Set up prerequisites"
-          - topic: devsecops-tutorial-ci-toolchain.md
-            navtitle: "Part 2: Set up a CI toolchain"
-          - topic: devsecops-tutorial-cd-toolchain.md
-            navtitle: "Part 3: Set up a CD toolchain"
-          - topic: devsecops-tutorial-cc-toolchain.md
-            navtitle: "Part 4: Set up a CC toolchain"
+          - devsecops-tutorial.md
+          - devsecops-tutorial-ci-toolchain.md
+          - devsecops-tutorial-cd-toolchain.md
+          - devsecops-tutorial-cc-toolchain.md
+      - include: ../apps/tutorials/tutorial-devsecops-refarch.md
       - topicgroup:
           label: Develop and deploy a z/OS app with DevSecOps practices
           topics:
@@ -73,11 +74,10 @@ toc:
           label: Develop and deploy secure IaC with DevSecOps practices
           topics:
           - topic: devsecops-tutorial-iac-prereqs.md
-            navtitle: "Part 1: Set up prerequisites"
           - topic: devsecops-tutorial-iac-ci-toolchain.md
-            navtitle: "Part 2: Set up a CI toolchain for IaC"
           - topic: devsecops-tutorial-iac-cd-toolchain.md
-            navtitle: "Part 3: Set up a CD toolchain for IaC"
+      - devsecops-tutorial-tekton-ci-compliance.md
+      - devsecops-tutorial-tekton-cd-compliance.md
   - navgroup:
       id: howto
       topics:
