@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-09-20"
+  years: 2021, 2024
+lastupdated: "2024-07-25"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -17,6 +17,13 @@ subcollection: devsecops
 
 Change management automation is an important part of the DevSecOps pipeline reference implementation. Developers, approvers, and auditors can monitor the compliance aspects of deployments. Every deployment must follow an organization's change management policy.
 {: shortdesc}
+
+Change management automation can be visualized via the following flowchart. The following flowchart illustrates a standard change management automation, emergency change management, a manual change request flow and the change management automation flow when inline rollback is involved.
+
+
+
+![Change management automation](images/chg-mgmt-devsecops.jpg){: caption="Change management automation" caption-side="bottom"}
+
 
 
 

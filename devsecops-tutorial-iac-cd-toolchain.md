@@ -1,15 +1,16 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-07-03"
 
-keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
+  years: 2022, 2024
+lastupdated: "2024-07-22"
+
+keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
 subcollection: devsecops
 
 content-type: tutorial
-services: schematics, ContinuousDelivery
+services: containers, ContinuousDelivery
 account-plan: paid
 completion-time: 1h
 
@@ -17,315 +18,221 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Part 3: Set up a CD toolchain for Infrastructure as Code
-{: #devsecops-tutorial-iac-cd}
+# Setting up a CD toolchain
+{: #tutorial-cd-toolchain}
 {: toc-content-type="tutorial"}
-{: toc-services="schematics, ContinuousDelivery"}
+{: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-This tutorial is part 3 of a 3-part tutorial series where you learn {{site.data.keyword.cloud}} DevSecOps best practices by using a complete reference implementation that is available as a service and powered by {{site.data.keyword.contdelivery_full}}. In part 3 of this tutorial series, you use the toolchain template for continuous deployment (CD) with security and compliance-related best practices in DevSecOps.
+With this tutorial, you can use the toolchain template for continuous deployment (CD) with {{site.data.keyword.compliance_short}} related practices in DevSecOps. The template is preconfigured with the settings. You can validate and provide your configuration to complete the tutorial.
 {: shortdesc}
 
 ## Before you begin
-{: #devsecops-tutorial-iac-cd-prereqs}
+{: #tutorial-cd-toolchain-prereqs}
 
-Before you begin part 3 of this tutorial series, ensure that you complete the following prerequisites:
-1. Complete [Part 1: Set up prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac).
-1. Complete [Part 2: Set up a CI toolchain for Infrastructure as Code (Terraform)](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac-ci).
-1. View the [Getting started with DevSecOps in IBM Cloud - Part 2](https://video.ibm.com/embed/recorded/130714358) video.
-
-## CD - Deploy a secure app with DevSecOps practices
-{: #devsecops-tutorial-iac-cd-tekton-pipeline}
-
-The DevSecOps CD toolchain contains only one pipeline for continuous deployment. It implements the following best practices:
-
-* Change Management automation to help developers, approvers, and auditors track deployments from the lens of compliance.
-* Creates an evidence summary from the evidence that is collected in the CI pipeline.
-* Creates a change request in {{site.data.keyword.gitrepos}} based change management repository and adds deployment evidence to it.
-* Uses the inventory repository to promote built artifacts to deployment environments like staging and prod.
-* Checks the CR, and auto approves if all checks pass.
-* If CR is approved, or emergency, the toolchain deploys the image from the inventory to production.
-
-## Guided setup overview for the CD toolchain
-{: #tutorial-iac-cd-toolchain-guided-setup}
-
-Any of the methods in this tutorial takes you to the guided setup experience. You are guided through the toolchain setup process, and you are presented with the recommended configuration options that are needed to create your toolchain.
-
-A progress indicator shows the steps to complete the configuration. You can use the progress indicator to navigate to a previous step. The configuration options for the current step are displayed in the main area of the page.
-
-![DevSecOps Continuous Deployment toolchain welcome page](images/devsecops-cd-welcome.png){: caption="Figure 1. DevSecOps Continuous Deployment toolchain welcome page" caption-side="bottom"}
-
-To advance to the next step, click **Continue**. You can advance to the next step only when the configuration for the current step is complete and valid. You can navigate to the previous step by clicking **Back**.
-
-Some steps include a **Switch to advanced configuration** toggle. These steps by default present you with the minimum configuration needed. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal all options for the underlying integration.
-
-![DevSecOps Advanced configuration toggle](images/devsecops-advanced-options-toggle.png){: caption="Figure 2. DevSecOps Advanced configuration toggle" caption-side="bottom"}
-
-When all the steps are successfully completed, you create the toolchain by clicking **Create** on the **Summary** step.
-
-You can always go back to previous steps in the guided installer. The toolchain installer retains all the configuration settings from the successive steps.
-{: tip}
+1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).
+2. Complete [Setting up a CI toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
+3. View the [Getting started with DevSecOps in {{site.data.keyword.cloud_notm}} - Part 2](https://video.ibm.com/embed/recorded/130714358) video. 
+4. Refer to, the [DevSecOps practices to deploy a secure CD application](/docs-draft/devsecops-working?topic=devsecops-working-practices-cd-sec-app).
 
 ## Start the CD toolchain setup
-{: #devsecops-tutorial-iac-cd-create-options}
+{: #tutorial-cd-toolchain-create-options}
 {: step}
 
-Start the CD toolchain configuration by using one of the following options:
+The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the CD toolchain setup. Follow the steps to access the template for the CD toolchain.
 
-* Click **Create toolchain**.
+1. From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/).
+2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**.
+3. On the Toolchains page, click **Create toolchain**.
+4. Click **CD - Deploy a secure app with DevSecOps practices** tile to view the template.
 
-   [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-cd-toolchain&env_id=ibm:yp:us-south){: external}
-
-* From the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the **Toolchains** page, click **Create toolchain**. On the **Create a Toolchain** page, click **CD-Develop with DevSecOps practices**.
-
-## Set up the CD toolchain name and region
-{: #devsecops-tutorial-iac-cd-name-region}
+## Set up toolchain settings
+{: #tutorial-cd-toolchain-name-region}
 {: step}
 
-Review the default information for the toolchain settings. The toolchain's name identifies it in {{site.data.keyword.cloud_notm}}. Make sure that the toolchain's name is unique within your toolchains for the same region and resource group in {{site.data.keyword.cloud_notm}}.
+The **Welcome** page summarizes the purpose of the toolchain along with pointers to the documentation and related materials.
 
-Choose the associated CI toolchain in the dropdown to copy some of the CI configuration to aid in the setup of this CD toolchain.
+1. Click **Start**.
+2. Enter a unique **Toolchain name**. **Note** that the toolchain region can differ from cluster and {{site.data.keyword.registryshort}} region.
+3. **Select a region** and **Select a resource group** are listed. **Note** you can edit the regions.
+4. Optionally you can **Choose the associated continuous integration (CI) toolchain** from the dropdown. This copies some of the CI configuration to aid in the setup for the CD toolchain. **Note** this might overwrite some of the values that you already entered.
+5. Click **Continue**.
 
-![DevSecOps associated CI toolchain](images/devsecops-associated-ci-toolchain.png){: caption="Figure 3. DevSecOps associated CI toolchain" caption-side="bottom"}
+   You can advance to the next step only when the configuration for the current step is complete and valid. You can always click **Back** to view previous steps in the guided installer. The toolchain installer retains all the configuration settings from the successive steps.
+   {: important}
 
-**Warning**: This action might overwrite some of the values that you already entered.
+   Some steps include a **Switch to advanced configuration** toggle button. These steps by default present you with the minimum configuration. However, advanced users that need finer grained control can click the **Switch to advanced configuration** toggle to reveal the options for the underlying integration.
+   {: important}
 
-## Set up CD tool integrations
-{: #devsecops-tutorial-iac-cd-integrations}
+## Set up tool integrations
+{: #tutorial-cd-toolchain-integrations}
 {: step}
 
-If you already linked to an existing CI toolchain in the **Welcome** step, the names of application-related repositories that are used in that toolchain are prefilled. Review the repository URLs, and then continue to the next steps.
-{: tip}
-
-### Application-related repositories
-{: #devsecops-tutorial-iac-cd-application}
-
-If you want to set up your CD toolchain from scratch, configure these repositories during CI toolchain creation, and then use or link to them here.
-
-To fetch the respective URL, go to the **CI Pipeline**, select the respective tool card. Right-click the **tool** card, and select **Copy link address**.
-
-* **Inventory**: The inventory repository records details of artifacts that are built by the CI and CD pipelines. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-inventory`
-* **Issues**: The issues repository records issues that are found while the CI pipeline is running. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-issues`.
-* **Evidence**: All raw compliance evidence that belongs to the application is collected here. For example, `https://<region>.git.cloud.ibm.com/myorg/my-compliance-ci-evidence`.
-
-The toolchain currently supports linking only to existing IBM-hosted {{site.data.keyword.gitrepos}} repositories.
-{: note}
+If you already linked to an existing CI toolchain in the step, the toolchain name, region, repositories, and other fields are prepopulated. Review the repository URLs, and then continue to the next steps.
 
 ### Inventory
-{: #devsecops-tutorial-iac-cd-inventory}
+{: #tutorial-cd-toolchain-inventory}
 
-**Repository URL**: URL of the inventory repository that is configured in your CI toolchain as captured in the previous step.
+1. Select the **Repository URL** of the inventory repository configured in your CI toolchain.
+2. Click **Continue**.
 
 ### Issues
-{: #devsecops-tutorial-iac-cd-issues}
+{: #tutorial-cd-toolchain-issues}
 
-**Repository URL**: URL of the issues repository that is configured in your CI toolchain as captured in the previous step.
+1. Select the **Repository URL** to record the issues while the CD pipeline is running. **Note** that you use an existing issues repository that was created during the CI toolchain.
+2. Click **Continue**.
 
 ### Pipeline Configuration
-{: #devsecops-tutorial-iac-cd-pipeline-config}
+{: #tutorial-cd-toolchain-pipeline-config}
 
 The pipeline configuration repository contains YAML files and scripts that are needed for deployment, testing, and other custom tasks.
 
-For this tutorial, the pipeline configuration repository is the same as the one defined for the DevSecOps CI for Infrastructure as Code (IaC). Select *Use existing deployment configuration repository* and select the repository that is used for the pipeline configuration of the CI Toolchain.
+1. Accept the default settings for **Source Provider**.
 
-For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+   If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
+   {: note}
+
+2. Enter a unique **New repository name**.
+3. Click **Continue**.
 
 ### Secrets
-{: ##devsecops-tutorial-iac-cd-secrets}
+{: ##tutorial-cd-toolchain-secrets}
 
-Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in an IBM-recommended secrets management tool, such as [IBM Key Protect for IBM Cloud](https://www.ibm.com/cloud/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The secrets management tool can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
+1. This tutorial uses [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manag) as the vault for secrets. The **Region**, **Resource group**, and **Service name** fields are automatically populated based on available choices. Click the drop-down indicators to see the other choices.
+2. Type your **{{site.data.keyword.secrets-manager_short}} instance name**.
+3. Select the **Authorization type** from the dropdown list.
+4. Click **Continue**.
 
-This tutorial uses {{site.data.keyword.secrets-manager_full}} as the vault for secrets.
+### Evidence storage
+{: #tutorial-cd-toolchain-evidence-storage}
 
-### Evidence Storage
-{: #devsecops-tutorial-iac-cd-evidence-storage}
-
-The evidence repository stores evidence for all the tasks that the pipeline runs. This evidence is collected by the pipeline during the pipeline run.
-
-Select an existing evidence repository, preferably the evidence repository that was created when you configured the continuous integration (CI) toolchain.
-
-It is a best practice to use a Cloud Object Storage bucket as an evidence locker to store all the evidence and artifacts that are collected during the pipeline run.
-
-For more information about evidence storage, see [Evidence](/docs/devsecops?topic=devsecops-devsecops-evidence).
-
-### Evidence
-{: #devsecops-tutorial-iac-cd-evidence}
-
-**Repository URL**: URL of the evidence locker repository that is configured in your CI Toolchain as captured in the previous step.
+1. Select an **Use existing evidence locker repository**.
+2. Select the **Repository URL** that was created when you configured the continuous integration (CI) toolchain. For more information about evidence storage, see [Evidence](/docs/devsecops?topic=devsecops-devsecops-evidence).
+3. Toggle the {{site.data.keyword.cos_full_notm}} bucket slider to store all the evidence in the {{site.data.keyword.cos_full_notm}} bucket.
+4. Click **Continue**.
 
 ### Cloud {{site.data.keyword.cos_short}} bucket
-{: #devsecops-tutorial-iac-cd-cos-bucket}
+{: #tutorial-cd-toolchain-cos-bucket}
 
-To use this feature, you must have a Cloud {{site.data.keyword.cos_short}} instance and a bucket. Click [Using Cloud {{site.data.keyword.cos_short}} buckets as an evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence) to create a Cloud {{site.data.keyword.cos_short}} instance. For more information on configuring a bucket that can act as a compliance evidence locker, see [Configuring Cloud {{site.data.keyword.cos_short}} for storing evidence](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config).
-{: note}
+1. Verify and accept the automatically populated [{{site.data.keyword.cos_full_notm}}](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence) details. For more information about configuring a bucket that can act as a compliance evidence locker, see [Configuring {{site.data.keyword.cos_short}} for storing evidence](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config).
+2. Provide your **Service API key to write to a {{site.data.keyword.cos_full_notm}} instance**.
+3. Click **Continue**.
 
-* Cloud {{site.data.keyword.cos_short}} instance, Bucket name, and Cloud {{site.data.keyword.cos_short}} endpoint fields are automatically populated.
-* Enter the Service ID API key
-   * Preferred: An existing key can be imported from a secrets vault by clicking the key icon.
-   * An existing key can be copy and pasted.
+### Artifact Signing
+{: #tutorial-cd-toolchain-artifact}
 
-The endpoint field is optional. Select or provide the endpoint during the setup of the toolchain or during the pipeline run.
-{: note}
+1. Optionally enter **Code Signing Certificate** to verify the validity of signatures for Artifacts. For example, Docker artifacts that are built and signed by the CI pipeline before they are deployed into production.
+2. Click **Continue**.
 
 ### Deployment target
-{: #devsecops-tutorial-iac-cd-target}
+{: #tutorial-cd-toolchain-target}
 
-For the DevSecOps for Terraform use case, choose the **Custom** deployment option.
-
-### Custom target
-{: #devsecops-tutorial-iac-cd-custom-target}
-
-This option requires the {{site.data.keyword.cloud_notm}} API key that is used within deployment scripts of the pipeline.
-The deployment scripts provided use the Schematics to upload the Terraform configuration artifact to the Schematics workspace and use Schematics CLI `plan` and `apply` commands to deliver the Terraform configuration on {{site.data.keyword.cloud_notm}}.
-
-### IBM Cloud API Key
-{: #devsecops-tutorial-iac-cd-api-key}
-
-The API key interacts with the {{site.data.keyword.cloud_notm}} CLI tool in several tasks:
-
-* Preferred: Import an existing key from a secrets vault by clicking the **key** icon.
-* Copy and paste an existing key.
-* Create a key by clicking the **New +**.
-
-Save the newly generated API key to a secrets vault.
-{: tip}
+1. Accept the **Single cluster (push based deployment)** to deploy your application to targets such as Virtual Server Instance or customize the deployment process, use the **Custom** option.
+2. Click **Continue** to view the cluster page.
+3. Enter the {{site.data.keyword.cloud_notm}} API Key field to interact with the CLI tool in several tasks. **Note** an existing key can be imported from a secrets vault by clicking the key icon.
+4. Verify your **Cluster region**, **Resource group**, **Cluster name**, and
+**Cluster namespace** fields where your target cluster is created.
+5. Click **Continue**.
 
 ### Change request management
-{: #devsecops-tutorial-iac-cd-change-request}
+{: #tutorial-cd-toolchain-change-request}
+
+1. Accept the populated values for change request management. For more information, see [Automating change management](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-change-management).
+2. Enter a unique **New repository name**.
+3. Set the **Target Environment purpose** as `Production`.
+4. Set the **Target Environment detail**.
+5. Click **Continue**.
+
+### {{site.data.keyword.DRA_short}} toolchain
+{: #tutorial-cd-toolchain-insights}
 
 Use an {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-management).
 
-### DevOps insights toolchain
-{: #devsecops-tutorial-iac-cd-insights}
+The CD toolchain can publish the deployment records to an existing {{site.data.keyword.DRA_short}} instance. To enable this feature, provide the ID of the toolchain that contains the existing {{site.data.keyword.DRA_short}} instance by selecting in the {{site.data.keyword.DRA_short}} toolchain ID list.
 
-Link an existing DevOps insights instance from another toolchain to this pipeline so that all the build, deploy, and test records from the CI and CD toolchain pipelines are collected in the same place.
+The [{{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the toolchain. View your pipeline test results for every build, from every deployment and environment.
 
-The CD toolchain can publish the deployment records to an existing DevOps insights instance. To enable this feature, provide the ID of the toolchain that contains the existing DevOps Insights instance by selecting it in the DevOps insights toolchain ID drop-down.
+1. Provide your **{{site.data.keyword.DRA_short}} {{site.data.keyword.cloud_notm}} API Key**.
+2. Accept the default configuration.
+3. Click **Continue**.
 
 ### Optional tools
-{: #devsecops-tutorial-iac-cd-optional-tools}
+{: #tutorial-cd-toolchain-optional-tools}
 
 #### Slack
-{: #devsecops-tutorial-iac-cd-slack}
+{: #tutorial-cd-toolchain-slack}
 
-Configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your PR/CI Pipeline events:
+Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests, or CI pipeline events. You can also add the Slack tool after the toolchain creation.
 
-* [Slack webhook](https://api.slack.com/incoming-webhooks){: external}
-* Preferred: An existing webhook can be imported from a secrets vault by clicking the **key** icon.
-* Copy and paste an existing webhook.
-* Slack channel: post a message to an existing Slack.
-* Slack team name: the phrase before *.slack.com* in our team URL. For example, if your team URL is `https://team.slack.com`, the team name is *team*.
-* Automated Slack Notifications: Customize your selection by choosing the events for which you want to receive notifications.
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/incoming-webhooks).
+2. Enter your **Slack channel** to post message.
+3. Enter the **Slack team name**. For example, if your team URL is `https://team.slack.com`, the team name is `team`.
+4. Choosing **Automated Slack Notifications** for the events which you want to receive notifications.
+5. Click **Continue**.
 
-You can add the Slack Tool after toolchain creation.
-{: note}
+Optionally, you can toggle sending notifications with the `slack-notifications` environment property in your CD pipeline by using `0 = off, and 1 = on`.
 
-After you create your toolchain, toggle sending notifications with the `slack-notifications` environment property in your CD pipeline (0 = off, 1 = on)
+#### {{site.data.keyword.compliance_short}}
+{: #tutorial-cd-toolchain-scc}
 
-#### Security and Compliance
-{: #devsecops-tutorial-iac-cd-scc}
-
-To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
-
-* A name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
-* The evidence namespace for the type of the toolchain, which is either **Continuous Deployment** or **Continuous Compliance**.
-
-Use the {{site.data.keyword.cloud_notm}} Framework for Financial Services profile for DevSecOps toolchains.
-{: tip}
-
-Read more about the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
+1. Accept or edit the automatically populated settings. For more information, see [{{site.data.keyword.compliance_short}}](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
+2. Click **Continue** to view the Summary page.
 
 ## Create the CD toolchain
-{: #devsecops-tutorial-iac-cd-summary}
+{: #tutorial-cd-toolchain-summary}
 {: step}
 
-On the **Summary** page, click **Create**, and wait for the toolchain to be created.
+The individual toolchain integrations can be configured after the pipeline creation.
 
-Configure the individual toolchain integrations after the pipeline is created.
-{: tip}
+1. On the Summary page, click **Create toolchain**, and wait for the toolchain to be created.
 
-![DevSecOps CD Toolchain Created](images/devsecops-cd-terraform-toolchain-created.png){: caption="Figure 4. DevSecOps CD Toolchain Created" caption-side="bottom"}
+![DevSecOps CD toolchain created](images/devsecops-cd-toolchain-created_v2.png){: caption="Figure 1. DevSecOps CD toolchain created" caption-side="bottom"}
 
 ## Explore the CD toolchain
-{: #devsecops-tutorial-iac-cd-explore}
+{: #tutorial-cd-toolchain-explore}
 {: step}
 
-Now that the CD Toolchain is created, click the **cd-pipeline** card to open and run the Promotion Pipeline.
+1. Now that the CD toolchain is created, click the **cd-pipeline** tile to open and run the promotion pipeline.
 
-### Run the Promotion Pipeline
-{: #devsecops-tutorial-iac-cd-promotion-pipeline-run}
+### Run the promotion pipeline
+{: #tutorial-cd-toolchain-promotion-pipeline-run}
 
-Make sure that the [CI Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) ran successfully before you run the Promotion Pipeline.
-{: note}
+Make sure that the [CI pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) ran successfully before you run the promotion pipeline.
 
-The Promotion Pipeline creates a pull request with the content of the inventory on the Inventory Source Environment (for example: master) branch targeting the Inventory Target Environment branch (for example: staging or prod).
+1. Click **cd-pipeline**.
+2. Click **Run** for **Manual Promotion Trigger** pipeline.
+3. Click **Run** to trigger the pipeline.
+4. Click **Manual Promotion Trigger** > `#1promotion-pipelinerun` pipeline. Wait for the promotion pipeline run to complete and check the execution log.
 
-* On the **cd-pipeline Dashboard**, click **Run pipeline**, and select the **Manual Promotion Trigger**. Click **Run** to trigger the pipeline.
-* Wait for the Promotion Pipeline run to complete and check execution log.
-* After the Promotion Pipeline finishes successfully, the `promote` Task log provides a link to the pull request in the Inventory Repository. The pull request name is of the format `promote <Inventory Source Environment> to <Inventory Target Environment>`.
+   The promotion pipeline creates a pull request with the content of the inventory on the inventory source environment such as `master` branch targeting the inventory target environment branch such as `staging` or `production`.
+   {: note}
 
-1. Open the pull request in your browser with the link provided in the log. Complete the details in the following sections:
-
-   * **Priority**: (mandatory) One of Critical, High, Moderate, Low, Planning.
-   * **Change Request assignee**: (mandatory) email-id of the assignee.
-   * **Additional Description**: Description of the changes in the application.
-   * **Purpose**: Purpose of the changes that are made to the application.
+5. After the promotion pipeline finishes successfully, the `promote` task log provides a link to the pull request in the inventory repository. The pull request name is of the format `promote <inventory source environment> to <inventory target environment>`, for example, `promote master to prod`
+6. Open the pull request in your browser with the link provided in the log. Complete the details in the following sections:
+   * **Priority**: (mandatory) set as `Critical`, `High`, `Moderate`, `Low`, or `Planning`.
+   * **Change Request assignee**: (mandatory) `Email-ID` of the assignee.
+   * **Additional Description**: Description about the changes in the application.
+   * **Purpose/Goal**: Purpose of the changes that are made to the application.
    * **Explanation of Impact**: Impact of the change to the application behavior or environment.
    * **Backout Plan**: Steps to back out if there is a deployment failure.
-1. Complete the fields in the **Pull Request** and click **save**.
-1. Add the `EMERGENCY` label to your PR if any compliance checks in CI failed and you want to [continue with deployment](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr#cd-devsecops-emergency-label)
-1. Merge the pull request from {{site.data.keyword.gitrepos}}.
+7. Complete the fields in the **Pull Request** and **save**.
+8. Add the `EMERGENCY` label to your pull request if any compliance checks in CI failed and you want to [continue with deployment](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr#cd-devsecops-emergency-label)
+9. Merge the pull request from {{site.data.keyword.gitrepos}}.
 
-The details of the pull request are used by the CD Pipeline to create a Change Request in Change Request Management repository during the CD pipeline run.
-
-### Configure the CD Pipeline
-{: #devsecops-tutorial-iac-cd-tc-config}
-
-#### Terraform variables
-{: #devsecops-tutorial-iac-terraform}
-
-For this tutorial, specify the key protect instance name to be created on production environment.
-
-To do so, select **Environment Properties** in the cd-pipeline and click **Add**.
-
-![CD Pipeline configuration](images/devsecops-cd-terraform-toolchain-environment-properties.png){: caption="Figure 5. CD pipeline configuration" caption-side="bottom"}
-
-Add a property of type `Text Value` and name `TF_VAR_key_protect_instance`.
-Set a meaningful value that indicates the delivery to production environment such as `key-protect-production-202210191453`.
-This environment property's value is injected as the value for `key_protect_instance` terraform configuration variable.
-
-You must also configure **IBM Cloud provider for Terraform** with the appropriate `ibmcloud_api_key` that authenticates with the {{site.data.keyword.cloud_notm}} as described in [Configuring the IBM Cloud Provider plug-in](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-provider-reference#provider-parameter-ov){: external}
-
-Add a property of type `Secure Value` and name `TF_VAR_ibmcloud_api_key`.
-Set the value to the api key to use for {{site.data.keyword.cloud_notm}} resources creation.
-
-The sample used in this tutorial expects a `resource_group` to create the KeyProtect instance. The default `resource_group` name is `Default`. If this is not appropriate for your account, replace the default `resource_group` variable in the `variables.tf` file or specify the `resource_group` variable value to be used by setting the `TF_VAR_resource_group` environment property to the appropriate resource group name.
-{: note}
-
-#### Pipeline Configuration branch
-{: #devsecops-tutorial-iac-cd-pipe-cfg}
-
-The branch of the pipeline configuration repository is defined as `master` in the CD Pipeline environment properties by default. Change the branch to `main` for this tutorial.
-
-To do so, select **Environment Properties** in the cd-pipeline and click `edit` to change the value to `main`
-
-![CD Pipeline configuration branch](images/devsecops-cd-terraform-toolchain-pipeline-config-branch.png){: caption="Figure 6. CD Pipeline configuration branch" caption-side="bottom"}
+The details of the pull request are used during the CD pipeline that is run to create and update in the change request repository.
 
 ### Run the CD pipeline
-{: #devsecops-tutorial-iac-cd-toolchain-pipe-run}
+{: #tutorial-cd-toolchain-pipeline-run}
 
-Start a CD pipeline in one of the following ways:
+You can trigger a CD pipeline in manual or automatic way. You can trigger the CD pipeline manually anytime, but if no changes since the last successful deployment, the CD pipeline stops early as nothing to deploy. You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes. View the successful screen capture of the DevSecOps CD pipeline.
 
-* Preferred: trigger the CD pipeline manually.
-* Optional: automatically after every `Merge` action in the Inventory Repository. A {{site.data.keyword.gitrepos}} trigger is set up to trigger automatic CD Pipeline, but is disabled by default.
+![DevSecOps CD pipeline successful](images/devsecops-cd-explore-pipeline-success.png){: caption="Figure 2. DevSecOps CD pipeline successful" caption-side="bottom"}
 
-You can also trigger the CD pipeline manually anytime, but if there are no changes since the last successful deployment, the CD pipeline aborts early because there is nothing to deploy. You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes.
-{: tip}
+You can find the sample app that is running on the production namespace. The app URL can be found under `run stage` substep's log of `prod deployment` step of CD pipeline run. Use that URL to verify that the app is running.
 
-A successful CD pipeline run looks like this:
+## Next steps
+{: #tutorial-cd-toolchain-next}
 
-![DevSecOps CD Pipeline Successful](images/devsecops-cd-explore-pipeline-success.png){: caption="Figure 7. DevSecOps CD Pipeline Successful" caption-side="bottom"}
+You successfully created a DevSecOps CD toolchain, ran the `cd-pipeline` to trigger manually in the production environment.
 
-After a successful CD pipeline run, you can find the KeyProtect instance service in the resource list.
-
-![KeyProtect service instance created](images/devsecops-cd-terraform-toolchain-keyprotect-created.png){: caption="Figure 8. KeyProtect service instance created" caption-side="bottom"}
+Now, continue with [Setting up a CC toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-cc-toolchain).
