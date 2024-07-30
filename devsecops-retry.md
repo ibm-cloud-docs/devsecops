@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-01-22"
+lastupdated: "2024-07-29"
 
 keywords: DevSecOps, retry, script
 
@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # retry() function
-{: ##devsecops-retry}
+{: #devsecops-retry}
 
 The retry() function is designed to perform a given command with a specified number of retry attempts and a delay between each attempts.
 
