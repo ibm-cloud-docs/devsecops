@@ -20,11 +20,11 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #shortdesc}
 
 ## 16 July 2024
-{: #devsecops-July2024-2}
+{: #devsecops-July2024-16}
 {: release-note}
 
 ### Updates for DevSecOps version - open-v9.35.0 and open-v10.16.0
-{: #devsecops-open-v10.16.0-open-v9.35.0}
+{: #devsecops-open-v10.16.0-open-v9.35.0-16thjuly}
 
 ZAP upgrade
 :   ZAP version used for dynamic scan is upgraded to version 2.15.
