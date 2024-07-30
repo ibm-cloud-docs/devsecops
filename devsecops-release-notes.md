@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-07-12"
+lastupdated: "2024-07-30"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,22 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 16 July 2024
+{: #devsecops-July2024-2}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.35.0 and open-v10.16.0
+{: #devsecops-open-v10.16.0-open-v9.35.0}
+
+ZAP upgrade
+:   ZAP version used for dynamic scan is upgraded to version 2.15.
+
+`gosec` image upgrade
+:   `gosec` image used for Go source code security scanning in the static scan step is upgraded to version 2.20.0.
+
+CVSS scores
+:   Compliance issues identified by `sysdig` scanner will now contain CVSS scores.
 
 ## 10 July 2024
 {: #devsecops-July2024}
