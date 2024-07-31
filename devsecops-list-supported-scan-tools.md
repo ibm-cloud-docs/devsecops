@@ -19,7 +19,7 @@ The following table lists the various scanning tools that are integrated into De
 {: shortdesc}
 
 | Tool | Scan | Description | Scan type |
-|-|-|-|-| 
+|-|-|-|-|  
 | [Mend](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans) | The Mend script runs the Mend Unified Agent dependency scan in your DevSecOps pipeline. | `compliance checks` stage of CI/CC pipelines | Dependency scan |
 | [Contrast SAST](/docs/devsecops?topic=devsecops-devsecops-contrast-sast-scans) | The Contrast static application security testing (SAST) script runs the source code scanning in your DevSecOps pipeline | `static scan` stage of CI/CC pipelines | Static scan |
 | [Detect Secrets](/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans) | Detect-secrets is a client-side security tool that detects secrets within a codebase to remediate and prevent secret leaks. | `detect secrets` stage of CI/CC pipelines | Static Scan |
