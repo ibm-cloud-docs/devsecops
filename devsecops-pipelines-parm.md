@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-07-05"
+lastupdated: "2024-08-05"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -39,6 +39,12 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
+|[`collect-evidence-in-pr`](#cd-devsecops-pr-evidence-collection)		|text		|Set this flag to collect the evidences in PR pipeline based on the selected option. Options: `none`, `all`, `success`	|Optional			|
+|`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
+|`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional |
+|`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
+|`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
+|`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
 |`cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
 |`cra-cveignore-path`  |text   |File path to the `cveignore`, relative to the application repository root. The default file path is `.cra/.cveignore` if value is not provided.   | Optional    |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
@@ -54,6 +60,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
+|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
+|`evidence-reuse`		|text		|Set this flag to `1` to enable reuse of evidences. |Optional |
+|`evidence-validity-period`		|text		|The validity period(in hours) within which evidences can be reused. Default value: 24 hours. Maximum value: 720 hours (30 days) |Optional |
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
@@ -63,6 +72,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`iam_retry_count`		|text		|The number of retries to wait for fetching the IAM token.	|Optional			|
 |`iam_retry_sleep`		|text		|The amount of wait time for fetching the IAM token.	|Optional			|
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|`incident-repo`  	|tool integration		|The incident issues the repo URL.	|Optional			|
 |`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Optional			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
@@ -130,6 +140,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
+|`evidence-reuse`		|text		|Set this flag to `1` to enable reuse of evidences. |Optional |
+|`evidence-validity-period`		|text		|The validity period(in hours) within which evidences can be reused. Default value: 24 hours. Maximum value: 720 hours (30 days) |Optional |
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`gosec-additional-flags` | text | Extra flags to be appended to the start of the `gosec` command. |Optional			|

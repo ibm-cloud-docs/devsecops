@@ -86,3 +86,17 @@ For more information about the expected output from user script stages, see [Cus
 {: #cd-devsecops-merge-pr}
 
 You can use Administrator rights to merge pull requests with failed status checks to the repo. However, these pull requests register a `failure` result in their evidence for the failing task. This result is included in the evidence summary and change request description, and impacts the final compliance score on the Security and Compliance Center.
+
+## Enable evidence collection in PR pipeline
+{: #cd-devsecops-pr-evidence-collection}
+
+PR pipeline supports evidence collection along with issue management. By default, PR pipeline does not collect evidences or open any issues but users can opt-in to this feature. In order to enable evidence collection and issue management, set the environment variable `collect-evidence-in-pr` as one of the following enum:
+
+- `none`: (default) Set `collect-evidence-in-pr` to `none`, to prevent evidence collection in PR pipeline.
+- `all`: Set `collect-evidence-in-pr` to `all` to collect all evidences irrespective of the status of the PR pipeline. Issues will be opened, updated or closed according to `collect-evidence` script.
+- `success`: Set `collect-evidence-in-pr` to `success` to collect evidences only if the entire PR pipeline ran successfully. If the PR pipeline failed, evidences will be not be collected or published to the evidence locker and issue management will not be taking place.
+
+Note: Since, PR pipelines are generally run quite frequently, choosing the correct mode of `collect-evidence-in-pr` will save from unnecessary evidence collection. It is suggested to select the `success` mode during development phase or in cases where failures are anticipated, in order to prevent evidence collection if the pipeline fails. 
+
+If the PR pipeline triggers an Async pipeline, `collect-evidence-in-pr` set to `success` mode is not supported. Incase the PR pipeline triggers an async pipeline, set `collect-evidence-in-pr` to `all` in order to collect evidences.
+{:  note}
