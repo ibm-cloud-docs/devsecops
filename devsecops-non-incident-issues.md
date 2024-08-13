@@ -20,6 +20,18 @@ Unlike incident issues that can arise due to vulnerabilities or CVEs found insid
 
 The [`collect-evidence` script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) captures nonincident issues inside the issues repository, and attaches the issue with the collected evidence. The `collect-evidence` script relies on the [`cocoa incident process-legacy`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#incident-process-legacy) command of the DevSecOps CLI tool, which can create issues or close existing issues based on the status of the current run.
 
+## Nonincident issue processing in PR pipeline
+{: #non-incident-issue-processing-pr}
+
+PR pipeline with evidence collection can create non-incident issues when deviation from the compliance posture is encountered.  To enable evidence collection in PR pipeline refer to:[PR pipeline evidence collection](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection)
+
+The issue management in PR pipeline for non-incident issues is similar to that of CI pipeline. The only difference lies in the autoclosing logic.
+
+A non-incident issue created by PR pipeline can be autoclosed only by a PR pipeline running on the same PR. The issue can't be autoclosed by a PR pipeline when:
+
+- The issue is found by a PR pipeline running on any other PR.
+- The issue is found by any CI or CC pipelines.
+
 ## Nonincident issue processing
 {: #non-incident-issue-processing}
 

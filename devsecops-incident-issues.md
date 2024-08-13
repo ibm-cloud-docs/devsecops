@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-05-13"
+lastupdated: "2024-08-13"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -17,10 +17,22 @@ subcollection: devsecops
 From a compliance perspective, creating, storing, and updating incident issues (vulnerability, CVE) as part of the [Continuous Integration](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline) and [Continuous Compliance](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline) pipelines are essential for evidence collection.
 {: shortdesc}
 
-During the execution of the CI and CC pipelines, the [`collect-evidence` script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) creates incident issues, attaches them to the collected evidence, and stores them in the incident issue repository.
+During the execution of the PR pipeline with evidence collection enabled, CI and CC pipelines, the [`collect-evidence` script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) creates incident issues, attaches them to the collected evidence, and stores them in the incident issue repository.
 
 The `collect-evidence` script uses the functions of the [cocoa incident process](/docs/devsecops?topic=devsecops-cd-devsecops-cli#incident-process) command, which processes the provided scan results and either creates new incident issues in the provided repository per vulnerability or updates the existing incident issues based on the subject-incident pairs. 
 Therefore, the incident issues are bound to assets and created according to the results of specific tools. For more information, see [Difference between issue processing in CI and CC pipelines](#processing-results-issues).
+
+## Incident issue processing in PR pipeline
+{: #incident-issue-processing-pr}
+
+PR pipeline with evidence collection enabled can create incident issues when any vulnerabilty or CVE is encountered. To enable evidence collection in PR pipeline refer to:[PR pipeline evidence collection](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection)
+
+The issue management in PR pipeline for incident issues is similar to that of CI pipeline. The only difference lies in the autoclosing logic.
+
+An incident issue created by PR pipeline can be autoclosed only by a PR pipeline running on the same PR. The issue can't be autoclosed by a PR pipeline when:
+
+- The issue is found by a PR pipeline running on any other PR.
+- The issue is found by any CI or CC pipelines. 
 
 ## Incident issue processing
 {: #incident-issue-processing-ci-cc}

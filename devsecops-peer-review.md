@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-18"
+lastupdated: "2024-08-13"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -52,7 +52,13 @@ The adherence to peer-review compliance is contingent upon the completion of a s
 To ensure compliance with peer review standards, it is assumed that inventory updates in the `ci-finish` stage occur on the `master` branch. However, if your inventory updates are performed on a different branch other than master, you can set the environment variable `inventory-repo-branch` to indicate the branch where the inventory updates are taking place.
 {: important}
 
+It is expected that in Continuous Deployment (CD) pipeline, all inventory updates made to the inventory repository will be promoted to the target branch being deployed, ensuring no commits are missed. By default, during deployment, the inventory repository will be checked out to the target branch. However, if your inventory promotion target branch misses some commits between the base branch and the target branch, you can set the `inventory-repo-branch` environment variable to specify the base branch where all inventory commits are located.
+{: important}
+
 By default, the Continuous Integration (CI) pipeline will automatically perform a commit to the inventory repository at the conclusion of the run, using the application name as the inventory entry. However, if you intend to modify the inventory entry during the release stage, it is recommended to incorporate an environment property named `inventory-entry-name` into your toolchain. This property should contain the modified inventory name for working for peer review process.
+
+
+If you have an automation that pushes commits directly to your protected branch and you want to avoid issues with peer review compliance checks, ensure that your commit message includes `##AUTOMATED_COMMIT##`.
 {: important}
 
 The reference implementation discovers instances of code that are not peer reviewed, collects [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence), and creates incident issues to track these items.

@@ -122,6 +122,7 @@ toc:
           topics:
           - devsecops-evidence.md
           - devsecops-evidence-summary.md
+          - devsecops-adopting-evidence-reuse-in-scripts
           - devsecops-evidence-checks.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
@@ -231,6 +232,9 @@ toc:
           topics:
           - devsecops-pipelinectl.md
           - devsecops-collect-evidence.md
+          - devsecops-download-attachment.md
+          - devsecops-doi-publish.md
+          - devsecops-check-evidence-for-reuse.md
           - devsecops-set-commit-status.md
           - devsecops-get-repo-params.md
           - devsecops-retry.md
