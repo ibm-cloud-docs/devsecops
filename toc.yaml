@@ -124,6 +124,7 @@ toc:
           - devsecops-evidence-summary.md
           - devsecops-adopting-evidence-reuse-in-scripts
           - devsecops-evidence-checks.md
+          - devsecops-evidence-reuse.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md 
