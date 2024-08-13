@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-08-05"
+lastupdated: "2024-08-13"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -39,7 +39,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
-|[`collect-evidence-in-pr`](#cd-devsecops-pr-evidence-collection)		|text		|Set this flag to collect the evidences in PR pipeline based on the selected option. Options: `none`, `all`, `success`	|Optional			|
+|`collect-evidence-in-pr`		|text		|Set this flag to collect the evidences in PR pipeline based on the selected option. Options: `none`, `all`, `success`	|Optional			|
 |`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
 |`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional |
 |`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
