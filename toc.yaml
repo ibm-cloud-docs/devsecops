@@ -237,6 +237,7 @@ toc:
           - devsecops-check-evidence-for-reuse.md
           - devsecops-set-commit-status.md
           - devsecops-get-repo-params.md
+          - devsecops-clone-repo.md
           - devsecops-retry.md
           - topicgroup:
               label: Cocoa Command reference
