@@ -12,8 +12,8 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# check-evidence-for-reuse
-{: #devsecops-check-evidence-for-reuse}
+# check-evidence-for-reuse script
+{: #check-evidence-for-reuse}
 
 The `check-evidence-for-reuse` script is used to determine if evidence can be reused based on the provided parameters. This script utilizes `the check-evidence-for-reuse` command with parameters similar to those used in the `collect-evidence` script.
 

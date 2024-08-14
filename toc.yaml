@@ -122,7 +122,7 @@ toc:
           topics:
           - devsecops-evidence.md
           - devsecops-evidence-summary.md
-          - devsecops-adopting-evidence-reuse-in-scripts
+          - devsecops-adopting-evidence-reuse-in-scripts.md
           - devsecops-evidence-checks.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
