@@ -12,10 +12,10 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# doi-publish()
-{: #devsecops-doi-publish}
+# doi-publish
+{: #doi-publish}
 
-`doi-publish` is a tool designed to download an attachment and publish it as a test record to DevOps Insights.
+`doi-publish` is a function designed to download an attachment and publish it as a test record to DevOps Insights.
 
 The function does the following tasks:
 

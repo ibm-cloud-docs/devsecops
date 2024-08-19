@@ -12,8 +12,8 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# download_attachment Script
-{: #devsecops-download-attachment}
+# download_attachment script
+{: #download-attachment}
 
 
 The download_attachment script is used to download attachments based on a provided label from a specified evidence file.
