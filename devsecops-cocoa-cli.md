@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-07-19"
+lastupdated: "2024-08-20"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2249,6 +2249,7 @@ Some environment variables are automatically picked up to add details about the 
 The `--date` flag can be used to override the asset creation date (defaults to the current time), it accepts any string that [`Date.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse) accepts.
 
 Related assets can be added by using the `--related` flag (for multiple related assets, the flag can be specified multiple times). Assets can be specified with their internal ID, or by their URI.
+All the related asset ids (entire tree till the first asset) will be added to the `parents` field in the asset json.
 
 By default, the `id` format (the `--format` flag) prints the internal ID of the created asset. With the `json` format, the whole asset is going to be printed, as a JSON object.
 
@@ -2281,7 +2282,7 @@ Example output:
 
 ```sh
 {
-   "version": "1",
+   "version": "1.1",
    "id": "0000000011111111222222223333333344444444555555556666666677777777",
    "uri": "docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777",
    "origin": {
@@ -2300,6 +2301,9 @@ Example output:
    "type": "image",
    "related": [
     "b5bbbbb55555b5555b555b55b5555bb5b555b5b555bb5b55bbb5555fbbbbb"
+   ],
+   "parents": [
+    "b5bbbbb55555b5555b555b55b5555bb5b555b5b555bb5b55bbb5555fbbbbb"
    ]
 }
 ```
@@ -2311,15 +2315,14 @@ Running the command to add a release:
 $ cocoa locker asset add release:my-app@v1.2.3 \
                          --type generic \
                          --date 2021-06-01T12:00:00 \
-                         --related docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777 \
-                         --related docker://us.icr.io/foo/baz:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777
+                         --related docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777 
 ```
 {: codeblock}
 
 Example output:
 
 ```sh
-0000000011111111222222223333333344444444555555556666666677777777%
+36d8852458adf44ab236c99beb69d7070d461d39480bc6b8ef7c771bee93cb49%
 ```
 {: codeblock}
 
@@ -2345,7 +2348,7 @@ Options:
 Run the command:
 
 ```sh
- cocoa locker asset get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee --format json
+ cocoa locker asset get release:my-app@v1.2.3 --format json
 ```
 {: codeblock}
 
@@ -2353,7 +2356,37 @@ Example output:
 
 ```sh
 {
-   "version": "1",
+   "version": "1.1",
+   "id": "36d8852458adf44ab236c99beb69d7070d461d39480bc6b8ef7c771bee93cb49",
+   "uri": "release:my-app@v1.2.3",
+   "origin": {
+    "toolchain_crn": "crn:v1:bluemix:public:toolchain:au-syd:a/111111111111c2f2222222222b22a7a63:ac2a22a2-2a2a-2222-aaa2-222aa22a2a2a::",
+    "pipeline_run_id": "f333b3bc-3333-3fea-3333-333d3a3b33b3",
+    "pipeline_id": "444aaa4a-b4c4-4444-4f4b-aa4444a444a4"
+   },
+   "details": {
+    "sha": "aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee",
+    "repository": "https://github.ibm.com/foo/bar.git",
+    "tag": "v1.2.3"
+   },
+   "date": "2021-07-15T14:26:06.301Z",
+   "type": "image",
+   "related": ["0000000011111111222222223333333344444444555555556666666677777777"],
+   "parents": ["0000000011111111222222223333333344444444555555556666666677777777", "b5bbbbb55555b5555b555b55b5555bb5b555b5b555bb5b55bbb5555fbbbbb"]
+}
+```
+{: codeblock}
+
+```sh
+ cocoa locker asset get docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777 --format json
+```
+{: codeblock}
+
+Example output:
+
+```sh
+{
+   "version": "1.1",
    "id": "0000000011111111222222223333333344444444555555556666666677777777",
    "uri": "docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777",
    "origin": {
@@ -2368,7 +2401,38 @@ Example output:
    },
    "date": "2021-07-15T14:26:06.301Z",
    "type": "image",
-   "related": []
+   "related": [],
+   "parents": ["b5bbbbb55555b5555b555b55b5555bb5b555b5b555bb5b55bbb5555fbbbbb"]
+}
+```
+{: codeblock}
+
+```sh
+ cocoa locker asset get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee --format json
+```
+{: codeblock}
+
+Example output:
+
+```sh
+{
+   "version": "1.1",
+   "id": "0000000011111111222222223333333344444444555555556666666677777777",
+   "uri": "docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777",
+   "origin": {
+    "toolchain_crn": "crn:v1:bluemix:public:toolchain:au-syd:a/111111111111c2f2222222222b22a7a63:ac2a22a2-2a2a-2222-aaa2-222aa22a2a2a::",
+    "pipeline_run_id": "f333b3bc-3333-3fea-3333-333d3a3b33b3",
+    "pipeline_id": "444aaa4a-b4c4-4444-4f4b-aa4444a444a4"
+   },
+   "details": {
+    "sha": "aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee",
+    "repository": "https://github.ibm.com/foo/bar.git",
+    "tag": "v1.2.3"
+   },
+   "date": "2021-07-15T14:26:06.301Z",
+   "type": "image",
+   "related": [],
+   "parents": []
 }
 ```
 {: codeblock}
@@ -2643,6 +2707,9 @@ Optional flags:
 - `--check-immutable-storage`: Checks if every evidence is also present in a Cloud Object Storage bucket and is protected by a retention period of at least 365 days. Appends `com.ibm.immutable_storage` evidence to the summary.
    - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
 - `--dry-run`: Has an effect when combined with `--check-immutable-storage`. If used, `com.ibm.immutable_storage` evidence is only appended to the summary but it does not get uploaded to the evidence locker.
+- `--clone-dir`: An optional parameter to determine the clone path of Evidence Repository, by default it will clone the repo /tmp directory
+- `--initialized`: Optional flag which assume the evidence locker is already cloned in the provided location `--clone-dir` or `/tmp/`. 
+- `--evidences-path`: To create a summary from the local evidences which are stroed in a cache, this field is used to rpovide the path of the file where all the evidences are present in the array.
 
 Run the command:
 
