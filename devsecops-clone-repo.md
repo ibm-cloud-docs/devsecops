@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # clone_repo() function
-{: ##devsecops-clone_repo}
+{: #devsecops-clone_repo}
 
 The clone_repo() function is designed to clone a Git repository, optionally including submodules, with support for branch and commit ID selection, as well as retry mechanisms for handling connection timeouts. It also sanitizes error messages for security.
 
