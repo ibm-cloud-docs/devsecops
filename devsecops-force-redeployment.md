@@ -15,7 +15,7 @@ subcollection: devsecops
 #  Redeploying  an application manually
 {: #manual-redeployment}
 
-Sometimes, an application running in an environment can crash or behave strangely due to changes in the infrastructure configuration. This can be resolved by redeployment. Duringf redeployment, use the continuous deployment (CD) pipeline to deploy the existing state of the inventory to the target environment by setting a new environment variable for the continuous deployment pipeline.
+Sometimes, an application running in an environment can crash or behave strangely due to changes in the infrastructure configuration. This can be resolved by redeployment. During redeployment, use the continuous deployment (CD) pipeline to deploy the existing state of the inventory to the target environment by setting a new environment variable for the continuous deployment pipeline.
 {: shortdesc}
 
 Set the `force-redeploy` environment variable with the value as `true` while the **Manual CD** pipeline run is triggered.
