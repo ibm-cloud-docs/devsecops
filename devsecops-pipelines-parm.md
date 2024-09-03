@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-08-29"
+lastupdated: "2024-09-03"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -297,95 +297,93 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 {: tab-group="IAM-simple"}
 {: class="simple-tab-table"}
 
-
-|Name |Type	|Description |Required or Optional | Locked or Unlocked |
-|:----------|:------------------------------|:------------------|:----------|:----------|
-|`app-url` 		|text 		|The URL of your application that is deployed on the target. Recommended for applications that use staging application url.			|Required			| Unlocked | 
-|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			| Unlocked | 
-|`baseimage-auth-email`		|text		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan.	|Optional			| Unlocked | 
-|`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan. |Optional			| Unlocked | 
-|`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan.	|Optional			| Unlocked | 
-|`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required for the Code Risk Analyzer scan.			|Optional			| Unlocked | 
-|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional| Unlocked | 
-|`branch`		|text		|The Git repo branch of the repository that contains the source code of your application. Default value: `master`. |Optional			| Unlocked | 
-| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional | Unlocked | 
-| `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional | Unlocked | 
-| `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional | Unlocked | 
-| `cocoa-display-elapsed-time` | text   | Set this parameter to a nonempty value to print the elapsed time in seconds for cocoa CLI command execution. Example: `Elapsed time: 5.32 seconds`.   | Optional | Unlocked | 
-|[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)		|text		|The base image for running the built-in pipeline code. |Optional			| Unlocked | 
-|`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			| Locked | 
-|`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional | Unlocked | 
-|`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional | Unlocked | 
-|`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Locked | 
-|`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked | 
-|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from Container Registry for the Sysdig scan.	|Optional			| Locked | 
-|`cr-resource-group`		|text		| The resource group that is used to access the Container Registry. |Optional			| Unlocked | 
-| `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional | Unlocked | 
-|`cra-cveignore-path`     |text   |File path to the `cveignore`, relative to the application repository root. The default file path is `.cra/.cveignore` if value is not provided.   |Optional    | Unlocked | 
-|`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional | Unlocked | 
-|`cra-docker-buildflags`   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    | Unlocked | 
-|`cra-dockerfile-pattern`             | text   | Ability to add Dockerfile with a different naming convention, such as `enterprise-linux.Dockerfile` | Optional | Unlocked | 
-|`cra-exclude-devdependencies`		| text		| Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	| Optional			| Unlocked | 
-|`cra-gradle-exclude-configs`     | text   | Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   | Optional   | Unlocked | 
-| `cra-generate-cyclonedx-format`      | text   | If set to `1`, CRA also generates the BOM in `cyclonedx` format (defaults to `0`). | Optional | Unlocked | 
-| `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional | Unlocked | 
-|`cra-maven-exclude-scopes`       | text   | Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  | Optional   | Unlocked | 
-|`cra-nodejs-create-package-lock`		| text		| Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	| Optional			| Unlocked | 
-|`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			| Unlocked | 
-|[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue was marked as exempted.    |Optional    | Unlocked | 
-|[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional | Unlocked | 
-|[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional | Unlocked | 
-|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional | Unlocked | 
-|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional | Unlocked | 
-|`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			| Unlocked | 
-|`dev-resource-group`		|text		|The cluster resource group.	|Required			| Unlocked | 
-|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked | 
-|`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			| Locked | 
-|`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional  | Locked | 
-|`doi-tags`		|text		|Comma-separated custom tags.	|Optional			| Unlocked | 
-|`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			| Locked | 
-|`environment-tag`     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           | Locked | 
-|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			| Locked | 
-|`git-token`		|SECRET		|The Git repo access token.	|Optional			| Locked | 
-|`github-token`		|SECRET		|The GitHub repo access token.	|Optional			| Unlocked | 
-|`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			| Unlocked | 
-|`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			| Locked | 
-|`ibmcloud-enable-session-keep-alive` | select | Keep the IBM Cloud CLI session alive for long-running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			| Unlocked | 
-|`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			| Unlocked | 
-|`incident-assignees`		|text		|One or more assignees for the incident issues (one or more usernames that are separated by a comma). This parameter can be used only with GitHub and GitLab Premium accounts. |Optional			| Unlocked | 
-|`incident-label`		|text		|The label for new incident issues.	|Optional			| Unlocked | 
-|`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			| Unlocked | 
-|`incident-repo`  	|tool integration		|The incident issues the repo URL.	|Optional			| Locked | 
-|`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			| Unlocked | 
-|`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			| Unlocked | 
-|`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			| Locked | 
-|`opt-in-auto-close` |text		|Enables auto-closing of issues from vulnerabilities, when the vulnerability is no longer detected by the CC pipeline run.	|Optional			| Unlocked | 
-|`opt-in-cra-auto-remediation`		|text		|Specifies whether {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			| Unlocked | 
-|`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma-separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			| Unlocked | 
-|`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different than the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			| Unlocked | 
-|`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			| Locked | 
-|`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			| Locked | 
-|`opt-in-dynamic-ui-scan`		|text	|To enable the OWASP Zap UI scan.	 |Optional			| Locked | 
-|`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			| Locked | 
-|`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			| Unlocked | 
-|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			| Unlocked | 
-|`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			| Locked | 
-|`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			| Locked | 
-|`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			| Locked | 
-|[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked | 
-|`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	| Locked | 
-|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			| Unlocked | 
-|`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  | Unlocked | 
-|`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			| Unlocked | 
-|`repository-integration`		|text		|The integration name for the repo.	|Optional			| Unlocked | 
-|`sbom-validation-collect-evidence`   |text   | Enable evidence collection for sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation collects evidence.   |Optional     | Unlocked | 
-|[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		| Locked | 
-|`sonarqube`		|tool integration		|The Sonarqube tool integration.	|Optional			| Locked | 
-|`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)).| Required | Locked | 
-|`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			| Unlocked | 
-|`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. The default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			| Unlocked | 
-|[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			| Unlocked | 
-|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			| Unlocked | 
+|Name |Type	|Description |Required or Optional |
+|:----------|:------------------------------|:------------------|:----------|
+|`app-url` 		|text 		|The URL of your application that is deployed on the target. Recommended for applications that use staging application url.			|Required			|
+|`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|
+|`baseimage-auth-email`		|text		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan.	|Optional			|
+|`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan. |Optional			|
+|`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan.	|Optional			|
+|`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required for the Code Risk Analyzer scan.			|Optional			|
+|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional|
+|`branch`		|text		|The Git repo branch of the repository that contains the source code of your application. Default value: `master`. |Optional			|
+| `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
+| `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |
+| `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |
+| `cocoa-display-elapsed-time` | text   | Set this parameter to a nonempty value to print the elapsed time in seconds for cocoa CLI command execution. Example: `Elapsed time: 5.32 seconds`.   | Optional |
+|[`compliance-baseimage`](#pipeline-parm-compliance-baseimage)		|text		|The base image for running the built-in pipeline code. |Optional			|
+|`cos-api-key`		| SECRET		| The Cloud Object Storage API key.	| Optional			|
+|`cos-access-key-id` | SECRET | The Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `cos-secret-access-key` instead of `cos-api-key`)| Optional |
+|`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
+|`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
+|`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from Container Registry for the Sysdig scan.	|Optional			|
+|`cr-resource-group`		|text		| The resource group that is used to access the Container Registry. |Optional			|
+| `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |
+|`cra-cveignore-path`     |text   |File path to the `cveignore`, relative to the application repository root. The default file path is `.cra/.cveignore` if value is not provided.   |Optional    |
+|`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional |
+|`cra-docker-buildflags`   |text   |Customize docker build command for build stage scanning. The parameter is empty by default.    |Optional    |
+|`cra-dockerfile-pattern`             | text   | Ability to add Dockerfile with a different naming convention, such as `enterprise-linux.Dockerfile` | Optional |
+|`cra-exclude-devdependencies`		| text		| Specifies whether to exclude dev dependencies from scanning (`true` or `false`). The default value is `false`.	| Optional			|
+|`cra-gradle-exclude-configs`     | text   | Specifies which Gradle configurations to exclude dependencies in scanning. Example: `runtimeClasspath,testCompileClasspath`. The parameter is empty by default.   | Optional   |
+| `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |
+|`cra-maven-exclude-scopes`       | text   | Specifies which maven scopes to exclude dependencies in scanning. Example: `test,compile`. The parameter is empty by default.  | Optional   |
+|`cra-nodejs-create-package-lock`		| text		| Enable Code Risk Analyzer discovery to build the `package-lock.json` file for node.js repos. This parameter is set to false by default.	| Optional			|
+|`cra-python-create-requirements-txt`		|text		|Deprecated. The new CRA tools don't use this parameter anymore. Enable Code Risk Analyzer discovery to build the `requirements.txt` file for Python repos. This parameter is set to false by default.	|Optional			|
+|[`custom-exempt-label`](#pipeline-parm-custom-exempt-label)  |text   |Defines the custom label with which the incident issue was marked as exempted.    |Optional    |
+|[`detect-secrets-baseline-filename`](#detect-secrets-baseline-filename) | text | The name of the baseline file in your app repository. | Optional |
+|[`detect-secrets-exclusion-list`](#detect-secrets-exclusion-list) | text | A regex list of files to be excluded in the detect-secrets scan. | Optional |
+|[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
+|[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional |
+|`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
+|`dev-resource-group`		|text		|The cluster resource group.	|Required			|
+|[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
+|`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
+|`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional  |
+|`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
+|`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
+|`environment-tag`     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
+|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
+|`git-token`		|SECRET		|The Git repo access token.	|Optional			|
+|`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
+|`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
+|`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud_notm}} API key that interacts with the `ibmcloud` CLI tool.	|Required			|
+|`ibmcloud-enable-session-keep-alive` | select | Keep the IBM Cloud CLI session alive for long-running jobs in Code Risk Analyzer scan, if this value is set to 1. |Optional			|
+|`incident-assignee`		|text		|The assignee for the incident issues (GitHub or GitLab username). |Optional			|
+|`incident-assignees`		|text		|One or more assignees for the incident issues (one or more usernames that are separated by a comma). This parameter can be used only with GitHub and GitLab Premium accounts. |Optional			|
+|`incident-label`		|text		|The label for new incident issues.	|Optional			|
+|`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|
+|`incident-repo`  	|tool integration		|The incident issues the repo URL.	|Optional			|
+|`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
+|`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
+|`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
+|`opt-in-auto-close` |text		|Enables auto-closing of issues from vulnerabilities, when the vulnerability is no longer detected by the CC pipeline run.	|Optional			|
+|`opt-in-cra-auto-remediation`		|text		|Specifies whether {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			|
+|`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma-separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
+|`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different than the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
+|`opt-in-dynamic-api-scan`		|text		|To enable the OWASP Zap API scan. 	|Optional			|
+|`opt-in-dynamic-scan`		|text		|To enable the OWASP Zap scan.	 |Optional			|
+|`opt-in-dynamic-ui-scan`		|text	|To enable the OWASP Zap UI scan.	 |Optional			|
+|`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
+|`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
+|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
+|`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
+|`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
+|`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
+|[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
+|`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
+|`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
+|`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  |
+|`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
+|`repository-integration`		|text		|The integration name for the repo.	|Optional			|
+|`sbom-validation-collect-evidence`   |text   | Enable evidence collection for sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation collects evidence.   |Optional     |
+|[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		|
+|`sonarqube`		|tool integration		|The Sonarqube tool integration.	|Optional			|
+|`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)).| Required |
+|`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			|
+|`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. The default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
+|[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
+|`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			|
 {: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
