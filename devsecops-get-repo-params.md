@@ -18,7 +18,7 @@ subcollection: devsecops
 ## get_repo_params()
 {: #get_repo_params}
 
-The function `get-repo-params` is designed to retrieve the repo-related information , when provided the repo URL and Repo token path.
+The function `get-repo-params` is designed to retrieve the repo-related information, when provided the repo URL and Repo token path.
 
 ### Parameter
 {: #get_repo_params-parameter}
@@ -26,19 +26,19 @@ The function `get-repo-params` is designed to retrieve the repo-related informat
 The function `get-repo-params` requires the following parameters:
 
 - `repo_url`
-   The repository URL. Make sure you provide the correct url of the repo whose parameters needs to be found.
+   The repository URL. Provide the correct url of the repo whose parameters need to be found.
 - `repo_token_path`
    Path to the token associated with the repository.
 
 ### Output
 {: #get_repo_params-return-value}
 
-The `get-repo-params` function is provided by the pipeline. The function returns the following informations:
+The `get-repo-params` function is provided by the pipeline. The function returns the following information:
 
-- `repo_name`: The name of the repository.
-- `repo_owner`: Owner or the user associated with the repo.
-- `scm_type`: The source control management type of the repo (Git,GRIT).
-- `api_url`: The API URL associated with the git service hosting the repo.
+- `repo_name`:  Name of the repository.
+- `repo_owner`:  User or creator of the repo.
+- `scm_type`:  Source Control Management type of the repo (Git, GRIT).
+- `api_url`:  API URL linked with the Git service that hosts the repo.
 
 ### Function call
 {: #get_repo_params-function-call}
@@ -49,7 +49,7 @@ The `get-repo-params` function is provided by the pipeline. The function returns
 ```
 {: codeblock}
 
- Use the underscore variable (_) in the read command as a placeholder for a variable whose value is being discarded or not utilized in subsequent parts of the script.
+ Use the underscore variable (_) in the read command as a placeholder for a variable whose value is being discarded or not used in subsequent parts of the script.
 
 ```bash
    read -r <repo_name> <_> <scm_type> <_> \
@@ -57,7 +57,7 @@ The `get-repo-params` function is provided by the pipeline. The function returns
 ```
 {: codeblock}
 
-These variables can be used as shell variables within your scripts
+Use these variables as shell variables in your script.
 
 #### Example
 {: #get_repo_params-example}
@@ -81,7 +81,7 @@ These variables can be used as shell variables within your scripts
 ## get_repo_specific_token()
 {: #devsecops-get_repo_specific_token}
 
-The `get_repo_specific_token` function is designed to retrieve the token associated with the given repo URL. A repository token is used to authenticate and authorize access to specific repo.
+The `get_repo_specific_token` function retrieves the token that is associated with the repo URL used earlier. A repository token authenticates and authorizes access to a specific repo.
 
 It picks the value of (git-token-[repo_name]-[repo_org]) variable from the environment properties table.
 
@@ -110,7 +110,7 @@ where:
 ### Output:
 {: #get_repo_specific_token-output}
 
-Here's an example of the output:
+The following output is generated:
 
 ```bash
    echo "$repo_token"
@@ -142,7 +142,7 @@ Here's an example of the output:
 {: #devsecops-get_api_url}
 
 
-The `get_api_url` function is designed to determine the appropriate `API URL` for different types of source code repositories.
+The `get_api_url` function determines the appropriate `API URL` for different types of source code repositories.
 
 ### Parameters:
 {: #get_api_url-parameter}
@@ -160,7 +160,7 @@ The `get_api_url` function is designed to determine the appropriate `API URL` fo
 ### Return Value:
 {: #get_api_url-return-value}
 
-The function echoes the determined `API URL` for the given repository.
+The function displays the `API URL` value for the given repository.
 
 #### Example:
 {: #get_api_url-example}
@@ -218,7 +218,7 @@ This function determines the Source Code Management (SCM) type of a given reposi
 ### Output:
 {: #get_repo_scm_type-returns}
 
-A label indicating the SCM platform, that could be one of the following:
+A label indicating the SCM platform, that might be one of the following:
       - For GitLab-hosted repositories: `gitlab`
       - For GitHub-integrated repositories: `github`
       - For other cases (defaulting to GitHub): `github`
@@ -236,14 +236,14 @@ A label indicating the SCM platform, that could be one of the following:
 ```
 {: codeblock}
 
-This example would output `github` since the provided repository URL is integrated on GitHub.
+This example displays `github` as output value because the repository URL provided earlier is integrated with GitHub.
 
 
 ## get_repo_owner()
 {: #devsecops-get_repo_owner}
 
 
-This function extracts the owner or subgroup information from a given Git repository URL.
+This function extracts the owner or subgroup information from the Git repository URL provided earlier.
 
 ### Parameter:
 {: #get_repo_owner-parameter}
@@ -261,7 +261,7 @@ This function extracts the owner or subgroup information from a given Git reposi
 ### Output:
 {: #get_repo_owner-returns}
 
-- The owner or subgroup information extracted from the repository URL.
+- The owner or subgroup information that is extracted from the repository URL.
 
 #### Example Usage:
 {: #get_repo_owner-example-usage}
@@ -276,9 +276,9 @@ This function extracts the owner or subgroup information from a given Git reposi
 ```
 {: codeblock}
 
-This example would output "user_name" since the provided repository URL is hosted under the "username" account or subgroup on GitHub.
+This example displays `user_name` as output because GitHub hosts the repository URL the "username" account or subgroup.
 
-- If the owner is not found it extracts the first segment of the URL as the owner.
+- If the owner is not found, it extracts the first segment of the URL as the owner.
 
 
 ## get_repo_name()
@@ -302,7 +302,7 @@ This function extracts the name of a Git repository from a given repository URL.
 ### Output:
 {: #get_repo_name-returns}
 
-You will recieve the name of the repository extracted from the repository URL as your output.
+ This functional call displays the name of the repository that is extracted from the repository URL as your output.
 
 #### Example Usage:
 {: #get_repo_name-example-usage}
@@ -319,5 +319,5 @@ You will recieve the name of the repository extracted from the repository URL as
 
 This example would output `compliance-app` since the provided repository URL is named "compliance-app" on GitHub.
 
-If the name is not found it attempts to use the second-to-last segment of the URL as the name.
+If the name is not found, it attempts to use the second-to-last segment of the URL as the name.
 {: #note}
