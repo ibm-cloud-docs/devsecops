@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-07-30"
+lastupdated: "2024-09-11"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -19,12 +19,46 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 11 September 2024
+{: #devsecops-Sep2024-09}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.37.0 and open-v10.18.1
+{: #devsecops-open-v10.18.1-open-v9.37.0}
+
+Bug fix release for `open-v10`
+:   This release has bug fixes only
+
+### Updates for DevSecOps version - open-v9.37.0 and open-v10.18.0
+{: #devsecops-open-v10.18.0-open-v9.37.0}
+
+Transition to Cloud Object Storage(COS) as evidence locker
+:   `devsecops` started transition to Cloud Object Storage(COS) as primary evidence locker. Also sends slack notifications informing users to migrate to COS as primary evidence locker.
+
+`yq` upgrade
+:   `devsecops` now makes `yq` version 3 and version 4 as `yq3` and `yq4` respectively. Version 3 will be removed in future
+
+Reuse of evidences in pipeline
+:   It is now possible to reuse evidences from older pipeline runs to current run. See [Enable evidence collection in PR pipeline](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection) for more information
+
+### Updates for DevSecOps version - open-v9.36.1 and open-v10.17.1
+{: #devsecops-open-v10.17.1-open-v9.36.1}
+
+Bug fix release
+:   This release has bug fixes only
+
+### Updates for DevSecOps version - open-v9.36.0 and open-v10.17.0
+{: #devsecops-open-v10.17.0-open-v9.36.0}
+
+Logging of evidence collection data
+:   Improved pipeline logs to show relavant data in tabular format
+
 ## 16 July 2024
 {: #devsecops-July2024-16}
 {: release-note}
 
 ### Updates for DevSecOps version - open-v9.35.0 and open-v10.16.0
-{: #devsecops-open-v10.16.0-open-v9.35.0-16thjuly}
+{: #devsecops-open-v10.16.0-open-v9.35.0}
 
 ZAP upgrade
 :   ZAP version used for dynamic scan is upgraded to version 2.15.
