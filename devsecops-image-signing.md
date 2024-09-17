@@ -224,6 +224,7 @@ gpg --export-secret-key <Email Address> | base64 | base64
 
 For more information about {{site.data.keyword.keymanagementserviceshort}}, see the [{{site.data.keyword.keymanagementserviceshort}} docs](/docs/key-protect?topic=key-protect-about).
 
+
 ### Store the key in {{site.data.keyword.secrets-manager_short}}
 {: #cd-devsecops-gpg-store-secretsmgr}
 
