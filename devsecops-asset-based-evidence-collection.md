@@ -86,7 +86,7 @@ Examples:
     ```
     {: codeblock}
 
-2.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the save_artifact command
+1.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the save_artifact command
 
 Examples:
 
