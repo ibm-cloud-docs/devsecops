@@ -136,9 +136,9 @@ Inventory entry for the nonimage type of asset, like deployment, helm charts
 ```bash
 {
   "repository_url": "https://github.com/test-org/compliance-app-20201211",  # source code repository url of the artifact
-  "artifact": "deployment.yaml", # artifact name, should be static and same across every build
+  "artifact": "deployment.yaml", # artifact name, must be contant every build
   "build_number": 21, # pipeline build number
-  "commit_sha": "b85e3d472e9cc35b429c39e8c3f9eb282738c20a", # should be a proper git commit sha
+  "commit_sha": "b85e3d472e9cc35b429c39e8c3f9eb282738c20a", # must be a proper git commit sha
   "name": "hello-compliance-app-deployment", # name of the inventory entry file name
   "pipeline_run_id": "f21321bf-9054-4bf3-80a8-4fb34743b7d9", # pipeline run id where artifact was built
   "version": "v1", # version of the artifact
@@ -381,7 +381,7 @@ For more information about working with Git repos, see these example scenarios:
 ## How to Exclude Files and Directories in the inventory
 {: #exclude-files-directories-in-the-inventory}
 
-One-Pipeline excludes hidden files and `.md` files in the inventory by default. Create a file named `.inventoryignore` in your inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root. 
+One-Pipeline excludes hidden files and `.md` files in the inventory by default. Create a file named `.inventoryignore` in your inventory Repository to exclude any files or directories. The pipeline searches for the `.inventoryignore` file at the repository's root.
 
 However, if you prefer a different name for the inventory exclusion file, you can specify it by setting the `inventory-ignore-file` key as an environment property within your pipeline. Make sure that this file is at the root of the inventory repository.
 
@@ -401,4 +401,4 @@ In the file before this:
 - `.md`: Excludes all files with the `.md` extension. Do not add `*` at the start, like `*.md`, as regex is not supported.
 - `sample_file`: Excludes the specific file throughout the entire repository.
 - `sample_directory/`: Excludes the entire directory. Avoid adding `*` at the end, use `sample_directory/*`, as regex is not supported.
-- Having a file with no entries, or an empty line will cause all files to be excluded. Please do not leave empty entries or lines in the inventory ignore file. 
+- Having a file with no entries, or an empty line will cause all files to be excluded. Please do not leave empty entries or lines in the inventory ignore file.

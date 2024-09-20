@@ -73,15 +73,16 @@ For any other type of artifact you can choose a type which is a string that appr
 
 1.	[Use the save_repo command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo):
 
-Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
+    Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
 
-Examples:
+    Examples:
 
-    ```save_repo app-repo \
+    ````sh
+    save_repo app-repo \
     url=https://github.ibm.com/org/my-app \
     path=my-app \
     commit=commit1 \
-    branch=master \
+       branch=master \
     buildnumber=1
     ```
     {: codeblock}
@@ -92,7 +93,8 @@ Examples:
 
      Use of `save_artifact` command for image asset:
 
-    ```save_artifact app-image \
+    ````sh
+    save_artifact app-image \
     type=image \
     name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
     digest=sha256:sha2561\
