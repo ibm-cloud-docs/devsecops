@@ -67,8 +67,6 @@ For any other type of artifact you can choose a type which is a string that appr
 
 5.	Signature: If the artifact is signed, include the relevant signature information. Following these standardized guidelines enhances the inventory management process, ensuring accurate tracking and retrieval of assets.
 
-## Steps to store the asset information
-{: #devsecops-store-asset}
 
 ## Steps to store the asset information
 {: #devsecops-store-asset}
