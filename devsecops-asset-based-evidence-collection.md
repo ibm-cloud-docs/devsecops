@@ -70,12 +70,16 @@ For any other type of artifact you can choose a type which is a string that appr
 ## Steps to store the asset information
 {: #devsecops-store-asset}
 
+## Steps to store the asset information
+{: #devsecops-store-asset}
+
 1.	[Use the save_repo command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo):
-Save the asset information for a commit in the repository by using the following format, which is necessary for associating the build asset with the commit.
+
+Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
 
 Examples:
-    ```
-    save_repo app-repo \
+
+    ```save_repo app-repo \
     url=https://github.ibm.com/org/my-app \
     path=my-app \
     commit=commit1 \
@@ -84,13 +88,12 @@ Examples:
     ```
     {: codeblock}
 
-2.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the save_artifact command
+1.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the save_artifact command
 
 Examples:
-    1. Use of save_artifact command for image asset:
+     Use of `save_artifact` command for image asset:
 
-    ```
-    save_artifact app-image \
+    ```save_artifact app-image \
     type=image \
     name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
     digest=sha256:sha2561\
@@ -100,15 +103,18 @@ Examples:
     ```
     {: codeblock}
 
-2.	Use of save_artifact command for non-image asset:
-    ```
-    save_artifact artifact-1 \
+
+
+1.	Use of `save_artifact` command for non-image asset:
+
+    ``` save_artifact artifact-1 \
     name=my-app_IKS_deployment \
     type=deployment \
     signature=sign2 \
     deployment_type=IKS \
     digest=sha256:sha2562\
     provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml`
+
     ```
     {: codeblock}
 
