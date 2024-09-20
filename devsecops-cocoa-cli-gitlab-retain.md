@@ -1474,8 +1474,8 @@ Options for Git:
 | org              | The GitHub organization that owns the inventory repository. | String | |
 | repo             | The name of the inventory repository.            | String | |
 | app-artifacts    | Arbitrary app content in JSON format             | String | |
-| type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required |
-| sha256           | The sha256 hash of the artifact. <br>Should be of the format sha256:<64 character hash>                  | String | Required |
+| type             | Type of the artifact. Use "image" for images. Use static values for generic type of artifacts such as deployment files, helm charts, etc.                             | String | Required |
+| sha256           | The sha256 hash of the artifact. <br> Use the format `sha256:<64 character hash>`                | String | Required |
 | provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
