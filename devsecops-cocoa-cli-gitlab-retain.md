@@ -1,6 +1,6 @@
 ---
 
-copyright: 
+copyright:
   years: 2023, 2024
 lastupdated: "2024-09-20"
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# DevSecOps CLI 
+# DevSecOps CLI
 {: #cd-devsecops-cli}
 
 DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
@@ -44,7 +44,7 @@ Some commands use environment variables to get API Keys or to configure an optio
 Command-line options can take various types of input values, such as numbers, strings, Boolean values, arrays, and JSON objects. The options type is dependent upon the command that you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
 {: tip}
 
-## Retrying failed API calls 
+## Retrying failed API calls
 {: #cd-devsecops-cli-api}
 
 The Cocoa CLI retries any API call that fails with a response status of `5xx` three times. You can override this behavior by providing following environment variables:
@@ -1080,9 +1080,9 @@ $ cocoa evidence format-summary --input=raw-summary.json --output=formatted-summ
 {: #evidence-markdown-summary}
 
 Formats the evidence summary into a markdown format that can be fed as a GitHub or GitLab pull request comment.
-	
+
 The input is a raw summary and can be in one of two formats:
-	
+
 * Summary in JSON format (output of the `cocoa evidence summarize` command).
 * Aggregated summary, which is a JSON array of individual app summaries.
 
@@ -1184,7 +1184,7 @@ $ cocoa evidence upload \
 CLI options can be also set from environment variables except for `backend`, `issue`, `log`, and `artifact`. Multiple issues or artifacts must be provided with multiple issue or artifact flags. For example:
 
 ```sh
- cocoa evidence upload --backend=git --artifact <url> <hash>  --artifact <url> <hash> --issue <issue-url> --issue <issue-url> --git-provider='gitlab' 
+ cocoa evidence upload --backend=git --artifact <url> <hash>  --artifact <url> <hash> --issue <issue-url> --issue <issue-url> --git-provider='gitlab'
 ```
 {: codeblock}
 
@@ -1464,11 +1464,11 @@ Options for Git:
 
 | Option           | Description                                      | Value type | Required or default value |
 | ---------------- | ------------------------------------------------ | ---------- | ------------------------- |
-| artifact         | Artifact name. <br><br>If entry type is image - the field should be of the format `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>` <br><br>If entry type is not image - it should be a static name that stays constant across entry updates (`<static_name>`).                                   | String | Required |
+| artifact         | Artifact name. <br><br>If the artifact type is an image, use the following format: `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>`. <br><br>If entry type is not image, use a static name that is constant across all entry updates. Use `<static_name>` parameter to provide the statice name value.                                   | String | Required |
 | version          | The version of the application.            | String | Required |
 | repository-url   | The URL pointing to the source code repository of the application (of github or GRIT/gitlab repos)               | String | Required |
 | pipeline-run-id  | The id of the pipeline run.                       | String | Required |
-| commit-sha       | The commit of the application repository from which the artifact is built. <br>Should be a long format commit sha (40 character lowercase) | String | Required |
+| commit-sha       | The commit of the application repository from which the artifact is built. <br> You must use a long format commit `sha` (40 character lowercase) | String | Required |
 | name             | The name of the application the artifact belongs to | String | Required |
 | build-number     | The number of the build.                         | number | Required |
 | org              | The GitHub organization that owns the inventory repository. | String | |
@@ -2031,7 +2031,7 @@ Options:
 --version          # Show version number
 --format           # Output format ("id", "json", default: "id")
 --git-provider     # Git service provider ("github", "gitlab", default: "github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github or Gitlab API url
 --related          # The ID of a related asset (default: [])
 --date             # Asset creation date
@@ -2157,7 +2157,7 @@ Options:
 --type             # Type of the asset ("commit", "image", "generic")
 --version          # Show version number
 --git-provider     # Git service provider ("github", "gitlab", default: "github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github or Gitlab API url
 --format           # Output format ("id", "json", default: "id")
 ```
@@ -2207,7 +2207,7 @@ Options:
 --type             # Type of the asset ("commit", "image", "generic")
 --version          # Show version number
 --git-provider     # Git service provider ("github", "gitlab", default: "github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github or Gitlab API url
 --format           # Output format ("id", "json", default: "id")
 ```
@@ -2326,7 +2326,7 @@ Options:
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --git-provider     # Git service provider ("github", "gitlab", default: "github")
 --version          # Show version number
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github or Gitlab API url
 --format           # Output format ("json", default: "json")
 ```
@@ -2411,7 +2411,7 @@ Options:
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --git-provider     # Git service provider ("github", "gitlab", default: "github")
 --version          # Show version number
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github or Gitlab API url
 ```
 {: screen}
@@ -2485,7 +2485,7 @@ Options:
 --org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --git-provider     # Git service provider ("github", "gitlab", default: "github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github or Gitlab API URL
 --config-path      # (required) use this path to read the config file of all the required evidence check
 --summary-path     # (required) use this path to read the summary file of all the evidences
