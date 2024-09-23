@@ -7,6 +7,9 @@ lastupdated: "2023-11-07"
 keywords: DevSecOps, evidence collection, generic asset, inventory, application, microservice
 
 subcollection: devsecops
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
 
 ---
 
