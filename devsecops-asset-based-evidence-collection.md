@@ -26,6 +26,8 @@ In the context of DevSecOps, an asset is a fundamental entity that is subjected 
 
 [Asset Types](images/asset-types.png){: caption="Figure 1. Types of Assets" caption-side="bottom"}
 
+[Asset Types](images/asset-types-copy.png){: caption="Figure 1. Types of Assets" caption-side="bottom"}
+
 For optimal clarity, assets must be distinctly identified. Here are some examples:
 - Commit Asset: Comprising the repository and commit hash: https://repo.url/org/repo#<COMMIT-SHA>
 - Image Asset: Encompassing the Docker image and its digest: docker://registry.URL/name@sha256:<SHA256-DIGEST>
@@ -108,7 +110,7 @@ Use of `save_artifact` command for image asset:
 
 Use of `save_artifact` command for non-image asset:
 
-    ```sh
+    ```bash
     save_artifact artifact-1 \
     name=my-app_IKS_deployment \
     type=deployment \
