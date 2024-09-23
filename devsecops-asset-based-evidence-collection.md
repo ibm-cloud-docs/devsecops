@@ -92,20 +92,19 @@ For any other type of artifact you can choose a type which is a string that appr
 
 Examples:
 
-     Use of `save_artifact` command for image asset:
+Use of `save_artifact` command for image asset:
+
 
     ```bash
-    save_artifact app-image \
-    type=image \
-    name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
-    digest=sha256:sha2561\
-    tags=mytag1 \
-    source=https://github.ibm.com/org/my-app/commit-1 \
-    signature=sign-1
+      	 save_artifact app-image \
+         type=image \
+         name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
+         digest=sha256:sha2561\
+         tags=mytag1 \
+         source=https://github.ibm.com/org/my-app/commit-1 \
+         signature=sign-1
     ```
     {: codeblock}
-
-
 
 	Use of `save_artifact` command for non-image asset:
 
@@ -120,6 +119,18 @@ Examples:
     ```
     {: codeblock}
 
+
+    ```bash
+      	 save_artifact artifact-1 \
+         name=my-app_IKS_deployment \
+         type=deployment \
+         signature=sign2 \
+         deployment_type=IKS \
+         digest=sha256:sha2562\
+         source=https://github.ibm.com/org/my-app/commit-1 \
+         signature=sign-1
+    ```
+    {: codeblock}
 
 ## Steps to create inventory entry from the asset information
 {: #devsecops-inventory-asset-creation}
