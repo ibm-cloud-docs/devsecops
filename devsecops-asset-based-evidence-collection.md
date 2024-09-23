@@ -77,15 +77,16 @@ For any other type of artifact you can choose a type which is a string that appr
 
     Examples:
 
-    ```sh
-save_repo app-repo \
-url=https://github.ibm.com/org/my-app \
-path=my-app \
-    commit=commit1 \
-       branch=master \
-    buildnumber=1
+
+    ```bash
+      	save_repo app-repo \
+        url=https://github.ibm.com/org/my-app \
+        path=my-app \
+            commit=commit1 \
+              branch=master \
+          buildnumber=1
     ```
-{: codeblock}
+    {: codeblock}
 
 2.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the `save_artifact` command
 
@@ -188,7 +189,7 @@ Examples:
     --git-provider=github \
     --git-token-path=./inventory-token \
     --git-api-url=https://github.ibm.com/api/v3
-        ```
+    ```
     {: codeblock}
 
 ### Defining an Evidence in DevSecOps
