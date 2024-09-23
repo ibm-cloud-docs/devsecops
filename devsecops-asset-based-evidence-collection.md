@@ -24,7 +24,7 @@ Asset creation and evidence collection play a pivotal role in the Onepipeline ec
 
 In the context of DevSecOps, an asset is a fundamental entity that is subjected to rigorous testing and scanning. These assets encompass various forms such as existing Git commits in repositories to Docker images. An asset is a focal point of the evidence collection process, representing the object on which a scan or test has been conducted. Remarkably, DevSecOps's flexibility extends beyond traditional code and images, including abstract entities like pipeline runs or COS (Cloud Object Storage) buckets, as long as evidence can be gathered for them.
 
-[Asset Types](images/asset-types.png){: caption="Figure 1. Types of Assets" caption-side="bottom"}
+[Asset Types](cloud-docs/devsecops/blob/source/images/asset-types.png){: caption="Figure 1. Types of Assets" caption-side="bottom"}
 
 For optimal clarity, assets must be distinctly identified. Here are some examples:
 - Commit Asset: Comprising the repository and commit hash: https://repo.url/org/repo#<COMMIT-SHA>
