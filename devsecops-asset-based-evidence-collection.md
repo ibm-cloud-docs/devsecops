@@ -106,7 +106,7 @@ Use of `save_artifact` command for image asset:
     ```
     {: codeblock}
 
-	Use of `save_artifact` command for non-image asset:
+Use of `save_artifact` command for non-image asset:
 
     ```bash
     save_artifact artifact-1 \
@@ -116,19 +116,6 @@ Use of `save_artifact` command for image asset:
     deployment_type=IKS \
     digest=sha256:sha2562\
     provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml`
-    ```
-    {: codeblock}
-
-
-    ```bash
-      	 save_artifact artifact-1 \
-         name=my-app_IKS_deployment \
-         type=deployment \
-         signature=sign2 \
-         deployment_type=IKS \
-         digest=sha256:sha2562\
-         source=https://github.ibm.com/org/my-app/commit-1 \
-         signature=sign-1
     ```
     {: codeblock}
 
