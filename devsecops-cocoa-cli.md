@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-09-20"
+lastupdated: "2024-09-24"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1580,6 +1580,7 @@ Options for Git:
 | provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
+|from-file         |Provide the file which contains the details of the inventory entries, Use this flag if you need to upload multiple inventory entries in a single commit to the inventory repo. | string| | 
 | git-provider*    | The Git version control service provider. | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
@@ -1616,6 +1617,14 @@ $ cocoa inventory add \
   --pipeline-run-id=123123valid \
   --version=v4 \
   --name=chart
+```
+{: codeblock}
+
+```sh
+$ cocoa inventory add --from-file multi-artifacts.json \
+  --environment=environment  \
+  --org=test \
+  --repo=repository
 ```
 {: codeblock}
 
