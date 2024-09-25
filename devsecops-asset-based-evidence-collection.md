@@ -113,7 +113,7 @@ Use of `save_artifact` command for non-image asset:
     --signature=sign2 \
     --deployment_type=IKS \
     --digest=sha256:sha2562 \
-    --provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml`
+    --provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
     ```
     {: codeblock}
 
