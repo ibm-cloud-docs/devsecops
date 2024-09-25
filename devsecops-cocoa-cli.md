@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-09-24"
+lastupdated: "2024-09-25"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2185,6 +2185,75 @@ $ cocoa incident evaluate \
 ```
 
 {: codeblock}
+
+## cocoa incident update-state
+{: #incident-update-state}
+
+Update the state of an issue to open / close based on the issue URL passed.
+
+Usage:
+
+```sh
+$ cocoa incident update-state \
+  <options>
+```
+
+{: codeblock}
+
+Options:
+
+```text
+--org             # The incident issue repo org
+--repo            # The incident issue repo name
+--git-provider    # Git service provider [github, gitlab] Default is "github"
+--git-token-path  # (Optional) Github Token's path
+--git-api-url     # (Optional) Github API url
+--issue-url       # Issue URL whose state is to be updated
+--to-state        # target state for the issue to be updated [choices: "open", "close"]
+--comment         # (Optional) Comment to be added to the issue being updated
+--update-exempt   # (Optional) Flag to update state of exempted issues, default: false
+```
+
+{: screen}
+
+Required Environment Variables:
+
+```text
+INCIDENT_REPO_ORG=        # Can be used instead of --org (either the option or the variable is required)
+INCIDENT_REPO_NAME=       # Can be used instead of --repo (either the option or the variable is required)
+```
+
+{: screen}
+
+Required Environment Variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=                # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+
+{: screen}
+
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
+
+Return values:
+
+- Command exits with return code 0 if a successful state update happens for the issue
+- Command exits with return code 1 if state updation of the issue is unsuccessful
+
+Running the command:
+
+```sh
+$ cocoa incident update-state \
+  --org \
+  --repo \
+  --git-provider \
+  --git-token-path \
+  --git-api-url \
+  --issue-url \
+  --comment \
+  --to-state 
+```
 
 ## cocoa locker commands
 {: #locker-commands}

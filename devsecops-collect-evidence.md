@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-01-17"
+lastupdated: "2024-09-25"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -127,6 +127,7 @@ The current implementation currently supports the following tools (provided as t
 - `contrast-sast` Contrast Sast (Static Application security testing)
 - `detect-secrets` Detect Secrets
 - `sysdig` Sysdig Scan
+- `cyclonedx` CycloneDX format. Additionally, tool detection will be done for issue management from the CycloneDX metadata [here](https://cyclonedx.org/docs/1.4/json/#metadata_tools_items_name)
 
 If the `collect-evidence` script is called with a tool type that is not supported, the script doesn't attempt to process the attachments. Additionally, the issue handling is skipped, and the evidence collection is not stopped. 
 
@@ -227,8 +228,3 @@ Remember these key points about the multi-asset collection:
 - By default, when you designate multiple assets, evidence processing follows the legacy flow. If you specify a single asset, evidence processing occurs through a flow that is specific to the tool or attachment.
 - In case of failure, issues are created per asset. These issues are closed upon successful rerun of evidence collection. Closure correlates with the assets that you specified.
 - A singular evidence file is generated, which features an ID that encompasses all combined assets.
-
-
-
-
-

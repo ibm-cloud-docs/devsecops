@@ -15,7 +15,51 @@ subcollection: devsecops
 # Rolling back a deployment
 {: #rollback-deployment}
 
-Sometimes, a new deployment to an environment behaves abnormally and requires a rollback to a last known good version. In such cases, you can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
+Sometimes, a new deployment to an environment behaves abnormally and requires a rollback to a last known good version. In such cases, there are two ways you can go about it.
+
+## Rollback Trigger
+
+You can use the rollback listener to trigger a rollback to a last known good version.
+
+Follow the following steps to create a rollback trigger:
+
+1. Go to the CD pipeline.
+2. Add a new manual trigger or duplicate the "Manual CD Trigger".
+3. Edit this trigger to set the listener to "cd-rollback-listener".
+4. Click "Save" to persist the changes.
+5. Create as many triggers as required per region and target environment combinations.
+
+A rollback pipeline takes in the following inputs as environment properties:
+1. `rollback-change-request-id` : This is the Change Request ID of the concluded deployment that you want to rollback against. This is a mandatory field.
+2. `rollback-limit` : This is an integer number which indicates how many deployment backwards, the rollback can be performed. This is defaulted to `1` which indicates the rollback can be allowed to be performed to the last concluded deployment, and not older than that.
+3. `region` : Indicate against which region this rollback is being performed.
+4. `target-environment` : Indicates against which environment the rollback is being performed. Example - stage, prod.
+
+Following criteria's are to be met for a rollback to happen, else the pipeline exits. These are:
+1. The provided Change Request identified by `rollback-change-request-id` should be from an earlier concluded deployment for the same `region` and `target-environment`.
+2. The provided Change Request identified by `rollback-change-request-id` should not be any older than `n` concluded deployments older than what's indicated by `rollback-limit` which defaults to `1` unless overriden.
+
+### Overview of the Rollback pipeline
+
+The rollback pipeline contains the following stages:
+1. prod-rollback-start
+2. prod-setup
+3. prod-rollback-change-request
+4. prod-deployment
+5. prod-acceptance-tests
+6. prod-rollback-finish
+
+A rollback pipeline run creates a new Change Request by utilizing information from the provided Change Request against which the rollback is happening.
+
+Post the deployment and acceptance tests, the pipeline re-opens possibly existing issues at the point where the rollback concluded to reflect the compliance posture of the deployed artifacts at that point in time. The candidate list of issues to be reopened after a rollback is additionally captured as an attachment in the Change Request for further reference. Due dates, if there were any, remains unchanged from the original schedule.
+
+A successful rollback pipeline run concludes the deployment by moving the `_latest` tag in the inventory backwards to the commit in the past againt which the rollback just happened.
+
+A tekton environment property `PIPELINE_NAME` is set to `cd-rollback-pipeline` to indicate whether a CD pipeline is running in a forward deployment mode or performing a rollback. This property can be further leveraged if the user decides to write custom branching logic for rollback vs non-rollback.
+
+## Classical method, using raw GitOps
+
+You can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
 {: shortdesc}
 
 To roll back the deployment, complete these steps:
