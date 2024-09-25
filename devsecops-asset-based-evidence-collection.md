@@ -93,14 +93,14 @@ Examples:
 Use of `save_artifact` command for image asset:
 
 
-    ```sh
-      	 save_artifact app-image \
-         type= image \
-         name= us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
-         digest= sha256:sha2561\
-         tags= mytag1 \
-         source= https://github.ibm.com/org/my-app/commit-1 \
-         signature=sign-1
+    ```bash
+    save_artifact app-image \
+    type= image \
+    name= us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
+    digest= sha256:sha2561\
+    tags= mytag1 \
+    source= https://github.ibm.com/org/my-app/commit-1 \
+    signature=sign-1
     ```
     {: codeblock}
 
@@ -116,6 +116,8 @@ Use of `save_artifact` command for non-image asset:
     provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml`
     ```
     {: codeblock}
+
+
 
 ## Steps to create inventory entry from the asset information
 {: #devsecops-inventory-asset-creation}
