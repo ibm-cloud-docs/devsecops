@@ -71,23 +71,24 @@ For any other type of artifact you can choose a type which is a string that appr
 ## Steps to store the asset information
 {: #devsecops-store-asset}
 
-1.	[Use the save_repo command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo):
+1. [Use the save_repo command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo):
 
-Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
+    Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
 
-Examples:
+   Examples:
 
-```bash
-save_repo app-repo \
---url= https://github.ibm.com/org/my-app \
---path= my-app \
---commit=commit1 \
-    --branch=master \
---buildnumber=1
-```
-{: codeblock}
+    ```bash
+    save_repo app-repo \
+    --url= https://github.ibm.com/org/my-app \
+    --path= my-app \
+    --commit=commit1 \
+       --branch=master \
+    --buildnumber=1
+    ```
+    {: codeblock}
 
-2.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the `save_artifact` command
+
+1. [Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the `save_artifact` command
 
 Examples:
 
