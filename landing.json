@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "title": "IBM Cloud DevSecOps",
+  "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
+  "product_page": "https://www.ibm.com/topics/devsecops",
+  "console_page": "/catalog/architecture/deploy-arch-ibm-devsecops-alm-e1c16cac-7ea8-413f-a819-67e3a3251e44-global",
+  "section_topics": {
+    "links": [
+      {
+        "title": "DevSecOps with Continuous Delivery",
+        "href": "/docs/devsecops?topic=devsecops-devsecops_intro"
+      },
+      {
+        "title": "Understanding DevSecOps pipelines",
+        "href": "/docs/devsecops?topic=devsecops-cd-devsecops-pipelines"
+      },
+      {
+        "title": "Bringing your own app to DevSecOps",
+        "href": "/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa"
+      }
+    ]
+  },
+  "section_highlights": [
+    {
+      "title": "IBM Cloud DevSecOps Specialty training",
+      "description": "Understand the convergence of development, security, and operations to seamlessly integrate security within a continuous delivery pipeline.",
+      "href": "https://www.ibm.com/training/path/ibm-cloud-devsecops-specialty-799",
+      "type": "training"
+    }
+  ],
+  "section_devtools": {
+    "cli": "/docs/cli?topic=cli-CLI_devops-insights",
+    "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest"
+  },
+  "section_updates": {
+      "view_more": "/docs/devsecops?topic=devsecops-release-notes"
+    }
+}
