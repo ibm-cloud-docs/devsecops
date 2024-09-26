@@ -13,7 +13,7 @@ subcollection: devsecops-working
 {{site.data.keyword.attribute-definition-list}}
 
 # Decoding the GPG Key
-{: #cd-devsecops-multiple-apps}
+{: #cd-devsecops-gpg-key}
 
 Decoding a Base64 encoded GPG key can be accomplished using various methods. One of the common approaches is decoding from a file.
 {: shortdesc}
