@@ -24,6 +24,8 @@ In the context of DevSecOps, an asset is a fundamental entity that is subjected 
 
 There are various type of asset types.
 
+![Asset types](images/asset-types.png "Types of Assets"){: caption="Figure 1. Types of assets." caption-side="bottom"}
+
 For optimal clarity, assets must be distinctly identified. Here are some examples:
 - Commit Asset: Comprising the repository and commit hash: https://repo.url/org/repo#<COMMIT-SHA>
 - Image Asset: Encompassing the Docker image and its digest: docker://registry.URL/name@sha256:<SHA256-DIGEST>
