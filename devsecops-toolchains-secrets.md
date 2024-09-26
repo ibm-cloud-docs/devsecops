@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Managing secrets in your toolchains
-{: #cd-devsecops-toolchains-secrets}
+{: #cd-devsecops-toolchains-secrets-new}
 
  Tool integrations in your CI and CD toolchains require secrets, for example- passwords, API keys, certificates, or other tokens. For example, an {{site.data.keyword.cloud}} API key performs basic pipeline tasks, such as logging in to {{site.data.keyword.cloud_notm}}. Similarly, the service ID API key writes evidence to the bucket in the Cloud Object Store instance.
 {: shortdesc}
@@ -68,7 +68,7 @@ If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` 
 {: note}
 
 ### Configuring the secrets stores
-{: #configure-secret-stores}
+{: #configure-secret-stores-new}
 
 With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you protect your sensitive data and centralize your secrets. You can choose between the vault integrations depending on your requirements as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation provides information about prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select them from various vault integrations that are attached to the toolchain.
 
