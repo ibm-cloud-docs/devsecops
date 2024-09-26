@@ -191,7 +191,7 @@ toc:
       - topicgroup:
           label: Managing secrets in your toolchain
           topics:
-          - ddevsecops-managing-secrets-best-practices.md
+          - devsecops-managing-secrets-best-practices.md
           - devsecops-managing-secrets-crn.md
       - devsecops-multiple-apps.md
       - devsecops-iam-permissions.md
