@@ -1577,7 +1577,7 @@ Options for Git:
 | app-artifacts    | Arbitrary app content in JSON format             | String | |
 | type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required |
 | sha256           | The sha256 hash of the artifact. <br>Should be of the format sha256:<64 character hash>                  | String | Required |
-| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
+| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance must be same as artifact field   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
 |from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| |
