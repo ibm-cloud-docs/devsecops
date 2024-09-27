@@ -1580,7 +1580,7 @@ Options for Git:
 | provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
-|from-file         |Provide the file which contains the details of the inventory entries, Use this flag if you need to upload multiple inventory entries in a single commit to the inventory repo. | string| |
+|from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| |
 | git-provider*    | The Git version control service provider. | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
