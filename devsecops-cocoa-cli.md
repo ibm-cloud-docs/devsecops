@@ -2200,6 +2200,7 @@ $ cocoa incident update-state \
 {: codeblock}
 
 Options:
+
 Specify the following optional variables and values to provide more details about your cooca incident issue.
 
 ```text
@@ -2216,6 +2217,7 @@ Specify the following optional variables and values to provide more details abou
 {: screen}
 
 Required Environment Variables:
+
 You must provide the following environment variables and their values if you did not use `--org` and `--repo` optional variables earlier.
 
 ```text
@@ -2224,16 +2226,16 @@ INCIDENT_REPO_NAME=       # Must be used if ---repo optional variable is not use
 ```
 {: screen}
 
-Required Environment Variables, if you are using GitHub:
+If your `git-provider` is `github`, use the following required environment variable:
 
 ```text
 GHE_TOKEN=                # Github Enterprise API Token (Optional if you are using --git-token-path)
+GH_URL=                   # Github API url (Optional if you are using --git-api-url)
 ```
 {: screen}
 
-If your `git-provider` is `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
-If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
-{: note}
+ You can also use optional variables `--git-token-path` and `--git-api-url` to provide the Github's token path and API URL values. Optional variables have higher precendece when both   are provided, `--git-token-path` and `--git-api-url` take precedence.
+{: tip}
 
 
 Return values:
