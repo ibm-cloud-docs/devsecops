@@ -46,8 +46,8 @@ A rollback pipeline takes in the following inputs as environment properties:
 
 The following criteria must be met for a rollback to occur, otherwise the pipeline is terminated:
 
-1. The `rollback-change-request-id` must be the change request ID of an older concluded deployment ID for the same `region` and `target-environment`.
-2. The `rollback-change-request-id` must not be older than `n` concluded deployments older than what's specified for `rollback-limit` value. The default value is `1`.
+* The `rollback-change-request-id` must be the change request ID of an older concluded deployment ID for the same `region` and `target-environment`.
+* The `rollback-change-request-id` must not be older than `n` concluded deployments older than what's specified for `rollback-limit` value. The default value is `1`.
 {: important}
 
 ### Overview of the Rollback pipeline
