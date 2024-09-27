@@ -35,10 +35,14 @@ Follow the following steps to create a rollback trigger:
 5. Create triggers according to the region and target environment combinations.
 
 A rollback pipeline takes in the following inputs as environment properties:
-1. `rollback-change-request-id` : The change request ID of the concluded deployment that you want to rollback against. This is a mandatory field.
-2. `rollback-limit` : The integer value specifies how many deployments back you can roll back. The default value is `1`, limiting rollback to the last completed deployment.
-3. `region` : Specifies the region of the rollback.
-4. `target-environment` : Specifies the target environment for the rollback. For example, stage or production.
+
+| Environment properties | Description|
+|----------|---------|
+| `rollback-change-request-id` | The change request ID of the concluded deployment that you want to rollback against. This is a mandatory field. |
+| `rollback-limit` | The integer value specifies how many deployments back you can roll back. The default value is `1`, limiting rollback to the last completed deployment. |
+| `region` | Specifies the region of the rollback. |
+| `target-environment` | Specifies the target environment for the rollback. For example, stage or production. |
+{: caption="Table 1. Types of environment properties" caption-side="bottom"}
 
 The following criteria must be met for a rollback to occur, otherwise the pipeline is terminated:
 
@@ -64,7 +68,7 @@ After deployment and acceptance testing, the pipeline reopens issues that are re
 
 A successful rollback pipeline run concludes the deployment by moving the `_latest` tag in the inventory backwards to the commit in the past against, which the rollback just happened.
 
-A tekton environment property `PIPELINE_NAME` is set to `cd-rollback-pipeline` to indicate whether a CD pipeline is running in a forward deployment mode or performing a rollback. This property can be further used if the user decides to write custom branching logic for rollback vs no-rollback.
+A tekton environment property `PIPELINE_NAME` is set to `cd-rollback-pipeline` to indicate whether a CD pipeline is getting deployed or performing a rollback. You can also use this property to write custom branching logic for rollback vs non-rollback.
 
 ## Classical method, by using raw GitOps
 {: #devsecops-rollback-deployment-gitops-raw}
