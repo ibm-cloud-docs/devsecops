@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-09-25"
+lastupdated: "2024-09-27"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1580,7 +1580,7 @@ Options for Git:
 | provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
-|from-file         |Provide the file which contains the details of the inventory entries, Use this flag if you need to upload multiple inventory entries in a single commit to the inventory repo. | string| | 
+|from-file         |Provide the file which contains the details of the inventory entries, Use this flag if you need to upload multiple inventory entries in a single commit to the inventory repo. | string| |
 | git-provider*    | The Git version control service provider. | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
@@ -2189,18 +2189,18 @@ $ cocoa incident evaluate \
 ## cocoa incident update-state
 {: #incident-update-state}
 
-Update the state of an issue to open / close based on the issue URL passed.
+Update the incident issue state to `open` ot `close` based on the current status of the specified incident issue URL.
 
-Usage:
+Code snippet:
 
 ```sh
 $ cocoa incident update-state \
   <options>
 ```
-
 {: codeblock}
 
 Options:
+Specify the following optional variables and values to provide more details about your cooca incident issue.
 
 ```text
 --org             # The incident issue repo org
@@ -2213,16 +2213,15 @@ Options:
 --comment         # (Optional) Comment to be added to the issue being updated
 --update-exempt   # (Optional) Flag to update state of exempted issues, default: false
 ```
-
 {: screen}
 
 Required Environment Variables:
+You must provide the following environment variables and their values if you did not use `--org` and `--repo` optional variables earlier.
 
 ```text
-INCIDENT_REPO_ORG=        # Can be used instead of --org (either the option or the variable is required)
-INCIDENT_REPO_NAME=       # Can be used instead of --repo (either the option or the variable is required)
+INCIDENT_REPO_ORG=        # Must be used if --org optional variable is not used.
+INCIDENT_REPO_NAME=       # Must be used if ---repo optional variable is not used.
 ```
-
 {: screen}
 
 Required Environment Variables, if you are using GitHub:
@@ -2230,16 +2229,17 @@ Required Environment Variables, if you are using GitHub:
 ```text
 GHE_TOKEN=                # Github Enterprise API Token (Optional if you are using --git-token-path)
 ```
-
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If your `git-provider` is `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
+{: note}
+
 
 Return values:
 
-- Command exits with return code 0 if a successful state update happens for the issue
-- Command exits with return code 1 if state updation of the issue is unsuccessful
+- Command exits with return code `0` if issue's state update is successful .
+- Command exits with return code `1` if issue's state update is not successful.
 
 Running the command:
 
@@ -2252,7 +2252,7 @@ $ cocoa incident update-state \
   --git-api-url \
   --issue-url \
   --comment \
-  --to-state 
+  --to-state
 ```
 
 ## cocoa locker commands
@@ -2277,7 +2277,7 @@ Additionally, you can upload evidence and attachments to [Cloud Object Storage](
 ### cocoa locker asset add < URI >
 {: #locker-asset-add}
 
-Adds an asset to the evidence locker. If the asset exists, the asset is printed.
+Adds an asset to the evidence locker.  It displays the asset information if the specified asset exists.
 
 Options:
 
