@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024
-lastupdated: "2024-05-24"
+lastupdated: "2024-09-27"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -36,12 +36,12 @@ Follow the following steps to create a rollback trigger:
 
 A rollback pipeline takes in the following inputs as environment properties:
 
-| Environment properties | Description|
+| Environment properties | Description |
 |----------|---------|
 | `rollback-change-request-id` | The change request ID of the concluded deployment that you want to rollback against. This is a mandatory field. |
 | `rollback-limit` | The integer value specifies how many deployments back you can roll back. The default value is `1`, limiting rollback to the last completed deployment. |
 | `region` | Specifies the region of the rollback. |
-| `target-environment` | Specifies the target environment for the rollback. For example, stage or production. |
+| `target-environment` | Specifies the target environment for the rollback. For example, stage or production.|
 {: caption="Table 1. Types of environment properties" caption-side="bottom"}
 
 The following criteria must be met for a rollback to occur, otherwise the pipeline is terminated:
