@@ -103,7 +103,7 @@ The following commands show the scenario by using `git` commands:
       ```
       {: codeblock}
 
-   1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
+   1. Select the inventory state before reverting to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
         ```bash
            # /c/usr/devsecops/compliance-inventory (master)
@@ -165,6 +165,7 @@ The following commands show the scenario by using `git` commands:
       Branch 'master' set up to track remote branch 'master' from 'origin'.
      ```
      {: codeblock}
+
 
 
  1. Create a pull request for the rollback promotion pull request.
