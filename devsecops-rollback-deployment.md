@@ -153,8 +153,8 @@ To roll back the deployment, complete these steps:
 
 
 1. Create a pull request for the rollback promotion pull request.
-1. Review the pull request and merge the pull request.
-1. Trigger the **Manual CD** pipeline run within the CD Toolchain.
+1. Review the pull request and merge it.
+1. Trigger the **Manual CD** pipeline run in the CD Toolchain.
 
 
 Here's a summary of all  steps that the CD Pipeline follows for forced redeployment:
