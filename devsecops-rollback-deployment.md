@@ -70,6 +70,10 @@ A successful rollback pipeline deployment moves the `_latest` tag in the invento
 
 To indicate that the pipeline is performing a rollback, the Tekton environment property `PIPELINE_NAME` must be set to `cd-rollback-pipeline`. If you are writing custom branching logic, use the variable to indicate whether a CD pipeline is deploying new code or rolling back a deployment.
 
+ A tekton environment property `PIPELINE_NAME` is set to `cd-rollback-pipeline` to indicate whether a CD pipeline is getting deployed or performing a rollback. You can also use this property to write custom branching logic for rollback vs non-rollback.
+
+`PIPELINE_NAME`, a tekton environment property determines a CD pipeline deployment or rollback. The default value `cd-rollback-pipeline` indicates whether the CD pipeline is deploying or rolling back. Customize branching logic using this property.
+
 ## Rollback using raw GitOps
 {: #devsecops-rollback-deployment-gitops-raw}
 
