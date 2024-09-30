@@ -123,55 +123,49 @@ The following commands show the scenario by using `git` commands:
            ```
           {: codeblock}
 
+   1. Commit the new state of the inventory.
 
+      ```bash
+          # /c/usr/devsecops/compliance-inventory (master|REVERTING)
+          $ git commit -m "revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8"
+          [master af82538] revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
+          2 files changed, 19 insertions(+), 19 deletions(-)
+          rewrite compliance-app (94%)
+      ```
+      {: codeblock}
 
+    1. Push to the update to the master branch.
 
+        ```bash
+            # /c/usr/devsecops/compliance-inventory (master)
+            $ git push --set-upstream origin master
+            Enumerating objects: 7, done.
+            Counting objects: 100% (7/7), done.
+            Delta compression using up to 8 threads
+            Compressing objects: 100% (4/4), done.
+            Writing objects: 100% (4/4), 1.50 KiB | 766.00 KiB/s, done.
+           Total 4 (delta 2), reused 0 (delta 0)
+           To https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git
+             67cc8ba..af82538  master -> master
+          Branch 'master' set up to track remote branch 'master' from 'origin'.
+      ```
+      {: codeblock}
 
-
-
-* Commit the new state of the inventory.
-
-   ```bash
-     # /c/usr/devsecops/compliance-inventory (master|REVERTING)
-     $ git commit -m "revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8"
-      [master af82538] revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
-      2 files changed, 19 insertions(+), 19 deletions(-)
-      rewrite compliance-app (94%)
-    ```
-    {: codeblock}
-
-
-* Push to the update to the master branch.
-
-  ```bash
-     # /c/usr/devsecops/compliance-inventory (master)
-     $ git push --set-upstream origin master
-     Enumerating objects: 7, done.
-     Counting objects: 100% (7/7), done.
-     Delta compression using up to 8 threads
-     Compressing objects: 100% (4/4), done.
-     Writing objects: 100% (4/4), 1.50 KiB | 766.00 KiB/s, done.
-     Total 4 (delta 2), reused 0 (delta 0)
-     To https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git
-        67cc8ba..af82538  master -> master
-      Branch 'master' set up to track remote branch 'master' from 'origin'.
-   ```
-   {: codeblock}
-
-  ```bash
-      # /c/usr/devsecops/compliance-inventory (master)
-      $ git push --set-upstream origin master
-      Enumerating objects: 7, done.
-      Counting objects: 100% (7/7), done.
-      Delta compression using up to 8 threads
+      ```bash
+          # /c/usr/devsecops/compliance-inventory (master)
+          $ git push --set-upstream origin master
+          Enumerating objects: 7, done.
+          Counting objects: 100% (7/7), done.
+          Delta compression using up to 8 threads
       Compressing objects: 100% (4/4), done.
       Writing objects: 100% (4/4), 1.50 KiB | 766.00 KiB/s, done.
       Total 4 (delta 2), reused 0 (delta 0)
       To https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git
         67cc8ba..af82538  master -> master
       Branch 'master' set up to track remote branch 'master' from 'origin'.
-   ```
-   {: codeblock}
+     ```
+     {: codeblock}
+
 
  1. Create a pull request for the rollback promotion pull request.
  1. Review the pull request and merge the pull request.
