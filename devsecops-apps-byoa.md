@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2021, 2023
+  years: 2021, 2024
 lastupdated: "2023-09-29"
 
 keywords: DevSecOps, bring your own app, bring your own application, app, application, microservice
@@ -211,4 +211,5 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
     ```
     {: codeblock}
 
-    For more information about the stages, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+
+    For more information about the stages, see [custom scripts](docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).

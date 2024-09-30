@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2021, 2024
-lastupdated: "2024-01-17"
+lastupdated: "2024-09-27"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -40,19 +40,19 @@ Make sure that the dependencies are installed in the base image that uses this t
 
 The script `collect-evidence` requires the following parameters:
 
-- `--tool-type`  
+- `--tool-type`
    The ID of the tool that provides evidence data. For example:
    "owasp-zap-ui", "cra"
-- `--evidence-type`  
+- `--evidence-type`
    The ID of the evidence type. For example:
    `com.ibm.image_vulnerability_scan`, `com.ibm.unit_tests`
-- `--asset-key`  
+- `--asset-key`
    The key in pipelinectl assets. For the following commands
    `load_artifact <key>` or `load_repo <key>`
-- `--asset-type`  
+- `--asset-type`
    The asset type from pipelinectl and can be one of the following types:
    `repo`, `artifact`
-- `--status`  
+- `--status`
    The evidence status and can be one of the following:
    `success`, `pending`, `failure`
 - `--assets`
@@ -60,9 +60,9 @@ The script `collect-evidence` requires the following parameters:
 
 The following parameter is optional:
 
-- `--attachment`  
+- `--attachment`
    The file to be processed as a result and attached to the evidence. The parameter can be specified multiple times for multiple files.
-- `--meta`  
+- `--meta`
    Arbitrary metadata to be added to the evidence. The parameter accepts 'key=value' pairs and can be specified multiple times.
 -  `--additional-comment`
    The comment that is added to an issue if a pipeline has failed.
@@ -127,8 +127,12 @@ The current implementation currently supports the following tools (provided as t
 - `contrast-sast` Contrast Sast (Static Application security testing)
 - `detect-secrets` Detect Secrets
 - `sysdig` Sysdig Scan
+- `cyclonedx` CycloneDX format. Tool detection for issue management will be performed based on the CycloneDX metadata [here](https://cyclonedx.org/docs/1.4/json/#metadata_tools_items_name).
 
-If the `collect-evidence` script is called with a tool type that is not supported, the script doesn't attempt to process the attachments. Additionally, the issue handling is skipped, and the evidence collection is not stopped. 
+ CycloneDX metadata is
+ Tool detection for issue management
+
+If the `collect-evidence` script is called with a tool type that is not supported, the script doesn't attempt to process the attachments. Additionally, the issue handling is skipped, and the evidence collection is not stopped.
 
 If your script provides an attachment from a supported tool, but the attachment cannot be processed, the issue handling is skipped, and the evidence collection is not stopped.
 
@@ -171,9 +175,9 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
 
 **Required fields:**
 
-- `url`  
+- `url`
    The repository URL.
-- `commit`  
+- `commit`
    The commit SHA.
 
 #### `artifact` assets added by using the `save_artifact` command
@@ -183,18 +187,18 @@ Check the [command reference](/docs/devsecops?topic=devsecops-devsecops-pipeline
 
 **Required fields:**
 
-- `name`  
+- `name`
    The artifact name. For example, for an image include registry, namespace, and image (example: `us.icr.io/team-images/service`).
-- `digest`  
+- `digest`
    The artifact digest (example: `sha256:a2292ed2b82c7a51d7d180c3187dbb0f7cc9ab385a68484c4f117e994acd6192`).
 
-   
+
   **Changes required in save_artifact for non-images:** Collect evidence now supports all the asset types. For collect evidence to work on any asset
 type
- `save_artifact` should explicitly save the asset with `type` for example, zip  
+ `save_artifact` should explicitly save the asset with `type` for example, zip
 `save_artifact artifact-1 type=zip ...`.
  In collect evidence script, the `asset-type` should be artifact and the type is queried from the artifact. For this process to work, cocoa locker asset add was modified to add asset of any type. Once saved, the  collect evidence script can be called as below:
-    
+
   `collect-evidence --tool-type toolType --evidence-type  artifact --asset-key artifact-1 ...`
 
   Please refer to our sample application for sample implementation for  `deployment` type https://github.ibm.com/one-pipeline/hello-compliance-app
@@ -216,7 +220,7 @@ When the flag is enabled, ensure that your stage images contain `git` because th
 {: note}
 
 
-## Multiple assets in collect-evidence 
+## Multiple assets in collect-evidence
 {: #multi-asset-evidence-collection}
 
 By using collect-evidence, you can configure the simultaneous collection of evidence for multiple assets. You initiate evidence collection by using the `--assets` flag, which specifies multiple asset-key and asset-type pairs. For example, `input --assets asset-key1:asset-type1 --assets asset-key2:asset-type2`. If you choose this option, don't indicate asset-key and asset-type separately.
@@ -227,8 +231,3 @@ Remember these key points about the multi-asset collection:
 - By default, when you designate multiple assets, evidence processing follows the legacy flow. If you specify a single asset, evidence processing occurs through a flow that is specific to the tool or attachment.
 - In case of failure, issues are created per asset. These issues are closed upon successful rerun of evidence collection. Closure correlates with the assets that you specified.
 - A singular evidence file is generated, which features an ID that encompasses all combined assets.
-
-
-
-
-

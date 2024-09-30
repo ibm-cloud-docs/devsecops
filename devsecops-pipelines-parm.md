@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-09-03"
+lastupdated: "2024-09-25"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -281,8 +281,10 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`priority`](#pipeline-parm-priority)		|text		|The priority of the change request.	|Optional			| Unlocked | 
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			| Unlocked | 
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			| Unlocked | 
-|`region`		|text		|The target region where the app is deployed.	|Optional			| Unlocked | 
-|`rollback-enabled` |text |Flag to set whether inline rollback capability to be enabled or not. Default "0" |Optional | Unlocked | 
+|`region`		|text		|The target region where the app is deployed.	|Optional			| Unlocked |
+| `rollback-change-request-id` |text |Change Request ID of the concluded deployment to be rolled back against |Required for CD Rollback pipeline | Unlocked | 
+|`rollback-enabled` |text |Flag to set whether inline rollback capability to be enabled or not. Default "0" |Optional | Unlocked |
+|`rollback-limit` |text |integer number which indicates how many deployment backwards, the rollback can be performed. Default "1" |Optional |Unlocked |
 |`sbom-validation-collect-evidence`   |text   | Enable verifying the status of sbom validation scan in the CI pipeline. If this value is set to 1, then the status of sbom validation(success or failure) scan is CI is verified.  |Optional     | Unlocked | 
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source environment that the app is promoted from.	|Required			|Locked | 
 |[`summary-retry-attempts`](#pipeline-parm-summary-retry-attempts)		|text		|Set the maximum number of retries for the evidence summary upload. The default is `5`.  |Optional			|Unlocked | 

@@ -6,8 +6,6 @@ lastupdated: "2023-11-07"
 
 keywords: DevSecOps, evidence collection, generic asset, inventory, application, microservice
 
-subcollection: devsecops
-
 ---
 
 {{site.data.keyword.attribute-definition-list}}
@@ -24,7 +22,9 @@ Asset creation and evidence collection play a pivotal role in the Onepipeline ec
 
 In the context of DevSecOps, an asset is a fundamental entity that is subjected to rigorous testing and scanning. These assets encompass various forms such as existing Git commits in repositories to Docker images. An asset is a focal point of the evidence collection process, representing the object on which a scan or test has been conducted. Remarkably, DevSecOps's flexibility extends beyond traditional code and images, including abstract entities like pipeline runs or COS (Cloud Object Storage) buckets, as long as evidence can be gathered for them.
 
-[Asset Types](images/asset-types.png){: caption="Figure 1. Types of Assets" caption-side="bottom"}
+There are various type of asset types.
+
+![Asset types](images/asset-types.png "Types of Assets"){: caption="Figure 1. Types of assets." caption-side="bottom"}
 
 For optimal clarity, assets must be distinctly identified. Here are some examples:
 - Commit Asset: Comprising the repository and commit hash: https://repo.url/org/repo#<COMMIT-SHA>
@@ -71,51 +71,53 @@ For any other type of artifact you can choose a type which is a string that appr
 ## Steps to store the asset information
 {: #devsecops-store-asset}
 
-1.	[Use the save_repo command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo):
+1. [Use the save_repo command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo):
 
-Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
+    Use the following format to save the asset information for a commit in the repository. which is necessary for associating the build asset with the commit.
+
+   Examples:
+
+    ```bash
+    save_repo app-repo \
+    --url= https://github.ibm.com/org/my-app \
+    --path= my-app \
+    --commit=commit1 \
+       --branch=master \
+    --buildnumber=1
+    ```
+    {: codeblock}
+
+
+1. [Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the `save_artifact` command
 
 Examples:
 
-    ```save_repo app-repo \
-    url=https://github.ibm.com/org/my-app \
-    path=my-app \
-    commit=commit1 \
-    branch=master \
-    buildnumber=1
-    ```
-    {: codeblock}
+Use of `save_artifact` command for image asset:
 
-2.	[Use the Save_artifact command](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact) to store information for various asset types, such as image and deployment, by using the `save_artifact` command
+```bash
+save_artifact app-image \
+--type= image \
+--name= us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 \
+--digest= sha256:sha2561\
+--tags= mytag1 \
+--source= https://github.ibm.com/org/my-app/commit-1 \
+--signature= sign-1
+```
+{: codeblock}
 
-Examples:
+Use of `save_artifact` command for non-image asset:
 
-     Use of `save_artifact` command for image asset:
-
-    ```save_artifact app-image \
-    type=image \
-    name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
-    digest=sha256:sha2561\
-    tags=mytag1 \
-    source=https://github.ibm.com/org/my-app/commit-1 \
-    signature=sign-1
-    ```
-    {: codeblock}
+```bash
+save_artifact artifact-1 \
+--name= my-app_IKS_deployment \
+--type= deployment \
+--signature= sign2 \
+--deployment_type= IKS \
+--provenance= https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
+```
+{: codeblock}
 
 
-
-	Use of `save_artifact` command for non-image asset:
-
-    ``` save_artifact artifact-1 \
-    name=my-app_IKS_deployment \
-    type=deployment \
-    signature=sign2 \
-    deployment_type=IKS \
-    digest=sha256:sha2562\
-    provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml`
-
-    ```
-    {: codeblock}
 
 ## Steps to create inventory entry from the asset information
 {: #devsecops-inventory-asset-creation}
@@ -131,7 +133,7 @@ Use the [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#i
 |commit-sha|	The exact commit of the application version|	[string] [required]	|commit of the repo URL where this asset is built|
 |name|	The name of the application	|[string] [required]|	File name or basically the inventory entry for the asset|
 |build-number|	The build number of the build|	[string] [required]|	Build number of the asset created, used for the insights update|
-|type|	Type of the artifact: one among container image, virtual, image, file, package|	[string] [required]	| Type of the asset, should be same the type saved using the save_artifact command before the collect evidence call|
+|type|	Type of the artifact: one among container image, virtual, image, file, package|	[string] [required]	| Type of the asset, must be of the same type saved using the `save_artifact` command before the collect evidence call. |
 |app-artifacts|	To have the additional information of the asset	|[string] [optional]||
 |sha256|	The sha256 hash of the artifact|	[string] [required]|	used to define the path of the asset in the locker|
 |provenance	|The fully qualified URL where artifact is stored|	[string] [required]	||
@@ -186,7 +188,7 @@ Examples:
     --git-provider=github \
     --git-token-path=./inventory-token \
     --git-api-url=https://github.ibm.com/api/v3
-        ```
+    ```
     {: codeblock}
 
 ### Defining an Evidence in DevSecOps

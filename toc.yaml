@@ -110,6 +110,7 @@ toc:
           topics:
           - devsecops-issue-processing.md
           - devsecops-incident-issues.md
+          - devsecops-how-to-set-incident-assignees.md
           - devsecops-non-incident-issues.md
       - topicgroup:
           label: Managing change requests
@@ -191,7 +192,7 @@ toc:
       - topicgroup:
           label: Managing secrets in your toolchain
           topics:
-          - ddevsecops-managing-secrets-best-practices.md
+          - devsecops-toolchains-secrets.md
           - devsecops-managing-secrets-crn.md
       - devsecops-multiple-apps.md
       - devsecops-iam-permissions.md

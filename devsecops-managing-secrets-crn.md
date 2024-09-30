@@ -1,28 +1,20 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2023-06-29"
+  years: 2021, 2024
+lastupdated: "2024-02-23"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
-subcollection: devsecops
+subcollection: devsecops-working
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing secrets in your toolchains
-{: #cd-devsecops-toolchains-secrets-new}
+# Using secrets integrations in your toolchains
+{: #cd-devsecops-toolchains-secrets}
 
- Tool integrations in your CI and CD toolchains require secrets, for example- passwords, API keys, certificates, or other tokens. For example, an {{site.data.keyword.cloud}} API key performs basic pipeline tasks, such as logging in to {{site.data.keyword.cloud_notm}}. Similarly, the service ID API key writes evidence to the bucket in the Cloud Object Store instance.
-{: shortdesc}
-
-For security reasons, these secrets must not reveal a person's identity or account as people often have greater access permissions than the actual toolchain automation requirement. Affiliation with a person's identity or account would also violate the security principle of ["least privilege"](https://en.wikipedia.org/wiki/Principle_of_least_privilege){: external}. Also, people often change roles or even companies and their credentials must be removed which might break the toolchain automation. By using an identity that is affiliated specifically for automation purposes, it provides a separation of duties between automation and people who use the automation.
-
-Instead, the secrets that are used for non-{{site.data.keyword.cloud_notm}} resources (such as GitHub Enterprise) must be affiliated with a functional ID within your enterprise with only the appropriate access that is needed by the toolchains. Likewise, secrets for {{site.data.keyword.cloud_notm}} resources must be affiliated with an [IAM service ID API key](/docs/account?topic=account-serviceidapikeys) that is affiliated with an [IAM service ID](/docs/account?topic=account-serviceids). The IAM service ID access permissions need to be scoped to the least privilege required by the toolchains.
-
-Managing credentials like these must be done securely and in compliance with secret management best practices. In particular, this means vaulting the required secrets by using an approved in-boundary vault provider, such as {{site.data.keyword.secrets-manager_full}}, {{site.data.keyword.keymanagementservicelong}}, or [HashiCorp Vault](https://www.vaultproject.io){: external} and then linking your toolchain secrets to those resources.
 
 The secrets management capabilities that are provided in the toolchain setup and pipeline user interfaces enable selection of vaulted secrets by using secrets integrations for {{site.data.keyword.secrets-manager_full}}, {{site.data.keyword.keymanagementservicelong}}, or HashiCorp Vault. By using the Secrets Picker dialog, a toolchain or pipeline editor can select named secrets from a bound secrets integration that is either configured **by CRN** (Cloud Resource Name) or **by name**, that is then resolved by reference at run time within the toolchain and pipeline. After a secret is chosen, a CRN or canonical secret reference is injected into the corresponding toolchain or pipeline secure property where the format is either `crn:v1:...secret:<secret-guid>` if it's a Secrets Manager integration that is configured **by CRN**, or alternatively `{vault::integration-name.secret-name}` if it's a vault integration that uses any of the supported providers and configured **by name**.
 
@@ -38,13 +30,13 @@ In addition to manually selecting chosen secrets on a one-by-one basis from any 
 
 As previously described, you can configure {{site.data.keyword.secrets-manager_short}} to reference secrets **by CRN**. For more information, see [Cloud Resource Names (CRN)](/docs/account?topic=account-crn). This format allows for greater flexibility because you can reference secrets from an {{site.data.keyword.secrets-manager_short}} instance in a different account if the correct [authorization](https://cloud.ibm.com/iam/authorizations){: external} is in place. For more information, see [Configuring Secrets Manager](/docs/ContinuousDelivery?topic=ContinuousDelivery-secretsmanager).
 
-The secrets that are used in both CI and CD are outlined as follows:
-
 A `Hint` is a suggested default name that is automatically resolved against the first matching secret with the same name across any of the available **by name** secrets integrations that are bound to the toolchain.
 {: note}
 
 ## DevSecOps pipeline secrets
 {: #devsecops-pipeline-secrets}
+
+The secrets that are used in both CI and CD are outlined as follows:
 
 | Secret | Hint | Information |
 | -------|------|-------------|
@@ -68,7 +60,7 @@ If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` 
 {: note}
 
 ### Configuring the secrets stores
-{: #configure-secret-stores-new}
+{: #configure-secret-stores}
 
 With {{site.data.keyword.cloud_notm}}, you can choose from various secrets management and data protection offerings that help you protect your sensitive data and centralize your secrets. You can choose between the vault integrations depending on your requirements as explained in [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). This documentation provides information about prerequisites and how to use a list of prescribed secret names that are otherwise known as hints. By using hints in a template, a toolchain can be automatically populated with preconfigured secrets without any need to manually select them from various vault integrations that are attached to the toolchain.
 
@@ -80,16 +72,28 @@ The templates also come with a HashiCorp Vault tool integration like the followi
 
 ![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 2. HashiCorp Vault Tool Integration" caption-side="bottom"}
 
-
 To use HashiCorp Vault, you must provide the following information:
 
-* **Name**: A name for this tool integration. This name is displayed in the toolchain.
-* **Server URL**: The server URL for your HashiCorp Vault Instance. For example, `https://<vault-service>.<org>.com:8200`.
-* **Integration URL**: The URL that you want to navigate to when you click the HashiCorp Vault Integration tile.
-* **Secrets Path**: The mount path where your secrets are stored in your HashiCorp Vault Instance.
-* **Authentication Method**: The Authentication method for your HashiCorp Vault Instance. Use `AppRole`.
-* **Role ID**: Identifier that selects the AppRole against which the other credentials are evaluated.
-* **Secret ID**: Credential that is required by default for any login (with secret_id) and is intended to always be secret.
+Name
+:   A name for this tool integration. This name is displayed in the toolchain.
+
+Server URL
+:   The server URL for your HashiCorp Vault Instance. For example, `https://<vault-service>.<org>.com:8200`.
+
+Integration URL
+:   The URL that you want to navigate to when you click the HashiCorp Vault Integration tile.
+
+Secrets Path
+:   The mount path where your secrets are stored in your HashiCorp Vault Instance.
+
+Authentication Method
+:   The Authentication method for your HashiCorp Vault Instance. Use `AppRole`.
+
+Role ID
+:   Identifier that selects the AppRole against which the other credentials are evaluated.
+
+Secret ID
+:   Credential that is required by default for any login (with secret_id) and is intended to always be secret.
 
 The templates also come with an {{site.data.keyword.keymanagementservicefull}} tool integration:
 

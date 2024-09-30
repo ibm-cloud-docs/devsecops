@@ -1464,9 +1464,9 @@ Options for Git:
 
 | Option           | Description                                      | Value type | Required or default value |
 | ---------------- | ------------------------------------------------ | ---------- | ------------------------- |
-| artifact         | Artifact name. <br><br>If the artifact type is an image, use the following format: `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>`. <br><br>If entry type is not image, use a static name that is constant across all entry updates. Use `<static_name>` parameter to provide the statice name value.                                   | String | Required |
+| artifact         | Artifact name. <br><br>If the artifact type is an image, use the following format: `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>`. <br><br>If entry type is not an image, use a static name that is constant across all entry updates. Use `<static_name>` parameter to provide the static name value.                                   | String | Required |
 | version          | The version of the application.            | String | Required |
-| repository-url   | The URL pointing to the source code repository of the application (of github or GRIT/gitlab repos)               | String | Required |
+| repository-url   | The  application's source code repository URL (Github or GRIT/Gitlab)               | String | Required |
 | pipeline-run-id  | The id of the pipeline run.                       | String | Required |
 | commit-sha       | The commit of the application repository from which the artifact is built. <br> You must use a long format commit `sha` (40 character lowercase) | String | Required |
 | name             | The name of the application the artifact belongs to | String | Required |
@@ -1475,8 +1475,8 @@ Options for Git:
 | repo             | The name of the inventory repository.            | String | |
 | app-artifacts    | Arbitrary app content in JSON format             | String | |
 | type             | Type of the artifact. Use "image" for images. Use static values for generic type of artifacts such as deployment files, helm charts, etc.                             | String | Required |
-| sha256           | The sha256 hash of the artifact. <br> Use the format `sha256:<64 character hash>`                | String | Required |
-| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
+| `sha256 `          | The sha256 hash of the artifact. <br> Use the format `sha256:<64 character hash>`                | String | Required |
+| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, use the artifact name as this field's value.   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
 | git-provider*    | The Git version control service provider, either GitHub or GitLab | String* | "github" |

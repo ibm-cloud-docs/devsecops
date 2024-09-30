@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2023, 2024
-lastupdated: "2024-09-20"
+lastupdated: "2024-09-27"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# DevSecOps CLI 
+# DevSecOps CLI
 {: #cd-devsecops-cli}
 
 DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
@@ -44,7 +44,7 @@ Some commands use environment variables to get API Keys or to configure an optio
 Command-line options can take various types of input values, such as numbers, strings, Boolean values, arrays, and JSON objects. The options type is dependent upon the command that you specify. Use `cocoa <command> <subcommand> --help` to see the options types.
 {: tip}
 
-## Retrying failed API calls 
+## Retrying failed API calls
 {: #cd-devsecops-cli-api}
 
 The Cocoa CLI retries any API call that fails with a response status of `5xx` three times. You can override this behavior by providing following environment variables:
@@ -231,7 +231,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: codeblock}
-	
+
 Required Environment Variables for GitHub Enterprise:
 
 ```text
@@ -298,7 +298,7 @@ Options:
 --deployment-ready # readiness for deployment (choices: 'yes', 'no', default: 'yes')
 --type             # change request type, option: standard, emergency
 --provider         # (Optional) Change Management service provider (choices: 'servicenow', 'servicenow-v3', 'github-enterprise', 'gitlab' default: 'servicenow')
---pipeline-name    # (Optional) name of the pipeline used for identifying the pipeline 
+--pipeline-name    # (Optional) name of the pipeline used for identifying the pipeline
 --pipeline-version # (Optional) version of pipeline used (value must match regular expression [0-9.]+)
 ```
 {: screen}
@@ -365,7 +365,7 @@ GITHUB_CHANGE_MANAGEMENT_ORG=   # The owner of the repository (optional, when --
 GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name (optional, when --repo is not provided)
 ```
 {: screen}
-	
+
 Running the command:
 
 ```sh
@@ -434,7 +434,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -494,7 +494,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -552,7 +552,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -677,7 +677,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -734,7 +734,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -796,7 +796,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -850,7 +850,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -908,7 +908,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -970,7 +970,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -1028,7 +1028,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -1078,7 +1078,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -1132,7 +1132,7 @@ PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provid
 IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
 ```
 {: screen}
-	
+
 Required Environment Variables for GitHub Enterprise provider:
 
 ```text
@@ -1223,9 +1223,9 @@ $ cocoa evidence format-summary --input=raw-summary.json --output=formatted-summ
 {: #evidence-markdown-summary}
 
 Formats the evidence summary into a markdown format that can be fed as a GitHub pull request comment.
-	
+
 The input is a raw summary and can be in one of two formats:
-	
+
 * Summary in JSON format (output of the `cocoa evidence summarize` command).
 * Aggregated summary, which is a JSON array of individual app summaries.
 
@@ -1319,7 +1319,7 @@ $ cocoa evidence upload \
 CLI options can be also set from environment variables except for `backend`, `issue`, `log`, and `artifact`. Multiple issues or artifacts must be provided with multiple issue or artifact flags. For example:
 
 ```sh
- cocoa evidence upload --backend=git --artifact <url> <hash>  --artifact <url> <hash> --issue <issue-url> --issue <issue-url> --git-provider='github' 
+ cocoa evidence upload --backend=git --artifact <url> <hash>  --artifact <url> <hash> --issue <issue-url> --issue <issue-url> --git-provider='github'
 ```
 {: codeblock}
 
@@ -1565,7 +1565,7 @@ Options for Git:
 
 | Option           | Description                                      | Value type | Required or default value |
 | ---------------- | ------------------------------------------------ | ---------- | ------------------------- |
-| artifact         | Artifact name. <br><br>If entry type is image - the field should be of the format `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>` <br><br>If entry type is not image - it should be a static name that stays constant across entry updates (`<static_name>`).                                   | String | Required |
+| artifact         | Artifact name. <br><br>If the artifact type is an image, use the following format: `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>`. <br><br>If entry type is not an image, use a static name that is constant across all entry updates. Use `<static_name>` parameter to provide the static name value.                                   | String | Required |
 | version          | The version of the application.            | String | Required |
 | repository-url   | The URL pointing to the source code repository of the application (of github or GRIT/gitlab repos)               | String | Required |
 | pipeline-run-id  | The id of the pipeline run.                       | String | Required |
@@ -1577,9 +1577,10 @@ Options for Git:
 | app-artifacts    | Arbitrary app content in JSON format             | String | |
 | type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required |
 | sha256           | The sha256 hash of the artifact. <br>Should be of the format sha256:<64 character hash>                  | String | Required |
-| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance should be same as artifact field   | String | Required |
+| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance must be same as artifact field   | String | Required |
 | signature        | The artifact's signature                         | String | Required |
 | environment      | The name of the environment where the entry is added. | String | "master" |
+|from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| |
 | git-provider*    | The Git version control service provider. | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
@@ -1616,6 +1617,14 @@ $ cocoa inventory add \
   --pipeline-run-id=123123valid \
   --version=v4 \
   --name=chart
+```
+{: codeblock}
+
+```sh
+$ cocoa inventory add --from-file multi-artifacts.json \
+  --environment=environment  \
+  --org=test \
+  --repo=repository
 ```
 {: codeblock}
 
@@ -2101,7 +2110,7 @@ Usage:
 ```sh
 $ cocoa incident evaluate \
   <options> \
-  <filePath> 
+  <filePath>
 ```
 
 {: codeblock}
@@ -2177,6 +2186,77 @@ $ cocoa incident evaluate \
 
 {: codeblock}
 
+## cocoa incident update-state
+{: #incident-update-state}
+
+Update the incident issue state to `open` ot `close` based on the current status of the specified incident issue URL.
+
+Code snippet:
+
+```sh
+$ cocoa incident update-state \
+  <options>
+```
+{: codeblock}
+
+Options:
+
+Specify the following optional variables and values to provide more details about your cooca incident issue.
+
+```text
+--org             # The incident issue repo org
+--repo            # The incident issue repo name
+--git-provider    # Git service provider [github, gitlab] Default is "github"
+--git-token-path  # (Optional) Github Token's path
+--git-api-url     # (Optional) Github API url
+--issue-url       # Issue URL whose state is to be updated
+--to-state        # target state for the issue to be updated [choices: "open", "close"]
+--comment         # (Optional) Comment to be added to the issue being updated
+--update-exempt   # (Optional) Flag to update state of exempted issues, default: false
+```
+{: screen}
+
+Required Environment Variables:
+
+You must provide the following environment variables and their values if you did not use `--org` and `--repo` optional variables earlier.
+
+```text
+INCIDENT_REPO_ORG=        # Must be used if --org optional variable is not used.
+INCIDENT_REPO_NAME=       # Must be used if ---repo optional variable is not used.
+```
+{: screen}
+
+If your `git-provider` is `github`, use the following required environment variable:
+
+```text
+GHE_TOKEN=                # Github Enterprise API Token (Optional if you are using --git-token-path)
+GH_URL=                   # Github API url (Optional if you are using --git-api-url)
+```
+{: screen}
+
+ You can also use optional variables `--git-token-path` and `--git-api-url` to provide the Github's token path and API URL values. Optional variables have higher precendece when both   are provided, `--git-token-path` and `--git-api-url` take precedence.
+{: tip}
+
+
+Return values:
+
+- Command exits with return code `0` if issue's state update is successful .
+- Command exits with return code `1` if issue's state update is not successful.
+
+Running the command:
+
+```sh
+$ cocoa incident update-state \
+  --org \
+  --repo \
+  --git-provider \
+  --git-token-path \
+  --git-api-url \
+  --issue-url \
+  --comment \
+  --to-state
+```
+
 ## cocoa locker commands
 {: #locker-commands}
 
@@ -2199,7 +2279,7 @@ Additionally, you can upload evidence and attachments to [Cloud Object Storage](
 ### cocoa locker asset add < URI >
 {: #locker-asset-add}
 
-Adds an asset to the evidence locker. If the asset exists, the asset is printed.
+Adds an asset to the evidence locker.  It displays the asset information if the specified asset exists.
 
 Options:
 
@@ -2210,7 +2290,7 @@ Options:
 --version          # Show version number
 --format           # Output format ("id", "json", default: "id")
 --git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github API url
 --related          # The ID of a related asset (default: [])
 --date             # Asset creation date
@@ -2315,7 +2395,7 @@ Running the command to add a release:
 $ cocoa locker asset add release:my-app@v1.2.3 \
                          --type generic \
                          --date 2021-06-01T12:00:00 \
-                         --related docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777 
+                         --related docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777
 ```
 {: codeblock}
 
@@ -2339,7 +2419,7 @@ Options:
 --type             # Type of the asset
 --version          # Show version number
 --git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github API url
 --format           # Output format ("id", "json", default: "id")
 ```
@@ -2446,12 +2526,12 @@ Options:
 
 ```text
 --scope                   # (Required) Pipeline run ID of the CI piepline where the asset is built
---environment             # (Required) Name of the environment from which evidences are fetched, if the `service-environment` is `pre_prod`       
+--environment             # (Required) Name of the environment from which evidences are fetched, if the `service-environment` is `pre_prod`
                             This value must be the same as the `target-environment`. Or, if `service-environment` is `prod`, then this value must be the same as the `source-environment`
---service-environment     # Service environment of the asset get summary in deployed environment 
+--service-environment     # Service environment of the asset get summary in deployed environment
                             (choices: 'pre_prod', 'dev', 'prod',  default: 'pre_prod')
---latest                  # Fetches the latest evidence summary of the asset for the `service-environment`. 
-                            The summary of the scope passed-in using `--scope` will be excluded. Currently supported for `dev` environment only.                         
+--latest                  # Fetches the latest evidence summary of the asset for the `service-environment`.
+                            The summary of the scope passed-in using `--scope` will be excluded. Currently supported for `dev` environment only.
 ```
 {: screen}
 
@@ -2489,7 +2569,7 @@ Options:
 --type             # Type of the asset
 --version          # Show version number
 --git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github API url
 --format           # Output format ("id", "json", default: "id")
 ```
@@ -2643,7 +2723,7 @@ Options:
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --git-provider     # Git service provider ("github")
 --version          # Show version number
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github API url
 --format           # Output format ("json", default: "json")
 ```
@@ -2708,7 +2788,7 @@ Optional flags:
    - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
 - `--dry-run`: Has an effect when combined with `--check-immutable-storage`. If used, `com.ibm.immutable_storage` evidence is only appended to the summary but it does not get uploaded to the evidence locker.
 - `--clone-dir`: An optional parameter to determine the clone path of Evidence Repository, by default it will clone the repo /tmp directory
-- `--initialized`: Optional flag which assume the evidence locker is already cloned in the provided location `--clone-dir` or `/tmp/`. 
+- `--initialized`: Optional flag which assume the evidence locker is already cloned in the provided location `--clone-dir` or `/tmp/`.
 - `--evidences-path`: To create a summary from the local evidences which are stroed in a cache, this field is used to rpovide the path of the file where all the evidences are present in the array.
 
 Run the command:
@@ -2746,7 +2826,7 @@ Options:
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --git-provider     # Git service provider ("github")
 --version          # Show version number
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github API url
 ```
 {: screen}
@@ -2824,7 +2904,7 @@ Options:
 --org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
 --repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from 
+--git-token-path   # Git token path to read the secret from
 --git-api-url      # Github API URL
 --config-path      # (required) use this path to read the config file of all the required evidence check
 --summary-path     # (required) use this path to read the summary file of all the evidences
@@ -2862,13 +2942,13 @@ COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket 
 Options:
 
 ```text
-  --version         # Show version number                                
-  --help            # Show help                                          
-  --git-provider    # Git provider of the evidence locker ("github", "gitlab") 
-  --org             # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`            
-  --repo            # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`              
-  --git-token-path  # Git token path to read the secret from              
-  --git-api-url     # Git API URL                                         
+  --version         # Show version number
+  --help            # Show help
+  --git-provider    # Git provider of the evidence locker ("github", "gitlab")
+  --org             # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
+  --repo            # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
+  --git-token-path  # Git token path to read the secret from
+  --git-api-url     # Git API URL
   --evidences-path  # (Required) Use this path to read the evidences to be published
   --commit-message  # (Optional) Commit message suffix to be used for the commit to the git repository
 ```
@@ -3030,7 +3110,7 @@ Options:
 --type             	# (Optional) The type (issue or pr), default is issue
 --org               	# The git repo org
 --repo              	# The git repo name
---git-provider     	# (Optional) Git service provider [github] 
+--git-provider     	# (Optional) Git service provider [github]
 --git-token-path    	# (Optional) Github Token's path
 --git-api-url       	# (Optional) Github API url
 ```
