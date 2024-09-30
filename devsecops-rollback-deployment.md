@@ -73,7 +73,7 @@ To indicate that the pipeline is performing a rollback, the Tekton environment p
 ## Rollback using raw GitOps
 {: #devsecops-rollback-deployment-gitops-raw}
 
-You can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment.
+ Use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment.
 {: shortdesc}
 
 To roll back the deployment, complete these steps:
@@ -84,11 +84,9 @@ To roll back the deployment, complete these steps:
 
 The following commands show the scenario by using `git` commands:
 
-*  List the commits and tags to identify the commit ID (version) to roll back to. as the latest stable deployment.
+   1. List the commits and tags to identify the commit ID (version) to roll back to. as the latest stable deployment.
 
-
-
-    ```bash
+       ```bash
           # /c/usr/devsecops/compliance-inventory (master)
           $ git show-ref --tags
           09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/1
@@ -102,36 +100,34 @@ The following commands show the scenario by using `git` commands:
           1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/10
           d9dd5d8553889ef24dff0678a3fcbae8aed3259b refs/tags/11
           1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
-    ```
-    {: codeblock}
+      ```
+      {: codeblock}
+
+   1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
+
+        ```bash
+           # /c/usr/devsecops/compliance-inventory (master)
+           $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
+           67cc8babdff3e09c1f0e632f897798c1b5424f38
+           6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
+           22a575d48008299116ea426bdac45417d9df6238
+           cb6f4d53c17f0c2554c039708989c403eb0ead18
+      ```
+      {: codeblock}
+
+   1. Revert the inventory state to `refs/tags/8`.
+
+        ```bash
+            # /c/usr/devsecops/compliance-inventory (master)
+            $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
+           ```
+          {: codeblock}
 
 
 
 
 
-* Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
-
-    ```bash
-        # /c/usr/devsecops/compliance-inventory (master)
-         $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
-         67cc8babdff3e09c1f0e632f897798c1b5424f38
-         6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
-         22a575d48008299116ea426bdac45417d9df6238
-         cb6f4d53c17f0c2554c039708989c403eb0ead18
-    ```
-    {: codeblock}
-
-
-* Revert the inventory state to `refs/tags/8`.
-
-
-
-   ```bash
-       # /c/usr/devsecops/compliance-inventory (master)
-       $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
-    ```
-    {: codeblock}
 
 * Commit the new state of the inventory.
 
