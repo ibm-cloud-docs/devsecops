@@ -15,11 +15,11 @@ subcollection: devsecops
 # Rolling back a deployment
 {: #devsecops-rollback-deployment}
 
- In DevSecOps, use either of the following methods to roll back a deployment:
+ In DevSecOps, use either of the following methods to roll back a deployment using:
 
- 1. Rollback trigger by using rollback listener.
+ 1. Rollback trigger.
 
- 1. Rollback by using raw GitOps
+ 1. Raw GitOps
 
 ## Rollback Trigger
 {: #devsecops-rollback-deployment-trigger}
