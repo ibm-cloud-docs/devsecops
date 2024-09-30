@@ -87,43 +87,51 @@ The following commands show the scenario by using `git` commands:
 1. List the commits and tags to identify the commit ID (version) to roll back to. as the latest stable deployment.
 
 
-```bash
-     # /c/usr/devsecops/compliance-inventory (master)
-     $ git show-ref --tags
-      09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/1
-      09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/2
-      09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/3
-      0cc6ddd7dafffdc5a955a640e678633c2710b174 refs/tags/4
-      0cc6ddd7dafffdc5a955a640e678633c2710b174 refs/tags/5
-      0cc6ddd7dafffdc5a955a640e678633c2710b174 refs/tags/6
-      83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8 refs/tags/8
-      0019d75d466bbdaba02ea979f3e094784a10b558 refs/tags/9
-      1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/10
-      d9dd5d8553889ef24dff0678a3fcbae8aed3259b refs/tags/11
-      1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
-```
+
+    ```bash
+          # /c/usr/devsecops/compliance-inventory (master)
+          $ git show-ref --tags
+          09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/1
+          09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/2
+          09ce370c549a8313993ee143cbc9abc3127584c8 refs/tags/3
+          0cc6ddd7dafffdc5a955a640e678633c2710b174 refs/tags/4
+          0cc6ddd7dafffdc5a955a640e678633c2710b174 refs/tags/5
+          0cc6ddd7dafffdc5a955a640e678633c2710b174 refs/tags/6
+          83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8 refs/tags/8
+          0019d75d466bbdaba02ea979f3e094784a10b558 refs/tags/9
+          1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/10
+          d9dd5d8553889ef24dff0678a3fcbae8aed3259b refs/tags/11
+          1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
+    ```
+    {: codeblock}
+
+
+
+
 
 1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
 
-```bash
-     # /c/usr/devsecops/compliance-inventory (master)
-     $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
-      67cc8babdff3e09c1f0e632f897798c1b5424f38
-      6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
-      22a575d48008299116ea426bdac45417d9df6238
-      cb6f4d53c17f0c2554c039708989c403eb0ead18
-```
+    ```bash
+        # /c/usr/devsecops/compliance-inventory (master)
+         $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
+         67cc8babdff3e09c1f0e632f897798c1b5424f38
+         6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
+         22a575d48008299116ea426bdac45417d9df6238
+         cb6f4d53c17f0c2554c039708989c403eb0ead18
+    ```
+    {: codeblock}
 
 
 1. Revert the inventory state to `refs/tags/8`.
 
 
 
-```bash
-     # /c/usr/devsecops/compliance-inventory (master)
-     $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
-```
+   ```bash
+       # /c/usr/devsecops/compliance-inventory (master)
+       $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
+    ```
+    {: codeblock}
 
 1. Commit the new state of the inventory.
 
@@ -154,9 +162,9 @@ The following commands show the scenario by using `git` commands:
    ```
    {: codeblock}
 
-```bash
-    # /c/usr/devsecops/compliance-inventory (master)
-    $ git push --set-upstream origin master
+  ```bash
+      # /c/usr/devsecops/compliance-inventory (master)
+      $ git push --set-upstream origin master
       Enumerating objects: 7, done.
       Counting objects: 100% (7/7), done.
       Delta compression using up to 8 threads
