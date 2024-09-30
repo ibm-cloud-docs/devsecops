@@ -64,7 +64,7 @@ The rollback pipeline contains the following stages:
 
 A rollback pipeline run uses information from the specified rollback change request to create a new change request.
 
-To reflect current compliance, the pipeline reopens issues linked to the previous rollback. A list of these issues is attached to the Change Request. Original due dates remain unchanged.
+To reflect current compliance, the pipeline reopens issues linked to the previous rollback. A list of these issues is attached to the change request. Original due dates remain unchanged.
 
 A successful rollback pipeline deployment moves the `_latest` tag in the inventory to a previous commit.
 
