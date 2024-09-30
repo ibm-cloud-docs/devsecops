@@ -110,6 +110,7 @@ toc:
           topics:
           - devsecops-issue-processing.md
           - devsecops-incident-issues.md
+          - devsecops-how-to-set-incident-assignees.md
           - devsecops-non-incident-issues.md
       - topicgroup:
           label: Managing change requests

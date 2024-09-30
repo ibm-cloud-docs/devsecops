@@ -55,14 +55,14 @@ The following criteria must be met for a rollback to occur, otherwise the pipeli
 
 The rollback pipeline contains the following stages:
 
-1. prod-rollback-start
-2. prod-setup
-3. prod-rollback-change-request
-4. prod-deployment
-5. prod-acceptance-tests
-6. prod-rollback-finish
+ * prod-rollback-start
+ *  prod-setup
+ * prod-rollback-change-request
+ * prod-deployment
+ * prod-acceptance-tests
+ * prod-rollback-finish
 
-A rollback pipeline run creates a new Change Request by using information from the provided Change Request against which the rollback is happening.
+A rollback pipeline run uses information from the specified rollback changed request to create a new change request.
 
 After deployment and acceptance testing, the pipeline reopens issues that are related to the previous rollback to reflect the current compliance status. Also, the candidate list of issues to be reopened after a rollback is captured as an attachment in the Change Request for further reference. Due dates, if there were any, remains unchanged from the original schedule.
 
@@ -70,10 +70,10 @@ A successful rollback pipeline run concludes the deployment by moving the `_late
 
 A tekton environment property `PIPELINE_NAME` is set to `cd-rollback-pipeline` to indicate whether a CD pipeline is getting deployed or performing a rollback. You can also use this property to write custom branching logic for rollback vs non-rollback.
 
-## Classical method, by using raw GitOps
+## Rollback using raw GitOps
 {: #devsecops-rollback-deployment-gitops-raw}
 
-You can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment (for example, stage or prod).
+You can use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment.
 {: shortdesc}
 
 To roll back the deployment, complete these steps:
@@ -105,6 +105,7 @@ The following commands show the scenario by using `git` commands:
 
 1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
+
 ```bash
      # /c/usr/devsecops/compliance-inventory (master)
      $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
@@ -114,7 +115,10 @@ The following commands show the scenario by using `git` commands:
       cb6f4d53c17f0c2554c039708989c403eb0ead18
 ```
 
+
 1. Revert the inventory state to `refs/tags/8`.
+
+
 
 ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -123,15 +127,32 @@ The following commands show the scenario by using `git` commands:
 
 1. Commit the new state of the inventory.
 
-```bash
+   ```bash
      # /c/usr/devsecops/compliance-inventory (master|REVERTING)
      $ git commit -m "revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8"
       [master af82538] revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
       2 files changed, 19 insertions(+), 19 deletions(-)
       rewrite compliance-app (94%)
-```
+    ```
+    {: codeblock}
+
 
 1. Push to the update to the master branch.
+
+  ```bash
+     # /c/usr/devsecops/compliance-inventory (master)
+     $ git push --set-upstream origin master
+     Enumerating objects: 7, done.
+     Counting objects: 100% (7/7), done.
+     Delta compression using up to 8 threads
+     Compressing objects: 100% (4/4), done.
+     Writing objects: 100% (4/4), 1.50 KiB | 766.00 KiB/s, done.
+     Total 4 (delta 2), reused 0 (delta 0)
+     To https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git
+        67cc8ba..af82538  master -> master
+      Branch 'master' set up to track remote branch 'master' from 'origin'.
+   ```
+   {: codeblock}
 
 ```bash
     # /c/usr/devsecops/compliance-inventory (master)
@@ -146,14 +167,16 @@ The following commands show the scenario by using `git` commands:
         67cc8ba..af82538  master -> master
       Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
+{: codeblock}
 
-1. Create a pull request for the rollback promotion pull request.
-1. Review the pull request and merge the pull request.
-1. Trigger the **Manual CD** pipeline run within the CD Toolchain.
+ 1. Create a pull request for the rollback promotion pull request.
+ 1. Review the pull request and merge the pull request.
+ 1. Trigger the **Manual CD** pipeline run within the CD Toolchain.
 
-The summary of steps that the CD Pipeline follows for forced redeployment include:
 
-1. The CD Pipeline starts and tags the current commit with the pipeline run ID.
-2. The pipeline picks up the content of the corresponding environment branch from that tag.
-3. The pipeline calculates the deployment delta between the current commit and the contents of the `<target-environment>_latest` tag.
-4. A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you work with.
+Here's a summary of all  steps that the CD Pipeline follows for forced redeployment:
+
+* The CD Pipeline starts and tags the current commit with the pipeline run ID.
+* The pipeline picks up the content of the corresponding environment branch from that tag.
+* The pipeline calculates the deployment delta between the current commit and the contents of the `<target-environment>_latest` tag.
+* A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you work with.
