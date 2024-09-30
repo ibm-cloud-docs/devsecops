@@ -66,7 +66,7 @@ A rollback pipeline run uses information from the specified rollback changed req
 
 After deployment and acceptance testing, the pipeline reopens issues that are related to the previous rollback to reflect the current compliance status. Also, the candidate list of issues to be reopened after a rollback is captured as an attachment in the Change Request for further reference. Due dates, if there were any, remains unchanged from the original schedule.
 
-A successful rollback pipeline run stops the deployment by moving the `_latest` tag in the inventory backwards to the commit in the past against, which the rollback just happened.
+A successful rollback pipeline moves the  `_latest` tag in the inventory to a previous commit.
 
 To indicate that the pipeline is performing a rollback, the Tekton environment property `PIPELINE_NAME` should be set to `cd-rollback-pipeline`. If you are writing custom branching logic, you can use the variable to indicate whether a CD pipeline is deploying new code or rolling back a deployment.
 
@@ -84,7 +84,7 @@ To roll back the deployment, complete these steps:
 
 The following commands show the scenario by using `git` commands:
 
-1. List the commits and tags to identify the commit ID (version) to roll back to. as the latest stable deployment.
+*  List the commits and tags to identify the commit ID (version) to roll back to. as the latest stable deployment.
 
 
 
@@ -109,7 +109,7 @@ The following commands show the scenario by using `git` commands:
 
 
 
-1. Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
+* Select the inventory state to revert to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
 
     ```bash
@@ -123,7 +123,7 @@ The following commands show the scenario by using `git` commands:
     {: codeblock}
 
 
-1. Revert the inventory state to `refs/tags/8`.
+* Revert the inventory state to `refs/tags/8`.
 
 
 
@@ -133,7 +133,7 @@ The following commands show the scenario by using `git` commands:
     ```
     {: codeblock}
 
-1. Commit the new state of the inventory.
+* Commit the new state of the inventory.
 
    ```bash
      # /c/usr/devsecops/compliance-inventory (master|REVERTING)
@@ -145,7 +145,7 @@ The following commands show the scenario by using `git` commands:
     {: codeblock}
 
 
-1. Push to the update to the master branch.
+* Push to the update to the master branch.
 
   ```bash
      # /c/usr/devsecops/compliance-inventory (master)
@@ -174,8 +174,8 @@ The following commands show the scenario by using `git` commands:
       To https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git
         67cc8ba..af82538  master -> master
       Branch 'master' set up to track remote branch 'master' from 'origin'.
-```
-{: codeblock}
+   ```
+   {: codeblock}
 
  1. Create a pull request for the rollback promotion pull request.
  1. Review the pull request and merge the pull request.
