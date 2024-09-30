@@ -103,7 +103,7 @@ To roll back the deployment, complete these steps:
           ```
           {: codeblock}
 
-       1. Select the inventory state before reverting to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
+     1. Select the inventory state before reverting to `refs/tags/8`. The following command lists all the versions or commits between the current state (`refs/tags/prod_latest`) and the last known good state (`refs/tags/8`).
 
           ```bash
               # /c/usr/devsecops/compliance-inventory (master)
@@ -115,7 +115,7 @@ To roll back the deployment, complete these steps:
           ```
            {: codeblock}
 
-      1. Revert the inventory state to `refs/tags/8`.
+     1. Revert the inventory state to `refs/tags/8`.
 
           ```bash
               # /c/usr/devsecops/compliance-inventory (master)
@@ -123,7 +123,7 @@ To roll back the deployment, complete these steps:
           ```
           {: codeblock}
 
-      1. Commit the new state of the inventory.
+     1. Commit the new state of the inventory.
 
           ```bash
               # /c/usr/devsecops/compliance-inventory (master|REVERTING)
@@ -134,7 +134,7 @@ To roll back the deployment, complete these steps:
           ```
           {: codeblock}
 
-      1. Push to the update to the master branch.
+     1. Push to the update to the master branch.
 
           ```bash
               # /c/usr/devsecops/compliance-inventory (master)
@@ -150,8 +150,6 @@ To roll back the deployment, complete these steps:
               Branch 'master' set up to track remote branch 'master' from 'origin'.
           ```
           {: codeblock}
-
-
 
 
 1. Create a pull request for the rollback promotion pull request.
