@@ -66,9 +66,9 @@ A rollback pipeline run uses information from the specified rollback changed req
 
 After deployment and acceptance testing, the pipeline reopens issues that are related to the previous rollback to reflect the current compliance status. Also, the candidate list of issues to be reopened after a rollback is captured as an attachment in the Change Request for further reference. Due dates, if there were any, remains unchanged from the original schedule.
 
-A successful rollback pipeline run concludes the deployment by moving the `_latest` tag in the inventory backwards to the commit in the past against, which the rollback just happened.
+A successful rollback pipeline run stops the deployment by moving the `_latest` tag in the inventory backwards to the commit in the past against, which the rollback just happened.
 
-A tekton environment property `PIPELINE_NAME` is set to `cd-rollback-pipeline` to indicate whether a CD pipeline is getting deployed or performing a rollback. You can also use this property to write custom branching logic for rollback vs non-rollback.
+To indicate that the pipeline is performing a rollback, the Tekton environment property `PIPELINE_NAME` should be set to `cd-rollback-pipeline`. If you are writing custom branching logic, you can use the variable to indicate whether a CD pipeline is deploying new code or rolling back a deployment.
 
 ## Rollback using raw GitOps
 {: #devsecops-rollback-deployment-gitops-raw}
