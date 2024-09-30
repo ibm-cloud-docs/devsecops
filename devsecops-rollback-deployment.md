@@ -84,7 +84,7 @@ To roll back the deployment, complete these steps:
 
    The following commands show the scenario by using `git` commands:
 
-     1. List the commits and tags to identify the commit ID (version) to roll back to. as the latest stable deployment.
+     1.  To roll back to the latest stable deployment, list commits and tags to find the corresponding commit ID.
 
          ```bash
              # /c/usr/devsecops/compliance-inventory (master)
@@ -134,7 +134,7 @@ To roll back the deployment, complete these steps:
           ```
           {: codeblock}
 
-     1. Push to the update to the master branch.
+     1. Push the update to the master branch.
 
           ```bash
               # /c/usr/devsecops/compliance-inventory (master)
