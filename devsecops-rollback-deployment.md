@@ -17,7 +17,7 @@ subcollection: devsecops
 
  In DevSecOps, use either of the following methods to roll back a deployment using:
 
- 1. Rollback trigger.
+ 1. Rollback trigger
 
  1. Raw GitOps
 
@@ -159,7 +159,7 @@ To roll back the deployment, complete these steps:
 
 Here's a summary of all  steps that the CD Pipeline follows for forced redeployment:
 
-* The CD Pipeline starts and tags the current commit with the pipeline run ID.
-* The pipeline picks up the content of the corresponding environment branch from that tag.
+* The CD Pipeline starts and tags the current commit to the pipeline run ID.
+* The pipeline picks up the content of the corresponding environment branch from the specified tag.
 * The pipeline calculates the deployment delta between the current commit and the contents of the `<target-environment>_latest` tag.
-* A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you work with.
+* The `<target-environment>_latest` tag is added to the current commit upon successful deployment."
