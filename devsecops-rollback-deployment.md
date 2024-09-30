@@ -162,4 +162,4 @@ Here's a summary of all  steps that the CD Pipeline follows for forced redeploym
 * The CD Pipeline starts and tags the current commit to the pipeline run ID.
 * The pipeline picks up the content of the corresponding environment branch from the specified tag.
 * The pipeline calculates the deployment delta between the current commit and the contents of the `<target-environment>_latest` tag.
-* The `<target-environment>_latest` tag is added to the current commit upon successful deployment."
+* The `<target-environment>_latest` tag is added to the current commit upon successful deployment.
