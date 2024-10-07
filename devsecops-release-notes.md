@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-09-11"
+lastupdated: "2024-09-30"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -27,7 +27,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #devsecops-open-v10.18.1-open-v9.37.0}
 
 Bug fix release for `open-v10`
-:   This release has bug fixes only
+:   This release has bug fixes only.
 
 ### Updates for DevSecOps version - open-v9.37.0 and open-v10.18.0
 {: #devsecops-open-v10.18.0-open-v9.37.0}
@@ -36,7 +36,7 @@ Transition to Cloud Object Storage(COS) as evidence locker
 :   `devsecops` started transition to Cloud Object Storage(COS) as primary evidence locker. Also sends slack notifications informing users to migrate to COS as primary evidence locker.
 
 `yq` upgrade
-:   `devsecops` now makes `yq` version 3 and version 4 as `yq3` and `yq4` respectively. Version 3 will be removed in future
+:   `devsecops` now creates `yq` version 3 and version 4 as `yq3` and `yq4` respectively.
 
 Reuse of evidences in pipeline
 :   It is now possible to reuse evidences from older pipeline runs to current run. See [Enable evidence collection in PR pipeline](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection) for more information
