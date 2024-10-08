@@ -33,9 +33,10 @@ Before you can start gathering evidence, be sure that you have the following pre
 ## Viewing baseline configuration details in Git Repos and Issue Tracking
 {: #gather-evidence-baseline-config-gl}
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) **> DevOps > Toolchains**, and select the CI toolchain for which you want to provide evidence.
-2. In the **Repositories** section on the **Overview** tab, click the link that is associated with `compliance-inventory`. The associated repository opens.
-3. Take the following screen captures:
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**. 
+2. Select the CI toolchain for which you want to provide evidence.
+3. In the **Repositories** section on the **Overview** tab, click the link that is associated with `compliance-inventory`. The associated repository opens.
+4. Take the following screen captures:
 
    * The repository root
       ![The image shows an example of the screen capture that a user might provide to an auditor when you gather evidence for an audit.](../images/Git Repos and Issue Tracking-root.png){: caption="Figure. Example screen capture" caption-side="bottom"}

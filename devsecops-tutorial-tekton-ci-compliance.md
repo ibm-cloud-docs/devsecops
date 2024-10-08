@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2024-03-27"
+  years: 2021, 2024
+lastupdated: "2024-10-08"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -44,11 +44,10 @@ With this tutorial, you can set up the Tekton continuous integration (CI) pipeli
 
 The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the toolchain setup and create processes in a logical order. A progress indicator shows the steps to complete the configuration. Follow the steps to access the template for the CI toolchain.
 
-1. Access the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/).
-2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**.
-3. On the Toolchains page, click **Create toolchain**.
-4. Check **Infrastructure as Code**.
-5. Click **CI - Develop secure infrastructure as code with DevSecOps practices** tile.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
+2. On the Toolchains page, click **Create toolchain**.
+3. Check **Infrastructure as Code**.
+4. Click **CI - Develop secure infrastructure as code with DevSecOps practices** tile.
 
 ## Set up the CI toolchain settings
 {: #tutorial-tekton-ci-options}

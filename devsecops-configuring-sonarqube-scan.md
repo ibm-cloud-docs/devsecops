@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-05-19"
+  years: 2015, 2024
+lastupdated: "2024-10-08"
 
-keywords: tool integrations, IBM Cloud Public, Sonarqube
+keywords: tool integrations, Sonarqube
 
 subcollection: devsecops
 
@@ -20,7 +20,7 @@ SonarQube provides an overview of the overall health and quality of your source 
 
 Configure SonarQube to continuously analyze and measure the quality of your source code:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon ![Hamburger icon](images/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click the toolchain to open its Overview page. Alternatively, on your app's Overview page, on the Continuous delivery card, click **View toolchain**. Then, click **Overview**.
+1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon ![Hamburger icon](images/icon_hamburger.svg) > **Platform Automation** > **Toolchains**. On the Toolchains page, click the toolchain to open its Overview page. Alternatively, on your app's Overview page, on the Continuous delivery card, click **View toolchain**. Then, click **Overview**.
 
    a. Click **Add a Tool**.
 

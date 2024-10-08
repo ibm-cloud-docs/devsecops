@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-03-29"
+lastupdated: "2024-10-08"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -44,7 +44,7 @@ Make sure that the following prerequisites are completed. You might reuse the re
 
 This tutorial uses a staging environment as an example to configure and showcase the CC toolchain. Follow the steps to access the template for the CC toolchain.
 
-1. In the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg), and select **DevOps**.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
 3. From the Toolchains page, click **Create toolchain**.
 4. From the Create a Toolchain page, click **CC - Keep your app continuously Compliant with DevSecOps practices** tile.
 

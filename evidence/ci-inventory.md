@@ -1,7 +1,7 @@
 
 copyright:
   years:  2024, 2024
-lastupdated: "2024-08-07"
+lastupdated: "2024-10-08"
 
 subcollection: devsecops
 
@@ -27,7 +27,7 @@ Before you can start gathering evidence, be sure that you have the following pre
 
 If your auditor requests proof of change logs, you can use the following steps to create a screen capture of your configuration.
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) **> DevOps > Toolchains**, and select the toolchain for which you want to provide evidence.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the toolchain for which you want to provide evidence.
 2. In the **Delivery pipelines** section on the **Overview** tab, click `cd-pipeline`. A list of triggers is displayed.
 3. Click the `Manual CD Trigger` to view the previous pipeline runs.
 4. Select a specific `cd-pipelinerun` on the **Pipeline runs** page. The details of the run open.
@@ -40,7 +40,7 @@ The commit URL doesn't direct you to the inventory repository.
 ## Providing evidence of inventory updates during CI pipeline execution
 {: #gather-evidence-inventory-update}
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) **> DevOps > Toolchains**, and select the toolchain for which you want to provide evidence.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the toolchain for which you want to provide evidence.
 2. In the **Delivery pipelines** section on the **Overview** tab, click `ci-pipeline`. A list of triggers is displayed.
 3. Click a `Git` or `Manual` trigger to view the previous pipeline runs.
 4. Select `ci-pipelinerun` on the **Pipeline runs** tab. The details of the run open.
@@ -62,7 +62,7 @@ To view evidence that the controls were updated as part of the pipeline run at t
 
 To view evidence that the controls were updated at the pipeline level, you can use the following steps.
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) **> DevOps > Toolchains**, and select the toolchain for which you want to provide evidence.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the toolchain for which you want to provide evidence.
 2. In the **Delivery pipelines** section on the **Overview** tab, click `ci-pipeline`.  A list of triggers is displayed.
 3. Click a `Git` or `Manual` trigger to view the previous pipeline runs.
 4. Select `ci-pipelinerun` on the **Pipeline runs** tab. The details of the run open.

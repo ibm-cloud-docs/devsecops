@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-11-13"
+  years: 2021, 2024
+lastupdated: "2024-10-08"
 
 keywords: DevSecOps, CD, compliance, secure toolchain, IBM Cloud
 
@@ -61,7 +61,7 @@ Start the CD toolchain configuration by using one of the following options:
 
    [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https://us-south.git.cloud.ibm.com/open-toolchain/compliance-cd-toolchain&env_id=ibm:yp:us-south)
 
-* From the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CD-Develop with DevSecOps practices**.
+* From the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CD-Develop with DevSecOps practices**.
 
 ## Set up the toolchain name and region
 {: #cd-tekton-cd-name-region}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-03-20"
+lastupdated: "2024-10-08"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -40,8 +40,7 @@ With this tutorial, you can use the toolchain template for continuous deployment
 
 The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the CD toolchain setup. Follow the steps to access the template for the CD toolchain.
 
-1. From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/).
-2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**.
+1. From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/), click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
 3. On the Toolchains page, click **Create toolchain**.
 4. Click **CD - Deploy a secure app with DevSecOps practices** tile to view the template.
 

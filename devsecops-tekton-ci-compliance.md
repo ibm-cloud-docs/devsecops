@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-07-18"
+  years: 2021, 2024
+lastupdated: "2024-10-08"
 
 keywords: DevSecOps, CI, compliance, secure toolchain, IBM Cloud
 
@@ -65,7 +65,7 @@ Start the CI toolchain configuration by using one of the following options:
 
    [![Create toolchain](images/create_toolchain_button.png "Create toolchain")](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A%2F%2Fus-south.git.cloud.ibm.com%2Fopen-toolchain%2Fcompliance-ci-toolchain&env_id=ibm:yp:us-south)
 
-* From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI-Develop with DevSecOps practices**.
+* From the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**. On the Toolchains page, click **Create toolchain**. On the Create a Toolchain page, click **CI-Develop with DevSecOps practices**.
 
 ## Set up the CI toolchain name and region
 {: #devsecops-ci-tekton-name-region}

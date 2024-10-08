@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2024
-lastupdated: "2024-07-22"
+lastupdated: "2024-10-08"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -41,7 +41,7 @@ You can customize and centrally manage the IAM settings for the accounts in your
 
 The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the toolchain setup and create processes in a logical order. A progress indicator shows the steps to complete the configuration. Follow the steps to access the template for the CI toolchain.
 
-1. In the {{site.data.keyword.cloud_notm}} console, click  **Menu** ![Menu icon](../icons/icon_hamburger.svg), and select **DevOps**.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
 3. From the Toolchains page, click **Create toolchain**.
 4. Click the **CI - Develop a secure app with DevSecOps practices** tile.
 
@@ -199,7 +199,7 @@ The CI toolchain contains `ci-pr-pipeline (PR)` and `ci-pipeline (CI)`. These pi
 
 Follow the steps to access your toolchain:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click  **Menu** ![Menu icon](../icons/icon_hamburger.svg), and select **DevOps**.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
 3. From the Toolchains page, click **Create toolchain**.
 4. Click your toolchain to view the output as shown in following artifact.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-03-20"
+lastupdated: "2024-10-08"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -40,11 +40,10 @@ Complete the following steps before you begin this tutorial.
 
 The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the toolchain setup and create processes in a logical order. A progress indicator shows the steps to complete the configuration. Follow the steps to access the template for the CI toolchain.
 
-1. Access the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/){: external}.
-2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**.
-3. On the Toolchains page, click **Create toolchain**.
-4. Check **Infrastructure as Code**.
-5. Click **CI - Develop secure infrastructure as code with DevSecOps practices** tile.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
+2. On the Toolchains page, click **Create toolchain**.
+3. Check **Infrastructure as Code**.
+4. Click **CI - Develop secure infrastructure as code with DevSecOps practices** tile.
 
 ## Set up the CI toolchain settings
 {: #devsecops-tutorial-iac-ci-options}
@@ -188,10 +187,9 @@ The CI toolchain contains `pr-pipeline` and `ci-pipeline`. These pipelines trigg
 
 Follow the steps to access your toolchain:
 
-1. From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/).
-2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) > Select **DevOps**.
-3. On the Toolchains page, click **Create toolchain**.
-4. Click your toolchain to view the output as shown in the screen capture.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
+2. On the Toolchains page, click **Create toolchain**.
+3. Click your toolchain to view the output as shown in the screen capture.
 
    The sample that is used in this tutorial expects a `resource_group` to create the {{site.data.keyword.keymanagementserviceshort}} instance. The default `resource_group` name is `Default`. If the default is not appropriate for your account, replace the default `resource_group` variable in the `variables.tf` file. Else specify the `resource_group` variable by setting the `TF_VAR_resource_group` environment property in the PR pipeline and CI pipeline to the appropriate resource group name.
    {: note}
