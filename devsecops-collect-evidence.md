@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-09-27"
+lastupdated: "2024-10-08"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -61,9 +61,9 @@ The script `collect-evidence` requires the following parameters:
 The following parameter is optional:
 
 - `--attachment`
-   The file to be processed as a result and attached to the evidence. The parameter can be specified multiple times for multiple files.
+   The file to be processed as a result and attached to the evidence. The parameter can be specified multiple times for multiple files. For image signing, ensure that the signature file is attached using the --attachment parameter. The signature file must include the signature details, such as key ID, algorithm, and signed digest. Common formats include JSON or TXT.
 - `--meta`
-   Arbitrary metadata to be added to the evidence. The parameter accepts 'key=value' pairs and can be specified multiple times.
+   Arbitrary metadata to be added to the evidence. The parameter accepts 'key=value' pairs and can be specified multiple times. You can include metadata relevant to the image signing process, such as the signing environment or any specific configurations used during the signing.
 -  `--additional-comment`
    The comment that is added to an issue if a pipeline has failed.
 
@@ -105,6 +105,19 @@ collect-evidence \
 ```
 {: codeblock}
 
+```bash
+collect-evidence \
+  --tool-type "ciso-code-signing" \
+  --evidence-type "com.ibm.cloud.image_signing" \
+  --asset-type "artifact" \
+  --asset-key "signed-image" \
+  --status "success" \
+  --attachment ./signature.json \   # The signature details in JSON format
+  --attachment "./${artifact}.fingerprint" \ #  The fingerprint is a hash value generated from the artifact, ensuring integrity and authenticity.
+  --meta environment=production
+```
+{: codeblock}
+
 ## Supported tool formats
 {: #collect-evidence-tool-formats}
 
@@ -126,6 +139,7 @@ The current implementation currently supports the following tools (provided as t
 - `fips-scanner` Fips (Federal Information Processing Standards) Scanner
 - `contrast-sast` Contrast Sast (Static Application security testing)
 - `detect-secrets` Detect Secrets
+- `ciso-code-signing` CISO Code Signing Tool
 - `sysdig` Sysdig Scan
 - `cyclonedx` CycloneDX format. Tool detection for issue management will be performed based on the CycloneDX metadata [here](https://cyclonedx.org/docs/1.4/json/#metadata_tools_items_name).
 
@@ -151,6 +165,7 @@ You can set the evidence type by using the `--evidence-type` parameter. You can 
 - `com.ibm.cloud.image_vulnerability_scan`
 - `com.ibm.cloud.image_signing`
 - `com.ibm.dynamic_scan`
+- `com.ibm.cloud.image_signing`
 - `com.ibm.acceptance_tests`
 - `com.ibm.prod_change_request`
 - `com.ibm.close_change_reques`
