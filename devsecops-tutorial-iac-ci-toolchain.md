@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-08"
+lastupdated: "2024-10-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -194,7 +194,7 @@ Follow the steps to access your toolchain:
    The sample that is used in this tutorial expects a `resource_group` to create the {{site.data.keyword.keymanagementserviceshort}} instance. The default `resource_group` name is `Default`. If the default is not appropriate for your account, replace the default `resource_group` variable in the `variables.tf` file. Else specify the `resource_group` variable by setting the `TF_VAR_resource_group` environment property in the PR pipeline and CI pipeline to the appropriate resource group name.
    {: note}
 
-   ![DevSecOps IaC CI toolchain](images/devsecops-ci-terraform-explore-pipeline-created.png){: caption="Figure 1. DevSecOps CI toolchain" caption-side="bottom"}
+   ![DevSecOps IaC CI toolchain](images/devsecops-ci-terraform-explore-pipeline-created.png){: caption="DevSecOps CI toolchain" caption-side="bottom"}
 
 ### Run the pr pipeline
 {: #devsecops-tutorial-iac-pr-pipeline}
@@ -209,7 +209,7 @@ To start the `pr-pipeline`, create a merge request in your application repositor
 6. Wait for the `pr-pipeline` run to complete. The corresponding merge request that is in your application repository is in `Pending` state until all the stages of the PR pipeline finish successfully.
 7. After the PR pipeline run is successful, click the pipeline to explore numerous steps that are completed and to view the page as shown in the screen capture.
 
-   ![DevSecOps IaC PR pipeline successful](images/devsecops-ci-terraform-explore-pr-pipeline-success.png){: caption="Figure 2. DevSecOps PR pipeline successful" caption-side="bottom"}
+   ![DevSecOps IaC PR pipeline successful](images/devsecops-ci-terraform-explore-pr-pipeline-success.png){: caption="DevSecOps PR pipeline successful" caption-side="bottom"}
 
 8. Navigate back to the **Merge request**.
 9. Merge the request so that your changes are copied to the main branch of your application repository. See that your CI pipeline is automatically triggered.
@@ -227,7 +227,7 @@ In this tutorial, the CI pipeline was triggered after you merged your code chang
 2. Click **Run** against your pipeline name. Observe a pipeline run is running. Wait for the pipeline run to complete.
 3. After the CI pipeline run is successful, click the pipeline to explore the completed steps to view the page as shown in the screen capture.
 
-   ![DevSecOps IaC CI Pipeline Successful](images/devsecops-ci-terraform-explore-ci-pipeline-success.png){: caption="Figure 3. DevSecOps CI pipeline" caption-side="bottom"}
+   ![DevSecOps IaC CI Pipeline Successful](images/devsecops-ci-terraform-explore-ci-pipeline-success.png){: caption="DevSecOps CI pipeline" caption-side="bottom"}
 
 Evidence from all compliance checks in the CI pipeline is uploaded to the evidence locker repository, but also to the {{site.data.keyword.cos_full_notm}} bucket.
 

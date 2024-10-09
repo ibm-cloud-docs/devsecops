@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-07-03"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -54,7 +54,7 @@ The table below lists the tasks run in a CI Pipeline. In addition the table also
 |`scan-artifact` 		|Scan the built artifacts.   	|Yes			|  Yes | Pipeline | Yes |
 |`release` 		|Add the built artifacts to the inventory. 		|Yes			|  No |  NA | Yes |
 |`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			|  Yes | NA | Yes |
-{: caption="Table 1. Continuous integration stages and tasks" caption-side="top"}
+{: caption="Continuous integration stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
 
@@ -79,7 +79,7 @@ The table below provides a relationship between various types of evidence and th
 |`scan-artifact` 		| `com.ibm.cloud.image_vulnerability_scan`|
 |`release` 		| NA |
 |`finish` 		| `com.ibm.pipeline_logs`, `com.ibm.pipeline_run_data` |
-{: caption="Table 2. Continuous integration stages and associated evidences" caption-side="top"}
+{: caption="Continuous integration stages and associated evidences" caption-side="top"}
 
 For more information about how to collect evidences within the customizable user stages by using the `collect-evidence` script, see [collect-evidence script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
 
@@ -118,7 +118,7 @@ To enable gosec scan, provide the following parameter, and set the value to `1`.
 | Name | Type | Description | Required or optional |
 |--|--|--|--|
 | `opt-in-gosec`     | text   | option to enable gosec scan | optional |
-{: caption="Table 2. gosec scan parameters" caption-side="top"}
+{: caption="gosec scan parameters" caption-side="top"}
 
 More information about setting up the gosec scan in the continous integration pipeline, see [Configuring GoSec](/docs/devsecops?topic=devsecops-devsecops-gosec)
 
@@ -137,7 +137,7 @@ If you want to use your own static scan implementation instead, you can modify y
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
 | Repository compliance checking | Checks that branch protection settings are correct. For example, the master/main branch should always restrict the force push. For more information, see [Configuring your {{site.data.keyword.gitrepos}} repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).|
 | Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){: external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans). |
-{: caption="Table 3. Compliance scans and checks" caption-side="top"}
+{: caption="Compliance scans and checks" caption-side="top"}
 
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
 

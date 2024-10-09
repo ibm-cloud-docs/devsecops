@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-07-22"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps
 
@@ -36,7 +36,7 @@ You might notice that the CI and CC pipeline have common steps. The scans and ch
 | The incident issues that are created are found during the build. | The incident issues that are created are found during periodic scans of the staging or production environment. |
 | The `summary.json` file is not generated at the end of each CI pipeline run. | The `summary.json` file is not generated at the end of each CI pipeline run. |
 | It includes steps like application artifact creation, artifact signing, and deploy to development cluster. This in turn creates inputs for the CD pipeline.  | It runs only scans and checks that are needed for compliance testing. |
-{: caption="Table 1. Differences in the CI and CC pipelines" caption-side="bottom"}
+{: caption="Differences in the CI and CC pipelines" caption-side="bottom"}
 
 ## How can a user customize the pipeline?
 {: #faq-ci-sec-pipeline-customize}

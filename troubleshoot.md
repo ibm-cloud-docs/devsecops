@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-21"
+lastupdated: "2024-10-09"
 
 keywords: troubleshoot, DevSecOps
 
@@ -27,7 +27,7 @@ Use these tips to help troubleshoot problems that you might run into when you us
 * Check for outages on the [status page](https://cloud.ibm.com/status){: external}
 * Run the pipeline again.
 
-   ![Run the pipeline again](images/rerun.png){: caption="Figure 1. Manual Promotion Trigger" caption-side="bottom"}
+   ![Run the pipeline again](images/rerun.png){: caption="Manual Promotion Trigger" caption-side="bottom"}
 
 ## IBM environment issues
 {: #troubleshoot-ibm-env}
@@ -39,7 +39,7 @@ Use these tips to help troubleshoot problems that you might run into when you us
 {: troubleshoot}
 {: support}
 
-![Storage quota error](images/exceeded-quota.png){: caption="Figure 2. Storage quota error" caption-side="bottom"}
+![Storage quota error](images/exceeded-quota.png){: caption="Storage quota error" caption-side="bottom"}
 
 {{site.data.keyword.cloud_notm}} registry offers a limited quota, pushing too many images it can be exceeded.
 
@@ -57,14 +57,14 @@ ibmcloud cr quota
 {: troubleshoot}
 {: support}
 
-![Logs do not show](images/no-logs.png){: caption="Figure 3. Logs do not show" caption-side="bottom"}
+![Logs do not show](images/no-logs.png){: caption="Logs do not show" caption-side="bottom"}
 
 This is an issue with the Tekton environment.
 
 Try reloading the page.
 Download the logs by using the download button.
 
-![Download logs](images/download-logs.png){: caption="Figure 4. Download logs" caption-side="bottom"}
+![Download logs](images/download-logs.png){: caption="Download logs" caption-side="bottom"}
 
 ## Template and pipeline issues
 {: #troubleshoot-template-pipeline}
@@ -76,7 +76,7 @@ Download the logs by using the download button.
 {: troubleshoot}
 {: support}
 
-![Base image is not accessed](images/artifactory-bad-credentials.png){: caption="Figure 5. Base image is not accessed" caption-side="bottom"}
+![Base image is not accessed](images/artifactory-bad-credentials.png){: caption="Base image is not accessed" caption-side="bottom"}
 
 Check whether your artifactory credentials are correct. A new artifactory token can be created here.
 You can create a secret manually by running:
@@ -106,7 +106,7 @@ type: kubernetes.io/dockerconfigjson
 
 In the pipeline properties, update the `artifactory-dockerconfigjson` parameter with the ``.dockerconfigjson`` value.
 
-![Update artifactory-dockerconfigjson](images/artifactory-update-credentials.png){: caption="Figure 6. Update artifactory-dockerconfigjson" caption-side="bottom"}
+![Update artifactory-dockerconfigjson](images/artifactory-update-credentials.png){: caption="Update artifactory-dockerconfigjson" caption-side="bottom"}
 
 For more information, check out the [kubectl documentation on creating a secret](https://kubernetes.io/docs/concepts/configuration/secret/)(: external).
 
@@ -224,7 +224,7 @@ If your image signing task fails, see the [image signing documentation](/docs/de
 
 The CI Pipeline run fails with an error.
 
-![CI Pipeline run failing for Dynamic-Scan stage](images/dynamic-scan-stage-not-found.png){: caption="Figure 7. CI Pipeline Run failing for Dynamic-Scan stage" caption-side="bottom"}
+![CI Pipeline run failing for Dynamic-Scan stage](images/dynamic-scan-stage-not-found.png){: caption="CI Pipeline Run failing for Dynamic-Scan stage" caption-side="bottom"}
 
 The error occurs when the CI pipeline configuration does not contain a task definition to run the dynamic-scan. Add the following snippet in `.pipeline-config.yaml` and customize the step to suit your application.
 

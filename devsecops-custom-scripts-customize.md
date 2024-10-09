@@ -91,7 +91,7 @@ test:
 | App-preview PR pipeline |`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `deploy-acceptance-tests`, and `app-preview-pr-finish` |
 | Dev-mode CI pipeline    |`code-unit-tests`, `code-static-scan`, `deploy-release`, and `code-ci-finish`|
 | Dev-mode CD pipeline    |`prod-acceptance-tests` and `prod-finish`|
-{: caption="Table 1. Stages that can be skipped in pipeline runs" caption-side="top"}
+{: caption="Stages that can be skipped in pipeline runs" caption-side="top"}
 
 ### Example configuration
 {: #cd-devsecops-scripts-sample-config}

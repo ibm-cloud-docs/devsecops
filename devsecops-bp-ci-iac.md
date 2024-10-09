@@ -24,4 +24,4 @@ The implementation of continuous integration (CI) toolchain for Infrastructure a
 - Stores the built artifacts metadata in the inventory repository.
 - Automatically builds and validates any code that is merged into the target Git repository branch.
 
-![DevSecOps IaC CI toolchain](images/devsecops-ci-terraform-toolchain-diagram.png){: caption="Figure 1. DevSecOps CI toolchain" caption-side="bottom"}
+![DevSecOps IaC CI toolchain](images/devsecops-ci-terraform-toolchain-diagram.png){: caption="DevSecOps CI toolchain" caption-side="bottom"}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-10-08"
+lastupdated: "2024-10-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -226,7 +226,7 @@ Configure SonarQube as the static code analysis tool for the toolchain. SonarQub
 
 Now that the CD toolchain is created with two pipelines as shown in the screen capture. Click the `ci-pipeline` tile to open and run the promotion pipeline.
 
-![DevSecOps continuous integration toolchain](images/devsecops-ci-explore-pipeline-created.png){: caption="Figure 1. DevSecOps continuous integration toolchain" caption-side="bottom"}
+![DevSecOps continuous integration toolchain](images/devsecops-ci-explore-pipeline-created.png){: caption="DevSecOps continuous integration toolchain" caption-side="bottom"}
 
 ## Run the PR-CI pipeline
 {: #cd-devsecops-tekton-ci-run-pipeline}
@@ -241,14 +241,14 @@ To start the `ci-pr pipeline`, you need to create a merge request in your applic
 6. Wait for the `ci-pr pipeline` run to complete. The corresponding merge request that is in your application repository is in the `Pending` state until all the stages of the PR pipeline finish successfully.
 7. After the PR pipeline run is successful, click the pipeline to explore numerous steps that are completed and to view the page. To edit and resubmit the merge request, follow the step 3 till step 7.
 
-   ![DevSecOps PR pipeline successful](images/devsecops-ci-explore-pr-pipeline-success.png){: caption="Figure 2. DevSecOps PR pipeline successful" caption-side="bottom"}
+   ![DevSecOps PR pipeline successful](images/devsecops-ci-explore-pr-pipeline-success.png){: caption="DevSecOps PR pipeline successful" caption-side="bottom"}
 
 ### Simplified flow of tasks in the pipeline
 {: #cd-devsecops-tekton-pr-ci-pipeline-flow}
 
 In the DevSecOps PR pipeline flow of tasks, the utility tasks are omitted. For example, status-check update on GitHub, credential fetching, and so on. In the DevSecOps world, shift left is a practice that prevents and finds issues such as defects, security vulnerabilities. Shift left also performs compliance checks early in the software delivery process as shown in the figure.
 
-![DevSecOps PR tasks](images/devsecops-ci-pr-tasks.png){: caption="Figure 3. DevSecOps PR tasks" caption-side="bottom"}
+![DevSecOps PR tasks](images/devsecops-ci-pr-tasks.png){: caption="DevSecOps PR tasks" caption-side="bottom"}
 
 - Checks that can be run on the code/repository and do not need the built. The artifact should be run as early as possible to prevent noncompliant code from being merged to master branch of the repository. Evidence is not collected from the PR pipeline. The pipeline's goal is to shift compliance checks, as far left as possible.
 - All checks are done when a pipeline runs. Even if a previous check fails, the pipeline progresses to the next one. To evaluate if you have any failures in your run, you need to check the final step of your pipeline, which has a pipeline evaluator.
@@ -278,7 +278,7 @@ In this document, the CI pipeline was triggered after you merged your code chang
 
 After the CI pipeline run is successful, you can click the pipeline tasks to explore the completed steps.
 
-![DevSecOps CI pipeline successful](images/devsecops-ci-explore-pipeline-success.png){: caption="Figure 4. DevSecOps CI pipeline successful" caption-side="bottom"}
+![DevSecOps CI pipeline successful](images/devsecops-ci-explore-pipeline-success.png){: caption="DevSecOps CI pipeline successful" caption-side="bottom"}
 
 #### Simplified flow of tasks in the pipeline
 {: #cd-devsecops-tekton-ci-pipeline-flow}
@@ -291,7 +291,7 @@ Evidence is collected from all compliance checks in the CI pipeline, to the evid
 
 Evidence is published to the {{site.data.keyword.DRA_short}} instance inside the toolchain. You can navigate by clicking the {{site.data.keyword.DRA_short}} tool card in the toolchain. You can review the collected evidence on the Quality Dashboard page.
 
-![DevSecOps CI evidence](images/devsecops-ci-explore-evidence.png){: caption="Figure 6. DevSecOps CI evidence" caption-side="bottom"}
+![DevSecOps CI evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI evidence" caption-side="bottom"}
 
 To evaluate if you have any failures in your pipeline run, you must check the final step of your pipeline, which has a pipeline evaluator.
 {: note}
@@ -303,7 +303,7 @@ After a successful CI pipeline run, the sample application is deployed on your K
 
 The application URL can be found at the end of the log in the `run stage` step of `deploy-dev` task of the CI pipeline run. Use that URL to verify that the application is running.
 
-![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="Figure 7. DevSecOps CI sample app" caption-side="bottom"}
+![DevSecOps CI sample app](images/devsecops-ci-explore-app-dev-namespace.png){: caption="DevSecOps CI sample app" caption-side="bottom"}
 
 ## Configure pipeline
 {: #cd-devsecops-config-pipeline-ci}
@@ -317,7 +317,7 @@ If you trigger the pipeline manually without `commit-id`, the pipeline takes the
 
 Example
 
-![`commit-id`](images/commit-id.png){: caption="Figure 7. commit-id" caption-side="bottom"}
+![`commit-id`](images/commit-id.png){: caption="commit-id" caption-side="bottom"}
 
 To add the trigger parameters.
 

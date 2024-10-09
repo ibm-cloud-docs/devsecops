@@ -42,7 +42,7 @@ A rollback pipeline takes in the following inputs as environment properties:
 | `rollback-limit` | The integer value specifies how many deployments back you can roll back. The default value is `1`, limiting rollback to the last completed deployment. |
 | `region` | Specifies the region of the rollback. |
 | `target-environment` | Specifies the target environment for the rollback. For example, stage or production.|
-{: caption="Table 1. Types of environment properties" caption-side="bottom"}
+{: caption="Types of environment properties" caption-side="bottom"}
 
 The following criteria must be met for a rollback to occur, otherwise the pipeline is terminated:
 

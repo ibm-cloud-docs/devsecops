@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-06-07"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -35,7 +35,7 @@ To enable concurrency in DevsecOps, take the following steps:
 1. Click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg) on the repository entry and click **Edit**.
 1. Update the branch to `open-v10` and click **Update**.
 
-![Pipeline definitions](images/cd-devsecops-pipeline-definitions.png){: caption="Figure 1. pipeline definitions" caption-side="bottom"}
+![Pipeline definitions](images/cd-devsecops-pipeline-definitions.png){: caption="pipeline definitions" caption-side="bottom"}
 
 ### PR pipeline structure
 {: #devsecops-conc-pr-pipeline}
@@ -52,9 +52,9 @@ For more information, see the [PR pipeline documentation](https://test.cloud.ibm
 | `code-unit-tests` | Runs unit test for code that is associated with the PR. |
 | `code-compliance-checks` | Code Risk Analyzer (CRA) and Mend Unified Agent scans for vulnerability detection on open source dependencies and  any other compliance checks on application repositories. |
 | `code-pr-finish` | Consolidates pipeline status. The stage fails if the previous run compliance checks fail. This stage  is the "fail-safe" behavior to ensure that compliance issues are remediated before a PR can be merged and/or a build can be deployed. |
-{: caption="Table 1. Stages of PR pipeline structure and descriptions of each stage" caption-side="bottom"}
+{: caption="Stages of PR pipeline structure and descriptions of each stage" caption-side="bottom"}
 
-![PR pipeline structure](images/cd-devsecops-pr-in-parallel.svg "PR pipeline structure"){: caption="Figure 2. PR pipeline structure" caption-side="bottom"}
+![PR pipeline structure](images/cd-devsecops-pr-in-parallel.svg "PR pipeline structure"){: caption="PR pipeline structure" caption-side="bottom"}
 
 ### CI pipeline structure
 {: #devsecops-conc-ci-pipeline}
@@ -81,10 +81,10 @@ For more information, see the [CI pipeline documentation](https://test.cloud.ibm
 | `deploy-acceptance-tests` | Run acceptance and integration tests on the deployed built artifacts on the dev environment. |
 | `deploy-release` | Add the built artifacts to the inventory that will be used by the Continuous Delivery pipeline. |
 | `code-ci-finish` | Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks. Previously ran in the pipeline fail, this stage fails. This stage is the "fail-safe" behavior to ensure that compliance issues are remediated before a PR can be merged, a build is deployed, or when both. |
-{: caption="Table 2. Stages of CI pipeline structure and descriptions of each stage" caption-side="bottom"}
+{: caption="Stages of CI pipeline structure and descriptions of each stage" caption-side="bottom"}
 
 
-![CI pipeline structure](images/cd-devsecops-ci-in-parallel.svg "CI pipeline structure"){: caption="Figure 3. CI pipeline structure" caption-side="bottom"}
+![CI pipeline structure](images/cd-devsecops-ci-in-parallel.svg "CI pipeline structure"){: caption="CI pipeline structure" caption-side="bottom"}
 
 ### CD pipeline structure
 {: #devsecops-conc-cd-pipeline}
@@ -102,9 +102,9 @@ For more information, see the [CD pipeline documentation](https://test.cloud.ibm
 | `prod-deployment` | Deploy the build to an environment.  |
 | `prod-acceptance-tests` | Run acceptance tests.  |
 | `prod-finish` | Publish acceptance tests, deploy record, collect CycloneDX SBOM, and close change request.  |
-{: caption="Table 3. Stages of CD pipeline structure and descriptions of each stage" caption-side="bottom"}
+{: caption="Stages of CD pipeline structure and descriptions of each stage" caption-side="bottom"}
 
-![CD pipeline structure](images/cd-devsecops-cd-in-parallel.svg "CD pipeline structure"){: caption="Figure 4. CD pipeline structure" caption-side="bottom"}
+![CD pipeline structure](images/cd-devsecops-cd-in-parallel.svg "CD pipeline structure"){: caption="CD pipeline structure" caption-side="bottom"}
 
 ### CC pipeline structure
 {: #devsecops-conc-cc-pipeline}
@@ -123,9 +123,9 @@ For more information, refer to [CC pipeline documentation](https://test.cloud.ib
 | `cc-compliance-checks` | Code Risk Analyzer (CRA) and Mend Unified Agent scans for vulnerability detection on open source dependencies and any other compliance checks on application repositories. |
 | `cc-scan-artifact` | Scan the container image with Vulnerability Advisor. |
 | `cc-finish` | Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks previously ran in the pipeline fail, this stage fails. This stage has a "fail-safe" behavior to ensure that compliance issues are remediated before a PR can be merged and/or a build can be deployed.  |
-{: caption="Table 4. Stages of CC pipeline structure and descriptions of each stage" caption-side="bottom"}
+{: caption="Stages of CC pipeline structure and descriptions of each stage" caption-side="bottom"}
 
-![CC pipeline structure](images/cd-devsecops-cc-in-parallel.svg "CC pipeline structure"){: caption="Figure 5. CC pipeline structure" caption-side="bottom"}
+![CC pipeline structure](images/cd-devsecops-cc-in-parallel.svg "CC pipeline structure"){: caption="CC pipeline structure" caption-side="bottom"}
 
 ### Dev mode pipeline structures
 {: #devsecops-conc-devmode-pipeline}
@@ -139,10 +139,10 @@ They lack the following functions:
 Dev mode pipeline structures not production ready.
 {: important}
 
-![Dev mode PR pipeline structure](images/cd-devsecops-devmode-pr-in-parallel.svg "Dev mode PR pipeline structure"){: caption="Figure 6. Dev mode PR pipeline structure" caption-side="bottom"}
+![Dev mode PR pipeline structure](images/cd-devsecops-devmode-pr-in-parallel.svg "Dev mode PR pipeline structure"){: caption="Dev mode PR pipeline structure" caption-side="bottom"}
 
 
-![Dev mode CI pipeline structure](images/cd-devsecops-devmode-ci-in-parallel.svg "Dev mode CI pipeline structure"){: caption="Figure 7. Dev mode CI pipeline structure" caption-side="bottom"}
+![Dev mode CI pipeline structure](images/cd-devsecops-devmode-ci-in-parallel.svg "Dev mode CI pipeline structure"){: caption="Dev mode CI pipeline structure" caption-side="bottom"}
 
 
 ## Disabling concurrency in DevsecOps

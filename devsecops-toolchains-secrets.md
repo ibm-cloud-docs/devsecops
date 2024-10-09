@@ -59,7 +59,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | HashiCorp Vault Secret ID | `secret-id` | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key | `cos-api-key` | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
 | SonarQube password or authentication token | `sonarqube-password` | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
-{: caption="Table 1. DevSecOps Secrets" caption-side="top"}
+{: caption="DevSecOps Secrets" caption-side="top"}
 
 If you are using a HashiCorp Vault server, ensure that the HashiCorp Vault tool integration uses the [AppRole Auth Method](https://www.vaultproject.io/docs/auth/approle){: external} method.
 When you use the AppRole authentication method, you need `role-id` and `secret-id` to successfully integrate the HashiCorp Vault server with the toolchain. Because `role-id` and `secret-id` are secrets in themselves, it is recommended to store them by using a [{{site.data.keyword.keymanagementservicelong_notm}} tool integration](/docs/ContinuousDelivery?topic=ContinuousDelivery-keyprotect) so that they can be securely retrieved and applied in the toolchain workflow. All other toolchain secrets should be stored and retrieved by using the HashiCorp Vault tool integration.
@@ -74,11 +74,11 @@ With {{site.data.keyword.cloud_notm}}, you can choose from various secrets manag
 
 Use [{{site.data.keyword.secrets-manager_full}}](/docs/secrets-manager?topic=secrets-manager-getting-started) to securely store and apply secrets like API keys, Image Signature, or HashiCorp Vault credentials that are part of your toolchain.
 
-![{{site.data.keyword.secrets-manager_short}} tool integration form](images/devsecops-secrets-manager.png){: caption="Figure 1. IBM Secrets Manager Tool Integration" caption-side="bottom"}
+![{{site.data.keyword.secrets-manager_short}} tool integration form](images/devsecops-secrets-manager.png){: caption="IBM Secrets Manager Tool Integration" caption-side="bottom"}
 
 The templates also come with a HashiCorp Vault tool integration like the following example:
 
-![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="Figure 2. HashiCorp Vault Tool Integration" caption-side="bottom"}
+![HashiCorp Vault Tool Integration form with required fields and example values](images/hc-tool-int.png "HashiCorp Vault Tool Integration form with required fields and example values"){: caption="HashiCorp Vault Tool Integration" caption-side="bottom"}
 
 
 To use HashiCorp Vault, you must provide the following information:
@@ -93,7 +93,7 @@ To use HashiCorp Vault, you must provide the following information:
 
 The templates also come with an {{site.data.keyword.keymanagementservicefull}} tool integration:
 
-![{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values](images/kp-int.png "{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values"){: caption="Figure 3. IBM Key Protect tool integration" caption-side="bottom"}
+![{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values](images/kp-int.png "{{site.data.keyword.keymanagementserviceshort}} tool integration form with required fields and example values"){: caption="IBM Key Protect tool integration" caption-side="bottom"}
 
 If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the HashiCorp Vault tool card, and use the picker to apply the secrets to those fields.
 

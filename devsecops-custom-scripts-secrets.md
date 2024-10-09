@@ -101,7 +101,7 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/image`                 | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/artifact`              | The built Docker image artifact that contains the registry, namespace, name, and digest of the image. |
 | `/config/signature`             | The image artifact signature. |
-{: caption="Table 2. 'config' Values" caption-side="top"}
+{: caption="'config' Values" caption-side="top"}
 
 These values are phased out and replaced by the stage I/O interface by way of pipelinectl.
 {: deprecated}
@@ -130,7 +130,7 @@ The following table includes the default ENV variables for the context of custom
 | `INVENTORY_URL`                | The inventory repository url. |
 | `EVIDENCE_LOCKER_URL`          | The evidence repository url. |
 | `INCIDENT_ISSUES_URL`          | The issue's repository url. |
-{: caption="Table 3. Environment variables" caption-side="top"}
+{: caption="Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
 
@@ -180,7 +180,7 @@ The finish stage has three steps:
 | `evaluate` | Non-customizable step that executes tasks that are related to collection and upload of log files, artifacts, and evidence to the evidence locker. |
 | `prepare`  | Non-customizable step that sets up the required tools to run the custom finish stage. |
 | `finish`   | Executes the custom script that is provided in `.one-pipeline-config.yaml`. |
-{: caption="Table 4. Steps in finish stage" caption-side="top"}
+{: caption="Steps in finish stage" caption-side="top"}
 
 This pipeline status can be determined in two ways:
 

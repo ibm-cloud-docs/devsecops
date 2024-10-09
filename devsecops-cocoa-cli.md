@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-09-27"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1584,7 +1584,7 @@ Options for Git:
 | git-provider*    | The Git version control service provider. | String* | "github" |
 | git-token-path   | Git token path to read the secret from           | String | |
 | git-api-url      | Git API URL                                      | String | |
-{: caption="Table 1. Options for Git" caption-side="bottom"}
+{: caption="Options for Git" caption-side="bottom"}
 
 Running the command:
 

@@ -47,7 +47,7 @@ To configure branch protection rules in GitHub for your repository, follow these
 4. Locate the branch that you want to configure (typically the "main" branch).
 5. Select the **Edit** button next to the branch name to modify its protection rules.
 
-![GitHub repository settings](images/devsecops_configure-branch-protection_github_settings.png){: caption="Figure 1. GitHub repository settings" caption-side="bottom"}
+![GitHub repository settings](images/devsecops_configure-branch-protection_github_settings.png){: caption="GitHub repository settings" caption-side="bottom"}
 
 ### Adding Branch Protection Rules
 {: #devsecops-config-github-addrules}
@@ -58,7 +58,7 @@ If no existing rules are set up, click on the **Add rule** button and enter the 
 2. Enable the **Require approvals** option and set the **Required number of approvals before merging** set to atleast `1` or the number of required approvals in your team.
 3. Enable the option **Dismiss stale pull request approvals when new commits are pushed** to review all the latest changes before it can be merged onto another branch.
 
-![Branch protection rules](images/devsecops_configure-branch-protection_branch_protection_rule.png){: caption="Figure 2. Branch protection rules" caption-side="bottom"}
+![Branch protection rules](images/devsecops_configure-branch-protection_branch_protection_rule.png){: caption="Branch protection rules" caption-side="bottom"}
 
 Pull Requests **must** be approved before merging them into the master branch. This rule ensures that changes undergo review and scrutiny by team members, promotes collaboration, code quality, and adherence to project standards.
 {: #note}
@@ -91,7 +91,7 @@ After enabling the `Require status checks to pass before merging` option, you ne
 - `tekton/code-unit-tests`
 - `tekton/code-vulnerability-scan`
 
-![Status checks](images/devsecops_configure-branch-protection_status_checks.png){: caption="Figure 3. Status checks" caption-side="bottom"}
+![Status checks](images/devsecops_configure-branch-protection_status_checks.png){: caption="Status checks" caption-side="bottom"}
 
 The status checks shown must pass before merging a pull request.
 
@@ -103,7 +103,7 @@ The above checks are the default expected pull request status checks in pipeline
 You may also bring in your own list of status checks to be validated against by the pipeline. To achieve this, first set your list of required status checks in the repo, and also set the `branch-protection-rules-path` value setting it's path to a JSON file containing the same list status checks, that is relative to your app repository.
 
 |`branch-protection-rules-path`		|text		|Set the path to a JSON file containing the customized list of the required compliance checks, relative to the integrated app repository.	|Optional			|
-{: caption="Table 2. Customized prefix environment property and its other information" caption-side="bottom"}
+{: caption="Customized prefix environment property and its other information" caption-side="bottom"}
 
 The JSON file is of this format
 
@@ -131,7 +131,7 @@ Note :  DevSecOps by default will base the outcome of branch protection checks d
 If you wish to change the `tekton` prefix to something else in GitHub, you should set a value for `branch-protection-status-check-prefix` environment property in your pipeline.
 
 |`branch-protection-status-check-prefix`		|text		|The prefix text for branch protection status check (Defaults to `tekton`)	|Optional			|
-{: caption="Table 2. Customized prefix environment property and its other information" caption-side="bottom"}
+{: caption="Customized prefix environment property and its other information" caption-side="bottom"}
 
 Once you have configured branch protection settings, any attempt to merge a pull request to the protected branch will be rejected unless the required conditions are met.
 

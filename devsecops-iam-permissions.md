@@ -39,7 +39,7 @@ For information about the actions that are mapped to each role, see [IAM roles a
 | Administrator          |  Perform all platform actions based on the resource that this role is being assigned, including assigning access policies to other users.  |
 {: row-headers}
 {: class="simple-tab-table"}
-{: caption="Table 1. IAM platform roles" caption-side="bottom"}
+{: caption="IAM platform roles" caption-side="bottom"}
 {: #iamrolesplatform}
 {: tab-title="Platform roles"}
 {: tab-group="IAM"}
@@ -54,7 +54,7 @@ For information about the actions that are mapped to each role, see [IAM roles a
 |  Viewer, SecretsReader  |  The Secrets Manager service in your team's resource group. |
 {: row-headers}
 {: class="simple-tab-table"}
-{: caption="Table 1. IAM service access roles" caption-side="bottom"}
+{: caption="IAM service access roles" caption-side="bottom"}
 {: #iamrolesservice}
 {: tab-title="Service roles"}
 {: tab-group="IAM"}
@@ -94,7 +94,7 @@ Review the following tables that outline what types of tasks each role allows fo
 | Administrator          |  Perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users.  |
 {: row-headers}
 {: class="simple-tab-table"}
-{: caption="Table 1. IAM platform roles" caption-side="bottom"}
+{: caption="IAM platform roles" caption-side="bottom"}
 {: #iamrolesplatform}
 {: tab-title="Platform roles"}
 {: tab-group="IAM"}
@@ -109,7 +109,7 @@ Review the following tables that outline what types of tasks each role allows fo
 |  Viewer, SecretsReader  |  The Secrets Manager service in your team's resource group. |
 {: row-headers}
 {: class="simple-tab-table"}
-{: caption="Table 1. IAM service access roles" caption-side="bottom"}
+{: caption="IAM service access roles" caption-side="bottom"}
 {: #iamrolesservice}
 {: tab-title="Service roles"}
 {: tab-group="IAM"}

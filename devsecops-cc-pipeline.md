@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-07-03"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -46,7 +46,7 @@ The table below lists the tasks run in a CC Pipeline. In addition the table also
 |`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes		| Yes | Pipeline | Yes |
 |`scan-artifact` 		|Scan the built artifacts.   	|Yes			| Yes | Pipeline | Yes |
 |`finish` 		|Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker.   	|Yes			| Yes | Pipeline | Yes |
-{: caption="Table 1. Continuous compliance pipeline stages and tasks" caption-side="top"}
+{: caption="Continuous compliance pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
@@ -65,7 +65,7 @@ The table below provides a relationship between various types of evidence and th
 |`dynamic-scan` 		| `com.ibm.dynamic_scan` |
 |`scan-artifact` 		| `com.ibm.cloud.image_vulnerability_scan`|
 |`finish` 		| `com.ibm.pipeline_logs`, `com.ibm.pipeline_run_data` |
-{: caption="Table 2. Continuous integration stages and associated evidences" caption-side="top"}
+{: caption="Continuous integration stages and associated evidences" caption-side="top"}
 
 For more information about how to collect evidences within the customizable user stages by using the `collect-evidence` script, see [collect-evidence script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
 
@@ -79,7 +79,7 @@ The start stage clones the inventory and processes the latest entries in the pro
 |`environment-tag`     |text   |Tag that represents the latest target environment in the inventory. Example: `prod_latest` or `us-south_prod_latest`    |Required           |
 |`environment-branch`     |text   |Branch name that represents the target environment in the inventory. Example: `prod`    |Deprecated - prefer `environment-tag` instead           |
 |`region-prefix`          |text   |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Deprecated - prefer `environment-tag` instead             |
-{: caption="Table 2. Continuous compliance pipeline artifacts and repositories" caption-side="top"}
+{: caption="Continuous compliance pipeline artifacts and repositories" caption-side="top"}
 
 The inventory entries contain deployed artifacts and repository sources. The pipeline processes and collects the inventory entries and registers them for the pipeline run by using the following `pipelinectl` commands:
 
@@ -146,7 +146,7 @@ To learn more about configuring dynamic scan by using OWASP-ZAP, see [Configurin
 | Code Risk Analyzer CIS check |  Runs [configuration checks](/docs/cli?topic=cli-cra-cli-plugin#deployment-command) on Kubernetes deployment manifests. Uses the Code Risk Analyzer tool. |
 | Code Risk Analyzer Bill of Material (BOM) check | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
 | Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){: external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans). |
-{: caption="Table 3. Compliance scans and checks" caption-side="top"}
+{: caption="Compliance scans and checks" caption-side="top"}
 
 These scripts are run on all of the app repos that the pipeline is aware of. CC pipeline uses the [`pipelinectl save_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo) interface to register repos found in the inventory entries, then uses the [`list_repos`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_repos) and [`load_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#load_repo) commands to iterate over repos and send them to scanners.
 

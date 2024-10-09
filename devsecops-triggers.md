@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-08-16"
+  years: 2021, 2024
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, triggers
 
@@ -34,7 +34,7 @@ DevSecOps continuous integration and continuous deployment pipelines provide a s
 |Continuous compliance		|Manual CC Trigger		|Runs the continuous compliance pipeline on the `environment-tag` tag of the Inventory, on demand.	|Enabled			|
 |Continuous integration, continuous deployment, continuous compliance		|Evidence Pruner Timed Trigger		|Runs the pipeline every day at 2AM to clean up all the old evidence generated before `evidence-retention-days` days.	|Disabled by default.			|
 |Continuous integration, continuous deployment, continuous compliance		|Evidence Pruner Manual Trigger 	|Runs the pipeline to clean up all the old evidence generated before `evidence-retention-days` days. Runs on demand.	|Enabled			|
-{: caption="Table 1. Triggers" caption-side="top"}
+{: caption="Triggers" caption-side="top"}
 
 You can [add triggers](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-triggers) to the set of default triggers.
 {: tip}

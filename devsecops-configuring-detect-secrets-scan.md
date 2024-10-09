@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2023
-lastupdated: "2023-08-25"
+  years: 2023, 2024
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -109,5 +109,4 @@ The `detect-secrets-verbose` parameter, when set to 1, logs the name of the curr
 | `detect-secrets-exclusion-list` | String | A regex list of files to be excluded in the detect-secrets scan. Defaults to `requirements.txt\|go.mod\|go.sum\|pom.xml\|build.gradle\|package-lock.json`. | Optional, This file list overrides the general exclusion list only when there is no `.secrets.baseline` file present. |
 |`detect-secrets-image` | String | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 | `detect-secrets-verbose` | String | Outputs the name of the file that is currently that is being scanned. Defaults to `0`.  | Optional, Debug flag 0 - off, 1 - on. | 
-{: caption="Table 1. Secrets-scan parameters" caption-side="top"}
-
+{: caption="Secrets-scan parameters" caption-side="top"}

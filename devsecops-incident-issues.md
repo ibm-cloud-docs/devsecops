@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-08-13"
+lastupdated: "2024-10-09"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -49,14 +49,14 @@ Figures 1 - 6 show the possible use cases that are based on these differences.
 
 The issue lifecycle extends from code PRs to production scans.
 
-![Vulnerability use cases flow](images/vuln-uc-0.svg "DevSecOps/one pipeline lifecycle"){: caption="Figure 1. DevSecOps/one pipeline lifecycle" caption-side="bottom"}
+![Vulnerability use cases flow](images/vuln-uc-0.svg "DevSecOps/one pipeline lifecycle"){: caption="DevSecOps/one pipeline lifecycle" caption-side="bottom"}
 
 ### Use case 1: vulnerability found in the build
 {: #incident-issue-uc1}
 
 The new build introduces a vulnerability, which is not accepted. Deployment is blocked unless the change request is an emergency CR that is manually approved.
 
-![Vulnerability found in the build](images/vuln-uc-1.svg "Vulnerability found in the build"){: caption="Figure 2. Vulnerability found in the build" caption-side="bottom"}
+![Vulnerability found in the build](images/vuln-uc-1.svg "Vulnerability found in the build"){: caption="Vulnerability found in the build" caption-side="bottom"}
 
 This build pipeline flow incase of a vulnerability found, and the corresponding user actions has been explained below.
 
@@ -67,7 +67,7 @@ This build pipeline flow incase of a vulnerability found, and the corresponding 
 
 The new build contains a vulnerability that is also in the currently deployed production. Teams have a timeline to fix the issue, but new features or fixes can still be deployed.
 
-![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Figure 3. Vulnerability found in the build that is also in production" caption-side="bottom"}
+![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Vulnerability found in the build that is also in production" caption-side="bottom"}
 
 CC pipeline sets the timeline to fix any such vulnerabilities found in production. It will only fail when the timeline to fix the vulnerability has expired. The flow has been outlined below.
 
@@ -78,25 +78,25 @@ CC pipeline sets the timeline to fix any such vulnerabilities found in productio
 
 The vulnerability in production does not prevent PRs from merging.
 
-![Vulnerability found in production allows PRs](images/vuln-uc-2a.svg "Vulnerability found in production allows PRs"){: caption="Figure 4. Vulnerability found in production allows PRs" caption-side="bottom"}
+![Vulnerability found in production allows PRs](images/vuln-uc-2a.svg "Vulnerability found in production allows PRs"){: caption="Vulnerability found in production allows PRs" caption-side="bottom"}
 
 ### Use case 3: false positives
 {: #incident-issue-uc3}
 
 If the team categorizes an issue as false positive,  the issue can be labeled as **Exempted**. The issue can then be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
 
-![False positives](images/vuln-uc-3.svg "False positives"){: caption="Figure 5. False positives" caption-side="bottom"}
+![False positives](images/vuln-uc-3.svg "False positives"){: caption="False positives" caption-side="bottom"}
 
 ### Use case 4: automatically closing fixed issues
 {: #incident-issue-uc4}
 
 Periodically running the CC pipeline can close issues that are open and have a due date set. Also, the relevant vulnerability cannot be found in scans.
 
-![Automatically closing fixed issues](images/vuln-uc-4.svg "Automatically closing fixed issues"){: caption="Figure 6. Automatically closing fixed issues" caption-side="bottom"}
+![Automatically closing fixed issues](images/vuln-uc-4.svg "Automatically closing fixed issues"){: caption="Automatically closing fixed issues" caption-side="bottom"}
 
 The following diagram explains the flowchart of CC pipeline detecting which issues to close, and which issues to create fresh.
 
-![CC pipeline automatically closing fixed issues](images/issue-mgmt-CC-flow-vuln-autoclosing.jpg "CC pipeline automatically closing fixed issues"){: caption="Figure 6. CC pipeline automatically closing fixed issues" caption-side="bottom"}
+![CC pipeline automatically closing fixed issues](images/issue-mgmt-CC-flow-vuln-autoclosing.jpg "CC pipeline automatically closing fixed issues"){: caption="CC pipeline automatically closing fixed issues" caption-side="bottom"}
 
 ## Setting the due date for incident issues
 {: #incident-issue-due-date-setting}
@@ -148,7 +148,7 @@ The pipeline calculates the grace period according to the following table:
 | Medium        | 45 days      |
 | High          | 15 days      |
 | Critical      | 15 days      |
-{: caption="Table 1. Default grace periods" caption-side="bottom"}
+{: caption="Default grace periods" caption-side="bottom"}
 
 To change the default configuration, create a new property in the CC pipeline's environment properties named `grace-period-configuration`. This environment property must be a JSON string and match the following format:
 
@@ -255,7 +255,7 @@ The issue description contains the timestamp when the issue was first discovered
 
 If you want to postpone the due date of an incident issue, you can ask for a review from a security focal. Depending on the review, you can postpone the due date by modifying the `Due date` field in the {{site.data.keyword.gitrepos}} incident issues meta fields. 
 
-![Setting and updating due date on {{site.data.keyword.gitrepos}}](images/devsecops-native-due-date.png){: caption="Figure 2. Setting and updating due date on {{site.data.keyword.gitrepos}}" caption-side="bottom"}
+![Setting and updating due date on {{site.data.keyword.gitrepos}}](images/devsecops-native-due-date.png){: caption="Setting and updating due date on {{site.data.keyword.gitrepos}}" caption-side="bottom"}
 
 Be sure to reference the security-focal review in the issue, such as providing a link to it in a comment.
 {: important}

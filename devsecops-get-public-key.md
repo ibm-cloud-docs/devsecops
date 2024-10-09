@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-03-23"
+  years: 2023, 2024
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -165,7 +165,7 @@ Export and copy the GPG key to the clipboard as follows:
 1. Expand the **Advanced Options** section and select the **Choose a key ring** option as default. 
 1. Add the key to your key protect by clicking **Add key**.
 
-   ![Add the key to key protect](images/devsecops_set-up_store_key_protect.png){: caption="Figure 1. Add the key to key protect" caption-side="bottom"}
+   ![Add the key to key protect](images/devsecops_set-up_store_key_protect.png){: caption="Add the key to key protect" caption-side="bottom"}
 
 For more information on {{site.data.keyword.keymanagementserviceshort}}, see [About Key Protect](/docs/key-protect?topic=key-protect-about).
 
@@ -199,7 +199,7 @@ You must single `base64` encode the GPG key before you store it in your {{site.d
 1. Click the **Add** icon ![Add icon](../icons/add.svg) to add new key to the instance.
 1. Select the **Other secret type** option.
 
-   ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Figure 2. Other secret type" caption-side="bottom"}
+   ![Other secret type](images/devsecops_set-up_store_secret_manager_1.png){: caption="Other secret type" caption-side="bottom"}
 
 1. Select key type as **Standard Key**.
 1. Give an appropriate name in the **Name** field. The stored GPG key can be retrieved later by using this name.
@@ -210,7 +210,7 @@ You must single `base64` encode the GPG key before you store it in your {{site.d
 
 1. Add the key to your {{site.data.keyword.keymanagementserviceshort}} instance by clicking **Add**.
 
-   ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Figure 3. Add the key" caption-side="bottom"}
+   ![Add the key](images/devsecops_set-up_store_secret_manager_2.png){: caption="Add the key" caption-side="bottom"}
 
 For more information on {{site.data.keyword.secrets-manager_short}}, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
 

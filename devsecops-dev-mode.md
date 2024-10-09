@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2024
-lastupdated: "2024-05-31"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, development mode, IBM Cloud, pipelines
 
@@ -40,12 +40,12 @@ Complete the following steps to set up development mode for a pipeline:
 1. Go to the **Triggers** page of your CI or CD pipeline.
 1. Locate the Manual Trigger, click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg), and then click **Duplicate**.
 
-   ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 1. Duplicate manual trigger" caption-side="bottom"}
+   ![Duplicate manual trigger](images/dup-trigger.png){: caption="Duplicate manual trigger" caption-side="bottom"}
 
 1. Name the trigger. For example, `Manual-Dev-Mode`.
 1. Change the `EventListener` to `dev-mode-listener` (for CI) or `dev-mode-cd-listener` (for CD).
 
-   ![Dev Mode Trigger](images/dev-mode-trigger.png){: caption="Figure 2. Change event listener" caption-side="bottom"}
+   ![Dev Mode Trigger](images/dev-mode-trigger.png){: caption="Change event listener" caption-side="bottom"}
 
 1. Save your changes.
 
@@ -57,12 +57,12 @@ Complete the following steps to set up development mode in the Infrastructure as
 1. Go to the **Triggers** page of your CI pipeline.
 1. Locate the Manual Trigger, click the **Actions** icon ![Actions icon](../icons/actions-icon-vertical.svg), and then click **Duplicate**.
 
-   ![Duplicate manual trigger](images/dup-trigger.png){: caption="Figure 3. Duplicate manual trigger" caption-side="bottom"}
+   ![Duplicate manual trigger](images/dup-trigger.png){: caption="Duplicate manual trigger" caption-side="bottom"}
 
 1. Name the trigger. For example, `Manual-IaC-Dev-Mode`.
 1. Change the `EventListener` to  `iac-dev-mode-listener`.
 
-   ![Dev Mode Trigger](images/iac-dev-mode-trigger.png){: caption="Figure 4. Change iac event listener" caption-side="bottom"}
+   ![Dev Mode Trigger](images/iac-dev-mode-trigger.png){: caption="Change iac event listener" caption-side="bottom"}
 
 1. Save your changes.
 
@@ -80,7 +80,7 @@ The development-mode pipeline runs the code that is in the `.pipeline-config.yam
 
 All other security and compliance tasks do not run, reducing the pipeline execution time.
 
-![Standard and development modes compared](images/comparison.png){: caption="Figure 5. Standard and development modes compared" caption-side="bottom"}
+![Standard and development modes compared](images/comparison.png){: caption="Standard and development modes compared" caption-side="bottom"}
 
 ## Development mode for CI pipeline
 {: #devsecops-devmod-ci_pipeline}
@@ -99,7 +99,7 @@ The following table lists the stages in development mode of the CI pipeline.
 |`deploy-acceptance-tests`| Run acceptance and integration tests on the deployed built artifacts on the dev environment |
 |`deploy-release`| Add the built artifacts to the inventory. The Continuous Delivery pipeline uses this inventory. |
 |`code-ci-finish`| Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks that were previously executed in the pipeline fail, this stage also fails. This stage represents the “fail safe” behavior to ensure that compliance issues are remediated before a PR can be merged or a build can be deployed. |
-{: caption="Table 1. Development stages of the CI pipeline" caption-side="top"}
+{: caption="Development stages of the CI pipeline" caption-side="top"}
 
 ## Development mode for CD pipeline
 {: #devsecops-devmod-cd_pipeline}
@@ -116,7 +116,7 @@ The following table lists the stages in development mode of the CD pipeline.
 |`prod-deployment`|Deploy the build to an environment.|
 |`prod-acceptance-tests`|Run acceptance tests.|
 |`prod-finish`|Publish acceptance tests, deploy record, collect CycloneDX SBOM, and close change requests.|
-{: caption="Table 2. Development stages of the CD pipeline" caption-side="top"}
+{: caption="Development stages of the CD pipeline" caption-side="top"}
 
 ## Returning to standard mode
 {: #devsecops-devmode-standard}

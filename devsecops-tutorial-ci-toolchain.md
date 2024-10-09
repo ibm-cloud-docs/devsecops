@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2024
-lastupdated: "2024-10-08"
+lastupdated: "2024-10-09"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -203,7 +203,7 @@ Follow the steps to access your toolchain:
 3. From the Toolchains page, click **Create toolchain**.
 4. Click your toolchain to view the output as shown in following artifact.
 
-![DevSecOps CI toolchain](images/devsecops-ci-explore-pipeline-created_v2.png){: caption="Figure 1. DevSecOps CI toolchain" caption-side="bottom"}
+![DevSecOps CI toolchain](images/devsecops-ci-explore-pipeline-created_v2.png){: caption="DevSecOps CI toolchain" caption-side="bottom"}
 
 ### Run the ci-pr Pipeline
 {: #tutorial-ci-toolchain-pr-pipeline-run}
@@ -218,7 +218,7 @@ To start the `ci-pr pipeline`, you need to create a merge request in your applic
 6. Wait for the `ci-pr pipeline` run to complete. The corresponding merge request that is in your application repository is in the `Pending` state until all the stages of the PR pipeline finish successfully.
 7. After the PR pipeline run is successful, click the pipeline to explore numerous steps that are completed and to view the page.
 
-   ![DevSecOps PR Pipeline Successful](images/devsecops-ci-explore-pr-pipeline-success.png){: caption="Figure 2. DevSecOps PR Pipeline Successful" caption-side="bottom"}
+   ![DevSecOps PR Pipeline Successful](images/devsecops-ci-explore-pr-pipeline-success.png){: caption="DevSecOps PR Pipeline Successful" caption-side="bottom"}
 
 8. Access the **Merge request** to merge the request so that your changes are copied to the master branch of your application repository.
 
@@ -236,11 +236,11 @@ In this tutorial, the CI pipeline was triggered after you merged your code chang
 2. Click **Run** against your pipeline name. Observe a pipeline run is running. Wait for the pipeline run to complete.
 3. After the CI pipeline run is successful, click the pipeline to explore the completed steps to view the page as shown in the screen capture.
 
-   ![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="Figure 3. DevSecOps CI pipeline" caption-side="bottom"}
+   ![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="DevSecOps CI pipeline" caption-side="bottom"}
 
 4. Click the **{{site.data.keyword.DRA_short}}** tile to review the collected evidence on the **Quality Dashboard** page, as shown in the screen capture.
 
-   ![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="Figure 4. DevSecOps CI evidence" caption-side="bottom"}
+   ![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI evidence" caption-side="bottom"}
 
    You can also review the evidence if {{site.data.keyword.cos_full_notm}} bucket is enabled during setup. To evaluate if you have any failures in your pipeline run, you need to check the final step of your pipeline, which has a pipeline evaluator.
    {: note}

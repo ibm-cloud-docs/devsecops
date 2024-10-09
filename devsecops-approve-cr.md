@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2023
-lastupdated: "2023-02-28"
+  years: 2021, 2024
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps
 
@@ -35,11 +35,11 @@ Use the emergency mode sparingly and with caution.
 
 You can set the value of the emergency label (`default: EMERGENCY`) that the continuous deployment  pipeline looks for on the promotion pull request when you create the toolchain.
 
- ![Emergency label](images/emergency-label-at-creation.png){: caption="Figure 1. Emergency label" caption-side="bottom"}
+ ![Emergency label](images/emergency-label-at-creation.png){: caption="Emergency label" caption-side="bottom"}
 
 You can also change the value of the emergency label from the pipeline's environment variables:
 
- ![Emergency label variable](images/emergency-label-env.png){: caption="Figure 2. Emergency label variable" caption-side="bottom"}
+ ![Emergency label variable](images/emergency-label-env.png){: caption="Emergency label variable" caption-side="bottom"}
 
 When the deployment completes, the emergency change request is set to the `Review` state, which indicates that it requires the assigned approvers to review and approve it.
 
@@ -49,4 +49,4 @@ When the deployment completes, the emergency change request is set to the `Revie
 
 If the deployment is not an emergency, you can wait for the change request to be manually approved. Use the existing, manually pre-approved change request number that is set in the continuous deployment pipeline environment variables. The default value is `notAvailable`, which means the continuous deployment pipeline creates a new change request.
 
-![Manually pre-approved CR](images/pre-approved-cr-label.png){: caption="Figure 3. Manually pre-approved CR" caption-side="bottom"}
+![Manually pre-approved CR](images/pre-approved-cr-label.png){: caption="Manually pre-approved CR" caption-side="bottom"}

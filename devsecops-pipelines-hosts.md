@@ -33,7 +33,7 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
 | `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Code Risk Analyzer API. |
 | `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
-{: caption="Table 1. Pull request pipeline hosts" caption-side="top"}
+{: caption="Pull request pipeline hosts" caption-side="top"}
 
 ## Continuous integration pipelines
 {: #ci-pipeline-hosts}
@@ -52,7 +52,7 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Code Risk Analyzer API. |
 | `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
 | `https://api.<region>.devops.cloud.ibm.com/v1/tekton-pipelines` | Gets the pipeline run data. |
-{: caption="Table 2. Continuous integration pipeline hosts" caption-side="top"}
+{: caption="Continuous integration pipeline hosts" caption-side="top"}
 
 ## Promotion pipelines
 {: #promotion-pipeline-hosts}
@@ -64,7 +64,7 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
 | `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
 | `https://<region>.git.cloud.ibm.com` | The open promotion pull request. |
-{: caption="Table 3. Promotion pipeline hosts" caption-side="top"}
+{: caption="Promotion pipeline hosts" caption-side="top"}
 
 ## Continuous deployment pipelines
 {: #cd-pipeline-hosts}
@@ -82,7 +82,7 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
 | Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types).|
 | `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
-{: caption="Table 4. Continuous deployment pipeline hosts" caption-side="top"}
+{: caption="Continuous deployment pipeline hosts" caption-side="top"}
 
 ## Continuous compliance pipelines
 {: #cc-pipeline-hosts}
@@ -96,4 +96,4 @@ The following table lists and describes each of the hosts that are accessed from
 | `https://<region>.git.cloud.ibm.com` | Clones repos, and sets and checks the pull request status. |
 | `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
 | Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). |
-{: caption="Table 5. Continuous Compliance pipeline hosts" caption-side="top"}
+{: caption="Continuous Compliance pipeline hosts" caption-side="top"}

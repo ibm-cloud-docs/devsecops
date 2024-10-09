@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-07-25"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -38,7 +38,7 @@ Be sure to become familiar with the process and terminology. For more informatio
 
 Use the pull request template that is provided in the inventory for promotion pull requests to populate the change request fields. Because you cannot automatically populate these fields, you must manually populate them to promote changes. By manually populating these fields, you trigger the deployment and continue automatic data collection for the rest of the change request.
 
- ![Promotion pull request](images/promotion-pr.png){: caption="Figure 1. Promotion pull request" caption-side="bottom"}
+ ![Promotion pull request](images/promotion-pr.png){: caption="Promotion pull request" caption-side="bottom"}
  
 The promotion pull request template contains the following fields:
 
@@ -94,6 +94,6 @@ If you do not want to use automated change management, you can provide a previou
 
 You can start the DevSecOps reference continuous deployment pipeline by using a pre-approved change request and entering the change request ID for the **change-request-id** property.
 
- ![Pre-approved change request](images/pre-approved-cr.png){: caption="Figure 2. Pre-approved change request" caption-side="bottom"}
+ ![Pre-approved change request](images/pre-approved-cr.png){: caption="Pre-approved change request" caption-side="bottom"}
 
 If the **change-request-id** property is set, the pipeline skips data collection for the change request and moves ahead to check the approval state of the change request. If the **change-request-id** is set to `notAvailable` by default, a change request is automatically created by the continuous deployment pipeline.

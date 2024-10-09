@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-09-30"
+lastupdated: "2024-10-09"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -137,7 +137,7 @@ Made Code Risk Analyzer scanning optional using environment properties
 | `cra-bom-generate`         | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | Software Bill of Materials(SBOM) generation will be done by CRA only if this value is set to 1 |
 | `cra-vulnerability-scan`   | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA vulnerability scan will be done only if this value is set to 1  and `cra-bom-generate` is set to 1. If this value is set to 1 and `cra-bom-generate` is set to 0, this scan will be marked as failure |
 | `cra-deploy-analysis`      | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA deployment analysis will be done only if this value is set to 1|
-{: caption="Table 1. Environment property parameters" caption-side="bottom"}
+{: caption="Environment property parameters" caption-side="bottom"}
 
 ## 09 May 2024
 {: #devsecops-May2024}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-18"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -30,7 +30,7 @@ You can use the pipelines to deploy to public cloud or hybrid target environment
 
 The following diagram shows the implementation workflow and main features of the DevSecOps architecture.
 
-![Reference implementation workflow](images/cm-arch.png "Reference implementation workflow"){: caption="Figure 1. Reference implementation workflow" caption-side="bottom"}
+![Reference implementation workflow](images/cm-arch.png "Reference implementation workflow"){: caption="Reference implementation workflow" caption-side="bottom"}
 
 * Pull or merge request validation uses a specific pull request pipeline that echoes status back to the pull request. This feature allows developers to find problems early in the development cycle.
 * Integration is achieved by using a continuous integration pipeline that implements many controls out of the box and collects normalized evidence for these integrations in an evidence repository (repo). It also writes metadata on the artifacts to deploy into an artifacts inventory repo, which enables GitOps practices.

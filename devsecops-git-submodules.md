@@ -35,4 +35,4 @@ The opt-in flags are as follows:
 |-|-|
 | `opt-in-clone-submodules` | Set to 1 to enable cloning of the submodules. Clones with the `--recurse-submodules` Git option |
 | `opt-in-clone-remote-submodules` | Set to 1 to enable cloning of the submodules by using the status of the submodule's remote tracking branching. Clones with `--recurse-submodules --remote-submodules` Git options.|
-{: caption="Table 1. Optional parameters for cloning git submodules" caption-side="top"}
+{: caption="Optional parameters for cloning git submodules" caption-side="top"}

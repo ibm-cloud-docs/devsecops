@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-06-18"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, change request, change management, ibm cloud
 
@@ -25,7 +25,7 @@ The pipelines collect [evidence](/docs/devsecops?topic=devsecops-devsecops-evide
 
 Figure 1 shows the data flow and connection between evidence, inventory, and change management.
 
-![Connection between evidence, inventory, and change management](images/change-management-data-flow.svg "Flow diagram that shows the relationship between evidence, inventory, and change management"){: caption="Figure 1. Connection between evidence, inventory, and change management" caption-side="bottom"}
+![Connection between evidence, inventory, and change management](images/change-management-data-flow.svg "Flow diagram that shows the relationship between evidence, inventory, and change management"){: caption="Connection between evidence, inventory, and change management" caption-side="bottom"}
 
 1. CI runs build artifacts and leaves evidence of what happened during the creation of those artifacts.
 2. CI runs create entries about the created artifacts in the inventory.
@@ -76,4 +76,3 @@ Details about the deployment are uploaded to the closing summary change task, an
 
 * `successful`
 * `successful with issues` (if the summary has issues)
-

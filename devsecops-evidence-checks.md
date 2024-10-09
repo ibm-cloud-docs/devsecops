@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-07-19"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -1895,4 +1895,4 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
 |`com.ibm.close_change_request` |  `gitlab`|
 
 |`com.ibm.cloud.slsa` | `tekton-chains` |
-{: caption="Table 1. Supported tool for evidence" caption-side="top"}
+{: caption="Supported tool for evidence" caption-side="top"}

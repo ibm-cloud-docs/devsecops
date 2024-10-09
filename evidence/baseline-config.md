@@ -75,7 +75,7 @@ Logs are also stored persistently in a Cloud Object Storage evidence locker acco
 2. Go to the inventory repository.
 3. From the **Select Git revision** drop-down, select your release. For example, in this image, the revision is called `prod_latest`
 
-   ![The image shows an example of the screen capture that a user might provide to an auditor when you gather evidence for an audit.](../images/baseline-config-external.png){: caption="Figure 1. Example screen capture" caption-side="bottom"}
+   ![The image shows an example of the screen capture that a user might provide to an auditor when you gather evidence for an audit.](../images/baseline-config-external.png){: caption="Example screen capture" caption-side="bottom"}
 
 4. Select the `prod_latest` release option.
 5. Click **Compare**.
