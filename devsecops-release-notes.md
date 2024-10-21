@@ -27,7 +27,8 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #devsecops-open-v10.23.0-open-v9.42.0}
 
 Enhanced evidence collection to branch protection checks
-:   Added a new cli option `--branch-protection-settings-output-path` to `cocoa check pull-request-status` command to collect the branch protection checks in the form of a json file
+:   The `cocoa check pull-request-status` command now supports the `--branch-protection-settings-output-path` option to collect branch protection checks in a JSON file.
+
 
 ### Updates for DevSecOps version - open-v9.41.0 and open-v10.22.0
 {: #devsecops-open-v10.22.0-open-v9.41.0}
