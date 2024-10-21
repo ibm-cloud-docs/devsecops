@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-21"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,58 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 18 October 2024
+{: #devsecops-Oct2024-18}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.42.0 and open-v10.23.0
+{: #devsecops-open-v10.23.0-open-v9.42.0}
+
+Enhanced evidence collection to branch protection checks
+:   Added a new cli option `--branch-protection-settings-output-path` to `cocoa check pull-request-status` command to collect the branch protection checks in the form of a json file
+
+### Updates for DevSecOps version - open-v9.41.0 and open-v10.22.0
+{: #devsecops-open-v10.22.0-open-v9.41.0}
+
+Fast rollback during emergency situation outside normal deployment
+:   Its now possible to perform rollback during emergency situations. See [Rolling back a deployment](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
+
+Single commit for all artifacts built during pipelinerun
+:   The Cocoa inventory add command now includes a new from-file flag. To add multiple artifact entries, you should place the artifact details in a file and specify the file path with the from-file flag. This will read the file and create all the artifact entries in a single commit.
+
+### Updates for DevSecOps version - open-v9.40.1 and open-v10.21.1
+{: #devsecops-open-v10.21.1-open-v9.40.1}
+
+Enhance `load_artifact` command
+:   `load_artifact <artifact>` command now lists the properties associated with the artifact command. Earlier this used be an error.
+
+### Updates for DevSecOps version - open-v9.40.0 and open-v10.21.0
+{: #devsecops-open-v10.21.0-open-v9.40.0}
+
+Availability of `PIPELINE_NAME` environment property
+:   Made `PIPELINE_NAME` environment property across all stages using pipeline annotations
+
+Enhancements to inventory add validation
+:   If inventory validation was not successful (with cocoa inventory add) during a pipeline run, it will now notify as part of ci-pipeline end message
+
+Evidence locker using Cloud Object Storage only
+:   Pipelines can move away from git evidence locker. Its now possible to use COS as sole evidence locker
+
+Enhancements to evidence reuse feature
+:   `gosec` scan script will reuse evidence if evidence reuse is enabled
+
+### Updates for DevSecOps version - open-v9.38.0 and open-v10.19.0
+{: #devsecops-open-v10.19.0-open-v9.38.0}
+
+Validation of inputs for `cocoa inventory add` command
+:   Using cocoa inventory add command will now validate inventory fields and provide a message if changes are required to help standardize entries, functionality of command remains unchanged
+
+Enhancements to evidence reuse feature
+:   `sysdig` scan script will reuse evidence if evidence reuse is enabled
+
+Refactor compliance scripts
+:   compliance scripts have been refactored to enable execution of individual check
 
 ## 11 September 2024
 {: #devsecops-Sep2024-09}
