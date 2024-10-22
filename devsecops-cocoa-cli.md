@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-22"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -139,6 +139,8 @@ GHE_REPO=               # The repository name
 If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
+Specify the output file path with the `--branch-protection-settings-output-path` option. If the branch is protected, the Repository branch protection settings JSON will be stored in this path."
+
 `REQUIRED_CHECKS` Example:
 
 ```json
@@ -179,6 +181,11 @@ Running the command:
 
 ```sh
  cocoa check pull-request-status
+```
+{: codeblock}
+
+```sh
+ cocoa check pull-request-status --branch-protection-settings-output-path <path/to/file>
 ```
 {: codeblock}
 
@@ -1716,15 +1723,15 @@ $ cocoa inventory get-sha \
 ### cocoa inventory label
 {: #inventory-label}
 
-Adds a label to an inventory entry, or moves a label in the inventory. The target can be the latest commit on a specific branch or another label.
+Using a inventory label enables adding or relocating labels within an inventory item, targeting the latest commit on a branch or another label.
 
 Options:
 
 ```text
 --org          # The Github organisation which owns the inventory repository.
 --repo         # The name of the inventory repository.
---environment  # The inventory branch
---to-label     # Another label in the inventory, that will be looked up/removed
+--environment  # The inventory branch ( not needed for cocoa inventory label delete )
+--to-label     # Another label in the inventory, that will be looked up/removed ( not needed for cocoa inventory label delete )
 ```
 {: screen}
 
@@ -1780,12 +1787,21 @@ $ cocoa inventory label add \
 {: codeblock}
 
 ```sh
-# move or create the `staging_latest` label to another label (to the same commit)
+# move or create the `label-to-move` label to another label (to the same commit)
 $ cocoa inventory label move \
   --org='Github-ID' \
   --repo='compliance-inventory-repo' \
   --to-label="some-label" \
   "label-to-move"
+```
+{: codeblock}
+
+```sh
+# delete the `label-to-delete` label from the inventory
+$ cocoa inventory label delete \
+  --org='Github-ID' \
+  --repo='compliance-inventory-repo' \
+  "label-to-delete"
 ```
 {: codeblock}
 

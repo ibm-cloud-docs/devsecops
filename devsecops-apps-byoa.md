@@ -211,5 +211,4 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
     ```
     {: codeblock}
 
-
-    For more information about the stages, see [custom scripts](docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+    For more information about the stages, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).

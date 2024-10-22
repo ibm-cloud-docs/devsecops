@@ -1,8 +1,8 @@
 ---
 
-copyright: 
+copyright:
   years: 2021, 2024
-lastupdated: "2024-07-19"
+lastupdated: "2024-10-22"
 
 keywords: DevSecOps, pipelinectl
 
@@ -21,7 +21,7 @@ subcollection: devsecops
 For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
 
 
-  
+
 ## Usage
 {: #pipelinectl-usage}
 
@@ -101,6 +101,23 @@ get_env app-name "default-app-name"
 ```
 {: codeblock}
 
+### list_env
+{: #list_env}
+
+```bash
+list_env
+```
+{: codeblock}
+
+Displays the saved keys and environment variables from the `set_env` process.
+
+Example:
+
+```bash
+list_env
+```
+{: codeblock}
+
 ### save_file
 {: #save_file}
 
@@ -112,7 +129,9 @@ save_file <key> <value>
 {: codeblock}
 
 Saves an arbitrary file that can be retrieved later on with [`load_file`](#load_file).
+
 Directories are not supported.
+{: note}
 
 Example:
 
@@ -190,7 +209,7 @@ command_with_large_output | save_repo app_ui "issues" "result=success" "commit=$
 ```
 {: codeblock}
 
-If multiple values are missing with `=` the command exits with an error, because it cannot determine 
+If multiple values are missing with `=` the command exits with an error, because it cannot determine
 which property belongs to the value on `stdin`.
 
 Properties without a value but still appending `=` have an empty string as a value.
@@ -227,21 +246,36 @@ list_repos
 ```bash
 # <key>: Key of the repository, e.g. repository name
 # <prop>: Name of the property, e.g. commit, branch, url
-load_repo <key> <prop>
+load_repo <key> [<prop>]
 ```
 {: codeblock}
 
-Prints the `<prop>` of repository `<key>` to `stdout`.
+Prints the value of the specified property of the repository.
+Lists all available properties for the repository when only the repository is provided.
+Returns an error indicating no matching properties were found if the provided repository or property is invalid.
 
-Example:
+Description:
+
+- Prints the value of the specified property of the repository, if  <key> and <prop> values are provided.
+- Lists all available properties for the repository when only the <key> is provided.
+- Returns an error indicating no matching properties were found if the provided <key> is invalid.
+
+Example 1: Fetching a specific property:
 
 ```bash
 REPO_SHA=$(load_repo app_ui commit)
 ```
 {: codeblock}
 
+Example 2: Listing all properties for a given repository:
 
-Used together with `list_repos`
+```bash
+REPO_SHA=$(load_repo app_ui)
+```
+{: codeblock}
+
+
+Used with `list_repos` for retrieving property values
 
 ```bash
 #
@@ -256,9 +290,18 @@ done < <(list_repos)
 
 Outputs the following lines to the console:
 
+When retrieving a specific property:
+
 ```text
  Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
  Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
+```
+{: screen}
+
+When listing all properties for a given repository:
+
+```text
+ Properties available for '$key'.
 ```
 {: screen}
 
@@ -456,20 +499,30 @@ list_artifacts
 ```bash
 # <key>: Name of the artifact e.g. app-image, baseimage etc.
 # <prop>: Type of property e.g. name, type, tags, signature
-load_artifact <key> <prop>
+load_artifact <key> [<prop>]
 ```
 {: codeblock}
 
-Prints the `<prop>` of artifact `<key>` to `stdout`.
+Description:
 
-Example:
+- Prints the value of the specified property of the repository, if  <key> and <prop> values are provided.
+- Lists all available properties for the repository when only the <key> is provided.
+
+Example 1: Fetching a specific property:
 
 ```bash
 SIGNATURE=$(load_artifact ui_service signature)
 ```
 {: codeblock}
 
-Used together with `list_artifacts`
+Example2: Listing all properties for a given artifact:
+
+```bash
+load_artifact ui_service
+```
+{: codeblock}
+
+Used with `list_repos` for retrieving property values
 
 ```bash
 #
@@ -484,9 +537,18 @@ done < <(list_artifacts)
 
 Outputs the following lines to the console:
 
+When retrieving a specific property:
+
 ```text
  Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
  Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
+```
+{: screen}
+
+When listing all properties for a given artifact:
+
+```text
+ Properties available for 'ui_service': name, type, tags, signature
 ```
 {: screen}
 
@@ -562,7 +624,7 @@ Prints `prop` of the entry that is defined by `key`. If `prop` is not provided, 
 
 ### save_asset
 {: #save_asset}
-  
+
 ```bash
 # <prop>: Type of property; for example, uri, id, blob
 # <value>: Value of the property
@@ -574,7 +636,7 @@ Saves asset information to the pipelinectl storage to be accessible throughout t
 
 ### load_asset
 {: #load_asset}
-  
+
 ```bash
 # <prop>: Type of property; for example, uri, id
 # <value>: Value of the property
@@ -587,7 +649,7 @@ Retrieves an asset that matches the provided `<prop> <value>` pairs. If called w
 
 ### save_evidence
 {: #save_evidence}
-  
+
 ```bash
 # <prop>: Type of property; for example, blob, sha
 # <value>: Value of the property
@@ -599,7 +661,7 @@ Saves evidence information to the pipelinectl storage to be accessible throughou
 
 ### load_evidence
 {: #load_evidence}
-  
+
 ```bash
 # <prop>: Type of property; for example, id, sha
 # <value>: Value of the property
