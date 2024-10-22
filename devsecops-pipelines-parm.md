@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-22"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -232,7 +232,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |Unlocked | 
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |Unlocked | 
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |Unlocked | 
-|[`change-request-duration`](#pipeline-parm-change-request-duration)    | text   | The planned end time of the change. | Optional |Unlocked | 
+|[`change-request-duration`](#pipeline-parm-change-request-duration)    | text   | Maintenance duration (in mins) to compute the planned end time of the change. Default `30 min` | Optional |Unlocked | 
 |`change-management-repo`  | text   | The URL of the change management repository.  | Optional | Locked | 
 |[`change-request-id`](#pipeline-parm-change-request-id)    |text   |The ID of an open change request. If this parameter is set to `notAvailable` by default, a change request is automatically created by the continuous deployment pipeline. |Optional			| Unlocked | 
 |[`cluster`](#pipeline-parm-cluster)	|text 		|The name of the Docker build cluster.		|Required			| Locked | 
