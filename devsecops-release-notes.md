@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-10-21"
+lastupdated: "2024-10-22"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -33,17 +33,19 @@ Enhanced evidence collection to branch protection checks
 ### Updates for DevSecOps version - open-v9.41.0 and open-v10.22.0
 {: #devsecops-open-v10.22.0-open-v9.41.0}
 
-Fast rollback during emergency situation outside normal deployment
-:   Its now possible to perform rollback during emergency situations. See [Rolling back a deployment](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
+Rapid Rollback Capability
+:   You can now perform rollback during emergency situations. See [Rolling back a deployment](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
 
-Single commit for all artifacts built during pipelinerun
-:   The Cocoa inventory add command now includes a new from-file flag. To add multiple artifact entries, you should place the artifact details in a file and specify the file path with the from-file flag. This will read the file and create all the artifact entries in a single commit.
+
+Single Commit Artifact Creation
+:  The `add` command of Cocoa inventory now includes a new `from-file` flag. To add multiple artifact entries, you must place the artifact details in a file and specify the file path with the `from-file` flag. Use this command to process the file and create all the artifact entries in a single commit.
 
 ### Updates for DevSecOps version - open-v9.40.1 and open-v10.21.1
 {: #devsecops-open-v10.21.1-open-v9.40.1}
 
-Enhance `load_artifact` command
-:   `load_artifact <artifact>` command now lists the properties associated with the artifact command. Earlier this used be an error.
+Enhanced `load_artifact` command
+:   The `load_artifact <artifact>` command has been improved to now successfully list the properties associated with the artifact, whereas previously this would result in an error.
+
 
 ### Updates for DevSecOps version - open-v9.40.0 and open-v10.21.0
 {: #devsecops-open-v10.21.0-open-v9.40.0}
