@@ -1,6 +1,6 @@
 ---
 
-copyright: 
+copyright:
   years: 2021, 2024
 lastupdated: "2024-10-22"
 
@@ -21,7 +21,7 @@ subcollection: devsecops
 For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
 
 
-  
+
 ## Usage
 {: #pipelinectl-usage}
 
@@ -109,7 +109,7 @@ list_env
 ```
 {: codeblock}
 
-Lists all the keys that were saved during the set_env process. This also allows you to view the environment variables that have been set.
+Displays the saved keys and environment variables from the `set_env` process.
 
 Example:
 
@@ -129,7 +129,9 @@ save_file <key> <value>
 {: codeblock}
 
 Saves an arbitrary file that can be retrieved later on with [`load_file`](#load_file).
+
 Directories are not supported.
+{: note}
 
 Example:
 
@@ -207,7 +209,7 @@ command_with_large_output | save_repo app_ui "issues" "result=success" "commit=$
 ```
 {: codeblock}
 
-If multiple values are missing with `=` the command exits with an error, because it cannot determine 
+If multiple values are missing with `=` the command exits with an error, because it cannot determine
 which property belongs to the value on `stdin`.
 
 Properties without a value but still appending `=` have an empty string as a value.
@@ -618,7 +620,7 @@ Prints `prop` of the entry that is defined by `key`. If `prop` is not provided, 
 
 ### save_asset
 {: #save_asset}
-  
+
 ```bash
 # <prop>: Type of property; for example, uri, id, blob
 # <value>: Value of the property
@@ -630,7 +632,7 @@ Saves asset information to the pipelinectl storage to be accessible throughout t
 
 ### load_asset
 {: #load_asset}
-  
+
 ```bash
 # <prop>: Type of property; for example, uri, id
 # <value>: Value of the property
@@ -643,7 +645,7 @@ Retrieves an asset that matches the provided `<prop> <value>` pairs. If called w
 
 ### save_evidence
 {: #save_evidence}
-  
+
 ```bash
 # <prop>: Type of property; for example, blob, sha
 # <value>: Value of the property
@@ -655,7 +657,7 @@ Saves evidence information to the pipelinectl storage to be accessible throughou
 
 ### load_evidence
 {: #load_evidence}
-  
+
 ```bash
 # <prop>: Type of property; for example, id, sha
 # <value>: Value of the property
