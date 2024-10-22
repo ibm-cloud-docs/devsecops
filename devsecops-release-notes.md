@@ -50,14 +50,14 @@ Enhanced `load_artifact` command
 ### Updates for DevSecOps version - open-v9.40.0 and open-v10.21.0
 {: #devsecops-open-v10.21.0-open-v9.40.0}
 
-Availability of `PIPELINE_NAME` environment property
-:   Made `PIPELINE_NAME` environment property across all stages using pipeline annotations
+`PIPELINE_NAME` Environment Property: Available across all Pipeline stages
+:   The `PIPELINE_NAME` environment property is now available across all pipeline stages.
 
-Enhancements to inventory add validation
-:   If inventory validation was not successful (with cocoa inventory add) during a pipeline run, it will now notify as part of ci-pipeline end message
+Inventory Add Validation Enhancements
+:   Failed inventory validation during pipeline runs will now trigger a notification in the CI-pipeline end message.
 
-Evidence locker using Cloud Object Storage only
-:   Pipelines can move away from git evidence locker. Its now possible to use COS as sole evidence locker
+Cloud Object Storage Evidence Locker
+:   Pipelines can now use Cloud Object Storage (COS) as the sole evidence locker, eliminating the need for a Git-based evidence locker.
 
 Enhancements to evidence reuse feature
 :   `gosec` scan script will reuse evidence if evidence reuse is enabled
