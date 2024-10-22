@@ -59,14 +59,14 @@ Inventory Add Validation Enhancements
 Cloud Object Storage Evidence Locker
 :   Pipelines can now use Cloud Object Storage (COS) as the sole evidence locker, eliminating the need for a Git-based evidence locker.
 
-Enhancements to evidence reuse feature
-:   `gosec` scan script will reuse evidence if evidence reuse is enabled
+Evidence Reuse Feature Enhanced
+:   The `gosec` scan script now supports evidence reuse when the feature is enabled, improving efficiency and reducing redundant scans.
 
 ### Updates for DevSecOps version - open-v9.38.0 and open-v10.19.0
 {: #devsecops-open-v10.19.0-open-v9.38.0}
 
-Validation of inputs for `cocoa inventory add` command
-:   Using cocoa inventory add command will now validate inventory fields and provide a message if changes are required to help standardize entries, functionality of command remains unchanged
+Input Validation for `cocoa inventory add` command
+:   The `cocoa inventory add` command now includes input validation, checking inventory fields for accuracy and providing feedback on required changes to ensure standardized entries.
 
 Enhancements to evidence reuse feature
 :   `sysdig` scan script will reuse evidence if evidence reuse is enabled
