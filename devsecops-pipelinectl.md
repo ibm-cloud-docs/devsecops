@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-07-19"
+lastupdated: "2024-10-22"
 
 keywords: DevSecOps, pipelinectl
 
@@ -98,6 +98,23 @@ Example:
 
 ```bash
 get_env app-name "default-app-name"
+```
+{: codeblock}
+
+### list_env
+{: #list_env}
+
+```bash
+list_env
+```
+{: codeblock}
+
+Lists all the keys that were saved during the set_env process. This also allows you to view the environment variables that have been set.
+
+Example:
+
+```bash
+list_env
 ```
 {: codeblock}
 
@@ -227,16 +244,27 @@ list_repos
 ```bash
 # <key>: Key of the repository, e.g. repository name
 # <prop>: Name of the property, e.g. commit, branch, url
-load_repo <key> <prop>
+load_repo <key> [<prop>]
 ```
 {: codeblock}
 
-Prints the `<prop>` of repository `<key>` to `stdout`.
+Description:
 
-Example:
+- If both <key> and <prop> are provided, prints the value of the specified <prop> of the repository <key> to stdout.
+- If only <key> is provided, lists all available properties for that repository.
+- If the provided <key> is invalid, it returns an error indicating no matching properties were found.
+
+Example1: Fetching a specific property:
 
 ```bash
 REPO_SHA=$(load_repo app_ui commit)
+```
+{: codeblock}
+
+Example2: Listing all properties for a given repository:
+
+```bash
+REPO_SHA=$(load_repo app_ui)
 ```
 {: codeblock}
 
@@ -256,9 +284,18 @@ done < <(list_repos)
 
 Outputs the following lines to the console:
 
+When retrieving a specific property:
+
 ```text
  Repository saved as 'my-frontend' is at: 'github.com/my-team/frontend'
  Repository saved as 'my-backend' is at: 'github.com/my-team/backend'
+```
+{: screen}
+
+When listing all properties for a given repository:
+
+```text
+ Properties available for '$key'.
 ```
 {: screen}
 
@@ -456,16 +493,26 @@ list_artifacts
 ```bash
 # <key>: Name of the artifact e.g. app-image, baseimage etc.
 # <prop>: Type of property e.g. name, type, tags, signature
-load_artifact <key> <prop>
+load_artifact <key> [<prop>]
 ```
 {: codeblock}
 
-Prints the `<prop>` of artifact `<key>` to `stdout`.
+Description:
 
-Example:
+If both `<key>` and `<prop>` are provided, prints the value of the specified `<prop>` of the artifact `<key>` to stdout.
+If only `<key>` is provided, lists all available properties for that artifact.
+
+Example1: Fetching a specific property:
 
 ```bash
 SIGNATURE=$(load_artifact ui_service signature)
+```
+{: codeblock}
+
+Example2: Listing all properties for a given artifact:
+
+```bash
+load_artifact ui_service
 ```
 {: codeblock}
 
@@ -484,9 +531,18 @@ done < <(list_artifacts)
 
 Outputs the following lines to the console:
 
+When retrieving a specific property:
+
 ```text
  Artifact saved as 'ui_service' is named: 'us.icr.io/team_namespace/ui_service:2.4.3'
  Artifact saved as 'backend_service' is named: 'us.icr.io/team_namespace/backend_service:2.4.3'
+```
+{: screen}
+
+When listing all properties for a given artifact:
+
+```text
+ Properties available for 'ui_service': name, type, tags, signature
 ```
 {: screen}
 
