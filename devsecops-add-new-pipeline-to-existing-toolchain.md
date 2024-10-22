@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-05-28"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -22,7 +22,7 @@ To add a pipeline to an existing toolchain, complete these steps:
 
 1. From the Toolchain Overview page, click **Add +** to add a tool integration for your toolchain.
 
-   ![Toolchain overview](images/toolchain-overview.png){: caption="Figure 1. Toolchain overview" caption-side="bottom"}
+   ![Toolchain overview](images/toolchain-overview.png){: caption="Toolchain overview" caption-side="bottom"}
 
 2. Search and click **Delivery Pipeline** tool integration tile.
 

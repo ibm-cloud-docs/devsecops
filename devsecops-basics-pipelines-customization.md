@@ -70,7 +70,7 @@ DevSecOps toolchains use Gitlab repositories that are managed by {{site.data.key
 
 To add your application repository to the toolchain and use the sample application repository as the configuration repository, complete the following steps:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **DevOps** > **Toolchains**, and select the toolchain that you want to edit.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the toolchain that you want to edit.
 1. Click **Add**.
 1. Select where your app repo is hosted, either `Gitlab` or `GitHub`.
 1. Use the default server or add a new one.
@@ -81,7 +81,7 @@ To add your application repository to the toolchain and use the sample applicati
 
 Next, specify the sample application repo as your configuration repo by completing the following steps:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **DevOps** > **Toolchains**, and select the toolchain that you want to edit.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the toolchain that you want to edit.
 1. Click **pr-pipeline**.
 1. Click **Settings** and go to the **Environment properties** tab.
 1. Edit the value of the `pipeline-config-repo` property to point to the sample application repository URL.
@@ -97,7 +97,7 @@ Your CI pipelines now use the sample app repo `pipeline-config` as your configur
 
 To replace the sample app repo with your own app repo, complete the following steps:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **DevOps** > **Toolchains**, and select the CI toolchain that you want to edit.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the CI toolchain that you want to edit.
 1. Find the sample application source code repository and select **Configure**.
 1. Replace the repository URL with your application source code repository URL.
 1. Click **Save integration**.
@@ -115,7 +115,7 @@ After you add your application repository, you must configure the CI pipelines t
 
 Default triggers use the sample application repository, so you must update them to use your app repository. Verify the trigger settings, and modify them if needed to make sure all the triggers point to your app repo. Complete the following steps:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **DevOps** > **Toolchains**, and select the CI toolchain that you want to edit.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**, and select the CI toolchain that you want to edit.
 1. Click **pr-pipeline**.
 1. Edit the **Git PR Trigger** and provide your application repository URL and branch.
 1. Click **Save**.

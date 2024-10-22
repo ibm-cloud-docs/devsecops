@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-09-30"
+lastupdated: "2024-10-22"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,61 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 18 October 2024
+{: #devsecops-Oct2024-18}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.42.0 and open-v10.23.0
+{: #devsecops-open-v10.23.0-open-v9.42.0}
+
+Enhanced evidence collection to branch protection checks
+:   The `cocoa check pull-request-status` command now supports the `--branch-protection-settings-output-path` option to collect branch protection checks in a JSON file.
+
+
+### Updates for DevSecOps version - open-v9.41.0 and open-v10.22.0
+{: #devsecops-open-v10.22.0-open-v9.41.0}
+
+Rapid Rollback Capability
+:   You can now perform rollback during emergency situations. See [Rolling back a deployment](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
+
+
+Single Commit Artifact Creation
+:  The `add` command of Cocoa inventory now includes a new `from-file` flag. To add multiple artifact entries, you must place the artifact details in a file and specify the file path with the `from-file` flag. Use this command to process the file and create all the artifact entries in a single commit.
+
+### Updates for DevSecOps version - open-v9.40.1 and open-v10.21.1
+{: #devsecops-open-v10.21.1-open-v9.40.1}
+
+Enhanced `load_artifact` command
+:   The `load_artifact <artifact>` command has been improved to now successfully list the properties associated with the artifact, whereas previously this would result in an error.
+
+
+### Updates for DevSecOps version - open-v9.40.0 and open-v10.21.0
+{: #devsecops-open-v10.21.0-open-v9.40.0}
+
+`PIPELINE_NAME` Environment Property: Available across all Pipeline stages
+:   The `PIPELINE_NAME` environment property is now available across all pipeline stages.
+
+Inventory Add Validation Enhancements
+:   Failed inventory validation during pipeline runs will now trigger a notification in the CI-pipeline end message.
+
+Cloud Object Storage Evidence Locker
+:   Pipelines can now use Cloud Object Storage (COS) as the sole evidence locker, eliminating the need for a Git-based evidence locker.
+
+Evidence Reuse Feature Enhanced
+:   The `gosec` scan script now supports evidence reuse when the feature is enabled, improving efficiency and reducing redundant scans.
+
+### Updates for DevSecOps version - open-v9.38.0 and open-v10.19.0
+{: #devsecops-open-v10.19.0-open-v9.38.0}
+
+Input Validation for `cocoa inventory add` command
+:   The `cocoa inventory add` command now includes input validation, checking inventory fields for accuracy and providing feedback on required changes to help ensure standardized entries.
+
+Evidence Reuse Feature Enhancement
+:   `sysdig` scan script reuses existing evidence when feature is enabled, improving scanning efficiency and speed.
+
+Compliance Script Refactoring
+:   Compliance scripts have been refactored to allow for granular execution, enabling the running of individual checks as needed.
 
 ## 11 September 2024
 {: #devsecops-Sep2024-09}
@@ -137,7 +192,7 @@ Made Code Risk Analyzer scanning optional using environment properties
 | `cra-bom-generate`         | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | Software Bill of Materials(SBOM) generation will be done by CRA only if this value is set to 1 |
 | `cra-vulnerability-scan`   | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA vulnerability scan will be done only if this value is set to 1  and `cra-bom-generate` is set to 1. If this value is set to 1 and `cra-bom-generate` is set to 0, this scan will be marked as failure |
 | `cra-deploy-analysis`      | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA deployment analysis will be done only if this value is set to 1|
-{: caption="Table 1. Environment property parameters" caption-side="bottom"}
+{: caption="Environment property parameters" caption-side="bottom"}
 
 ## 09 May 2024
 {: #devsecops-May2024}

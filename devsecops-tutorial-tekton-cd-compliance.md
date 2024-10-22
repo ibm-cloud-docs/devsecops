@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2024-03-28"
+  years: 2021, 2024
+lastupdated: "2024-10-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -37,10 +37,9 @@ With this tutorial, you can set up a continuous deployment (CD) pipeline and too
 
 The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the toolchain setup and create processes in a logical order. A progress indicator shows the steps to complete the configuration. Follow the steps to access the template for the CI toolchain.
 
-1. Access the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/).
-2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**.
-3. On the Toolchains page, click **Create toolchain**.
-4. Click **CD-Develop with DevSecOps practices** tile.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
+2. On the Toolchains page, click **Create toolchain**.
+3. Click **CD-Develop with DevSecOps practices** tile.
 
 ## Set up the CI toolchain settings
 {: #tutorial-tekton-cd-options}
@@ -269,7 +268,7 @@ The delivery pipeline private worker tool integration connects with one or more 
 1. On the Summary page, click **Create**.
 2. Wait for the toolchain creation to view the summary page as shown in the screen capture. This can take a few minutes.
 
-![DevSecOps CD toolchain created](images/devsecops-cd-toolchain-created.png){: caption="Figure 1. DevSecOps CD toolchain created" caption-side="bottom"}
+![DevSecOps CD toolchain created](images/devsecops-cd-toolchain-created.png){: caption="DevSecOps CD toolchain created" caption-side="bottom"}
 
 You can configure the individual toolchain integrations after the pipeline is created.
 {: tip}
@@ -314,7 +313,7 @@ The details of the pull request are used during the CD pipeline that is run to c
 1. Make sure that CI pipeline ran successfully before you run the `Promotion Pipeline`.
 2. The promotion pipeline creates a `Pull Request` with the content of the inventory on the inventory source environment. For example, `master` branch targeting the inventory target environment branch, for example, `staging` or `prod`. An intermediary branch for the PR is created which can be discarded after the PR is merged.
 
-    ![Running the promotion pipeline](images/run-promotion-pipeline.png){: caption="Figure 2. Running the promotion pipeline" caption-side="bottom"}
+    ![Running the promotion pipeline](images/run-promotion-pipeline.png){: caption="Running the promotion pipeline" caption-side="bottom"}
 
 3. After the `Promotion Pipeline` finishes successfully, the `promote` task provides you with a link to the previously mentioned `Pull Request` in the inventory repository. The pull request name is in the following format:
 
@@ -342,23 +341,23 @@ The details of the `Pull Request` are used by the CD pipeline to create a change
 
 You can trigger a CD pipeline in manual or automatic way. You can trigger the CD pipeline manually anytime, but if no changes since the last successful deployment, the CD pipeline stops early as nothing to deploy. A {{site.data.keyword.gitrepos}} trigger is set up to trigger automatic CD pipeline, but is disabled by default and can be enabled after the first promotion.You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes. View the successful screen capture of the DevSecOps CD pipeline.
 
-![DevSecOps CD pipeline manual promotion](images/devsecops-cd-explore-manual-pipeline-trigger.png){: caption="Figure 3. DevSecOps CD pipeline manual promotion" caption-side="bottom"}
+![DevSecOps CD pipeline manual promotion](images/devsecops-cd-explore-manual-pipeline-trigger.png){: caption="DevSecOps CD pipeline manual promotion" caption-side="bottom"}
 
-![DevSecOps CD pipeline automatic promotion](images/devsecops-cd-explore-automatic-trigger.png){: caption="Figure 4. DevSecOps CD pipeline automatic promotion" caption-side="bottom"}
+![DevSecOps CD pipeline automatic promotion](images/devsecops-cd-explore-automatic-trigger.png){: caption="DevSecOps CD pipeline automatic promotion" caption-side="bottom"}
 
 You can also trigger the `CD Pipeline` manually anytime, but if there are no changes since the last successful deployment, the `CD Pipeline` doesn't deploy anything new.
 {: tip}
 
 A successful CD pipeline run looks like this:
 
-![DevSecOps CD pipeline successful](images/devsecops-cd-explore-pipeline-success.png){: caption="Figure 31. DevSecOps CD pipeline successful" caption-side="bottom"}
+![DevSecOps CD pipeline successful](images/devsecops-cd-explore-pipeline-success.png){: caption="DevSecOps CD pipeline successful" caption-side="bottom"}
 
 Flow of the tasks in the CD pipeline:
 
-![DevSecOps CD tasks](images/devsecops-cd-tasks.png){: caption="Figure 5. DevSecOps CD tasks" caption-side="bottom"}
+![DevSecOps CD tasks](images/devsecops-cd-tasks.png){: caption="DevSecOps CD tasks" caption-side="bottom"}
 
 After a successful CD pipeline run, you can find the sample app that is running on the prod namespace.
 The app URL can be found under `run stage` substep of `prod deployment` step of CD pipeline run.
 Use that URL to check that the app is running.
 
-![DevSecOps app running](images/devsecops-cd-explore-app-running-prod-namespace.png){: caption="Figure 6. DevSecOps app running" caption-side="bottom"}
+![DevSecOps app running](images/devsecops-cd-explore-app-running-prod-namespace.png){: caption="DevSecOps app running" caption-side="bottom"}

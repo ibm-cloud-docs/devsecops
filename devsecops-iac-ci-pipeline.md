@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-07-03"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -36,7 +36,7 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 |`acceptance-test`|Runs acceptance and integration tests on the deployed configuration on the dev environment.|Yes|
 |`release` |Adds the built artifacts to the inventory. |Yes|
 |`finish` |Collects, creates, and uploads the logs files, artifacts, and evidence to the evidence locker.   |No|
-{: caption="Table 1. Continuous integration for IaC stages and tasks" caption-side="top"}
+{: caption="Continuous integration for IaC stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 e) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
@@ -54,7 +54,7 @@ For Terraform definitions that define infrastructure-as-code source, the context
 | `tfvars-branch` | `main` | Branch of the Git repository that contains the `tfvars` files. |
 | `tfvars-files` | | Files that contain Terraform variables values. |
 | `terraform-version` | `1.2.9` | Terraform CLI tool version to install if not present in the image used for the stages.You can also provide versions like 1.5.0-1. Here is the [list of Terraform versions].(https://releases.hashicorp.com/terraform/)  |
-{: caption="Table 2. Parameters to configure Terraform context and variables" caption-side="top"}
+{: caption="Parameters to configure Terraform context and variables" caption-side="top"}
 
 The same parameters apply for the scripts that are used in an IaC CD deployment process. Because the CD process can process multiple inventory entries, you can scope a parameter for an inventory entry. To specify Terraform context and variables for a scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the environment entries `tf-dir`, `TF_VAR_<XXXX>`, `tfvars-repository`, `tfvars-branch`, and `tfvars-files`.
 
@@ -80,7 +80,7 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 | `tflint-version` | text | `v0.46.1` |Indicate the `tflint` version to install if not provided in the image used for `static-scan` stage execution. | optional |
 | `tflint-config` | text | | The config file to use for `tflint`. | optional |
 | `tflint-args` | text | | The command arguments that are passed to `tflint` during tool invocation. | optional |
-{: caption="Table 3. IaC static scan tools parameters" caption-side="top"}
+{: caption="IaC static scan tools parameters" caption-side="top"}
 
 
 ## Scans and checks in compliance checks
@@ -97,7 +97,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `cra-tf` | Use the `ibmcloud cra terraform-validate` command from [IBM Cloud CRA tool](/docs/code-risk-analyzer-cli-plugin){: external} to analyze a Terraform plan for compliance | `opt-in-cra-tf-validate` set to `1`. |
 | `tfsec`| Use the [TFsec](https://aquasecurity.github.io/tfsec){: external} tool to find potential misconfigurations and create compliance issues. | `opt-in-tfsec` set to `1` |
 | `checkov`| Use the [Checkov](https://www.checkov.io){: external} tool to find misconfigurations and create compliance issues. | `opt-in-checkov` set to `1` |
-{: caption="Table 4. IaC additional compliance scans and checks" caption-side="top"}
+{: caption="IaC additional compliance scans and checks" caption-side="top"}
 
 | Property | Default | Description |
 | -------- | ----- | ----------- |
@@ -112,7 +112,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `opt-in-checkov` | | The flag to run compliance checks by using the `checkov` tool. |
 | `checkov-image` | `bridgecrew/checkov`| The image that performs the `checkov` compliance check. |
 | `checkov-args` | | The `checkov` command arguments. |
-{: caption="Table 5. IaC compliance scans and checks configuration parameters" caption-side="top"}
+{: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
 
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
@@ -149,7 +149,7 @@ The default build feature can be configured by using specific parameters from Ta
 | -------- | ----- | ----------- |
 | `configuration-name` | The "humanish" part of the Git repository name. | The name of the IaC configuration. Used for the artifact file name and inventory entry that is built by the IaC CI pipeline. |
 | `build-ignore-file` | | Path to an ignore list file (used for `tar --exclude-from`) |
-{: caption="Table 6. Build artifact configuration parameters" caption-side="top"}
+{: caption="Build artifact configuration parameters" caption-side="top"}
 
 For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
@@ -161,7 +161,7 @@ The sign artifact stage provides a default behavior to use a GPG key to create a
 | Property | Description |
 | -------- | ----------- |
 | `signing-key` | GPG private key value that is used for the ascii version of detached signatures of one or more artifacts |
-{: caption="Table 7. Build artifact GPG key" caption-side="top"}
+{: caption="Build artifact GPG key" caption-side="top"}
 
 To use a different sign process, customize this stage by using the `.pipeline-config.yaml` configuration in your project.
 
@@ -185,7 +185,7 @@ The parameters to configure the scripts for the deployment action are described 
 | `schematics-workspace-region` | Defaults to the region of the toolchain. | Region to be used for the schematics workspace creation. |
 | `schematics-workspace-netrc` | Computed from known repositories. | Value for the `netrc` configuration of the schematics workspace to be created. For more information, see [Supporting to download modules from private remote host](/docs/schematics?topic=schematics-download-modules-pvt-git). |
 | `schematics-workspace-terraform-version` | Defaults to the schematics terraform version retrieved using `ibmcloud schematics version --output JSON` | Terraform version used for the schematics workspace to be created. See [Overview of Schematics images and packaged Terraform providers](/docs/schematics?topic=schematics-version-constraints#schematics-image-ov). |
-{: caption="Table 8. Configuration parameters to use Schematics as deployment tool" caption-side="top"}
+{: caption="Configuration parameters to use Schematics as deployment tool" caption-side="top"}
 
 To configure the scripts in the IaC CD deployment process, define the parameter that is scoped for a given inventory entry. To specify `Schematics as deployment tool` related environment properties for a given scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the all the schematics-related environment entries (except `schematics-ibmcloud-api-key`).
 {: note}
@@ -207,7 +207,7 @@ hello-iac-sample_schematics-workspace-name : workspace-for-deployment-of-hello-i
 | `tf-backend-s3-endpoint` | Cloud Object Storage endpoint. |
 | `tf-backend-s3-access_key` | HMAC `access_key` subsection of the credentials. |
 | `tf-backend-s3-secret_key` | HMAC `secret_key` subsection of the credentials. |
-{: caption="Table 9. Configuration to use Terraform CLI as deployment tool" caption-side="top"}
+{: caption="Configuration to use Terraform CLI as deployment tool" caption-side="top"}
 
 Note the following:
 

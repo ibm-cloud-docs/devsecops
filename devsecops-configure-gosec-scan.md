@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-06-21"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -26,7 +26,7 @@ The pipeline needs the parameter in Table 1 to run the Gosec scan. For a full li
 | Name | Type | Description | Required or Optional |
 |--|--|--|--|
 | `opt-in-gosec` | text   | Enables gosec scans | Required |
-{: caption="Table 1. gosec scan parameters" caption-side="top"}
+{: caption="gosec scan parameters" caption-side="top"}
 
 ## Enabling gosec scan for private Git repositories
 {: #devsecops-gosec-private-repos}
@@ -47,7 +47,7 @@ Downloading dependencies for repositories can be enabled by providing all of the
 | `gosec-private-repository-ssh-key`     | secret   | The SSH key for the private repository | optional |
 | `gosec-private-repository-user` | text | User for the private repository with https access (default to `x-oauth-basic`) | optional |
 | `gosec-private-repository-token` | secret | The token used for https access to private repository (default to the token configured for the first git integration in the toolchain whose repository URL is hosted on `gosec-private-repository-host`'s value) | optional |
-{: caption="Table 2. pipeline parameters" caption-side="top"}
+{: caption="pipeline parameters" caption-side="top"}
 
 ### Enable GOPROXY
 {: #devsecops-gosec-enable-goproxy}
@@ -59,7 +59,7 @@ If GOPROXY must be specified, all of the following parameters must be provided.
 | `gosec-proxy-virtual-repository-user`     | text   | The virtual repository user for gosec proxy | optional |
 | `gosec-proxy-virtual-repository-token`     | secret   | The virtual repository token for gosec proxy | optional |
 | `gosec-proxy-virtual-repository-url`     | text   | The virtual repository url for gosec proxy | optional |
-{: caption="Table 3. GOPROXY parameters" caption-side="top"}
+{: caption="GOPROXY parameters" caption-side="top"}
 
 ## Optional parameters
 {: #devsecops-gosec-params-opt}
@@ -72,7 +72,7 @@ Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops
 |-|-|-|
 | `gosec-additional-flags` | text | Additional flags to be appended to the start of the gosec command. |
 | `gosec-scan-image` | text | Specifies an alternative gosec image, including custom images or specific versions of the official image. |
-{: caption="Table 4. gosec optional parameters" caption-side="top"}
+{: caption="gosec optional parameters" caption-side="top"}
 
 ### Examples
 {: #devsecops-gosec-examples}

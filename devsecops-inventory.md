@@ -169,14 +169,14 @@ If the default branch for the inventory is switched out to a different branch, y
 
 You can skip writing to inventory by customizing the release script. For more information, see [Release to inventory](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-inventoryrel).
 
-![Continuous integration writes to inventory](images/inventory-1.svg ){: caption="Figure 1. Continuous integration writes to inventory" caption-side="bottom"}
+![Continuous integration writes to inventory](images/inventory-1.svg ){: caption="Continuous integration writes to inventory" caption-side="bottom"}
 
 ### Promotion
 {: #inventory-promotion}
 
 A pull request is created when you promote to a target branch happens. Pull request contents populate the Change Request fields. After the pull request is reviewed, you can merge it.
 
-![Promoting a target branch by using a PR](images/inventory-2.svg){: caption="Figure 2. Promoting a target branch by using a PR" caption-side="bottom"}
+![Promoting a target branch by using a PR](images/inventory-2.svg){: caption="Promoting a target branch by using a PR" caption-side="bottom"}
 
 ### Delta and deployment
 {: #inventory-delta-deployment}
@@ -193,21 +193,21 @@ When the deployment finishes, you can move the `latest` tag ahead.
 During the dev mode trigger, the tags will not be advanced. The purpose of the dev mode trigger is solely for testing the CD pipeline only.
 {: attention}
 
-![Deployment completes](images/inventory-4.svg){: caption="Figure 4. Deployment completes" caption-side="bottom"}
+![Deployment completes](images/inventory-4.svg){: caption="Deployment completes" caption-side="bottom"}
 
 ### Promote to further environments
 {: #promote-further-envs}
 
 You can promote and deploy from any branch to another one.
 
-![Promotion using a PR from staging to prod branch](images/inventory-5.svg){: caption="Figure 5. Promotion using a PR from staging to prod branch" caption-side="bottom"}
+![Promotion using a PR from staging to prod branch](images/inventory-5.svg){: caption="Promotion using a PR from staging to prod branch" caption-side="bottom"}
 
 ### Inventory landscape
 {: #inventory-landscape}
 
 The current deployed state contains the content to deploy to an environment. Every promoted commit in the target branch contains the relevant Pipeline run ID and Change Request ID as a tag. Some commits can have multiple tags, for example, when you are retrying a failed deployment or deploying again. The Inventory holds every piece of information to replay the deployments.
 
-![Deployment flow diagram with tags](images/inventory-6.svg){: caption="Figure 6. Deployment flow diagram with tags" caption-side="bottom"}
+![Deployment flow diagram with tags](images/inventory-6.svg){: caption="Deployment flow diagram with tags" caption-side="bottom"}
 
 #### Use of tags
 {: #inventory-tags}
@@ -219,7 +219,7 @@ The following table shows the available inventory tags.
 | `latest` | Tags the current, successfully deployed, and concluded state of the inventory on a branch. |
 | `pipeline run id` | Tags the current inventory state in the branch, with the pipeline run ID or build number of the actual deployment. To avoid inventory content overlap when parallel deployments are triggered, use this tag to refer to the actual inventory point hash in the branch history. |
 | `change request id` (optional) | Tags the current state of a change request ID to track the change request IDs in the inventory, in a historical representation. |
-{: caption="Table 1. Inventory tags" caption-side="top"}
+{: caption="Inventory tags" caption-side="top"}
 
 ### Setup for a single target with multiple regions
 {: #single-target-multi-region}
@@ -230,7 +230,7 @@ You do not need to set up a different branch for each region by using the `regio
 
 In this setup, the prod branch has multiple `latest` tags on the same branch, such as `us-south_prod_latest` and `eu-de_prod_latest`.  Each continuous deployment pipeline that is responsible for each region can use those tags to deploy.
 
-![Prod branch with multiple latest tags per region](images/inventory-7.svg){: caption="Figure 7. Prod branch with multiple latest tags per region" caption-side="bottom"}
+![Prod branch with multiple latest tags per region](images/inventory-7.svg){: caption="Prod branch with multiple latest tags per region" caption-side="bottom"}
 
 For example, a set of changes that you plan to deploy everywhere might be released to a single region first, and then gradually deployed to other regions by using continuous deployment pipelines to target those regions.
 

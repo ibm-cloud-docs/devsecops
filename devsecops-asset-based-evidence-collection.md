@@ -24,7 +24,7 @@ In the context of DevSecOps, an asset is a fundamental entity that is subjected 
 
 There are various type of asset types.
 
-![Asset types](images/asset-types.png "Types of Assets"){: caption="Figure 1. Types of assets." caption-side="bottom"}
+![Asset types](images/asset-types.png "Types of Assets"){: caption="Types of assets." caption-side="bottom"}
 
 For optimal clarity, assets must be distinctly identified. Here are some examples:
 - Commit Asset: Comprising the repository and commit hash: https://repo.url/org/repo#<COMMIT-SHA>
@@ -139,7 +139,7 @@ Use the [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#i
 |provenance	|The fully qualified URL where artifact is stored|	[string] [required]	||
 |signature|	The artifacts signature	|[string] [required]|	Will be used to verify the signature of the asset, need more clarification|
 |environment|	The name of the environment where the entry should be added	|[string] [optional]	|the inventory branch where the entry would be added which is default to master|
-{: caption="Table 1. Argument information" caption-side="top"}
+{: caption="Argument information" caption-side="top"}
 
 
 Examples:

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-03-20"
+lastupdated: "2024-10-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -40,8 +40,7 @@ With this tutorial, you can use the toolchain template for continuous deployment
 
 The {{site.data.keyword.contdelivery_short}} service provides templates that guide you through the CD toolchain setup. Follow the steps to access the template for the CD toolchain.
 
-1. From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/).
-2. Click **Menu** ![Menu icon](../icons/icon_hamburger.svg) and select **DevOps**.
+1. From the [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/), click the **Menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
 3. On the Toolchains page, click **Create toolchain**.
 4. Click **CD - Deploy a secure app with DevSecOps practices** tile to view the template.
 
@@ -185,7 +184,7 @@ The individual toolchain integrations can be configured after the pipeline creat
 
 1. On the Summary page, click **Create toolchain**, and wait for the toolchain to be created.
 
-![DevSecOps CD toolchain created](images/devsecops-cd-toolchain-created_v2.png){: caption="Figure 1. DevSecOps CD toolchain created" caption-side="bottom"}
+![DevSecOps CD toolchain created](images/devsecops-cd-toolchain-created_v2.png){: caption="DevSecOps CD toolchain created" caption-side="bottom"}
 
 ## Explore the CD toolchain
 {: #tutorial-cd-toolchain-explore}
@@ -225,7 +224,7 @@ The details of the pull request are used during the CD pipeline that is run to c
 
 You can trigger a CD pipeline in manual or automatic way. You can trigger the CD pipeline manually anytime, but if no changes since the last successful deployment, the CD pipeline stops early as nothing to deploy. You can add and use [`force-redeploy` variable](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-parameters) to rerun the CD with no code changes. View the successful screen capture of the DevSecOps CD pipeline.
 
-![DevSecOps CD pipeline successful](images/devsecops-cd-explore-pipeline-success.png){: caption="Figure 2. DevSecOps CD pipeline successful" caption-side="bottom"}
+![DevSecOps CD pipeline successful](images/devsecops-cd-explore-pipeline-success.png){: caption="DevSecOps CD pipeline successful" caption-side="bottom"}
 
 You can find the sample app that is running on the production namespace. The app URL can be found under `run stage` substep's log of `prod deployment` step of CD pipeline run. Use that URL to verify that the app is running.
 

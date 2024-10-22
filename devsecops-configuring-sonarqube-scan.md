@@ -1,10 +1,10 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-05-19"
+  years: 2015, 2024
+lastupdated: "2024-10-09"
 
-keywords: tool integrations, IBM Cloud Public, Sonarqube
+keywords: tool integrations, Sonarqube
 
 subcollection: devsecops
 
@@ -20,7 +20,7 @@ SonarQube provides an overview of the overall health and quality of your source 
 
 Configure SonarQube to continuously analyze and measure the quality of your source code:
 
-1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon ![Hamburger icon](images/icon_hamburger.svg) and select **DevOps**. On the Toolchains page, click the toolchain to open its Overview page. Alternatively, on your app's Overview page, on the Continuous delivery card, click **View toolchain**. Then, click **Overview**.
+1. In the {{site.data.keyword.cloud_notm}} console, click the menu icon ![Hamburger icon](images/icon_hamburger.svg) > **Platform Automation** > **Toolchains**. On the Toolchains page, click the toolchain to open its Overview page. Alternatively, on your app's Overview page, on the Continuous delivery card, click **View toolchain**. Then, click **Overview**.
 
    a. Click **Add a Tool**.
 
@@ -79,7 +79,7 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |sonarqube		|Tool integration		|The SonarQube tool integration.	|Optional			|
 |sonarqube-config		|Text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). |Required			|
 |opt-in-sonar-hotspots		|Text		|The Sonarqube scan for detecting hotspots.	|Optional			|
-{: caption="Table 1. Continuous integration pipeline parameters}
+{: caption="Continuous integration pipeline parameters}
 
 For more information about pipelines parameters, see [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
 
@@ -105,7 +105,7 @@ If you use the SonarQube instance that the pipeline created, you can update the 
 
 1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task.
 
-   ![SonarQube dashboard](images/sonar-quality-gate.png){: caption="Figure 1. SonarQube dashboards" caption-side="bottom"}
+   ![SonarQube dashboard](images/sonar-quality-gate.png){: caption="SonarQube dashboards" caption-side="bottom"}
 
 1. Click **Quality Gates** > **Create**.
 1. Set your Quality Gate by using one of the following options:

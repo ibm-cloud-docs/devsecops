@@ -26,7 +26,7 @@ Some data is expected to be available by other stages on the workspace, so be su
 |`containerize`		 |[Add artifact names and digests to the pipeline](/docs/devsecops?topic=devsecops-devsecops-config-github).		|`save_artifact`		|Yes		|
 |`sign-artifact`   |Add the image signature from the GPG signing output.   	|`save_artifact`			|Yes		|
 |`acceptance-test` |To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`			|No		|
-{: caption="Table 5. Stage output" caption-side="top"}
+{: caption="Stage output" caption-side="top"}
 
 ## Stage results API
 {: #cd-devsecops-scripts-resultsapi}
@@ -41,7 +41,7 @@ The following tasks and stages are available:
 |**Continuous integration pipeline stages** | `setup`, `test`, `static-scan`, `containerize`, `sign-artifact`, `deploy`, `acceptance-test`, `scan-artifact`, `release`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default. |
 |**Continuous deployment pipeline stages**  | `setup`, `deploy`, `acceptance-test`, `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request`. The `create-change-request`, `change-request-check-approval`, `change-request-change-state-to-implement`, and `close-change-request` stages are not custom stages. They are provided by the pipelines by default.|
 |**Continuous compliance pipeline stages**  | `setup`, `test`, `static-scan`, `scan-artifact`, `acceptance-test`, `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan`. The `detect-secrets`, `branch-protection`, `bom-check`, `cis-check`, and `vulnerability-scan` stages are not custom stages. They are provided by the pipelines by default.|
-{: caption="Table 6. Tasks and stages" caption-side="bottom"}
+{: caption="Tasks and stages" caption-side="bottom"}
 
 ### Example usage
 {: #devsecops-scripts-resultsapi-example}

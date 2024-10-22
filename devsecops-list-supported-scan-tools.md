@@ -29,4 +29,4 @@ The following table lists the various scanning tools that are integrated into De
 | [Sysdig](/docs/devsecops?topic=devsecops-cd-devsecops-sysdig-scans) | Sysdig scan uses the Sysdig inline scanner to identify vulnerabilities (CVEs) within Docker images. | `scan artifact` stage of CI/CC pipelines | Container Image scan |
 | [IBM Cloud Vulnerability Advisor](/docs/devsecops?topic=devsecops-cd-devsecops-va-scans) | The DevSecOps pipeline uses the Vulnerability Advisor (VA) to identify vulnerabilities (CVEs) within Docker images. | `scan artifact` stage of CI/CC pipelines | Container Image scan | 
 | [SLSA attestation](/docs/devsecops?topic=devsecops-cd-devsecops-slsa) | SLSA attestation is provided to validate the supply chain security and provide provenance of build | `build artifact` stage of CI/CC pipelines | Container Image scan | 
-{: caption="Table 1. List of supported scanning tools" caption-side="top"}
+{: caption="List of supported scanning tools" caption-side="top"}

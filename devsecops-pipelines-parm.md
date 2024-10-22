@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-09-25"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -32,6 +32,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `base-repo` |text | The URL of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  | Unlocked |
 | `base-repo-name` |text | The name of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  | Unlocked |
 | `base-repo-owner` |text | The owner of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  | Unlocked |
+| `pr-url` | Url of the pull request. | Required | Unlocked |
+| `pr-html-url` | html url of the pull request. | Required | Unlocked |
 |`baseimage-auth-email`		|text 		|The email credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			| Unlocked |
 |`baseimage-auth-host`		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			| Unlocked |
 |`baseimage-auth-password`		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			| Unlocked |
@@ -83,7 +85,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked |
 |`slack-notifications`		|text		|The switch that turns the Slack integration on or off.	|Optional			| Locked |
 |`[slack-notifications]`(#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		| Unlocked |
-{: caption="Table 1. Pull request parameters" caption-side="bottom"}
+{: caption="Pull request parameters" caption-side="bottom"}
 {: #cd-pr-parameters}
 {: tab-title="Pull request parameters"}
 {: tab-group="IAM-simple"}
@@ -213,7 +215,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`va-scan-retry-count`		|text		|The number of retries to wait for the vulnerability report scan.	|Required			|Unlocked | 
 |`va-scan-retry-sleep`	|text		|The number of wait times per retry iteration.	|Optional			|Unlocked | 
 |`version`		|text		|The version of the app to deploy.	|Required			|Locked | 
-{: caption="Table 2. Continuous integration parameters" caption-side="bottom"}
+{: caption="Continuous integration parameters" caption-side="bottom"}
 {: #cd-ci-parameters}
 {: tab-title="Continuous integration parameters"}
 {: tab-group="IAM-simple"}
@@ -293,7 +295,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`target-environment-purpose`](#pipeline-parm-target-environment-purpose)		|text		|The context of the environment where the app is deployed. Valid values: `pre_prod`, `production`	|Required | Locked | 
 |[`target-environment-detail`](#pipeline-parm-target-environment-detail)		|text		|Description of the target environment where the app is deployed. |Required | Locked | 
 |`version`		|text		|The version of the app to deploy.	|Required	  	| Locked |
-{: caption="Table 3. Continuous deployment parameters" caption-side="bottom"}
+{: caption="Continuous deployment parameters" caption-side="bottom"}
 {: #cd-parameters}
 {: tab-title="Continuous deployment parameters"}
 {: tab-group="IAM-simple"}
@@ -386,7 +388,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. The default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
 |`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			|
-{: caption="Table 4. Continuous compliance parameters" caption-side="bottom"}
+{: caption="Continuous compliance parameters" caption-side="bottom"}
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
 {: tab-group="IAM-simple"}
@@ -398,7 +400,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |inventory-ignore-file 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked | 
 |inventory-include 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		| Unlocked | 
 |inventory-exclude 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		| Unlocked | 
-{: caption="Table 5. Promotion parameters" caption-side="bottom"}
+{: caption="Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
 {: tab-title="Promotion parameters"}
 {: tab-group="IAM-simple"}
@@ -607,7 +609,7 @@ This parameter is for the pipelines that use scan artifact stages to run the Sys
 To lock an environment property, click on edit property of environment property and then enable the locked property.
 
 ![Locking Property](images/locked-property-artifact.png)
-{: caption="Figure 1. Toolchain enabling" caption-side="bottom"}
+{: caption="Toolchain enabling" caption-side="bottom"}
 
 ## Effects of locking
 After locking a property in the environment property, we cannot change the trigger level. So once a property is locked, those properties cannot be updated in the trigger level.

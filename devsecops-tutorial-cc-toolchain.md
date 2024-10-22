@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-03-29"
+lastupdated: "2024-10-09"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -44,7 +44,7 @@ Make sure that the following prerequisites are completed. You might reuse the re
 
 This tutorial uses a staging environment as an example to configure and showcase the CC toolchain. Follow the steps to access the template for the CC toolchain.
 
-1. In the {{site.data.keyword.cloud_notm}} console, click **Menu** ![Menu icon](../icons/icon_hamburger.svg), and select **DevOps**.
+1. In the {{site.data.keyword.cloud_notm}} console, click the **Menu** ![Menu icon](../icons/icon_hamburger.svg) > **Platform Automation** > **Toolchains**.
 3. From the Toolchains page, click **Create toolchain**.
 4. From the Create a Toolchain page, click **CC - Keep your app continuously Compliant with DevSecOps practices** tile.
 
@@ -198,18 +198,18 @@ Follow the steps to add the application URL to the CC pipeline by using manual t
 5. Enter **Value** as `http://<ipaddress>:<portno>` that is extracted from the `ci-pipeline`.
 6. Click **Add**. You are now ready to run the CC pipeline by using a manual trigger. A completed CC pipeline is displayed as shown in the screen capture.
 
-![CC pipeline successful](images/devsecops-cc-toolchain-explore-cc-pipeline-successful.png){: caption="Figure 2. DevSecOps Continuous Compliance pipeline successful run" caption-side="bottom"}
+![CC pipeline successful](images/devsecops-cc-toolchain-explore-cc-pipeline-successful.png){: caption="DevSecOps Continuous Compliance pipeline successful run" caption-side="bottom"}
 
 A completed async subpipeline run that got triggered during the CC pipeline is displayed as shown in the screen capture.
 
-![Async subpipeline successful](images/devsecops-cc-toolchain-explore-async-sub-pipeline-successful.png){: caption="Figure 3. DevSecOps Continuous Compliance async sub pipeline successful run" caption-side="bottom"}
+![Async subpipeline successful](images/devsecops-cc-toolchain-explore-async-sub-pipeline-successful.png){: caption="DevSecOps Continuous Compliance async sub pipeline successful run" caption-side="bottom"}
 
 ### Incident issues
 {: #tutorial-cc-toolchain-incident-issues}
 
 During CC pipeline execution, incident issues such as vulnerability, CVE are created and attached to the collected evidence. If found in production, these issues with the due date are created in the issues repository that is mentioned in toolchain setup. For more information, see [Incident issues with due date](/docs/devsecops?topic=devsecops-incident-issues#devsecops-issues-due-date).
 
-![DevSecOps sample incident issue](images/devsecops-cc-toolcain-explore-sample-issue.png){: caption="Figure 4. DevSecOps sample incident issue created with CC pipeline" caption-side="bottom"}
+![DevSecOps sample incident issue](images/devsecops-cc-toolcain-explore-sample-issue.png){: caption="DevSecOps sample incident issue created with CC pipeline" caption-side="bottom"}
 
 ### Explore DevOps Insights
 {: #tutorial-cc-toolchain-insights-explore}
@@ -221,7 +221,7 @@ In the following places, the evidence from the compliance checks are uploaded.
 - DevOps Insights - From the toolchain click **{{site.data.keyword.DRA_short}}**.
 - [DevOps Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-devops-data-aggregation) as displayed in the screen capture.
 
-![DevSecOps CC evidence](images/devsecops-cc-explore-evidence.png){: caption="Figure 4. DevSecOps CC evidence" caption-side="bottom"}
+![DevSecOps CC evidence](images/devsecops-cc-explore-evidence.png){: caption="DevSecOps CC evidence" caption-side="bottom"}
 
 ### CI and CC pipeline comparison
 {: #tutorial-cc-toolchain-comparison}

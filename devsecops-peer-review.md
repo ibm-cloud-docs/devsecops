@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-08-13"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -71,7 +71,7 @@ The pipeline collects peer review compliance data during builds and deployments 
 
 In this diagram, PR1, PR2 are the pull/merge requests that are approved before merging. Similarly, for PR4, PR5, and PR7. However, PR3 and PR6, highlighted in red, are merged without an approval, which is a peer review compliance violation. This is captured as evidence.
 
- ![Data collection](images/data-collection.svg){: caption="Figure 1. Data collection" caption-side="bottom"}
+ ![Data collection](images/data-collection.svg){: caption="Data collection" caption-side="bottom"}
 
 By default, the sample application in the CI toolchain attempts to set the minimum number of reviewers to 1. If you want to change the number of reviewers, set the `peer_review_approvers` envronment property as required.  For more information on setting the minimum number of reviewers required for a pull/merge request, see the following GitHub and GitLab resources:
 
@@ -96,7 +96,7 @@ A compliance incident typically holds the following information:
 * Commit ID.
 * Required number of approvals.
 
- ![Pull Request incident content](images/devsecops-pr-incident-issue.png){: caption="Figure 2. Pull Request incident content" caption-side="bottom"}
+ ![Pull Request incident content](images/devsecops-pr-incident-issue.png){: caption="Pull Request incident content" caption-side="bottom"}
 
 Collected data is saved as an [evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) artifact, which is uploaded to the evidence locker, and then referred to in the evidence itself. The final evidence result is determined by the approved pull/merge requests. Unapproved, but merged pull/merge requests fail this type of evidence.
 
@@ -126,7 +126,7 @@ The following data is included in the automatically generated change request:
 Non-remediated pull/merge request incidents impact the deployment readiness of the change request. If any pull/merge request incidents are found, they are considered vulnerabilities and the [change request](/docs/devsecops?topic=devsecops-cd-devsecops-approve-cr) must be reviewed and approved manually.
 {: important}
 
-![Change request content](images/devsecops-pr-incident-change-request-content.png){: caption="Figure 3. Change request content" caption-side="bottom"}
+![Change request content](images/devsecops-pr-incident-change-request-content.png){: caption="Change request content" caption-side="bottom"}
 
 
 ## Pull request incident remediation

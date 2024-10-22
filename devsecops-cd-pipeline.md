@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-06-21"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -46,7 +46,7 @@ The table below lists the tasks run in a CD Pipeline. In addition the table also
 |`acceptance-test` 		|Run acceptance and integration tests on the deployment.   	|Yes			| No | **User** | Yes |
 |`finish` 		|Collect and upload log files, artifact, and evidence to the evidence locker. 		|Yes			| Yes | Pipeline | Yes |
 |`rollback` |This is a step inside `prod-finish`, which gets executed whenever a rollback scenario is encountered | Yes | Yes | NA | No |
-{: caption="Table 1. Pipeline stages and tasks" caption-side="top"}
+{: caption="Pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
@@ -120,7 +120,7 @@ In the deploy stage, the pipeline deploys the built artifacts into an environmen
 
 * Variables from the pipeline UI (`get_env`)
 
- ![Edit property](images/target-environment.png){: caption="Figure 1. Edit property" caption-side="bottom"}
+ ![Edit property](images/target-environment.png){: caption="Edit property" caption-side="bottom"}
 
 * [Pipeline trigger webhook](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads)
 
@@ -156,5 +156,3 @@ To run Inline rollback successfully, ensure that the `rollback-enabled` environm
 - `rollback-exit-code` is the exit code of the rollback step. This is kept empty if rollback wasn't even run.
 - `default-rollback-executed` is executed when the property is set to `true` if the default implementation that prompts user to supply a rollback script. The value of this property is set to empty by default.
 - `pipeline-execution-status` sets the status of the overall pipeline run. Possible values `[successful_deployment, failed_deployment_failed_rollback, failed_deployment_successful_rollback]`
-
-

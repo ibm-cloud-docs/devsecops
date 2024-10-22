@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2024
-lastupdated: "2024-07-05"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -222,7 +222,7 @@ To enable the Git Promotion Validation trigger on an existing pipeline, you can 
 |backout-plan		|The plan that describes how the change is rolled back in a failure. 		|`''`		|Optional		|
 |slack-notifications		|The switch to turn the Slack Integration on or off  	|0		|Optional		|
 |customer-impact		|Impact of the change on the customers. 		|`critical`, `high`, `moderate`, `low`, or `no_impact`		|Optional		|
-{: caption="Table 1. Promotion pipeline inputs" caption-side="top"}
+{: caption="Promotion pipeline inputs" caption-side="top"}
 
 ## Outputs and effects
 {: #cd-devsecops-promotion-pipelineoutputs}
@@ -244,13 +244,13 @@ You must edit and modify the pull/merge request if the optional parameters were 
 |Backout Plan | The steps to back out if the deployment fails. | Optional |
 {: caption="Table 2.Optional parameters" caption-side="top"}
 
- ![Promotion pull and merge request](images/promotion-pr.png){: caption="Figure 1. Promotion pull and merge request" caption-side="bottom"}
+ ![Promotion pull and merge request](images/promotion-pr.png){: caption="Promotion pull and merge request" caption-side="bottom"}
  
  When the (optional) promotion PR validation runs, the evidence status is set on the pull/merge request.
- ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Figure 2. Evidence status on promotion pull and merge request" caption-side="bottom"}
+ ![Optional evidence status set on promotion pull and merge request](images/promotion-pull-request-status.png){: caption="Evidence status on promotion pull and merge request" caption-side="bottom"}
 
 The aggregated evidence summary of the evidences (that can be coming from multiple apps in the inventory) is displayed in tabular format as a comment in the PR.
-![Optional aggregated evidence summary captured in a comment on promotion pull and merge request](images/promotion-pull-request-summary.png){: caption="Figure 3. Aggregated evidence summary in promotion pull and merge request" caption-side="bottom"}
+![Optional aggregated evidence summary captured in a comment on promotion pull and merge request](images/promotion-pull-request-summary.png){: caption="Aggregated evidence summary in promotion pull and merge request" caption-side="bottom"}
 
 ## Next step
  {: #devsecops-promotion-pipeline-next}

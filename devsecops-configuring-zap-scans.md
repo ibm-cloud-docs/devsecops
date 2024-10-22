@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-03-19"
+lastupdated: "2024-10-09"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -47,7 +47,7 @@ You can set and customize the following parameters to configure ZAP scans to run
 |`zap_evidence_type`|String|The evidence type for evidence gathering for scans performed by ZAP, default: `com.ibm.dynamic_scan`.|Optional|
 |`show-container-log`|String|Flag to enable or disable the container logging capability for the ZAP scanners when running in DinD, default: `false`.|Optional|
 |`show-zap-log`|String|Flag to enable or disable ZAP server logging capability, default: `false`.|Optional|
-{: caption="Table 1. ZAP scan configuration parameters" caption-side="bottom"}
+{: caption="ZAP scan configuration parameters" caption-side="bottom"}
 
 ## Configuring ZAP API scans
 {: #zap-api-scans}
@@ -64,7 +64,7 @@ More parameters are required for configuring ZAP API scans. These parameters can
 |`zap_api_deployment_name`|String|Name of the ZAP API scanner deployment, default: `zap-api-deployment`.|Optional|
 |`zap-api-image`|String|Set this parameter to use a custom ZAP API Scanner image. Otherwise, the IBM default is used.|Optional|
 |`flatten-zap-api-scan-report`|String|Set this parameter to `true` to flatten the ZAP API scan results into one single html and json file. Default `false`.|Optional|
-{: caption="Table 2. ZAP API configuration parameters" caption-side="bottom"}
+{: caption="ZAP API configuration parameters" caption-side="bottom"}
 
 Create a file `custom-api-script` inside your application repository, at a location of your choice, for example, inside `scripts/zap-custom-scripts` directory. This file can be named differently too, and set the path to this file against the `zap-api-custom-script` parameter.
 
@@ -79,7 +79,7 @@ Use the file `custom-api-script` to modify the request that goes into the ZAP sc
 |`apiKey`|String|If `authenticationType` is not sent, this API key is used for IAM authentication that is sent in Authorization header for all requests. If `authenticationType` is set to `Bearer`, the header that is formed is `Authorization: Bearer <apiKey>`. If `authenticationType` is set to `ApiKey`, the header that is formed is `Authorization: <apiKey>`. Field is ignored for `authenticationType` as `Basic`.|Optional|
 |`username`|String|Username to be used for `authenticationType` `Basic`.|Required if `authenticationType` as `Basic`|
 |`password`|String|Password to be used for `authenticationType` `Basic`.|Required if `authenticationType` as `Basic`|
-{: caption="Table 3. Parameters in the request payload" caption-side="bottom"}
+{: caption="Parameters in the request payload" caption-side="bottom"}
 
 For sensitive information like credentials, you must read these values from a vault or a secret store.
 {: note}
@@ -106,7 +106,7 @@ Parameters that are required for configuring ZAP UI scans are as follows.
 |`zap-proxy-service`|String|Name for the ZAP Proxy service required by the UI scanner, default: `zap-proxy-service`.|Optional|
 |`zap-ui-image`|String|Set this parameter to use a custom ZAP UI Scanner image. Otherwise, the IBM default is used.|Optional|
 |`zap-proxy-image`|String|Set this to use a custom ZAP Proxy image. Otherwise, the IBM default is used.|Optional|
-{: caption="Table 4. ZAP UI configuration parameters" caption-side="bottom"}
+{: caption="ZAP UI configuration parameters" caption-side="bottom"}
 
 Create a folder `uiscripts` inside the `scripts/zap` directory inside your application repository. Also set this folder path against `zap-ui-script-directory` in the `trigger_zap_scans` file. This folder can be created anywhere else, too. The path should be adjusted for `zap-ui-script-directory`.
 
@@ -166,7 +166,7 @@ The following table lists the additional parameters that are required to run ZAP
 |:----------|:------------------------------|:------------------|:----------|
 |`app-url`|String|URL of the deployed application on which the ZAP scan runs. Use the `staging` url of the application.|Required|
 |`repo-url`|String|URL of the repository of the deployed application.|Optional, if `inventory repo` has all the artifacts from only one application repo.|
-{: caption="Table 5. ZAP parameters in the CC pipeline" caption-side="bottom"}
+{: caption="ZAP parameters in the CC pipeline" caption-side="bottom"}
 
 ## Configuring Zap UI scans to use custom UI test images without zipping UI tests
 {: #zap-ui-scan-custom}
@@ -183,7 +183,7 @@ The following table lists the additional parameters that are required to configu
 |`zap-custom-ui-pre-script`|String|Script to be executed before running the custom UI image.|Optional|
 |`zap-custom-ui-progress-script`|String| Script to be executed while running the custom UI image.|Optional|
 |`zap-custom-ui-timeout-in-sec`|String|Zap UI scan exits after this time.|Optional
-{: caption="Table 6. ZAP parameters in the CC pipeline" caption-side="bottom"}
+{: caption="ZAP parameters in the CC pipeline" caption-side="bottom"}
 
 This custom UI scan step is to use user's custom UI docker images for tesing zap UI scans, instead of putting the docker image information in zip file which is the default case
 `zap-custom-ui-image` is required environment variable to be set for configuring ZAP UI scans to use custom UI test images.

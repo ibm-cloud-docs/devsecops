@@ -32,7 +32,7 @@ For more information, see [Pull Request (PR) pipeline](/docs/devsecops?topic=dev
 | `code-unit-tests`       | Executes a unit test for the code that is associated with the PR |
 |`code-compliance-checks` | Code Risk Analyzer (CRA) or Mend Unified Agent scans for vulnerability detection on open source dependencies, and any other compliance checks on application repositories |
 | `code-pr-finish`        |Consolidate pipeline status. If any of the compliance checks previously executed in the pipeline fail, this stage fails. This is the "fail-safe" behavior to ensure that compliance issues are remediated before a PR can be merged or a build can be deployed. |
-{: caption="Table 1. Pull request (PR) pipeline stages" caption-side="bottom"}
+{: caption="Pull request (PR) pipeline stages" caption-side="bottom"}
 {: #pr-pipeline}
 
 ## Continuous Integration (CI) pipeline stages
@@ -58,7 +58,7 @@ For more information, see [Continuous Integration (CI) pipeline](/docs/devsecops
 | `deploy-acceptance-tests` | Runs acceptance and integration tests on the deployed built artifacts on the dev environment |
 | `deploy-release`          | Add the built artifacts to the inventory that is used by the Continuous Delivery (CD) pipeline |
 | `code-ci-finish`          | Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks previously executed in the pipeline fail, this stage fails. This is the "fail-safe" behavior to ensure that compliance issues are remediated before a PR can be merged or a build can be deployed. |
-{: caption="Table 2. Continuous Integration (CI) pipeline" caption-side="bottom"}
+{: caption="Continuous Integration (CI) pipeline" caption-side="bottom"}
 {: #ci-pipeline}
 
 ## Continuous Deployment (CD) pipeline stages
@@ -77,7 +77,7 @@ For more information, see [Continuous Deployment (CD) pipeline](/docs/devsecops?
 | `prod-deployment`       | Deploys the inventory delta to the target environment |
 | `prod-acceptance-tests` | Runs acceptance and integration tests on the deployed built artifacts on the target environment |
 | `prod-finish`           | Collects all evidence to the evidence locker, and close change request |
-{: caption="Table 3. Continuous Deployment (CD) pipeline" caption-side="bottom"}
+{: caption="Continuous Deployment (CD) pipeline" caption-side="bottom"}
 {: #cd-pipeline}
 
 ### Continuous Compliance (CC) pipeline stages
@@ -97,7 +97,7 @@ For more information, see [Continuous Compliance (CC) pipeline](/docs/devsecops?
 | `cc-compliance-checks` | Runs [Code Risk Analyzer (CRA)](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) or [Mend Unified Agent](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans) scan for vulnerability detection on open source dependencies, and any other compliance checks on application repositories|
 | `cc-scan-artifact`     | Scan the container image with [Vulnerability Advisor](/docs/devsecops?topic=devsecops-cd-devsecops-va-scans)|
 | `cc-finish`            | Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks previously executed in the CC pipeline fails, this stage fails.|
-{: caption="Table 4. Continuous Compliance (CC) pipeline" caption-side="bottom"}
+{: caption="Continuous Compliance (CC) pipeline" caption-side="bottom"}
 {: #cc-pipeline}
 
 ### Pipeline compliance checks
@@ -113,7 +113,7 @@ The following scans and checks are performed during the code-compliance-checks t
 | Code Risk Analyzer Bill of Materials (BOM) | Lists all dependencies included in packages and images|
 | Mend Unified Agent (UA)                    | Scans open source components for vulnerabilities|
 | Repository compliance                      | Checks settings of branch protection rules|
-{: caption="Table 5. Pipeline compliance checks" caption-side="bottom"}
+{: caption="Pipeline compliance checks" caption-side="bottom"}
 {: #cc-pipeline}
 
 
