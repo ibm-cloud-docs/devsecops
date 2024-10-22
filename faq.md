@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-22"
 
 keywords: DevSecOps
 
@@ -47,4 +47,4 @@ A pipeline is customized by using custom scripts. Custom scripts are extension p
 
 Custom scripts control the pipeline stages. You can use a configuration file `(pipeline-config.yaml)` to configure the behavior of the stages, script content, and the base artifact that runs the scripts. The scripts and configuration for pipeline stages are loaded from an application repository that are similar to `.travis.yml` or `Jenkinsfile` or a custom repository.
 
-For more information, see [Customizing pipelines by using custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+For more information, see [Customizing pipelines by using custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).

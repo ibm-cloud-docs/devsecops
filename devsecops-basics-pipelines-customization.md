@@ -138,7 +138,7 @@ If the `pipeline-config-repo` variable is not set, DevSecOps pipelines assume it
 ### Using custom scripts with DevSecOps
 {: #byos-devsecops}
 
-The `pipeline-config.yaml` file is the key component that orchestrates and customizes the DevSecOps pipeline behavior. The file uses scripts to build, test, and deploy your application. The file defines how the stages are configured, and which scripts are run. For more information, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-stages#cd-devsecops-pipelines-custom-customize).
+The `pipeline-config.yaml` file is the key component that orchestrates and customizes the DevSecOps pipeline behavior. The file uses scripts to build, test, and deploy your application. The file defines how the stages are configured, and which scripts are run. For more information, see [custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 There are two major categories of scripts that are used by DevSecOps pipelines:
 - Application-related scripts that are used to build, test, and deploy your application. These scripts are your own responsibility and out of scope for DevSecOps support. As these scripts don’t have a default implementation, you must add them to your application or configuration repository. You might need to pull the scripts from Jenkins or another source.
