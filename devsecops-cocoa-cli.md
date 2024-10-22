@@ -1716,12 +1716,7 @@ $ cocoa inventory get-sha \
 ### cocoa inventory label
 {: #inventory-label}
 
-<<<<<<< HEAD
 Using a inventory label enables adding or relocating labels within an inventory item, targeting the latest commit on a branch or another label.
-
-=======
-Adds a label to an inventory entry, delete a label from the inventory, or moves a label in the inventory. The target can be the latest commit on a specific branch or another label.
->>>>>>> 442f480543735c1533cfd5e09779083b1b4843ad
 
 Options:
 
