@@ -66,13 +66,13 @@ Evidence Reuse Feature Enhanced
 {: #devsecops-open-v10.19.0-open-v9.38.0}
 
 Input Validation for `cocoa inventory add` command
-:   The `cocoa inventory add` command now includes input validation, checking inventory fields for accuracy and providing feedback on required changes to ensure standardized entries.
+:   The `cocoa inventory add` command now includes input validation, checking inventory fields for accuracy and providing feedback on required changes to help ensure standardized entries.
 
-Enhancements to evidence reuse feature
-:   `sysdig` scan script will reuse evidence if evidence reuse is enabled
+Evidence Reuse Feature Enhancement
+:   `sysdig` scan script reuses existing evidence when feature is enabled, improving scanning efficiency and speed.
 
-Refactor compliance scripts
-:   compliance scripts have been refactored to enable execution of individual check
+Compliance Script Refactoring
+:   Compliance scripts have been refactored to allow for granular execution, enabling the running of individual checks as needed.
 
 ## 11 September 2024
 {: #devsecops-Sep2024-09}
