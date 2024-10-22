@@ -139,6 +139,8 @@ GHE_REPO=               # The repository name
 If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
+In addition, you can optionally pass the output file path via `--branch-protection-settings-output-path`. If the branch is protected, this path will store the Repository branch protection settings JSON.
+
 `REQUIRED_CHECKS` Example:
 
 ```json
@@ -179,6 +181,11 @@ Running the command:
 
 ```sh
  cocoa check pull-request-status
+```
+{: codeblock}
+
+```sh
+ cocoa check pull-request-status --branch-protection-settings-output-path <path/to/file>
 ```
 {: codeblock}
 
