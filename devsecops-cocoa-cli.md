@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-22"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1716,15 +1716,15 @@ $ cocoa inventory get-sha \
 ### cocoa inventory label
 {: #inventory-label}
 
-Adds a label to an inventory entry, or moves a label in the inventory. The target can be the latest commit on a specific branch or another label.
+Adds a label to an inventory entry, delete a label from the inventory, or moves a label in the inventory. The target can be the latest commit on a specific branch or another label.
 
 Options:
 
 ```text
 --org          # The Github organisation which owns the inventory repository.
 --repo         # The name of the inventory repository.
---environment  # The inventory branch
---to-label     # Another label in the inventory, that will be looked up/removed
+--environment  # The inventory branch ( not needed for cocoa inventory label delete )
+--to-label     # Another label in the inventory, that will be looked up/removed ( not needed for cocoa inventory label delete )
 ```
 {: screen}
 
@@ -1780,12 +1780,21 @@ $ cocoa inventory label add \
 {: codeblock}
 
 ```sh
-# move or create the `staging_latest` label to another label (to the same commit)
+# move or create the `label-to-move` label to another label (to the same commit)
 $ cocoa inventory label move \
   --org='Github-ID' \
   --repo='compliance-inventory-repo' \
   --to-label="some-label" \
   "label-to-move"
+```
+{: codeblock}
+
+```sh
+# delete the `label-to-delete` label from the inventory
+$ cocoa inventory label delete \
+  --org='Github-ID' \
+  --repo='compliance-inventory-repo' \
+  "label-to-delete"
 ```
 {: codeblock}
 
