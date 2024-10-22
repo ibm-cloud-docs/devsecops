@@ -250,20 +250,24 @@ load_repo <key> [<prop>]
 ```
 {: codeblock}
 
+Prints the value of the specified property of the repository.
+Lists all available properties for the repository when only the repository is provided.
+Returns an error indicating no matching properties were found if the provided repository or property is invalid.
+
 Description:
 
-- If both <key> and <prop> are provided, prints the value of the specified <prop> of the repository <key> to stdout.
-- If only <key> is provided, lists all available properties for that repository.
-- If the provided <key> is invalid, it returns an error indicating no matching properties were found.
+- Prints the value of the specified property of the repository, if  <key> and <prop> values are provided.
+- Lists all available properties for the repository when only the <key> is provided.
+- Returns an error indicating no matching properties were found if the provided <key> is invalid.
 
-Example1: Fetching a specific property:
+Example 1: Fetching a specific property:
 
 ```bash
 REPO_SHA=$(load_repo app_ui commit)
 ```
 {: codeblock}
 
-Example2: Listing all properties for a given repository:
+Example 2: Listing all properties for a given repository:
 
 ```bash
 REPO_SHA=$(load_repo app_ui)
@@ -271,7 +275,7 @@ REPO_SHA=$(load_repo app_ui)
 {: codeblock}
 
 
-Used together with `list_repos`
+Used with `list_repos` for retrieving property values
 
 ```bash
 #
@@ -501,10 +505,10 @@ load_artifact <key> [<prop>]
 
 Description:
 
-If both `<key>` and `<prop>` are provided, prints the value of the specified `<prop>` of the artifact `<key>` to stdout.
-If only `<key>` is provided, lists all available properties for that artifact.
+- Prints the value of the specified property of the repository, if  <key> and <prop> values are provided.
+- Lists all available properties for the repository when only the <key> is provided.
 
-Example1: Fetching a specific property:
+Example 1: Fetching a specific property:
 
 ```bash
 SIGNATURE=$(load_artifact ui_service signature)
@@ -518,7 +522,7 @@ load_artifact ui_service
 ```
 {: codeblock}
 
-Used together with `list_artifacts`
+Used with `list_repos` for retrieving property values
 
 ```bash
 #
