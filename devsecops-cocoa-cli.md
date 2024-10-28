@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-22"
+lastupdated: "2024-10-28"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -139,7 +139,9 @@ GHE_REPO=               # The repository name
 If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
-Specify the output file path with the `--branch-protection-settings-output-path` option. If the branch is protected, the Repository branch protection settings JSON will be stored in this path."
+Specify the output file path with the `--branch-protection-settings-output-path` option. If the branch is protected, the Repository branch protection settings JSON will be stored in this path.
+
+Specify the output file path with the `--branch-protection-markdown-output-path` option. If the branch is protected, the Branch Protection validation result in Markdown format will be stored in this path.
 
 `REQUIRED_CHECKS` Example:
 
@@ -185,7 +187,9 @@ Running the command:
 {: codeblock}
 
 ```sh
- cocoa check pull-request-status --branch-protection-settings-output-path <path/to/file>
+ cocoa check pull-request-status \
+    --branch-protection-settings-output-path <path/to/file> \
+    --branch-protection-markdown-output-path <path/to/file>
 ```
 {: codeblock}
 
