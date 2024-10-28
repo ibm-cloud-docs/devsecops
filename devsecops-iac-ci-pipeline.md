@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-10-28"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -77,7 +77,7 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 |--|--|--|--|--|
 | `opt-in-terraform-fmt-validate` | text  | | Runs the `terraform fmt` and `terraform validate` commands in `static-scan` stage. | optional |
 | `opt-in-tflint`   | text | |Runs the `tflint` command in `static-scan` stage. | optional |
-| `tflint-version` | text | `v0.46.1` |Indicate the `tflint` version to install if not provided in the image used for `static-scan` stage execution. | optional |
+| `tflint-version` | text | `v0.53.0` |Indicate the `tflint` version to install if not provided in the image used for `static-scan` stage execution. | optional |
 | `tflint-config` | text | | The config file to use for `tflint`. | optional |
 | `tflint-args` | text | | The command arguments that are passed to `tflint` during tool invocation. | optional |
 {: caption="IaC static scan tools parameters" caption-side="top"}
