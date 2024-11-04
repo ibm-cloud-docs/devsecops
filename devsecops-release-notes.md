@@ -29,8 +29,8 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 Enhancement to Branch Protection Checks
 :   Failed branch protection checks are now listed in the opened issue comment
 
-New cocoa inventory validate command
-:   Added a new command cocoa inventory validate that can be used to validate existing inventory repo / inventory entries 
+Validate Inventory with `cocoa inventory validate` Command
+:   Validate existing inventory repositories and entries using the new `cocoa inventory validate` command.
 
 ## 18 October 2024
 {: #devsecops-Oct2024-18}
