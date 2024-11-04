@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-10-22"
+lastupdated: "2024-11-04"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,19 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 1 November 2024
+{: #devsecops-Nov2024-1}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.43.0 and open-v10.24.0
+{: #devsecops-open-v10.24.0-open-v9.43.0}
+
+Enhancement to Branch Protection Checks
+:   Failed branch protection checks are now listed in the opened issue comment
+
+New cocoa inventory validate command
+:   Added a new command cocoa inventory validate that can be used to validate existing inventory repo / inventory entries 
 
 ## 18 October 2024
 {: #devsecops-Oct2024-18}
