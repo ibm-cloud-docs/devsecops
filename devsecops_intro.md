@@ -1,8 +1,9 @@
+
 ---
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-06-18"
+lastupdated: "2024-11-05"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
