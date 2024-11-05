@@ -19,6 +19,16 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 6 November 2024
+{: #devsecops-Nov2024-6}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.44.0 and open-v10.25.0
+{: #devsecops-open-v10.25.0-open-v9.44.0}
+
+Bug fix release
+:   This release has bug fixes only.
+
 ## 1 November 2024
 {: #devsecops-Nov2024-1}
 {: release-note}
