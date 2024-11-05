@@ -79,11 +79,11 @@ For any other type of artifact you can choose a type which is a string that appr
 
     ```bash
     save_repo app-repo \
-    --url= https://github.ibm.com/org/my-app \
-    --path= my-app \
-    --commit=commit1 \
-       --branch=master \
-    --buildnumber=1
+    url= https://github.ibm.com/org/my-app \
+    path= my-app \
+    commit=commit1 \
+       branch=master \
+    buildnumber=1
     ```
     {: codeblock}
 
