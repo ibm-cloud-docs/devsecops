@@ -79,11 +79,11 @@ For any other type of artifact you can choose a type which is a string that appr
 
     ```bash
     save_repo app-repo \
-    --url= https://github.ibm.com/org/my-app \
-    --path= my-app \
-    --commit=commit1 \
-       --branch=master \
-    --buildnumber=1
+    url= https://github.ibm.com/org/my-app \
+    path= my-app \
+    commit=commit1 \
+       branch=master \
+    buildnumber=1
     ```
     {: codeblock}
 
@@ -96,12 +96,12 @@ Use of `save_artifact` command for image asset:
 
 ```bash
 save_artifact app-image \
---type= image \
---name= us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 \
---digest= sha256:sha2561\
---tags= mytag1 \
---source= https://github.ibm.com/org/my-app/commit-1 \
---signature= sign-1
+type= image \
+name= us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 \
+digest= sha256:sha2561\
+tags= mytag1 \
+source= https://github.ibm.com/org/my-app/commit-1 \
+signature= sign-1
 ```
 {: codeblock}
 
@@ -109,11 +109,11 @@ Use of `save_artifact` command for non-image asset:
 
 ```bash
 save_artifact artifact-1 \
---name= my-app_IKS_deployment \
---type= deployment \
---signature= sign2 \
---deployment_type= IKS \
---provenance= https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
+name= my-app_IKS_deployment \
+type= deployment \
+signature= sign2 \
+deployment_type= IKS \
+provenance= https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
 ```
 {: codeblock}
 

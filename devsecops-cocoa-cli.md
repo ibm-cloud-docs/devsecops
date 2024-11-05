@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-28"
+lastupdated: "2024-11-05"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -139,9 +139,9 @@ GHE_REPO=               # The repository name
 If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
-Specify the output file path value for the `--branch-protection-settings-output-path` option. If the branch is protected, the repository branch protection settings JSON is stored in this path.
+To specify the output file path for the *Branch Protection settings*, use the `--branch-protection-settings-output-path` option. When the branch is protected, the JSON representation of the repository branch protection settings will be saved in this specified path.
 
-Specify the output file path with the `--branch-protection-markdown-output-path` option. If the branch is protected, the Branch Protection validation result in Markdown format will be stored in this path.
+To specify the output file path for the *Branch Protection validation results*, use the `--branch-protection-markdown-output-path` option. When the branch is protected, the validation results will be saved in Markdown format in this specified path.
 
 `REQUIRED_CHECKS` Example:
 
