@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2022, 2023
-lastupdated: "2023-12-12"
+copyright:
+  years: 2022, 2024
+lastupdated: "2024-11-06"
 
 keywords: getting help, getting support, DevSecOps, continuous delivery, devops
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Getting help and support
+# Getting help and support for DevSecOps
 {: #gettinghelp}
 
 If you have problems or questions when using {{site.data.keyword.cloud_notm}} DevSecOps, you can go directly to the [{{site.data.keyword.cloud_notm}} Support page](/unifiedsupport/supportcenter){: external} to review featured FAQs, view cloud status, or post questions on Stack Overflow. You can also open a support case.
