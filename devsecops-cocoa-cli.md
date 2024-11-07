@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-11-05"
+  years: 2024, 2024
+lastupdated: "2024-11-07"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1734,8 +1734,8 @@ Options:
 ```text
 --org          # The Github organisation which owns the inventory repository.
 --repo         # The name of the inventory repository.
---environment  # The inventory branch ( not needed for cocoa inventory label delete )
---to-label     # Another label in the inventory, that will be looked up/removed ( not needed for cocoa inventory label delete )
+--environment  # The inventory branch ( not required for deleting a cocoa inventory label)
+--to-label     # Another label in the inventory that can be referenced or removed. ( not required for deleting a cocoa inventory label )
 ```
 {: screen}
 
