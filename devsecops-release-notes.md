@@ -32,10 +32,10 @@ Standardized Slack Notifications for CD Pipelines
 ### Updates for DevSecOps version - open-v9.43.0 and open-v10.24.0
 {: #devsecops-open-v10.24.0-open-v9.43.0}
 
-Enhancement to Branch Protection Checks Improving Security for Code Branches
+Enhancement to Branch Protection Checks improving security for Code Branches
 :   The issue management system now lists the failed Branch Protection Checks as Issue Comments to to identify the failed branch protection causes faster.
 
-Validate Inventory with `cocoa inventory validate` Command
+Validate Inventory with `cocoa inventory validate` command
 :   Validate existing inventory repositories and entries using the new `cocoa inventory validate` command.
 
 ## 18 October 2024
