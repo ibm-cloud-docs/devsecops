@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-11-05"
+lastupdated: "2024-11-07"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -26,12 +26,8 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 ### Updates for DevSecOps version - open-v9.44.0 and open-v10.25.0
 {: #devsecops-open-v10.25.0-open-v9.44.0}
 
-Bug fix release
-:   This release has bug fixes only.
-
-## 1 November 2024
-{: #devsecops-Nov2024-1}
-{: release-note}
+Slack notification parity for cd pipelines
+:   Updated dev-mode and normal cd pipelines to have similar structure for slack notifications
 
 ### Updates for DevSecOps version - open-v9.43.0 and open-v10.24.0
 {: #devsecops-open-v10.24.0-open-v9.43.0}
