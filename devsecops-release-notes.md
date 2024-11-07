@@ -26,8 +26,8 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 ### Updates for DevSecOps version - open-v9.44.0 and open-v10.25.0
 {: #devsecops-open-v10.25.0-open-v9.44.0}
 
-Slack notification parity for cd pipelines
-:   Updated dev-mode and normal cd pipelines to have similar structure for slack notifications
+Standardized Slack Notifications for CD Pipelines
+:   Updated Slack notifications for dev-mode and normal CD pipelines, helping ensure consistency and parity, and easy notification management across all pipelines.
 
 ### Updates for DevSecOps version - open-v9.43.0 and open-v10.24.0
 {: #devsecops-open-v10.24.0-open-v9.43.0}
