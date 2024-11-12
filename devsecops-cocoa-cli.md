@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-07"
+lastupdated: "2024-11-12"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1574,60 +1574,64 @@ Options for Git:
 ```
 {: screen}
 
-| Option           | Description                                      | Value type | Required or default value |
-| ---------------- | ------------------------------------------------ | ---------- | ------------------------- |
-| artifact         | Artifact name. <br><br>If the artifact type is an image, use the following format: `<static_name>:<version>@sha256:<sha256_digest>` OR `<static_name>@sha256:<sha256_digest>`. <br><br>If entry type is not an image, use a static name that is constant across all entry updates. Use `<static_name>` parameter to provide the static name value.                                   | String | Required |
-| version          | The version of the application.            | String | Required |
-| repository-url   | The URL pointing to the source code repository of the application (of github or GRIT/gitlab repos)               | String | Required |
-| pipeline-run-id  | The id of the pipeline run.                       | String | Required |
-| commit-sha       | The commit of the application repository from which the artifact is built. <br>Should be a long format commit sha (40 character lowercase) | String | Required |
-| name             | The name of the application the artifact belongs to | String | Required |
-| build-number     | The number of the build.                         | number | Required |
-| org              | The GitHub organization that owns the inventory repository. | String | |
-| repo             | The name of the inventory repository.            | String | |
-| app-artifacts    | Arbitrary app content in JSON format             | String | |
-| type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required |
-| sha256           | The sha256 hash of the artifact. <br>Should be of the format sha256:<64 character hash>                  | String | Required |
-| provenance       | URL pointing to the artifact (for example, built image). <br>If it is an image type entry, provenance must be same as artifact field   | String | Required |
-| signature        | The artifact's signature                         | String | Required |
-| environment      | The name of the environment where the entry is added. | String | "master" |
-|from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| |
-| git-provider*    | The Git version control service provider. | String* | "github" |
-| git-token-path   | Git token path to read the secret from           | String | |
-| git-api-url      | Git API URL                                      | String | |
+| Option           | Description                                      | Value type | Required or Optional | Possible value(s) / Default value / Remarks |
+| ---------------- | ------------------------------------------------ | ---------- | ------------------------- |------------------------- |
+| artifact         | Name of the artifact created for the application. | String | Required | If the artifact type is an image, use the following format: <br>`<static_name>:<version>@sha256:<sha256_digest>` <br>OR<br> `<static_name>@sha256:<sha256_digest>`. <br><br>If entry type is not an image, use a static name that is constant across all entry updates. |
+| version          | The version of the application.            | String | Required | - | - |
+| repository-url   | The URL pointing to the source code repository of the application (of github or GRIT/gitlab repos)               | String | Required | This should be a valid source code repository (like github / gitlab) and not a docker repository (like artifactory) |
+| pipeline-run-id  | The id of the pipeline run.                       | String | Required | This is used to scope evidences. Should be the pipeline run id or uuid. (Example value : `f21321af-9084-4af3-80b8-4fb34143b7d9` ) |
+| commit-sha       | The commit of the application repository from which the artifact is built. | String | Required | Should be a long format commit sha (40 character lowercase) |
+| name             | The name of the application the artifact belongs to | String | Required | - |
+| build-number     | The number of the build.                         | number | Required | Build number is used to correlate build artifact and deploy artifact |
+| org              | The GitHub organization that owns the inventory repository. | String | Optional if GHE_ORG environment variable is set| -  |
+| repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
+| app-artifacts    | Arbitrary app content in JSON format             | String | Optional | Any additional content can be added here for automation / workflow use |
+| type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required | Possible values : ["image"] for image type artifacts, <br>else values like ["helm-chart", "deployment-file"] or any arbitrary value can be used | 
+| sha256           | The sha256 hash of the artifact.                   | String | Required | Should be of the format `sha256:<64 character hash>` |
+| provenance       | URL pointing to the artifact (for example, built image).   | String | Required | For an "image" type inventory entry, provenance must be same as artifact field |
+| signature        | The artifact's signature                         | String | Required | - |
+| environment      | The name of the environment where the entry is added. | String | Optional | Default : "master" |
+|from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| Optional | Example : `path/to/file.json` |
+| git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
+| git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
 {: caption="Options for Git" caption-side="bottom"}
 
 Running the command:
 
 ```sh
 $ cocoa inventory add \
-  --artifact=cocoa-script-cli \
-  --type=type \
-  --sha256=786800e8e48938664fe2397ca14ab8dabd48f34656ef5cfda4143b4519cb714f \
-  --signature=123123valid \
-  --name=cocoa-cli \
-  --repository-url=http://validURL.com \
+  --artifact=us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0 \
+  --type=image \
+  --sha256=sha256:786800e8e48938664fe2397ca14ab8dabd48f34656ef5cfda4143b4519cb714f \
+  --name=hello-compliance-app \
+  --repository-url=https://github.com/test-org/compliance-app-20201211 \
   --commit-sha=8e86dc4647ce28632103dce46b756c70d339349a \
   --version=v4 \
   --build-number=33 \
-  --pipeline-run-id=123123valid \
+  --pipeline-run-id=f21321af-9084-4af3-80b8-4fb34143b7d9 \
   --git-token-path=./git-token \
-  --org=test \
+  --org=test-org \
   --app-artifacts='{"app": "test", "some_value": "value"}' \
-  --repo=repository
+  --repo=compliance-inventory-repo
+  --signature=owFNUX1IE3EY3vwAEy0VyoSJdkVWtu0+d3eTjNIIi0jETCSU3353cz+83V23myi2BlFgYiUFqSmZLciUzCJkRYJp9IEWFWXB0hAyrBQxEjIIuhFSf70vL8/7vM/zPi3JsaYEc+TnbqG8qrnTPDZ8w2WqiqwtacCghnQEgYQ5GzAkiLKO9PpoLyiwRtSsmugWNVGGIubE/D4bgpoNKXag60gCdo8oSYoVKl5VQsDAWIGqOkmcxAmSYHGO4AjC6gU+3eBxcYxICTRLijyEFOOiSR5SvMhBys2LLpIjWYqDJA6wwHYMeUG1+J8GL5CRW/TpVgFVG8VQ4vMAknE4BUA5OIoQGIKhKZwFkIeAdnECj+OCmxQADh2QoFmG5lkWUiTN8gJ0kDxPuxiWJAU8ekyvV6PegK54EcyGiqwDJItatg9Vy0D3a2IUpKg6UuS/T4KaaIC1fzuMDbfhmMGEvIY64FUxJ+Ew3PMU5SADgdNmKs5kTjBlrtsQ99iyY49nns8o6jsXWgkjPiYahClxVcrK5Flngumz2j7YdmD0ecutytsvxxNPHflKlRV2RyqD69NjC6Smji9XuukFyZ+lvM18gUr7F4NXge9YyZPik411tc1n9bKO/hDz7oGaX/ur94OnNHiwOG6n5ZsrsCsvtyvmkH4zOWlrRWuL7fzgj9zlcCTAhtu2LbeGLNfv3Ju0Jc9PZPk7Pm3Ov2CW+2xj8ReX6ooGamZ610yqRM/+8Qo2XnOeyZzbVKgs+f2+9unpJOve4Tmla+PdqftDWkHPm9Vq3nsyZ2DUkmP/nTb7qNw5l2SfWtiSemJx9nLaYOpx6amlOT18aeIwJQhHg1XOjJF9r18NXQvPuL9rH5tSQqbGhyN/AA==
 ```
 {: codeblock}
 
 ```sh
 $ cocoa inventory add \
-  --environment=environment \
+  --environment=staging \
   --artifact=foo-helm-chart/foo/chart.yaml \
-  --repository-url=http://validURL.com \
+  --repository-url=https://github.com/test-org/compliance-app-20201211 \
+  --provenance=https://github.com/test-org/compliance-app-20201211/foo-helm-chart/foo/chart.yaml \
   --commit-sha=786800e8e48938664fe2397ca14ab8dabd48f34656ef5cfda4143b4519cb714f \
   --build-number=33 \
-  --pipeline-run-id=123123valid \
+  --pipeline-run-id=f21321af-9084-4af3-80b8-4fb34143b7d9 \
   --version=v4 \
-  --name=chart
+  --name=foo-app-helm-chart \
+  --sha256=sha256:9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894 \
+  --signature=9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894 \
+  --type=helm-chart 
 ```
 {: codeblock}
 
@@ -1854,6 +1858,47 @@ $ cocoa inventory promote \
   --customer-impact='impact' \
   --deployment-impact='small' \
   --backout-plan='rollback'
+```
+{: codeblock}
+
+### cocoa inventory validate
+{: #inventory-validate}
+
+Validates entries present in an inventory repo (or JSON file). The inventory repo can have it's environment (branch) or label (tag) validated. 
+
+Options to validate include (atleast one of the flags must be utilised)
+1. using the `--environment` flag - which takes in a branch as value and validates all entries in it.
+2. using the `--label` flag - which takes in the tag as value and validates all entries in it.
+3. using the `--from-file` flag - which takes in path of a JSON file containing inventory entries (in hyphenated format).
+
+Optional:
+1. If a custom inventoryignore filename should be used, the `--inventory-ignore-file-name` flag can be used to override the default value.
+2. If a cloned inventory repo already exists and you wish the command to utilise the same, you can provide the path for the cloned inventory repo using the `--inventory-path` flag.
+
+
+Required Options:
+```sh
+--org          # The Github organisation which owns the inventory repository.
+--repo         # The name of the inventory repository.
+--environment  # The inventory branch to validate
+--label        # label in the inventory, that will be validated
+```
+
+Environment variables (Optional and can be used instead of providing the --org --repo and --git-token-path):
+```sh
+GHE_ORG=                    # Can be used instead of --org (either the option or the variable is required)
+GHE_REPO=                   # Can be used instead of --repo (either the option or the variable is required)
+GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
+```
+
+Running the command: 
+```sh
+$ cocoa inventory validate \
+   --org "Github-ID" \
+   --repo "inventory-repo" \
+   --git-token-path="$INVENTORY_TOKEN_PATH" \
+   --label "$latest_tag" \
+   --inventory-path "${DIRECTORY_NAME}"
 ```
 {: codeblock}
 
