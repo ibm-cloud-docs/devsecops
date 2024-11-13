@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-11-05"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -17,7 +17,7 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Setting up a Continuous Compliance toolchain
+# Part 4: Set up a CC toolchain
 {: #tutorial-cc-toolchain}
 {: toc-content-type="tutorial"}
 {: toc-services="containers, ContinuousDelivery"}
@@ -73,7 +73,7 @@ Review the default settings and provide the user-defined configurations wherever
 ### Secrets
 {: #tutorial-cc-toolchain-secrets}
 
-Specify the secret vault integrations to be added to your toolchain by using the provided toggles. For more information, see [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud). 
+Specify the secret vault integrations to be added to your toolchain by using the provided toggles. For more information, see [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud).
 
 The CI toolchain supports **Arbitrary secrets** and **IAM credentials** secret types only.
 {: important}
@@ -93,7 +93,7 @@ The CI toolchain supports **Arbitrary secrets** and **IAM credentials** secret t
 {: #tutorial-cc-toolchain-target}
 
 1. Enter your **{{site.data.keyword.cloud_notm}} API key**.
-2. Enter the **Environment tag in your Inventory** to scan the deployed artifacts. 
+2. Enter the **Environment tag in your Inventory** to scan the deployed artifacts.
 3. Click **Continue**.
 
 ### Issues

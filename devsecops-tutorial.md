@@ -18,7 +18,7 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Setting up prerequisites
+# Part 1: Set up prerequisites
 {: #tutorial-cd-devsecops}
 {: toc-content-type="tutorial"}
 {: toc-services="containers, ContinuousDelivery"}
@@ -84,7 +84,7 @@ You can automatically set up the DevSecOps infrastructure for your toolchains by
 
 After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-ci-toolchai).
 
-For additional information about related topics, review the following documentation: 
+For additional information about related topics, review the following documentation:
 
 * [Getting started with clusters](/docs/containers?topic=containers-getting-started)
 * [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}

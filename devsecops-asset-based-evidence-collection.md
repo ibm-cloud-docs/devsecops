@@ -79,10 +79,10 @@ For any other type of artifact you can choose a type which is a string that appr
 
     ```bash
     save_repo app-repo \
-    url= https://github.ibm.com/org/my-app \
-    path= my-app \
+    url=https://github.ibm.com/org/my-app \
+    path=my-app \
     commit=commit1 \
-       branch=master \
+    branch=master \
     buildnumber=1
     ```
     {: codeblock}
@@ -96,12 +96,13 @@ Use of `save_artifact` command for image asset:
 
 ```bash
 save_artifact app-image \
-type= image \
-name= us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 \
-digest= sha256:sha2561\
-tags= mytag1 \
-source= https://github.ibm.com/org/my-app/commit-1 \
-signature= sign-1
+name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 \
+type=image \
+digest=sha256:sha2561 \
+tags=mytag1 \
+source=https://github.ibm.com/org/my-app/commit-1 \
+signature=sign-1 \
+provenance=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561
 ```
 {: codeblock}
 
@@ -109,11 +110,11 @@ Use of `save_artifact` command for non-image asset:
 
 ```bash
 save_artifact artifact-1 \
-name= my-app_IKS_deployment \
-type= deployment \
-signature= sign2 \
-deployment_type= IKS \
-provenance= https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
+name=my-app_IKS_deployment \
+type=deployment \
+signature=sign2 \
+deployment_type=IKS \
+provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
 ```
 {: codeblock}
 
@@ -133,7 +134,8 @@ Use the [cocoa inventory add](/docs/devsecops?topic=devsecops-cd-devsecops-cli#i
 |commit-sha|	The exact commit of the application version|	[string] [required]	|commit of the repo URL where this asset is built|
 |name|	The name of the application	|[string] [required]|	File name or basically the inventory entry for the asset|
 |build-number|	The build number of the build|	[string] [required]|	Build number of the asset created, used for the insights update|
-|type|	Type of the artifact: one among container image, virtual, image, file, package|	[string] [required]	| Type of the asset, must be of the same type saved using the `save_artifact` command before the collect evidence call. |
+|type|	Type of the artifact: one among
+container image, virtual, image, file, package|	[string] [required]	| Type of the asset, must be of the same type saved using the `save_artifact` command before the collect evidence call. |
 |app-artifacts|	To have the additional information of the asset	|[string] [optional]||
 |sha256|	The sha256 hash of the artifact|	[string] [required]|	used to define the path of the asset in the locker|
 |provenance	|The fully qualified URL where artifact is stored|	[string] [required]	||
@@ -147,8 +149,8 @@ Examples:
 1.	Cocoa inventory add for an image asset:
 
     ```bash
-    cocoa inventory add \
-    --artifact=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
+    cocoa inventory add \ 
+    --artifact=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 \
     --name=my-app \
     --app-artifacts='{ "app": "my-app", "tags": "20230828074614-master-commit1" }' \
     --signature=sign1 \

@@ -42,8 +42,8 @@ toc:
               label: Understanding DevSecOps Pipelines stages and custom scripts
               topics:
               - devsecops-custom-scripts-pipeline.md
-              - devsecops-custom-scripts-customize.md
               - devsecops-custom-scripts-secrets.md
+              - devsecops-custom-scripts-customize.md
               - devsecops-custom-scripts-pipeline-stage-output.md
           - devsecops-basics-pipelines-customization.md
           - devsecops-advanced-pipelines-customization.md
@@ -54,10 +54,14 @@ toc:
       - topicgroup:
           label: Deploy a secure app with DevSecOps
           topics:
-          - devsecops-tutorial.md
-          - devsecops-tutorial-ci-toolchain.md
-          - devsecops-tutorial-cd-toolchain.md
-          - devsecops-tutorial-cc-toolchain.md
+          - topic: devsecops-tutorial.md
+            navtitle: "Part 1: Set up prerequisites"
+          - topic: devsecops-tutorial-ci-toolchain.md
+            navtitle: "Part 2: Set up a CI toolchain"
+          - topic: devsecops-tutorial-cd-toolchain.md
+            navtitle: "Part 3: Set up a CD toolchain"
+          - topic: devsecops-tutorial-cc-toolchain.md
+            navtitle: "Part 4: Set up a CC toolchain"
       - include: ../apps/tutorials/tutorial-devsecops-refarch.md
       - topicgroup:
           label: Develop and deploy a z/OS app with DevSecOps practices
@@ -77,7 +81,6 @@ toc:
           - topic: devsecops-tutorial-iac-ci-toolchain.md
           - topic: devsecops-tutorial-iac-cd-toolchain.md
       - devsecops-tutorial-tekton-ci-compliance.md
-      - devsecops-tutorial-tekton-cd-compliance.md
   - navgroup:
       id: howto
       topics:
@@ -103,6 +106,7 @@ toc:
           - devsecops-dev-mode.md
           - devsecops-run-concurrently.md
           - devsecops-custom-deployment.md
+          - devsecops-tutorial-tekton-cd-compliance.md
           - devsecops-tekton-ci-compliance.md
           - devsecops-tekton-cd-compliance.md
       - topicgroup:

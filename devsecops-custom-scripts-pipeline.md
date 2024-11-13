@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Understanding Pipelines stages
+# Understanding pipelines stages
 {: #cd-devsecops-scripts-stages}
 
 The following lists explain the stages in pull request (PR), Continuous Integration (CI), Continuous Deployment (CD), and Continuous Compliance (CC) pipelines.
