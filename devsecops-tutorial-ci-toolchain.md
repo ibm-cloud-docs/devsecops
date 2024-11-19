@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2024
-lastupdated: "2024-11-05"
+lastupdated: "2024-11-19"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -72,7 +72,9 @@ Review the default settings and provide the user-defined configurations wherever
 {: #tutorial-ci-toolchain-application}
 
 1. Select **Source Provider** as **{{site.data.keyword.gitrepos}}**.
-2. The default behavior of the toolchain is **Use default sample application**. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. For more information about **Bring your own application**, see [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+2. The default behavior of the toolchain is **Use default sample application**. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. If using you **own application / service** source code repository, refer to:
+- [Bringing your own app to DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-apps-byoa).
+- [Auto configure your DevSecOps pipelines](/docs/devsecops?topic=devsecops-inferred-pipeline-configuration) using the Inferred DevSecOps Pipeline Configuration feature.
 3. Enter a unique name for **New repository name**.
 4. Click **Continue**.
 
