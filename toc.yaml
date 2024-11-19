@@ -37,8 +37,7 @@ toc:
       - topicgroup:
           label: Adopting DevSecOps for your own application or microservice
           topics:
-          - devsecops-apps-byoa.md
-          - devsecops-inferred-pipeline-configuration.md
+          - devsecops-apps-byoa.md 
           - topicgroup:
               label: Understanding DevSecOps Pipelines stages and custom scripts
               topics:
