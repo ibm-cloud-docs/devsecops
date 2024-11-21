@@ -37,7 +37,8 @@ toc:
       - topicgroup:
           label: Adopting DevSecOps for your own application or microservice
           topics:
-          - devsecops-apps-byoa.md 
+          - devsecops-apps-byoa.md
+          - ddevsecops-common-scripts-2024.md
           - topicgroup:
               label: Understanding DevSecOps Pipelines stages and custom scripts
               topics:
