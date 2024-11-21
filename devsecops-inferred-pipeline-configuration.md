@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Inferred DevSecOps Pipeline Configuration
+# Using the Inferred DevSecOps Pipeline Configuration
 {: #devsecops-inferred-pipeline-configuration}
 
 
@@ -93,94 +93,10 @@ The `dynamic-scan` spots locate a dynamic scan to be performed. Dynamic-scan spo
 
 The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to be executed during the release stage. Currently supported tool for releasing process are `semantic-release` or `maven` (through `maven deploy` phase).
 
-## Advanced configuration
-{: #devsecops-inferred-pipeline-configuration-advanced-config}
-
-### Files injection
-{: #devsecops-inferred-pipeline-configuration-config-file-injection}
-
-The Inferred DevSecOps Pipeline Configuration feature uses the contents of  `polyglot-spots.json` and `pipeline-config.yaml` files to customize the DevSecOps pipeline process execution.
-
-During the `finish` stage of a CI pipeline, both `polyglot-spots.json` and `pipeline-config.yaml` (corresponding to the static configuration of the CI pipeline execution) are added to a branch named `inferred-devsecops` (default) in the application source code repository.
-
-#### Configuring the injection branch
-{: #devsecops-pipeline-configuration-file-injection-config-branch}
-
-You can configure the name of the branch for injecting DevSecOps inferred files by using the `inferred-devsecops-branch` pipeline property. The default value is `inferred-devsecops`.
-
-Use the `push-polyglot-files` pipeline property to enable or disable the creation and update of the `inferred-devsecops` branch:
-
-| Value | Description |
-| -------------- | -------------- |
-|  `true` (default) | Configuration files are added and pushed to the `inferred-devsecops` branch of the source application source code repository. |
-| `false` | Configuration files are not added to the inferred-devsecops branch. |
-{: caption="Enable or disable inferred-devsecops branch" caption-side="bottom"}
-
-### Configuring Spots Extraction
-{: #devsecops-pipeline-configuration-spot-config}
-
-Configure the extraction of spots by using the following pipeline environment properties:
-
-#### Ignoring Spots
-{: #devsecops-pipeline-configuration-spot-ignore}
-
-You can ignore specific spots during extraction by using regular expressions. The following configuration options are available:
-* `ignore-code-spot-pattern`: Ignores code spots that match the specified regular expression.
-* `ignore-deployment-spot-pattern`: Ignores deployment spots that match the specified regular expression.
-* `ignore-dynamic-scan-spot-pattern`: Ignores dynamic-scan spots that match the specified regular expression.
-* `ignore-acceptance-test-spot-pattern`: Ignores acceptance-test spots that match the specified regular expression.
-* `ignore-release-spot-pattern`: Ignores release spots that match the specified regular expression.
-
-#### Code Engine Configuration
-{: #devsecops-pipeline-configuration-spot-cec}
-
-If you are using IBM Cloud Code Engine for deployment, you can specify the Code Engine project and configure the build process.
-* `code-engine-project`: Specifies the Code Engine project.
-* `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of ibmcloud code-engine buildrun command.
-
-#### Go Configuration
-{: #devsecops-pipeline-configuration-spot-go}
-
-You can configure the spot extraction process for **Go**.
-* `go-ignore-main`: (Default: false) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
-* `go-output`: Specifies the executable output file from the go build command.
-
-#### Gradle Configuration
-{: #devsecops-pipeline-configuration-spot-gradle}
-
-You can configure the Gradle tasks for setup, unit testing, build artifact, and acceptance testing.
-* `gradle-setup-tasks`: (Default: `assemble`) Comma-separated list of Gradle tasks for setup stage.
-* `gradle-unit-testing-tasks`: (Default: `test`) Comma-separated list of Gradle tasks for unit-test stage.
-* `gradle-build-artifact-tasks`: (Default: `build`) Comma-separated list of Gradle tasks for build-artifact stage.
-* `gradle-acceptance-testing-tasks`: Comma-separated list of Gradle tasks for acceptance-test stage.
-
-#### NPM Configuration
-{: #devsecops-pipeline-configuration-spot-NPM}
-
-You can configure the NPM unit testing and acceptance testing script detection.
-* `hint-npm-unit-testing-script`: (Default: `test`) Hints for NPM unit testing script detection.
-* `hint-npm-acceptance-testing-script`: (Default: `acceptance-test`) Hints for NPM acceptance testing script detection.
-
-#### Python Configuration
-{: #devsecops-pipeline-configuration-python}
-
-You can configure the Python Poetry version.
-* `hint-python-poetry-version`: (Default: `1.8.2`) Hints for Python Poetry version.
-
-#### Terraform Configuration
-{: #devsecops-pipeline-configuration-spot-terraform}
-
-You can configure the Terraform deployment process.
-* `terraform-deployment`: (Default: false) Disables Schematics as a deployment vehicle in favor of Terraform and COS for state storage.
-
-#### Artifact Upload
-{: #devsecops-pipeline-configuration-spot-artifact-upload}
-
-You can configure the artifact upload process.
-* `artifact-upload-to-devsecops-cos`: (Default: false) Enables artifact upload to a COS bucket using DevSecOps CLI artifact upload for non-image saved artifacts.
-
-### Sample spots.json content
+### Sample polyglot-spots.json content
 {: #devsecops-pipeline-configuration-ison}
+
+Below is a JSON content resulting from the spots extraction by the Inferred DevSecOps Pipeline Configuration feature. This is used to execute the specific actions/tools for any given processing action in specific stages during the CI pipeline execution.
 
 ```JSON
 {
@@ -282,6 +198,92 @@ You can configure the artifact upload process.
   "release": []
 }
 ```
+
+## Advanced configuration
+{: #devsecops-inferred-pipeline-configuration-advanced-config}
+
+### Files injection
+{: #devsecops-inferred-pipeline-configuration-config-file-injection}
+
+The Inferred DevSecOps Pipeline Configuration feature uses the contents of  `polyglot-spots.json` and `pipeline-config.yaml` files to customize the DevSecOps pipeline process execution.
+
+During the `finish` stage of a CI pipeline, both `polyglot-spots.json` and `pipeline-config.yaml` (corresponding to the static pipeline configuration of the CI pipeline execution) are added to a branch named `inferred-devsecops` (default) in the application source code repository.
+
+#### Configuring the injection branch
+{: #devsecops-pipeline-configuration-file-injection-config-branch}
+
+You can configure the name of the branch for injecting DevSecOps inferred files by using the `inferred-devsecops-branch` pipeline property. The default value is `inferred-devsecops`.
+
+Use the `push-polyglot-files` pipeline property to enable or disable the creation and update of the `inferred-devsecops` branch:
+
+| Value | Description |
+| -------------- | -------------- |
+|  `true` (default) | Configuration files are added and pushed to the `inferred-devsecops` branch of the source application source code repository. |
+| `false` | Configuration files are not added to the inferred-devsecops branch. |
+{: caption="Enable or disable inferred-devsecops branch" caption-side="bottom"}
+
+### Configuring Spots Extraction
+{: #devsecops-pipeline-configuration-spot-config}
+
+Configure the extraction of spots by using the following pipeline environment properties:
+
+#### Ignoring Spots
+{: #devsecops-pipeline-configuration-spot-ignore}
+
+You can ignore specific spots during extraction by using regular expressions. The following configuration options are available:
+* `ignore-code-spot-pattern`: Ignores code spots that match the specified regular expression.
+* `ignore-deployment-spot-pattern`: Ignores deployment spots that match the specified regular expression.
+* `ignore-dynamic-scan-spot-pattern`: Ignores dynamic-scan spots that match the specified regular expression.
+* `ignore-acceptance-test-spot-pattern`: Ignores acceptance-test spots that match the specified regular expression.
+* `ignore-release-spot-pattern`: Ignores release spots that match the specified regular expression.
+
+#### Code Engine Configuration
+{: #devsecops-pipeline-configuration-spot-cec}
+
+If you are using IBM Cloud Code Engine for deployment, you can specify the Code Engine project and configure the build process.
+* `code-engine-project`: Specifies the Code Engine project.
+* `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of ibmcloud code-engine buildrun command.
+
+#### Go Configuration
+{: #devsecops-pipeline-configuration-spot-go}
+
+You can configure the spot extraction process for **Go**.
+* `go-ignore-main`: (Default: false) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
+* `go-output`: Specifies the executable output file from the go build command.
+
+#### Gradle Configuration
+{: #devsecops-pipeline-configuration-spot-gradle}
+
+You can configure the Gradle tasks for setup, unit testing, build artifact, and acceptance testing.
+* `gradle-setup-tasks`: (Default: `assemble`) Comma-separated list of Gradle tasks for setup stage.
+* `gradle-unit-testing-tasks`: (Default: `test`) Comma-separated list of Gradle tasks for unit-test stage.
+* `gradle-build-artifact-tasks`: (Default: `build`) Comma-separated list of Gradle tasks for build-artifact stage.
+* `gradle-acceptance-testing-tasks`: Comma-separated list of Gradle tasks for acceptance-test stage.
+
+#### NPM Configuration
+{: #devsecops-pipeline-configuration-spot-NPM}
+
+You can configure the NPM unit testing and acceptance testing script detection.
+* `hint-npm-unit-testing-script`: (Default: `test`) Hints for NPM unit testing script detection.
+* `hint-npm-acceptance-testing-script`: (Default: `acceptance-test`) Hints for NPM acceptance testing script detection.
+
+#### Python Configuration
+{: #devsecops-pipeline-configuration-python}
+
+You can configure the Python Poetry version.
+* `hint-python-poetry-version`: (Default: `1.8.2`) Hints for Python Poetry version.
+
+#### Terraform Configuration
+{: #devsecops-pipeline-configuration-spot-terraform}
+
+You can configure the Terraform deployment process.
+* `terraform-deployment`: (Default: false) Disables Schematics as a deployment vehicle in favor of Terraform and COS for state storage.
+
+#### Artifact Upload
+{: #devsecops-pipeline-configuration-spot-artifact-upload}
+
+You can configure the artifact upload process.
+* `artifact-upload-to-devsecops-cos`: (Default: false) Enables artifact upload to a COS bucket using DevSecOps CLI artifact upload for non-image saved artifacts.
 
 ### Hooks
 {: #devsecops-pipeline-configuration-hooks}
@@ -425,13 +427,12 @@ To learn more, refer to  [complementary values content](https://helm.sh/docs/cha
 
 To learn more, refer to [code-engine configmap(s) to configure applications or jobs](https://cloud.ibm.com/docs/codeengine?topic=codeengine-configmap) and [code-engine secret to configure applications or jobs](https://cloud.ibm.com/docs/codeengine?topic=codeengine-secret)
 
-### DevSecOps common scripts library
+## DevSecOps common scripts library
 {: #devsecops-common-script-library}
 
-DevSecOps uses default scripts in certain stages unless you specify otherwise in the `.pipeline-config.yaml` file. You can find these default scripts in the common library, which offers a set of reusable scripts to help you get started with customization.
+Inferred DevSecOps Pipeline Configuration uses scripts/functions in certain stages from the scripts in the common library, which offers a set of reusable scripts that can help you if you want to started with customization.
 
 For more information about the common scripts library, including scripts, tools, usage, and parameters, see [Common scripts library](/docs/devsecops?topic=devsecops-common-scripts).
-
 
 ## FAQ
 {: #devsecops-pipeline-configuration-faq}
