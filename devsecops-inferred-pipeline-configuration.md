@@ -67,7 +67,9 @@ Each spot has the following properties:
 The Inferred DevSecOps Pipeline Configuration feature currently identifies the following types of `spots`:
 `code` spots, `deployment` spots, `acceptance-test` spots, `dynamic-scan` spots and `release`spots.
 
-#### code spots
+#### Code spots
+{: #devsecops-inferred-pipeline-code-spots}
+
 Code spots are related to a supported source code language, including:
 
 -  [Node.js](https://nodejs.org) (with npm, yarn or gradle)
@@ -81,29 +83,42 @@ The `code` spots handle the following processes:
 -  `building`: Defines the tools that perform the build of the given source code.
 -  `unit-testing`: Locates the tools that perform unit testing of the build outcome.
 
-#### deployment spots
+#### Deployment spots
+{: #devsecops-inferred-pipeline-deployment-spots}
+
 The `deployment` spots locate a deployment vehicle, including deployment resources and tools. `deployment` spots have a `deploying` process listing the tools used to perform the deployment. Currently supported deployment vehicles include:
 
-  -  Kubernetes resources definitions like `Pod`, `ReplicaSet`, `ReplicationController`, `Deployment`, `Daemonset`, `StatefulSet`, `Job`, `Cronjob`, `NetworkPolicy`, `Ingress`, `Service`, `Route` - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
-  -  [Websphere Liberty Application Custom Resource](https://www.ibm.com/docs/en/was-liberty/core?topic=resources-webspherelibertyapplication-custom-resource) - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
-  -  [Open Liberty Application Custom Resource](https://openliberty.io/docs/latest/open-liberty-operator.html#_what_is_the_open_liberty_operator) - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
-  -  [Helm chart](https://helm.sh) - helm as tool
-  -  [Terraform configuration](https://developer.hashicorp.com/terraform/language) - [IBM Cloud Schematics](/docs/schematics) or [Terraform CLI](https://developer.hashicorp.com/terraform/cli) as tool
-  -  [Wazi DeploymentMethod Custom Resource](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=files-deployment-method) - [Wazi Deploy](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=reference-syntax-wazi-deploy-core-commands) as tool
+-  Kubernetes resources definitions like `Pod`, `ReplicaSet`, `ReplicationController`, `Deployment`, `Daemonset`, `StatefulSet`, `Job`, `Cronjob`, `NetworkPolicy`, `Ingress`, `Service`, `Route` - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
 
-#### acceptance-test spots
+-  [Websphere Liberty Application Custom Resource](https://www.ibm.com/docs/en/was-liberty/core?topic=resources-webspherelibertyapplication-custom-resource) - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
+
+-  [Open Liberty Application Custom Resource](https://openliberty.io/docs/latest/open-liberty-operator.html#_what_is_the_open_liberty_operator) - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
+
+-  [Helm chart](https://helm.sh) - helm as tool
+
+-  [Terraform configuration](https://developer.hashicorp.com/terraform/language) - [IBM Cloud Schematics](/docs/schematics) or [Terraform CLI](https://developer.hashicorp.com/terraform/cli) as tool
+
+-  [Wazi DeploymentMethod Custom Resource](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=files-deployment-method) - [Wazi Deploy](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=reference-syntax-wazi-deploy-core-commands) as tool
+
+#### Acceptance-test spots
+{: #devsecops-inferred-pipeline-accept-spots}
+
 The `acceptance-test` spots locate an acceptance-test suite to be executed. `acceptance-test` spots have an `acceptance-testing` process that identifies the tools to run the acceptance-test suite.
 
-#### dynamic-scan spots
+#### Dynamic-scan spots
+{: #devsecops-inferred-pipeline-dynamic-spots}
+
 The `dynamic-scan` spots locate a dynamic scan to be performed. Dynamic-scan spots have a `scanning` process that lists the tools to perform the scan.
 
 Currently supported is the [OWASP ZAP scan](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) tool started in a sub-webhook trigger.
 
-#### release spots
+#### Release spots
+{: #devsecops-inferred-pipeline-dynamic-spots}
+
 The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to be executed during the release stage. Currently supported tool for releasing process are:
 
-  -  [semantic-release](https://semantic-release.gitbook.io/semantic-release)
-  -  [maven](https://maven.apache.org/index.html) with [`maven deploy`](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) phase.
+-  [semantic-release](https://semantic-release.gitbook.io/semantic-release)
+-  [maven](https://maven.apache.org/index.html) with [`maven deploy`](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) phase.
 
 ### Sample polyglot-spots.json content
 {: #devsecops-pipeline-configuration-ison}
@@ -357,7 +372,7 @@ export-properties "GLOBAL" && export-properties "${STAGE^^}"
 
 The command `export-properties "GLOBAL"` exports pipeline and trigger properties with normalized names with `ENV_GLOBAL_<XXX>` as environment variables such as `XXX` in every pipeline stage execution context.
 
-###### Example
+###### Example of Global Environment Variable
 {: #devsecops-pipeline-configuration-environment-variable-injection-global-ex}
 
 | Property name | Property valuer | Resulting environment variable |
@@ -370,7 +385,7 @@ The command `export-properties "GLOBAL"` exports pipeline and trigger properties
 
 The command `export-properties "${STAGE^^}"` will export pipeline/trigger properties relevant for the current executed stage with normalized name `ENV_<stage in upper case>_<XXX>` as environment variables in the given executed stage.
 
-###### Example
+###### Example of Stage-Specific Environment Variables
 {: #devsecops-pipeline-configuration-environment-variable-injection-stage-ex}
 
 | Property name | Property valuer | Resulting environment variable |
@@ -425,13 +440,13 @@ To learn more, refer to  [complementary values content](https://helm.sh/docs/cha
 * **Deploying process** The Terraform tool relies on Terraform helper functions provided by [compliance-commons terraform](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/terraform/terraform-utilities.sh).
     * For more information on configuration properties for context injection, see [Configuring Terraform input variables](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
 
- ##### Schematics
+##### Schematics
 {: #devsecops-pipeline-configuration-tool-Schematics}
 
 * **Deploying process**: The Schematics tool relies on Schematics helper functions provided by [compliance-commons schematics](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/schematics/schematics-utilities.sh).
     * For more information on configuration properties for context injection, see [Configuring Schematics workspace declared variables](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
 
- ##### Code Engine
+##### Code Engine
 {: #devsecops-pipeline-configuration-tool-Code-Engine}
 
 * **Deploying process**: Additional configuration for the application or job can be created by defining complementary configmap or secret associated with the application/job.
