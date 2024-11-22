@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-21"
+lastupdated: "2024-11-22"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -31,7 +31,7 @@ No additional configuration is required, as the Inferred DevSecOps Pipeline Conf
 ## Prerequisites
 {: #devsecops-inferred-pipeline-configuration-prereq}
 
-1.  Set up your DevSecOps toolchains and integrate [your application's source code repository](https://cloud.ibm.com/docs/devsecops?topic=devsecops-tutorial-ci-toolchain#tutorial-ci-toolchain-application).
+1.  Set up your DevSecOps toolchains and integrate [your application's source code repository](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain#tutorial-ci-toolchain-application).
    Do not use the default sample app repository. Instead, onboard your own application's repository.
    {: #note}
 
@@ -40,7 +40,7 @@ No additional configuration is required, as the Inferred DevSecOps Pipeline Conf
 ## Getting started
 {: #devsecops-inferred-pipeline-configuration-getstart}
 
-To begin, configure your toolchains to use your own source code repository. Then, run your first DevSecOps pipeline. This feature is enabled by default, so no additional setup is required. It dynamically infers the DevSecOps pipeline configuration and scripts that are needed to build, test, and deploy your application or service.
+To begin, configure your toolchains to use your own source code repository. Then, **run** your first [DevSecOps CI pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline). This feature is enabled by default, so no additional setup is required. It dynamically infers the DevSecOps pipeline configuration and scripts that are needed to build, test, and deploy your application or service.
 
 To disable this feature, set a `pipeline-config` value that matches an existing file in your repository.
 {: #note}
@@ -65,33 +65,45 @@ Each spot has the following properties:
 {: #devsecops-inferred-pipeline-configuration-spots}
 
 The Inferred DevSecOps Pipeline Configuration feature currently identifies the following types of `spots`:
-`code` Spots, `deployment` spots, `acceptance-test` spots, `dynamic-scan` spots and `release`spots.
+`code` spots, `deployment` spots, `acceptance-test` spots, `dynamic-scan` spots and `release`spots.
 
+#### code spots
 Code spots are related to a supported source code language, including:
 
--  NodeJS (with npm, yarn or gradle)
--  Java (with maven or gradle)
--  Go
--  Python
--  Docker
--  Terraform configuration language
+-  [Node.js](https://nodejs.org) (with npm, yarn or gradle)
+-  [Java](https://www.ibm.com/topics/java) (with maven or gradle)
+-  [Golang](https://go.dev)
+-  [Python](https://www.python.org)
+-  [Dockerfile](https://docs.docker.com/reference/dockerfile)
+-  [Terraform configuration language](https://developer.hashicorp.com/terraform/language)
 
 The `code` spots handle the following processes:
 -  `building`: Defines the tools that perform the build of the given source code.
 -  `unit-testing`: Locates the tools that perform unit testing of the build outcome.
 
+#### deployment spots
 The `deployment` spots locate a deployment vehicle, including deployment resources and tools. `deployment` spots have a `deploying` process listing the tools used to perform the deployment. Currently supported deployment vehicles include:
-  -  Kubernetes resources/kubectl
-  -  Kubernetes Liberty Application CRDs (kubectl-liberty-app)
-  -  Helm chart (helm)
-  -  Terraform configuration or schematics and Terraform
-  -  WAZI CRD/DeploymentMethod
 
-The `acceptance-test` spots locate an acceptance-test suite to be executed. Acceptance-test spots have an `acceptance-testing` process that identifies the tools to run the acceptance-test suite.
+  -  Kubernetes resources definitions like `Pod`, `ReplicaSet`, `ReplicationController`, `Deployment`, `Daemonset`, `StatefulSet`, `Job`, `Cronjob`, `NetworkPolicy`, `Ingress`, `Service`, `Route` - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
+  -  [Websphere Liberty Application Custom Resource](https://www.ibm.com/docs/en/was-liberty/core?topic=resources-webspherelibertyapplication-custom-resource) - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
+  -  [Open Liberty Application Custom Resource](https://openliberty.io/docs/latest/open-liberty-operator.html#_what_is_the_open_liberty_operator) - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
+  -  [Helm chart](https://helm.sh) - helm as tool
+  -  [Terraform configuration](https://developer.hashicorp.com/terraform/language) - [IBM Cloud Schematics](/docs/schematics) or [Terraform CLI](https://developer.hashicorp.com/terraform/cli) as tool
+  -  [Wazi DeploymentMethod Custom Resource](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=files-deployment-method) - [Wazi Deploy](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=reference-syntax-wazi-deploy-core-commands) as tool
 
-The `dynamic-scan` spots locate a dynamic scan to be performed. Dynamic-scan spots have a `scanning` process that lists the tools to perform the scan. Currently supported is the [OWASP ZAP scan](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) tool started in a sub-webhook trigger.
+#### acceptance-test spots
+The `acceptance-test` spots locate an acceptance-test suite to be executed. `acceptance-test` spots have an `acceptance-testing` process that identifies the tools to run the acceptance-test suite.
 
-The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to be executed during the release stage. Currently supported tool for releasing process are `semantic-release` or `maven` (through `maven deploy` phase).
+#### dynamic-scan spots
+The `dynamic-scan` spots locate a dynamic scan to be performed. Dynamic-scan spots have a `scanning` process that lists the tools to perform the scan.
+
+Currently supported is the [OWASP ZAP scan](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) tool started in a sub-webhook trigger.
+
+#### release spots
+The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to be executed during the release stage. Currently supported tool for releasing process are:
+
+  -  [semantic-release](https://semantic-release.gitbook.io/semantic-release)
+  -  [maven](https://maven.apache.org/index.html) with [`maven deploy`](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) phase.
 
 ### Sample polyglot-spots.json content
 {: #devsecops-pipeline-configuration-ison}
@@ -244,10 +256,10 @@ If you are using IBM Cloud Code Engine for deployment, you can specify the Code 
 * `code-engine-project`: Specifies the Code Engine project.
 * `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of ibmcloud code-engine buildrun command.
 
-#### Go Configuration
+#### Golang Configuration
 {: #devsecops-pipeline-configuration-spot-go}
 
-You can configure the spot extraction process for **Go**.
+You can configure the spot extraction process for **Golang**.
 * `go-ignore-main`: (Default: false) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
 * `go-output`: Specifies the executable output file from the go build command.
 
@@ -368,7 +380,7 @@ The command `export-properties "${STAGE^^}"` will export pipeline/trigger proper
 
 In the CI pipeline, the `code-setup - run-stage` step will have the `CGO_ENABLED` environment variable set to the proper value.
 
-Refer to the [stage descriptions](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-scripts-stages#cd-devsecops-stage-desc) for a list of stages and their descriptions.
+Refer to the [stage descriptions](/docs/devsecops?topic=devsecops-cd-devsecops-scripts-stages#cd-devsecops-stage-desc) for a list of stages and their descriptions.
 
 A typical use case for this feature is to inject environment variables before executing unit tests to provide configuration. In this case, the normalized name of the properties would be `ENV_TEST_<a_var>` with `<a_var>` being the name of the exported environment variable to be available for thetest` stage execution.
 
@@ -411,13 +423,13 @@ To learn more, refer to  [complementary values content](https://helm.sh/docs/cha
 {: #devsecops-pipeline-configuration-tool-Terraform}
 
 * **Deploying process** The Terraform tool relies on Terraform helper functions provided by [compliance-commons terraform](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/terraform/terraform-utilities.sh).
-    * For more information on configuration properties for context injection, see [Configuring Terraform input variables](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
+    * For more information on configuration properties for context injection, see [Configuring Terraform input variables](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
 
  ##### Schematics
 {: #devsecops-pipeline-configuration-tool-Schematics}
 
 * **Deploying process**: The Schematics tool relies on Schematics helper functions provided by [compliance-commons schematics](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/schematics/schematics-utilities.sh).
-    * For more information on configuration properties for context injection, see [Configuring Schematics workspace declared variables](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
+    * For more information on configuration properties for context injection, see [Configuring Schematics workspace declared variables](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
 
  ##### Code Engine
 {: #devsecops-pipeline-configuration-tool-Code-Engine}
@@ -425,7 +437,7 @@ To learn more, refer to  [complementary values content](https://helm.sh/docs/cha
 * **Deploying process**: Additional configuration for the application or job can be created by defining complementary configmap or secret associated with the application/job.
     * For pipeline and trigger properties with a normalized name such as `CE_ENV_<XXXX>`, an entry in a complementary configmap or secret (associated with the Code Engine application or job) will be created with key `<XXXX>` and its value set based on the value of the corresponding pipeline or trigger property.
 
-To learn more, refer to [code-engine configmap(s) to configure applications or jobs](https://cloud.ibm.com/docs/codeengine?topic=codeengine-configmap) and [code-engine secret to configure applications or jobs](https://cloud.ibm.com/docs/codeengine?topic=codeengine-secret)
+To learn more, refer to [code-engine configmap(s) to configure applications or jobs](/docs/codeengine?topic=codeengine-configmap) and [code-engine secret to configure applications or jobs](/docs/codeengine?topic=codeengine-secret)
 
 ## DevSecOps common scripts library
 {: #devsecops-common-script-library}
@@ -453,7 +465,7 @@ To disable branch protection, set the setup-branch-protection property to `fa
 #### Customize Branch Protection Status Checks
 {: #devsecops-pipeline-configuration-faq-branch-customize}
 
-To customize the [prefix for the branch protection status checks](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-config-github#setting-customized-prefix-for-compliance-checks) , set the `branch-protection-status-check-prefix` property. The default prefix is `tekton`.
+To customize the [prefix for the branch protection status checks](/docs/devsecops?topic=devsecops-devsecops-config-github#setting-customized-prefix-for-compliance-checks) , set the `branch-protection-status-check-prefix` property. The default prefix is `tekton`.
 
 
 
@@ -488,7 +500,7 @@ Use the [environment variable injection](#environment-variables-injection-in-pip
 #### Configure Maven for Custom Settings Files in IBM Cloud
 {: #devsecops-pipeline-configuration-configure-maven}
 
-If your Maven project defines a specific settings file with a non-default file name, such as `ci-settings.xml`, define a pipeline environment property [maven-user-settings-file-path](./doc/setup_maven.md#properties---retrieved-using-get_env) with the value set to `ci_settings.xml` at the PR, CI pipeline, or trigger level properties.
+If your Maven project defines a specific settings file with a non-default file name, such as `ci-settings.xml`, define a pipeline environment property [maven-user-settings-file-path](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/setup__maven.md#properties---retrieved-using-get_env) with the value set to `ci_settings.xml` at the PR, CI pipeline, or trigger level properties.
 
 In addition, if there is some `env.<VARIABLE>` to be resolved like:
 
