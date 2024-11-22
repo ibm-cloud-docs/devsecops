@@ -107,6 +107,7 @@ toc:
           - devsecops-async-update-webhook.md
           - devsecops-dev-mode.md
           - devsecops-run-concurrently.md
+          - devsecops-next-gen-pipelines.md
           - devsecops-custom-deployment.md
           - devsecops-tutorial-tekton-cd-compliance.md
           - devsecops-tekton-ci-compliance.md
