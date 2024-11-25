@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-22"
+lastupdated: "2024-11-25"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -312,24 +312,22 @@ You can configure the Terraform deployment process.
 You can configure the artifact upload process.
 * `artifact-upload-to-devsecops-cos`: (Default: false) Enables artifact upload to a COS bucket using DevSecOps CLI artifact upload for non-image saved artifacts.
 
-### Hooks
-{: #devsecops-pipeline-configuration-hooks}
-
-Each source code repository may require specific setup or customization for a given stage. The Inferred DevSecOps Pipeline Configuration feature provides a way to specify an environment-setup property that can be defined as a bash script. This script is sourced before executing the corresponding action for a given process.
 
 ### Environment Setup Files
 {: #devsecops-pipeline-configuration-hooks-environment-setup-files}
 
-During pipeline execution, the feature uses a hint based on the filename to determine the environment setup files. The following files are supported:
+Each source code repository may require specific setup or customization for a given stage. The Inferred DevSecOps Pipeline Configuration feature provides a way to specify an environment-setup property that can be defined as a bash script. This script is sourced before executing the corresponding action for a given process.
+
+During spots extraction, the feature uses a hint based on the filename to determine the environment setup files. The following files are supported:
 
 | File Name | Associated Stage | Description |
 | -------------- | -------------- | -------------- |
-| `.env.build.sh` | Build | Environment setup for build process |
+| `.env.build.sh` | Build | Environment setup for build process. It can be overriden by an environment setup file for a scoped tool (like docker, maven, npm...) such as `.env.docker-build.sh`, `.env.maven-build.sh`, ... |
 | `.env.docker-build.sh` | Build (Docker) | Environment setup for build process with Docker source |
+| `.env.go-build.sh` | Build (Go) | Environment setup for build process with Go source |
 | `.env.maven-build.sh`| Build (Maven)| Environment setup for build process with Maven source |
 | `.env.npm-build.sh`	 | Build  (npm) | Environment setup for build process with npm source |
 | `.env.yarn-build.sh` | Build (Yarn) | Environment setup for build process with Yarn source |
-| `.env.go-build.sh` | Build (Go) | CEnvironment setup for build process with Go source |
 | `.env.test.sh` | Unit Testing| Environment setup for unit testing process |
 | `.env.deploy.sh` | Deployment | Environment setup for deployment process |
 | `.env.acceptance-test.sh`	 | Acceptance Testing | Environment setup for acceptance testing process |
@@ -475,7 +473,7 @@ DevSecOps PR and CI pipelines enable branch protection on the source code reposi
 #### Disable Branch Protection
 {: #devsecops-pipeline-configuration-faq-branch-disable}
 
-To disable branch protection, set the setup-branch-protection property to `false`.
+To disable branch protection, set the `setup-branch-protection` property to `false`.
 
 #### Customize Branch Protection Status Checks
 {: #devsecops-pipeline-configuration-faq-branch-customize}
