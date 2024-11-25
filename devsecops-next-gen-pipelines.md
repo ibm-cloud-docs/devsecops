@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-22"
+lastupdated: "2024-11-25"
 
 keywords: DevSecOps, IBM Cloud, task parallelization, task specific workspace, true task concurrency
 
@@ -20,27 +20,27 @@ This page describes the features of the next generation devsecops pipeline which
 
 {: shortdesc}
 
-## Problems with current versions of pipeline specifications
+## Problems with v9 and v10 versions of pipeline specifications
 {: #devsecops-nextgen-problems}
 
-Currently there are two supported versions of pipelines viz `v9` and `v10`
+`v9` uses sequential execution of all the tasks inside the pipeline run. This results in extremely long execution times for the pipeline runs
+`v10` was introduced to run pipeline tasks concurrently to reduce overall pipeline runtime. See [Improving compliance pipeline performance in DevSecOps](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-conc)
 
-`v9` uses sequential execution of all the tasks inside the pipeline run. This is resulting in extremely long execution times for the pipeline runs
-`v10` was introduced to run pipeline tasks concurrently to reduce overall pipeline runtime.
+Pipelines rely on a persistent volume to store data during execution. This includes user application source code, scan results, and related information. However, the use of persistent volumes has led to several issues.
 
-Pipelines use a persistent volume for the data during the pipeline run. this data includes user application source and scan results etc. This usage of persistent volume created multiple problems.
-
-1. Concurrent access from multiple tasks resulted in data inconsistency
-1. Persistent volume can be attached one worker node at a time. If a task is scheduled on a diffent node where the persistent volume is not connected, that task waits till the persistent volume is freed. This resulting in sequetial execution of tasks
-1. There is latency in accessing persistent volume. This is 3 times slower than the native disk access. This is also resulting in longer execution time for each individual task
+1. Concurrent access by multiple tasks lead to data inconsistencies.
+1. A persistent volume can be attached to only one worker node at a time. If a task is scheduled on a different node where the persistent volume is not connected, it must wait until the volume is released. This limitation forces tasks to execute sequentially, impacting concurrent execution of tasks
+1. Accessing the persistent volume incurs significant latency, being three times slower than native disk access. This delay contributes to longer execution times for individual tasks.
 
 ## Solution
 
-To solve above mentioned problems need to stop using persistent volume in the pipeline. This will enable us to solve the data consistency, latency and wait times for the persistent volume resource
+To address the above issues, it is necessary to eliminate the use of persistent volumes in the pipeline. This approach will resolve problems related to data consistency, latency, and wait times for persistent volume resources.
 
-Created new version of pipelines `v11` by retructuring the stages as steps inside a task. This way similar stages can share the source code and other artifacts. Each task will have two mandatory steps `start` and `collect-evidence` that are controlled by devsecops where we enable sharing of data across stages. The restructed pipeline structures are listed in subsequent sections
+A new version of the pipeline, v11, was created by restructuring stages into steps within a task. This design allows similar stages to share source code and other artifacts seamlessly. Each task includes two mandatory steps, start and collect-evidence, managed by DevSecOps to facilitate data sharing across stages.
 
 For example ci pipeline is restructed into 6 tasks compared to 15 tasks in previous versions of the pipeline.
+
+The restructured pipeline details are outlined in the following sections.
 
 ## Enable nextgen pipeline
 {: #devsecops-nextgen-enable}
