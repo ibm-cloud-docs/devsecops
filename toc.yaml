@@ -230,7 +230,6 @@ toc:
           - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
       - devsecops-async-stages.md
-      - devsecops-common-scripts.md
       - devsecops-images.md 
       - devsecops-asset-based-evidence-collection.md 
       - topicgroup:
