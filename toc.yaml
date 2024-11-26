@@ -38,6 +38,8 @@ toc:
           label: Adopting DevSecOps for your own application or microservice
           topics:
           - devsecops-apps-byoa.md
+          - devsecops-common-scripts-2024.md
+          - devsecops-inferred-pipeline-configuration.md
           - topicgroup:
               label: Understanding DevSecOps Pipelines stages and custom scripts
               topics:
@@ -104,7 +106,7 @@ toc:
           - devsecops-async-sub-pipelines.md
           - devsecops-async-update-webhook.md
           - devsecops-dev-mode.md
-          - devsecops-run-concurrently.md
+          - devsecops-run-concurrently.md 
           - devsecops-custom-deployment.md
           - devsecops-tutorial-tekton-cd-compliance.md
           - devsecops-tekton-ci-compliance.md
@@ -228,7 +230,6 @@ toc:
           - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
       - devsecops-async-stages.md
-      - devsecops-common-scripts.md
       - devsecops-images.md 
       - devsecops-asset-based-evidence-collection.md 
       - topicgroup:
