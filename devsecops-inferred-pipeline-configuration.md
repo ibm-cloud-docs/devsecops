@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-25"
+lastupdated: "2024-11-26"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -16,16 +16,16 @@ subcollection: devsecops
 {: #devsecops-inferred-pipeline-configuration}
 
 
-After adding your own application or micro-service to the DevSecOps CI toolchain, you can use the Inferred DevSecOps Pipeline Configuration feature to get started quickly. This feature:
+Once you've added your own application or micro-service to the DevSecOps CI toolchain, you can use the Inferred DevSecOps Pipeline Configuration feature to get started quickly. This feature:
 
 -  Infers the content of the `.pipeline-config.yaml`  DevSecOps pipeline configuration file for you
--  Identifies the scripts needed to build, test, and deploy your code
+-  Identifies the scripts that are needed to build, test, and deploy your code
 -  Provides the code for these scripts, so you can focus on your application
 
-By using this feature, you can easily onboard your micro-service(s) or application(s) to DevSecOps pipelines and streamline your DevSecOps adoption.
+By using this feature, you can easily onboard your micro-services or applications to DevSecOps pipelines and streamline your DevSecOps adoption.
 {: shortdesc}
 
-No additional configuration is required, as the Inferred DevSecOps Pipeline Configuration is already included in the DevSecOps.
+No additional steps are necessary to configure the Inferred DevSecOps Pipeline Configuration, as it's already integrated into the DevSecOps.
 {: note}
 
 ## Prerequisites
@@ -57,8 +57,8 @@ Each spot has the following properties:
 | -------------- | -------------- |
 |  Source | Identifies a location in the source code repository as the context of the spot. |
 | Processes | One or more processes that indicate the type of operation to be performed. |
-| Tools | An array associated to a process that lists the tools to be invoked to perform the action. Each tool can have its own set of properties. |
-| Environment Setup | References a script file (or script commands) that will be invoked to set up the environment for the process operation (tool invocations) to be performed. |
+| Tools | An array that is associated to a process that lists the tools to be started to perform the action. Each tool can have its own set of properties. |
+| Environment setup | References a script file (or script commands) that will be started to set up the environment for the process operation (tool invocations) to be performed. |
 {: caption="Spot Properties" caption-side="bottom"}
 
 ### Identified spots
@@ -72,8 +72,8 @@ The Inferred DevSecOps Pipeline Configuration feature currently identifies the f
 
 Code spots are related to a supported source code language, including:
 
--  [Node.js](https://nodejs.org) (with npm, yarn or gradle)
--  [Java](https://www.ibm.com/topics/java) (with maven or gradle)
+-  [Node.js](https://nodejs.org) (with npm, Yarn or Gradle)
+-  [Java](https://www.ibm.com/topics/java) (with Maven or Gradle)
 -  [Golang](https://go.dev)
 -  [Python](https://www.python.org)
 -  [Dockerfile](https://docs.docker.com/reference/dockerfile)
@@ -86,7 +86,7 @@ The `code` spots handle the following processes:
 #### Deployment spots
 {: #devsecops-inferred-pipeline-deployment-spots}
 
-The `deployment` spots locate a deployment vehicle, including deployment resources and tools. `deployment` spots have a `deploying` process listing the tools used to perform the deployment. Currently supported deployment vehicles include:
+The `deployment` spots locate a deployment vehicle, including deployment resources and tools. `deployment` spots have a deploying process that lists the deployment tools. The deployment vehicles currently supported are:
 
 -  Kubernetes resources definitions like `Pod`, `ReplicaSet`, `ReplicationController`, `Deployment`, `Daemonset`, `StatefulSet`, `Job`, `Cronjob`, `NetworkPolicy`, `Ingress`, `Service`, `Route` - [kubectl](https://kubernetes.io/docs/reference/kubectl) as tool
 
@@ -103,27 +103,28 @@ The `deployment` spots locate a deployment vehicle, including deployment resourc
 #### Acceptance-test spots
 {: #devsecops-inferred-pipeline-accept-spots}
 
-The `acceptance-test` spots locate an acceptance-test suite to be executed. `acceptance-test` spots have an `acceptance-testing` process that identifies the tools to run the acceptance-test suite.
+The `acceptance-test` spots locate an acceptance-test suite to run. `acceptance-test` spots have an `acceptance-testing` process that identifies the tools to run the acceptance-test suite.
 
 #### Dynamic-scan spots
 {: #devsecops-inferred-pipeline-dynamic-spots}
 
-The `dynamic-scan` spots locate a dynamic scan to be performed. Dynamic-scan spots have a `scanning` process that lists the tools to perform the scan.
+ The `dynamic-scan` spots identify locations for a dynamic scan. Dynamic-scan spots scans and lists the scan tools.
 
-Currently supported is the [OWASP ZAP scan](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) tool started in a sub-webhook trigger.
+ The [OWASP ZAP scan](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) is the only supported tool to star a sub-webhook trigger.
+The deployment vehicles currently supported are:
 
 #### Release spots
 {: #devsecops-inferred-pipeline-dynamic-spots}
 
-The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to be executed during the release stage. Currently supported tool for releasing process are:
-
+The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to run during the release stage.
+Currentl, the supported tools for the releasing process are:
 -  [semantic-release](https://semantic-release.gitbook.io/semantic-release)
 -  [maven](https://maven.apache.org/index.html) with [`maven deploy`](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) phase.
 
 ### Sample polyglot-spots.json content
 {: #devsecops-pipeline-configuration-ison}
 
-Below is a JSON content resulting from the spots extraction by the Inferred DevSecOps Pipeline Configuration feature. This is used to execute the specific actions/tools for any given processing action in specific stages during the CI pipeline execution.
+The Inferred DevSecOps Pipeline Configuration feature extracts spots and generates the following JSON content to trigger specific actions and tools during CI pipeline stages.
 
 ```JSON
 {
@@ -258,6 +259,7 @@ Configure the extraction of spots by using the following pipeline environment 
 {: #devsecops-pipeline-configuration-spot-ignore}
 
 You can ignore specific spots during extraction by using regular expressions. The following configuration options are available:
+
 * `ignore-code-spot-pattern`: Ignores code spots that match the specified regular expression.
 * `ignore-deployment-spot-pattern`: Ignores deployment spots that match the specified regular expression.
 * `ignore-dynamic-scan-spot-pattern`: Ignores dynamic-scan spots that match the specified regular expression.
@@ -267,21 +269,23 @@ You can ignore specific spots during extraction by using regular expressions. Th
 #### Code Engine Configuration
 {: #devsecops-pipeline-configuration-spot-cec}
 
-If you are using IBM Cloud Code Engine for deployment, you can specify the Code Engine project and configure the build process.
+If you are using IBM Cloud Code Engine for deployment, specify the Code Engine project and configure the build process with the following spots:
 * `code-engine-project`: Specifies the Code Engine project.
-* `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of ibmcloud code-engine buildrun command.
+* `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of `ibmcloud code-engine buildrun` command.
 
 #### Golang Configuration
 {: #devsecops-pipeline-configuration-spot-go}
 
-You can configure the spot extraction process for **Golang**.
+ To configure the spot extraction process for Golang, use the following spots:
+
 * `go-ignore-main`: (Default: false) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
 * `go-output`: Specifies the executable output file from the go build command.
 
 #### Gradle Configuration
 {: #devsecops-pipeline-configuration-spot-gradle}
 
-You can configure the Gradle tasks for setup, unit testing, build artifact, and acceptance testing.
+ To configure the Gradle tasks for setup, unit testing, build artifact, and acceptance testing, use the following spots:
+
 * `gradle-setup-tasks`: (Default: `assemble`) Comma-separated list of Gradle tasks for setup stage.
 * `gradle-unit-testing-tasks`: (Default: `test`) Comma-separated list of Gradle tasks for unit-test stage.
 * `gradle-build-artifact-tasks`: (Default: `build`) Comma-separated list of Gradle tasks for build-artifact stage.
@@ -297,32 +301,35 @@ You can configure the NPM unit testing and acceptance testing script detection.
 #### Python Configuration
 {: #devsecops-pipeline-configuration-python}
 
-You can configure the Python Poetry version.
+To configure the Python Poetry version, use the following spots:
+
 * `hint-python-poetry-version`: (Default: `1.8.2`) Hints for Python Poetry version.
 
 #### Terraform Configuration
 {: #devsecops-pipeline-configuration-spot-terraform}
 
-You can configure the Terraform deployment process.
-* `terraform-deployment`: (Default: false) Disables Schematics as a deployment vehicle in favor of Terraform and COS for state storage.
+To configure the Terraform deployment process, use the following spots:
+
+* `terraform-deployment`: (Default: false) Disables Schematics as a deployment vehicle in favor of Terraform and Cloud Object Storage for state storage.
 
 #### Artifact Upload
 {: #devsecops-pipeline-configuration-spot-artifact-upload}
 
-You can configure the artifact upload process.
-* `artifact-upload-to-devsecops-cos`: (Default: false) Enables artifact upload to a COS bucket using DevSecOps CLI artifact upload for non-image saved artifacts.
+To configure the artifact upload process, use the following spots:
+
+* `artifact-upload-to-devsecops-cos`: (Default: false) Enables artifact upload to a Cloud Object Storage bucket by using DevSecOps CLI artifact upload for nonimage saved artifacts.
 
 
-### Environment Setup Files
+### Environment set up Files
 {: #devsecops-pipeline-configuration-hooks-environment-setup-files}
 
-Each source code repository may require specific setup or customization for a given stage. The Inferred DevSecOps Pipeline Configuration feature provides a way to specify an environment-setup property that can be defined as a bash script. This script is sourced before executing the corresponding action for a given process.
+Each source code repository requires specific setup or customization for a given stage. The Inferred DevSecOps Pipeline Configuration feature provides a way to specify an environment-setup property that can be defined as a bash script. This script is sourced before running the corresponding action for a process.
 
-During spots extraction, the feature uses a hint based on the filename to determine the environment setup files. The following files are supported:
+During spots extraction, the feature uses a hint based on the file name to determine the environment setup files. The following files are supported:
 
-| File Name | Associated Stage | Description |
+| File name | Associated Stage | Description |
 | -------------- | -------------- | -------------- |
-| `.env.build.sh` | Build | Environment setup for build process. It can be overriden by an environment setup file for a scoped tool (like docker, maven, npm...) such as `.env.docker-build.sh`, `.env.maven-build.sh`, ... |
+| `.env.build.sh` | Build | Environment setup for build process. It can be overridden by an environment setup file for a scoped tool (like docker, maven, npm...) such as `.env.docker-build.sh`, `.env.maven-build.sh`, ... |
 | `.env.docker-build.sh` | Build (Docker) | Environment setup for build process with Docker source |
 | `.env.go-build.sh` | Build (Go) | Environment setup for build process with Go source |
 | `.env.maven-build.sh`| Build (Maven)| Environment setup for build process with Maven source |
@@ -340,7 +347,7 @@ For an example of how to use this script, see the  [Hello Compliance App](https:
 ### Environment Context Injection
 {: #devsecops-pipeline-configuration-environment-context-injection}
 
-The Inferred DevSecOps Pipeline Configuration feature enables you to inject environment variables from pipeline and trigger properties into various contexts, including:
+The Inferred DevSecOps Pipeline Configuration feature incorporates environment variables from pipeline and trigger properties into various project contexts. The project contexts are as follows:
 
 -  Pipeline execution stages
 -  Helm deployments
@@ -381,7 +388,7 @@ The command `export-properties "GLOBAL"` exports pipeline and trigger properties
 ##### Stage-Specific Environment Variables
 {: #devsecops-pipeline-configuration-environment-variable-injection-stage}
 
-The command `export-properties "${STAGE^^}"` will export pipeline/trigger properties relevant for the current executed stage with normalized name `ENV_<stage in upper case>_<XXX>` as environment variables in the given executed stage.
+The command `export-properties "${STAGE^^}"` will export pipeline or trigger properties relevant for the current executed stage with normalized name `ENV_<stage in upper case>_<XXX>` as environment variables in the given executed stage.
 
 ###### Example of Stage-Specific Environment Variables
 {: #devsecops-pipeline-configuration-environment-variable-injection-stage-ex}
@@ -391,11 +398,11 @@ The command `export-properties "${STAGE^^}"` will export pipeline/trigger proper
 | `ENV_SETUP_CGO_ENABLED`| 	`true` | `CGO_ENABLED=true` |
 {: caption="Example of Global Environment Variables " caption-side="bottom"}
 
-In the CI pipeline, the `code-setup - run-stage` step will have the `CGO_ENABLED` environment variable set to the proper value.
+In the CI pipeline, the `code-setup - run-stage` step has the `CGO_ENABLED` environment variable set to the proper value.
 
 Refer to the [stage descriptions](/docs/devsecops?topic=devsecops-cd-devsecops-scripts-stages#cd-devsecops-stage-desc) for a list of stages and their descriptions.
 
-A typical use case for this feature is to inject environment variables before executing unit tests to provide configuration. In this case, the normalized name of the properties would be `ENV_TEST_<a_var>` with `<a_var>` being the name of the exported environment variable to be available for thetest` stage execution.
+A typical use case for this feature is to inject environment variables before running unit tests to provide configuration. In this case, the normalized name of the properties would be `ENV_TEST_<a_var>` with `<a_var>` being the name of the exported environment variable to be available for the test` stage execution.
 
 ###### Example
 {: #devsecops-pipeline-typical-ex}
@@ -417,20 +424,20 @@ Some tools in the Inferred DevSecOps Pipeline Configuration feature use pipeline
 {: #devsecops-pipeline-configuration-tool-docker}
 
 * **Build arguments**: The docker build command is completed with --build-arg parameters based on pipeline and trigger properties with a normalized name like `DOCKER_BUILD_ARG_`.
-    * Example: Adding a property named `DOCKER_BUILD_ARG_my_arg` injects the parameter `--build-arg="my_arg="`into the docker build command.
+    * Example: Adding a property that is named `DOCKER_BUILD_ARG_my_arg` injects the parameter `--build-arg="my_arg="`into the docker build command.
 * Build secrets: The docker build command is completed with --secret parameters based on pipeline and trigger properties with a normalized name like `DOCKER_BUILD_SECRET_`.
-    * For example, adding a property named DOCKER_BUILD_SECRET_my_secret injects the parameter --secret id=my_secret,env= into the docker build command.
+    * For example, adding a property that is named DOCKER_BUILD_SECRET_my_secret injects the parameter --secret id=my_secret,env= into the docker build command.
 
 To learn more, refer to [docker build arguments](https://docs.docker.com/build/guide/build-args/) and [docker build secret](https://docs.docker.com/build/building/secrets/)
 
 ##### Helm
 {: #devsecops-pipeline-configuration-tool-helm}
 
-* **Deploying processing**: Additional values content can be injected into the Helm deploy process based on normalized pipeline and trigger properties.
-    * If a property has a name like `HELM_VALUE_,` the complementary values file managed by the Helm processing tool will add an entry `a_value_property` with the value of the pipeline or trigger property.
+* **Deploying processing**: Additional values can be injected into the Helm deploy process based on normalized pipeline and trigger properties.
+    * If a property has a name like `HELM_VALUE_,` the complementary values file managed by the Helm processing tool adds an entry `a_value_property` with the value of the pipeline or trigger property.
     * The complementary values file is used as an argument of the last `-f | --values` parameter.
 
-To learn more, refer to  [complementary values content](https://helm.sh/docs/chart_best_practices/values/#consider-how-users-will-use-your-values).
+To learn more, refer to  [Complementary values content](https://helm.sh/docs/chart_best_practices/values/#consider-how-users-will-use-your-values).
 
  ##### Terraform
 {: #devsecops-pipeline-configuration-tool-Terraform}
@@ -442,12 +449,12 @@ To learn more, refer to  [complementary values content](https://helm.sh/docs/cha
 {: #devsecops-pipeline-configuration-tool-Schematics}
 
 * **Deploying process**: The Schematics tool relies on Schematics helper functions provided by [compliance-commons schematics](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/schematics/schematics-utilities.sh).
-    * For more information on configuration properties for context injection, see [Configuring Schematics workspace declared variables](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
+    * For more information on configuration properties for context injection, refer to [Configuring Schematics workspace declared variables](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-terra-var).
 
 ##### Code Engine
 {: #devsecops-pipeline-configuration-tool-Code-Engine}
 
-* **Deploying process**: Additional configuration for the application or job can be created by defining complementary configmap or secret associated with the application/job.
+* **Deploying process**: Additional configuration for the application can be created by defining complementary configmap or secret associated with the application.
     * For pipeline and trigger properties with a normalized name such as `CE_ENV_<XXXX>`, an entry in a complementary configmap or secret (associated with the Code Engine application or job) will be created with key `<XXXX>` and its value set based on the value of the corresponding pipeline or trigger property.
 
 To learn more, refer to [code-engine configmap(s) to configure applications or jobs](/docs/codeengine?topic=codeengine-configmap) and [code-engine secret to configure applications or jobs](/docs/codeengine?topic=codeengine-secret)
@@ -513,7 +520,7 @@ Use the [environment variable injection](#environment-variables-injection-in-pip
 #### Configure Maven for Custom Settings Files in IBM Cloud
 {: #devsecops-pipeline-configuration-configure-maven}
 
-If your Maven project defines a specific settings file with a non-default file name, such as `ci-settings.xml`, define a pipeline environment property [maven-user-settings-file-path](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/setup__maven.md#properties---retrieved-using-get_env) with the value set to `ci_settings.xml` at the PR, CI pipeline, or trigger level properties.
+If your Maven project defines a specific settings file with a custom file name, such as `ci-settings.xml`, define a pipeline environment property [maven-user-settings-file-path](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/setup__maven.md#properties---retrieved-using-get_env) with the value set to `ci_settings.xml` at the PR, CI pipeline, or trigger level properties.
 
 In addition, if there is some `env.<VARIABLE>` to be resolved like:
 
@@ -534,12 +541,12 @@ Use the [environment variable injection](#environment-variable-injection-in-pipe
 #### Enable Static Linking for Go Builds
 {: #devsecops-pipeline-enable-static}
 
-By default, `go build` does not statically link the binary. To use the Go output orbinary in a Docker container or image, you must force static linking by setting CGO_ENABLED=0 when go build is performed in the setup stage.
+By default, `go build` produces a dynamically linked binary. To use it in a Docker container, enable static linking by setting `CGO_ENABLED=0` during the build.
 
 #### Configure the Environment Variable for Go Build
 {: #devsecops-pipeline-enable-configure}
 
-To enable static linking, use the [environment variable injection](#environment-variable-injection-in-pipeline-execution-stages)  feature to add the following pipeline environment property in the CI pipeline:
+To enable static linking, use the [environment variable injection](#environment-variable-injection-in-pipeline-execution-stages) feature to add the following pipeline environment property in the CI pipeline:
 
 -  `ENV_SETUP_CGO_ENABLED` with the value set to `0`
 
