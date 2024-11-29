@@ -86,7 +86,7 @@ toc:
   - navgroup:
       id: howto
       topics:
-      - devsecops-configuring-en.md 
+      - devsecops-configuring-en.md
       - topicgroup:
           label: Configuring image signing
           topics:
@@ -106,11 +106,17 @@ toc:
           - devsecops-async-sub-pipelines.md
           - devsecops-async-update-webhook.md
           - devsecops-dev-mode.md
-          - devsecops-run-concurrently.md 
-          - devsecops-custom-deployment.md
-          - devsecops-tutorial-tekton-cd-compliance.md
-          - devsecops-tekton-ci-compliance.md
-          - devsecops-tekton-cd-compliance.md
+          - devsecops-run-concurrently.md
+      - topicgroup:
+            label: Next generation pipelines
+            topics:
+            - devsecops-next-gen-pipelines.md
+            - devsecops-pipeline-config-v2.md
+            - devsecops-preprocessor.md
+      - devsecops-custom-deployment.md
+      - devsecops-tutorial-tekton-cd-compliance.md
+      - devsecops-tekton-ci-compliance.md
+      - devsecops-tekton-cd-compliance.md
       - topicgroup:
           label: Working with issues
           topics:
