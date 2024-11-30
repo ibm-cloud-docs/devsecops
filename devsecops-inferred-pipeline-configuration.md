@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-26"
+lastupdated: "2024-11-28"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -108,16 +108,15 @@ The `acceptance-test` spots locate an acceptance-test suite to run. `acceptance-
 #### Dynamic-scan spots
 {: #devsecops-inferred-pipeline-dynamic-spots}
 
- The `dynamic-scan` spots identify locations for a dynamic scan. Dynamic-scan spots scans and lists the scan tools.
+ The `dynamic-scan` spots identify locations for a dynamic scan. Dynamic-scan spots have a `scanning` process to list the scan tools invoked during dynamic scan.
 
  The [OWASP ZAP scan](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) is the only supported tool to star a sub-webhook trigger.
-The deployment vehicles currently supported are:
 
 #### Release spots
 {: #devsecops-inferred-pipeline-dynamic-spots}
 
 The `release` spots locate the release process. Release spots have a `releasing` process that lists the tools to run during the release stage.
-Currentl, the supported tools for the releasing process are:
+Currently, the supported tools for the releasing process are:
 -  [semantic-release](https://semantic-release.gitbook.io/semantic-release)
 -  [maven](https://maven.apache.org/index.html) with [`maven deploy`](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) phase.
 
@@ -278,7 +277,7 @@ If you are using IBM Cloud Code Engine for deployment, specify the Code Engine p
 
  To configure the spot extraction process for Golang, use the following spots:
 
-* `go-ignore-main`: (Default: false) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
+* `go-ignore-main`: (Default: `false`) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
 * `go-output`: Specifies the executable output file from the go build command.
 
 #### Gradle Configuration
@@ -310,14 +309,14 @@ To configure the Python Poetry version, use the following spots:
 
 To configure the Terraform deployment process, use the following spots:
 
-* `terraform-deployment`: (Default: false) Disables Schematics as a deployment vehicle in favor of Terraform and Cloud Object Storage for state storage.
+* `terraform-deployment`: (Default: `false`) Disables Schematics as a deployment vehicle in favor of Terraform and Cloud Object Storage for state storage.
 
 #### Artifact Upload
 {: #devsecops-pipeline-configuration-spot-artifact-upload}
 
 To configure the artifact upload process, use the following spots:
 
-* `artifact-upload-to-devsecops-cos`: (Default: false) Enables artifact upload to a Cloud Object Storage bucket by using DevSecOps CLI artifact upload for nonimage saved artifacts.
+* `artifact-upload-to-devsecops-cos`: (Default: `false`) Enables artifact upload to a Cloud Object Storage bucket by using DevSecOps CLI artifact upload for nonimage saved artifacts.
 
 
 ### Environment set up Files
@@ -435,7 +434,7 @@ To learn more, refer to [docker build arguments](https://docs.docker.com/build/g
 
 * **Deploying processing**: Additional values can be injected into the Helm deploy process based on normalized pipeline and trigger properties.
     * If a property has a name like `HELM_VALUE_,` the complementary values file managed by the Helm processing tool adds an entry `a_value_property` with the value of the pipeline or trigger property.
-    * The complementary values file is used as an argument of the last `-f | --values` parameter.
+    * The complementary values file is used as an argument of the last `-f | --values` parameter for helm command.
 
 To learn more, refer to  [Complementary values content](https://helm.sh/docs/chart_best_practices/values/#consider-how-users-will-use-your-values).
 

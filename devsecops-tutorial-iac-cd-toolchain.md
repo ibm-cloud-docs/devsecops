@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-11-26"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -32,7 +32,7 @@ With this tutorial, you can use the toolchain template for continuous deployment
 
 1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).
 2. Complete [Setting up a CI toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
-3. View the [Getting started with DevSecOps in {{site.data.keyword.cloud_notm}} - Part 2](https://video.ibm.com/embed/recorded/130714358) video. 
+3. View the [Getting started with DevSecOps in {{site.data.keyword.cloud_notm}} - Part 2](https://video.ibm.com/embed/recorded/130714358) video.
 4. Refer to, the [DevSecOps practices to deploy a secure CD application](/docs-draft/devsecops-working?topic=devsecops-working-practices-cd-sec-app).
 
 ## Start the CD toolchain setup
@@ -95,7 +95,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 3. Click **Continue**.
 
 ### Secrets
-{: ##tutorial-cd-toolchain-secrets}
+{: ##tutorial-cd-toolchain-secrets-iac-cd}
 
 1. This tutorial uses [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manag) as the vault for secrets. The **Region**, **Resource group**, and **Service name** fields are automatically populated based on available choices. Click the drop-down indicators to see the other choices.
 2. Type your **{{site.data.keyword.secrets-manager_short}} instance name**.

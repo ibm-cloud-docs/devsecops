@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2024
-lastupdated: "2024-11-05"
+lastupdated: "2024-11-26"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -94,7 +94,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 3. Click **Continue**.
 
 ### Secrets
-{: ##tutorial-cd-toolchain-secrets}
+{: ##tutorial-cd-toolchain-secrets-cd}
 
 1. This tutorial uses [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manag) as the vault for secrets. The **Region**, **Resource group**, and **Service name** fields are automatically populated based on available choices. Click the drop-down indicators to see the other choices.
 2. Type your **{{site.data.keyword.secrets-manager_short}} instance name**.
