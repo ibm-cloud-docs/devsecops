@@ -108,7 +108,7 @@ toc:
           - devsecops-dev-mode.md
           - devsecops-run-concurrently.md
       - topicgroup:
-            label: Next generation pipelines
+            label: Working with Next generation pipelines
             topics:
             - devsecops-next-gen-pipelines.md
             - devsecops-pipeline-config-v2.md
