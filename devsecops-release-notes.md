@@ -19,28 +19,7 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
-## 12 December 2024
-{: #devsecops-Dec2024-12}
-{: release-note}
 
-### Inferred DevSecOps pipeline configuration
-{: #devsecops-polyglot}
-
-As part of the continuous improvement of IBM Cloud, we're pleased to announce the availability of a new DevSecOps feature: the Inferred DevSecOps Pipeline configuration (aka Polyglot)
-
-#### How it works?
-Once you've added your own application or micro-service to the DevSecOps CI toolchain, you can use the Inferred DevSecOps Pipeline Configuration feature to get started quickly. This feature:
-
-* Infers the content of the .pipeline-config.yaml DevSecOps pipeline configuration file for you
-* Identifies the scripts that are needed to build, test, and deploy your code
-* Provides the code for these scripts, so you can focus on your application
-By using this feature, you can easily onboard your micro-services or applications to DevSecOps pipelines and streamline your DevSecOps adoption.
-
-#### Bonus!
-
-* This feature uses the scripts provided as part of the DevSecOps Common Scripts library.
-* This feature automatically generates a Pull Request to help you begin customizing your DevSecOps pipeline configuration.
-Get started with the Inferred DevSecOps Pipeline configuration and discover more features by visiting its [documentation page](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration).
 
 ### Updates for DevSecOps version - open-v9.47.0 and open-v10.28.0
 {: #devsecops-open-v10.28.0-open-v9.47.0}
