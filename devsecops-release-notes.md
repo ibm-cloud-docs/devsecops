@@ -27,7 +27,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 ### Inferred DevSecOps pipeline configuration
 {: #devsecops-polyglot}
 
-:   Inferred DevSecOps Pipeline configuration is now available. This feature simplifies onboarding micro-services or applications to DevSecOps pipelines. This feature is also known as Polyglot.
+Inferred DevSecOps Pipeline configuration is now available. This feature simplifies onboarding micro-services or applications to DevSecOps pipelines. This feature is also known as Polyglot.
 
 To get started with the Inferred DevSecOps Pipeline configuration, refer to [Using the Inferred DevSecOps Pipeline Configuration](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration).
 
