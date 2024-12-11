@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-12"
+lastupdated: "2024-12-11"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -3170,14 +3170,14 @@ Adds a comment to an issue or pull request in GitHub.
 Options:
 
 ```text
---content           	# (Required) The content to be added as comment to issue or pr
---id       		# (Required) The issue number or pull request number
---type             	# (Optional) The type (issue or pr), default is issue
---org               	# The git repo org
---repo              	# The git repo name
---git-provider     	# (Optional) Git service provider [github]
---git-token-path    	# (Optional) Github Token's path
---git-api-url       	# (Optional) Github API url
+--content           # (Required) The content to be added as comment to issue or pr
+--id                # (Required) The issue number or pull request number
+--type              # (Optional) The type (issue or pr), default is issue
+--org               # The git repo org
+--repo              # The git repo name
+--git-provider      # (Optional) Git service provider [github]
+--git-token-path    # (Optional) Github Token's path
+--git-api-url       # (Optional) Github API url
 ```
 {: screen}
 
@@ -3207,5 +3207,56 @@ $ cocoa comment add --id 1 \
                     --git-provider github \
                     --org <github-organization> \
 	  				--repo <github-repo-name>
+```
+{: codeblock}
+
+## cocoa label commands
+{: #label-commands}
+
+### cocoa label add
+{: #comment-add}
+
+Adds one or more labels to pull requests in GitHub or GitLab.
+
+Options:
+
+```text
+--label           	# (Required) The label to be added to pr (can be specified multiple times)
+--id       	        # (Required) The pull request number (can be specified multiple times)
+--type             	# (Optional) The type (issue or pr), default is pr
+--org               # The git repo org
+--repo              # The git repo name
+--git-provider     	# (Optional) Git service provider [github]
+--git-token-path    # (Optional) Github Token's path
+--git-api-url       # (Optional) Github API url
+```
+{: screen}
+
+Required Environment Variables:
+
+```text
+GHE_ORG=                    # Can be used instead of --org (either the option or the variable is required)
+GHE_REPO=                   # Can be used instead of --repo (either the option or the variable is required)
+```
+{: screen}
+
+Required environment variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+{: screen}
+
+If you are using `github`, use the `--git-token-path` field to set your GitHub Token and use the `--git-api-url` field to set the GitHub Enterprise API URL instead of the `GHE_TOKEN` and `GH_URL` environment variables. If both environment properties and command line parameters are provided, then `--git-token-path` and `--git-api-url` take precedence.
+
+Running the command:
+
+```sh
+$ cocoa label add --id 1 \
+                  --label "deployed" \
+                  --type pr \
+                  --git-provider github \
+                  --org <github-organization> \
+                  --repo <github-repo-name>
 ```
 {: codeblock}
