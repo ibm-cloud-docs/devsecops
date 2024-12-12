@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2024-12-12"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -99,12 +99,12 @@ Everything that changes the [baseline](/docs/devsecops?topic=devsecops-cd-devsec
 
 Use`get_env CHANGE_REQUEST_ID` to leverage the value of Change Request ID in the subsequent stages.
 
- Do not change the value of the variable using `set_env` as this is intended for internal implementation only.
+ Do not change the value of the variable that uses `set_env` as this is intended for internal implementation only.
  {: important}
 
 This step creates the change request by attaching the available compliance data based on the [promotion pull request](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelinepr) fields. [Deployment readiness](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt#cd-devsecops-cr-approve) is calculated based on the available evidence in the collected compliance status.
 
-If the pre-prod evidences are captured in the production deployement, pre-prod change requests are linked to the production change request. For more information, see [Data included in change requests](/docs/devsecops?topic=devsecops-cd-devsecops-cr-data).
+If the pre-prod evidences are captured in the production deployment, pre-prod change requests are linked to the production change request. For more information, see [Data included in change requests](/docs/devsecops?topic=devsecops-cd-devsecops-cr-data).
 
 ## Check change request approval
 {: #cd-devsecops-pipeline-checkcr}
@@ -116,7 +116,7 @@ If a compliance check fails, the change request state is not approved. You can [
 ## Deployment
 {: #cd-devsecops-pipeline-deployment}
 
-In the deploy stage, the pipeline deploys the built artifacts into an environment, such as staging or prod. The variables and credentials for these stages can be found in the following sources:
+In the deployment stage, the pipeline deploys the built artifacts into an environment, such as staging or prod. The variables and credentials for these stages can be found in the following sources:
 
 * Variables from the pipeline UI (`get_env`)
 
@@ -136,7 +136,7 @@ You can run a set of automated tests to validate that the deployment was success
 
 The details for the deployment are uploaded to the closing summary change task and then the task closes the change request. The `close_category` is added to the close change request task, with the following values:
 
-* Successful (if was deploy ready, and CD deployment succeeded)
+* Successful (if was deployed ready, and CD deployment succeeded)
 * Successful with issues (if the summary has issues, it was not deploy ready and CD deployment happened with emergency)
 
 ## Inventory conclude
@@ -154,5 +154,5 @@ To run Inline rollback successfully, ensure that the `rollback-enabled` environm
 
 - `rollback-status` says the status of the rollback step execution. Possible values `[notRun, success, failure]`
 - `rollback-exit-code` is the exit code of the rollback step. This is kept empty if rollback wasn't even run.
-- `default-rollback-executed` is executed when the property is set to `true` if the default implementation that prompts user to supply a rollback script. The value of this property is set to empty by default.
+- `default-rollback-executed` is run when the property is set to `true` if the default implementation that prompts user to supply a rollback script. The value of this property is set to empty by default.
 - `pipeline-execution-status` sets the status of the overall pipeline run. Possible values `[successful_deployment, failed_deployment_failed_rollback, failed_deployment_successful_rollback]`
