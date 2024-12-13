@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2024
-lastupdated: "2024-11-12"
+lastupdated: "2024-12-13"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1586,7 +1586,7 @@ Options for Git:
 | org              | The GitHub organization that owns the inventory repository. | String | Optional if GHE_ORG environment variable is set| -  |
 | repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
 | app-artifacts    | Arbitrary app content in JSON format             | String | Optional | Any additional content can be added here for automation / workflow use |
-| type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required | Possible values : ["image"] for image type artifacts, <br>else values like ["helm-chart", "deployment-file"] or any arbitrary value can be used | 
+| type             | Type of the artifact. Can be "image" for images, or can be a static value for generic type such as deployment files, helm charts, etc.                             | String | Required | Possible values : ["image"] for image type artifacts, <br>else values like ["helm-chart", "deployment-file"] or any arbitrary value can be used |
 | sha256           | The sha256 hash of the artifact.                   | String | Required | Should be of the format `sha256:<64 character hash>` |
 | provenance       | URL pointing to the artifact (for example, built image).   | String | Required | For an "image" type inventory entry, provenance must be same as artifact field |
 | signature        | The artifact's signature                         | String | Required | - |
@@ -1631,7 +1631,7 @@ $ cocoa inventory add \
   --name=foo-app-helm-chart \
   --sha256=sha256:9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894 \
   --signature=9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894 \
-  --type=helm-chart 
+  --type=helm-chart
 ```
 {: codeblock}
 
@@ -1864,7 +1864,7 @@ $ cocoa inventory promote \
 ### cocoa inventory validate
 {: #inventory-validate}
 
-Validates entries present in an inventory repo (or JSON file). The inventory repo can have it's environment (branch) or label (tag) validated. 
+Validates entries present in an inventory repo (or JSON file). The inventory repo can have it's environment (branch) or label (tag) validated.
 
 Options to validate include (atleast one of the flags must be utilised)
 1. using the `--environment` flag - which takes in a branch as value and validates all entries in it.
@@ -1891,7 +1891,7 @@ GHE_REPO=                   # Can be used instead of --repo (either the option o
 GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
 ```
 
-Running the command: 
+Running the command:
 ```sh
 $ cocoa inventory validate \
    --org "Github-ID" \
@@ -3170,14 +3170,14 @@ Adds a comment to an issue or pull request in GitHub.
 Options:
 
 ```text
---content           	# (Required) The content to be added as comment to issue or pr
---id       		# (Required) The issue number or pull request number
---type             	# (Optional) The type (issue or pr), default is issue
---org               	# The git repo org
---repo              	# The git repo name
---git-provider     	# (Optional) Git service provider [github]
---git-token-path    	# (Optional) Github Token's path
---git-api-url       	# (Optional) Github API url
+--content           # (Required) The content to be added as comment to issue or pr
+--id                # (Required) The issue number or pull request number
+--type              # (Optional) The type (issue or pr), default is issue
+--org               # The git repo org
+--repo              # The git repo name
+--git-provider      # (Optional) Git service provider [github]
+--git-token-path    # (Optional) Github Token's path
+--git-api-url       # (Optional) Github API URL
 ```
 {: screen}
 
@@ -3207,5 +3207,78 @@ $ cocoa comment add --id 1 \
                     --git-provider github \
                     --org <github-organization> \
 	  				--repo <github-repo-name>
+```
+{: codeblock}
+
+## cocoa label commands
+{: #label-commands}
+
+### cocoa label add
+{: #comment-add}
+
+Adds one or more labels to pull requests in GitHub or GitLab.
+
+Options:
+
+```text
+--label           	# (Required) The label to be added to the pull request. This command be specified multiple times.
+--id       	        # (Required) The pull request number. Can be specified multiple times.
+--type             	# (Optional)The type of the item (issue or PR). The default type is PR.
+--org               # The Git repository organization.
+--repo              # The Git repository name.
+--git-provider     	# (Optional) The Git service provider. The default git provider is Github.
+--git-token-path    # (Optional) The path to the Git token.
+--git-api-url       # (Optional) The URL of the Git API.
+```
+{: screen}
+
+Required Environment Variables:
+
+```text
+GHE_ORG=                    # The Git repository organization. Can be used instead of the --org option. Either the option or the variable is required.
+GHE_REPO=                   # The Git repository name. Can be used instead of the --repo option. Either the option or the variable is required.
+```
+{: screen}
+
+Required Environment Variables for GitHub:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+{: screen}
+
+
+If you are using GitHub, the following environment variable is required:
+
+| Variable | Description |
+| -------------- | -------------- |
+|  `GHE_TOKEN` | The GitHub Enterprise API Token. Optional if you are using the `--git-token-path` option. |
+{: caption="Required Environment Variables for GitHub" caption-side="bottom"}
+
+Command Line Options:
+
+Alternatively, you can use the following command line options to authenticate:
+
+| Command Line Options | Description |
+| -------------- | -------------- |
+|  `--git-token-path` | Set your GitHub Token. |
+|  `--git-api-url` | Set the GitHub Enterprise API URL. |
+{: caption="Command Line Options for GitHub" caption-side="bottom"}
+
+If both environment properties and command line parameters are provided, the `--git-token-pat`h and `--git-api-url` options take precedence.
+{: note}
+
+
+Example: Adding a Label to a Pull Request
+
+You can add a label to a pull request by running the following command:
+
+```sh
+$ cocoa label add --id 1 \
+                  --label "deployed" \
+                  --type pr \
+                  --git-provider github \
+                  --org <github-organization> \
+                  --repo <github-repo-name>
 ```
 {: codeblock}

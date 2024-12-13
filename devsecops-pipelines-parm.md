@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-10-23"
+lastupdated: "2024-12-11"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -249,7 +249,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cr-pipeline-version`		|text		|The version of the pipeline that is creating the change request.	|Optional			|Unlocked |
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |Unlocked |
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|Unlocked |
-|[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|Unlocked |
+|[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|Unlocked | 
+|[`deployment-traceability`]    |text    |Set the value to 1 to enable deployment traceability    |Optional    |Unlocked   |
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that gets appended to the Change Request Description.	|Optional			|Unlocked |
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|Unlocked |
 |`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|Unlocked |

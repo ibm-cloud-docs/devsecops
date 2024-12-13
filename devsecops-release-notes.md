@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2024
-lastupdated: "2024-11-07"
+lastupdated: "2024-12-11"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,46 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+
+## 12 December 2024
+{: #devsecops-Dec2024-12}
+{: release-note}
+
+### Inferred DevSecOps pipeline configuration
+{: #devsecops-polyglot}
+
+Inferred DevSecOps Pipeline configuration is now available. This feature simplifies onboarding micro-services or applications to DevSecOps pipelines. This feature is also known as Polyglot.
+
+To get started with the Inferred DevSecOps Pipeline configuration, refer to [Using the Inferred DevSecOps Pipeline Configuration](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration).
+
+
+### Updates for DevSecOps version - open-v9.47.0 and open-v10.28.0
+{: #devsecops-open-v10.28.0-open-v9.47.0}
+
+Support new versions of Sonarqube images
+:   Upgraded sonarqube image 10.7 and sonar-scanner-cli to 11.1
+
+### Updates for DevSecOps version - open-v9.46.1 and open-v10.27.1
+{: #devsecops-open-v10.27.1-open-v9.46.1}
+
+Bug fix release
+:   This release has bug fixes only
+
+### Updates for DevSecOps version - open-v9.46.0 and open-v10.27.0
+{: #devsecops-open-v10.27.0-open-v9.46.0}
+
+Updated images for gosec and zap scans
+:   Updated gosec scanner to support newer go versions and zap scanner images have been updated to fix vulnurerabilities
+
+### Updates for DevSecOps version - open-v9.45.0 and open-v10.26.0
+{: #devsecops-open-v10.26.0-open-v9.45.0}
+
+`sbom-utility` update
+:   `sbom-utility` dependency verion is updated to 0.16.0 to support schema version 1.6
+
+Logging improvements
+:   Reused evidence is presented in tabular format
 
 ## 6 November 2024
 {: #devsecops-Nov2024-6}
