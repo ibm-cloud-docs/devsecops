@@ -162,7 +162,7 @@ To run Inline rollback successfully, ensure that the `rollback-enabled` environm
 ## Enabling deployment traceability
 {: #enable-traceability}
 
-When a PR or merge request is merged, the system enhances transparency and traceability by providing clear visibility into what happens next. It automatically updates the PR with deployment status, allowing stakeholders to easily track the progress of a fix or feature without requiring access to pipeline details. This streamlined approach not only improves transparency but also facilitates traceability, reducing the effort that is needed to gather and verify information. After a successful deployment, a label in the format `deploy:{region}:{env}` will be applied to the pull requests included in the deployment.
+When a PR or merge request is merged, the system enhances transparency and traceability by providing clear visibility into what happens next. It automatically updates the PR with deployment status, allowing stakeholders to easily track the progress of a fix or feature without requiring access to pipeline details. This streamlined approach not only improves transparency but also facilitates traceability, reducing the effort that is needed to gather and verify information. After a successful deployment, a label in the format `deploy:{region}:{env}` is applied to the pull requests included in the deployment.
 
 An opt-in flag `deployment-traceability`, is available to enable this feature in the CD pipeline. Users can activate deployment traceability by setting the flag to `1` when needed.
 
