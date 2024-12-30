@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-12-12"
+lastupdated: "2024-12-30"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -156,3 +156,17 @@ To run Inline rollback successfully, ensure that the `rollback-enabled` environm
 - `rollback-exit-code` is the exit code of the rollback step. This is kept empty if rollback wasn't even run.
 - `default-rollback-executed` is run when the property is set to `true` if the default implementation that prompts user to supply a rollback script. The value of this property is set to empty by default.
 - `pipeline-execution-status` sets the status of the overall pipeline run. Possible values `[successful_deployment, failed_deployment_failed_rollback, failed_deployment_successful_rollback]`
+
+
+
+## Enabling deployment traceability
+{: #enable-traceability}
+
+When a PR or merge request is merged, the system enhances transparency and traceability by providing clear visibility into what happens next. It automatically updates the PR with deployment status, allowing stakeholders to easily track the progress of a fix or feature without requiring access to pipeline details. This streamlined approach not only improves transparency but also facilitates traceability, reducing the effort that is needed to gather and verify information. After a successful deployment, a label in the format `deploy:{region}:{env}` will be applied to the pull requests included in the deployment.
+
+An opt-in flag `deployment-traceability`, is available to enable this feature in the CD pipeline. Users can activate deployment traceability by setting the flag to `1` when needed.
+
+To further support this functionality, if the user wants to provide a specific token for adding labels to PRs in the app repository, they can use the following environment properties to specify the Git token. The order in which the Git token is looked up is as follows:
+
+- An existing environment property for a repository-specific token: `git-token-$repo_name-$repo_org`.
+- A new environment property for an organization-specific token: `git-token-$repo_org`.
