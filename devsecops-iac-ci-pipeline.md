@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-28"
+  years: 2021, 2025
+lastupdated: "2025-01-01"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -64,7 +64,7 @@ Example:
 hello-iac-sample_TF_VAR_resource_group : Default
 ```
 
-## Static code scan
+## Scans and checks in Static code scan
 {: #devsecops-iac-ci-pipeline-static-codescan}
 
 The static code scan stage runs a number of static code analyzer tools on the specified IaC repositories. The repos that are provided by the [`pipelinectl save_repo`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_repo) command and the default app repo are scanned.
@@ -72,6 +72,12 @@ The static code scan stage runs a number of static code analyzer tools on the sp
 You can use any of the methods that are defined for [static code scan](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-static-codescan) configurable for application relate continuous integration pipeline.
 
 The IaC continuous integration pipeline defines more tools that are enabled by using the `opt-in-*` parameters from Table 2 set to `1`.
+
+| Scan or check |  Description | Enablement |
+|---------|------------|---------|
+| tflint |Runs `tflint $tflint_args --format=json` from [tflint](https://github.com/terraform-linters/tflint) to warn about deprecated syntax, unused declarations and enforce best practices, naming conventions. |`opt-in-tflint` set to 1 |
+| fmt | Runs `terraform fmt -check` from [fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) to rewrite Terraform configuration files to a canonical format and style. | `opt-in-terraform-fmtvalidate` set to 1 |
+| terraform-validate |Runs `ibmcloud cra terraform-validate` from [terraform-validate](https://cloud.ibm.com/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-command) to warn about specified Terraform plan file for compliance with rules that are specified in IBM Cloud® Security and Compliance Center | `opt-in-terraform-fmtvalidate` set to 1  |
 
 | Name | Type | Default | Description | Required or optional |
 |--|--|--|--|--|
