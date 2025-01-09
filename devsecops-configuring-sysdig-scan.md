@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2025
+lastupdated: "2025-01-09"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -23,7 +23,7 @@ The following keys are required for save_artifact to scan each image with sysdig
 - `name`: A fully qualified name for the container image. For example, names used for pulling the docker.
 - `digest`: The sha256 digest for the container image
 
-The Sysdig script runs the Sysdig cli scanner in your DevSecOps pipeline and collects evidence that is based on the scan results.
+The Sysdig script runs the Sysdig cli scanner in your DevSecOps pipeline and collects evidence that is based on the scan results. The Sysdig CLI scanner uses the output schema `v1` and then applies the default policies enabled in the workload protection instance. It also considers the `Accepted Risk` vulnerabilities within the workload protection instance.
 {: shortdesc}
 
 The Sysdig cli scanner scan runs for each image in the saved artifacts `list_artifacts` method. For more information, see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts).
