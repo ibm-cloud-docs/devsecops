@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2024
-lastupdated: "2024-12-13"
+  years: 2024, 2025
+lastupdated: "2025-01-10"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2325,7 +2325,15 @@ $ cocoa incident update-state \
 ## cocoa locker commands
 {: #locker-commands}
 
-The evidence locker is a Git repository on GitHub (Enterprise).
+To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/cloud/object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
+
+- `COS_ENDPOINT`: The [endpoint](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
+- `COS_BUCKET_NAME`: The name of the Cloud Object Storage bucket.
+- `COS_API_KEY`: An [IBM Cloud API key](https://cloud.ibm.com/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](https://cloud.ibm.com/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has write access to the Cloud Object Storage bucket.
+- `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey&interface=api){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
+
+
+The evidence locker is a Git repository as **optional locker**.
 The Git provider can be specified by using `--git-provider` (`github` by default).
 For both providers, authentication is required, for GitHub set the `GHE_TOKEN` environment variable or `--git-token-path` field.
 For GitHub, you must also specify where the GitHub instance is located, by using the `GH_URL` environment variable or `--git-api-url` field, but it defaults to `https://github.ibm.com`.
@@ -2333,13 +2341,6 @@ For GitHub, you must also specify where the GitHub instance is located, by using
 The name of the evidence locker repository can be set by using `--org` and `--repo`, or by using the `EVIDENCE_LOCKER_REPO_OWNER` and `EVIDENCE_LOCKER_REPO_NAME` environment variables.
 
 By default, the CLI on each invocation ensures that you work with an up-to-date version of a Git locker. This behavior can be disabled by setting `COCOA_USE_CACHE` to any value except `0`, `false`, `no`, or `n`. In this case, the CLI uses its internal cache to look up evidence (much faster), but results might be stale.
-
-Additionally, you can upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/cloud/object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
-
-- `COS_ENDPOINT`: The [endpoint](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
-- `COS_BUCKET_NAME`: The name of the Cloud Object Storage bucket.
-- `COS_API_KEY`: An [IBM Cloud API key](https://cloud.ibm.com/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](https://cloud.ibm.com/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has write access to the Cloud Object Storage bucket.
-- `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey&interface=api){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
 
 ### cocoa locker asset add < URI >
 {: #locker-asset-add}
