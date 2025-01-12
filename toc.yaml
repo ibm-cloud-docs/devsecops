@@ -246,6 +246,7 @@ toc:
           - devsecops-collect-evidence.md
           - devsecops-download-attachment.md
           - devsecops-doi-publish.md
+          - devsecops-doi-publish-testrecords.md
           - devsecops-check-evidence-for-reuse.md
           - devsecops-set-commit-status.md
           - devsecops-get-repo-params.md
