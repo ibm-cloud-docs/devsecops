@@ -190,6 +190,7 @@ toc:
           - devsecops-configuring-sonarqube-scan.md 
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
+          - devsecops-configuring-mend-sast-scan.md
           - devsecops-configuring-xray-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
@@ -245,6 +246,7 @@ toc:
           - devsecops-collect-evidence.md
           - devsecops-download-attachment.md
           - devsecops-doi-publish.md
+          - devsecops-doi-publish-testrecords.md
           - devsecops-check-evidence-for-reuse.md
           - devsecops-set-commit-status.md
           - devsecops-get-repo-params.md
