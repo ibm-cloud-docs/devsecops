@@ -60,6 +60,14 @@ If no existing rules are set up, click on the **Add rule** button and enter the 
 
 ![Branch protection rules](images/devsecops_configure-branch-protection_branch_protection_rule.png){: caption="Branch protection rules" caption-side="bottom"}
 
+4. Enable the option **Do not allow bypassing the above settings** to **prevent** administrators and custom roles with the "bypass branch protections" permission to bypass the required branch protection checks.
+
+![Branch protection rules](images/branch_protection_dont_allow_bypass.png){: caption="Do not allow bypassing the above settings" caption-side="bottom"}
+
+Currently, warnings are floated in logs if the `Do not allow bypassing the above settings` check is not enabled. It will not fail the branch protection check till the check is made mandatory by mid March. Please enable the check by mid March to prevent failure of pipeline.
+{: note}
+
+
 Pull Requests **must** be approved before merging them into the master branch. This rule ensures that changes undergo review and scrutiny by team members, promotes collaboration, code quality, and adherence to project standards.
 {: #note}
 
