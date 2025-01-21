@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2024
-lastupdated: "2024-12-12"
+  years: 2024, 2025
+lastupdated: "2025-01-21"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -232,16 +232,18 @@ The Inferred DevSecOps Pipeline Configuration feature extracts spots and generat
 ### Files injection
 {: #devsecops-inferred-pipeline-configuration-config-file-injection}
 
-The Inferred DevSecOps Pipeline Configuration feature uses the contents of  `polyglot-spots.json` and `pipeline-config.yaml` files to customize the DevSecOps pipeline process execution.
+The Inferred DevSecOps Pipeline Configuration feature uses the contents of  `polyglot-spots.json` and `.pipeline-config.yaml` files to customize the DevSecOps pipeline process execution.
 
-During the `finish` stage of a CI pipeline, both `polyglot-spots.json` and `pipeline-config.yaml` (corresponding to the static pipeline configuration of the CI pipeline execution) are added to a branch named `inferred-devsecops` (default) in the application source code repository.
+During the `finish` stage of a CI pipeline, both `polyglot-spots.json` and `.pipeline-config.yaml` (corresponding to the static pipeline configuration of the CI pipeline execution) are added to a branch named `inferred-devsecops` (default) in the application source code repository.
+
+The pipeline configuration with format version `2` (usable with compliance-pipelines branch `v11` for instance) can be also generated if the property `create-inferred-pipeline-configuration-v2` is set to `true` (Default to `false`). An additional pipeline-configuration file like `.pipeline-config-v2.yaml` is then added to branch named `inferred-devsecops` (default) in the application source code repository.
 
 #### Configuring the injection branch
 {: #devsecops-pipeline-configuration-file-injection-config-branch}
 
 You can configure the name of the branch for injecting DevSecOps inferred files by using the `inferred-devsecops-branch` pipeline property. The default value is `inferred-devsecops`.
 
-Use the `push-polyglot-files` pipeline property to enable or disable the creation and update of the `inferred-devsecops` branch:
+Use the `push-inferred-pipeline-configuration-files` pipeline property (`push-polyglot-files` property is deprecated in favor of `push-inferred-pipeline-configuration-files` property) to enable or disable the creation and update of the `inferred-devsecops` branch:
 
 | Value | Description |
 | -------------- | -------------- |
