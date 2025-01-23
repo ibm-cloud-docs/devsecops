@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-10-19"
+  years: 2022, 2025
+lastupdated: "2025-01-23"
 
 keywords: DevSecOps
 
@@ -12,88 +12,29 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Hosts accessed from pipelines
+# Endpoints accessed from DevSecOps pipelines
 {: #cd-devsecops-pipeline-hosts}
 
-You can access hosts from the following types of pipelines: pull request, continuous integration, promotion, continuous deployment, and continuous compliance.
+The DevSecOps pipelines interact with various IBM Cloud services, either directly through pipeline workers or via scripts used for DevSecOps operations. For instance, pipeline workers may access the IAM service to verify permissions, while pipeline scripts may connect to the Code Risk Analyzer service to perform a vulnerability scan.
+
+When running pipeline workers behind a firewall, it's essential to configure your network settings to allow egress access to these IBM Cloud endpoints. This is necessary for successful pipeline execution and completion of required tasks.
+
 {: shortdesc}
 
-## Pull request pipelines
-{: #pr-pipeline-hosts}
+| Host | Component | Target Component/Service |Description |Required/Optional|
+|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|---|---|---|
+| `https://devops-api.private.{REGION}.devops.cloud.ibm.com ` | Private Workers | Continuous Delivery | Endpoint for Private Workers to fetch the SCM (Source Code Management) Token (for instance: GitHub Token etc.) in the absence of a user provided access token. | Required |
+| `https://private.iam.cloud.ibm.com ` | Private Workers | Identity Access Management | Endpoint for Pipeline Workers to access permissions for perform SCM Operations like: Repository Cloning, Set/Check Pull Request Status. | Required |
+| `https://private-worker-service.private.{REGION}.devops.cloud.ibm.com ` | Private Workers | Continuous Delivery | Endpoint for Private Workers to send start and finish notifications. Required only when Slack Integration is configured for Pipelines. | Optional |
+| `https://s3.direct.{COS_REGION}.cloud-object-storage.appdomain.cloud ` | DevSecOps Continuous Delivery Pipelines | Cloud Object Store | Endpoints for DevSecOps CD Pipelines to interact with [COS (Cloud Object Store)](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#endpoints-region) Evidence Locker.  | Required |
+| `https://{instance_ID}.private.{SM_REGION}.secrets-manager.appdomain.cloud ` | DevSecOps Continuous Delivery Pipelines | Secrets Manager | Endpoint for DevSecOps CD Pipeline to retreive secrets from the [Secret Manager](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-endpoints) Instance | Required |
+| `https://private.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | IBM Cloud CLI (Command Line Interface) | Endpoint for the DevSecOps CD Pipeline to interact with the IBM Cloud CLI using private endpoint. | Required |
+| `https://private.{EN_REGION}.event-notifications.cloud.ibm.com/event-notifications/v1/instances/`  | Event Notification | DevSecOps Continuous Delivery Pipelines | Endpoint for DevSecOps CD Pipeline to send pipeline events to be sent to Event Notification Instance. Required only when Event Notification Integration is configured for DevSecOps CD Pipelines.| Optional |
+| `https://private.icr.io/va/api/v4 ` | DevSecOps Continuous Delivery Pipelines | IBM Cloud Container Registry | Endpoint for DevSecOps CD Pipeline to interact with [Vulnerability Advisor](https://cloud.ibm.com/apidocs/vulnerability-advisor). Required only when pipeline run Vulnerability Advisor Scans on the docker images stored in ICR (IBM Cloud Container Registry) | Optional |
+| `https://otcbroker.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact IBM Cloud CRA Plugin Service. Required only when pipeline run [CRA (Code Risk Analyser)](https://cloud.ibm.com/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin) Scans on the source code. | Optional | 
+| `https://vcurator.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when a pipeline runs CRA (Code Risk Analyser) scans on the source code. | Optional |
+| `https://gitsecure.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when a pipeline runs CRA (Code Risk Analyser) scans on the source code. | Optional |
+| `https://dlms.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when pipeline runs CRA (Code Risk Analyser) scans on the source code. | Optional |
+| `https://gateservice.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when a pipeline runs CRA (Code Risk Analyser) scans on the source code.| Optional |
 
-The following table lists and describes each of the hosts that are accessed from pull request pipelines.
-
-| Host | Description |
-|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
-| `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
-| `https://<region>.git.cloud.ibm.com` | Clones repos, and sets and checks the pull request status. |
-| `https://detect-secrets-client-version.s3.us-south` | Detects secrets checks for newer versions.  |
-| `https://otcbroker.devopsinsights.cloud.ibm.com` | Checks the toolchain for Code Risk Analyzer support. |
-| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
-| `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Code Risk Analyzer API. |
-| `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
-{: caption="Pull request pipeline hosts" caption-side="top"}
-
-## Continuous integration pipelines
-{: #ci-pipeline-hosts}
-
-The following table lists and describes each of the hosts that are accessed from continuous integration pipelines.
-
-| Host | Description |
-|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
-| `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.   |
-| `https://<region>.git.cloud.ibm.com` | Clones repos, sets and checks the pull request status, and stores evidence. |
-| Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types).|
-| `https://detect-secrets-client-version.s3.us-south` | Detects secrets checks for newer versions. |
-| `https://otcbroker.devopsinsights.cloud.ibm.com` | Checks the toolchain for Code Risk Analyzer support. |
-| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
-| `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Code Risk Analyzer API. |
-| `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
-| `https://api.<region>.devops.cloud.ibm.com/v1/tekton-pipelines` | Gets the pipeline run data. |
-{: caption="Continuous integration pipeline hosts" caption-side="top"}
-
-## Promotion pipelines
-{: #promotion-pipeline-hosts}
-
-The following table lists and describes each of the hosts that are accessed from promotion pipelines.
-
-| Host | Description |
-|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
-| `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
-| `https://<region>.git.cloud.ibm.com` | The open promotion pull request. |
-{: caption="Promotion pipeline hosts" caption-side="top"}
-
-## Continuous deployment pipelines
-{: #cd-pipeline-hosts}
-
-The following table lists and describes each of the hosts that are accessed from continuous deployment pipelines.
-
-| Host | Description |
-|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
-| `https://otc-github-consolidated-broker.*region*.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
-| `https://<region>.git.cloud.ibm.com` | Clones repos, and stores evidence, change requests, and inventory. |
-| `https://detect-secrets-client-version.s3.us-south` | Detects secrets checks for newer versions.  |
-| `https://otcbroker.devopsinsights.cloud.ibm.com` | Checks the toolchain for Code Risk Analyzer support. |
-| `https://gitsecure.us-south.devopsinsights.cloud.ibm.com` | The Code Risk Analyzer API. |
-| `https://vcurator.us-south.devopsinsights.cloud.ibm.com` | Code Risk Analyzer. |
-| Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage.  For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types).|
-| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
-{: caption="Continuous deployment pipeline hosts" caption-side="top"}
-
-## Continuous compliance pipelines
-{: #cc-pipeline-hosts}
-
-The following table lists and describes each of the hosts that are accessed from continuous compliance pipelines.
-
-| Host | Description |
-|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| `https://hooks.slack.com/services` | When the Slack integration is configured, notifications are sent when pipelines start and finish. |
-| `https://otc-github-consolidated-broker.<region>.devops.cloud.ibm.com/github/token?git_id=integrated` | The OTC broker URL to fetch a Git token if one was not provided.  |
-| `https://<region>.git.cloud.ibm.com` | Clones repos, and sets and checks the pull request status. |
-| `https://iam.cloud.ibm.com/identity/token` | Gets the IAM token. |
-| Cloud Object Storage endpoint in `cos-endpoint` | The endpoint that stores the evidence in Cloud Object Storage. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). |
-{: caption="Continuous Compliance pipeline hosts" caption-side="top"}
+{: caption="List of hosts accessed by the DevSecOps Pipelines" caption-side="top"}
