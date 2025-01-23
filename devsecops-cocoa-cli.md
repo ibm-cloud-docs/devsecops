@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-01-10"
+lastupdated: "2025-01-13"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -25,7 +25,7 @@ DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevS
 
 The CLI uses a multipart structure on the command line that you must specify in the following order:
 
-```sh
+```bash
 cocoa <command> <subcommand> [options]
 ```
 {: pre}
