@@ -130,6 +130,8 @@ The following table includes the default ENV variables for the context of custom
 | `INVENTORY_URL`                | The inventory repository url. |
 | `EVIDENCE_LOCKER_URL`          | The evidence repository url. |
 | `INCIDENT_ISSUES_URL`          | The issue's repository url. |
+| `PR_URL`                       | Url of the pull request. It is only relevant when dealing with a PR pipeline when triggered by a new or updated Pull Request.|
+| `PR_HTML_URL`                  | The html url of the pull request.It is only relevant when dealing with a PR pipeline when triggered by a new or updated Pull Request. |
 {: caption="Environment variables" caption-side="top"}
 
 You can access these environment variables in any script, for example, `${PIPELINE_ID}`.
