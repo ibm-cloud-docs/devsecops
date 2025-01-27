@@ -100,3 +100,6 @@ Note: Since, PR pipelines are generally run quite frequently, choosing the corre
 
 If the PR pipeline triggers an Async pipeline, `collect-evidence-in-pr` set to `success` mode is not supported. Incase the PR pipeline triggers an async pipeline, set `collect-evidence-in-pr` to `all` in order to collect evidences.
 {:  note}
+
+Note: If the application repository is a GitLab repository and the MR (merge request) being contributed is from a forked repository, user will need to provide a value for `git-token` env variable which has access to both the source and the target repositories to set the proper statuses on the merge request. This means the git token would need to belong to a user who is a contributor in both the base repository and the forked repository and the token has permissions to set status on a commit.
+{:  note}
