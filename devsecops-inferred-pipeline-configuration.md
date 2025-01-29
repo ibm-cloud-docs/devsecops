@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-01-21"
+lastupdated: "2025-01-27"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -489,6 +489,16 @@ To disable branch protection, set the `setup-branch-protection` property to `
 To customize the [prefix for the branch protection status checks](/docs/devsecops?topic=devsecops-devsecops-config-github#setting-customized-prefix-for-compliance-checks) , set the `branch-protection-status-check-prefix` property. The default prefix is `tekton`.
 
 
+### Configuration and execution of pre-commit hooks
+By default, PR and CI pipelines with inferred DevSecOps configuration execute [pre-commit hooks](https://pre-commit.com/) in the setup stage if a pre-commit configuration file exists in the source code repository (Default to `.pre-commit-config.yaml`). The name of the pre-commit configuration file can be specified by pipeline/trigger property `pre-commit-config-file` set to the name of the configuration file.
+
+Some pre-commit hooks may be skipped (for instance because a given hook like `detect-secrets` is executed in a specific stage of the PR or CI pipelines). To specify the hooks to be skipped, set the pipeline/trigger property `pre-commit-skip-hooks` to a comma separated list of hook id to skip.
+
+### Sonarqube server with self signed certificate
+
+if the `sonarqube-config` is set to `custom` to use [an existing sonarqube server](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
+
+By providing the certificate in a PEM format as the value of the pipeline/trigger property `sonarqube-root-certificate`, the static-scan implementation in the Inferred DevSecOps pipeline configuration will add it accordingly for usage of the SonarScanner for maven, SonarScanner for gradle sonar or SonarScanner invoked with Docker.
 
 ### Poetry & Private repositories
 {: #devsecops-pipeline-configuration-poetry}

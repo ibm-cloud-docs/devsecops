@@ -261,5 +261,6 @@ toc:
       id: help
       topics:
       - support.md
-      - faq.md
+      - topic: faq.md
+        navtitle: FAQ
       - troubleshoot.md

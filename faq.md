@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2024
-lastupdated: "2024-10-22"
+  years: 2022, 2025
+lastupdated: "2025-01-28"
 
 keywords: DevSecOps
 
@@ -12,7 +12,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# FAQs for DevSecOps
+# FAQ for DevSecOps
 {: #faq_devsecops}
 
 Get answers to frequently asked questions about using DevSecOps.

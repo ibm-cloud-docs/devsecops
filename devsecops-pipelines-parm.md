@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-12-11"
+  years: 2022, 2025
+lastupdated: "2025-01-27"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -32,8 +32,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `base-repo` |text | The URL of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  | Unlocked |
 | `base-repo-name` |text | The name of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  | Unlocked |
 | `base-repo-owner` |text | The owner of the repo where the PR is merged. If a PR Git trigger is configured, which is typically the case, this parameter is populated from the PR trigger.| Required  | Unlocked |
-| `pr-url` | Url of the pull request. | Required | Unlocked |
-| `pr-html-url` | html url of the pull request. | Required | Unlocked |
 |`baseimage-auth-email`		|text 		|The email credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.		|Optional			| Unlocked |
 |`baseimage-auth-host`		|text		|The host credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan.	|Optional			| Unlocked |
 |`baseimage-auth-password`		|SECRET		|The password credential for the base image of the application Dockerfile, required by the Code Risk Analyzer scan. |Optional			| Unlocked |
