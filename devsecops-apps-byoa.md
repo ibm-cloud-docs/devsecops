@@ -15,15 +15,31 @@ subcollection: devsecops
 # Bringing your own app to DevSecOps
 {: #cd-devsecops-apps-byoa}
 
-You can bring your own application to a DevSecOps toolchain for continuous integration and continuous deployment.
+There are various ways to bring your own application to a DevSecOps toolchain for continuous integration and continuous deployment.
 {: shortdesc}
 
-Create your DevSecOps toolchain by using the default sample app that is provided. The [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app) hosts a Node.js server that provides a static web page. Alternatively, you can begin with one of the following samples:
+## Use samples
+To integrate your own application into a DevSecOps toolchain for seamless continuous integration and deployment, start with our sample setups.
 
-- [Code-engine-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/code-engine-compliance-app)
-- [Go-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/go-gin-compliance-app)
-- [Python-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/python-compliance-app)
-- [Node-cloudant-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/node-cloudant-compliance-app): This application combines the application source Node.js and the dependency definition, which is Cloudant defined as Infrastructure-as-Code.
+### Node.js sample
+Create your DevSecOps toolchain by using the default sample app that is provided. The [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app) hosts a Node.js server that provides a static web page.
+
+### Other samples
+Alternatively, you may start by using one of these samples:
+- [Code-engine-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/code-engine-compliance-app): this repository contains a Node.js application that illustrates Code Engine build strategies and can be deployed as a Code Engine application or a Code Engine job.
+- [Go-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/go-gin-compliance-app): this repository contains a Go microservice using Gin, deployed using `helm`.
+- [Python-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/python-compliance-app): this repository contains a Python microservice using Flask, deployed using `helm`.
+- [Node-cloudant-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/node-cloudant-compliance-app): this repository contains a Node.js application deployed using `kubectl`, that interacts with a Cloudant instance created through Infrastructure-As-Code (Terraform).
+
+## Use the inferred DevSecOps configuration
+Once you've added your own application source code repository to the DevSecOps CI toolchain, you can use the [Inferred DevSecOps Pipeline Configuration](/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration) feature to get started immediately. This feature:
+
+-  Does not require any initial customization.
+-  Infers the content of the `.pipeline-config.yaml` DevSecOps pipeline configuration file.
+-  Identifies the scripts needed to build, test, and deploy the code.
+-  Provides the code for these scripts.
+
+Use this feature to easily and quickly onboard your micro-services or applications to DevSecOps pipelines and streamline your DevSecOps adoption.
 
 ## Adding stage parameters
 {: #stage-parameters}
