@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-12-11"
+  years: 2022, 2025
+lastupdated: "2025-01-29"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -19,6 +19,40 @@ content-type: release-note
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 31 January 2025
+{: #devsecops-Jan2025-31}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.59.0 and open-v10.31.0
+{: #devsecops-open-v10.31.0-open-v9.50.0}
+
+Log improvements
+:   Enhanced logging for the custom run stage, designed for customizable run stages.
+
+Availabity of detect-secrets log
+:   `detect-secrets` markdown output is now accessible for further use in a pipeline run.
+
+### Updates for DevSecOps version - open-v9.49.1 and open-v10.30.1
+{: #devsecops-open-v10.30.1-open-v9.49.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v9.49.0 and open-v10.30.0
+{: #devsecops-open-v10.30.0-open-v9.49.0}
+
+Upgrade to `sbom-utility`
+:   Upgraded `sbom-utility` to 0.17.0
+
+## 14 January 2025
+{: #devsecops-Jan2025-14}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.48.0 and open-v10.29.0
+{: #devsecops-open-v10.29.0-open-v9.48.0}
+
+Bug fix release
+:   This release includes only bug fixes.
 
 ## 12 December 2024
 {: #devsecops-Dec2024-12}
