@@ -135,7 +135,7 @@ compliance-checks:
     "/opt/commons/compliance-checks/run.sh"
 ```
 
-In that example, the script that is run is `/opt/commons/compliance-checks/run.sh`, which is located in the [commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons). Use this commons library as a source to copy code that can be customized for specific edge cases. In the example, `compliance-checks/run.sh` is located in the [compliance-commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/compliance-checks/run.sh).
+In that example, the script that is run is `/opt/commons/compliance-checks/run.sh`, which is located in the [commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons). Use this commons library as a source to copy code that can be customized for specific edge cases. In the example, `compliance-checks/run.sh` is located in the [compliance-commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/compliance-checks__run.md).
 
 ### Overriding default scripts
 {: #override-default-scripts}
@@ -155,7 +155,9 @@ compliance-checks:
     "/opt/commons/compliance-checks/run.sh"
 ```
 1. Paste the snippet into your `.pipeline-config.yaml` file.
-1. Add your custom code before or after the script is called.
+1. Add your custom code before or after the script is called. 
+   This snippet invokes the default [compliance-checks script](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/compliance-checks__run.md)
+   {: note}
 1. Edit, delete, or add properties as needed.
 
 The following example shows the updated script in your `.pipeline-config.yaml` file:
