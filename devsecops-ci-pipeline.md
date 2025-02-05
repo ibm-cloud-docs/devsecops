@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-22"
+  years: 2021, 2025
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -169,7 +169,7 @@ To use a different scan or sign process, or to process artifacts other than Dock
 ## Deploy to dev
 {: #devsecops-ci-pipeline-devdeploy}
 
-The Deploy stage deploys built artifacts into a dev environment. You can provide your variables and credentials for this stage from [variables in the pipeline UI](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-secrets) and the [pipeline trigger webhook payload](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads).
+The Deploy stage deploys built artifacts into a dev environment. You can provide your variables and credentials for this stage from [variables in the pipeline UI](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and the [pipeline trigger webhook payload](/docs/devsecops?topic=devsecops-cd-devsecops-webhook-payloads).
 
 ## Dynamic scan
 {: #devsecops-ci-pipeline-dynamic-codescan}

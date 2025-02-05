@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-01-13"
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1502,7 +1502,7 @@ CLI options can be also set from environment variables except for `backend` and 
 ## cocoa set-status
 {: #set-status}
 
-Sets a commit's status. The current implementation is tested on GitHub. See documentation about [GitHub statuses](https://docs.github.com/en/rest/reference/repos#statuses){: external}.
+Sets a commit's status. The current implementation is tested on GitHub. See documentation about [GitHub statuses](https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28){: external}.
 
 Required Environment Variables:
 
@@ -2325,7 +2325,7 @@ $ cocoa incident update-state \
 ## cocoa locker commands
 {: #locker-commands}
 
-To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/cloud/object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
+To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/products/cloud-object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
 
 - `COS_ENDPOINT`: The [endpoint](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
 - `COS_BUCKET_NAME`: The name of the Cloud Object Storage bucket.
@@ -2679,7 +2679,7 @@ https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 
 Adds evidence to the evidence locker.
 
-The evidence locker can be specified by using flags. For more information, see [cocoa locker commands](#cocoa-locker-commands).
+The evidence locker can be specified by using flags. For more information, see [cocoa locker commands](#locker-commands).
 
 The evidence can be configured by using the following flags:
 
@@ -2851,7 +2851,7 @@ Optional flags:
 - `--scope`: Considers evidence that has the specified scope only (see `evidence add --scope`), can be specified multiple times
 - `--linked-scope`: Considers evidence that has the specified linked-scope as scope. In addition, adds them to the linked-scopes property in the returned evidence summary. Can be specified multiple times.
 - `--check-immutable-storage`: Checks if every evidence is also present in a Cloud Object Storage bucket and is protected by a retention period of at least 365 days. Appends `com.ibm.immutable_storage` evidence to the summary.
-   - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
+   - See [`cocoa locker`](#locker-commands) section on how to configure the Cloud Object Storage bucket.
 - `--dry-run`: Has an effect when combined with `--check-immutable-storage`. If used, `com.ibm.immutable_storage` evidence is only appended to the summary but it does not get uploaded to the evidence locker.
 - `--clone-dir`: An optional parameter to determine the clone path of Evidence Repository, by default it will clone the repo /tmp directory
 - `--initialized`: Optional flag which assume the evidence locker is already cloned in the provided location `--clone-dir` or `/tmp/`.
@@ -2939,7 +2939,7 @@ Checks the required configuration and settings of the locker.
 Currently, only the Cloud Object Storage based locker has a configuration requirement:
 - Because every evidence must be kept for at least one year, the Cloud Object Storage bucket must be protected by a retention policy. Default retention period must be greater or equal to 365 days.
 
-For more information, see [cocoa locker commands](#cocoa-locker-commands).
+For more information, see [cocoa locker commands](#locker-commands).
 
 Required Environment Variables:
 

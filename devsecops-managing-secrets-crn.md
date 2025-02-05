@@ -6,7 +6,7 @@ lastupdated: "2024-02-23"
 
 keywords: DevSecOps, secrets in toolchains, managing secrets in toolchains, secrets manager
 
-subcollection: devsecops-working
+subcollection: devsecops
 
 ---
 
@@ -53,7 +53,7 @@ The secrets that are used in both CI and CD are outlined as follows:
 | SonarQube password or authentication token | `sonarqube-password` | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
 {: caption="DevSecOps Secrets" caption-side="top"}
 
-If you are using a HashiCorp Vault server, ensure that the HashiCorp Vault tool integration uses the [AppRole Auth Method](https://www.vaultproject.io/docs/auth/approle){: external} method.
+If you are using a HashiCorp Vault server, ensure that the HashiCorp Vault tool integration uses the [AppRole Auth Method](https://developer.hashicorp.com/vault/docs/auth/approle){: external} method.
 When you use the AppRole authentication method, you need `role-id` and `secret-id` to successfully integrate the HashiCorp Vault server with the toolchain. Because `role-id` and `secret-id` are secrets in themselves, it is recommended to store them by using a [{{site.data.keyword.keymanagementservicelong_notm}} tool integration](/docs/ContinuousDelivery?topic=ContinuousDelivery-keyprotect) so that they can be securely retrieved and applied in the toolchain workflow. All other toolchain secrets should be stored and retrieved by using the HashiCorp Vault tool integration.
 
 If the pipeline environment property `git-token` is not set, `ibmcloud-api-key` is used to retrieve the {{site.data.keyword.gitrepos}} Access Token by default. However, if `ibmcloud-api-key` does not have access to `git`, `git-token` must be set.

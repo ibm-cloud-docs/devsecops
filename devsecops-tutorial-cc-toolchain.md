@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-11-05"
+  years: 2023, 2025
+lastupdated: "2025-02-05"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -26,7 +26,7 @@ completion-time: 1h
 This tutorial walks you through how you can use the toolchain template for continuous compliance (CC) to make sure that your deployed artifacts and their source repositories are always compliant.
 {: shortdesc}
 
-[DevSecOps](#x9892260){: term} integrates a set of {{site.data.keyword.compliance_full}} controls into the [DevOps](https://www.ibm.com/cloud/learn/devops-a-complete-guide){: external} processes. This integration allows organizations to deliver rapidly and often to maintain a strong security posture and a continuous state of audit-readiness.
+[DevSecOps](#x9892260){: term} integrates a set of {{site.data.keyword.compliance_full}} controls into the [DevOps](https://www.ibm.com/think/topics/devops){: external} processes. This integration allows organizations to deliver rapidly and often to maintain a strong security posture and a continuous state of audit-readiness.
 
 ## Before you begin
 {: #tutorial-cc-toolchain-prereqs}
@@ -151,7 +151,7 @@ The pipeline configuration repository contains YAML files and scripts for deploy
 
 You can add the Slack tool after the toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/incoming-webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
 2. Enter your **Slack channel** to post a message.
 3. Enter the **Slack team name**. For example, if your team URL` https://team.slack.com`, the team name is `team`.
 4. Choosing the events for which you want to receive notifications for **Automated Slack Notifications**.

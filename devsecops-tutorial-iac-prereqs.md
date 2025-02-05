@@ -29,7 +29,7 @@ With this tutorial, see how to set up prerequisites to develop an Infrastructure
 ## Before you begin
 {: #devsecops-tutorial-iac-prereqs}
 
-* About [DevSecOps](https://www.ibm.com/topics/devsecops){: external}.
+* About [DevSecOps](https://www.ibm.com/think/topics/devsecops){: external}.
 * [DevSecOps architecture](/docs/devsecops?topic=devsecops-cd-devsecops-arch).
 * [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
 * [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines).

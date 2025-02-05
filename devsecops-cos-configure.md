@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2024
-lastupdated: "2024-06-19"
+  years: 2021, 2025
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -21,7 +21,7 @@ Complete these steps to create an {{site.data.keyword.cos_full_notm}} instance a
 ## Create a Cloud {{site.data.keyword.cos_short}} instance
 {: #cd-devsecops-cos-instance-create}
 
-Create an [{{site.data.keyword.cos_full_notm}} instance](https://cloud.ibm.com/catalog/services/cloud-object-storage){: external}.
+Create an [{{site.data.keyword.cos_full_notm}} instance](https://cloud.ibm.com/objectstorage/create){: external}.
 
 ## Create a Cloud {{site.data.keyword.cos_short}} bucket
 {: #cd-devsecops-cos-bucket-create}

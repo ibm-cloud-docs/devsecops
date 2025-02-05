@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-01-31"
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -73,7 +73,7 @@ The Inferred DevSecOps Pipeline Configuration feature currently identifies the f
 Code spots are related to a supported source code language, including:
 
 -  [Node.js](https://nodejs.org) (with npm, Yarn or Gradle)
--  [Java](https://www.ibm.com/topics/java) (with Maven or Gradle)
+-  [Java](https://www.ibm.com/think/topics/java) (with Maven or Gradle)
 -  [Golang](https://go.dev)
 -  [Python](https://www.python.org)
 -  [Dockerfile](https://docs.docker.com/reference/dockerfile)
@@ -433,7 +433,7 @@ Some tools in the Inferred DevSecOps Pipeline Configuration feature use pipeline
 * Build secrets: The docker build command is completed with --secret parameters based on pipeline and trigger properties with a normalized name like `DOCKER_BUILD_SECRET_`.
     * For example, adding a property that is named DOCKER_BUILD_SECRET_my_secret injects the parameter --secret id=my_secret,env= into the docker build command.
 
-To learn more, refer to [docker build arguments](https://docs.docker.com/build/guide/build-args/) and [docker build secret](https://docs.docker.com/build/building/secrets/)
+To learn more, refer to [docker build arguments](https://docs.docker.com/build/building/variables/) and [docker build secret](https://docs.docker.com/build/building/secrets/)
 
 ##### Helm
 {: #devsecops-pipeline-configuration-tool-helm}
@@ -524,7 +524,7 @@ secondary = true
 
 It is required to provide credentials for this `local` source repository. [Poetry documentation on configuration for credentials](https://python-poetry.org/docs/repositories/#configuring-credentials) indicates that the environment variables to provide http user and password should be `POETRY_HTTP_BASIC_LOCAL_USERNAME` and `POETRY_HTTP_BASIC_LOCAL_PASSWORD`.
 
-Use the [environment variable injection](#environment-variables-injection-in-pipeline-execution-stages) feature, and add the following pipeline environment properties:
+Use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature, and add the following pipeline environment properties:
 - `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_USERNAME` (text) with the appropriate value
 - `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_PASSWORD` (secured) with the appropriate secured value
 
@@ -546,7 +546,7 @@ In addition, if there is some `env.<VARIABLE>` to be resolved like:
       <id>central</id>
     </server>
 ```
-Use the [environment variable injection](#environment-variable-injection-in-pipeline-execution-stages) feature to provide these variables by adding 2 pipeline properties (in the PR and CI pipeline):
+Use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature to provide these variables by adding 2 pipeline properties (in the PR and CI pipeline):
 - `ENV_GLOBAL_MAVEN_USERNAME` (text) with the value to use for maven username
 - `ENV_GLOBAL_MAVEN_PASSWORD` (secured) with the value to use for maven password
 
@@ -561,7 +561,7 @@ By default, `go build` produces a dynamically linked binary. To use it in a Dock
 #### Configure the Environment Variable for Go Build
 {: #devsecops-pipeline-enable-configure}
 
-To enable static linking, use the [environment variable injection](#environment-variable-injection-in-pipeline-execution-stages) feature to add the following pipeline environment property in the CI pipeline:
+To enable static linking, use the [environment variable injection](#edevsecops-pipeline-configuration-environment-variable-injection) feature to add the following pipeline environment property in the CI pipeline:
 
 -  `ENV_SETUP_CGO_ENABLED` with the value set to `0`
 

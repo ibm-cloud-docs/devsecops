@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2024-10-09"
+lastupdated: "2025-02-05"
 
 keywords: tool integrations, Sonarqube
 
@@ -91,7 +91,7 @@ If you add multiple SonarQube tool integrations to your pipeline, you can switch
 
 DevSecOps Pipelines uses SonarQube Version 10.0 by default.
 
-To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube/latest/instance-administration/plugin-version-matrix/)
+To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube-server/latest/setup-and-upgrade/plugins/plugin-version-matrix/)
 
 ### Issues reported from SonarQube
 {: #sonarqube-cipipeline-issues-reported}
@@ -115,12 +115,12 @@ If you use the SonarQube instance that the pipeline created, you can update the 
 
 1. Specify which quality gate that you want to associate with the project. New scans are evaluated by this quality gate and evidence is created by the quality gate's results.
 
-To learn more about SonarQube, see [SonarQube Documentation](https://docs.sonarqube.org/latest/){: external}.
+To learn more about SonarQube, see [SonarQube Documentation](https://docs.sonarsource.com/sonarqube-server/latest/){: external}.
 
 ### Using your own configuration file
 {: #sonarqube-config-file}
 
-You can modify the default configuration without using your own SonarQube instance. Create a `sonar-project.properties` file in the repo that you want to create the configuration file in. If our script detects an existing `configuration sonar-project.properties` file in the repo, it uses that file instead of the default file. For more information about possible analysis parameters in the configuration file, see [Analysis Parameters](https://docs.sonarqube.org/latest/analysis/analysis-parameters/){: external} here.
+You can modify the default configuration without using your own SonarQube instance. Create a `sonar-project.properties` file in the repo that you want to create the configuration file in. If our script detects an existing `configuration sonar-project.properties` file in the repo, it uses that file instead of the default file. For more information about possible analysis parameters in the configuration file, see [Analysis Parameters](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/analysis-parameters/){: external} here.
 
 Make sure that you add the correct login credentials and host URL to the configuration file.
 {: important}

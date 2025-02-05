@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-09"
+  years: 2021, 2025
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -75,7 +75,7 @@ In this diagram, PR1, PR2 are the pull/merge requests that are approved before m
 
 By default, the sample application in the CI toolchain attempts to set the minimum number of reviewers to 1. If you want to change the number of reviewers, set the `peer_review_approvers` envronment property as required.  For more information on setting the minimum number of reviewers required for a pull/merge request, see the following GitHub and GitLab resources:
 
-* [GitHub: Require multiple reviewers for pull requests](https://github.blog/2018-03-23-require-multiple-reviewers/)
+* [GitHub: Require multiple reviewers for pull requests](https://github.blog/news-insights/product-news/require-multiple-reviewers/)
 * [GitLab: Merge request approval rules](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/rules.html)
 
 
@@ -155,7 +155,7 @@ When the following error occurs in the `prod_start` stage
 
 ##### Solution
 
-Users who possess inventory entries that are not supported by the one-pipeline must add an [ignore file in the inventory](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-inventory#how-to-exclude-files-and-directories-in-the-inventory). This action ensures that those files are not considered for any computations.
+Users who possess inventory entries that are not supported by the one-pipeline must add an [ignore file in the inventory](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-inventory#exclude-files-directories-in-the-inventory). This action ensures that those files are not considered for any computations.
 
 
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-09"
+  years: 2021, 2025
+lastupdated: "2025-02-05"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -120,7 +120,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 ### Secrets
 {: #tutorial-tekton-tool-secrets}
 
-Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in a secrets management tool, such as [{{site.data.keyword.keymanagementservicefull_notm}}](https://www.ibm.com/cloud/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The [secrets management tool](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
+Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in a secrets management tool, such as [{{site.data.keyword.keymanagementservicefull_notm}}](https://www.ibm.com/products/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/products/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The [secrets management tool](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
 
 You can use the **AppRole** authentication method to read secret values.
 {: tip}
@@ -233,7 +233,7 @@ You can also set a target environment for the {{site.data.keyword.DRA_short}} in
 
 Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests, or CI pipeline events. You can also add the Slack tool after the toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/incoming-webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
 2. Enter your **Slack channel** to post message.
 3. Enter the **Slack team name**. For example, if your team URL `https://team.slack.com`, the team name is `team`.
 4. Choosing the events for which you want to receive notifications for **Automated Slack Notifications**.

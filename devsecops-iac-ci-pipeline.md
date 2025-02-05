@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-01-01"
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -217,7 +217,7 @@ hello-iac-sample_schematics-workspace-name : workspace-for-deployment-of-hello-i
 
 Note the following:
 
-- For more information on how to use the Cloud Object Storage endpoint or bucket to store Terraform state, see: [Store Terraform states in Cloud Object Storage](https://www.ibm.com/cloud/blog/store-terraform-states-cloud-object-storage){: external}.
+- For more information on how to use the Cloud Object Storage endpoint or bucket to store Terraform state, see: [Store Terraform states in Cloud Object Storage](https://www.ibm.com/products){: external}.
 - To configure the scripts in the IaC CD deployment process, define the parameter that is scoped for an inventory entry. To specify `Terraform CLI as deployment tool`-related environment properties for a scope (inventory entry), prefix the property with the inventory entry name, for example: `<inventory_entry>_`. This prefix applies for the all the schematics-related environment entries.
 
  Example:

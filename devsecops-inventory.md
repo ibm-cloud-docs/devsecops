@@ -6,7 +6,7 @@ lastupdated: "2024-05-24"
 
 keywords: DevSecOps
 
-subcollection: devsecops-working
+subcollection: devsecops
 
 ---
 

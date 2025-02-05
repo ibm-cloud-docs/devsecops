@@ -29,7 +29,7 @@ IAM access policies enable access to be granted at different levels. Some of the
 
 Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to the toolchain and the ability to call the toolchain's API.
 
-For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain).
+For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain-roles).
 
 | Platform role |  Description of actions |
 |---------------|-------------------------|
