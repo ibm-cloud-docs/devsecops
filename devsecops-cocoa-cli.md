@@ -1499,24 +1499,25 @@ $ cocoa artifact upload \
 
 CLI options can be also set from environment variables except for `backend` and `upload-path`.
 
-### cocoa artifact get
+### Retrieving an Artifact
 {: #artifact-get}
 
-Retrieves an artifact from the specified backends. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}}, GitHub or {{site.data.keyword.DRA_short}}. Different lockers require different parameters to be provided.
+You can retrieve artifacts from various evidence lockers, such as {{site.data.keyword.cos_short}}, GitHub, or {{site.data.keyword.DRA_short}}, using the cocoa artifact get command. This command allows you to fetch artifacts from different locker types, each requiring specific parameters.
 
+The `cocoa artifact get` command retrieves an artifact from the specified backends. Different lockers require different parameters to be provided.
 Options:
 
-```text
+```bash
 --backend           # Specifies the types of locker to retrieve the artifact from ('cos', 'git')
 --artifact-prefix   # Path where the artifact is present. To be used in COS only, not available in Git. (Use this or --artifact-path, can't be used together)
---artifact-path     # Absolute path on where the artifact is present. 
+--artifact-path     # Absolute path on where the artifact is present.
 --is-summary        # If present, this returns the merged summary from all the file paths.
 ```
 {: screen}
 
 Options for Git:
 
-```text
+```bash
 --git-token-path        # Github Token's path
 --git-api-url           # (Optional) Github API url
 ```
@@ -1526,7 +1527,7 @@ Required Environment Variables:
 
 Required Environment Variables, if you are using 'git' provider:
 
-```text
+```bash
 EVIDENCE_REPO_ORG=  # The Git repo org (Required if you are using 'git' backend)
 EVIDENCE_REPO_NAME= # The Git repo name (Required if you are using 'git' backend)
 ```
@@ -1534,14 +1535,14 @@ EVIDENCE_REPO_NAME= # The Git repo name (Required if you are using 'git' backend
 
 Required Environment Variables, if you are using GitHub:
 
-```text
+```bash
 GHE_TOKEN=          # Github Enterprise API Token (Optional if you are using --git-token-path)
 ```
 {: screen}
 
 Required Environment Variables, if you are using Cloud Object Storage:
 
-```text
+```bash
 COS_API_KEY=        # Cloud Object Storage API Key (Required if you are using 'cos' backend)
 COS_BUCKET_NAME=    # Bucket Name where the artifact will be uploaded in the COS Instance (Required if you are using 'cos' backend)
 COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket is located (Required if you are using 'cos' backend)
