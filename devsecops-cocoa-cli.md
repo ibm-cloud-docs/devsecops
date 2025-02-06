@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-02-06"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1498,6 +1498,72 @@ $ cocoa artifact upload \
 {: codeblock}
 
 CLI options can be also set from environment variables except for `backend` and `upload-path`.
+
+### cocoa artifact get
+{: #artifact-get}
+
+Retrieves an artifact from the specified backends. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}}, GitHub or {{site.data.keyword.DRA_short}}. Different lockers require different parameters to be provided.
+
+Options:
+
+```text
+--backend           # Specifies the types of locker to retrieve the artifact from ('cos', 'git')
+--artifact-prefix   # Path where the artifact is present. To be used in COS only, not available in Git. (Use this or --artifact-path, can't be used together)
+--artifact-path     # Absolute path on where the artifact is present. 
+--is-summary        # If present, this returns the merged summary from all the file paths.
+```
+{: screen}
+
+Options for Git:
+
+```text
+--git-token-path        # Github Token's path
+--git-api-url           # (Optional) Github API url
+```
+{: screen}
+
+Required Environment Variables:
+
+Required Environment Variables, if you are using 'git' provider:
+
+```text
+EVIDENCE_REPO_ORG=  # The Git repo org (Required if you are using 'git' backend)
+EVIDENCE_REPO_NAME= # The Git repo name (Required if you are using 'git' backend)
+```
+{: screen}
+
+Required Environment Variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=          # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+{: screen}
+
+Required Environment Variables, if you are using Cloud Object Storage:
+
+```text
+COS_API_KEY=        # Cloud Object Storage API Key (Required if you are using 'cos' backend)
+COS_BUCKET_NAME=    # Bucket Name where the artifact will be uploaded in the COS Instance (Required if you are using 'cos' backend)
+COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket is located (Required if you are using 'cos' backend)
+```
+{: screen}
+
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
+
+Running the command:
+
+```sh
+$ cocoa artifact get
+
+$ cocoa artifact get \
+  --backend=[choices: "git", "cos"] \ # e.g. --backend=cos
+  --artifact-path <file-path> \ # full path in case of git, cos can utilise --artifact-prefix <file-path>
+```
+{: codeblock}
+
+CLI options can be also set from environment variables except for `backend` and `artifact-path` / `artifact-prefix`.
+
 
 ## cocoa set-status
 {: #set-status}
