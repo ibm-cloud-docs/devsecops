@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-02-07"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -125,7 +125,7 @@ More information about setting up the gosec scan in the continous integration pi
 ### Using other static scanners
 {: #devsecops-ci-pipeline-other-static-scans}
 
-If you want to use your own static scan implementation instead, you can modify your `.pipeline-config.yaml` file and add your own [custom script](see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) to the `static-scan` stage.
+If you want to use your own static scan implementation instead, you can modify your `.pipeline-config.yaml` file and add your own [Custom Script](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) to the `static-scan` stage.
 
 ## Scans and checks in compliance checks
 {: #devsecops-ci-pipeline-compliancechecks}
@@ -141,14 +141,14 @@ If you want to use your own static scan implementation instead, you can modify y
 
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
 
-For more information about the expected output from user script stages, see [Custom scripts](see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Build
 {: #devsecops-ci-pipeline-build}
 
 In the Build stage, you can build your own artifacts. Although the pipeline provides some default features for Docker image type artifacts, you can build any type of artifact in this stage.
 
-Use the environment variables from the Pipeline UI to provide credentials, secrets, and parameters for your build. You can access these environment variables in this stage, and in all custom stages. For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+Use the environment variables from the Pipeline UI to provide credentials, secrets, and parameters for your build. You can access these environment variables in this stage, and in all custom stages. For more information about how to access parameters and secrets in custom script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ## Artifact scan and sign
 {: #devsecops-ci-pipeline-artifactscan}
