@@ -109,7 +109,7 @@ The data amount that is collected varies by use-case. With average sizes for evi
 ## Resiliency
 {: #cd-devsecops-cos-bucket-resiliency}
 
-It is recommended that you use `Cross-Region` or `Regional` resiliency, if it needs to be kept in-boundary. For more information about these regions, see [Endpoints and storage locations](/docs/cloud-object-storage/basics?topic=cloud-object-storage-endpoints).
+It is recommended that you use `Cross-Region` or `Regional` resiliency, if it needs to be kept in-boundary. For more information about these regions, see [Endpoints and storage locations](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints).
 
 ## Bucket name
 {: #cd-devsecops-cos-bucket-name}
