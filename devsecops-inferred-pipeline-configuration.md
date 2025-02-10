@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-07"
+lastupdated: "2025-02-10"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -561,7 +561,7 @@ By default, `go build` produces a dynamically linked binary. To use it in a Dock
 #### Configure the Environment Variable for Go Build
 {: #devsecops-pipeline-enable-configure}
 
-To enable static linking, use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature to add the following pipeline environment property in the CI pipeline:
+To enable static linking, use the [environment variable injection](#edevsecops-pipeline-configuration-environment-variable-injection) feature to add the following pipeline environment property in the CI pipeline:
 
 -  `ENV_SETUP_CGO_ENABLED` with the value set to `0`
 

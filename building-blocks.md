@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-07"
+lastupdated: "2025-02-10"
 
 keywords: DevSecOps, architecture, shift left, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -30,7 +30,7 @@ A template that quickly provisions a complete CI solution. The template uses Tek
 ## Continuous Deployment (CD) toolchain - Deploy a secure app with DevSecOps practices
 {: #cd-devsecops-reusable-cd}
 
-A template that quickly provisions a complete CD solution. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/products/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The CD DevSecOps Toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CD toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
+A template that quickly provisions a complete CD solution. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The CD DevSecOps Toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CD toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
 
 * Integrate more tools supported by the CD Service. For example, update pipeline triggers.
 * Update pipeline triggers that are provided by the toolchain or add more triggers to your pipelines.
@@ -39,7 +39,7 @@ A template that quickly provisions a complete CD solution. The template uses Tek
 ## Continuous Compliance (CC) toolchain - Ensure that you are running a secure and compliant application
 {: #cd-devsecops-reusable-cc}
 
-A template that ensures that your deployed artifacts and their source repositories are always compliant. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/products/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The CC DevSecOps Toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CC toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
+A template that ensures that your deployed artifacts and their source repositories are always compliant. The template uses Tekton pipelines and integrates with various tools and the [{{site.data.keyword.compliance_full}}](https://www.ibm.com/cloud/security-and-compliance-center){: external}. Tools include Git repos, secrets storage, image registry, and a change management system. The CC DevSecOps Toolchain uses the guided wizard that is provided by the toolchain template to configure the toolchain and integrate different tools with the CC toolchain. When the toolchain is configured, you can customize the toolchain as follows, for example:
 
 * Integrate more tools supported by the CD Service. For example, update pipeline triggers.
 * Update pipeline triggers provided by the toolchain or adds more triggers to your pipelines

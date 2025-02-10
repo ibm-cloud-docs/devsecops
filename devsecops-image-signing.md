@@ -41,7 +41,7 @@ Using this method, the template generates the GPG key for you. Enter the **name*
 
    ![Image signing certificate](images/artifact_signing_key_generated.png){: caption="Figure 3 Artifact signing certificate" caption-side="bottom"}
 
-The copied key is in `base64` format. [Decode](/docs/devsecops?topic=devsecops-cd-devsecops-gpg-key) the key before you import it to your [key ring](/docs/key-protect?topic=key-protect-grouping-keys&interface=ui). `echo <encoded_gpg_key> | base64 --decode`
+The copied key is in `base64` format. [Decode](/docs/devsecops-workingtopic=devsecops-working-devsecops-async-stagesdevsecops-decoding-gpg-key.md) the key before you import it to your [key ring](/docs/key-protect?topic=key-protect-grouping-keys&interface=ui). `echo <encoded_gpg_key> | base64 --decode`
 {: note}
 
 ## Manually generate a GPG key
