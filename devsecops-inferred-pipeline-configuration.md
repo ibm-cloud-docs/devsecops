@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-10"
+lastupdated: "2025-02-13"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -568,5 +568,6 @@ To enable static linking, use the [environment variable injection](#devsecops-pi
 
 ## Getting support
 {: #get-support-devsecops}
+{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
 
-As you customize your DevSecOps pipelines, get help directly from the {{site.data.keyword.cloud_notm}} development teams by [joining us on Slack](https://join.slack.com/t/ibm-devops-services/shared_invite/zt-1znyhz8ld-5Gdy~biKLe233Chrvgdzxw).
+If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](https://cloud.ibm.com/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](https://cloud.ibm.com/docs/overview?topic=overview-feedback).
