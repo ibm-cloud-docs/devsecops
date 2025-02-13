@@ -46,7 +46,7 @@ To keep your credentials secure, make sure that you follow this guidance:
 * [{{site.data.keyword.keymanagementservicefull}}](/docs/key-protect?topic=key-protect-getting-started-tutorial)
 * [HashiCorp Vault](https://www.vaultproject.io/){: external}
    
-For more information about secure DevOps best practices, see [DevOps Security](https://www.ibm.com/cloud/learn/devops-a-complete-guide?mhsrc=ibmsearch_a&mhq=Secure%20DevOps#toc-security-j2-0639C){: external}.
+For more information about secure DevOps best practices, see [DevOps Security](https://www.ibm.com/think/topics/devops#toc-security-j2-0639C){: external}.
 
 ## Protecting your data when you use third-party tool integrations
 {: #secure-integrations}

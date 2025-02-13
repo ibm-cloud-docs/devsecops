@@ -6,7 +6,7 @@ lastupdated: "2023-05-30"
 
 keywords: DevSecOps, CI toolchain with multiple apps, multiple apps toolchain
 
-subcollection: devsecops-working
+subcollection: devsecops
 
 ---
 

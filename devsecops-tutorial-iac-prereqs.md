@@ -29,7 +29,7 @@ With this tutorial, see how to set up prerequisites to develop an Infrastructure
 ## Before you begin
 {: #devsecops-tutorial-iac-prereqs}
 
-* About [DevSecOps](https://www.ibm.com/topics/devsecops){: external}.
+* About [DevSecOps](https://www.ibm.com/think/topics/devsecops){: external}.
 * [DevSecOps architecture](/docs/devsecops?topic=devsecops-cd-devsecops-arch).
 * [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
 * [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines).
@@ -73,10 +73,10 @@ You can continue to learn the following topics.
 * [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
 * [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-help-and-support)
 
-For more information, see [help and support](/docs-draft/devsecops-working?topic=devsecops-working-gettinghelp) or join the [DevSecOps slack channel](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
+For more information, see [help and support](/docs/devsecops-working?topic=devsecops-working-gettinghelp).
 {: note}
 
 ## Next steps
 {: #tutorial-iac-part1-next}
 
-Now, you set the prerequisites. Continue to the next tutorial in the series [Setting up a CI toolchain for IaC](/docs-draft/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac-ci). 
+Now, you set the prerequisites. Continue to the next tutorial in the series [Setting up a CI toolchain for IaC](/docs/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac-ci). 

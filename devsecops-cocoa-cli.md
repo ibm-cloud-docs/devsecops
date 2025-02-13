@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-01-13"
+lastupdated: "2025-02-13"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -71,7 +71,7 @@ export DISPLAY_ELAPSED_TIME=1`                # Display a snippet showing the to
 ## CLI commands
 {: #devsecops-cli-commands}
 
-Although ServiceNow is documented, it is not supported by the default {{site.data.keyword.cloud_notm}} DevSecOps reference implementation. However, if you want to learn about using ServiceNow with the DevSecOps reference implementation, get help from {{site.data.keyword.cloud_notm}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
+Although ServiceNow is documented, it is not supported by the default {{site.data.keyword.cloud_notm}} DevSecOps reference implementation.
 {: note}
 
 ## cocoa pull request commands
@@ -1499,10 +1499,77 @@ $ cocoa artifact upload \
 
 CLI options can be also set from environment variables except for `backend` and `upload-path`.
 
+### Retrieving an Artifact
+{: #artifact-get}
+
+You can retrieve artifacts from various evidence lockers, such as {{site.data.keyword.cos_short}}, GitHub, or {{site.data.keyword.DRA_short}}, using the cocoa artifact get command. This command allows you to fetch artifacts from different locker types, each requiring specific parameters.
+
+The `cocoa artifact get` command retrieves an artifact from the specified backends. Different lockers require different parameters to be provided.
+Options:
+
+```bash
+--backend           # Specifies the types of locker to retrieve the artifact from ('cos', 'git')
+--artifact-prefix   # Path where the artifact is present. To be used in COS only, not available in Git. (Use this or --artifact-path, can't be used together)
+--artifact-path     # Absolute path on where the artifact is present.
+--is-summary        # If present, this returns the merged summary from all the file paths.
+```
+{: screen}
+
+Options for Git:
+
+```bash
+--git-token-path        # Github Token's path
+--git-api-url           # (Optional) Github API url
+```
+{: screen}
+
+Required Environment Variables:
+
+Required Environment Variables, if you are using 'git' provider:
+
+```bash
+EVIDENCE_REPO_ORG=  # The Git repo org (Required if you are using 'git' backend)
+EVIDENCE_REPO_NAME= # The Git repo name (Required if you are using 'git' backend)
+```
+{: screen}
+
+Required Environment Variables, if you are using GitHub:
+
+```bash
+GHE_TOKEN=          # Github Enterprise API Token (Optional if you are using --git-token-path)
+```
+{: screen}
+
+Required Environment Variables, if you are using Cloud Object Storage:
+
+```bash
+COS_API_KEY=        # Cloud Object Storage API Key (Required if you are using 'cos' backend)
+COS_BUCKET_NAME=    # Bucket Name where the artifact will be uploaded in the COS Instance (Required if you are using 'cos' backend)
+COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket is located (Required if you are using 'cos' backend)
+```
+{: screen}
+
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
+
+Running the command:
+
+```sh
+$ cocoa artifact get
+
+$ cocoa artifact get \
+  --backend=[choices: "git", "cos"] \ # e.g. --backend=cos
+  --artifact-path <file-path> \ # full path in case of git, cos can utilise --artifact-prefix <file-path>
+```
+{: codeblock}
+
+CLI options can be also set from environment variables except for `backend` and `artifact-path` / `artifact-prefix`.
+
+
 ## cocoa set-status
 {: #set-status}
 
-Sets a commit's status. The current implementation is tested on GitHub. See documentation about [GitHub statuses](https://docs.github.com/en/rest/reference/repos#statuses){: external}.
+Sets a commit's status. The current implementation is tested on GitHub. See documentation about [GitHub statuses](https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28){: external}.
 
 Required Environment Variables:
 
@@ -2325,7 +2392,7 @@ $ cocoa incident update-state \
 ## cocoa locker commands
 {: #locker-commands}
 
-To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/cloud/object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
+To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/products/cloud-object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
 
 - `COS_ENDPOINT`: The [endpoint](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
 - `COS_BUCKET_NAME`: The name of the Cloud Object Storage bucket.
@@ -2679,7 +2746,7 @@ https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 
 Adds evidence to the evidence locker.
 
-The evidence locker can be specified by using flags. For more information, see [cocoa locker commands](#cocoa-locker-commands).
+The evidence locker can be specified by using flags. For more information, see [cocoa locker commands](#locker-commands).
 
 The evidence can be configured by using the following flags:
 
@@ -2851,7 +2918,7 @@ Optional flags:
 - `--scope`: Considers evidence that has the specified scope only (see `evidence add --scope`), can be specified multiple times
 - `--linked-scope`: Considers evidence that has the specified linked-scope as scope. In addition, adds them to the linked-scopes property in the returned evidence summary. Can be specified multiple times.
 - `--check-immutable-storage`: Checks if every evidence is also present in a Cloud Object Storage bucket and is protected by a retention period of at least 365 days. Appends `com.ibm.immutable_storage` evidence to the summary.
-   - See [`cocoa locker`](#cocoa-locker) section on how to configure the Cloud Object Storage bucket.
+   - See [`cocoa locker`](#locker-commands) section on how to configure the Cloud Object Storage bucket.
 - `--dry-run`: Has an effect when combined with `--check-immutable-storage`. If used, `com.ibm.immutable_storage` evidence is only appended to the summary but it does not get uploaded to the evidence locker.
 - `--clone-dir`: An optional parameter to determine the clone path of Evidence Repository, by default it will clone the repo /tmp directory
 - `--initialized`: Optional flag which assume the evidence locker is already cloned in the provided location `--clone-dir` or `/tmp/`.
@@ -2939,7 +3006,7 @@ Checks the required configuration and settings of the locker.
 Currently, only the Cloud Object Storage based locker has a configuration requirement:
 - Because every evidence must be kept for at least one year, the Cloud Object Storage bucket must be protected by a retention policy. Default retention period must be greater or equal to 365 days.
 
-For more information, see [cocoa locker commands](#cocoa-locker-commands).
+For more information, see [cocoa locker commands](#locker-commands).
 
 Required Environment Variables:
 

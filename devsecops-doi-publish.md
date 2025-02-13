@@ -17,6 +17,8 @@ subcollection: devsecops
 
 `doi-publish` is a function designed to download an attachment and publish it as a test record to DevOps Insights.
 
+This function is provided by the [`doi-publish-test-record`](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/doi__doi-publish-testrecord.md) script that is part of the [Commons Scripts Library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory).
+
 The function does the following tasks:
 
 - Uses the download-attachment function to retrieve the file specified by evidence-file and attachment-label, saving it to attachment-output-path.
@@ -65,8 +67,3 @@ doi-publish \
 {: #multi-attachment-doi-publish}
 
 The doi-publish function does not support multiple attachments. It is designed to handle only a single attachment per execution. If you need to publish multiple attachments, you will need to run the doi-publish function separately for each attachment.
-
-
-
-
-

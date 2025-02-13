@@ -37,7 +37,7 @@ This tutorial uses an example of `Node.js` app, but you can also deploy other la
 * [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro)
 * [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines)
 
-For more information, see [DevSecOps](https://www.ibm.com/topics/devsecops){: external} architecture and its implementation in {{site.data.keyword.contdelivery_short}}.
+For more information, see [DevSecOps](https://www.ibm.com/think/topics/devsecops){: external} architecture and its implementation in {{site.data.keyword.contdelivery_short}}.
 
 ## Set up an {{site.data.keyword.cloud_notm}} account
 {: #tutorial-part1-account}
@@ -82,7 +82,7 @@ You can automatically set up the DevSecOps infrastructure for your toolchains by
 ## Next steps
 {: #tutorial-part1-next}
 
-After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-ci-toolchai).
+After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-ci-toolchain).
 
 For additional information about related topics, review the following documentation:
 

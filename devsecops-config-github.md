@@ -6,7 +6,7 @@ lastupdated: "2024-06-06"
 
 keywords: DevSecOps
 
-subcollection: devsecops-working
+subcollection: devsecops
 
 ---
 
@@ -83,7 +83,7 @@ Only when all the required status checks pass successfully will the pull request
 
 By leveraging status checks within DevSecOps, you can maintain code quality, adhere to coding standards, and ensure the absence of vulnerabilities or critical flaws before incorporating changes into your project's protected branch.
 
-For more information on configuring status checks, refer to the [Configuring Status Checks Only (Status Checks Configuration)](#configuring-status-checks-only-status-checks-configuration) section for a reference implementation.
+For more information on configuring status checks, refer to the [Configuring Status Checks Only (Status Checks Configuration)](#devsecops-config-github-checks-only) section for a reference implementation.
 
 1. Enable the `Require status checks to pass before merging` option.
 

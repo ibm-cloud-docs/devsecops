@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-01-29"
+lastupdated: "2025-02-05"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -43,6 +43,9 @@ Bug fix release
 
 Upgrade to `sbom-utility`
 :   Upgraded `sbom-utility` to 0.17.0
+
+Update to `sysdig` scanner to support risk acceptance
+:   `sysdig` scanner now creates issues based on risk acceptance settings in workload protection instance.
 
 ## 14 January 2025
 {: #devsecops-Jan2025-14}
@@ -243,7 +246,7 @@ Bug fix release
 {: #devsecops-open-v10.13.0-open-v9.32.0}
 
 Enhancements for “Required Evidence Check” Feature in the CD/CC Pipeline
-:   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-evidence-checks-validation#config-file-version-2) for documentation using the new schema.
+:   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-evidence-checks-validation#evidence-checks-config-filev2) for documentation using the new schema.
 
 Performance improvements
 :   Improved pipeline performance when Cloud Object Storage(COS) as the evidence locker for one pipeline evidences

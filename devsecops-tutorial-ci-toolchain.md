@@ -2,8 +2,8 @@
 
 copyright:
 
-  years: 2022, 2024
-lastupdated: "2024-11-19"
+  years: 2022, 2025
+lastupdated: "2025-02-05"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -180,7 +180,7 @@ Configure SonarQube as the static code analysis tool for the toolchain. SonarQub
 
 Configure [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests or CI pipeline events. You can also add the Slack tool after toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/incoming-webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
 2. Enter your **Slack channel** to post message.
 3. Enter the **Slack team name**. For example, if your team URL` https://team.slack.com`, the team name is `team`.
 4. Choose the events that you want to receive notifications for **Automated Slack Notifications**.

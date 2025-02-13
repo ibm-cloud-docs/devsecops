@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-01-27"
+lastupdated: "2025-02-13"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -73,7 +73,7 @@ The Inferred DevSecOps Pipeline Configuration feature currently identifies the f
 Code spots are related to a supported source code language, including:
 
 -  [Node.js](https://nodejs.org) (with npm, Yarn or Gradle)
--  [Java](https://www.ibm.com/topics/java) (with Maven or Gradle)
+-  [Java](https://www.ibm.com/think/topics/java) (with Maven or Gradle)
 -  [Golang](https://go.dev)
 -  [Python](https://www.python.org)
 -  [Dockerfile](https://docs.docker.com/reference/dockerfile)
@@ -273,6 +273,10 @@ You can ignore specific spots during extraction by using regular expressions. Th
 If you are using IBM Cloud Code Engine for deployment, specify the Code Engine project and configure the build process with the following spots:
 * `code-engine-project`: Specifies the Code Engine project.
 * `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of `ibmcloud code-engine buildrun` command.
+* `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
+
+#### Docker build configuration
+* `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
 
 #### Golang Configuration
 {: #devsecops-pipeline-configuration-spot-go}
@@ -429,7 +433,7 @@ Some tools in the Inferred DevSecOps Pipeline Configuration feature use pipeline
 * Build secrets: The docker build command is completed with --secret parameters based on pipeline and trigger properties with a normalized name like `DOCKER_BUILD_SECRET_`.
     * For example, adding a property that is named DOCKER_BUILD_SECRET_my_secret injects the parameter --secret id=my_secret,env= into the docker build command.
 
-To learn more, refer to [docker build arguments](https://docs.docker.com/build/guide/build-args/) and [docker build secret](https://docs.docker.com/build/building/secrets/)
+To learn more, refer to [docker build arguments](https://docs.docker.com/build/building/variables/) and [docker build secret](https://docs.docker.com/build/building/secrets/)
 
 ##### Helm
 {: #devsecops-pipeline-configuration-tool-helm}
@@ -520,7 +524,7 @@ secondary = true
 
 It is required to provide credentials for this `local` source repository. [Poetry documentation on configuration for credentials](https://python-poetry.org/docs/repositories/#configuring-credentials) indicates that the environment variables to provide http user and password should be `POETRY_HTTP_BASIC_LOCAL_USERNAME` and `POETRY_HTTP_BASIC_LOCAL_PASSWORD`.
 
-Use the [environment variable injection](#environment-variables-injection-in-pipeline-execution-stages) feature, and add the following pipeline environment properties:
+Use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature, and add the following pipeline environment properties:
 - `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_USERNAME` (text) with the appropriate value
 - `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_PASSWORD` (secured) with the appropriate secured value
 
@@ -542,7 +546,7 @@ In addition, if there is some `env.<VARIABLE>` to be resolved like:
       <id>central</id>
     </server>
 ```
-Use the [environment variable injection](#environment-variable-injection-in-pipeline-execution-stages) feature to provide these variables by adding 2 pipeline properties (in the PR and CI pipeline):
+Use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature to provide these variables by adding 2 pipeline properties (in the PR and CI pipeline):
 - `ENV_GLOBAL_MAVEN_USERNAME` (text) with the value to use for maven username
 - `ENV_GLOBAL_MAVEN_PASSWORD` (secured) with the value to use for maven password
 
@@ -557,12 +561,13 @@ By default, `go build` produces a dynamically linked binary. To use it in a Dock
 #### Configure the Environment Variable for Go Build
 {: #devsecops-pipeline-enable-configure}
 
-To enable static linking, use the [environment variable injection](#environment-variable-injection-in-pipeline-execution-stages) feature to add the following pipeline environment property in the CI pipeline:
+To enable static linking, use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature to add the following pipeline environment property in the CI pipeline:
 
 -  `ENV_SETUP_CGO_ENABLED` with the value set to `0`
 
 
 ## Getting support
 {: #get-support-devsecops}
+{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
 
-As you customize your DevSecOps pipelines, get help directly from the {{site.data.keyword.cloud_notm}} development teams by [joining us on Slack](https://join.slack.com/t/ibm-devops-services/shared_invite/zt-1znyhz8ld-5Gdy~biKLe233Chrvgdzxw).
+If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](https://cloud.ibm.com/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](https://cloud.ibm.com/docs/overview?topic=overview-feedback).

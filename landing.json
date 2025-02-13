@@ -2,7 +2,7 @@
   "version": 2,
   "title": "IBM Cloud DevSecOps",
   "introduction": "Adopt a DevSecOps approach by using IBM Cloud Continuous Delivery, which includes open toolchains that automate the building and deploying of applications. Leverage the docs, architecture references, and more to support your build and deploy needs.",
-  "product_page": "https://www.ibm.com/topics/devsecops",
+  "product_page": "https://www.ibm.com/think/topics/devsecops",
   "console_page": "/catalog/architecture/deploy-arch-ibm-devsecops-alm-e1c16cac-7ea8-413f-a819-67e3a3251e44-global",
   "section_topics": {
     "links": [

@@ -6,7 +6,7 @@ toc:
     audience: service
     href: /docs/devsecops
     console-page: "/devops/create"
-    product-page: "https://www.ibm.com/cloud/continuous-delivery"
+    product-page: "https://www.ibm.com/products/continuous-delivery"
     path: devsecops
     label: DevSecOps
   entries:
@@ -15,7 +15,7 @@ toc:
       topics:
       - link:
           label: What is DevSecOps?
-          href: https://www.ibm.com/cloud/learn/devsecops
+          href: https://www.ibm.com/think/topics/devsecops
       - devsecops_intro.md 
       - topicgroup:
           label: DevSecOps architecture
@@ -191,6 +191,7 @@ toc:
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
           - devsecops-configuring-mend-sast-scan.md
+          - devsecops-configuring-mend-sbom-generate.md          
           - devsecops-configuring-xray-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md

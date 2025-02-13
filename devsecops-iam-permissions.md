@@ -20,7 +20,7 @@ subcollection: devsecops
 
 The access policy that you assign users in your account determines what actions a user can perform within the context of the toolchain that you select. The allowable actions are customized and defined by the toolchain as operations that are allowed to be performed. Each action is mapped to an IAM platform or role that you can assign to a user.
 
-If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles#custom-access-roles) and pick the actions to include.
+If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles&interface=ui#custom-access-roles) and pick the actions to include.
 {: tip}
 
 IAM access policies enable access to be granted at different levels. Some of the options include the following:
@@ -29,7 +29,7 @@ IAM access policies enable access to be granted at different levels. Some of the
 
 Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to the toolchain and the ability to call the toolchain's API.
 
-For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain).
+For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain-roles).
 
 | Platform role |  Description of actions |
 |---------------|-------------------------|
@@ -77,14 +77,14 @@ Access to toolchains for users in your account is controlled by {{site.data.keyw
 
 The access policy that you assign users in your account determines what actions a user can perform within the context of the toolchain that you select. The allowable actions are customized and defined by the toolchain as operations that are allowed to be performed. Each action is mapped to an IAM platform or role that you can assign to a user.
 
-If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles#custom-access-roles) and pick the actions to include.
+If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles&interface=ui#custom-access-roles) and pick the actions to include.
 {: tip}
 
 IAM access policies enable access to be granted at different levels. Some of the options include the following:
 
 * Access across all instances of the service in your account
 
-Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to toolchain and the ability to call the toolchain's API. For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain).
+Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to toolchain and the ability to call the toolchain's API. For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain-roles).
 
 | Platform role |  Description of actions |
 |---------------|-------------------------|

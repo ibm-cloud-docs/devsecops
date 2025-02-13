@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2024
-lastupdated: "2024-10-09"
+  years: 2021, 2025
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -344,7 +344,7 @@ For more information about {{site.data.keyword.cos_short}} buckets, see [{{site.
 The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
 {: important}
 
-According to the [DevOps lifecycle](https://www.ibm.com/cloud/learn/devops-a-complete-guide#toc-how-devops-u5vApdai){: external}, the continuous integration and continuous deployment flows can be divided into three stages: code, build, and deploy.
+According to the [DevOps lifecycle](https://www.ibm.com/think/topics/devops#toc-how-devops-u5vApdai){: external}, the continuous integration and continuous deployment flows can be divided into three stages: code, build, and deploy.
 
 The DevOps architecture divides these flows into four stages by distinguishing between pre-production and production deployment. The DevSecOps reference architecture currently includes the pre-production and production deployment within the same stage.
 {:tip: .tip}

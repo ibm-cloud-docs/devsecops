@@ -94,7 +94,7 @@ Even if your inventory repository and issues repository are shared, do not ever 
 
 If you are using a shared inventory repository and a shared issues repository, you can use a shared instance of {{site.data.keyword.cos_full}} as well. Complete the following steps:
 
-1. Create an [instance of {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage/basics?topic=cloud-object-storage-provision) to use across toolchains and pipelines.
+1. Create an [instance of {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-provision) to use across toolchains and pipelines.
 1. Within that shared {{site.data.keyword.cos_full_notm}} instance, create one {{site.data.keyword.cos_short}} bucket per microservice.
 1. Set up pipelines and triggers, if applicable, to use the {{site.data.keyword.cos_full_notm}} bucket by setting the `cos-bucket-name` environment property.
 
@@ -135,7 +135,7 @@ compliance-checks:
     "/opt/commons/compliance-checks/run.sh"
 ```
 
-In that example, the script that is run is `/opt/commons/compliance-checks/run.sh`, which is located in the [commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons). Use this commons library as a source to copy code that can be customized for specific edge cases. In the example, `compliance-checks/run.sh` is located in the [compliance-commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/compliance-checks/run.sh).
+In that example, the script that is run is `/opt/commons/compliance-checks/run.sh`, which is located in the [commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons). Use this commons library as a source to copy code that can be customized for specific edge cases. In the example, `compliance-checks/run.sh` is located in the [compliance-commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/compliance-checks__run.md).
 
 ### Overriding default scripts
 {: #override-default-scripts}
@@ -155,7 +155,9 @@ compliance-checks:
     "/opt/commons/compliance-checks/run.sh"
 ```
 1. Paste the snippet into your `.pipeline-config.yaml` file.
-1. Add your custom code before or after the script is called.
+1. Add your custom code before or after the script is called. 
+   This snippet invokes the default [compliance-checks script](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/compliance-checks__run.md)
+   {: note}
 1. Edit, delete, or add properties as needed.
 
 The following example shows the updated script in your `.pipeline-config.yaml` file:

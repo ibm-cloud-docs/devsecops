@@ -45,7 +45,7 @@ When the DevSecOps pipelines interact with {{site.data.keyword.compliance_short}
 ### Pull data model
 {: #view-scc-toolchain-results-push-data}
 
-:   When a CI/CD pipeline runs, an [evidence summary](/docs/devsecops?topic=devsecops-devsecops-evidence#cd-devsecops-evidence-summary) is created and named `summary.json`. This evidence summary is forwarded to an evidence locker or a repository. Each entry in the summary is mapped to a control in {{site.data.keyword.compliance_short}}.
+:   When a CI/CD pipeline runs, an [evidence summary](/docs/devsecops?topic=devsecops-devsecops-evidence-summary) is created and named `summary.json`. This evidence summary is forwarded to an evidence locker or a repository. Each entry in the summary is mapped to a control in {{site.data.keyword.compliance_short}}.
 
    ![CD evidence summary task](images/cd-devsecops-evidence-summary.png){: caption="CD evidence summary task" caption-side="bottom"}
 

@@ -21,7 +21,7 @@ Learn the basics for adopting DevSecOps and onboard your first application or mi
 ## About DevSecops toolchains
 {: #devsecops-about}
 
-You discovered and tested {{site.data.keyword.cloud_notm}} [DevSecOps](https://www.ibm.com/topics/devsecops) Continuous Integration ([CI](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain)), Continuous Deployment ([CD](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain)), and Continuous Compliance ([CC](/docs/devsecops?topic=devsecops-tutorial-cc-toolchain)) toolchains that implement DevSecOps best practices and security tools.
+You discovered and tested {{site.data.keyword.cloud_notm}} [DevSecOps](https://www.ibm.com/think/topics/devsecops) Continuous Integration ([CI](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain)), Continuous Deployment ([CD](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain)), and Continuous Compliance ([CC](/docs/devsecops?topic=devsecops-tutorial-cc-toolchain)) toolchains that implement DevSecOps best practices and security tools.
 
 Now, you're ready to onboard your own application or microservice and adopt DevSecOps.
 
@@ -147,9 +147,9 @@ There are two major categories of scripts that are used by DevSecOps pipelines:
 Except for the start stage, each stage of a CI, CD, or CC pipeline can be customized with your own scripts to override the default implementation of the stage. The start stage can’t be customized with your own scripts.
 {: important}
 
-Though Bash scripts are provided as samples, you can build, test, and deploy your application by using other languages like Python or Go. Make sure you're using the correct `image` for each stage. Refer to the [Docker images in DevSecOps pipelines section](#docker-images-in-devsecops-pipelines).
+Though Bash scripts are provided as samples, you can build, test, and deploy your application by using other languages like Python or Go. Make sure you're using the correct `image` for each stage. Refer to the [Docker images in DevSecOps pipelines section](#docker-images-in-devsecops).
 
- Refer to the table [Stages and tasks](#devsecops-ci-pipeline-stages) that summarize various stages of the CI Pipeline. The table also provides a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection that is required by the stage execution.
+ Refer to the table [Stages and tasks](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-stages) that summarize various stages of the CI Pipeline. The table also provides a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection that is required by the stage execution.
 
 
 #### Migrating from Jenkins or Travis to DevSecOps
@@ -210,7 +210,7 @@ The DevSecOps pipeline provides the path to the root folder of [the commons libr
 source "${COMMONS_PATH}/<script folder in commons>/<script file name>
 ```
 
-Refer to the table [Stages and tasks](#devsecops-cd-pipeline-stages) that summarizes various stages of the CD Pipeline. The table also provide a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection required by the stage execution.
+Refer to the table [Stages and tasks](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-stages) that summarizes various stages of the CD Pipeline. The table also provide a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection required by the stage execution.
 
 ### Environment properties
 {: #pipeline-parameters}
@@ -273,5 +273,6 @@ scan-artifact:
 
 ## Getting support
 {: #get-support-devsecops}
+{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
 
-As you customize your DevSecOps pipelines, get help directly from the {{site.data.keyword.cloud_notm}} development teams by [joining us on Slack](https://join.slack.com/t/ibm-devops-services/shared_invite/zt-1znyhz8ld-5Gdy~biKLe233Chrvgdzxw).
+If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](https://cloud.ibm.com/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](https://cloud.ibm.com/docs/overview?topic=overview-feedback).

@@ -6,7 +6,7 @@ lastupdated: "2022-05-13"
 
 keywords: DevSecOps, IBM Cloud
 
-subcollection: devsecops-working
+subcollection: devsecops
 
 ---
 

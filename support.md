@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-11-06"
+  years: 2022, 2025
+lastupdated: "2025-02-13"
 
 keywords: getting help, getting support, DevSecOps, continuous delivery, devops
 
@@ -20,11 +20,5 @@ If you have problems or questions when using {{site.data.keyword.cloud_notm}} De
 
 * You can check the status of the {{site.data.keyword.cloud_notm}} platform and resources by going to the [Status page](https://cloud.ibm.com/status){: external}.
 * You can review [Stack Overflow](https://stackoverflow.com/search?q=ibm-cloud){: external} to see whether other users ran into the same problem. When using the forum to ask a question, tag your question with "ibm-cloud" and "DevSecOps" so that it is seen by the {{site.data.keyword.cloud_notm}} development teams.
+* {{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
 * If you still can't resolve the problem, you can open a support case. For information about opening a support case, or about case severities and response times, see [Working with support cases](/docs/get-support?topic=get-support-open-case) or [Escalating support cases](/docs/get-support?topic=get-support-escalation).
-
-## Getting help by using Slack
-{: #gettinghelp-slack}
-
-Get help fast directly from the {{site.data.keyword.cloud_notm}} development teams and other users. The DevSecOps team actively monitors our [Slack channel](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external} for questions about DevSecOps, {{site.data.keyword.contdelivery_short}} services, and toolchains.
-
-[![Reach out to us on our Slack channel.](images/slack_us.png "Slack us")](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}

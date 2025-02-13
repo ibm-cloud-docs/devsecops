@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-03-21"
+  years: 2023, 2025
+lastupdated: "2025-02-05"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, cloud object storage, satellite , Push based deployment , Pull based deployment
 
@@ -49,15 +49,15 @@ deploy:
 
 DevSecOps provides an option to deploy your application using Pull-based deployment using {{site.data.keyword.satellitelong_notm}} Config.
 
-[{{site.data.keyword.satellitelong_notm}}](https://www.ibm.com/cloud/satellite){: external} is an extension of the {{site.data.keyword.cloud_notm}} Public that can run inside the customer's data center or out at the edge. Each {{site.data.keyword.satellitelong_notm}} location is connected by using {{site.data.keyword.satellitelong_notm}} Link, which provides the connection to the {{site.data.keyword.cloud}} control plane. It provides audit, packet capture, and visibility to the security team, while a configuration utility provides a global view of applications and services. {{site.data.keyword.satellitelong_notm}} Link provides a simple way to manage the connection between {{site.data.keyword.cloud_notm}} and the {{site.data.keyword.satelliteshort}} location with visibility into all the traffic that goes back and forth with control of the endpoints on both sides of the link.
+[{{site.data.keyword.satellitelong_notm}}](https://www.ibm.com/products/satellite){: external} is an extension of the {{site.data.keyword.cloud_notm}} Public that can run inside the customer's data center or out at the edge. Each {{site.data.keyword.satellitelong_notm}} location is connected by using {{site.data.keyword.satellitelong_notm}} Link, which provides the connection to the {{site.data.keyword.cloud}} control plane. It provides audit, packet capture, and visibility to the security team, while a configuration utility provides a global view of applications and services. {{site.data.keyword.satellitelong_notm}} Link provides a simple way to manage the connection between {{site.data.keyword.cloud_notm}} and the {{site.data.keyword.satelliteshort}} location with visibility into all the traffic that goes back and forth with control of the endpoints on both sides of the link.
 
 Users can have groups of Red Hat&reg; OpenShift&reg; clusters in a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig). You can use [{{site.data.keyword.satelliteshort}} Config](/docs/satellite?topic=satellite-cluster-config) to deploy the application into a [{{site.data.keyword.satelliteshort}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig).
 
 Follow a two-step process to enable your Red Hat&reg; OpenShift&reg; clusters to leverage {{site.data.keyword.satelliteshort}} Config to perform simultaneous deployments.
 
-1. [Create a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-groups), which is a logical grouping of clusters that run on a {{site.data.keyword.satelliteshort}} location.
+1. [Create a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig-groups), which is a logical grouping of clusters that run on a {{site.data.keyword.satelliteshort}} location.
 
-2. [Attach a cluster to a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-access), which grants {{site.data.keyword.satelliteshort}} Config access to manage the resources within the cluster.
+2. [Attach a cluster to a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#auto-setup-clusters-satconfig), which grants {{site.data.keyword.satelliteshort}} Config access to manage the resources within the cluster.
 
 As an advanced configuration, you can also deploy the application to the compute infrastructure in your on-premises data center or other cloud providers by using [{{site.data.keyword.satellitelong_notm}}](/docs/satellite?topic=satellite-getting-started).
 
@@ -65,9 +65,9 @@ As an advanced configuration, you can also deploy the application to the compute
 
 2. [Deploy a Red Hat&reg; OpenShift&reg; cluster](/kubernetes/catalog/create?platformType=openshift){: external} to the {{site.data.keyword.satelliteshort}} location by using setup.
 
-3. [Create a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-groups), which is a logical grouping of clusters that run on a {{site.data.keyword.satelliteshort}} location.
+3. [Create a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig-groups), which is a logical grouping of clusters that run on a {{site.data.keyword.satelliteshort}} location.
 
-4. [Attach a cluster to a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#setup-clusters-satconfig-access), which grants {{site.data.keyword.satelliteshort}} Config access to manage the resources within the cluster.
+4. [Attach a cluster to a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig#auto-setup-clusters-satconfig), which grants {{site.data.keyword.satelliteshort}} Config access to manage the resources within the cluster.
 
 ### Prerequisites
 {: #custom-deployment-target-prereqs}

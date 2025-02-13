@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-09"
+  years: 2021, 2025
+lastupdated: "2025-02-13"
 
 keywords: troubleshoot, DevSecOps
 
@@ -246,11 +246,9 @@ For more information about the stages, see [Custom scripts](/docs/devsecops?topi
 
 For more general issues related to the {{site.data.keyword.contdelivery_short}} service, see the {{site.data.keyword.deliverypipeline}} [troubleshooting page](/docs/ContinuousDelivery?topic=ContinuousDelivery-troubleshoot-delivery-pipeline).
 
-## Getting help from the community
-{: #troubleshoot-devsecops-community}
+## Getting support
+{: #troubleshoot-devsecops}
 
-Get help directly from the {{site.data.keyword.cloud_notm}} development teams and other users.
-
-The DevSecOps team actively monitors our Slack channel for questions about the DevSecOps, {{site.data.keyword.contdelivery_short}} services, and toolchains.
-
-[![Reach out to us on our Slack channel.](images/slack_us.png "Slack us")](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}
+* You can review [Stack Overflow](https://stackoverflow.com/search?q=ibm-cloud){: external} to see whether other users ran into the same problem. When using the forum to ask a question, tag your question with "ibm-cloud" and "DevSecOps" so that it is seen by the {{site.data.keyword.cloud_notm}} development teams.
+* {{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
+* If you still can't resolve the problem, you can open a support case. For information about opening a support case, or about case severities and response times, see [Working with support cases](/docs/get-support?topic=get-support-open-case) or [Escalating support cases](/docs/get-support?topic=get-support-escalation).

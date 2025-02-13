@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-09-13"
+  years: 2023, 2025
+lastupdated: "2025-01-31"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -37,11 +37,11 @@ Before you get started with non-image artifact signing, you must have the follow
       dind: true
       script: |
          #!/usr/bin/env bash
-         source /opt/commons/sign-artifact/sign-artifacts.sh
+         source ${COMMONS_PATH}/sign-artifact/sign-artifacts.sh
    ```
    {: codeblock}
 
-3. By default, the script can sign all artifacts that are listed in the `list_artifacts` collection. Be sure that your artifacts are properly stored and integrated. 
+3. By default, the [sign-artifacts script](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/sign-artifact__sign-artifacts.md) can sign all artifacts that are listed in the `list_artifacts` collection. Be sure that your artifacts are properly stored and integrated. 
 
    1. Ensure that you store built artifacts in the Cocoa pipeline runtime. This can be achieved in one of the two following ways.
 
@@ -129,4 +129,3 @@ If you need to store the signed artifact, you can use a storage solution of your
             "${params[@]}"
 ```
 {: codeblock}
-
