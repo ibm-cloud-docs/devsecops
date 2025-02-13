@@ -73,10 +73,10 @@ You can continue to learn the following topics.
 * [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
 * [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-help-and-support)
 
-For more information, see [help and support](/docs-draft/devsecops-working?topic=devsecops-working-gettinghelp) or join the [DevSecOps slack channel](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
+For more information, see [help and support](/docs/devsecops-working?topic=devsecops-working-gettinghelp).
 {: note}
 
 ## Next steps
 {: #tutorial-iac-part1-next}
 
-Now, you set the prerequisites. Continue to the next tutorial in the series [Setting up a CI toolchain for IaC](/docs-draft/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac-ci). 
+Now, you set the prerequisites. Continue to the next tutorial in the series [Setting up a CI toolchain for IaC](/docs/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac-ci). 

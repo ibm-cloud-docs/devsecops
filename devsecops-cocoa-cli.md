@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-06"
+lastupdated: "2025-02-13"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -71,7 +71,7 @@ export DISPLAY_ELAPSED_TIME=1`                # Display a snippet showing the to
 ## CLI commands
 {: #devsecops-cli-commands}
 
-Although ServiceNow is documented, it is not supported by the default {{site.data.keyword.cloud_notm}} DevSecOps reference implementation. However, if you want to learn about using ServiceNow with the DevSecOps reference implementation, get help from {{site.data.keyword.cloud_notm}} development teams by joining us on [Slack](https://ic-devops-slack-invite.us-south.devops.cloud.ibm.com/){: external}.
+Although ServiceNow is documented, it is not supported by the default {{site.data.keyword.cloud_notm}} DevSecOps reference implementation.
 {: note}
 
 ## cocoa pull request commands
