@@ -133,3 +133,18 @@ This is a list of tips and best practices to follow when you configure multiple 
 * It is best to name the triggers by the application name and then its purpose, so people can easily filter on them in the dashboard. For example, `hello-world Git <branch> Trigger`.
 
 * Seek to maximize the usage of the trigger properties in the manual triggers to reduce the need to insert input values. It also has the helpful effect of moving those values to the top of the properties list, so there's no need to search for the properties that need to change.
+
+## Migrating from one COS bucket to Another COS bucket
+{: #cd-devsecops-cos-bucket-migration}
+
+When we move from one COS bucket to another COS bucket then the older bucket should be present to read existing assets, evidences, attachments and artifacts. Since ths bucket is used to reterive the existing information it should have `Reader` access. To confgure this bucket in the pipeline, provide the enivornment properties as:
+|Name |Type	|Description |Required or Optional | Locked or Unlocked |
+|:----------|:------------------------------|:------------------|:----------|:----------|
+|`backup-cos-api-key`		| SECRET		| The Backup Cloud Object Storage API key.	| Required			| Locked |
+|`backup-cos-access-key-id` | SECRET | The BackupCloud Object Storage Access Key ID from HMAC credentials. (Provided along with `backup-cos-secret-access-key` instead of `backup-cos-api-key`)| Required | Unlocked |
+|`backup--secret-access-key` | SECRET | The BackupCloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `backup-cos-access-key-id` instead of `backup-cos-api-key`) | Required | Unlocked |
+|`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Required			| Unlocked |
+|`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Required			| Unlocked |
+
+Do not delete the this old bucket for 365 days, as it would be required for audit purposes. 
+{: tip}

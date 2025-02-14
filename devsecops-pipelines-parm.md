@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-01-27"
+lastupdated: "2025-02-14"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -47,6 +47,11 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional | Unlocked |
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Unlocked |
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked |
+|`backup-cos-api-key`		| SECRET		| The Backup Cloud Object Storage API key.	| Optional			| Locked |
+|`backup-cos-access-key-id` | SECRET | The BackupCloud Object Storage Access Key ID from HMAC credentials. (Provided along with `backup-cos-secret-access-key` instead of `backup-cos-api-key`)| Optional | Unlocked |
+|`backup--secret-access-key` | SECRET | The BackupCloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `backup-cos-access-key-id` instead of `backup-cos-api-key`) | Optional | Unlocked |
+|`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Unlocked |
+|`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked |
 |`cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional | Unlocked |
 |`cra-cveignore-path`  |text   |File path to the `cveignore`, relative to the application repository root. The default file path is `.cra/.cveignore` if value is not provided.   | Optional    | Unlocked |
 |`cra-docker-build-context`     |text   |If this flag is specified, Code Risk Analyzer uses the directory in the path parameter as the Docker build context. The default value is `false`. |Optional | Unlocked |
@@ -113,6 +118,11 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional | Unlocked | 
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Locked | 
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked | 
+|`backup-cos-api-key`		| SECRET		| The Backup Cloud Object Storage API key with the Reader permission.	| Optional			| Locked |
+|`backup-cos-access-key-id` | SECRET | The BackupCloud Object Storage Access Key ID from HMAC credentials. (Provided along with `backup-cos-secret-access-key` instead of `backup-cos-api-key`)| Optional | Unlocked |
+|`backup--secret-access-key` | SECRET | The BackupCloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `backup-cos-access-key-id` instead of `backup-cos-api-key`) | Optional | Unlocked |
+|`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Unlocked |
+|`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked |
 |`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from Container Registry for the Sysdig scan.	|Optional			| Unlocked | 
 |`cr-resource-group`		|text		| The resource group that is used to access the Container Registry. |Optional			| Unlocked | 
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional | Unlocked | 
@@ -243,6 +253,11 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |Unlocked |
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional		|Locked |
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked |
+|`backup-cos-api-key`		| SECRET		| The Backup Cloud Object Storage API key with the Reader permission.	| Optional			| Locked |
+|`backup-cos-access-key-id` | SECRET | The BackupCloud Object Storage Access Key ID from HMAC credentials. (Provided along with `backup-cos-secret-access-key` instead of `backup-cos-api-key`)| Optional | Unlocked |
+|`backup--secret-access-key` | SECRET | The BackupCloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `backup-cos-access-key-id` instead of `backup-cos-api-key`) | Optional | Unlocked |
+|`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Unlocked |
+|`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked |
 |`cr-pipeline-name`		|text		|The name of the pipeline that is creating the change request.	|Optional			|Unlocked |
 |`cr-pipeline-version`		|text		|The version of the pipeline that is creating the change request.	|Optional			|Unlocked |
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |Unlocked |
@@ -322,6 +337,11 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cos-secret-access-key` | SECRET | The Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `cos-access-key-id` instead of `cos-api-key`) | Optional |
 |`cos-bucket-name`		| text		| The name of the bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			|
 |`cos-endpoint`		| text		| The endpoint that stores the evidence in the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			|
+|`backup-cos-api-key`		| SECRET		| The Backup Cloud Object Storage API key with the Reader permission.	| Optional			| Locked |
+|`backup-cos-access-key-id` | SECRET | The BackupCloud Object Storage Access Key ID from HMAC credentials. (Provided along with `backup-cos-secret-access-key` instead of `backup-cos-api-key`)| Optional | Unlocked |
+|`backup--secret-access-key` | SECRET | The BackupCloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `backup-cos-access-key-id` instead of `backup-cos-api-key`) | Optional | Unlocked |
+|`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Optional			| Unlocked |
+|`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Optional			| Locked |
 |`cr-ibmcloud-api-key`		|SECRET		| Overrides `ibmcloud-api-key` if provided, for pulling the image from Container Registry for the Sysdig scan.	|Optional			|
 |`cr-resource-group`		|text		| The resource group that is used to access the Container Registry. |Optional			|
 | `cra-custom-script-path`  | text   | Path to a custom script to be run before CRA scanning. This script is sourced to provide the option to set ENV variables in the context of the CRA BOM tool. | Optional |

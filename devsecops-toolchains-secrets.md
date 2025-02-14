@@ -58,6 +58,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 | HashiCorp Vault Role ID | `role-id` | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | HashiCorp Vault Secret ID | `secret-id` | **Required: CI & CD** _Used to authenticate with the HashiCorp Vault server_ |
 | {{site.data.keyword.cos_full_notm}} Writer API Key | `cos-api-key` | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `writer` permission_ |
+| {{site.data.keyword.cos_full_notm}} Reader API Key | `backup-cos-api-key` | **Required: CI & CD** _Used to authenticate with the {{site.data.keyword.cos_short}} service - This key must have `Reader` permission_ |
 | SonarQube password or authentication token | `sonarqube-password` | **Optional: CI** _Used to authenticate with the SonarQube source code analyzer_ |
 {: caption="DevSecOps Secrets" caption-side="top"}
 
