@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-02-14"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -87,7 +87,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 
 1. Accept the default settings for **Source Provider**.
 
-   If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
+   If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
    {: note}
 
 2. Enter a unique **New repository name**.

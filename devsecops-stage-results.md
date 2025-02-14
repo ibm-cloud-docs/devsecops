@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2024
-lastupdated: "2024-05-28"
+  years: 2024, 2025
+lastupdated: "2025-02-14"
 
 keywords: DevSecOps, IBM Cloud, git clone, submodules
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Using the Stage Results API in custom scripts
 {: #cd-devsecops-stage-results}
 
-You can use the [Stage Results API](/docs/devsecops?topic=devsecops-custom-scripts) to access the results of specific stages and custom stages. This API can only be used in your custom scripts.
+You can use the [Stage Results API](/docs/devsecops?topic=devsecops-cd-devsecops-scripts-stageoutput#cd-devsecops-scripts-resultsapi) to access the results of specific stages and custom stages. This API can only be used in your custom scripts.
 {: shortdesc}
 
 Customize your output to view the desired output in your Stage results. Use the following code snippets to generate various kinds of output:

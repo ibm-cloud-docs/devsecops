@@ -23,7 +23,7 @@ Some data is expected to be available by other stages on the workspace, so be su
 |`test`		         |To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage.		|`save_result`			|No		|
 |`static-scan`		 |To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`		|No		|
 |`dynamic-scan`		 |To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`		|No		|
-|`containerize`		 |[Add artifact names and digests to the pipeline](/docs/devsecops?topic=devsecops-devsecops-config-github).		|`save_artifact`		|Yes		|
+|`containerize`		 |[Add artifact names and digests to the pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-config-github).		|`save_artifact`		|Yes		|
 |`sign-artifact`   |Add the image signature from the GPG signing output.   	|`save_artifact`			|Yes		|
 |`acceptance-test` |To [attach test results to the compliance evidence as evidence artifacts](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps), use the `save_result` command in this stage. 		|`save_result`			|No		|
 {: caption="Stage output" caption-side="top"}

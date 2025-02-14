@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-13"
+lastupdated: "2025-02-14"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -469,7 +469,7 @@ To learn more, refer to [code-engine configmap(s) to configure applications or j
 
 Inferred DevSecOps Pipeline Configuration uses scripts/functions in certain stages from the scripts in the common library, which offers a set of reusable scripts that can help you if you want to started with customization.
 
-For more information about the common scripts library, including scripts, tools, usage, and parameters, see [Common scripts library](/docs/devsecops?topic=devsecops-common-scripts).
+For more information about the common scripts library, including scripts, tools, usage, and parameters, see [Common scripts library](/docs/devsecops?topic=devsecops-devsecops-common-scripts-revise#devsecops-common-scripts-library).
 
 ## FAQ
 {: #devsecops-pipeline-configuration-faq}
@@ -490,7 +490,7 @@ To disable branch protection, set the `setup-branch-protection` property to `
 #### Customize Branch Protection Status Checks
 {: #devsecops-pipeline-configuration-faq-branch-customize}
 
-To customize the [prefix for the branch protection status checks](/docs/devsecops?topic=devsecops-devsecops-config-github#setting-customized-prefix-for-compliance-checks) , set the `branch-protection-status-check-prefix` property. The default prefix is `tekton`.
+To customize the [prefix for the branch protection status checks](/docs/devsecops?topic=devsecops-cd-devsecops-config-github#devsecops-config-customized-prefix) , set the `branch-protection-status-check-prefix` property. The default prefix is `tekton`.
 
 
 ### Configuration and execution of pre-commit hooks
