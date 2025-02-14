@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-02-14"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -66,7 +66,7 @@ Bug fix release
 
 Inferred DevSecOps Pipeline configuration is now available. This feature simplifies onboarding micro-services or applications to DevSecOps pipelines. This feature is also known as Polyglot.
 
-To get started with the Inferred DevSecOps Pipeline configuration, refer to [Using the Inferred DevSecOps Pipeline Configuration](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration).
+To get started with the Inferred DevSecOps Pipeline configuration, refer to [Using the Inferred DevSecOps Pipeline Configuration](/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration).
 
 
 ### Updates for DevSecOps version - open-v9.47.0 and open-v10.28.0

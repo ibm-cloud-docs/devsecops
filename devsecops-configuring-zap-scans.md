@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-10-09"
+  years: 2022, 2025
+lastupdated: "2025-02-14"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -138,7 +138,7 @@ if [ -n "$(get_env opt-in-dynamic-ui-scan "")" ]; then
     source "${COMMONS_PATH}"/owasp-zap/run_scan.sh
 fi
 ```
-The `COMMONS_PATH` refers to a location that holds the build scripts and run scripts for various tools that are a part of the DevSecOps pipeline. For more information, see [Common scripts](/docs/devsecops?topic=devsecops-devsecops-common-scripts).
+The `COMMONS_PATH` refers to a location that holds the build scripts and run scripts for various tools that are a part of the DevSecOps pipeline. For more information, see [Common scripts](/docs/devsecops?topic=devsecops-devsecops-common-scripts-revise).
 
 You can compute the success of the ZAP scan by setting an exit code based on whether the API scan or the UI scan was run. Any vulnerabilities found are also reported. This can be checked by tapping into the variables `api-scan-result` and `ui-scan-result`.
 

@@ -114,7 +114,6 @@ toc:
             - devsecops-pipeline-config-v2.md
             - devsecops-preprocessor.md
       - devsecops-custom-deployment.md
-      - devsecops-tutorial-tekton-cd-compliance.md
       - devsecops-tekton-ci-compliance.md
       - devsecops-tekton-cd-compliance.md
       - topicgroup:
