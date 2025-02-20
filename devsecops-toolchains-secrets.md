@@ -44,7 +44,7 @@ A `Hint` is a suggested default name that is automatically resolved against the 
 {: note}
 
 ## DevSecOps pipeline secrets
-{: #devsecops-pipeline-secrets}
+{: #pipeline-secrets}
 
 | Secret | Hint | Information |
 | -------|------|-------------|

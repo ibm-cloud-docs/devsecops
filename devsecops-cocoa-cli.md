@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-14"
+lastupdated: "2025-02-20"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -3288,7 +3288,7 @@ $ cocoa comment add --id 1 \
 {: #label-commands}
 
 ### cocoa label add
-{: #comment-add}
+{: #label-add}
 
 Adds one or more labels to pull requests in GitHub or GitLab.
 

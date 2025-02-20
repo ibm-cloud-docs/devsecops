@@ -117,6 +117,7 @@ toc:
       - devsecops-tekton-cd-compliance.md
       - devsecops-tutorial-tekton-ci-compliance.md
       - devsecops-tutorial-tekton-cd-compliance.md
+      - devecops-tekton
       - topicgroup:
           label: Working with issues
           topics:
