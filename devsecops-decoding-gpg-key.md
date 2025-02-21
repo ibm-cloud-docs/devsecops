@@ -19,7 +19,7 @@ Decoding a Base64 encoded GPG key can be accomplished using various methods. One
 {: shortdesc}
 
 ## Decoding from a File
-{: #multiple-apps-toolchain-customization}
+{: #cd-devsecops-decoding-file}
 
 To decode the GPG key from a file, follow these steps:
 

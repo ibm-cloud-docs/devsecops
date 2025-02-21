@@ -40,31 +40,31 @@ This tutorial uses an example of `Node.js` app, but you can also deploy other la
 For more information, see [DevSecOps](https://www.ibm.com/think/topics/devsecops){: external} architecture and its implementation in {{site.data.keyword.contdelivery_short}}.
 
 ## Set up an {{site.data.keyword.cloud_notm}} account
-{: #tutorial-part1-account}
+{: #tutorial-account}
 {: step}
 
 To get started, you must set up an [{{site.data.keyword.cloud}} account](/registration){: external}. Depending on your {{site.data.keyword.cloud_notm}} account plan, access to certain resources by DevSecOps toolchains might be limited. For more information, see [Setting up your {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-account-getting-started), and [Upgrading your account](/docs/account?topic=account-upgrading-account).
 
 ## Store secrets values
-{: #tutorial-part1-secrets}
+{: #tutorial-secrets}
 {: step}
 
 Storing secrets values is [essential](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-best-practices-using) to the DevSecOps process. As a user, storing an instance is required to manage and protect systems access that are inside or outside of {{site.data.keyword.cloud_notm}}. Choosing one of the secret management options helps you to protect your sensitive data and centralize your secrets. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can help you choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one. For more information, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
 
 ## Create a Kubernetes cluster
-{: #tutorial-part1-cluster}
+{: #tutorial-cluster}
 {: step}
 
 Create a [Kubernetes cluster](/kubernetes/catalog/create){: external}. The cluster takes time to provision. For more information about provisioning clusters, see [Preparing your account to create clusters](/docs/containers?topic=containers-clusters).
 
 ## Create a {{site.data.keyword.registryshort_notm}} namespace
-{: #tutorial-part1-namespace}
+{: #tutorial-namespace}
 {: step}
 
 Create an [{{site.data.keyword.registrylong}} namespace](/registry/namespaces){: external}. The {{site.data.keyword.registrylong_notm}} provides a multi-tenant private artifact registry that you can use to store and share your container artifacts with users in your {{site.data.keyword.cloud_notm}} account. For more information about {{site.data.keyword.registrylong_notm}}, see [Getting started with {{site.data.keyword.registryshort_notm}}](/docs/Registry?topic=Registry-getting-started).
 
 ## Apply the steps
-{: #tutorial-part1-other}
+{: #tutorial-other}
 {: step}
 
 If applicable to your use case, you can complete any or all the following steps.
@@ -80,7 +80,7 @@ You can automatically set up the DevSecOps infrastructure for your toolchains by
 {: tip}
 
 ## Next steps
-{: #tutorial-part1-next}
+{: #tutorial-next}
 
 After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-ci-toolchain).
 

@@ -87,7 +87,7 @@ The created evidence is based on the values in table 3. The DevSecOps pipeline u
 {: caption="Debug parameters" caption-side="top"}
 
 ## Accessing your scan results
-{: #cd-devsecops-mend-acc-results}
+{: #cd-devsecops-mend-scan-acc-results}
 
 You can access your scan results using any of the following methods:
 

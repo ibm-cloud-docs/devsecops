@@ -18,7 +18,7 @@ subcollection: devsecops
 The following lists explain the stages in pull request (PR), Continuous Integration (CI), Continuous Deployment (CD), and Continuous Compliance (CC) pipelines.
 
 ## Pull request (PR) pipeline stages
-{: #cd-devsecops-pipeline-stages}
+{: #cd-devsecops-pr-pipeline-stages}
 
 The PR pipeline runs compliance checks on a pull request for a chosen application repository and acts as a safeguard for merging into the main branch. The PR pipeline is triggered by opening or updating a pull request against a chosen branch.
 

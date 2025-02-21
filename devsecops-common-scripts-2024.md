@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2024
-lastupdated: "2024-11-26"
+  years: 2024, 2025
+lastupdated: "2025-02-20"
 
 keywords: DevSecOps, common scripts, scripts, pipeline stages, IBM Cloud
 
@@ -81,7 +81,7 @@ The commons library can also serves as a source to copy code from and customize 
 Refer [here](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) to learn more about pipeline customization
 
 ## Best Practices
-{: #devsecops-common-scripts-view}
+{: #devsecops-common-scripts-best-practices}
 
 - Use the commons library as a reference for pipeline mechanics.
 - Customize default scripts to meet specific edge cases.
