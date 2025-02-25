@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2024
-lastupdated: "2024-11-29"
+  years: 2022, 2025
+lastupdated: "2025-02-25"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -69,7 +69,7 @@ Evidence can be declared as:
 
 Below diagram shows how the evidence aggregation works:
 
- ![evidence aggregation](images/Evidence-collection.png){: caption="Evidence aggregation" caption-side="bottom"}
+ ![evidence aggregation](/images/Evidence-collection.png){: caption="Evidence aggregation" caption-side="bottom"}
 
 ### Evidence evaluation and Gating
 {: #evidence-evaluation-gating}
@@ -87,56 +87,56 @@ Supported evidences for gating:
 #### 1. Promotion from `master` to `prod`
 {: #various-deployment-topology-step1}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-prod.png){: caption="Usecase 1. Promotion from `master` to `prod`" caption-side="bottom"}
+ ![master to prod Promotion](/images/devsecops-evidence-checks-master-prod.png){: caption="Usecase 1. Promotion from `master` to `prod`" caption-side="bottom"}
 
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger`](images/devsecops-evidence-checks-master-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger`](/images/devsecops-evidence-checks-master-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger`"}
 
 
 #### 2. Promotion from `master` to `stage` and then to `prod`
 {: #various-deployment-topology-step2}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-prod.png){: caption="Usecase 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
+ ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-prod.png){: caption="Usecase 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
 
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`](images/devsecops-evidence-checks-master-stage-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`](/images/devsecops-evidence-checks-master-stage-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`](images/devsecops-evidence-checks-stage-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`](/images/devsecops-evidence-checks-stage-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`"}
 
-![Config file verison2](images/devsecops-evidence-config-version2-cd.png)
+![Config file verison2](/images/devsecops-evidence-config-version2-cd.png)
  {: caption="Config file verison2"}
 
 #### 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step3}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-south-prod.png){: caption="Usecase 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
+ ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-us-east-south-prod.png){: caption="Usecase 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](/images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](/images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](images/devsecops-evidence-checks-master-stage-prod-us-east-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](/images/devsecops-evidence-checks-master-stage-prod-us-east-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
 
 #### 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step4}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-us-south-prod.png){: caption="Usecase 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
+ ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-us-east-us-south-prod.png){: caption="Usecase 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](/images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](/images/devsecops-evidence-checks-master-stage-us-east-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](/images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](images/devsecops-evidence-checks-master-stage-prod-us-east-us-south-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](/images/devsecops-evidence-checks-master-stage-prod-us-east-us-south-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
 
-![Config file verison2 with region](images/devsecops-evidence-config-version2-region-cd.png){: caption="Config file verison2 with region"}
+![Config file verison2 with region](/images/devsecops-evidence-config-version2-region-cd.png){: caption="Config file verison2 with region"}
 
 ### Result Table for version2 `cocoa locker evidence check`:
 {: #result-table-v2}
 
 
- ![`cocoa locker evidence check` version2 command output](images/devsecops-evidence-result-table-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+ ![`cocoa locker evidence check` version2 command output](/images/devsecops-evidence-result-table-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
 
 ### Pre-deployment (checks that are done before the change request is auto-approved)
 {: #evidence-checks-predep}
