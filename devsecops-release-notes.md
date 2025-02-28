@@ -26,8 +26,8 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 ### Updates for DevSecOps version - open-v9.52.0 and open-v10.34.0
 {: #devsecops-open-v10.34.0-open-v9.52.0}
 
-Enhancements requited evidence checks
-:   Required Evidence check config file version2 now supports use of environment variables in the config file as below:
+Enhancements to required evidence checks
+:   The required Evidence check config file version2 now supports use of environment variables in the config file as below:
   - "source_environments": `[ { "name": "$source"  } ]` - `$source` is an environment variable, specify the exact source branch name.
   - "target_environments": `[ { "name": "$target"  } ]` - On same lines `$target` refers to the exact target branch name.
   - pipelinerun will substitute the environment variables as set in devsecops environment properties in this config v2 file before consuming.
@@ -38,17 +38,17 @@ Enhancements requited evidence checks
 {: #devsecops-open-v10.33.0-open-v9.51.0}
 
 Separation of debug and info logs
-:   Pipeline log viewer has been enhanced by the continuous delivery service and to make best use of enhanced features, this release introduced new methods for logging:
+:   Pipeline log viewer has been enhanced by the continuous delivery service and to make best use of this enhanced feature, this release includes new methods for logging:
   - error()
   - warning()
   - notice()
   - banner()
   - debug()
 
-    The debug log is disabled by default and can be turned on by setting the environment property pipeline-log-level to DEBUG. The debugging level provides fine-grained/granular logging for troubleshooting purposes
+    The debug log is disabled by default and can be turned on by setting the environment property pipeline-log-level to DEBUG. The debugging level provides more fine-grained/granular logging for troubleshooting purposes.
 
-Addition of backup cos buckets for trasition
-:   This feature enables the support for the backup cos configuration which is required when we migrate from one COS bucket to another COS bucket, please specify below properties with the old COS bucket information which will be read only
+Support to use an additional COS bucket
+:   This feature enables support for an additional COS configuration which is required when a user needs to migrate from their existing COS bucket to another COS bucket, please specify the folllowing properties with the existing COS bucket information which will be read only.
   - backup-cos-api-key
   - backup-cos-bucket-name
   - backup-cos-endpoint
