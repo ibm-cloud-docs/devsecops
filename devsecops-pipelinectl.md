@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-22"
+  years: 2021, 2025
+lastupdated: "2025-03-04"
 
 keywords: DevSecOps, pipelinectl
 
@@ -31,6 +31,7 @@ Available aliases and methods:
 
 - [set_env](#set_env)
 - [get_env](#get_env)
+- [list_env](#list_env)
 - [save_file](#save_file)
 - [load_file](#load_file)
 - [save_repo](#save_repo)
