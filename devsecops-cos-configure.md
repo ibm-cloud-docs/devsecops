@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-03-11"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, bucket
 
@@ -66,4 +66,5 @@ In Cloud {{site.data.keyword.cos_short}}, files are grouped in buckets. You migh
 {: #cd-devsecops-cos-related-content}
 
 * [{{site.data.keyword.cos_full_notm}} buckets as evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence)
+* [{{site.data.keyword.cos_full_notm}} configure buckets as evidence locker](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence#cd-devsecops-cos-bucket-configuration)
 * [{{site.data.keyword.cos_full_notm}} evidence](/docs/devsecops?topic=devsecops-devsecops-evidence#devsecops-v2-evidence-lockers)
