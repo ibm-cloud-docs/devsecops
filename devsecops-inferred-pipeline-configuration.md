@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-20"
+lastupdated: "2025-03-14"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -328,24 +328,31 @@ To configure the artifact upload process, use the following spots:
 ### Environment set up Files
 {: #devsecops-pipeline-configuration-hooks-environment-setup-files}
 
-Each source code repository requires specific setup or customization for a given stage. The Inferred DevSecOps Pipeline Configuration feature provides a way to specify an environment-setup property that can be defined as a bash script. This script is sourced before running the corresponding action for a process.
+Each source code repository requires specific setup or customization for a given stage. The Inferred DevSecOps Pipeline Configuration feature provides a way to specify an environment-setup property that can be defined as a `bash` script. This script is sourced before running the corresponding action for a process.
 
-During spots extraction, the feature uses a hint based on the file name to determine the environment setup files. The following files are supported:
+During spots extraction, this inferred devsecops configuration feature uses a hint based on the file name to determine the environment setup files. For instance, a file named `.env.npm-test.sh` will picked as the environment setup script to invoke before executing the npm unit test.
 
-| File name | Associated Stage | Description |
-| -------------- | -------------- | -------------- |
-| `.env.build.sh` | Build | Environment setup for build process. It can be overridden by an environment setup file for a scoped tool (like docker, maven, npm...) such as `.env.docker-build.sh`, `.env.maven-build.sh`, ... |
-| `.env.docker-build.sh` | Build (Docker) | Environment setup for build process with Docker source |
-| `.env.go-build.sh` | Build (Go) | Environment setup for build process with Go source |
-| `.env.maven-build.sh`| Build (Maven)| Environment setup for build process with Maven source |
-| `.env.npm-build.sh`	 | Build  (npm) | Environment setup for build process with npm source |
-| `.env.yarn-build.sh` | Build (Yarn) | Environment setup for build process with Yarn source |
-| `.env.test.sh` | Unit Testing| Environment setup for unit testing process |
-| `.env.deploy.sh` | Deployment | Environment setup for deployment process |
-| `.env.acceptance-test.sh`	 | Acceptance Testing | Environment setup for acceptance testing process |
-| `.env.dynamic-scan.sh` | Dynamic Scanning | Environment setup for dynamic scanning process |
-| `.env.release.sh` | Release | Environment setup for release process |
-{: caption="Environment Setup Files" caption-side="bottom"}
+The normalized format for an environment setup file is like `.env.<process>.sh` or `.env.<tool>-<process>.sh`.
+
+The value for `<process>` can be one of `build`, `test`, `acceptance-test`, `deploy`, `dynamic-scan` or `release`.
+
+For `build` process, the value of `<tool>` can be one of `code-engine`, `docker`, `docker-maven-plugin`, `go`, `gradle`, `helm`, `maven`, `npm`, `pip`, `pipenv`, `poetry`, `terraform` or `yarn`.
+
+For `test` and `acceptance-test` processes, the value of `<tool>` can be one of `go`, `gradle`, `helm`, `maven`, `npm`, `pytest`, `python` or `terratest`.
+
+For `deploy` process, the value of `<tool>` can be one of `code-engine`,`helm`, `kubectl-liberty-app`, `kubectl`, `schematics` or `terraform`.
+
+For `dynamic-scan` process, the value of `<tool>` can be `trigger-async-zap`.
+
+For `release` process, the value of `<tool>` can be one of `maven` or `semantic-release`.
+
+Here is some examples:
+- `.env.build.sh` file is associated as environment-setup for process build in code spots. It can be overriden by an environment setup file for a scoped tool (like docker, maven...) such as `.env.docker-build.sh`, `.env.maven-build.sh`, ...
+- `.env.test.sh` file is associated as environment-setup for process unit-testing in code spots. It can be overriden by an environment setup file for a scoped tool (like go, npm...) such as `.env.go-test.sh`, `.env.npm-test.sh`, ...
+- `.env.deploy.sh` file is associated as environment-setup for process in deployment spots. It can be overriden by an environment setup file for a scoped tool (like code-engine, helm, kubectl...) such as `.env.code-engine-deploy.sh`, `.env.helm-deploy.sh`, ...
+- `.env.acceptance-test.sh` file is associated as environment-setup for process in acceptance-test spots. It can be overriden by an environment setup file for a scoped tool (like go, maven, npm...) such as `.env.maven-acceptance-test.sh`, `.env.python-acceptance-test.sh`, ...
+- `.env.dynamic-scan.sh` file is associated as environment-setup for process in dynamic-scan spots.
+- `.env.release.sh` file is associated as environment-setup for process in release spots. It can be overriden by an environment setup file for a scoped tool (like maven, semantic-release...) such as `.env.maven-acceptance-test.sh`, `.env.semantic-release-acceptance-test.sh`, ...
 
 For an example of how to use this script, see the  [Hello Compliance App](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.env.deploy.sh?ref_type=heads) repository on IBM Cloud.
 

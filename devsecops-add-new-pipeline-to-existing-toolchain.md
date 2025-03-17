@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2024
-lastupdated: "2024-10-09"
+  years: 2024, 2025
+lastupdated: "2025-03-11"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -22,13 +22,13 @@ To add a pipeline to an existing toolchain, complete these steps:
 
 1. From the Toolchain Overview page, click **Add +** to add a tool integration for your toolchain.
 
-   ![Toolchain overview](images/toolchain-overview.png){: caption="Toolchain overview" caption-side="bottom"}
+   ![Toolchain overview](/images/toolchain-overview.png){: caption="Toolchain overview" caption-side="bottom"}
 
 2. Search and click **Delivery Pipeline** tool integration tile.
 
 3. Choose between `Classic pipeline` that is defined through the UI, or the new Tekton-based 'pipeline-as-code' that is defined in a Git repository.
 
-   ![Set up your pipeline](images/setup-new-pipeline.png){: caption=" Drop-down menu to choose the pipeline" caption-side="bottom"}
+   ![Set up your pipeline](/images/setup-new-pipeline.png){: caption=" Drop-down menu to choose the pipeline" caption-side="bottom"}
 
    Tekton pipelines are available only with Private Workers.
    {:  note}
