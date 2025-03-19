@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-02-05"
+lastupdated: "2025-03-19"
 
 keywords: tool integrations, Sonarqube
 
@@ -79,6 +79,8 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |sonarqube		|Tool integration		|The SonarQube tool integration.	|Optional			|
 |sonarqube-config		|Text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). |Required			|
 |opt-in-sonar-hotspots		|Text		|The Sonarqube scan for detecting hotspots.	|Optional			|
+|opt-in-sonar-quality-gates		|Text		|Allowing Sonarqube scan to detect quality gate failures.	|Optional			|
+|sonarqube-user-token		|Text		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			|
 {: caption="Continuous integration pipeline parameters}
 
 For more information about pipelines parameters, see [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
@@ -98,22 +100,173 @@ To know more about the list of preinstalled plug-ins, refer to [plug-ins](https:
 
 DevSecOps Pipelines filters out the problems that reported during SonarQube scan. The pipelines exclusively create Compliance Incidences for problems that are not of type `CODE_SMELL` or `BUG`. The pipeline also skips problems for which the status is `CLOSED`.
 
-### Updating the quality gate
+### Enabling Quality Gate result processing for a SonarQube project
 {: #sonarqube-cipipeline-gate}
 
-If you use the SonarQube instance that the pipeline created, you can update the default quality gate.
+A **Quality Gate** in SonarQube is a set of conditions that determine whether a project meets the required code quality standards. To learn more about Quality Gates , see [SonarQube Documentation](https://docs.sonarsource.com/sonarqube-server/latest/instance-administration/analysis-functions/quality-gates/){: external}. 
+
+SonarQube issue parser supports processing the SonarQube Quality Gate results and create issues if a failure occurs due to it. In order to enable processing of Quality Gates result, set the environment property `opt-in-sonar-quality-gates` as `1`.
+
+If you use the SonarQube instance that the pipeline created or a custom SonarQube tool integration, please follow the below steps to navigate through the SonarQube dashboard:
 
 1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task.
 
-   ![SonarQube dashboard](images/sonar-quality-gate.png){: caption="SonarQube dashboards" caption-side="bottom"}
+   ![SonarQube dashboard](images/sonar-dashboard.png){: caption="SonarQube dashboards" caption-side="bottom"}
 
-1. Click **Quality Gates** > **Create**.
-1. Set your Quality Gate by using one of the following options:
+2. By Default, the `Sonar way` quality gate is associated with any project which is not explicitly associated with a specific quality gate. New Quality  gates with custom metric conditions can also be created.
 
-   * Click  **Set as Default** to set the newly created quality gate as the default.
-   * From the dashboard, select the project and then click **Project Settings** > **Quality Gate** to use the newly created quality gate for the project.
+   - To look for the list of Quality Gates in the dashboard, click on **Quality Gate** from the top Nav bar.
 
-1. Specify which quality gate that you want to associate with the project. New scans are evaluated by this quality gate and evidence is created by the quality gate's results.
+      ![SonarQube default Quality Gate](images/sonar-default-quality-gate.png){: caption="SonarQube default Quality Gate" caption-side="bottom"}
+
+   - To create a new Quality Gate, click on **Quality Gate** from the top Nav bar and then click on **Create**. You can add a name to the Quality Gate and add/delete/update the condition metrics.
+
+   - To look for the Quality Gate associated with the project, select the project and then click **Project Settings** > **Quality Gate**.
+
+      ![SonarQube project Quality Gate](images/sonar-project-quality-gate.png){: caption="SonarQube Quality Gate associated with project" caption-side="bottom"}
+   
+   - To associate a Quality Gate (other than the default one) to a particular project, select the project and then click **Project Settings** > **Quality Gate** > **Always use a specific Quality Gate** > Select the required Quality Gate from the dropdown > **Save**
+
+      ![SonarQube project Quality Gate](images/sonar-add-quality-gate.png){: caption="Associate quality gate with project" caption-side="bottom"}
+
+3. New scans are evaluated by this quality gate and evidence is created by the quality gate's results. Issues are created based on the conditions which caused Quality Gate failure.
+
+   An example of the quality gate status result format which is the reponse of Sonarqube API: `${SONAR_HOST_URL}/api/qualitygates/project_status?projectKey=${SONAR_PROJECT_KEY}`:
+
+   ```sh
+   {
+      "projectStatus": {
+         "status": "ERROR",
+         "conditions": [
+            {
+            "status": "ERROR",
+            "metricKey": "new_coverage",
+            "comparator": "LT",
+            "errorThreshold": "80",
+            "actualValue": "0.0"
+            },
+            {
+            "status": "OK",
+            "metricKey": "new_duplicated_lines_density",
+            "comparator": "GT",
+            "errorThreshold": "3",
+            "actualValue": "0.0"
+            },
+            {
+            "status": "ERROR",
+            "metricKey": "new_security_hotspots_reviewed",
+            "comparator": "LT",
+            "errorThreshold": "100",
+            "actualValue": "0.0"
+            },
+            {
+            "status": "ERROR",
+            "metricKey": "new_violations",
+            "comparator": "GT",
+            "errorThreshold": "0",
+            "actualValue": "14"
+            }
+         ],
+         "ignoredConditions": false,
+         "period": {
+            "mode": "PREVIOUS_VERSION",
+            "date": "2025-03-18T09:43:25+0000"
+         },
+         "caycStatus": "compliant",
+         "additional": {
+            "qualityGateName": "Sonar way",
+            "projectKey": "hello-compliance-app-compliance-check",
+            "dashboardUrl": "http://localhost:9001/dashboard?id=hello-compliance-app-compliance-check"
+         }
+      }
+   }
+
+   ```
+   {: codeblock}
+
+   To learn more about the SonarQube APIs, please refer to [Sonarqube WebAPI documentation](https://next.sonarqube.com/sonarqube/web_api/api/qualitygates){: external}
+
+
+   An issue is created for each **Metric Key** that has status as **ERROR**, ensuring that every failing metric is individually tracked and addressed.
+
+   Example issue:
+
+   ![SonarQube issue](images/sonar-issue-format.png){: caption="Sonarqube issue for a failed metric" caption-side="bottom"}
+
+   Example SonarQube failed evidence due to Quality Gate failure:
+
+   ```sh
+   {
+      "id": "abc",
+      "evidence_type_id": "com.ibm.static_scan",
+      "evidence_type_version": "1.0.0",
+      "date": "2025-03-18T11:22:35.086Z",
+      "origin": {
+      },
+      "details": {
+         "result": "failure",
+         "tool": "sonarqube",
+         "failure_reason": "tool_detected_vulnerabilities"
+      },
+      "issues": [
+         "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/14",
+         "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/15"
+      ],
+      "findings": [
+         {
+            "id": "Metric: new_coverage",
+            "due_date": "n/a",
+            "severity": "high",
+            "first_found": "2025-03-18",
+            "url": "https://github.ibm.com/abcd/compliance-issues-repo/issues/14",
+            "found_status": "existing",
+            "has_exempt": false,
+            "cvss": "n/a",
+            "package": []
+         },
+         {
+            "id": "Metric: new_security_hotspots_reviewed",
+            "due_date": "n/a",
+            "severity": "high",
+            "first_found": "2025-03-18",
+            "url": "https://github.ibm.com/abcd/compliance-issues-repo/issues/15",
+            "found_status": "existing",
+            "has_exempt": false,
+            "cvss": "n/a",
+            "package": []
+         }
+      ],
+      "attachments": [
+         {
+            "hash": "d10a1e5d727b4f778a1d70c2ebaa2060251d56dd79",
+            "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/attachments/d10a1e5d727b4f778a1d70c2e/content",
+            "label": "app_issues"
+         },
+         {
+            "hash": "d76d356cc4da1afc942a6259c1222a7b079607ea7e0d64",
+            "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/attachments/d76d356cc4da1afc942a6259c1222a7b0/content",
+            "label": "app_hotspots"
+         },
+         {
+            "hash": "f0f84a2c2210a9c65c8430d577dafdd71bee6df5da",
+            "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/attachments/f0f84a2c2210a9c65c8430d577dafdd71bee6e/content",
+            "label": "app_quality_status_updated"
+         }
+      ],
+      "assets": [
+         {
+            "hash": "1812f77dfc646c93320794810460acd3e53",
+            "uri": "https://github.ibm.com/abcd/compliance-app-20250310111628285.git#7a06e70001a59032d1",
+            "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/assets/1812f77dfc646c93320794810460acd3e/index.json"
+         }
+      ]
+   }
+
+   ```
+   {: codeblock}
+
+Please ensure to enable `opt-in-sonar-quality-gates` in CC in case it is enabled in CI pipeline. Otherwise, the quality Gate issues found by CC will be autoclosed. Currently we are surfacing warning message in logs concerning this inconsistency.
+{: tip}
 
 To learn more about SonarQube, see [SonarQube Documentation](https://docs.sonarsource.com/sonarqube-server/latest/){: external}.
 

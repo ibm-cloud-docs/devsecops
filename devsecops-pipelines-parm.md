@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-02-14"
+lastupdated: "2025-03-19"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -188,6 +188,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			| Unlocked | 
 |`opt-in-sonar`		|text		|Sonarqube scan integration.	|Optional			| Locked | 
 |`opt-in-sonar-hotspots`		|text		| Allows hotspot detection in Sonarqube scans.	|Optional			| Unlocked | 
+|`opt-in-sonar-quality-gates`		|Text		|Allowing Sonarqube scan to detect quality gate failures.	|Optional			| Unlocked |
 |`opt-out-ci-set-commit-status` 		|text		| If this parameter has any value, the commit status value of the source code repository is not set by the CI pipeline according to the CI pipeline execution's result (success or failure).	|Optional			| Unlocked | 
 |`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			| Unlocked | 
 |`peer-review-compliance`		|text		|Set the `peer-review-compliance` environment variable to 1 in your CI and CD Pipeline to activate the peer-review check. Similarly, in the CD pipeline, this configuration runs peer review validation for all pull requests linked to your current deployment. |Optional			| Locked | 
@@ -210,6 +211,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`sonarqube`](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|Locked|
 |[`sonarqube_standby`](#pipeline-parm-sonarqube)		|tool integration		|The standby Sonarqube tool integration that can be used as a fallback.	|Optional			|Unlocked |
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). | Required |Locked |
+|`sonarqube-user-token`		|Text		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			| Unlocked |
 |[`sonarqube-namespace`](#pipeline-parm-sonarqube-namespace) 	|text		|The configured Kubernetes namespace to use with the SonarQube instance created by the pipeline.	|Optional			|Unlocked |
 |`sonarqube-instance-image` 	|text		| The sonarqube instance image that is used to run as an isolated Docker-in-Docker container.	|Optional			|Unlocked |
 |`sonarqube-scanner-image` 	|text		| The sonarqube scanner CLI image that is used for the default sonarqube scan command.	|Optional			|Unlocked |
