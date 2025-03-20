@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-03-19"
+lastupdated: "2025-03-20"
 
 keywords: tool integrations, Sonarqube
 
@@ -269,6 +269,150 @@ Please ensure to enable `opt-in-sonar-quality-gates` in CC in case it is enabled
 {: tip}
 
 To learn more about SonarQube, see [SonarQube Documentation](https://docs.sonarsource.com/sonarqube-server/latest/){: external}.
+
+### Enabling SonarQube Hotspot processing
+{: #sonarqube-cipipeline-hotspot}
+
+A SonarQube hotspot highlights security-sensitive code that requires manual review to determine whether it poses a real risk. It helps developers focus on potential vulnerabilities without generating false positives. To learn more about managing Hotspots , see [SonarQube Documentation](https://docs.sonarsource.com/sonarqube-server/latest/user-guide/security-hotspots/){: external}.
+
+In order to enable processing of SonarQube Hotspots, set the environment property `opt-in-sonar-hotspots` as `1`.
+
+- To look at the security hotspots detected by SonarQube for a project, select the project and then click **Security Hotspots**.
+
+   ![SonarQube project Hotspots](images/sonar-project-hotspot.png){: caption="Hotspots detected by SonarQube" caption-side="bottom"}
+
+- To review the detected hotspots, select the hotspot and then click on **Review**. A modal will appear, allowing you to set the Review Status as one of the following: `To Review`, `Acknowledged`, `Fixed` and `Safe`.
+
+   ![SonarQube project Hotspots](images/sonar-hotspot-review.png){: caption="Review SonarQube hotspots" caption-side="bottom"}
+
+On enabling the `opt-in-sonar-hotspots` flag, issues will be created when a Hotspot is detected by SonarQube where review status is not set to: `Acknowledged`, `Fixed` and `Safe`.
+
+![SonarQube hotspot issue](images/sonar-hotspot-issue.png){: caption="SonarQube hotspots issue" caption-side="bottom"}
+
+An example of the hotspots result format which is the reponse of SonarQube API:`${SONAR_HOST_URL}/api/hotspots/search?projectKey=${SONAR_PROJECT_KEY}&p=$page&status=TO_REVIEW"`
+
+```sh
+{
+   "hotspots": [
+      {
+         "key": "AYLD_a1_Hqacjdg4wbDR",
+         "component": "hello-compliance-app-compliance-check:index.js",
+         "project": "hello-compliance-app-compliance-check",
+         "securityCategory": "others",
+         "vulnerabilityProbability": "LOW",
+         "status": "TO_REVIEW",
+         "line": 74,
+         "message": "Make sure disabling content security policy frame-ancestors directive is safe here.",
+         "author": "abc@1.com",
+         "creationDate": "2022-04-01T06:29:13+0000",
+         "updateDate": "2022-08-22T05:18:31+0000",
+         "textRange": {
+         "startLine": 74,
+         "endLine": 84,
+         "startOffset": 0,
+         "endOffset": 1
+         },
+         "flows": [
+         {
+            "locations": [
+               {
+               "component": "hello-compliance-app-compliance-check:app.js",
+               "textRange": {
+                  "startLine": 76,
+                  "endLine": 82,
+                  "startOffset": 4,
+                  "endOffset": 5
+               }
+               }
+            ]
+         }
+         ],
+         "rule": {
+         "key": "javascript:S5732"
+         }
+      }
+   ]
+}
+
+```
+{: codeblock}
+
+
+In case a `To Review` status hotspot is encountered in the result of the above API, a failure evidence is collected including hotspot information in the `findings` section.
+
+Example SonarQube failed evidence due to Hotspot detection:
+
+```sh
+{
+  "id": "62fc60140b2a761a969c6ad4f64d93d9c0f8f2301b1",
+  "evidence_type_id": "com.ibm.static_scan",
+  "evidence_type_version": "1.0.0",
+  "date": "2025-03-18T10:29:00.896Z",
+  "origin": {
+  },
+  "details": {
+    "result": "failure",
+    "tool": "sonarqube",
+    "failure_reason": "tool_detected_vulnerabilities"
+  },
+  "issues": [
+    "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/13"
+  ],
+  "findings": [
+    {
+      "id": "javascript:S4426",
+      "due_date": "n/a",
+      "severity": "high",
+      "first_found": "2025-03-18",
+      "url": "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/12",
+      "found_status": "new",
+      "has_exempt": false,
+      "cvss": "n/a",
+      "package": []
+    },
+    {
+      "id": "Hotspot: javascript:S2068",
+      "due_date": "n/a",
+      "severity": "high",
+      "first_found": "2025-03-18",
+      "url": "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/13",
+      "found_status": "new",
+      "has_exempt": false,
+      "cvss": "n/a",
+      "package": []
+    },
+  ],
+  "attachments": [
+    {
+      "hash": "e579a1ab8025d280d5870eb8d4464d6d6a41a22",
+      "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/attachments/e579a1ab8025d280d5870eb8d4464d6d6a41a/content",
+      "label": "app_issues"
+    },
+    {
+      "hash": "6defa891c320ae2b80ae76d03e168edc2379",
+      "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/attachments/6defa891c320ae2b80ae76d03e168edc2379748d9/content",
+      "label": "app_hotspots"
+    },
+    {
+      "hash": "060a60e2d693427cde6064f72743ebb9e1d6",
+      "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/attachments/060a60e2d693427cde6064f72743ebb9e1d/content",
+      "label": "app_quality_status_updated"
+    }
+  ],
+  "assets": [
+    {
+      "hash": "d7391b3273e5e52852f293031d62b9",
+      "uri": "https://github.ibm.com/abcd/compliance-app-20250310111628285.git#4eadaaf7454b8cb0edad927",
+      "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/assets/d7391b3273e5e52852f293031d62b9bf0/index.json"
+    }
+  ]
+}
+```
+{: codeblock}
+
+Please ensure to enable `opt-in-sonar-hotspots` in CC in case it is enabled in CI pipeline. Otherwise, the hotspot issues found by CC will be autoclosed. Currently we are surfacing warning message in logs concerning this inconsistency.
+{: tip}
+
 
 ### Using your own configuration file
 {: #sonarqube-config-file}
