@@ -115,6 +115,8 @@ A **Quality Gate** in SonarQube is a set of conditions that determine whether a 
 
 SonarQube issue parser supports processing the SonarQube Quality Gate results and create issues if a failure occurs due to it. In order to enable processing of Quality Gates result, set the environment property `opt-in-sonar-quality-gates` as `1`.
 
+If `opt-in-sonar-quality-gates` is set as `1`. and you are using your [own SonarQube Instance](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) as an integration (with `sonarqube-config` set as `custom`), in order to fetch the Quality Gate name you can generate a **SonarQube User Token** with required permission to access SonarQube Web API  and set pipeline environment property `sonarqube-user-token` with the token as a secret value. For details about required token permission, please refer [SonarQube token permission](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing).
+
 If you use the SonarQube instance that the pipeline created or a custom SonarQube tool integration, please follow the below steps to navigate through the SonarQube dashboard:
 
 1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task.
@@ -421,6 +423,47 @@ Example SonarQube failed evidence due to Hotspot detection:
 Please ensure to enable `opt-in-sonar-hotspots` in CC in case it is enabled in CI pipeline. Otherwise, the hotspot issues found by CC will be autoclosed. Currently we are surfacing warning message in logs concerning this inconsistency.
 {: tip}
 
+### Permissions for SonarQube Token
+{: sonarqube-ci-pipeline-user-token}
+
+In case of using existing SonarQube instance and to successfully publish the testrecord to Devops Insights and fetch the Quality Gate name for a project, we need to create a **User token** with required permissions and set it as a secret value in env property `sonarqube-user-token` in order to provide permission to access the required Sonarqube enpoints.
+
+To create **User Token**, open SonarQube Dashboard > click on you Profile picture in top right corner > select **My Account** > select **Security** > from the **Type** dropdown select **User Token** > click **Generate**
+
+![SonarQube User Token](images/sonar-user-token.png){: caption="SonarQube User Token Generation" caption-side="bottom"}
+
+1. The Devops Insights plugin makes the following API calls to Sonarqube server, as given below:
+   - [GET api/qualitygates/project_status](https://next.sonarqube.com/sonarqube/web_api/api/qualitygates/project_status){: external}
+
+      Requires one of the following permissions:
+      - ‘Administer System’
+      - ‘Administer’ rights on the specified project
+      - ‘Browse’ on the specified project
+      - ‘Execute Analysis’ on the specified project
+
+   - [GET api/measures/component](https://next.sonarqube.com/sonarqube/web_api/api/measures/component){: external}
+
+      Requires the 'Browse' permission on the specified project(s). component.
+
+   - [GET api/issues/search](https://next.sonarqube.com/sonarqube/web_api/api/issues/search){: external}
+
+      Requires the 'Browse' permission on the specified project(s).
+
+   - [GET api/ce/task](https://next.sonarqube.com/sonarqube/web_api/api/ce/task){: external}
+
+      Requires one of the following permissions:
+      - 'Administer' at global or project level
+      - 'Execute Analysis' at global or project level
+
+2. To fetch the Quality Gate name, the below SonarQube Endpoint is hit:
+   - [GET api/qualitygates/get_by_project](https://next.sonarqube.com/sonarqube/web_api/api/qualitygates/get_by_project){: external}
+
+      Requires one of the following permissions:
+      - 'Administer System'
+      - 'Administer' rights on the specified project
+      - 'Browse' on the specified project
+
+For more information about the permissions to access the SonarQube Web API, please refer [SonarQube Web API documentation](https://next.sonarqube.com/sonarqube/web_api/){: external}
 
 ### Using your own configuration file
 {: #sonarqube-config-file}
