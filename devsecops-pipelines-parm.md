@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-03-19"
+lastupdated: "2025-03-20"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -89,6 +89,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked |
 |`slack-notifications`		|text		|The switch that turns the Slack integration on or off.	|Optional			| Locked |
 |`[slack-notifications]`(#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		| Unlocked |
+|`opt-in-sonar-pr-analysis`		|Text		|Allowing Sonarqube scan to do the pull request analysis (This option will work only if the PR is not contributed from a forked repository).This parameter is only valid for `App-preview PR pipeline`.|Optional			| Unlocked |
 {: caption="Pull request parameters" caption-side="bottom"}
 {: #cd-pr-parameters}
 {: tab-title="Pull request parameters"}

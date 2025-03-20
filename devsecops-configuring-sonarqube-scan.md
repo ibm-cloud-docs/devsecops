@@ -80,6 +80,7 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |sonarqube-config		|Text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). |Required			|
 |opt-in-sonar-hotspots		|Text		|The Sonarqube scan for detecting hotspots.	|Optional			|
 |opt-in-sonar-quality-gates		|Text		|Allowing Sonarqube scan to detect quality gate failures.	|Optional			|
+|opt-in-sonar-pr-analysis		|Text		|Allowing Sonarqube scan to do the pull request analysis (This option will work only if the PR is not contributed from a forked repository). This parameter is only valid for `App-preview PR pipeline`.|Optional			|
 |sonarqube-user-token		|Text		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			|
 {: caption="Continuous integration pipeline parameters}
 
@@ -99,6 +100,13 @@ To know more about the list of preinstalled plug-ins, refer to [plug-ins](https:
 {: #sonarqube-cipipeline-issues-reported}
 
 DevSecOps Pipelines filters out the problems that reported during SonarQube scan. The pipelines exclusively create Compliance Incidences for problems that are not of type `CODE_SMELL` or `BUG`. The pipeline also skips problems for which the status is `CLOSED`.
+
+### Enabling Pull Request analysis in the App Preview PR pipeline
+{: #sonarqube-pr-analysis}
+
+PR analysis option is provided in the `App Preview PR pipeline` if the PR is coming from the same repo as the target repository (and not a fork). The Sonarqube instance should also support the PR analysis.
+The default sonarqube instances used in `cluster` and `dind` mode do not support this feature as pull request analysis is available starting in sonarqube Developer Edition.
+The environment variable `opt-in-sonar-pr-analysis` has to be added to the pipeline and its value should not be empty.
 
 ### Enabling Quality Gate result processing for a SonarQube project
 {: #sonarqube-cipipeline-gate}
