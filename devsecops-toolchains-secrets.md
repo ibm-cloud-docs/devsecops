@@ -99,3 +99,72 @@ The templates also come with an {{site.data.keyword.keymanagementservicefull}} t
 If you stored the `role id` and `secret id` in {{site.data.keyword.keymanagementserviceshort}} in advance, then you can select the {{site.data.keyword.keymanagementserviceshort}} instance that contains those secrets in the tool card as shown in Figure 2. After that is done, then you can click the key icons on the **role id** and **secret id** fields in the HashiCorp Vault tool card, and use the picker to apply the secrets to those fields.
 
 Similarly, any other secrets that are used in the toolchain have a key icon that is attached to the text field. You can use the same picker control to apply the HashiCorp Vault secrets to all the remaining instances.
+
+### Retrieving Secrets from IBM Cloud Secrets Manager
+{: #retrieving-secrets-from-IBM-cloud-secrets-manager}
+
+Use the `get_env` command to access the secret securely. This method retrieves the secret without exposing it in logs.
+
+#### Supported Secret Types
+
+Currently, we support fetching the following types of secrets from the environment properties in the Secrets Manager:
+
+- Arbitrary
+
+- IAM credentials
+
+- Key-value
+
+#### Usage:
+
+```bash
+  export SECRET_VALUE=$(get_env "secret_key" "")
+```
+
+In this example:
+
+- `secret_key` is the name used to store the secret.
+
+- `SECRET_VALUE` holds the retrieved secret value for later use.
+
+Depending on the type of secret, get_env retrieves specific values:
+
+##### Retrieving arbitrary Secret
+
+```bash
+  {
+    "name": "my-secret",
+    "secret_type": "arbitrary",
+    ...
+    "payload": "The quick brown fox jumped over the lazy dog."
+  }
+```
+If `get_env` is used with `my-secret`, it retrieves the `payload` value.
+
+
+##### Retrieving iam_credentials Secret
+
+```bash
+  {
+    "name": "my-iam-credentials",
+    "secret_type": "iam_credentials",
+    ...
+    "api_key": "RmnPBn6n1dzoo0v3kyznKEpg0WzdTpW9lW7FtKa017_u",
+    "api_key_id": "ApiKey-dcd0b857-b590-4507-8c64-ae89a23e8d76",
+    "service_id": "ServiceId-bb4ccc31-bd31-493a-bb58-52ec399800be"
+  }
+```
+If `get_env` is used with `my-iam-credentials`, it retrieves the `api_key`.
+
+##### Retrieving key-value Secret
+
+```bash
+  {
+    "name": "my-kv-secret",
+    "secret_type": "key-value",
+    ...
+    "data": "{\"key\":\"value\"}"
+  }
+```
+
+If `get_env` is used with `my-kv-secret`, it retrieves the `value` inside the key-value pair
