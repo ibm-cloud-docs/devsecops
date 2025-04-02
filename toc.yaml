@@ -202,6 +202,7 @@ toc:
       - topicgroup:
           label: Configuring Git repos for DevSecOps
           topics:
+          - devsecops-config-github-token.md
           - devsecops-config-github.md
           - devsecops-git-submodules.md
       - topicgroup:
