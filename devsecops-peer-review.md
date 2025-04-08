@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-04-08"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -76,7 +76,7 @@ In this diagram, PR1, PR2 are the pull/merge requests that are approved before m
 By default, the sample application in the CI toolchain attempts to set the minimum number of reviewers to 1. If you want to change the number of reviewers, set the `peer_review_approvers` envronment property as required.  For more information on setting the minimum number of reviewers required for a pull/merge request, see the following GitHub and GitLab resources:
 
 * [GitHub: Require multiple reviewers for pull requests](https://github.blog/news-insights/product-news/require-multiple-reviewers/)
-* [GitLab: Merge request approval rules](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/rules.html)
+* [GitLab: Merge request approval rules](https://docs.gitlab.com/user/project/merge_requests/approvals/rules/)
 
 
 ## Data collected in continuous integration build runs

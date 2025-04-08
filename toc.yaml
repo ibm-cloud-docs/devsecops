@@ -16,7 +16,7 @@ toc:
       - link:
           label: What is DevSecOps?
           href: https://www.ibm.com/think/topics/devsecops
-      - devsecops_intro.md 
+      - devsecops_intro.md
       - topicgroup:
           label: DevSecOps architecture
           topics:
@@ -79,9 +79,9 @@ toc:
       - topicgroup:
           label: Develop and deploy secure IaC with DevSecOps practices
           topics:
-          - topic: devsecops-tutorial-iac-prereqs.md
-          - topic: devsecops-tutorial-iac-ci-toolchain.md
-          - topic: devsecops-tutorial-iac-cd-toolchain.md
+          - devsecops-tutorial-iac-prereqs.md
+          - devsecops-tutorial-iac-ci-toolchain.md
+          - devsecops-tutorial-iac-cd-toolchain.md
       - devsecops-tutorial-tekton-ci-compliance.md
   - navgroup:
       id: howto
@@ -90,10 +90,9 @@ toc:
       - topicgroup:
           label: Configuring image signing
           topics:
-          - devsecops-image-signing.md 
-          - devsecops-taas-private-worker.md
+          - devsecops-image-signing.md
           - devsecops-artifact-signing.md
-          - devsecops-decoding-gpg-key.md 
+          - devsecops-decoding-gpg-key.md
           - devsecops-get-public-key.md
           - devsecops-image-verify.md
       - topicgroup:
@@ -114,10 +113,8 @@ toc:
             - devsecops-pipeline-config-v2.md
             - devsecops-preprocessor.md
       - devsecops-custom-deployment.md
-      - devsecops-tekton-cd-compliance.md
-      - devsecops-tutorial-tekton-ci-compliance.md
       - devsecops-tutorial-tekton-cd-compliance.md
-      - devecops-tekton
+      - devsecops-tekton-ci-compliance.md
       - topicgroup:
           label: Working with issues
           topics:
@@ -139,7 +136,7 @@ toc:
           - devsecops-evidence-checks.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
-          - devsecops-cos-configure.md 
+          - devsecops-cos-configure.md
           - topicgroup:
               label: Gathering evidence for audits
               topics:
@@ -151,22 +148,14 @@ toc:
                 navtitle: Inventory commitment details
               - topic: evidence/view-agg-status.md
                 navtitle: Aggregated summary of evidence
-              - topic: evidence/peer-review-pull.md.md
-                navtitle: Peer review of a pull request
               - topic: evidence/environment-builds.md
                 navtitle: Development and production builds
-              - topic: evidence/production-history.md
-                navtitle: Production commitment history
-              - topic: evidence/quality-reports.md
-                navtitle: Quality dashboard reports
               - topic: evidence/different-branches.md
                 navtitle: Separate staging and production branches
               - topic: evidence/open-source-usage.md
                 navtitle: Open Source usage restrictions
               - topic: evidence/periodic-review.md
                 navtitle: Periodic review
-              - topic: evidence/setting-restrictions.md
-                navtitle: Setting various levels of restrictions
               - topic: evidence/check-run.md
                 navtitle: CIS check and Static and Dynamic scans
       - topicgroup:
@@ -188,11 +177,10 @@ toc:
           - devsecops-configuring-zap-scans.md
           - devsecops-configure-gosec-scan.md
           - devsecops-configuring-fips-scan.md
-          - devsecops-configuring-sonarqube-scan.md 
+          - devsecops-configuring-sonarqube-scan.md
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
           - devsecops-configuring-mend-sast-scan.md
-          - devsecops-configuring-mend-sbom-generate.md          
           - devsecops-configuring-xray-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
@@ -228,7 +216,7 @@ toc:
       - topicgroup:
           label: Delivery pipelines
           topics:
-          - devsecops-pipelines-config.yaml
+          - devsecops-pipelines-config-v2.md
           - devsecops-pipelines-status.md
           - devsecops-pr-pipeline.md
           - devsecops-ci-pipeline.md
@@ -241,8 +229,8 @@ toc:
       - devsecops-triggers.md
       - devsecops-async-stages.md
       - devsecops-webhook-payloads.md
-      - devsecops-images.md 
-      - devsecops-asset-based-evidence-collection.md 
+      - devsecops-images.md
+      - devsecops-asset-based-evidence-collection.md
       - topicgroup:
           label: Command reference
           topics:
