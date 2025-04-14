@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-04-14"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -32,7 +32,7 @@ With this tutorial, you can use the toolchain template for continuous integratio
 Complete the following steps before you begin this tutorial.
 
 1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac). For more information, see the [importance of CI for IaC](/docs-draft/devsecops-working?topic=devsecops-working-practices-ci-toolchain-iac).
-2. View the [Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}} - Part 1](https://video.ibm.com/embed/recorded/130714354) video.
+2. View the [Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}} - Part 1](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen} video.
 
 ## Start the CI toolchain setup
 {: #devsecops-tutorial-iac-ci-setup}

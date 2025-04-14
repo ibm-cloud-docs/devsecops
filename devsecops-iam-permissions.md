@@ -12,104 +12,119 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Managing IAM access for toolchains
+# Managing IAM access for cloud resources accessed by the DevSecOps Toolchains
 {: #iam-permissions}
 
-{{site.data.keyword.cloud}} Identity and Access Management (IAM) controls the access to toolchains for users in your account. Every user that accesses the toolchains in your account must be assigned an access policy with an IAM role. Review the following roles, actions, and more to determine the best way to assign access to toolchains.
-{: shortdesc}
+{{site.data.keyword.cloud}} Identity and Access Management (IAM) enables administrators to assign specific roles such as Viewer, Editor, Operator, and Administrator to users and service identities. This defines their access levels to resources like Continuous Delivery, Secrets Manager, Container Registry, Cloud Object Storage, Security and Compliance Center, as well as deployment targets such as Kubernetes clusters and Code Engine.
+In IBM Cloud DevSecOps pipelines, different sets of IAM permissions are required based on the actor's role. Broadly, roles in IBM Cloud DevSecOps pipelines can be categorized into two main types:
 
-The access policy that you assign users in your account determines what actions a user can perform within the context of the toolchain that you select. The allowable actions are customized and defined by the toolchain as operations that are allowed to be performed. Each action is mapped to an IAM platform or role that you can assign to a user.
+- **Pipeline Administrators**
+These roles are responsible for managing and configuring the DevSecOps pipelines, toolchains, and associated resources. 
+A Pipeline Administrator needs broad permissions to configure, manage, and troubleshoot pipelines, including Editor or Administrator roles for resources like Toolchain, Continuous Delivery, Container Registry, and Secrets Manager. 
+This allows them to configure pipelines, configure toolchain integrations, integrate cloud services, integrate security tools.
 
-If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles&interface=ui#custom-access-roles) and pick the actions to include.
-{: tip}
+- **Pipeline Runners**
+These roles are responsible for executing the DevSecOps pipelines, toolchains, and associated resources.
+A Pipeline Runner, which executes pipelines, requires limited permissions focused on running builds, deploying applications, and accessing necessary resources. 
+The role provides limited permissions like Operator, Writer, or Reader, allowing them to interact with the necessary services (e.g., Kubernetes, Code Engine, Cloud Object Storage) without modifying critical configurations. 
 
-IAM access policies enable access to be granted at different levels. Some of the options include the following:
+The access to DevSecOps pipelines and resources can be granted in two primary approaches. 
+  - Access Group based approach
+  - Service ID based approach
 
-* Access across all instances of the service in your account
+Both methods support secure access management in IBM Cloud, with API keys mapped to access groups being ideal for centralized role management, while Service ID API keys offer a more flexible and secure way to authenticate automated DevSecOps workflows
 
-Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to the toolchain and the ability to call the toolchain's API.
+## Access Group based approach
 
-For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain-roles).
+This approach involves assigning users to access groups, which are services with predefined roles and permissions. 
+By using access groups, administrators can centrally manage permissions, ensuring consistency and scalability across multiple users. 
+This method simplifies access management, as any changes to an access group automatically apply to all users.
+The API keys created by users within the access group automatically inherit the assigned permissions.
 
-| Platform role |  Description of actions |
-|---------------|-------------------------|
-| Viewer                 |  View toolchains and delivery pipelines. |
-| Operator               |  Run toolchains and delivery pipelines.  |
-| Editor                 |  Manage the toolchains, which include creating and deleting toolchains along with performing all platform actions except for managing the account and assigning access policies.  |
-| Administrator          |  Perform all platform actions based on the resource that this role is being assigned, including assigning access policies to other users.  |
-{: row-headers}
-{: class="simple-tab-table"}
-{: caption="IAM platform roles" caption-side="bottom"}
-{: #iamrolesplatform}
-{: tab-title="Platform roles"}
-{: tab-group="IAM"}
+Here is a table outlining the different sets of permissions required for **Pipeline Administrator** role: 
 
-| Service role |  Description of actions |
-|--------------|------------------------|
-|  Administrator, Writer  |  The {{site.data.keyword.cos_full_notm}} service in your team's resource group. |
-|  Administrator, Writer  |  The {{site.data.keyword.contdelivery_full}} service in your team's resource group. |
-|  Administrator  |  The toolchain service in your team's resource group. |
-|  Viewer, Reader, Writer  |  The {{site.data.keyword.containerlong}}. |
-|  Viewer, ReaderPlus  |  The {{site.data.keyword.keymanagementserviceshort}} service in your team's resource group. |
-|  Viewer, SecretsReader  |  The Secrets Manager service in your team's resource group. |
-{: row-headers}
-{: class="simple-tab-table"}
-{: caption="IAM service access roles" caption-side="bottom"}
-{: #iamrolesservice}
-{: tab-title="Service roles"}
-{: tab-group="IAM"}
+| **Resource / Service**        | **IAM Permissions**                      | **Notes**                                |
+|-----------------------------  |------------------------------------------|------------------------------------------|
+| **IAM Identity Service**      | User API key creator, Service ID creator, Operator |                                |
+| **User Management**           | Editor                                   |                                          |
+| **IAM Access Groups Service** | Editor                                   |                                          |
+| **Resource Group**            | Viewer                                   |                                          |
+| **IBM Cloud Toolchain**       | Editor                                   |                                          |
+| **Continuous Delivery**       | Editor                                   |                                          |
+| **Secrets Manager**           | Manager, Administrator                   | **Administrator** role is required to create new Secret Manager Instance and create authorization. **Manager** role is required to create secret groups in Secret Manager Instance.                     |
+| **Cloud Object Storage**      | Writer, Editor                           |                                          |
+| **Container Registry**        | Manager                                  | **Manager** role is required to create namespace in Container Registry |
 
-## Assigning access to toolchains in the console
-{: #assign-access-console}
+Here is a table outlining the different sets of permissions required for **Pipeline Runner** role:
 
-Assign access in the console in one of the following ways:
+| **Resource / Service**      | **IAM Permissions**                      | **Notes**                                |
+|-----------------------------|------------------------------------------|------------------------------------------|
+| **Resource Group**          | Viewer                                   |                                          | 
+| **IBM Cloud Toolchain**     | Pipeline Runner, Operator                | **Operator** role is required to launch the sub-pipelines                                                                                                       |
+| **Secrets Manager**         | Reader                                   | **Reader** role is required to view secrets metadata                                                                                                            |
+| **Cloud Object Storage**    | Object Writer, Reader                    |                                          |
+| **Container Registry**      | Reader, Writer                           | **Manager** role is required to create namespace in Container Registry, if one does not exist already |
 
-* Access policies per user. You can manage access policies per user from the **Manage** > **Access (IAM)** > **Users** page in the console.
 
-For information about the steps to assign IAM access, see [Assigning access to resources in the console](/docs/account?topic=account-assign-access-resources&interface=ui#access-resources-console).
+Based on the deployment target as IBM Cloud Kubernetes Service (IKS) or IBM Cloud Code Engine, different IAM permissions required for Pipeline Administrators and Pipeline Runners. 
 
-* Access groups. Access groups help in streamlining access management by assigning access to a group. You can then add or remove users as needed from the group to control their access. You manage access groups and their access from the **Manage** > **Access (IAM)** > **Access groups** page in the console.
+Here is a table outlining the different sets of permissions required for **Pipeline Administrator** role: 
 
-For more information, see [Assigning access to a group in the console](/docs/account?topic=account-groups&interface=ui#access_ag).
+| **Resource / Service**      | **IAM Permissions**                      | **Notes**                                |
+|-----------------------------|------------------------------------------|------------------------------------------|
+| **IBM Kubernetes Service**  | Manager, Editor                          |                                          |
+| **Code Engine**             | Manager, Editor                          |                                          |
 
-Access to toolchains for users in your account is controlled by {{site.data.keyword.cloud}} Identity and Access Management (IAM). Every user that accesses the toolchains in your account must be assigned an access policy with an IAM role. Review the following roles, actions, and more to determine the best way to assign access to toolchains.
-{: shortdesc}
+Here is a table outlining the different sets of permissions required for **Pipeline Runner** role:
 
-The access policy that you assign users in your account determines what actions a user can perform within the context of the toolchain that you select. The allowable actions are customized and defined by the toolchain as operations that are allowed to be performed. Each action is mapped to an IAM platform or role that you can assign to a user.
+| **Resource / Service**      |**IAM Permissions**                       | **Notes**                                |
+|-----------------------------|------------------------------------------|------------------------------------------|
+| **IBM Kubernetes Service**  | Writer, Operator                         |                                          |
+| **Code Engine**             | Writer, Operator                         |                                          |
+ 
 
-If a specific role and its actions don't fit the use case that you want to address, you can [create a custom role](/docs/account?topic=account-custom-roles&interface=ui#custom-access-roles) and pick the actions to include.
-{: tip}
+## Service ID based approach
 
-IAM access policies enable access to be granted at different levels. Some of the options include the following:
+Service IDs are non-human identities used to authenticate and authorize automated processes, such as DevSecOps pipelines. 
+Service ID API keys grant specific permissions to pipelines or services without tying them to an individual user account. 
+This approach enhances security by ensuring that pipelines operate with only the required permissions, reducing the risk of unauthorized access while enabling seamless integration with IBM Cloud services.
 
-* Access across all instances of the service in your account
+Here is a table outlining the different sets of permissions required for **Pipeline Administrator** role: 
 
-Review the following tables that outline what types of tasks each role allows for when you're working with the toolchain service. Platform management roles enable users to perform tasks on service resources at the platform level, for example, assign user access to the service, create or delete instances, and bind instances to applications. Service access roles enable users access to toolchain and the ability to call the toolchain's API. For information about the actions that are mapped to each role, see [IAM roles and actions - Toolchain](/docs/account?topic=account-iam-service-roles-actions#toolchain-roles).
+| **Resource / Service**        | **IAM Permissions**                      | **Notes**                                |
+|-----------------------------  |------------------------------------------|------------------------------------------|
+| **IAM Identity Service**      | User API key creator, Service ID creator, Operator |                                |
+| **User Management**           | Editor                                   |                                          |
+| **IAM Access Groups Service** | Editor                                   |                                          |
+| **Resource Group**            | Administrator                            |                                          |
+| **IBM Cloud Toolchain**       | Administrator                            |                                          |
+| **Continuous Delivery**       | Editor                                   |                                          |
+| **Secrets Manager**           | Manager, Administrator                   | **Administrator** role is required to create new Secret Manager Instance and create authorization. **Manager** role is required to create secret groups in Secret Manager Instance.                     |
+| **Cloud Object Storage**      | Writer, Administrator                    |                                          |
+| **Container Registry**        | Manager                                  | **Manager** role is required to create namespace in Container Registry |
 
-| Platform role |  Description of actions |
-|---------------|-------------------------|
-| Viewer                 |  View toolchains and delivery pipelines. |
-| Operator               |  Run toolchains and delivery pipelines.  |
-| Editor                 |  Manage the toolchains, which include creating and deleting toolchains along with performing all platform actions except for managing the account and assigning access policies.  |
-| Administrator          |  Perform all platform actions based on the resource this role is being assigned, including assigning access policies to other users.  |
-{: row-headers}
-{: class="simple-tab-table"}
-{: caption="IAM platform roles" caption-side="bottom"}
-{: #iamrolesplatform}
-{: tab-title="Platform roles"}
-{: tab-group="IAM"}
+Here is a table outlining the different sets of permissions required for **Pipeline Runner** role:
 
-| Service role |  Description of actions |
-|--------------|------------------------|
-|  Administrator, Writer  |  The {{site.data.keyword.cos_full_notm}} service in your team's resource group. |
-|  Administrator, Writer  |  The {{site.data.keyword.contdelivery_full}} service in your team's resource group. |
-|  Administrator  |  The toolchain service in your team's resource group. |
-|  Viewer, Reader, Writer  |  The {{site.data.keyword.containerlong}}. |
-|  Viewer, ReaderPlus  |  The {{site.data.keyword.keymanagementserviceshort}} service in your team's resource group. |
-|  Viewer, SecretsReader  |  The Secrets Manager service in your team's resource group. |
-{: row-headers}
-{: class="simple-tab-table"}
-{: caption="IAM service access roles" caption-side="bottom"}
-{: #iamrolesservice}
-{: tab-title="Service roles"}
-{: tab-group="IAM"}
+| **Resource / Service**      | **IAM Permissions**                      | **Notes**                                |
+|-----------------------------|------------------------------------------|------------------------------------------|
+| **Resource Group**          | Viewer                                   |                                          | 
+| **IBM Cloud Toolchain**     | PipelineRunner, Operator                 | **Operator** role is required to launch the sub-pipelines                                                                                                       |
+| **Secrets Manager**         | Reader                                   | **Reader** role is required to view secrets metadata                                                                                                            |
+| **Cloud Object Storage**    | Object Writer, Reader                    |                                          |
+| **Container Registry**      | Reader, Writer                           | **Manager** role is required to create namespace in Container Registry, if one does not exist already |
+
+Here is a table outlining the different IAM permissions required for Pipeline Administrators and Pipeline Runners, based on the deployment target as IBM Cloud Kubernetes Service (IKS) or IBM Cloud Code Engine:
+
+Here is a table outlining the different sets of permissions required for **Pipeline Administrator** role: 
+
+| **Resource / Service**      | **IAM Permissions**                      | **Notes**                                |
+|-----------------------------|------------------------------------------|------------------------------------------|
+| **IBM Kubernetes Service**  | Manager, Administrator                   |                                          |
+| **Code Engine**             | Manager, Administrator                   |                                          |
+
+Here is a table outlining the different sets of permissions required for **Pipeline Runner** role:
+
+| **Resource / Service**      |**IAM Permissions**                       | **Notes**                                |
+|-----------------------------|------------------------------------------|------------------------------------------|
+| **IBM Kubernetes Service**  | Writer, Operator                         |                                          |
+| **Code Engine**             | Writer, Operator                         |                                          |

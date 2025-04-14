@@ -82,6 +82,13 @@ For more information about the expected output from user script stages, see [Cus
 | `code-pr-finish` | Runs all of the required compliance checks, comments the results to the pull request, and sets their result on the {{site.data.keyword.gitrepos}} repos. |
 {: caption="Compliance scans and checks" caption-side="top"}
 
+## Using PR/MR changes for pipeline config repo
+{: #cd-devsecops-app-repo-pipeline-config-repo}
+
+If the PR pieline should consider the changes of the config files/scripts coming from the PR/MR then, the config repo and branch should be empty which can be set as below:
+- The env variables `one-pipeline-repo` , `one-pipeline-config-repo` and `pipeline-config-repo` are empty or not specified in the env variables 
+- The env variables `one-pipeline-config-branch` and `pipeline-config-branch` are empty or not specified in the env variables.
+
 ## Merge pull requests with issues
 {: #cd-devsecops-merge-pr}
 

@@ -44,7 +44,7 @@ You can also add a default label for issues with the `incident-labels` pipeline 
 When you use {{site.data.keyword.gitrepos}}, you can search for issues in various ways in the UI. For example, you can filter by texts in the title, the body, or in comments. You can also filter by any label.
 
 For more information, see the following documentation:
-- How to [search on GitLab](https://docs.gitlab.com/ee/user/search/#search-issues-and-merge-requests){: external}.
+- How to [search on GitLab](https://docs.gitlab.com/user/search/#search-issues-and-merge-requests){: external}.
 - How to [search on GitHub](https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests){: external}.
 
 ## Labeling issues

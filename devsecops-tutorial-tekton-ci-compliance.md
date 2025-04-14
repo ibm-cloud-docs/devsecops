@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-04-14"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -33,7 +33,7 @@ With this tutorial, you can set up the Tekton continuous integration (CI) pipeli
 * [Validate your {{site.data.keyword.iamlong}} (IAM) permissions](/docs/devsecops?topic=devsecops-iam-permissions) that are assigned to the corresponding integrations.
 * [Set up the GaraSign artifact signing service](/docs/devsecops?topic=devsecops-devsecops-imagesigning) to sign artifacts.
 * [Get a Service API key for TaaS private worker](/docs/devsecops?topic=devsecops-devsecops-tass-pw).
-* View the [Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}}](https://video.ibm.com/embed/recorded/130714354) video.
+* View the [Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}}](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen} video.
 
    The CI pipeline uses the GaraSign code signing service to sign build artifacts that require registration and on-boarding. GaraSign uses the internal {{site.data.keyword.IBM_notm}} network and the TaaS team provide Tekton private workers that have access to the internal {{site.data.keyword.IBM_notm}} network. Registration and on-boarding are required to use the TaaS Tekton private workers.
    {: note}
