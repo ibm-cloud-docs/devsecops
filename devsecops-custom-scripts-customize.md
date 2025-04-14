@@ -54,7 +54,7 @@ These settings are not pipeline parameters, they must be part of your `.pipeline
 
 ```bash
 test:
-  image: ibmcom/pipeline-base-image:2.7
+  image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.69
   script: |
     #!/bin/sh
     scripts/lint.sh
@@ -106,7 +106,7 @@ setup:
   abort_on_failure: true
 
   # any docker image can be used which is accessible by the private worker
-  image: ibmcom/pipeline-base-image:2.7
+  image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.69
 
   # you can reference configmaps, each key in the configmap is going to be available as `/config/{key}`
   configmap: my-config
@@ -128,7 +128,7 @@ setup:
 
 # `test` runs after `setup`, but before building the docker image
 test:
-  image: ibmcom/pipeline-base-image:2.7
+  image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.69
   script: |
     #!/bin/sh
     ...
@@ -143,7 +143,7 @@ static-scan:
 
 # `deploy` runs after building the docker image
 deploy:
-  image: ibmcom/pipeline-base-image:2.7
+  image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.69
 
   # the script has access to the built docker image, which is available at `/config/image`
   script: |
@@ -160,7 +160,7 @@ dynamic-scan:
 
 # `acceptance-test` runs after `deploy`
 acceptance-test:
-  image: ibmcom/pipeline-base-image:2.7
+  image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.69
   script: |
     #!/bin/sh
     ...
