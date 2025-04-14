@@ -13,7 +13,7 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Setting up continuous integration pipelines with DevSecOps
+# Setting up Tekton Continuous integration pipelines with DevSecOps
 {: #tutorial-tekton-ci-compliance}
 {: toc-content-type="tutorial"}
 {: toc-services="schematics, ContinuousDelivery"}
