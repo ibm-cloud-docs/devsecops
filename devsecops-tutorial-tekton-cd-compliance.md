@@ -29,7 +29,9 @@ With this tutorial, you can set up a continuous deployment (CD) pipeline and too
 * [Compliance continuous integration (CI) toolchain](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-ci-toolchain){: external} configured with {{site.data.keyword.DRA_full}} integrations.
 * Optional. [Configure {{site.data.keyword.cos_full}}](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to store pipeline run evidence.
 * [Validate your {{site.data.keyword.iamlong}} (IAM) permissions](/docs/devsecops?topic=devsecops-iam-permissions) that are assigned to the corresponding integrations.
-* View the [Getting started with DevSecOps in {{site.data.keyword.cloud_notm}} - CD toolchain](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_ceb64gbr){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen} video to get an overview of the CD toolchain setup process.
+* View the following video to get an overview of the CD toolchain setup process.
+
+![Getting started with DevSecOps in {{site.data.keyword.cloud_notm}} - CD toolchain](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_ceb64gbr){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen}
 
 ## Start the CD toolchain setup
 {: #tutorial-tekton-cd-setup}

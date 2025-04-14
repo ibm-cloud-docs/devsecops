@@ -33,7 +33,9 @@ You can customize and centrally manage the IAM settings for the accounts in your
 {: #tutorial-ci-toolchain-prereqs}
 
 1. Complete the [Setting up prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops) tutorial.
-2. View the [Getting started with DevSecOps in {{site.data.keyword.cloud_notm}}](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen} video.
+2. View the following video: 
+
+![Getting started with DevSecOps in {{site.data.keyword.cloud_notm}}](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen}
 
 ## Start the CI toolchain setup
 {: #tutorial-ci-toolchain-create-options}
