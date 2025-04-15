@@ -24,8 +24,7 @@ You can easily export your SBoM in standardized formats (SPDX, CycloneDX) and im
 
 There are tools which run in a pipeline that generate SBoMs during the pipeline run. The tool currently available to generate a SBoM is :
 
-- 
-- [Code Risk Analyser](https://test.cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-cra-sbom-generate)
+- [Code Risk Analyser](/docs/devsecops?topic=devsecops-devsecops-cra-sbom-generate)
 
 ## What are package SBoMs?
 {: #package-sbom}
