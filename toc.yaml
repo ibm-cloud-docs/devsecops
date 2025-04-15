@@ -169,6 +169,12 @@ toc:
                 - devsecops-force-redeployment.md
                 - devsecops-rollback-deployment.md
       - topicgroup:
+         label: Software Bill of Materials
+         topics:
+          - devsecops-sbom.md
+          - devsecops-configuring-mend-sbom-generate.md
+          - devsecops-configuring-cra-sbom-generate.md
+      - topicgroup:
           label: Configuring scanning tools
           topics:
           - devsecops-list-supported-scan-tools.md
