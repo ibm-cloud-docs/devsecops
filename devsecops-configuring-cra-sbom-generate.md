@@ -6,7 +6,7 @@ lastupdated: "2025-04-15"
 
 keywords: DevSecOps, IBM Cloud, compliance,CRA, SBOM
 
-subcollection: devsecops, inventory, CRA, SBOM, scans
+subcollection: devsecops
 
 ---
 
@@ -72,4 +72,3 @@ You can access your scan results using any of the following methods:
 - Using the [DevSecOps/CoCoa CLI](/docs/devsecops?topic=devsecops-cd-devsecops-cli) command line tool to download your scan results from the evidence locker by using the information printed in the stage log.  For more information see the following resources:
    - [`cocoa locker evidence get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-get)
    - [`cocoa locker attachment get`](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-attachment-get)
-
