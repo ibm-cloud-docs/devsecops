@@ -25,7 +25,7 @@ You can easily export your SBoM in standardized formats (SPDX, CycloneDX) and im
 There are tools which run in a pipeline that generate SBoMs during the pipeline run. The tool currently available to generate a SBoM is :
 
 - 
-- Code Risk Analyser (CRA)
+- [Code Risk Analyser](/docs/devsecops?topic=devsecops-devsecops-cra-sbom-generate)
 
 ## What are package SBoMs?
 {: #package-sbom}
@@ -81,4 +81,3 @@ In order to collect evidence for sbom validation, set `sbom-validation-collect-e
 {: note}
 
 For more information, see the [`sbom-utility` tool docs](https://github.com/CycloneDX/sbom-utility/blob/main/sbom-validation-tests.md). 
-
