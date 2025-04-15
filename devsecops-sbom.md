@@ -72,9 +72,10 @@ When the pipeline is run, the `BOM` is added as an attachment to the `com.ibm.co
 {: note}
 
 The `sbom-utility` tool validates the software bill of materials (SBoM) by completing a series of default and custom checks to see whether the metadata contains:
-    * A component at the root level of the SBoM that contains data
-    * A timestamp
-    * A `name` and `bom-ref` for each component field
+
+  * A component at the root level of the SBoM that contains data
+  * A timestamp
+  * A `name` and `bom-ref` for each component field
     
 In order to collect evidence for sbom validation, set `sbom-validation-collect-evidence` to `1`.The evidence is collected as an attachment to `com.ibm.code_bom_check` as evidence type and tool type as `sbom-utility`. 
 {: note}
