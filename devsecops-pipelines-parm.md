@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-03-20"
+lastupdated: "2025-04-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -212,11 +212,12 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`sonarqube`](#pipeline-parm-sonarqube)		|tool integration		|The Sonarqube tool integration.	|Optional			|Locked|
 |[`sonarqube_standby`](#pipeline-parm-sonarqube)		|tool integration		|The standby Sonarqube tool integration that can be used as a fallback.	|Optional			|Unlocked |
 |`sonarqube-config`		|text		|Runs a SonarQube scan in an isolated Docker-in-Docker container (default configuration) or in an existing development Kubernetes cluster (cluster configuration). Alternatively, you can bring your own SonarQube instance and configure the SonarQube tool integration (custom configuration). Options: `default`, `cluster`, or `custom`. Default is `default`. For more information, see ([Adding SonarQube to the continuous integration pipeline](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline)). | Required |Locked |
-|`sonarqube-user-token`		|Text		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			| Unlocked |
+|`sonarqube-user-token`		|SECRET		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			| Unlocked |
 |[`sonarqube-namespace`](#pipeline-parm-sonarqube-namespace) 	|text		|The configured Kubernetes namespace to use with the SonarQube instance created by the pipeline.	|Optional			|Unlocked |
 |`sonarqube-instance-image` 	|text		| The sonarqube instance image that is used to run as an isolated Docker-in-Docker container.	|Optional			|Unlocked |
 |`sonarqube-scanner-image` 	|text		| The sonarqube scanner CLI image that is used for the default sonarqube scan command.	|Optional			|Unlocked |
 |[`sonarqube-scan-command`](#pipeline-parm-sonarqube-scan-command) 	|text		|The sonarqube scan command that starts the sonarqube scan. `sonarqube-scan-command` must be set for Maven Java projects. For more information, see [`sonarqube-scan-command`](#pipeline-parm-sonarqube-scan-command) |Optional			|Unlocked |
+|sonarqube-root-certificate		|Text or Secert		|In case of `sonarqube-config` set to `custom`, pass the self signed certificate as a PEM formatted text or base64 encoded secret|Optional			|Unlocked |
 |[`static-scan-retry-count`](#pipeline-parm-static-scan-retry-count)		|text		|The number of retries to wait for the Sonarqube instance to be established.	|Optional			|Unlocked |
 |[`static-scan-retry-sleep`](#pipeline-parm-static-scan-retry-sleep)		|text		|The amount of wait time per retry iteration.	|Optional			|Unlocked |
 |`subpipeline-webhook-token` | SECRET| The webhook secret of the `Subpipeline Webhook Trigger` for [triggering async pipelines](/docs/devsecops?topic=devsecops-devsecops-async-sub-pipelines). See also [Updating the async stage webhooks](/docs/devsecops?topic=devsecops-update-async-webhook). |Optional |Unlocked |
