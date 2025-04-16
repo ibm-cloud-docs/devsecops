@@ -29,7 +29,7 @@ During the pipeline run, there are certain tools that are used to generate SBOMs
 ## What are package SBOMs?
 {: #package-sbom}
 
-A package SBOM details all information about all the packages that are used in a software project. It provides information on the versions, licenses, and vulnerabilities of each package used. Package SBoMs are generated at a microservice level; a SBOM is generated for each microservice in an architecture.
+A package SBOM details all information about all the packages that are used in a software project. It provides information on the versions, licenses, and vulnerabilities of each package used. Package SBOMs are generated at a microservice level; a SBOM is generated for each microservice in an architecture.
 
 ## SBOM Lifecycle
 {: #sbom-lifecycle}
