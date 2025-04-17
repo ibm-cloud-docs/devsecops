@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-03-20"
+lastupdated: "2025-04-16"
 
 keywords: tool integrations, Sonarqube
 
@@ -66,6 +66,12 @@ If `sonarqube-config` is set to `cluster`, the pipeline creates a SonarQube inst
 
 Set `sonarqube-config` to `custom`, to add your own SonarQube instance to your existing pipeline, add the tool integration to your toolchain, and then add the SonarQube tool integration parameter to the pipeline. For more information, see [Configuring SonarQube](/docs/devsecops?topic=devsecops-sonarqube).
 
+### Sonarqube server with self signed certificate
+
+If `sonarqube-config` is set to `custom` to use [an existing sonarqube server](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
+
+By providing the certificate in a PEM format (either base64 encoded secret value or PEM formatted plain text) as the value of the pipeline/trigger property `sonarqube-root-certificate`, configuration will be added according to the usage of the SonarScanner for maven, SonarScanner for gradle sonar or SonarScanner invoked with Docker.
+
 ### Parameters
 {: #sonarqube-cipipeline-parm}
 
@@ -81,7 +87,9 @@ To run the SonarQube scan, the pipeline needs the following continuous integrati
 |opt-in-sonar-hotspots		|Text		|The Sonarqube scan for detecting hotspots.	|Optional			|
 |opt-in-sonar-quality-gates		|Text		|Allowing Sonarqube scan to detect quality gate failures.	|Optional			|
 |opt-in-sonar-pr-analysis		|Text		|Allowing Sonarqube scan to do the pull request analysis (This option will work only if the PR is not contributed from a forked repository). This parameter is only valid for `App-preview PR pipeline`.|Optional			|
-|sonarqube-user-token		|Text		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			|
+|sonarqube-user-token		|Secret		|Pass the User token used for API access in case of `sonarqube-config` set to `custom`	|Optional			|
+|sonarqube-root-certificate		|Text or Secert		|In case of `sonarqube-config` set to `custom`, pass the self signed certificate as a PEM formatted text or base64 encoded secret|Optional			|
+
 {: caption="Continuous integration pipeline parameters}
 
 For more information about pipelines parameters, see [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm).
