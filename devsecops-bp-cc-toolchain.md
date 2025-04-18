@@ -22,4 +22,4 @@ The implementation of the continuous compliance (CC) toolchain DevSecOps follows
 - Runs a static code scanner at pre-defined intervals on the application repositories. - Uses `detect secrets` to prevent secret leaks in the application source code.
 - Scan the container image for any security vulnerabilities.
 - Opens incident issues to track problems found during the pipeline run and is marked with a due date.
-- Generate a `summary.json` file and stores in {{site.data.keyword.cos_full_notm}} or Git repositiory to summarize the results of the scan.
+- Generate a `summary.json` file and stores in {{site.data.keyword.cos_full_notm}} or Git repository to summarize the results of the scan.
