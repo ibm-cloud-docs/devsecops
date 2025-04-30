@@ -118,7 +118,7 @@ Use `private` endpoints for most requests that originate from within {{site.data
 For pipelines that are running in the London region, use `direct` endpoints due to the pipeline-managed worker infrastructure there.
 {: note}
 
-# Configuring Toolchains with the COS bucket
+## Configuring Toolchains with the COS bucket
 {: #cd-devsecops-cos-bucket-configuration}
 
 To store evidences, assets and attachment, configure COS bucket in your pipelines. Since ths bucket is used to reterive the existing information it should have `Reader` and `Object Writer` access. To confgure this bucket in the pipeline.
@@ -133,4 +133,34 @@ Environment Properties for COS Bucket Configuration
 |`cos-endpoint`		| text		| The endpoint that reads the evidence from the Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Required			| Unlocked |
 
 Configure the same bucket in all your pipelines CI/CD/CC.
+{: tip}
+
+## Migrating from one COS bucket to Another COS bucket
+{: #cd-devsecops-cos-bucket-migration}
+
+Migrating from One COS Bucket to Another COS Bucket
+If you are an existing user of the COS evidence locker and need to migrate from one COS bucket to another, it's important to ensure a smooth transition without disrupting your workflows. Below are the steps and considerations for migrating between COS buckets.
+
+**Reasons for Migration:**
+- **Organisational Restructuring:** You may want to stop using one COS bucket and start using another.
+- **Bucket Relocation:** The bucket needs to be moved from one account to another, possibly due to organizational changes or compliance requirements.
+
+**Steps to Migrate:**
+
+**Configure the Backup-COS Bucket:** If you are migrating from an old COS bucket to a new one, ensure that your pipeline is configured to use both the old and new buckets. This allows for smooth migration without disrupting your existing workflows.
+  - Create the New COS Bucket as defined in above steps.
+  - Configure IAM Policies: Ensure that the new COS bucket has the necessary IAM policies for Reader and Object Writer access as required by your pipelines.
+  - Update Environment Variables
+
+In IBM Toolchains, update the environment variables to include both the old and new COS buckets. To configure the old bucket use **backup-** prefix in all COS env properties and use the normal properties to configure new COS bucket.
+
+|Name |Type	|Description |Required or Optional | Locked or Unlocked |
+|:----------|:------------------------------|:------------------|:----------|:----------|
+|`backup-cos-api-key`		| SECRET		| The Backup Cloud Object Storage API key.	| Required			| Locked |
+|`backup-cos-access-key-id` | SECRET | The Backup Cloud Object Storage Access Key ID from HMAC credentials. (Provided along with `backup-cos-secret-access-key` instead of `backup-cos-api-key`)| Required | Unlocked |
+|`backup-cos-secret-access-key` | SECRET | The Backup Cloud Object Storage Secret Access Key from HMAC credentials. (Provided along with `backup-cos-access-key-id` instead of `backup-cos-api-key`) | Required | Unlocked |
+|`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Required			| Unlocked |
+|`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Required			| Unlocked |
+
+Do not delete the this old bucket for 365 days, as it would be required for audit purposes. 
 {: tip}
