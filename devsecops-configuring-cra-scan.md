@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2025
+lastupdated: "2025-05-07"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -72,7 +72,7 @@ To ignore files during Code Risk Analyzer deployment-analyze scan, the following
 ## Omitting vulnerabilities to deploy your app
 {: #devsecops-omit-vulnerabilities}
 
-The Code Risk Analyzer is designed to find vulnerable packages before an adivsory board does. In exceptional circumstances, you might need to deploy your application even if vulnerable packages have been detected and have not yet been fixed. Whenever possible, you should update the packages or remove them before redeploying your code.
+The Code Risk Analyzer is designed to find vulnerable packages before an advisory board does. In exceptional circumstances, you might need to deploy your application even if vulnerable packages have been detected and have not yet been fixed. Whenever possible, you should update the packages or remove them before redeploying your code.
 
 To ignore specific files and complete your push to production, you can create a file called `.cra/.cveignore` in the scanned repository's root with the following schema:
 
