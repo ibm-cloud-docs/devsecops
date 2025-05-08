@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-04-16"
+lastupdated: "2025-05-08"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -82,6 +82,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`ibmcloud-api-key`		|SECRET		|The {{site.data.keyword.cloud}} API key that interacts with the `ibmcloud` CLI tool.	|Required			| Locked |
 |`incident-repo`  	|tool integration		|The incident issues the repo URL.	|Optional			| Locked |
 |`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			| Unlocked |
+|`opt-in-pr-updates` | text | To enable cve information updates in PR. Default `1` | Optional | Unlocked |
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Optional			| Locked |
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			| Locked |
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			| Locked |
