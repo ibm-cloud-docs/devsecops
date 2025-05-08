@@ -118,7 +118,7 @@ Use `private` endpoints for most requests that originate from within {{site.data
 For pipelines that are running in the London region, use `direct` endpoints due to the pipeline-managed worker infrastructure there.
 {: note}
 
-# Configuring Toolchains with the COS bucket
+## Configuring Toolchains with the COS bucket
 {: #cd-devsecops-cos-bucket-configuration}
 
 To store evidences, assets and attachment, configure COS bucket in your pipelines. Since ths bucket is used to reterive the existing information it should have `Reader` and `Object Writer` access. To confgure this bucket in the pipeline.
@@ -135,7 +135,7 @@ Environment Properties for COS Bucket Configuration
 Configure the same bucket in all your pipelines CI/CD/CC.
 {: tip}
 
-# Migrating from one COS bucket to Another COS bucket
+## Migrating from one COS bucket to Another COS bucket
 {: #cd-devsecops-cos-bucket-migration}
 
 Migrating from One COS Bucket to Another COS Bucket

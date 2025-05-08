@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2025
+lastupdated: "2025-04-22"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -25,7 +25,7 @@ The pipeline needs the parameter in Table 1 to run the Gosec scan. For a full li
 
 | Name | Type | Description | Required or Optional |
 |--|--|--|--|
-| `opt-in-gosec` | text   | Enables gosec scans | Required |
+| `opt-in-gosec` | text   | To enable the gosec scan, set the property to any non empty value. To disable the scan, set it to an empty value or remove the property entirely. (Default is empty) | Required |
 {: caption="gosec scan parameters" caption-side="top"}
 
 ## Enabling gosec scan for private Git repositories
