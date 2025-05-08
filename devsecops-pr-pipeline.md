@@ -110,3 +110,10 @@ If the PR pipeline triggers an Async pipeline, `collect-evidence-in-pr` set to `
 
 Note: If the application repository is a GitLab repository and the MR (merge request) being contributed is from a forked repository, user will need to provide a value for `git-token` env variable which has access to both the source and the target repositories to set the proper statuses on the merge request. This means the git token would need to belong to a user who is a contributor in both the base repository and the forked repository and the token has permissions to set status on a commit.
 {:  note}
+
+## Surfacing CVE in PR
+{: #surfacing-cve-in-pr}
+
+When a PR is created and vulnerabilities are found by the PR pipeline, the pipeline adds the vulnerability information like severity, the cve identifier, package along with its description and the fix if available as a comment. This enables users to quickly check the vulnerabilities to be fixed in the PR instead of having to go through the pipeline logs.
+
+An opt-in flag `opt-in-pr-updates`, is available to enable / disable this feature in the PR pipeline. This is enabled by default.
