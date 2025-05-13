@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-02-28"
+lastupdated: "2025-05-13"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -18,6 +18,53 @@ content-type: release-note
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 16 May 2025
+{: #devsecops-May2025-16}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.59.0 and open-v10.41.0
+{: #devsecops-open-v10.41.0-open-v9.59.0}
+
+Enahanced reporting of CVE in pr validation
+:   CVEs found in the pr validation are reported in the PR as a comment.
+
+### Updates for DevSecOps version - open-v9.58.0 and open-v10.40.0
+{: #devsecops-open-v10.40.0-open-v9.58.0}
+
+Update to zap images used for dynamic scan
+:   Update zap images to use zap 2.16 and fix vulnerabilities
+
+## 11 April 2025
+{: #devsecops-Apr2025-11}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.57.0 and open-v10.39.0
+{: #devsecops-open-v10.39.0-open-v9.57.0}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v9.56.0 and open-v10.38.0
+{: #devsecops-open-v10.38.0-open-v9.56.0}
+
+Support for Sonarqube quality gates
+:   Added support for Sonarqube quality gates. Now static-scan will parse the quality gate results and raise issues appropriately. Refer to [Enabling Quality Gate result processing for a SonarQube project](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-cipipeline-gate).
+
+### Updates for DevSecOps version - open-v9.54.0 and open-v10.36.0
+{: #devsecops-open-v10.36.0-open-v9.54.0}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v9.53.0 and open-v10.35.0
+{: #devsecops-open-v10.35.0-open-v9.53.0}
+
+Improved git clone operations
+:   Added new options to git clone operations like shallow clone using depth and support for large file support
+
+Support for firewalled source_environments
+:   Validated and added support for firewalled environments for pipelines
 
 ## 28 February 2025
 {: #devsecops-Feb2025-28}
