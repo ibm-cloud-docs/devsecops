@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-05-13"
+lastupdated: "2025-05-16"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -120,7 +120,7 @@ cocoa check pull-request-approval
 {: #pull-request-status}
 
 Checks a given Pull Request's status and the repositories settings.
-- **Branch Protection:** Rules to disable force pushing, prevent branches from being deleted, and optionally require status checks before merging.
+- **Branch Protection:** Rules to disable force pushing, prevent branches from being deleted, and optionally require status checks before merging. As an enhancement, alongside traditional Branch Protection based validation, the command also supports **Ruleset-based validation** for GitHub Repositories. The command **by default, checks for an associated Ruleset** on the branch in the GitHub Repository, and falls back to traditional branch-protection based validation if no ruleset is found. If both Ruleset and traditional Branch protection rule is present for a branch, **the command takes only Ruleset into consideration**.  For more information on GitHub Rulesets, see [Configuring your GitHub repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github)
 - **Commit Status Check:** External services to mark commits with an `error`, `failure`, `pending`, or `success` state, which is then reflected in pull requests that involve those commits.
 - **Check Runs:** Apps that perform continuous integration, code linting, or code scanning services and provide detailed feedback on commits.
 
