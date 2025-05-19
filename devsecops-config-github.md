@@ -23,6 +23,9 @@ The {{site.data.keyword.gitrepos}} tool integration is based on Github, which is
 
 Branch protection policies enforce security, collaboration, and helps ensure that your team adheres to code quality and change management standards. This topic helps you set and manage branch policies. [DevSecOps](/docs/devsecops?topic=devsecops-cd-devsecops-arch) requires you to configure the branch protection rules of your GitHub repository.
 
+GitHub now supports defining **Rulesets for branch protection** - a more granular and flexible mechanism to define protections and policies at repository level. For more information, see [About Rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets){: external}
+
+
 
 ## Benefits of Branch Protection
 {: #devsecops-config-github-protection}
@@ -32,6 +35,131 @@ Branch protection policies enforce security, collaboration, and helps ensure tha
 - **Increased Visibility of Changes**: Requiring pull requests provides increased visibility into code changes. This step simplifies tracking modifications and identifying potential issues.
 
 - **Ensuring Code Integrity**: Pull request status-checks validate the code by running automated tests against predefined standards and linters before a pull request can be merged. This step maintains code integrity by catching bugs and other issues early in the development cycle.
+
+
+## Benefits of Rulesets
+{: #devsecops-config-github-ruleset}
+
+- **Granular Targeting**: Apply rules to branches and tags using powerful fnmatch patterns (e.g., release/**, refs/tags/v*)
+
+- **Centralized Management**: Configure and manage all branch and tag protection from a single interface. GitHub UI and [API](https://docs.github.com/en/rest/repos/rules?apiVersion=2022-11-28){: external} provide clear rule associations and enforcement details for better transparency.
+
+- **Higher Flexibility**: Unlike traditional branch protection (which allows only one rule per branch), rulesets enable defining multiple, layered rulesets that can apply to multiple branches using patterns. A single branch can have multiple applicable rulesets, allowing fine-grained control, reusable policies across branches, and better alignment with complex workflows.
+
+## Configuring Rulesets in GitHub
+{: #devsecops-config-github-rulesets}
+
+To configure Rulesets in GitHub for your repository, follow these steps:
+
+### Accessing Ruleset Settings
+{: #devsecops-config-github-ruleset-settings}
+
+1. Navigate to the **Settings** tab of your repository on GitHub.
+2. In the left sidebar,under **Rules** click **Rulesets** to access the Ruleset settings page.
+3. Click on the green button **New Branch RuleSet**
+5. Add the required information to define the Ruleset and click on **Create**.
+
+![GitHub repository Ruleset](images/devsecops_configure-branch-protection_github_ruleset_settings.png){: caption="GitHub repository Ruleset" caption-side="bottom"}
+
+### Adding protection rules in Rulesets
+{: #devsecops-config-github-addrulesets}
+
+On clicking the green button **New Branch RuleSet**, a page to fill in the Ruleset details is prompted.
+
+![Create Ruleset](images/devsecops_configure-branch-protection_github_create_ruleset.png){: caption="Create Ruleset" caption-side="bottom"}
+
+1. Name your RuleSet and Enable/Disable/Evaluate the ruleset by selecting from the **Enablement status** dropdown
+
+![Name and Enable Ruleset](images/devsecops_configure-branch-protection_github_name_ruleset.png){: caption="Name and Enable Ruleset" caption-side="bottom"}
+
+2. Configure the **Target branches** by clicking on **Add target**. Select **Include**,**Exclude**,**Default** or **All** to configure the Branch targeting criteria. GitHub supports **fnmatch** syntax for pattern-based targeting.
+
+![Select Target branches](images/devsecops_configure-branch-protection_github_targetbranch_ruleset.png){: caption="Select Target branches" caption-side="bottom"}
+
+3. Configure Bypass permissions under **Bypass list** by clicking on **Add bypass**. You can add the required roles who can bypass the checks. You can leave the list empty (this is equivalent to enabling **Do not allow bypassing the above settings** in traditional Branch protection settings).
+
+![Add bypass actors](images/devsecops_configure-branch-protection_github_bypass_ruleset.png){: caption="Add bypass actors" caption-side="bottom"}
+
+4. Enable the **Require a pull request before merging** option under **Branch rules**.
+
+5. Enable the **Require approvals** option and set the **Required number of approvals before merging** set to atleast `1` or the number of required approvals in your team.
+
+6. Enable the option **Dismiss stale pull request approvals when new commits are pushed** to review all the latest changes before it can be merged onto another branch.
+
+![Add Branch Rules](images/devsecops_configure-branch-protection_github_branchrules_ruleset.png){: caption="Add Branch Rules" caption-side="bottom"}
+
+### Configuring Status Checks for Ruleset
+{: #devsecops-config-github-status}
+
+1. Enable the `Require status checks to pass before merging` option.
+
+In order to be able to set them as required status checks, first you need to trigger a PR/CI pipeline beforehand (only existing status checks are listed on the UI).
+
+After enabling the `Require status checks to pass before merging` option, you need to configure the specific status checks that must pass before merging a pull request.
+
+2. In the list of available status checks, enable the following options for checks:
+
+- `tekton/code-branch-protection`
+- `tekton/code-cis-check`
+- `tekton/code-detect-secrets`
+- `tekton/code-unit-tests`
+- `tekton/code-vulnerability-scan`
+
+The above checks are the default expected pull request status checks in pipeline.
+
+![Status checks](images/devsecops_configure-branch-protection_github_checks_ruleset.png){: caption="Status checks" caption-side="bottom"}
+
+### Adding All default Ruleset(Complete Configuration)
+
+This CURL command sets up both the default required status checks and pull request review settings.
+
+``` bash
+curl -H "Authorization: Bearer $(cat ${APP_TOKEN_PATH})" "${APP_API_URL}/repos/${APP_REPO_OWNER}/${APP_REPO_NAME}/rulesets" \
+    -XPUT -d '{
+  "name": "Branch Protection Equivalent Ruleset",
+  "target": "branch",
+  "enforcement": "active",
+  "bypass_actors": [], // as the list is empty no one can bypass which is equivalent to enforce_admins: true with no restriction
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/master"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "required_status_checks": [
+          {
+            "context": "tekton/code-unit-tests"
+          },
+          {
+            "context": "tekton/code-branch-protection"
+          },
+          {
+            "context": "tekton/code-cis-check"
+          },
+          {
+            "context": "tekton/code-vulnerability-scan"
+          },
+          {
+            "context": "tekton/code-detect-secrets"
+          }
+        ]
+      }
+    },
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+      }
+    }
+  ]
+}'
+```
 
 ## Configuring Branch Protection Rules in GitHub
 {: #devsecops-config-github-rules}

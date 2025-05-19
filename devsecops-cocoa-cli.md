@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-02-20"
+lastupdated: "2025-05-16"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -120,7 +120,7 @@ cocoa check pull-request-approval
 {: #pull-request-status}
 
 Checks a given Pull Request's status and the repositories settings.
-- **Branch Protection:** Rules to disable force pushing, prevent branches from being deleted, and optionally require status checks before merging.
+- **Branch Protection:** Rules to disable force pushing, prevent branches from being deleted, and optionally require status checks before merging. As an enhancement, alongside traditional Branch Protection based validation, the command also supports **Ruleset-based validation** for GitHub Repositories. The command **by default, checks for an associated Ruleset** on the branch in the GitHub Repository, and falls back to traditional branch-protection based validation if no ruleset is found. If both Ruleset and traditional Branch protection rule is present for a branch, **the command takes only Ruleset into consideration**.  For more information on GitHub Rulesets, see [Configuring your GitHub repository](/docs/devsecops?topic=devsecops-cd-devsecops-config-github)
 - **Commit Status Check:** External services to mark commits with an `error`, `failure`, `pending`, or `success` state, which is then reflected in pull requests that involve those commits.
 - **Check Runs:** Apps that perform continuous integration, code linting, or code scanning services and provide detailed feedback on commits.
 
@@ -1665,6 +1665,7 @@ Options for Git:
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
 | git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
+| location      | Location for the artifact in other regsirty along with the sha256 | String | Optional | Example: `<environment>#<static_name>:<version>@sha256:<sha256_digest>`. </br> Multiple times this flag can be provided.|
 {: caption="Options for Git" caption-side="bottom"}
 
 Running the command:
@@ -1684,7 +1685,8 @@ $ cocoa inventory add \
   --org=test-org \
   --app-artifacts='{"app": "test", "some_value": "value"}' \
   --repo=compliance-inventory-repo
-  --signature=owFNUX1IE3EY3vwAEy0VyoSJdkVWtu0+d3eTjNIIi0jETCSU3353cz+83V23myi2BlFgYiUFqSmZLciUzCJkRYJp9IEWFWXB0hAyrBQxEjIIuhFSf70vL8/7vM/zPi3JsaYEc+TnbqG8qrnTPDZ8w2WqiqwtacCghnQEgYQ5GzAkiLKO9PpoLyiwRtSsmugWNVGGIubE/D4bgpoNKXag60gCdo8oSYoVKl5VQsDAWIGqOkmcxAmSYHGO4AjC6gU+3eBxcYxICTRLijyEFOOiSR5SvMhBys2LLpIjWYqDJA6wwHYMeUG1+J8GL5CRW/TpVgFVG8VQ4vMAknE4BUA5OIoQGIKhKZwFkIeAdnECj+OCmxQADh2QoFmG5lkWUiTN8gJ0kDxPuxiWJAU8ekyvV6PegK54EcyGiqwDJItatg9Vy0D3a2IUpKg6UuS/T4KaaIC1fzuMDbfhmMGEvIY64FUxJ+Ew3PMU5SADgdNmKs5kTjBlrtsQ99iyY49nns8o6jsXWgkjPiYahClxVcrK5Flngumz2j7YdmD0ecutytsvxxNPHflKlRV2RyqD69NjC6Smji9XuukFyZ+lvM18gUr7F4NXge9YyZPik411tc1n9bKO/hDz7oGaX/ur94OnNHiwOG6n5ZsrsCsvtyvmkH4zOWlrRWuL7fzgj9zlcCTAhtu2LbeGLNfv3Ju0Jc9PZPk7Pm3Ov2CW+2xj8ReX6ooGamZ610yqRM/+8Qo2XnOeyZzbVKgs+f2+9unpJOve4Tmla+PdqftDWkHPm9Vq3nsyZ2DUkmP/nTb7qNw5l2SfWtiSemJx9nLaYOpx6amlOT18aeIwJQhHg1XOjJF9r18NXQvPuL9rH5tSQqbGhyN/AA==
+  --signature=owFNUX1IE3EY3vwAEy0VyoSJdkVWtu0+d3eTjNIIi0jETCSU3353cz+83V23myi2BlFgYiUFqSmZLciUzCJkRYJp9IEWFWXB0hAyrBQxEjIIuhFSf70vL8/7vM/zPi3JsaYEc+TnbqG8qrnTPDZ8w2WqiqwtacCghnQEgYQ5GzAkiLKO9PpoLyiwRtSsmugWNVGGIubE/D4bgpoNKXag60gCdo8oSYoVKl5VQsDAWIGqOkmcxAmSYHGO4AjC6gU+3eBxcYxICTRLijyEFOOiSR5SvMhBys2LLpIjWYqDJA6wwHYMeUG1+J8GL5CRW/TpVgFVG8VQ4vMAknE4BUA5OIoQGIKhKZwFkIeAdnECj+OCmxQADh2QoFmG5lkWUiTN8gJ0kDxPuxiWJAU8ekyvV6PegK54EcyGiqwDJItatg9Vy0D3a2IUpKg6UuS/T4KaaIC1fzuMDbfhmMGEvIY64FUxJ+Ew3PMU5SADgdNmKs5kTjBlrtsQ99iyY49nns8o6jsXWgkjPiYahClxVcrK5Flngumz2j7YdmD0ecutytsvxxNPHflKlRV2RyqD69NjC6Smji9XuukFyZ+lvM18gUr7F4NXge9YyZPik411tc1n9bKO/hDz7oGaX/ur94OnNHiwOG6n5ZsrsCsvtyvmkH4zOWlrRWuL7fzgj9zlcCTAhtu2LbeGLNfv3Ju0Jc9PZPk7Pm3Ov2CW+2xj8ReX6ooGamZ610yqRM/+8Qo2XnOeyZzbVKgs+f2+9unpJOve4Tmla+PdqftDWkHPm9Vq3nsyZ2DUkmP/nTb7qNw5l2SfWtiSemJx9nLaYOpx6amlOT18aeIwJQhHg1XOjJF9r18NXQvPuL9rH5tSQqbGhyN/AA== \
+  --location=stage#stage-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0
 ```
 {: codeblock}
 
@@ -1969,6 +1971,60 @@ $ cocoa inventory validate \
    --git-token-path="$INVENTORY_TOKEN_PATH" \
    --label "$latest_tag" \
    --inventory-path "${DIRECTORY_NAME}"
+```
+{: codeblock}
+
+### cocoa inventory update-locations 
+{: #inventory-update-locations }
+
+Update an entry/artifact locations to the inventory repository.
+
+Required Environment Variables:
+
+```text
+GHE_ORG=     # Github Organization (required if --org option is not specified).
+GHE_REPO=    # Github Repository (required if --repo option is not specified).
+```
+{: screen}
+
+Required Environment Variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token(Optional if you are using --git-token-path)
+```
+{: screen}
+
+Options for Git:
+
+```text
+--git-token-path    #(Optional) Github Token's path
+--git-api-url           #(Optional) Github API url
+```
+{: screen}
+
+| Option           | Description                                      | Value type | Required or Optional | Possible value(s) / Default value / Remarks |
+| ---------------- | ------------------------------------------------ | ---------- | ------------------------- |------------------------- |
+| name             | The name of the application the artifact belongs to | String | Required | - |
+| org              | The GitHub organization that owns the inventory repository. | String | Optional if GHE_ORG environment variable is set| -  |
+| repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
+| environment      | The name of the environment where the entry is added. | String | Optional | Default : "master" |
+| git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
+| git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
+| location      | Location for the artifact in other regsirty along with the sha256 | String | Optional | Example: `<environment>#<static_name>:<version>@sha256:<sha256_digest>`. </br> Multiple times this flag can be provided.|
+{: caption="Options for Git" caption-side="bottom"}
+
+Running the command:
+
+```sh
+$ cocoa inventory update-locations \
+  --name=hello-compliance-app \
+  --git-token-path=./git-token \
+  --org=test-org \
+  --repo=compliance-inventory-repo \
+  --location=stage#stage-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0 \
+  --location=prod#prod-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0
+
 ```
 {: codeblock}
 

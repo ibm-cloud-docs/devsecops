@@ -186,6 +186,7 @@ toc:
           - devsecops-configuring-mend-scans.md
           - devsecops-configuring-contrast-sast-scan.md
           - devsecops-configuring-mend-sast-scan.md
+          - devsecops-compliance-check-scans.md          
           - devsecops-configuring-xray-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
