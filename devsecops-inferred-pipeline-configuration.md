@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-03-14"
+lastupdated: "2025-05-19"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -99,6 +99,8 @@ The `deployment` spots locate a deployment vehicle, including deployment resourc
 -  [Terraform configuration](https://developer.hashicorp.com/terraform/language) - [IBM Cloud Schematics](/docs/schematics) or [Terraform CLI](https://developer.hashicorp.com/terraform/cli) as tool
 
 -  [Wazi DeploymentMethod Custom Resource](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=files-deployment-method) - [Wazi Deploy](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=reference-syntax-wazi-deploy-core-commands) as tool
+
+-  [Dockerfile](https://docs.docker.com/reference/dockerfile) when [IBM Cloud Code Engine has been configured for deployment](#devsecops-pipeline-configuration-spot-cec) - [IBM Cloud Code Engine CLI](/docs/codeengine?topic=codeengine-cli) as tool
 
 #### Acceptance-test spots
 {: #devsecops-inferred-pipeline-accept-spots}
