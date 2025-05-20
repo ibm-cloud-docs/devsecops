@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-03-14"
+lastupdated: "2025-05-19"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -99,6 +99,8 @@ The `deployment` spots locate a deployment vehicle, including deployment resourc
 -  [Terraform configuration](https://developer.hashicorp.com/terraform/language) - [IBM Cloud Schematics](/docs/schematics) or [Terraform CLI](https://developer.hashicorp.com/terraform/cli) as tool
 
 -  [Wazi DeploymentMethod Custom Resource](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=files-deployment-method) - [Wazi Deploy](https://www.ibm.com/docs/en/developer-for-zos/17.0?topic=reference-syntax-wazi-deploy-core-commands) as tool
+
+-  [Dockerfile](https://docs.docker.com/reference/dockerfile) when [IBM Cloud Code Engine has been configured for deployment](#devsecops-pipeline-configuration-spot-cec) - [IBM Cloud Code Engine CLI](/docs/codeengine?topic=codeengine-cli) as tool
 
 #### Acceptance-test spots
 {: #devsecops-inferred-pipeline-accept-spots}
@@ -270,7 +272,7 @@ You can ignore specific spots during extraction by using regular expressions. Th
 #### Code Engine Configuration
 {: #devsecops-pipeline-configuration-spot-cec}
 
-If you are using IBM Cloud Code Engine for deployment, specify the Code Engine project and configure the build process with the following spots:
+If you are using IBM Cloud Code Engine for deployment, specify the Code Engine project and configure the build process with the following pipeline environment properties:
 * `code-engine-project`: Specifies the Code Engine project.
 * `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of `ibmcloud code-engine buildrun` command.
 * `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
@@ -281,7 +283,7 @@ If you are using IBM Cloud Code Engine for deployment, specify the Code Engine p
 #### Golang Configuration
 {: #devsecops-pipeline-configuration-spot-go}
 
- To configure the spot extraction process for Golang, use the following spots:
+ To configure the spot extraction process for Golang, set the following pipeline environment properties:
 
 * `go-ignore-main`: (Default: `false`) Indicates whether code spot extraction to not focus on main package and main function detection for the main source argument.
 * `go-output`: Specifies the executable output file from the go build command.
@@ -289,7 +291,7 @@ If you are using IBM Cloud Code Engine for deployment, specify the Code Engine p
 #### Gradle Configuration
 {: #devsecops-pipeline-configuration-spot-gradle}
 
- To configure the Gradle tasks for setup, unit testing, build artifact, and acceptance testing, use the following spots:
+ To configure the Gradle tasks for setup, unit testing, build artifact, and acceptance testing, use the following pipeline environment properties:
 
 * `gradle-setup-tasks`: (Default: `assemble`) Comma-separated list of Gradle tasks for setup stage.
 * `gradle-unit-testing-tasks`: (Default: `test`) Comma-separated list of Gradle tasks for unit-test stage.
@@ -306,21 +308,21 @@ You can configure the NPM unit testing and acceptance testing script detection.
 #### Python Configuration
 {: #devsecops-pipeline-configuration-python}
 
-To configure the Python Poetry version, use the following spots:
+To configure the Python Poetry version, use the following pipeline environment properties:
 
 * `hint-python-poetry-version`: (Default: `1.8.2`) Hints for Python Poetry version.
 
 #### Terraform Configuration
 {: #devsecops-pipeline-configuration-spot-terraform}
 
-To configure the Terraform deployment process, use the following spots:
+To configure the Terraform deployment process, use the following pipeline environment properties:
 
 * `terraform-deployment`: (Default: `false`) Disables Schematics as a deployment vehicle in favor of Terraform and Cloud Object Storage for state storage.
 
 #### Artifact Upload
 {: #devsecops-pipeline-configuration-spot-artifact-upload}
 
-To configure the artifact upload process, use the following spots:
+To configure the artifact upload process, use the following pipeline environment properties:
 
 * `artifact-upload-to-devsecops-cos`: (Default: `false`) Enables artifact upload to a Cloud Object Storage bucket by using DevSecOps CLI artifact upload for nonimage saved artifacts.
 

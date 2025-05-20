@@ -224,7 +224,11 @@ toc:
           topics:
           - devsecops-pipelines-config-v2.md
           - devsecops-pipelines-status.md
-          - devsecops-pr-pipeline.md
+          - topicgroup:
+                label: Pull request pipeline
+                topics:
+                - devsecops-pr-pipeline.md
+                - devsecops-app-preview-pr-pipeline.md
           - devsecops-ci-pipeline.md
           - devsecops-iac-ci-pipeline.md
           - devsecops-promotion-pipeline.md
