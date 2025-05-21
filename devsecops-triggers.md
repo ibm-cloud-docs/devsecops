@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-05-15"
+lastupdated: "2025-05-21"
 
 keywords: DevSecOps, triggers
 
@@ -108,7 +108,7 @@ CD Tekton Pipeline](https://cloud.ibm.com/apidocs/tekton-pipeline#trigger-a-pipe
    ibmcloud login --sso
 2. Authentication Process
 - If you don't already have an API Key, go to [IBM Cloud API Keys](https://cloud.ibm.com/iam/apikeys) to generate one.
-- If you already have an API Key, skip the preceding step.
+
 - Once you have your API key, generate an IAM token using the following `curl` command:
 
   ```bash

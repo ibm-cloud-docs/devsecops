@@ -106,7 +106,7 @@ The table below lists the tasks run in a App-Preview PR Pipeline. In addition th
 | `deploy-app-preview`           | Deploys the app to a temporary preview environment.                                 | Yes                                                   | No                               | NA                  | No               |
 | `deploy-acceptance-tests`     | Runs acceptance tests against the deployed preview version.                                               | Yes                                                   | No                              | **User**            | Yes              |
 | `app-preview-pr-finish`  | Finalizes the pipeline, updates PR status and logs results.  | Yes                                                   | Yes                               | NA           | Yes              |
-{: caption="Table 1. App-Preview Pipeline stages and tasks" caption-side="top"}
+{: caption="App-Preview PR Pipeline stages and tasks" caption-side="top"}
 
 For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
 
@@ -127,7 +127,7 @@ For more information about how to customize stages by using the `.pipeline-confi
 | `deploy-app-preview`            | NA                                                                                                            |
 | `deploy-acceptance-tests`      | `com.ibm.acceptance_tests`                                                                                        |
 | `app-preview-pr-finish`   | `com.ibm.pipeline_logs`,`com.ibm.pipeline_run_data`
-{: caption="Table 2. App-Preview Pipeline stages and associated evidences" caption-side="top"}
+{: caption="App-Preview PR Pipeline stages and associated evidences" caption-side="top"}
 
 For more information about how to collect evidences within the customizable user stages by using the `collect-evidence` script, see [collect-evidence script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
 
@@ -171,7 +171,6 @@ Now, when a new pull request is created, the `app-preview` trigger will be activ
 
 ### 2. Required Environment Properties
 
----
 
 In addition to the required environment properties for the PR pipeline, the following properties have been correctly configured in your pipeline setup to ensure the App Preview PR Pipeline runs successfully.
 
@@ -181,7 +180,7 @@ In addition to the required environment properties for the PR pipeline, the foll
 | `registry-namespace` | text | The Container Registry namespace for the image.              |
 | `registry-region`    | text | The IBM Cloud region for the image registry.                 |
 
-After adding these variables , trigger the PR pipeline.
+The app-preview PR pipeline will now be triggered automatically when a new pull request is raised.
 
 ## Detect Secrets Scan
 {: #devsecops-app-preview-pr-pipeline-detect-secrets}
@@ -225,7 +224,7 @@ To enable the GoSec scan, provide the following parameter:
 | Name          | Type  | Description              | Required or Optional |
 |:--------------|:------|:--------------------------|:---------------------|
 | `opt-in-gosec` | text  | Option to enable gosec scan | Optional              |
-{: caption="Table 3. GoSec scan parameters" caption-side="top"}
+{: caption="GoSec scan parameters" caption-side="top"}
 
 For more information, see [Configuring GoSec](/docs/devsecops?topic=devsecops-devsecops-gosec).
 
@@ -246,7 +245,7 @@ If you want to use your own static scan implementation, you can modify your `.pi
 | Code Risk Analyzer BOM check   | The BOM for a specified repo that captures the pedigree of all of the dependencies. This BOM is collected at different granularities. For example, the BOM captures the list of base images that are used in the build, the list of packages from the base images, and the list of app packages that are installed over the base image. The BOM acts as a ground truth for the analytic results and can potentially be used to enforce policy gates. Uses the Code Risk Analyzer tool. |
 | Repository compliance checking | Checks that branch protection settings are correct. For example, the master/main branch should always restrict the force push. For more information, see [Configuring your Git Repos and Issue Tracking repository.](/docs/devsecops?topic=devsecops-cd-devsecops-config-github) |
 | Mend Unified Agent vulnerability scan | The [Mend Unified Agent scanning tool](https://docs.mend.io/bundle/unified_agent/page/overview_of_the_unified_agent.html){:external} scans app repos' open source components for vulnerable libraries and source files. For more information, see [Configuring Mend Unified Agent scans.](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans) |
-{: caption="Table 4. Compliance scans and checks" caption-side="top"}
+{: caption="Compliance scans and checks" caption-side="top"}
 
 These scans are run on all application repositories that the pipeline is aware of.  
 To add repositories to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface during the setup stage.
