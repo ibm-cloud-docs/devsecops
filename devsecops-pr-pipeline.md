@@ -117,3 +117,34 @@ Note: If the application repository is a GitLab repository and the MR (merge req
 When a PR is created and vulnerabilities are found by the PR pipeline, the pipeline adds the vulnerability information like severity, the cve identifier, package along with its description and the fix if available as a comment. This enables users to quickly check the vulnerabilities to be fixed in the PR instead of having to go through the pipeline logs.
 
 An opt-in flag `opt-in-pr-updates`, is available to enable / disable this feature in the PR pipeline. This is enabled by default.
+
+## Setting-up a PR pipeline to handle Github Merge Queue PR's
+{: #merge-queue-pr}
+
+A Merge Queue is a Github feature that helps increase velocity by automating pull request merges into a busy branch and ensuring the branch is never broken by incompatible changes. More on setting-up and using Github Merge Queue [here](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#about-merge-queues).
+
+### Create a new Git Trigger
+Create a new Git Trigger or duplicate an existing one. Keep all default settings, only override the following properties:
+- `Name`: prefer to have a trigger name that reflects Merge Queue context - ex: `PR - Merge Queue`
+- `EventListener`: select `pr-listener-merge-queue`
+- `Trigger on`: select `CEL filter`
+  - `CEL filter`: enter `body.action == 'checks_requested'`
+
+Merge Queue PR's use ephemeral branches - created "on the fly" when the original PR is added to the Merge Queue - from which the Merge Queue PR is created. As a consequence, corresponding Git event payload (that triggers the Pull Request pipeline) does not contain any information about PR URL or HTML URL.
+{: note}
+
+Irrelevant in Merge Queue context, the following DevSecOps features must be disabled by adding corresponding text properties:
+- `skip-merge-pr-to-base`: should be set to `true` (default false)
+- `opt-in-pr-updates`: should be set to `0` (default 1)
+
+Save the trigger.
+
+### Testing the Merge Queue trigger
+- Create a new Pull Request against the main branch of the application source code repository.
+- Observe: the "standard" DevSecOps PR pipeline is triggered
+- Still on the PR page, click on `Merge when ready`, then click on `Attempt merge when ready` - this will `enqueue` the PR to the Merge Queue once the "standard" PR has completed.
+- Wait for the "standard" DevSecOps PR to complete successfully
+- Observe: once PR pipeline has completed, PR is added to Merge Queue and Merge Queue PR is triggered:
+  - Wait for the Merge Queue PR to complete
+  - If successful, PR is merged with comment like `Merged via the queue into main with commit abcdefg`
+  - If not successful (ex: failed compliance check), PR will not be auto-merged, and removed from Merge Queue.
