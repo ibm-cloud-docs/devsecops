@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-05-07"
+lastupdated: "2025-05-22"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -17,14 +17,9 @@ subcollection: devsecops
 You can use IBM Cloud Code Risk Analyzer to analyze your code for vulnerabilities and validate compliance against specified rules.
 {: shortdesc}
 
-When Code Risk Analyzer evaluates your app:
-* A software bill of materials (SBOM) is generated that lists the dependencies and available license information of all third-party packages.
-   This can be generated in `cycloneDX-specific` format if needed.
-   {: tip}
-
-* The packages listed in the SBOM file are scanned for vulnerabilities.
-   This file can be generated in `cycloneDX-specific` format. Alternatively, you can enable auto-remediation of vulnerabilties that are found for applications written in Node.js, Maven, or Gradle.
-   {: tip}
+When Code Risk Analyzer evaluates your app, a software bill of materials (SBOM) is generated that lists the dependencies and available license information of all third-party packages.
+This can be generated in `cycloneDX-specific` format if needed. The packages listed in the SBOM file are scanned for vulnerabilities. This file can be generated in `cycloneDX-specific` format. Alternatively, you can enable auto-remediation of vulnerabilties that are found for applications written in Node.js, Maven, or Gradle.
+{: tip}
 
 * All of your Kubernetes files are analyzed for compliance.
 * All of your Terraform plans are analyzed for compliance.
