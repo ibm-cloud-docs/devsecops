@@ -311,6 +311,6 @@ curl -H "Authorization: Bearer $(cat ${APP_TOKEN_PATH})" "${APP_API_URL}/repos/$
     -XPUT -d '{"required_pull_request_reviews":{"dismiss_stale_reviews":true},"required_status_checks":{"strict":true,"contexts":["tekton/code-branch-protection","tekton/code-unit-tests","tekton/code-cis-check","tekton/code-vulnerability-scan","tekton/code-detect-secrets"]},"enforce_admins":null,"restrictions":null}'
 ```
 
-In our reference implementation, we have already provided a sample configuration for the [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/code_setup.sh?ref_type=heads#L23) repository, so you can use it as a starting point and customize it according to your needs.
+In our reference implementation, we have already provided a sample configuration for the [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master#L23) repository, so you can use it as a starting point and customize it according to your needs.
 
 Follow the earlier example to ensure code quality and adherence to security measures for your repository. To ensure this happens, configure the necessary branch protection rules and status checks.

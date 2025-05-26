@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-05-06"
+lastupdated: "2025-05-26"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -103,7 +103,7 @@ The issues repository records issues that are found while the CI pipeline is run
 ### Secrets
 {: #tutorial-tekton-ci-secrets}
 
-Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in a secrets management tool, such as [{{site.data.keyword.keymanagementservicefull_notm}}](https://www.ibm.com/products/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/products/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The [secrets management tool](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
+Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in a secrets management tool, such as [{{site.data.keyword.keymanagementservicefull_notm}}](https://www.ibm.com/products/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/products/secrets-manager){: external}, or [HashiCorp Vault](https://developer.hashicorp.com/vault){: external}. The [secrets management tool](/docs/secrets-manager?topic=secrets-manager-use-case-kubernetes-secrets) can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
 
 1. This tutorial uses {{site.data.keyword.secrets-manager_full}} as the vault for secrets. The **Region**, **Resource group**, and **Service name** fields are automatically populated based on available choices. Click the drop-down indicators to see the other choices.
 2. Type your **{{site.data.keyword.secrets-manager_short}} instance name**.
