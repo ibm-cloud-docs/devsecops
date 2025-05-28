@@ -88,8 +88,17 @@ On clicking the green button **New Branch RuleSet**, a page to fill in the Rules
 
 ![Add Branch Rules](images/devsecops_configure-branch-protection_github_branchrules_ruleset.png){: caption="Add Branch Rules" caption-side="bottom"}
 
+### Limitation
+{: #devsecops-config-github-ruleset-limitation}
+
+Currently, the **bypass actor list** can only be retrieved from the **repository-level rulesets**. If a ruleset is defined at the **organization level**, this information cannot be retrieved from those rulesets, under standard permissions.
+
+To retrieve bypass actor list from organization-level rulesets, please review the required access needed and grant the **Functional ID/GitHub account** which is running the pipeline with elevated privileges (**owner access to the organization**). This is due to GitHub's permission model, which **restricts visibility into organization level ruleset** bypass actor metadata without appropriate authorization to prevent leakage of sensitive information.
+
+For more information, refer to official GitHub documentation on [organization rulesets and bypass actors](https://docs.github.com/en/rest/orgs/rules?apiVersion=2022-11-28#get-an-organization-repository-ruleset){: external}.
+
 ### Configuring Status Checks for Ruleset
-{: #devsecops-config-github-status}
+{: #devsecops-config-github-ruleset-status}
 
 1. Enable the `Require status checks to pass before merging` option.
 
@@ -110,6 +119,7 @@ The above checks are the default expected pull request status checks in pipeline
 ![Status checks](images/devsecops_configure-branch-protection_github_checks_ruleset.png){: caption="Status checks" caption-side="bottom"}
 
 ### Adding All default Ruleset(Complete Configuration)
+{: #devsecops-config-github-ruleset-curl}
 
 This CURL command sets up both the default required status checks and pull request review settings.
 
