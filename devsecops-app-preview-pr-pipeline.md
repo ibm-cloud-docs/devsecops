@@ -45,6 +45,7 @@ The App-Preview pipeline is used to:
 | deploy-app-preview      |  Deploys the app to a temporary preview environment. |
 | deploy-acceptance-tests |  Runs acceptance tests against the deployed preview version. |
 | app-preview-pr-finish   |  Finalizes the pipeline, updates PR status, logs results, and performs cleanup. |
+{: caption="App-Preview PR Pipeline stages" caption-side="top"}
 
 ## Comparison: PR Pipeline vs App Preview PR Pipeline
 {: #comparison-pr-vs-app-preview-pr}
@@ -67,6 +68,7 @@ The App Preview PR pipeline helps catch issues early and ensures that changes be
 |                          | `deploy-app-preview`               |
 |                          | `deploy-acceptance-tests`          |
 |                          | `app-preview-pr-finish`            |
+{: caption="Comparison of PR Pipeline and App Preview PR Pipeline Stages" caption-side="top"}
 
 These additional stages allow:
 - Static code scanning (`code-static-scan`)
@@ -179,6 +181,7 @@ In addition to the required environment properties for the PR pipeline, the foll
 | `app-url`            | text | The URL of your preview application.                         |
 | `registry-namespace` | text | The Container Registry namespace for the image.              |
 | `registry-region`    | text | The IBM Cloud region for the image registry.                 |
+{: caption="Environment Properties for App Preview PR Pipeline" caption-side="top"}
 
 The app-preview PR pipeline will now be triggered automatically when a new pull request is raised.
 
