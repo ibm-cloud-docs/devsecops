@@ -110,6 +110,7 @@ toc:
       - topicgroup:
             label: Working with Next generation pipelines
             topics:
+            - devsecops-enabling-next-gen-pipelines.md
             - devsecops-next-gen-pipelines.md
             - devsecops-pipeline-config-v2.md
             - devsecops-preprocessor.md
