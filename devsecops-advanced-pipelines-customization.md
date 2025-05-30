@@ -47,7 +47,7 @@ This approach has the following drawbacks:
 ### Billing considerations
 {: #advanced-billing-considerations}
 
-The Continuous Delivery service determines billing based on the number of authorized users per CD instance, and how many resource groups you use for your toolchains. Users who have access to your repositories are also considered authorized users. For more information, see [authorized users](/docs/ContinuousDelivery?topic=ContinuousDelivery-limitations_usage&interface=ui#authorized_users). To reduce costs, make sure that all of your toolchains are in the same resource group. Doing so does not affect a toolchain's ability to deploy into other resource groups that contain application environments.
+The {{site.data.keyword.contdelivery_short}} service determines billing based on the number of authorized users per CD instance, and how many resource groups you use for your toolchains. Users who have access to your repositories are also considered authorized users. For more information, see [authorized users](/docs/ContinuousDelivery?topic=ContinuousDelivery-limitations_usage&interface=ui#authorized_users). To reduce costs, either you should organize all of your toolchains in the same resource group, or you should configure {{site.data.keyword.contdelivery_short}} consolidated billing within an enterprise account hierarchy. For more information, see [Consolidated billing](/docs/ContinuousDelivery?topic=ContinuousDelivery-limitations_usage#consolidated_billing).
 
 ### DevSecOps repositories considerations
 {: #repo-considerations-devsecops}

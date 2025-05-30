@@ -111,6 +111,7 @@ toc:
             label: Working with Next generation pipelines
             topics:
             - devsecops-next-gen-pipelines.md
+            - devsecops-enabling-next-gen-pipelines.md
             - devsecops-pipeline-config-v2.md
             - devsecops-preprocessor.md
       - devsecops-custom-deployment.md
@@ -183,10 +184,6 @@ toc:
           - devsecops-configure-gosec-scan.md
           - devsecops-configuring-fips-scan.md
           - devsecops-configuring-sonarqube-scan.md
-          - devsecops-configuring-mend-scans.md
-          - devsecops-configuring-contrast-sast-scan.md
-          - devsecops-configuring-mend-sast-scan.md
-          - devsecops-compliance-check-scans.md          
           - devsecops-configuring-xray-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
@@ -215,7 +212,7 @@ toc:
               navtitle: Viewing and understanding results
             - include: ../security-compliance/getting-started.md
               navtitle: Managing security and compliance
-            - devsecops-data-security.md 
+            - devsecops-data-security.md
   - navgroup:
       id: reference
       topics:
@@ -266,3 +263,4 @@ toc:
       - topic: faq.md
         navtitle: FAQ
       - troubleshoot.md
+      - devsecops-revert-version.md

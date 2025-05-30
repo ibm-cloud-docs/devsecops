@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-04-14"
+lastupdated: "2025-05-26"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -122,7 +122,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 ### Secrets
 {: #tutorial-tekton-tool-secrets}
 
-Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in a secrets management tool, such as [{{site.data.keyword.keymanagementservicefull_notm}}](https://www.ibm.com/products/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/products/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The [secrets management tool](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
+Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in a secrets management tool, such as [{{site.data.keyword.keymanagementservicefull_notm}}](https://www.ibm.com/products/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/products/secrets-manager){: external}, or [HashiCorp Vault](https://developer.hashicorp.com/vault){: external}. The [secrets management tool](/docs/secrets-manager?topic=secrets-manager-use-case-kubernetes-secrets) can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
 
 You can use the **AppRole** authentication method to read secret values.
 {: tip}

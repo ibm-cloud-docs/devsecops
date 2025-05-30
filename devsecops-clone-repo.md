@@ -98,7 +98,7 @@ The clone_repo v2 function is an improved version of v1, supporting shallow clon
 | Parameter | Description |
 | ---------|------------ |
 | `repository`  | Git repository url. |
-| `token-path` | Path to the Git token file. |
+| `token-path` | (Optional) Path to the Git token file. |
 | `directory` | (Optional) Target directory to clone the repository. |
 | `commit-id` | (Optional) Specific commit ID to checkout. |
 | `clone-submodules`  | (Optional) Clone and initialize submodules. |

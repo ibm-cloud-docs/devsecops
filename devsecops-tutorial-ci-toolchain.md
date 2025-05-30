@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2025
-lastupdated: "2025-04-14"
+lastupdated: "2025-05-26"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -99,7 +99,7 @@ The issues repository records issues that are found while the CI pipeline is run
 ### Secrets
 {: #tutorial-ci-toolchain-secrets}
 
-Specify the secret vault integrations to be added to your toolchain by using the toggles. For more information, see [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud).
+Specify the secret vault integrations to be added to your toolchain by using the toggles. For more information, see [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-use-case-kubernetes-secrets).
 
 The CI toolchain supports **Arbitrary secrets** and **IAM credentials** secret types only.
 {: important}

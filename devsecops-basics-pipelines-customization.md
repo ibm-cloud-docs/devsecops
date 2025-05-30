@@ -174,7 +174,7 @@ Use development mode for development purposes only. Development mode is not a re
 ### Configuring the CD pipeline
 {: #configure-cd-pipeline}
 
-In the [DevSecOps continuous integration, continuous deployment workflow](/docs/devsecops?topic=devsecops-cd-devsecops-arch#cd-devsecops-design), the CI pipeline pushes updates to the inventory repository during the `deploy-release` stage of the CI pipeline. For more information, see [the sample release.sh script](https://us-east.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/release.sh).
+In the [DevSecOps continuous integration, continuous deployment workflow](/docs/devsecops?topic=devsecops-cd-devsecops-arch#cd-devsecops-design), the CI pipeline pushes updates to the inventory repository during the `deploy-release` stage of the CI pipeline. For more information, see [the sample release.sh script](https://us-east.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master).
 
 In this workflow, multiple CI triggers and different DevSecOps CI toolchains can contribute to the same inventory repository.
 

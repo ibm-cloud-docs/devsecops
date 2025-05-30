@@ -50,7 +50,7 @@ Resource groups organize your account resources in customizable groupings so tha
 {: #devsecops-tutorial-iac-secrets}
 {: step}
 
-Check the secret values that you need are stored in a secrets management vault. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-manage-secrets-ibm-cloud) helps you to choose from various secrets management, and data protection offerings. Create an instance of the secrets management vault, if you don't have one. For more information about {{site.data.keyword.secrets-manager_full}}, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
+Check the secret values that you need are stored in a secrets management vault. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-use-case-kubernetes-secrets) helps you to choose from various secrets management, and data protection offerings. Create an instance of the secrets management vault, if you don't have one. For more information about {{site.data.keyword.secrets-manager_full}}, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
 
 ## Apply the steps
 {: #devsecops-tutorial-iac-optional}

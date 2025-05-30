@@ -44,7 +44,7 @@ To keep your credentials secure, make sure that you follow this guidance:
 * [Classic pipeline secure environment properties](/docs/ContinuousDelivery?topic=ContinuousDelivery-deliverypipeline_about)
 * [Tekton pipeline secure environment properties](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines)
 * [{{site.data.keyword.keymanagementservicefull}}](/docs/key-protect?topic=key-protect-getting-started-tutorial)
-* [HashiCorp Vault](https://www.vaultproject.io/){: external}
+* [HashiCorp Vault](https://developer.hashicorp.com/vault){: external}
    
 For more information about secure DevOps best practices, see [DevOps Security](https://www.ibm.com/think/topics/devops#toc-security-j2-0639C){: external}.
 

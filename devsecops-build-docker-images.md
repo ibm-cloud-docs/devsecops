@@ -121,7 +121,7 @@ The environment variable `registry-domain` needs to be added to the pipeline to 
  ```
  {: codeblock}
 
- The previous sample code is taken from [sample hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/scripts/build_setup.sh).
+ The previous sample code is taken from [sample hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master).
 
 
 For more information, check out the following documentation:
