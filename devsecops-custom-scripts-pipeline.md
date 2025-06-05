@@ -49,7 +49,7 @@ For more information, see [Continuous Integration (CI) pipeline](/docs/devsecops
 | `code-unit-tests`         | Executes unit tests and application tests on application code |
 | `code-peer-review`        | Enforces the [Peer Review](/docs/devsecops?topic=devsecops-cd-devsecops-peer-review) of code changes before they are merged and promoted to production|
 | `code-static-scan`        | Runs static scan on application code (the default is SonarQube but other tools can be used) |
-| `code-compliance-checks`  | Runs [Code Risk Analyzer (CRA)](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) or [Mend Unified Agent](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans) scan for vulnerability detection on open source dependencies, and any other compliance checks on application repositories |
+| `code-compliance-checks`  | Runs [Code Risk Analyzer (CRA)](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) scan  for vulnerability detection on open source dependencies, and any other compliance checks on application repositories |
 | `build-artifact`          | Build the artifacts and images from the source code repository |
 | `build-sign-artifact`     | Signs built artifacts and images |
 | `build-scan-artifact`     | Scan the container image with [Vulnerability Advisor](/docs/devsecops?topic=devsecops-cd-devsecops-va-scans) |
@@ -94,7 +94,7 @@ For more information, see [Continuous Compliance (CC) pipeline](/docs/devsecops?
 | `cc-detect-secrets`    | Runs detect secrets scan on application code|
 | `cc-static-scan`       | Runs static scan on application code (the default is SonarQube but other tools can be used)|
 | `cc-dynamic-scan`      | Runs the [OWASP-Zap API and UI dynamic scans](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) on the application that is deployed to the target environment|
-| `cc-compliance-checks` | Runs [Code Risk Analyzer (CRA)](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) or [Mend Unified Agent](/docs/devsecops?topic=devsecops-cd-devsecops-mend-scans) scan for vulnerability detection on open source dependencies, and any other compliance checks on application repositories|
+| `cc-compliance-checks` | Runs [Code Risk Analyzer (CRA)](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) scan  for vulnerability detection on open source dependencies, and any other compliance checks on application repositories|
 | `cc-scan-artifact`     | Scan the container image with [Vulnerability Advisor](/docs/devsecops?topic=devsecops-cd-devsecops-va-scans)|
 | `cc-finish`            | Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks previously executed in the CC pipeline fails, this stage fails.|
 {: caption="Continuous Compliance (CC) pipeline" caption-side="bottom"}
