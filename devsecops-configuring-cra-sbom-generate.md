@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025, 2025
-lastupdated: "2025-04-17"
+lastupdated: "2025-06-05"
 
 keywords: DevSecOps, IBM Cloud, compliance,CRA, SBOM
 
@@ -21,7 +21,7 @@ To learn more about SBOMs see [Software Bill of Materials](/docs/devsecops?topic
 {: shortdesc}
 
 
-For more information on CRA SBOM for IBM Enterprise users, see [CRA SBOM overview](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#bom-generate-command){: external}.
+For more information on CRA SBOM for IBM Enterprise users, see [CRA SBOM overview](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#bom-generate-command){: external}.
 
 
 ## Generate the CRA SBOM

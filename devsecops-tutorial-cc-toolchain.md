@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-05-26"
+lastupdated: "2025-06-05"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -219,7 +219,7 @@ In the following places, the evidence from the compliance checks are uploaded.
 - Evidence locker repository.
 - {{site.data.keyword.cos_short}} bucket.
 - DevOps Insights - From the toolchain click **{{site.data.keyword.DRA_short}}**.
-- [DevOps Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-devops-data-aggregation) as displayed in the screen capture.
+- [DevOps Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-aggregating-multiple-sources#devops-data-aggregation) as displayed in the screen capture.
 
 ![DevSecOps CC evidence](images/devsecops-cc-explore-evidence.png){: caption="DevSecOps CC evidence" caption-side="bottom"}
 

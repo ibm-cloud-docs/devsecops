@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-05-16"
+lastupdated: "2025-06-05"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1975,7 +1975,7 @@ $ cocoa inventory validate \
 {: codeblock}
 
 ### cocoa inventory update-locations 
-{: #inventory-update-locations }
+{: #inventory-update-locations}
 
 Update an entry/artifact locations to the inventory repository.
 

@@ -72,7 +72,7 @@ If applicable to your use case, you can complete any or all the following steps.
 - Create an [artifact key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with the right encoding to sign in to your applications.
 - Create and save an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Alternatively, you can create the API key during the template-guided setup process.
 - Validate that the [IAM permissions](/docs/devsecops?topic=devsecops-iam-permissions) are assigned to the corresponding integrations.
-- Install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cloud-cli-getting-started).
+- Install the [{{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started).
 - Create an [{{site.data.keyword.cos_full}} instance and bucket](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config). For more information, see [What is {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-about-cloud-object-storage)?
 - Create an [{{site.data.keyword.satellitelong_notm}} cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig) to deploy your application into {{site.data.keyword.satellitelong_notm}} cluster group. For more information, see [Understanding {{site.data.keyword.satelliteshort}} config](/docs/satellite?topic=satellite-cluster-config).
 

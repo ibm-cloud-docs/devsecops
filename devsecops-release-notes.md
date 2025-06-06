@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-05-13"
+lastupdated: "2025-06-05"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -544,7 +544,7 @@ Support for Security and Compliance Center push API
 
 - **Generation of SBOM in cyclonedx format and its validation** - Added ability to generate and merge SBOM using cyclonedx format and also the bom is validated using `sbom-utility` tool. For more information, see [Generating the software bill of materials (SBOM) in cyclonedx format](/docs/devsecops?topic=devsecops-generate-cyclonedx-sbom)
 
-- **Evidence pruner** - A new tool has been developed to prune older evidences before a specific time. For more information, see [Removing compliance evidence generated before a designated time](/docs/devsecops?topic=devsecops-devsecops-prune-evidence)
+- **Evidence pruner** - A new tool has been developed to prune older evidences before a specific time.
 
 
 ## 31 January 2023
@@ -620,7 +620,7 @@ If you have an existing CC toolchain, you can set the [`doi-toolchain-id`](/docs
 {: note}
 
 - Added [tags](/docs/devops-insights-cli-plugin?topic=devops-insights-cli-plugin-CLI_devops-insights) to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
-- Surfaced dynamic scan results in the [Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-devops-data-aggregation).
+- Surfaced dynamic scan results in the [Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-aggregating-multiple-sources#devops-data-aggregationn).
 - Improved message logging for the pipeline evaluator task so that users can better understand what failed or succeeded for a pipeline run.
 
 ## 17 June 2022

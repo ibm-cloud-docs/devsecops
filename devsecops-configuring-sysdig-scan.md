@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-01-09"
+lastupdated: "2025-06-05"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Configuring Sysdig Image scans
 {: #cd-devsecops-sysdig-scans}
 
-To scan container images in `icr.io` and report on the vulnerabilities that are present in those images, you can use the Sysdig cli scanner. This scan is run as part of the scan-artifact stage of CI and CC pipelines. This scan runs for each [container image](https://github.ibm.com/docs/devsecops?topic=devsecops-devsecops-pipelinectl#pipelinectl-container-images) in `icr.io` you have saved to the pipeline by using the save_artifact method. For more information, see [save_artifact](https://github.ibm.com/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact).
+To scan container images in `icr.io` and report on the vulnerabilities that are present in those images, you can use the Sysdig cli scanner. This scan is run as part of the scan-artifact stage of CI and CC pipelines. This scan runs for each [container image](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#pipelinectl-container-images) in `icr.io` you have saved to the pipeline by using the save_artifact method. For more information, see [save_artifact](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_artifact).
 
 The following keys are required for save_artifact to scan each image with sysdig scanner:
 

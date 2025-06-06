@@ -127,5 +127,5 @@ The environment variable `registry-domain` needs to be added to the pipeline to 
 For more information, check out the following documentation:
 
 * [Documentation on stages for user-defined scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize)
-* [API documentation for pipelinectl](/docs/devsecops?topic=devsecops-cd-devsecops-pipelinectl)
+* [API documentation for pipelinectl](/docs/devsecops?topic=devsecops-devsecops-pipelinectl)
 * [The default built-in GPG Image sign script](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master){: external}
