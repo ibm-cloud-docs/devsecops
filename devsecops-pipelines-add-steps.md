@@ -18,7 +18,7 @@ subcollection: devsecops
  Connect your existing test and build flow to the Continuous Integration pipeline by adding the results of your new or existing test and build scripts to the DevSecOps pipeline Continuous Integration flow.
 {: shortdesc}
 
-At the start of the pipeline, the One Pipeline scripts automatically clone the application and configuration repositories into the following directories:
+At the start of the pipeline, the DevSecOps scripts automatically clone the application and configuration repositories into the following directories:
 
 1. The application repository is cloned at path `/workspace/app/<APP_REPO_NAME>`
 
