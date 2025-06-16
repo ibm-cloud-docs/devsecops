@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-05-08"
+lastupdated: "2025-06-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -246,6 +246,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 | `ciso-ibmcloud-api-key` | SECRET | Overrides `ibmcloud-api-key` for image signing and signature verification. | Optional |Unlocked |
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |Unlocked |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |Unlocked |
+| `cocoa-config-git-automerge-threshold` | text   | The auto-merge threshold value (in seconds) used to sort and retrieve the latest merged PRs. Default value: `10`   | Optional |Unlocked |
 | `cocoa-config-git-default-branch (supported in Q4, 2022)` | text   | The default Git branch for the cocoa CLI. For example: `main`. Default value: `master`   | Optional |Unlocked |
 |[`change-request-duration`](#pipeline-parm-change-request-duration)    | text   | The time allocated for maintenance tasks, in minutes, to establish the planned end time of the modification. The default duration is `30 min`.| Optional |Unlocked |
 |`change-management-repo`  | text   | The URL of the change management repository.  | Optional | Locked |
