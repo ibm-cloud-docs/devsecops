@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-06-19"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -116,7 +116,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `tfsec-version` | `v1.21.0`` | The `tfsec` version to use. |
 | `tfsec-args` | | The `tfsec` command arguments. |
 | `opt-in-checkov` | | The flag to run compliance checks by using the `checkov` tool. |
-| `checkov-image` | `bridgecrew/checkov`| The image that performs the `checkov` compliance check. |
+| `checkov-version` | `` meaning the latest version | `checkov` version to install if not available in the environment. |
 | `checkov-args` | | The `checkov` command arguments. |
 {: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
 
