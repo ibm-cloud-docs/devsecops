@@ -18,6 +18,31 @@ subcollection: devsecops
  Connect your existing test and build flow to the Continuous Integration pipeline by adding the results of your new or existing test and build scripts to the DevSecOps pipeline Continuous Integration flow.
 {: shortdesc}
 
+At the start of the pipeline, the DevSecOps scripts automatically clone the application and configuration repositories into the following directories:
+
+1. The application repository is cloned at path `/workspace/app/<APP_REPO_NAME>`
+
+2. The pipeline configuration repository is cloned at path `/workspace/app/one-pipeline-config-repo`
+
+At any stage, if you require to run scripts located in these repositories, you must first navigate to the appropriate directories. You can do this using one of the following methods:
+
+1. Using the cloned repository paths directly  
+  - App repository:
+  `cd "${WORKSPACE}/$APP_REPO_NAME"`
+
+  - Config repository:
+  `cd "${WORKSPACE}/one-pipeline-config-repo/"`
+
+2. Using the load_repo command
+  - App repository:
+  `cd "${WORKSPACE}/$(load_repo app-repo path)"`
+
+  - Config repository:
+  `cd "${WORKSPACE}/$(load_repo one-pipeline-config-repo path)"`
+
+$WORKSPACE refers to the root path /workspace/app.
+{: note}
+
 You can use the following stages within the continuous integration pipeline to add test and build steps:
 
 * **Setup**
