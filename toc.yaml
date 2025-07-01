@@ -209,7 +209,6 @@ toc:
             - include: ../security-compliance/getting-started.md
               navtitle: Managing security and compliance
             - devsecops-data-security.md
-      - devsecops-concert-integration.md
   - navgroup:
       id: reference
       topics:
