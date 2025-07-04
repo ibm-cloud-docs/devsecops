@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-05-21"
+lastupdated: "2025-07-04"
 
 keywords: DevSecOps, triggers
 
@@ -100,7 +100,7 @@ You can then verify that your pipeline has been triggered by opening your respec
 {: #trigger-pipeline-API}
 
 You can trigger the pipeline directly via API using `curl`. For more information on how to trigger Tekton pipelines via API, see the [IBM Cloud API Docs/
-CD Tekton Pipeline](https://cloud.ibm.com/apidocs/tekton-pipeline#trigger-a-pipeline-run).
+CD Tekton Pipeline](https://cloud.ibm.com/apidocs/tekton-pipeline#create-tekton-pipeline-run).
 
 
 1. Log in to IBM Cloud
@@ -143,7 +143,7 @@ CD Tekton Pipeline](https://cloud.ibm.com/apidocs/tekton-pipeline#trigger-a-pipe
 
 - The `-i` option ensures that HTTP response headers are included in the output, which helps you see the HTTP status code in case of errors.
 - You can add any environment properties required for the pipeline inside the `--data` payload, To learn more about how to add properties refer to this [IBM Cloud API Docs/
-CD Tekton Pipeline](https://cloud.ibm.com/apidocs/tekton-pipeline#trigger-a-pipeline-run).
+CD Tekton Pipeline](https://cloud.ibm.com/apidocs/tekton-pipeline#create-tekton-pipeline-run).
 
 - The output looks similar to the following when the pipeline is triggered:
 

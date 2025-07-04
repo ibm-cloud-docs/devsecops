@@ -181,6 +181,7 @@ toc:
           - devsecops-configuring-detect-secrets-scan.md
           - devsecops-configuring-zap-scans.md
           - devsecops-configure-gosec-scan.md
+          - devsecops-configuring-sonarqube-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
           - devsecops-configuring-va-scan.md

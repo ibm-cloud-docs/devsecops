@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-06-19"
+lastupdated: "2025-07-04"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -122,7 +122,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
-For more information about the expected output from user script stages, see [Custom scripts](//docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
 ### Format for `cra-tf-ignore-rules-file`
 {: #devsecops-iac-ci-pipeline-ignore-rules}
