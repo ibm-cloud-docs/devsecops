@@ -208,12 +208,10 @@ You can use any of the following methods to add static code to your pipeline:
 * Add your own static scan code to the static-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
 
-
 ## Adding SonarQube Scan to Your Pipelines
 {: #devsecops-app-preview-pr-pipeline-sonarqube-info}
 
 For more information about integrating SonarQube with the continuous integration pipeline, see [Configuring SonarQube](/docs/devsecops?topic=devsecops-sonarqube).
-
 
 
 ## Adding GoSec Scan Integration to Your Pipelines

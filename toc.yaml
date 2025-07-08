@@ -181,6 +181,7 @@ toc:
           - devsecops-configuring-detect-secrets-scan.md
           - devsecops-configuring-zap-scans.md
           - devsecops-configure-gosec-scan.md
+          - devsecops-configuring-sonarqube-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
           - devsecops-configuring-va-scan.md
@@ -209,7 +210,6 @@ toc:
             - include: ../security-compliance/getting-started.md
               navtitle: Managing security and compliance
             - devsecops-data-security.md
-      - devsecops-concert-integration.md
   - navgroup:
       id: reference
       topics:
