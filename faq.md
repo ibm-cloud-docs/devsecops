@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2025
-lastupdated: "2025-01-28"
+lastupdated: "2025-07-08"
 
 keywords: DevSecOps
 
@@ -48,3 +48,21 @@ A pipeline is customized by using custom scripts. Custom scripts are extension p
 Custom scripts control the pipeline stages. You can use a configuration file `(pipeline-config.yaml)` to configure the behavior of the stages, script content, and the base artifact that runs the scripts. The scripts and configuration for pipeline stages are loaded from an application repository that are similar to `.travis.yml` or `Jenkinsfile` or a custom repository.
 
 For more information, see [Customizing pipelines by using custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+
+## Multi-arch image for s390x and Power platforms limitations
+{: #faq-ci-sec-pipeline-power-limitation}
+{: faq}
+{: support}
+
+One-Pipeline provides native support for s390x and Power platforms using `runtimeClassName` (a string to indicate the runtime profile) in the one-pipeline configuration file. See [Customizing Pipelines with pipeline configuration v2](/docs/devsecops?topic=devsecops-pipeline-config-v2-runtimeclassname).
+
+However, this native support comes with some **limitations** and recommendations:
+- Limitations:
+  - This feature is available in **v11 only**.
+  - The **pod start time** is higher than for x86 runtime class.
+  - You must use **podman** with s390x or Power workloads. **Docker is not available**.
+    - User scripts needs to be updated to work with podman command instead of docker command
+    - The stage image should have podman installed.
+- Recommendations: use x86 runtime classes for
+  - scanning, as the various scanning tool images may not have multi-arch support.
+  - image signing, as multi-arch support is not available (work in progress).

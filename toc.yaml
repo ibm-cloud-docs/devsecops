@@ -66,17 +66,6 @@ toc:
             navtitle: "Part 4: Set up a CC toolchain"
       - include: ../apps/tutorials/tutorial-devsecops-refarch.md
       - topicgroup:
-          label: Develop and deploy a z/OS app with DevSecOps practices
-          topics:
-          - topic: devsecops-tutorial-zos-prereqs.md
-            navtitle: "Part 1: Set up prerequisites"
-          - topic: devsecops-tutorial-zos-ci-toolchain.md
-            navtitle: "Part 2: Set up a CI toolchain for z/OS"
-          - topic: devsecops-tutorial-zos-cd-toolchain.md
-            navtitle: "Part 3: Set up a CD toolchain for z/OS"
-          - topic: devsecops-tutorial-zos-cc-toolchain.md
-            navtitle: "Part 4: Set up a CC toolchain for z/OS"
-      - topicgroup:
           label: Develop and deploy secure IaC with DevSecOps practices
           topics:
           - devsecops-tutorial-iac-prereqs.md

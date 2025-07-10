@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-07-10"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -620,7 +620,7 @@ If you have an existing CC toolchain, you can set the [`doi-toolchain-id`](/docs
 {: note}
 
 - Added [tags](/docs/devops-insights-cli-plugin?topic=devops-insights-cli-plugin-CLI_devops-insights) to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
-- Surfaced dynamic scan results in the [Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-aggregating-multiple-sources#devops-data-aggregationn).
+- Surfaced dynamic scan results in the [Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-aggregating-multiple-sources#devops-data-aggregation).
 - Improved message logging for the pipeline evaluator task so that users can better understand what failed or succeeded for a pipeline run.
 
 ## 17 June 2022
