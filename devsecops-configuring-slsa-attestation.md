@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2025
+lastupdated: "2025-07-10"
 
 keywords: DevSecOps, slsa, slsa attestation, IBM Cloud
 
@@ -20,7 +20,7 @@ The tool tekton-chains collects evidence of the built images with SLSA attestati
 
 The tekton-chains tool monitors `build-artifact` stage of CI pipeline and attests the built images. The evidence collection tool runs for each image in the saved artifacts `list_artifacts` method and collects the attestation. Then, the tool creates the necessary evidences. For more information, see [list_artifacts](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_artifacts). 
 
-The tekton chains tool is deployed to IBM managed workers by default. For information about Private workers, see [What is Tekton Chains?](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-chains-whatis).
+The tekton chains tool is deployed to IBM managed workers by default. For information about Private workers, see [What is Tekton Chains?](/docs/ContinuousDelivery?topic=ContinuousDelivery-slsa-whatis).
 
 ## SLSA attestation parameters
 {: #slsa-params}
