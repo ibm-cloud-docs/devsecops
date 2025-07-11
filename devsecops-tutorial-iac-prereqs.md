@@ -73,7 +73,7 @@ You can continue to learn the following topics.
 * [Getting started with toolchains](https://cloud.ibm.com/devops/getting-started){: external}
 * [Getting started with {{site.data.keyword.contdelivery_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-help-and-support)
 
-For more information, see [help and support](/docs/devsecops-working?topic=devsecops-working-gettinghelp).
+For more information, see [help and support](/docs/devsecops?topic=devsecops-gettinghelp).
 {: note}
 
 ## Next steps

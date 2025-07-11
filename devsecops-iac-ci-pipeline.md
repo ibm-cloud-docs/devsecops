@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-07-04"
+lastupdated: "2025-07-11"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -77,7 +77,7 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 |---------|------------|---------|
 | tflint |Runs `tflint $tflint_args --format=json` from [tflint](https://github.com/terraform-linters/tflint) to warn about deprecated syntax, unused declarations and enforce best practices, naming conventions. |`opt-in-tflint` set to 1 |
 | fmt | Runs `terraform fmt -check` from [fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) to rewrite Terraform configuration files to a canonical format and style. | `opt-in-terraform-fmtvalidate` set to 1 |
-| terraform-validate |Runs `ibmcloud cra terraform-validate` from [terraform-validate](https://cloud.ibm.com/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-command) to warn about specified Terraform plan file for compliance with rules that are specified in IBM Cloud® Security and Compliance Center | `opt-in-terraform-fmtvalidate` set to 1  |
+| terraform-validate |Runs `ibmcloud cra terraform-validate` from [terraform-validate](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-command) to warn about specified Terraform plan file for compliance with rules that are specified in IBM Cloud® Security and Compliance Center | `opt-in-terraform-fmtvalidate` set to 1  |
 
 | Name | Type | Default | Description | Required or optional |
 |--|--|--|--|--|
@@ -108,7 +108,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | Property | Default | Description |
 | -------- | ----- | ----------- |
 | `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
-| `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/cli?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-options). |
+| `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-options). |
 | `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | The [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
 | `cra-tf-ignore-rules` | | The comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
 | `cra-tf-ignore-rules-file` | | The path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
@@ -127,7 +127,7 @@ For more information about the expected output from user script stages, see [Cus
 ### Format for `cra-tf-ignore-rules-file`
 {: #devsecops-iac-ci-pipeline-ignore-rules}
 
-The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. The format is similar to the format (without the `scc_parameters` field) that is in [Example SCC V2 classic profile file for the `terraform-validate` command](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#terraform-example-v2-classicprofile).
+The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. The format is similar to the format (without the `scc_parameters` field) that is in [Example SCC V2 classic profile file for the `terraform-validate` command](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-example-v2-classicprofile).
 
 Sample content for `cra-tf-ignore-rules-file` file:
 

@@ -59,7 +59,7 @@ doi-publish-testrecord "unittest" "./results.json" "https://git.repository.url/o
 ### doi-publish-testrecord-with-appname()
 {: #doi-publish-testrecord-with-appname}
 
-Publish a test record to DevOps Insights using `ibmcloud doi testrecord-publish` command. For more information, please refer [DevOps Insights CLI](https://cloud.ibm.com/docs/devops-insights-cli-plugin?topic=devops-insights-cli-plugin-CLI_devops-insights#publishtestrecord).
+Publish a test record to DevOps Insights using `ibmcloud doi testrecord-publish` command. For more information, please refer [DevOps Insights CLI](/docs/ContinuousDelivery?topic=ContinuousDelivery-CLI_devops-insights#publishtestrecord).
 
 Usage : `doi-publish-testrecord-with-appname <record_type> <test_record> <app_name>`
 

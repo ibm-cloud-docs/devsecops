@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-05-22"
+lastupdated: "2025-07-11"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -24,7 +24,7 @@ This can be generated in `cycloneDX-specific` format if needed. The packages lis
 * All of your Kubernetes files are analyzed for compliance.
 * All of your Terraform plans are analyzed for compliance.
 
-Code Risk Analyzer is available in all {{site.data.keyword.cloud_notm}} regions where toolchains are supported. For more information, see [the plug-in documentation](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin).
+Code Risk Analyzer is available in all {{site.data.keyword.cloud_notm}} regions where toolchains are supported. For more information, see [the plug-in documentation](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin).
 {: note}
 
 ## Configuring scans
@@ -38,7 +38,7 @@ If your Dockerfile requires ARGS, set an individual ARG as an environment variab
 | `cra-custom-script-path` | Path to the script in your repo. | Optional | Sets environment variables that are needed by the Docker script. |
 {: caption="Docker script environment variables" caption-side="bottom"}
 
-For more information, see [custom scripts](https://cloud.ibm.com/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#devsecops-custom-script-examples)
+For more information, see [custom scripts](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#devsecops-custom-script-examples)
 
 By default, Terraform files are not analyzed. To scan your Terraform file, you must set the following pipeline environment variables.
 
@@ -104,10 +104,10 @@ The following code snippet shows a sample `.cveignore` file:
 ```
 {: screen}
 
-This file used to be known as `.craveomit`. The original file format has been [deprecated](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-configure-cra-repos) and replaced by `.cra/.cveignore`. Please update your code to use the most recent file.
+This file used to be known as `.craveomit`. The original file format has been [deprecated](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin) and replaced by `.cra/.cveignore`. Please update your code to use the most recent file.
 {: note}
 
-You can learn more about the Code Risk Analyzer [plug-in's docs](/docs/code-risk-analyzer-cli-plugin), or you can also check the [deprecated CRA docs](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd-configure-cra-repos).
+You can learn more about the Code Risk Analyzer [plug-in's docs](/docs/code-risk-analyzer-cli-plugin), or you can also check the [deprecated CRA docs](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin).
 
 ## Automatically remediating vulnerabilities
 {: #cd-devsecops-auto-remediate}

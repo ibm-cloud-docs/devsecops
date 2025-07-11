@@ -70,7 +70,6 @@ toc:
           topics:
           - devsecops-tutorial-iac-prereqs.md
           - devsecops-tutorial-iac-ci-toolchain.md
-          - devsecops-tutorial-iac-cd-toolchain.md
       - devsecops-tutorial-tekton-ci-compliance.md
       - devsecops-tutorial-tekton-cd-compliance.md
   - navgroup:
@@ -96,13 +95,6 @@ toc:
           - devsecops-async-update-webhook.md
           - devsecops-dev-mode.md
           - devsecops-run-concurrently.md
-      - topicgroup:
-            label: Working with Next generation pipelines
-            topics:
-            - devsecops-next-gen-pipelines.md
-            - devsecops-enabling-next-gen-pipelines.md
-            - devsecops-pipeline-config-v2.md
-            - devsecops-preprocessor.md
       - devsecops-custom-deployment.md
       - topicgroup:
           label: Working with issues
@@ -126,27 +118,6 @@ toc:
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
-          - topicgroup:
-              label: Gathering evidence for audits
-              topics:
-              - topic: evidence/change-request.md
-                navtitle: Change requests
-              - topic: evidence/baseline-config.md
-                navtitle: Baseline configuration
-              - topic: evidence/ci-inventory.md
-                navtitle: Inventory commitment details
-              - topic: evidence/view-agg-status.md
-                navtitle: Aggregated summary of evidence
-              - topic: evidence/environment-builds.md
-                navtitle: Development and production builds
-              - topic: evidence/different-branches.md
-                navtitle: Separate staging and production branches
-              - topic: evidence/open-source-usage.md
-                navtitle: Open Source usage restrictions
-              - topic: evidence/periodic-review.md
-                navtitle: Periodic review
-              - topic: evidence/check-run.md
-                navtitle: CIS check and Static and Dynamic scans
       - topicgroup:
           label: Managing inventory
           topics:

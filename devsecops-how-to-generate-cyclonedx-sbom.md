@@ -17,7 +17,7 @@ subcollection: devsecops
 OWASP CycloneDX is a lightweight Software Bill of Materials (SBOM) standard that is designed for use in application security contexts and supply chain component analysis. The Continuous Integration (CI) pipeline generates the Software Bill of Materials (`BOM`) with the help of Code Risk Analyzer. By default, this `BOM` is generated in the `standard`  as well as `cyclonedx` format.
 {: shortdesc}
 
-To learn more about `BOM` generation, see [Bill of Materials (BOM)](/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin#bom-generate-command).
+To learn more about `BOM` generation, see [Bill of Materials (BOM)](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#bom-generate-command).
 
 ## Before you begin
 {: #generate-cyclonedx-sbom-prereq}

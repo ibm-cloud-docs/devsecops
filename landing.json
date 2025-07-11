@@ -29,7 +29,7 @@
     }
   ],
   "section_devtools": {
-    "cli": "/docs/cli?topic=cli-CLI_devops-insights",
+    "cli": "/docs/ContinuousDelivery?topic=ContinuousDelivery-CLI_devops-insights",
     "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest"
   },
   "section_updates": {
