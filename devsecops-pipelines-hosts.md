@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-01-23"
+lastupdated: "2025-07-11"
 
 keywords: DevSecOps
 
@@ -31,7 +31,7 @@ When running pipeline workers behind a firewall, it's essential to configure you
 | `https://private.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | IBM Cloud CLI (Command Line Interface) | Endpoint for the DevSecOps CD Pipeline to interact with the IBM Cloud CLI using private endpoint. | Required |
 | `https://private.{EN_REGION}.event-notifications.cloud.ibm.com/event-notifications/v1/instances/`  | Event Notification | DevSecOps Continuous Delivery Pipelines | Endpoint for DevSecOps CD Pipeline to send pipeline events to be sent to Event Notification Instance. Required only when Event Notification Integration is configured for DevSecOps CD Pipelines.| Optional |
 | `https://private.icr.io/va/api/v4 ` | DevSecOps Continuous Delivery Pipelines | IBM Cloud Container Registry | Endpoint for DevSecOps CD Pipeline to interact with [Vulnerability Advisor](https://cloud.ibm.com/apidocs/vulnerability-advisor). Required only when pipeline run Vulnerability Advisor Scans on the docker images stored in ICR (IBM Cloud Container Registry) | Optional |
-| `https://otcbroker.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact IBM Cloud CRA Plugin Service. Required only when pipeline run [CRA (Code Risk Analyser)](https://cloud.ibm.com/docs/code-risk-analyzer-cli-plugin?topic=code-risk-analyzer-cli-plugin-cra-cli-plugin) Scans on the source code. | Optional | 
+| `https://otcbroker.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact IBM Cloud CRA Plugin Service. Required only when pipeline run [CRA (Code Risk Analyser)](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin) Scans on the source code. | Optional | 
 | `https://vcurator.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when a pipeline runs CRA (Code Risk Analyser) scans on the source code. | Optional |
 | `https://gitsecure.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when a pipeline runs CRA (Code Risk Analyser) scans on the source code. | Optional |
 | `https://dlms.{REGION}.devopsinsights.cloud.ibm.com` | DevSecOps Continuous Delivery Pipelines | Continuous Delivery | Endpoint for DevSecOps CD Pipeline to interact with the IBM Cloud CRA service. Required only when pipeline runs CRA (Code Risk Analyser) scans on the source code. | Optional |

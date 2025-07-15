@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-10"
+lastupdated: "2025-07-11"
 
 keywords: DevSecOps, architecture, shift left, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -63,6 +63,6 @@ Review the additional useful learning aids to get started:
 * [Installing {{site.data.keyword.deliverypipeline}} private workers](/docs/ContinuousDelivery?topic=ContinuousDelivery-install-private-workers)
 * [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines)
 * [Getting started with the {{site.data.keyword.cloud}} Command Line Interface (CLI)](/docs/cli?topic=cli-getting-started)
-* [Continuous Deployment to Kubernetes](/docs/solution-tutorials?topic=solution-tutorials-continuous-deployment-to-kubernetes)
+* [Continuous Deployment to Kubernetes](/docs/ContinuousDelivery?topic=ContinuousDelivery-tutorial-cd-kubernetes)
 * [Getting started with {{site.data.keyword.containerlong}}](/docs/containers?topic=containers-getting-started)
 * [Toolchain availability, templates, and tutorials](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd_about)
