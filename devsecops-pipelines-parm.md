@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-06-16"
+lastupdated: "2025-07-15"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -575,9 +575,9 @@ This parameter is for all the pipelines that use static scan stages. This is the
 ### sonarqube-scan-command
 {: #pipeline-parm-sonarqube-scan-command}
 
-This parameter is for the pipelines that use static scan stages. `sonarqube-scan-command` specifies the command to start the sonarqube scan. If this parameter is not set, the default is `docker run --network host -v "$SONAR_DIR":/usr/sonar_scan -v "$WORKSPACE/$path":/usr/src "$sonarqube_scanner_image" sonar-scanner -Dsonar.working.directory=/usr/sonar_scan`. The default parameter uses the Docker `sonar-scanner` image to perform the scan.
+This parameter is for the pipelines that use static scan stages. `sonarqube-scan-command` specifies the command to start the sonarqube scan. If this parameter is not set, the default is `docker run --platform="linux/amd64" --network host -v "$SONAR_DIR":/usr/sonar_scan -v "$WORKSPACE/$path":/usr/src "$sonarqube_scanner_image" sonar-scanner -Dsonar.working.directory=/usr/sonar_scan -Dsonar.projectKey="$SONAR_PROJECT_KEY" -Dsonar.token="$SONAR_TOKEN" -Dsonar.host.url="$SONAR_HOST_URL"`. The default parameter uses the Docker `sonar-scanner` image to perform the scan.
 
-For a Maven Java project, set this parameter to `mvn -Dmaven.repo.local="${WORKSPACE}/.m2" -Dsonar.login="$(cat /tmp/sonarqube-token)" -Dsonar.host.url="$SONAR_HOST_URL" -Dsonar.projectKey="$SONAR_PROJECT_KEY" -Dsonar.projectName="$SONAR_PROJECT_KEY" -Dsonar.working.directory="$SONAR_DIR" sonar:sonar` to use the Maven computed classpath for sonar scan.
+For a Maven Java project, set this parameter to `mvn -Dmaven.repo.local="${WORKSPACE}/.m2" -Dsonar.token="$SONAR_TOKEN" -Dsonar.host.url="$SONAR_HOST_URL" -Dsonar.projectKey="$SONAR_PROJECT_KEY" -Dsonar.projectName="$SONAR_PROJECT_KEY" -Dsonar.working.directory="$SONAR_DIR" sonar:sonar` to use the Maven computed classpath for sonar scan.
 
 ### source-environment
 {: #pipeline-parm-source-environment}
