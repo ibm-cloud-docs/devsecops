@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-07-15"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -142,6 +142,8 @@ If you want to use your own static scan implementation instead, you can modify y
 These scripts are run on all of the app repos that the pipeline is aware of. To add repos to these scans, use the [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl) interface that is provided in your setup stage.
 
 For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
+
+**Note**: CI pipelines are not triggered on tags because they do not support features such as `branch protection checks` or `peer review check`. If you choose to run a CI pipeline on tags, ensure to disable the `peer-review-compliance` and `branch-protection-check` properties by setting it to `0`. However, be aware that in this case, evidence collection will not occur for these. 
 
 ## Build
 {: #devsecops-ci-pipeline-build}
