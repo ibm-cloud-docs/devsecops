@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-08"
+  years: 2021, 2025
+lastupdated: "2025-07-16"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -137,7 +137,6 @@ The current implementation currently supports the following tools (provided as t
 - `cra-tf` Code Risk Analyzer for Terraform
 - `tfsec` Terraform Security Scanner
 - `fips-scanner` Fips (Federal Information Processing Standards) Scanner
-- `contrast-sast` Contrast Sast (Static Application security testing)
 - `detect-secrets` Detect Secrets
 - `ciso-code-signing` CISO Code Signing Tool
 - `sysdig` Sysdig Scan

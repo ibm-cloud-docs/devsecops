@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-07-10"
+lastupdated: "2025-07-16"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2107,7 +2107,6 @@ Currently supported scan result files:
 - CRA Vulnerability scan for Terraform (option `--type cra-tf`)
 - Terraform Security Scan (option `--type tfsec`)
 - Fips Scanner (option `--type fips-scanner`)
-- Contrast Sast (option `--type contrast-sast`)
 - Detect Secrets (option `--type detect-secrets`)
 - Sysdig (option `--type sysdig`)
 
