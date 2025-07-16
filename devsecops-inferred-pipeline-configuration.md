@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-07-10"
+lastupdated: "2025-07-16"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -311,6 +311,7 @@ You can configure the NPM unit testing and acceptance testing script detection.
 To configure the Python Poetry version, use the following pipeline environment properties:
 
 * `hint-python-poetry-version`: (Default: `1.8.2`) Hints for Python Poetry version.
+* `discover-python-unittest-from-ancestor`: (Default: `false`) indicates that the ancestor directory is used as starting point for python `unittest` discovery (for example, in order to discover unit tests from the directory containing the `requirements.txt` at the root of the repository and not the `requirements.txt` (if any) that is closest to the python unittest files).
 
 #### Terraform Configuration
 {: #devsecops-pipeline-configuration-spot-terraform}
