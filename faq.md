@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2025
-lastupdated: "2025-07-08"
+lastupdated: "2025-07-17"
 
 keywords: DevSecOps
 
@@ -66,3 +66,13 @@ However, this native support comes with some **limitations** and recommendations
 - Recommendations: use x86 runtime classes for
   - scanning, as the various scanning tool images may not have multi-arch support.
   - image signing, as multi-arch support is not available (work in progress).
+
+## Triggering pipeline using CLI
+{: #faq-trigger-pipeline-cli}
+{: faq}
+{: support}
+
+A pipeline can be triggered by using the IBM Cloud CLI or a API. 
+With the CLI, you can start a pipeline by providing the toolchain and pipeline IDs. Using the API, you can send a POST request with the right authentication and headers to trigger the pipeline.
+
+For more information , see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton#using-triggers)
