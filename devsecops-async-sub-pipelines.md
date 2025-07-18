@@ -156,6 +156,8 @@ ibmcloud dev tekton-pipelinerun ls [pipelineID]
 
 For more information, see the [{{site.data.keyword.cloud_notm}} CLI (`tekton-pipelinerun`) command](/docs/cli?topic=cli-idt-cli#tekton-pipelinerun).
 
+For more information about triggering pipelines using the CLI, see [Using triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton#using-triggers)
+
 ## Related information
 {: #devsecops-async-sub-related}
 
