@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-07-15"
+lastupdated: "2025-07-21"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -219,7 +219,7 @@ Set `opt-in-dynamic-ui-scan` to a nonempty value for ZAP API scans to run. To op
 
 * Add your own dynamic scan code to the dynamic-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
-For more information about the ZAP API scan and ZAP UI scans, see [Configuring ZAP scans](/docs/devsecops?topic=devsecops-zap-scans).
+For more information about the ZAP API scan and ZAP UI scans, see [Configuring ZAP scans](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans).
 
 ## Release to inventory
 {: #devsecops-ci-pipeline-inventoryrel}
