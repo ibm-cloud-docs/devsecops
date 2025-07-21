@@ -148,3 +148,54 @@ Save the trigger.
   - Wait for the Merge Queue PR to complete
   - If successful, PR is merged with comment like `Merged via the queue into main with commit abcdefg`
   - If not successful (ex: failed compliance check), PR will not be auto-merged, and removed from Merge Queue.
+
+---
+
+## PR Payload Overview
+
+### Payload
+{: #cd-devsecops-payload}
+
+A **payload** is a generic term used to describe a structured block of data, usually in JSON format—that is transmitted as part of an event or request. Payloads are commonly used in webhooks, APIs, and automation systems to convey relevant information in a machine readable form.
+
+Payloads can represent a wide range of content depending on the context—for example, build metadata, user activity, issue updates, or, in this case, pull request details.
+
+### PR Payload
+#cd-devsecops-pr-payload
+
+The **PR Payload** is a specific instance of a payload that encapsulates metadata and contextual information about a pull request (PR). It is generated when a pull request event occurs and provides structured access to key attributes related to that PR.
+
+This payload includes a wide range of data such as:
+
+* PR title and description
+* Author and reviewers
+* Source (head) and target (base) branches
+* Commit history and SHA references
+* Repository details
+* Timestamps, labels, statuses, and more
+
+While the full payload contains extensive information, only a **specific subset of fields** is currently being extracted and exposed as environment variables for use in pipelines, scripts, and configuration files.
+
+## Environment Properties Extracted from the PR Payload
+
+The following environment variables are currently derived from the PR Payload and actively used:
+
+| Variable Name      | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| `head-branch`      | The source branch of the PR (branch being merged from)  |
+| `head-sha`         | The commit SHA of the latest commit on the head branch  |
+| `head-repo`        | The repository from which the PR originates             |
+| `base-branch`      | The target branch of the PR (branch being merged into)  |
+| `base-repo`        | The full reference to the base repository               |
+| `base-repo-name`   | The name of the base repository                         |
+| `base-repo-owner`  | The owner (user or organization) of the base repository |
+| `commit-timestamp` | The timestamp of the most recent commit in the PR       |
+| `pr-url`           | The API URL of the pull request                         |
+| `pr-html-url`      | The web (HTML) URL of the pull request                  |
+| `pr-title`         | The title of the pull request                           |
+| `action`           | status of PR                                            |
+| `base_ref`         | target branch of PR                                     |
+
+These values are injected as environment variables to simplify access during execution in automated workflows.
+
+The PR Payload includes **many additional fields** beyond what is listed above. However, only the extracted subset is currently leveraged for operational purposes. If needed, access to the complete payload can be provided for advanced use cases or future expansion.
