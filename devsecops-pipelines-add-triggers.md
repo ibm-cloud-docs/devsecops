@@ -21,7 +21,7 @@ DevSecops continuous integration and continuous deployment pipelines provide a s
 
 For more information about Tekton pipeline triggers , see [Working with Tekton pipelines](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines).
 
-# Triggering pipelines using CLI or API
+## Triggering pipelines using CLI or API
 {: #cd-devsecops-trigger-pipeline-cli}
 
 You can trigger a pipeline by using either the IBM Cloud CLI or the API. With the CLI, you initiate the pipeline by specifying the required toolchain and pipeline identifiers. Alternatively, the API allows you to trigger a pipeline run by sending a POST request with the appropriate authentication headers and payload.
