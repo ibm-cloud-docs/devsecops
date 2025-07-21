@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-04-29"
+lastupdated: "2025-07-21"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -69,7 +69,8 @@ Evidence can be declared as:
 
 Below diagram shows how the evidence aggregation works:
 
- ![evidence aggregation](images/Evidence-collection.png){: caption="Evidence aggregation" caption-side="bottom"}
+ ![evidence aggregation](images/Evidence-collection.png)
+ {: caption="Evidence aggregation" caption-side="bottom"}
 
 ### Evidence evaluation and Gating
 {: #evidence-evaluation-gating}
@@ -87,21 +88,26 @@ Supported evidences for gating:
 #### 1. Promotion from `master` to `prod`
 {: #various-deployment-topology-step1}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-prod.png){: caption="Usecase 1. Promotion from `master` to `prod`" caption-side="bottom"}
+ ![master to prod Promotion](images/devsecops-evidence-checks-master-prod.png)
+ {: caption="Usecase 1. Promotion from `master` to `prod`" caption-side="bottom"}
 
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger`](images/devsecops-evidence-checks-master-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger`](images/devsecops-evidence-checks-master-prod-properties-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger`"}
 
 
 #### 2. Promotion from `master` to `stage` and then to `prod`
 {: #various-deployment-topology-step2}
 
- ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-prod.png){: caption="Usecase 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
+ ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-prod.png)
+ {: caption="Usecase 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
 
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`](images/devsecops-evidence-checks-master-stage-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`](images/devsecops-evidence-checks-master-stage-properties-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`](images/devsecops-evidence-checks-stage-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`](images/devsecops-evidence-checks-stage-prod-properties-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`"}
 
 ![Config file verison2](images/devsecops-evidence-config-version2-cd.png)
  {: caption="Config file verison2"}
@@ -109,34 +115,45 @@ Supported evidences for gating:
 #### 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step3}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-south-prod.png){: caption="Usecase 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
+ ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-south-prod.png)
+ {: caption="Usecase 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](/images/devsecops-evidence-checks-master-stage-prod-us-east-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](/images/devsecops-evidence-checks-master-stage-prod-us-east-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
 
 #### 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step4}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-us-south-prod.png){: caption="Usecase 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
+ ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-us-south-prod.png)
+ {: caption="Usecase 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](images/devsecops-evidence-checks-master-stage-prod-us-east-us-south-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](images/devsecops-evidence-checks-master-stage-prod-us-east-us-south-cd.png)
+{: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
 
-![Config file verison2 with region](images/devsecops-evidence-config-version2-region-cd.png){: caption="Config file verison2 with region"}
+![Config file verison2 with region](images/devsecops-evidence-config-version2-region-cd.png)
+{: caption="Config file verison2 with region"}
 
 ### Result Table for version2 `cocoa locker evidence check`:
 {: #result-table-v2}
 
 
- ![`cocoa locker evidence check` version2 command output](images/devsecops-evidence-result-table-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+ ![`cocoa locker evidence check` version2 command output](images/devsecops-evidence-result-table-cd.png)
+ {: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
 
 ### Pre-deployment (checks that are done before the change request is auto-approved)
 {: #evidence-checks-predep}
@@ -163,6 +180,9 @@ Supported evidences for gating:
 
 
 Pipeline evaluation will also occur when the check is enabled in both the CD and CC, utilizing the configuration file.
+
+Evidence originating from the CI pipeline should have origin as `ci-pipeline` in the config file.
+{: tip}
 
 ### Sample config file version 2
 {: #evidence-checks-samp-config-file}
@@ -235,7 +255,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             },
             {
               "name": "stage"
@@ -267,7 +287,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "image",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -293,7 +313,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -324,7 +344,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -355,7 +375,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "image",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -386,7 +406,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "image",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -412,7 +432,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -472,7 +492,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -503,7 +523,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "image",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -529,7 +549,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -589,7 +609,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -620,7 +640,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -646,7 +666,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -677,7 +697,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -703,7 +723,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -734,7 +754,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -760,7 +780,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -791,7 +811,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -817,7 +837,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -848,7 +868,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -874,7 +894,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -905,7 +925,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -931,7 +951,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -962,7 +982,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "commit",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -988,7 +1008,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -1019,7 +1039,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "generic",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -1050,7 +1070,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "generic",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -1081,7 +1101,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -1112,7 +1132,7 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
           "asset_type": "*",
           "source_environments": [
             {
-              "name": "master"
+              "name": "ci-pipeline"
             }
           ],
           "target_environments": [
@@ -1897,3 +1917,48 @@ Pipeline evaluation will also occur when the check is enabled in both the CD and
 
 |`com.ibm.cloud.slsa` | `tekton-chains` |
 {: caption="Supported tool for evidence" caption-side="top"}
+
+### FAQ: Compliance Checks in CD Pipelines 
+{: #evidence-checks-config-file-faq}
+{: faq}
+{: support}
+
+
+#### What does **all checks are set to recommended** mean?
+
+It means that while the pipeline recommends passing all compliance checks, it doesn't automatically fail if they aren't. You, as the user, are responsible for ensuring all failing or missing compliance checks are addressed and fixed during your CI process. The pipeline is flagging these issues for you to investigate and resolve.
+
+#### How to check if all the compliance checks are met?
+
+- Navigate to the CD Pipeline: Go to the specific CD pipeline associated with your change.
+- Locate the Pre-Change-Request Task: Within the pipeline, find the task labeled "pre-change-request" and then select the "change-request" step.
+- Find the PRE-DEPLOYMENT Tables: Look for a table section with the keyword **PRE-DEPLOYMENT:**. You'll see two tables within this section.
+
+#### Understanding the Tables
+1)	Asset table
+    
+    a.	Asset table contains the ID which is the primary key of this table and foreign key AssetId of the evidence check table
+    
+    b.	Uri contains your actual asset against which all the evidence are collected or supposed to be collected
+
+2)	Evidence check table
+    
+    a.	EvidenceTypeId specifies which evidence type its looking for.
+    
+    b.	Evidence Origin specifies the origin of the evidence. If it says ci-pipeline then it expects that the evidence should be collected for that evidenceTypeId for that AssetId.
+
+#### What to do when you see entries in the Evidence Check Table as missing or failed? 
+
+For each entry in the Evidence Check table, ask yourself these questions:
+Have I ever collected this type of evidence for this asset within my CI pipeline?
+
+  1.	If NO:
+    Is this a valid compliance requirement for my service?
+
+        a. YES: You need to implement the necessary steps in your CI pipeline to collect and provide this evidence. This might involve adding new tools, scripts, or configurations. [Help Guide](/docs/devsecops?topic=devsecops-devsecops-asset-evidence-collection) 
+        
+        b. NO: Reach out to your security focal explain why you believe this check is not relevant or valid for your service. Provide a clear justification and remove that check from the config file.
+
+2.	If YES: (You have collected this evidence previously)
+    
+    Why is it still showing as missing in the Evidence Check table? There might be an issue with how the evidence is being reported, processed, or linked to the asset.
