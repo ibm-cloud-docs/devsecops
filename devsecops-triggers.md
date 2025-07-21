@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-07-17"
+lastupdated: "2025-07-21"
 
 keywords: DevSecOps, triggers
 
@@ -45,4 +45,4 @@ You can [add triggers](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline
 - In addition to default triggers, you can manually start pipeline runs using the IBM Cloud CLI or a REST API call.
    - CLI: Use the IBM Cloud CLI to trigger a pipeline by specifying the toolchain and pipeline IDs.
    - API: Send a POST request to the pipeline trigger endpoint with the appropriate authorization headers and payload.
-For step-by-step instructions and usage examples, see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton#using-triggers).
+For step-by-step instructions and usage examples, see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines&interface=api#using-triggers).
