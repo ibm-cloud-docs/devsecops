@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2025
-lastupdated: "2025-07-17"
+lastupdated: "2025-07-21"
 
 keywords: DevSecOps
 
@@ -75,4 +75,4 @@ However, this native support comes with some **limitations** and recommendations
 A pipeline can be triggered by using the IBM Cloud CLI or a API. 
 With the CLI, you can start a pipeline by providing the toolchain and pipeline IDs. Using the API, you can send a POST request with the right authentication and headers to trigger the pipeline.
 
-For more information , see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton#using-triggers)
+For more information , see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines&interface=api#using-triggers)
