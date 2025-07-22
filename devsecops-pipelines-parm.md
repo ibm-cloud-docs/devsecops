@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-07-15"
+lastupdated: "2025-07-22"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -388,7 +388,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`inventory-exclude`    | text | Comma-separated list of the inventory entries that are excluded for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns.  |Optional			|
 |`inventory-include`    | text | Comma-separated list of the inventory entries that are included for scanning and testing in the CC pipeline. Entries can also be specified by using glob patterns. If not set, all entries are scanned and tested.  |Optional			|
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			|
-|`opt-in-auto-close` |text		|Enables auto-closing of issues from vulnerabilities, when the vulnerability is no longer detected by the CC pipeline run.	|Optional			|
+|`opt-in-auto-close` |text		|Enables auto-closing of issues from vulnerabilities, when the vulnerability is no longer detected by the CC pipeline and PR pipeline with evidence collection.	Defaults to `1`.|Optional			|
 |`opt-in-cra-auto-remediation`		|text		|Specifies whether {{site.data.keyword.cloud_notm}} `cra auto remediation` is run (`true` or `false`).	|Optional			|
 |`opt-in-cra-auto-remediation-enabled-repos`		|text		|Specifies the list of comma-separated repository names that are to be turned on for {{site.data.keyword.cloud_notm}} `cra auto remediation`. This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|
 |`opt-in-cra-auto-remediation-force`		|text		|Forces {{site.data.keyword.cloud_notm}} `cra auto remediation` to update the packages even if the major version is different than the current vulnerable package version (`true` or `false`). This parameter is considered only if `opt-in-cra-auto-remediation` is set to `true`	|Optional			|

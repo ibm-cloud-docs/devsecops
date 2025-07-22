@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-07-21"
+lastupdated: "2025-07-22"
 
 keywords: DevSecOps, triggers
 
@@ -39,7 +39,7 @@ DevSecOps continuous integration and continuous deployment pipelines provide a s
 You can [add triggers](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-triggers) to the set of default triggers.
 {: tip}
 
-# Triggering a Pipeline Using CLI or API
+## Triggering a Pipeline Using CLI or API
 {: #triggering-cli-api}
 
 - In addition to default triggers, you can manually start pipeline runs using the IBM Cloud CLI or a REST API call.

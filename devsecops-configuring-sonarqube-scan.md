@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-07-04"
+lastupdated: "2025-07-21"
 
 keywords: tool integrations, Sonarqube
 
@@ -434,7 +434,7 @@ Please ensure to enable `opt-in-sonar-hotspots` in CC in case it is enabled in C
 {: tip}
 
 ### Permissions for SonarQube Token
-{: sonarqube-ci-pipeline-user-token}
+{: #sonarqube-ci-pipeline-user-token}
 
 In case of using existing SonarQube instance and to successfully publish the testrecord to Devops Insights and fetch the Quality Gate name for a project, we need to create a **User token** with required permissions and set it as a secret value in env property `sonarqube-user-token` in order to provide permission to access the required Sonarqube enpoints.
 
