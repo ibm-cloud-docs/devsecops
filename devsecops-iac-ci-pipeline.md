@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-07-11"
+lastupdated: "2025-07-29"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -92,7 +92,7 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 ## Scans and checks in compliance checks
 {: #devsecops-iac-ci-pipeline-compliancechecks}
 
-[Compliance checks](/docs/devsecops?topic=devsecops-devsecops-ci-pipeline#devsecops-ci-pipeline-compliancechecks) defined for application related continuous integration pipeline are also performed for the IaC continuous integration pipeline.
+[Compliance checks](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-compliancechecks) defined for application related continuous integration pipeline are also performed for the IaC continuous integration pipeline.
 
 The IaC CI pipeline performs some additional checks that are enabled by using `opt-in-` features.
 

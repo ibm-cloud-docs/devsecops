@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-06-16"
+lastupdated: "2025-07-29"
 
 keywords: DevSecOps
 
@@ -31,7 +31,7 @@ Take either of the following approaches:
 ## Option 1: Adding an emergency label to promotion PR
 {: #cd-devsecops-emergency-label}
 
-If you need to deploy emergency changes immediately, you can use emergency mode. When you promote a change, add an `emergency` label to the promotion pull request to prompt the continuous deployment pipeline to create an emergency change request. Emergency change requests allow deployment to continue even if the approval is missing. For more information on the emergency flow, see [Automating change management](/docs/devsecops?topic=devsecops-automate-changemgmt).
+If you need to deploy emergency changes immediately, you can use emergency mode. When you promote a change, add an `emergency` label to the promotion pull request to prompt the continuous deployment pipeline to create an emergency change request. Emergency change requests allow deployment to continue even if the approval is missing. For more information on the emergency flow, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt).
 
 Use the emergency mode sparingly and with caution.
 {:  important}
