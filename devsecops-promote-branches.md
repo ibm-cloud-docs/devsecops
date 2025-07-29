@@ -40,11 +40,12 @@ To promote code changes from the source branch to the target (staging, prod) bra
    1. Populate the [required fields](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelineoutputs) (Priority, Change Request assignee, Additional Description, and other fields).
    1. Merge the merge request (MR) to promote your changes from the source branch to the target branch.
 
-Now, that your changes are promoted to the target branch, you can deploy them by using the [continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-tekton-cd-compliance#cd-toolchain-cd-pipeline-run).
+Now, that your changes are promoted to the target branch, you can deploy them by using the [continuous deployment pipeline](/docs/devsecops?topic=devsecops-tutorial-tekton-cd-compliance#tutorial-tekton-cd-pipeline-run).
 
 ## Using the promotion validation pipeline
 {: #cd-devsecops-promotion-validation}
-Once a promotion PR is opened, you can optionally perform the evidence aggregation and summary generation in the Promotion validation pipeline, and set the evidence statuses on the promotion pull/merge request (PR). The PR may be created by the Promotion pipeline or manually in the inventory repo. Learn more on [promotion validation pipeline](/docs/devsecops?topic=devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline).
+
+Once a promotion PR is opened, you can optionally perform the evidence aggregation and summary generation in the Promotion validation pipeline, and set the evidence statuses on the promotion pull/merge request (PR). The PR may be created by the Promotion pipeline or manually in the inventory repo. Learn more on [promotion validation pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline).
 
 ## Deploying changes from the source-environment to the target-environment
 {: #cd-devsecops-deploy-branches}

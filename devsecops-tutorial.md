@@ -55,7 +55,7 @@ Storing secrets values is [essential](https://cloud.ibm.com/docs/secrets-manager
 {: #tutorial-cluster}
 {: step}
 
-Create a [Kubernetes cluster](/kubernetes/catalog/create){: external}. The cluster takes time to provision. For more information about provisioning clusters, see [Preparing your account to create clusters](/docs/containers?topic=containers-clusters).
+Create a [Kubernetes cluster](/containers/cluster-management/catalog/create){: external}. The cluster takes time to provision. For more information about provisioning clusters, see [Preparing your account to create clusters](/docs/containers?topic=containers-clusters).
 
 ## Create a {{site.data.keyword.registryshort_notm}} namespace
 {: #tutorial-namespace}

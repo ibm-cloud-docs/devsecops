@@ -79,4 +79,4 @@ For more information, see [help and support](/docs/devsecops?topic=devsecops-get
 ## Next steps
 {: #tutorial-iac-part1-next}
 
-Now, you set the prerequisites. Continue to the next tutorial in the series [Setting up a CI toolchain for IaC](/docs/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac-ci). 
+Now, you set the prerequisites. Continue to the next tutorial in the series [Setting up a CI toolchain for IaC](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac-ci). 

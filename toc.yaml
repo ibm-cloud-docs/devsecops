@@ -176,7 +176,6 @@ toc:
       - topicgroup:
           label: Delivery pipelines
           topics:
-          - devsecops-pipelines-config-v2.md
           - devsecops-pipelines-status.md
           - topicgroup:
                 label: Pull request pipeline
@@ -220,4 +219,3 @@ toc:
       - topic: faq.md
         navtitle: FAQ
       - troubleshoot.md
-      - devsecops-revert-version.md

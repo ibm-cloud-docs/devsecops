@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-07-29"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, cloud object storage, satellite , Push based deployment , Pull based deployment
 
@@ -63,7 +63,7 @@ As an advanced configuration, you can also deploy the application to the compute
 
 1. [Create a {{site.data.keyword.satelliteshort}} location](/satellite/locations/create){: external} for the compute infrastructure in your on-premises data center or other cloud providers by using predefined templates.
 
-2. [Deploy a Red Hat&reg; OpenShift&reg; cluster](/kubernetes/catalog/create?platformType=openshift){: external} to the {{site.data.keyword.satelliteshort}} location by using setup.
+2. [Deploy a Red Hat&reg; OpenShift&reg; cluster](/containers/cluster-management/catalog/create?platformType=openshift){: external} to the {{site.data.keyword.satelliteshort}} location by using setup.
 
 3. [Create a cluster group](/docs/satellite?topic=satellite-setup-clusters-satconfig-groups), which is a logical grouping of clusters that run on a {{site.data.keyword.satelliteshort}} location.
 
