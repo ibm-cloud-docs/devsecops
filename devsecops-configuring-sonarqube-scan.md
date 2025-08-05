@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-07-21"
+lastupdated: "2025-08-05"
 
 keywords: tool integrations, Sonarqube
 
@@ -102,7 +102,7 @@ If you add multiple SonarQube tool integrations to your pipeline, you can switch
 
 DevSecOps Pipelines uses SonarQube Version 10.0 by default.
 
-To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube-server/latest/setup-and-upgrade/plugins/plugin-version-matrix/)
+To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube-server/latest/server-installation/plugins/plugin-version-matrix/)
 
 ### Issues reported from SonarQube
 {: #sonarqube-cipipeline-issues-reported}
