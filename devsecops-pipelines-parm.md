@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-07-22"
+lastupdated: "2025-08-11"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -107,6 +107,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required for the Code Risk Analyzer scan.			|Optional			| Unlocked |
 |`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional| Unlocked |
 |[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`master` |Optional			|  Unlocked |
+|`repository` |text |The Git repository URL where your source code is stored. This must be a cloneable Git URL, typically ending in .git. |Required |Unlocked | 
 |`branch-protection-rules-path`		|text		|Set the path to a JSON file containing the customized list of the required compliance checks, relative to the integrated app repository.			|Optional			|  Unlocked |
 |`branch-protection-status-check-prefix`		|text		|The prefix text for branch protection status check (Defaults to `tekton`)	|Optional			|  Unlocked |
 | `ciso-ibmcloud-api-key` | SECRET | Overrides `ibmcloud-api-key` for image signing and signature verification. | Optional |  Unlocked |
