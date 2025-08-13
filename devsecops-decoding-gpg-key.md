@@ -69,7 +69,9 @@ decoded_key=$(echo "$encoded_key" | openssl base64 -d)
 echo $decoded_key > "$decoded_key_file"
 
 # Import the decoded key into GPG
-gpg --import "$decoded_key_file" ```
+gpg --import "$decoded_key_file"
+
+```
 
 
 1. Once executed, you will observe that the key has been successfully imported into your GPG key ring.
