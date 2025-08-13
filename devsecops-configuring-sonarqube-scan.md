@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-07-21"
+lastupdated: "2025-08-08"
 
 keywords: tool integrations, Sonarqube
 
@@ -66,6 +66,8 @@ If `sonarqube-config` is set to `cluster`, the pipeline creates a SonarQube inst
 
 Set `sonarqube-config` to `custom`, to add your own SonarQube instance to your existing pipeline, add the tool integration to your toolchain, and then add the SonarQube tool integration parameter to the pipeline. For more information, see [Configuring SonarQube](/docs/devsecops?topic=devsecops-sonarqube).
 
+
+
 ### Sonarqube server with self signed certificate
 
 If `sonarqube-config` is set to `custom` to use [an existing sonarqube server](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
@@ -102,7 +104,7 @@ If you add multiple SonarQube tool integrations to your pipeline, you can switch
 
 DevSecOps Pipelines uses SonarQube Version 10.0 by default.
 
-To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube-server/latest/setup-and-upgrade/plugins/plugin-version-matrix/)
+To know more about the list of preinstalled plug-ins, refer to [plug-ins](https://docs.sonarsource.com/sonarqube-server/latest/server-installation/plugins/plugin-version-matrix/)
 
 ### Issues reported from SonarQube
 {: #sonarqube-cipipeline-issues-reported}
@@ -484,6 +486,8 @@ For more information about the permissions to access the SonarQube Web API, plea
 {: #sonarqube-config-file}
 
 You can modify the default configuration without using your own SonarQube instance. Create a `sonar-project.properties` file in the repo that you want to create the configuration file in. If our script detects an existing `configuration sonar-project.properties` file in the repo, it uses that file instead of the default file. For more information about possible analysis parameters in the configuration file, see [Analysis Parameters](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/analysis-parameters/){: external} here.
+
+If `sonar.branch.name` is added in the `sonarqube-project.properties` file, then it is set to `sonar-branch-name` env property as default value, otherwise the branch name available from `load_repo <app-name> branch` is taken into consideration. For more information, refer [Branch Analysis](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/branch-analysis/setting-up-the-branch-analysis/){: external} documentation.
 
 Make sure that you add the correct login credentials and host URL to the configuration file.
 {: important}

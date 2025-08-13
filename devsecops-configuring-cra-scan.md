@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-07-11"
+lastupdated: "2025-08-05"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -14,6 +14,7 @@ subcollection: devsecops
 
 # Configuring IBM Cloud Code Risk Analyzer scans
 {: #cd-devsecops-cra-scans}
+
 You can use IBM Cloud Code Risk Analyzer to analyze your code for vulnerabilities and validate compliance against specified rules.
 {: shortdesc}
 

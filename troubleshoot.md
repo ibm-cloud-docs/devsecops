@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-07-11"
+lastupdated: "2025-08-01"
 
 keywords: troubleshoot, DevSecOps
 
@@ -33,6 +33,28 @@ Use these tips to help troubleshoot problems that you might run into when you us
 {: #troubleshoot-ibm-env}
 {: troubleshoot}
 {: support}
+
+### Pipeline runs are slow due to Git rate limiting
+{: #troubleshoot-git-rate-limiting}
+{: troubleshoot}
+{: support}
+
+Pipeline execution looks slower, pipeline runs take longer to execute, complete.
+
+Also, the following entry can be found in various places of the logs:
+```
+Unable to use this tool because the git API rate limit is exceeded. Please try again in <n> minutes.
+```
+{: tsSymptoms}
+
+Pipelines internally use Git API requests (set Git statuses, create / update issues, ...). There is a Git rate limit of <n> API requests, per Git token, per hour. When this limit is about to be reached, there is an internal pipeline mechanism that will pause requests - hence pausing the pipeline run as well - in order to prevent the pipeline run to early abort. This might result in long running pipelines.
+{: tsCauses}
+
+To overcome this Git rate limiting issue:
+1. Ensure environment property `batched-evidence-collection` to `1`. See corresponding section in the [IBM Cloud documentation](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#batched-evidence-collection).
+1. Migrate from Git evidence locker to COS evidence locker (also known as COS only). See corresponding section in the [IBM Cloud documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence#cd-devsecops-cos-only-locker).
+1. Use different Git tokens for Pipelines and/or triggers.
+{: tsResolve}
 
 ### The check-registry step of the containerized task fails with error
 {: #troubleshoot-check-registry}
