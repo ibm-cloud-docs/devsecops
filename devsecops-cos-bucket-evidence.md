@@ -162,5 +162,5 @@ In IBM Toolchains, update the environment variables to include both the old and 
 |`backup-cos-bucket-name`		| text		| The name of the backup bucket in your Cloud Object Storage instance that is used as an evidence locker.	|Required			| Unlocked |
 |`backup-cos-endpoint`		| text		| The endpoint that reads the evidence from the backup Cloud Object Storage instance that is used as an evidence locker. For more information, see [Endpoint Types](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints#advanced-endpoint-types). | Required			| Unlocked |
 
-Do not delete the this old bucket for 365 days, as it would be required for audit purposes. 
+Do not delete the old bucket for 365 days, as it would be required for audit purposes. 
 {: tip}
