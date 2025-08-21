@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2025
+lastupdated: "2025-08-21"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -26,7 +26,7 @@ You can get a GPG public key as follows:
 ## Getting a GPG public key by using the continuous integration (CI) pipeline
 {: #devsecops-publickey-ci}
 
-1. To get a public key, add the environment variable `print-code-signing-certificate` with a value of 1 in your CI pipeline. After you run the CI pipeline, the GPG public key is printed on the console in the `build-sign-artifact` stage. You can then copy the public key into a file and encode it in base64 format by running the following command:
+1. To get a public key, add the environment variable `print-code-signing-public-key` with a value of 1 in your CI pipeline. After you run the CI pipeline, the GPG public key is printed on the console in the `build-sign-artifact` stage. You can then copy the public key into a file and encode it in base64 format by running the following command:
 
     ```bash
     cat copied_key.txt | base64 
