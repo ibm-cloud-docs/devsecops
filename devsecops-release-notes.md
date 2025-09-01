@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-07-11"
+lastupdated: "2025-09-01"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -16,8 +16,28 @@ content-type: release-note
 # Release notes for DevSecOps
 {: #release-notes}
 
+The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to `open-v10` branch of this pipeline.
+{: deprecated}
+
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 10 August 2025
+{: #devsecops-May2025-16}
+{: release-note}
+
+### End of support open-v9 version of pipelines
+{: #devsecops-open-v9-end-of-support}
+
+As part of ongoing efforts to improve build efficiency and stability, we are officially ending the support for `open-v9` pipeline definitions.
+
+#### Why this change?
+The `open-v9` pipelines follow a sequential task execution model, resulting in longer build times and reduced performance. To overcome these limitations, a newer pipeline definition branch has been introduced:
+- `open-v10` introduced concurrent task execution, significantly improving pipeline performance and reducing overall build time.
+
+#### What you need to do:
+Please migrate your pipelines to the `open-v10` at the earliest. See [Improving compliance pipeline performance in DevSecOps](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-conc) for migration instructions.
+Support for `open-v9` will end on September 30, 2025.
 
 ## 16 May 2025
 {: #devsecops-May2025-16}
