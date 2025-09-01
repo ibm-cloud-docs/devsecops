@@ -22,8 +22,85 @@ The `open-v9` branch of the DevSecOps pipelines will no longer be supported from
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
+## 01 September 2025
+{: #devsecops-Sept2025-01}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.67.0 and open-v10.50.0
+{: #devsecops-open-v10.50.0-open-v9.67.0}
+
+Selective deployment using inventory filtering
+:   Enhanced inventory filtering to deploy previously filtered inventories
+
+Update to gosec version
+:   Updated gosec tool to v2.22.8
+
+Update to detect secrets tool
+:   Added --word-list option to filter out potential false positives
+
+## 22 August 2025
+{: #devsecops-Aug2025-22}
+{: release-note}
+
+### Updates for DevSecOps version - open-v9.66.0 and open-v10.49.0
+{: #devsecops-open-v10.49.0-open-v9.66.0}
+
+Update to gosec version
+:   Updated gosec tool to v2.22.7
+
+### Updates for DevSecOps version - open-v9.65.1 and open-v10.48.1
+{: #devsecops-open-v10.48.1-open-v9.65.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v9.65.0 and open-v10.48.0
+{: #devsecops-open-v10.48.0-open-v9.65.0}
+
+Simple tekton pipeline for operational tasks
+:   Developed a new tekton pipeline consisting of a single stage `execute` and can be used to perform operational tasks.
+
+### Updates for DevSecOps version - open-v9.64.0 and open-v10.47.0
+{: #devsecops-open-v10.47.0-open-v9.64.0}
+
+Set branch protection settings
+:   Developed a new utility to set recommended branch protection settings to all the repositories saved in the pipeline run
+
+### Updates for DevSecOps version - open-v9.63.1 and open-v10.46.1
+{: #devsecops-open-v10.46.1-open-v9.63.1}
+
+Sonarqube analysis with community edition
+:   Stop sonarqube analysis in case of community edition as sonarqube analysis is not available in community edition
+
+### Updates for DevSecOps version - open-v9.62.0 and open-v10.45.0
+{: #devsecops-open-v10.45.0-open-v9.62.0}
+
+Enhanced sonarqube configuration
+:   Enahanced sonarqube configuration for multi branch projects
+
+### Updates for DevSecOps version - open-v9.61.0 and open-v10.44.0
+{: #devsecops-open-v10.44.0-open-v9.61.0}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v9.60.0 and open-v10.42.0
+{: #devsecops-open-v10.42.0-open-v9.60.0}
+
+Support for Rulesets in github
+:   Added support for rulesets to validate branch protection checks
+
+Git clone enhancements
+:   Added support for user provided optimization flags
+
+Support for github merge queues
+:   Added support for github merge queues
+
+Creation of Change request evidence in CD pipeline
+:   Added creation of evidence for creation of change request
+
 ## 10 August 2025
-{: #devsecops-May2025-16}
+{: #devsecops-Aug2025-10}
 {: release-note}
 
 ### End of support open-v9 version of pipelines
@@ -38,6 +115,40 @@ The `open-v9` pipelines follow a sequential task execution model, resulting in l
 #### What you need to do:
 Please migrate your pipelines to the `open-v10` at the earliest. See [Improving compliance pipeline performance in DevSecOps](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-conc) for migration instructions.
 Support for `open-v9` will end on September 30, 2025.
+
+### Deprecation of `payload` Support in PR Pipeline
+{: #devsecops-pr-payload-end-of-support}
+
+As part of ongoing efforts to improve build efficiency and stability, we are officially ending the support for `payload` in Pull Request pipelines.
+
+#### Why this change?
+We have identified several challenges and inefficiencies around the current use of the payload parameter in our PR pipelines. After a thorough review, we've decided to remove support for the payload field in PR pipelines.
+
+#### What you need to do:
+If your workflows depend on extracting data using payload, here are the alternatives:
+- Use a curl command to fetch the required data from the appropriate service or API.
+- Alternatively, dump the required content to a custom-defined path and access it as needed in later steps.
+Support for `payload` will end on September 30, 2025.
+
+### End of Support Notice: Git Based Evidence Locker
+{: #devsecops-git-evidence-locker-end-of-support}
+
+As part of ongoing efforts to improve build efficiency and stability, we are officially ending the support for Git based evidence lockers.
+
+#### Why this change?
+We are dropping git based evidence lockers to reduce usage of git and avoid rate limits imposed by git servers. Recommending users to migrate to Cloud object storage bucket as evidence lockers
+
+#### What you need to do:
+To ensure continued compatibility with GitHub Enterprise, please take the following steps to configure your toolchains/pipelines:
+For Existing COS Evidence Locker Users:
+- Remove the evidence-repo environment property from your pipelines.
+- Remove Github/Gitlab integration for the Evidence Repository within your toolchains.
+
+For New COS Evidence Locker Users:
+- Configure COS Evidence Locker for your toolchain
+- Remove the evidence-repo environment property from your pipelines.
+- Remove Github/Gitlab integration for the Evidence Repository within your toolchains.
+Support for Github/GitLab evidence lockers will end on September 30, 2025.
 
 ## 16 May 2025
 {: #devsecops-May2025-16}
