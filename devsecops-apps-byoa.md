@@ -41,6 +41,49 @@ Once you've added your own application source code repository to the DevSecOps C
 
 Use this feature to easily and quickly onboard your micro-services or applications to DevSecOps pipelines and streamline your DevSecOps adoption.
 
+## Generate CI pipeline configuration yaml file for a given source code repository (inferred DevSecOps configuration in stand-alone mode)
+You can generate a pipeline-config file for a given source code repository in a static way/stand-alone mode.
+This feature relies on the same logic as inferred DevSecOps configuration and is provided through a specific script in the DevSecOps compliance base image.
+
+### Prerequisites
+- Have a docker engine up & running on your local environment
+- [yq](https://github.com/mikefarah/yq) in order to execute the following commands
+
+### Usage
+
+The script is located at the following path in the compliance base image: `/opt/one-pipeline/polyglot/tools/enable-devsecops.sh`.
+
+Usage of the script is `enable-devsecops.sh [--configuration <key>=value]* [--configuration-file <filename>] [--version <v9|v10|v11>]* <path to source code directory>`
+
+The following snippets illustrate how to use this script.
+
+```bash
+# clone the source code repository that you want to generate CI pipeline config for
+git clone https://us-south.git.cloud.ibm.com/open-toolchain/hello-containers
+cd hello-containers
+
+export compliance_base_image=$(curl -L https://us-south.git.cloud.ibm.com/open-toolchain/compliance-pipelines/-/raw/open-v10/definitions/ci-trigger.yaml?ref_type=heads | yq '.spec.params[] | select(.name == "compliance-baseimage") | .default')
+
+docker run -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh /src
+```
+
+
+
+You can provide specific parameters using `--configuration` options (or `--configuration-file <file path>` with file having key value pair).
+
+The parameters provided will configure the DevSecOps extraction process and the available parameters are described here: [extraction spot configuration](/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration#devsecops-pipeline-configuration-spot-config)
+
+```bash
+docker run -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh --configuration hint-npm-unit-testing-script=test-unit --configuration hint-npm-acceptance-testing-script=test-fvt /src
+```
+
+### Outcomes
+`polyglot-spots.json` and `.pipeline-config.yaml` files are added to the root directory of the source code repository.
+- `polyglot-spots.json` is the cartography of specific spots found in the source code inspection and can be discarded.
+- `.pipeline-config.yaml` that will be used by the CI pipeline
+
+You can now push the `.pipeline-config.yaml` to the source code git repository and use it as the application repository as described in [Onboarding an application](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization#onboard-app).
+
 ## Adding stage parameters
 {: #stage-parameters}
 
