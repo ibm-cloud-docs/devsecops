@@ -273,6 +273,6 @@ scan-artifact:
 
 ## Getting support
 {: #get-support-devsecops}
-{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
+{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](/docs/overview?topic=overview-ask-ai-assistant).
 
-If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](https://cloud.ibm.com/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](https://cloud.ibm.com/docs/overview?topic=overview-feedback).
+If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](/docs/overview?topic=overview-feedback).

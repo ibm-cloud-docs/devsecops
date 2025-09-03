@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-09-03"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -36,7 +36,7 @@ Make sure that the following prerequisites are completed. You might reuse the re
 1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops).
 2. Complete [Setting up a CI toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
 3. Complete [Setting up a CD toolchain](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain).
-4. Refer to, the [CC toolchain practices](/docs-draft/devsecops-working?topic=devsecops-working-practices-ci-toolchain).
+4. Refer to, the [CC toolchain practices](/docs/devsecops-working?topic=devsecops-working-practices-ci-toolchain).
 
 ## Start the CC toolchain set up
 {: #tutorial-cc-toolchain-setup}
@@ -226,11 +226,11 @@ In the following places, the evidence from the compliance checks are uploaded.
 ### CI and CC pipeline comparison
 {: #tutorial-cc-toolchain-comparison}
 
-You have noticed that the CI and CC pipeline have common steps. The scans and checks that are run are similar in nature and details. For more information, see [Difference between CI and CC pipeline](/docs-draft/devsecops-working?topic=devsecops-working-faq_devsecops#ci-cd-pipeline-diff).
+You have noticed that the CI and CC pipeline have common steps. The scans and checks that are run are similar in nature and details. For more information, see [Difference between CI and CC pipeline](/docs/devsecops-working?topic=devsecops-working-faq_devsecops#ci-cd-pipeline-diff).
 
 ## Next steps
 {: #tutorial-cd-toolchain-next}
 
 You successfully completed the series of tutorial to setup CI, CD, and CC toolchain and deploy a secure application by using DevSecOps practices..
 
-Now, you can explore to [develop and deploy secure Infrastructure as Code (IaC) by using DevSecOps](/docs-draft/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac) practices.
+Now, you can explore to [develop and deploy secure Infrastructure as Code (IaC) by using DevSecOps](/docs/devsecops-working?topic=devsecops-working-devsecops-tutorial-iac) practices.
