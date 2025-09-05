@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-06-05"
+lastupdated: "2025-09-03"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -114,7 +114,7 @@ This command returns either `cc`, `cd`, `ci`, or `pr`, depending on which pipeli
 ## Detect Secrets scan
 {: #devsecops-cc-pipeline-detect-secrets}
 
-The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans).
+The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans).
 
 ## Static code scan
 {: #devsecops-cc-pipeline-codescan}

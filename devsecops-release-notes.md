@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-09-01"
+lastupdated: "2025-09-03"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -493,7 +493,7 @@ Required Evidence Check Enhancements
 :   Enhanced the `cocoa locker evidence check` command to support version 2 of the config schema. The updated config schema allows users to specify the application environment or service environment by providing the name and region details along with the required set of evidence to be validated for the given application environment or service environment.
 
 Made Code Risk Analyzer scanning optional using environment properties
-:   Three opt-in environment properties have been added as below to provide an option to opt in/out of CRA scans. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans
+:   Three opt-in environment properties have been added as below to provide an option to opt in/out of CRA scans. See [Optout of CRA Scans](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans)
 
 | Name       | Type | Set of values | Required or optional | Pipelines(PR/CI/CD/CC) | Environment property| Default |Description|
 |----------------------------|------|--------|----------|--------|----|---|-|

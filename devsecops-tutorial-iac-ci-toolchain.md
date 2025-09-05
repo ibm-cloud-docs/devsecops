@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-05-26"
+lastupdated: "2025-09-03"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -31,7 +31,7 @@ With this tutorial, you can use the toolchain template for continuous integratio
 
 Complete the following steps before you begin this tutorial.
 
-1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac). For more information, see the [importance of CI for IaC](/docs-draft/devsecops-working?topic=devsecops-working-practices-ci-toolchain-iac).
+1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac). For more information, see the [importance of CI for IaC](/docs/devsecops-working?topic=devsecops-working-practices-ci-toolchain-iac).
 2. View the following video:
 
 ![Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}} - Part 1](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen}
@@ -152,7 +152,7 @@ Configure the target {{site.data.keyword.bpshort}} workspace where the Terraform
 
 The artifacts that are created by the toolchain and recorded in the inventory must be signed before deployed to production.
 
-1. Enter the **GnuPG Private Key**. Alternatively you can create a new GPG key by clicking **NEW**. For more information, see [Generating a GPG key](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-image-signing).
+1. Enter the **GnuPG Private Key**. Alternatively you can create a new GPG key by clicking **NEW**. For more information, see [Generating a GPG key](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 2. Click **Continue**.
 
 ### Optional tools
@@ -239,7 +239,7 @@ To evaluate if you have any failures in your pipeline run, check the final step 
 ### Customizing the pipeline
 {: #devsecops-tutorial-iac-ci-pipeline-cfg}
 
-For more information about pipeline customization, see [How do a user customize the pipeline](/docs-draft/devsecops-working?topic=devsecops-working-faq_devsecops#faq-ci-sec-pipeline-customize)?
+For more information about pipeline customization, see [How do a user customize the pipeline](/docs/devsecops-working?topic=devsecops-working-faq_devsecops#faq-ci-sec-pipeline-customize)?
 
 ## Related content
 {: #devsecops-tutorial-iac-ci-related}
@@ -254,4 +254,4 @@ You can continue to learn the following topics.
 
 You successfully created a DevSecOps CI toolchain for Terraform, edited the code in the infrastructure code repository, ran `ci-pipeline` to build, test, and deploy your changes to the development environment.
 
-Now, explore to [Setting up a CD toolchain for Terraform](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-iac-cd).
+Now, explore to [Setting up a CD toolchain for Terraform](/docs/devsecops-working?topic=devsecops-working-tutorial-iac-cd).

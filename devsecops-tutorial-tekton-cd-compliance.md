@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-05-26"
+lastupdated: "2025-09-03"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -109,11 +109,11 @@ The issues repository records issues that are found while the CI pipeline is run
 ### Pipeline configuration
 {: #tutorial-tekton-tool-pipeline-config}
 
-The pipeline configuration repository contains YAML files and scripts that are needed for deployment, testing, and other custom tasks. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
+The pipeline configuration repository contains YAML files and scripts that are needed for deployment, testing, and other custom tasks. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
 
 1. Accept the default settings for **Source Provider** and **Create a new deployment configuration repository**.
 
-   The toolchain clones the [sample hello-compliance-deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
+   The toolchain clones the [sample hello-compliance-deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
    {: note}
 
 2. Enter a **New repository name**.
@@ -198,7 +198,7 @@ When the API Key field is filled, the registry and cluster related fields are fi
 ### Change Request Management
 {: #tutorial-tekton-cd-change-request}
 
-1. Select {{site.data.keyword.cloud_notm}} hosted **{{site.data.keyword.gitrepos}}** repository to manage the change requests. For more information, see [Automating change management](/docs-draft/devsecops-working?topic=devsecops-working-cd-devsecops-change-management).
+1. Select {{site.data.keyword.cloud_notm}} hosted **{{site.data.keyword.gitrepos}}** repository to manage the change requests. For more information, see [Automating change management](/docs/devsecops-working?topic=devsecops-working-cd-devsecops-change-management).
 2. Click **Continue**.
 
 ### {{site.data.keyword.DRA_short}} toolchain

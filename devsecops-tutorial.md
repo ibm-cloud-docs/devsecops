@@ -49,7 +49,7 @@ To get started, you must set up an [{{site.data.keyword.cloud}} account](/regist
 {: #tutorial-secrets}
 {: step}
 
-Storing secrets values is [essential](https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-best-practices-using) to the DevSecOps process. As a user, storing an instance is required to manage and protect systems access that are inside or outside of {{site.data.keyword.cloud_notm}}. Choosing one of the secret management options helps you to protect your sensitive data and centralize your secrets. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-use-case-kubernetes-secrets) can help you choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one. For more information, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
+Storing secrets values is [essential](/docs/secrets-manager?topic=secrets-manager-best-practices-using) to the DevSecOps process. As a user, storing an instance is required to manage and protect systems access that are inside or outside of {{site.data.keyword.cloud_notm}}. Choosing one of the secret management options helps you to protect your sensitive data and centralize your secrets. [Managing {{site.data.keyword.cloud_notm}} secrets](/docs/secrets-manager?topic=secrets-manager-use-case-kubernetes-secrets) can help you choose from various secrets management and data protection offerings. If you don't already have an instance of the secrets management vault provider of your choice, create one. For more information, see [Getting started with {{site.data.keyword.secrets-manager_short}}](/docs/secrets-manager?topic=secrets-manager-getting-started).
 
 ## Create a Kubernetes cluster
 {: #tutorial-cluster}
@@ -82,7 +82,7 @@ You can automatically set up the DevSecOps infrastructure for your toolchains by
 ## Next steps
 {: #tutorial-next}
 
-After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs-draft/devsecops-working?topic=devsecops-working-tutorial-ci-toolchain).
+After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs/devsecops-working?topic=devsecops-working-tutorial-ci-toolchain).
 
 For additional information about related topics, review the following documentation:
 

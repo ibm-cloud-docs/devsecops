@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-07-21"
+lastupdated: "2025-09-03"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -86,7 +86,7 @@ For more information about how to collect evidences within the customizable user
 ## Detect Secrets scan
 {: #devsecops-ci-pipeline-detect-secrets}
 
-The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans)
+The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans)
 
 ## Static code scan
 {: #devsecops-ci-pipeline-static-codescan}

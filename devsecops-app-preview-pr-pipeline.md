@@ -188,7 +188,7 @@ The app-preview PR pipeline will now be triggered automatically when a new pull 
 ## Detect Secrets Scan
 {: #devsecops-app-preview-pr-pipeline-detect-secrets}
 
-The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans)
+The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans)
 
 
 ## Static Code Scan
