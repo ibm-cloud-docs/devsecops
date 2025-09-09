@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-09-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -35,7 +35,7 @@ With this tutorial, you can use the toolchain template for continuous deployment
 
 ![Getting started with DevSecOps in {{site.data.keyword.cloud_notm}} - Part 2](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_ceb64gbr){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen}
 
-4. Refer to, the [DevSecOps practices to deploy a secure CD application](/docs/devsecops-working?topic=devsecops-working-practices-cd-sec-app).
+4. Refer to, the [DevSecOps practices to deploy a secure CD application](/docs/devsecops?topic=devsecops-practices-cd-sec-app).
 
 ## Start the CD toolchain setup
 {: #tutorial-cd-toolchain-create-options}
@@ -90,7 +90,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 
 1. Accept the default settings for **Source Provider**.
 
-   If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops-working?topic=devsecops-working-cd-devsecops-basics-pipelines-customization).
+   If you do not have a configuration repository, enable the **Advanced configuration** toggle, and select the **Clone repository** type. The toolchain clones the [sample configuration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment) in your Git organization. For more information about Git repos, see [Configuring your {{site.data.keyword.gitrepos}}](/docs/devsecops?topic=devsecops-cd-devsecops-config-github). For more information about customizable scripts, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization).
    {: note}
 
 2. Enter a unique **New repository name**.
@@ -138,7 +138,7 @@ The pipeline configuration repository contains YAML files and scripts that are n
 ### Change request management
 {: #tutorial-cd-toolchain-change-request}
 
-1. Accept the populated values for change request management. For more information, see [Automating change management](/docs/devsecops-working?topic=devsecops-working-cd-devsecops-change-management).
+1. Accept the populated values for change request management. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-management).
 2. Enter a unique **New repository name**.
 3. Set the **Target Environment purpose** as `Production`.
 4. Set the **Target Environment detail**.
@@ -165,7 +165,7 @@ The [{{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}}](/docs/Con
 
 Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests, or CI pipeline events. You can also add the Slack tool after the toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/).
 2. Enter your **Slack channel** to post message.
 3. Enter the **Slack team name**. For example, if your team URL is `https://team.slack.com`, the team name is `team`.
 4. Choosing **Automated Slack Notifications** for the events which you want to receive notifications.
@@ -236,4 +236,4 @@ You can find the sample app that is running on the production namespace. The app
 
 You successfully created a DevSecOps CD toolchain, ran the `cd-pipeline` to trigger manually in the production environment.
 
-Now, continue with [Setting up a CC toolchain](/docs/devsecops-working?topic=devsecops-working-tutorial-cc-toolchain).
+Now, continue with [Setting up a CC toolchain](/docs/devsecops?topic=devsecops-tutorial-cc-toolchain).

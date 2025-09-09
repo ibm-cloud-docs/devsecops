@@ -82,7 +82,7 @@ You can automatically set up the DevSecOps infrastructure for your toolchains by
 ## Next steps
 {: #tutorial-next}
 
-After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs/devsecops-working?topic=devsecops-working-tutorial-ci-toolchain).
+After you complete the prerequisite steps and are ready to get started with toolchain integration, continue to the next tutorial in the series: [Setting up a Continuous Integration toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain).
 
 For additional information about related topics, review the following documentation:
 

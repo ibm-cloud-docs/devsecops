@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-07-16"
+lastupdated: "2025-09-09"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -510,7 +510,7 @@ Some pre-commit hooks may be skipped (for instance because a given hook like `de
 
 ### Sonarqube server with self signed certificate
 
-if the `sonarqube-config` is set to `custom` to use [an existing sonarqube server](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
+if the `sonarqube-config` is set to `custom` to use [an existing sonarqube server](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
 
 By providing the certificate in a PEM format as the value of the pipeline/trigger property `sonarqube-root-certificate`, the static-scan implementation in the Inferred DevSecOps pipeline configuration will add it accordingly for usage of the SonarScanner for maven, SonarScanner for gradle sonar or SonarScanner invoked with Docker.
 
@@ -578,6 +578,6 @@ To enable static linking, use the [environment variable injection](#devsecops-pi
 
 ## Getting support
 {: #getting-support-devsecops}
-{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](https://cloud.ibm.com/docs/overview?topic=overview-ask-ai-assistant).
+{{site.data.keyword.cloud_notm}}'s AI assistant, which is powered by {{site.data.keyword.IBM_notm}}'s watsonx, is designed to help you learn about working in IBM Cloud and building solutions with the available catalog of offerings. See [Getting help from the AI assistant](/docs/overview?topic=overview-ask-ai-assistant).
 
-If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](https://cloud.ibm.com/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](https://cloud.ibm.com/docs/overview?topic=overview-feedback).
+If you still can't resolve the problem, you can open a support case. For more information, see [Creating support cases](/docs/account?topic=account-open-case). And, if you're looking to provide feedback, see [Submitting feedback](/docs/overview?topic=overview-feedback).

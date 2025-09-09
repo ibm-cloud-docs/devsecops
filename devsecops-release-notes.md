@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-09-09"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -180,7 +180,7 @@ Bug fix release
 {: #devsecops-open-v10.38.0-open-v9.56.0}
 
 Support for Sonarqube quality gates
-:   Added support for Sonarqube quality gates. Now static-scan will parse the quality gate results and raise issues appropriately. Refer to [Enabling Quality Gate result processing for a SonarQube project](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-cipipeline-gate).
+:   Added support for Sonarqube quality gates. Now static-scan will parse the quality gate results and raise issues appropriately. Refer to [Enabling Quality Gate result processing for a SonarQube project](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-cipipeline-gate).
 
 ### Updates for DevSecOps version - open-v9.54.0 and open-v10.36.0
 {: #devsecops-open-v10.36.0-open-v9.54.0}
@@ -342,7 +342,7 @@ Enhanced evidence collection to branch protection checks
 {: #devsecops-open-v10.22.0-open-v9.41.0}
 
 Rapid Rollback Capability
-:   You can now perform rollback during emergency situations. See [Rolling back a deployment](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
+:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
 
 
 Single Commit Artifact Creation
@@ -402,7 +402,7 @@ Transition to Cloud Object Storage(COS) as evidence locker
 :   `devsecops` now creates `yq` version 3 and version 4 as `yq3` and `yq4` respectively.
 
 Reuse of evidences in pipeline
-:   It is now possible to reuse evidences from older pipeline runs to current run. See [Enable evidence collection in PR pipeline](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection) for more information
+:   It is now possible to reuse evidences from older pipeline runs to current run. See [Enable evidence collection in PR pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection) for more information
 
 ### Updates for DevSecOps version - open-v9.36.1 and open-v10.17.1
 {: #devsecops-open-v10.17.1-open-v9.36.1}
@@ -458,7 +458,7 @@ Bug fix release
 {: #devsecops-open-v10.13.0-open-v9.32.0}
 
 Enhancements for “Required Evidence Check” Feature in the CD/CC Pipeline
-:   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-evidence-checks-validation#evidence-checks-config-filev2) for documentation using the new schema.
+:   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](/docs/devsecops?topic=devsecops-evidence-checks-validation#evidence-checks-config-filev2) for documentation using the new schema.
 
 Performance improvements
 :   Improved pipeline performance when Cloud Object Storage(COS) as the evidence locker for one pipeline evidences
@@ -474,7 +474,7 @@ Support for Sysdig policies
 {: #devsecops-open-v10.12.0-open-v9.31.0}
 
 Partial promotion of inventory artifacts
-:   It is now possible to promote a subset of inventory items during promotion. See https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-partial-promotion for more details
+:   It is now possible to promote a subset of inventory items during promotion. See /docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-partial-promotion for more details
 
 ## 06 June 2024
 {: #devsecops-June2024}

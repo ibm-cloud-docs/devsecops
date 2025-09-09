@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-09-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -176,7 +176,7 @@ The [{{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}}](/docs/Con
 
 Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests, or CI pipeline events. You can also add the Slack tool after the toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/).
 2. Enter your **Slack channel** to post message.
 3. Enter the **Slack team name**. For example, if your team URL `https://team.slack.com`, the team name is `team`.
 4. Choosing the events for which you want to receive notifications for **Automated Slack Notifications**.
@@ -204,7 +204,7 @@ You can create an instance of {{site.data.keyword.DRA_short}} to be used for the
 #### Delivery pipeline private worker
 {: #ci-tool-integration-private-worker}
 
-Artifacts that are built by the toolchain and recorded in the inventory must be signed by using GaraSign, a code signing service that is powered by Garantir, before the images can be deployed to production. To enable GaraSign artifact signing, you must have a [TaaS private worker](https://taas.cloud.ibm.com/getting-started/tekton/tekton-onboarding.md){: external} and an {{site.data.keyword.IBM_notm}} CISO signing certificate. For more information, see [Using GaraSign in the one pipeline CI pipeline](/docs/devsecops-working?topic=devsecops-working-devsecops-imagesigning).
+Artifacts that are built by the toolchain and recorded in the inventory must be signed by using GaraSign, a code signing service that is powered by Garantir, before the images can be deployed to production. To enable GaraSign artifact signing, you must have a [TaaS private worker](https://taas.cloud.ibm.com/getting-started/tekton/tekton-onboarding.md){: external} and an {{site.data.keyword.IBM_notm}} CISO signing certificate. For more information, see [Using GaraSign in the one pipeline CI pipeline](/docs/devsecops?topic=devsecops-devsecops-imagesigning).
 
 The [{{site.data.keyword.deliverypipeline}} private worker](/docs/ContinuousDelivery?topic=ContinuousDelivery-private-workers) tool integration connects with one or more private workers that can run delivery pipeline workloads in isolation.
 

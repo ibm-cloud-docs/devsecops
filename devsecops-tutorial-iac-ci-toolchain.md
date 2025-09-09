@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-09-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -31,7 +31,7 @@ With this tutorial, you can use the toolchain template for continuous integratio
 
 Complete the following steps before you begin this tutorial.
 
-1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac). For more information, see the [importance of CI for IaC](/docs/devsecops-working?topic=devsecops-working-practices-ci-toolchain-iac).
+1. Complete [Setting up the prerequisites](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac). For more information, see the [importance of CI for IaC](/docs/devsecops?topic=devsecops-practices-ci-toolchain-iac).
 2. View the following video:
 
 ![Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}} - Part 1](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen}
@@ -163,7 +163,7 @@ The artifacts that are created by the toolchain and recorded in the inventory mu
 
 Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests, or CI pipeline events. You can also add the Slack tool after the toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/).
 2. Enter your **Slack channel** to post message.
 3. Enter the **Slack team name**. For example, if your team URL is `https://team.slack.com`, the team name is `team`.
 4. Choosing **Automated Slack Notifications** for the events which you want to receive notifications.
@@ -239,7 +239,7 @@ To evaluate if you have any failures in your pipeline run, check the final step 
 ### Customizing the pipeline
 {: #devsecops-tutorial-iac-ci-pipeline-cfg}
 
-For more information about pipeline customization, see [How do a user customize the pipeline](/docs/devsecops-working?topic=devsecops-working-faq_devsecops#faq-ci-sec-pipeline-customize)?
+For more information about pipeline customization, see [How do a user customize the pipeline](/docs/devsecops?topic=devsecops-faq_devsecops#faq-ci-sec-pipeline-customize)?
 
 ## Related content
 {: #devsecops-tutorial-iac-ci-related}
@@ -254,4 +254,4 @@ You can continue to learn the following topics.
 
 You successfully created a DevSecOps CI toolchain for Terraform, edited the code in the infrastructure code repository, ran `ci-pipeline` to build, test, and deploy your changes to the development environment.
 
-Now, explore to [Setting up a CD toolchain for Terraform](/docs/devsecops-working?topic=devsecops-working-tutorial-iac-cd).
+Now, explore to [Setting up a CD toolchain for Terraform](/docs/devsecops?topic=devsecops-tutorial-iac-cd).
