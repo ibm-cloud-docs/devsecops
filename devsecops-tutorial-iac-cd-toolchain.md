@@ -19,7 +19,7 @@ completion-time: 1h
 {{site.data.keyword.attribute-definition-list}}
 
 # Setting up a CD toolchain
-{: #tutorial-cd-toolchain}
+{: #devsecops-tutorial-cd-toolchain-iac-cd}
 {: toc-content-type="tutorial"}
 {: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
