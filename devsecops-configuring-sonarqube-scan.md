@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-08-08"
+lastupdated: "2025-09-09"
 
 keywords: tool integrations, Sonarqube
 
@@ -70,7 +70,7 @@ Set `sonarqube-config` to `custom`, to add your own SonarQube instance to your e
 
 ### Sonarqube server with self signed certificate
 
-If `sonarqube-config` is set to `custom` to use [an existing sonarqube server](https://cloud.ibm.com/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
+If `sonarqube-config` is set to `custom` to use [an existing sonarqube server](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) and the server has a self-signed certificate, then in order for the sonar scanner to connect successfully to the sonarqube server, the self-signed certificate needs to be [added to the trusted CA certificates](https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/scanner-environment/manage-tls-certificates/#adding-the-selfsigned-server-certificate-to-the-trusted-ca-certificates).
 
 By providing the certificate in a PEM format (either base64 encoded secret value or PEM formatted plain text) as the value of the pipeline/trigger property `sonarqube-root-certificate`, configuration will be added according to the usage of the SonarScanner for maven, SonarScanner for gradle sonar or SonarScanner invoked with Docker.
 

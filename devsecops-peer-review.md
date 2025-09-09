@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-04-08"
+lastupdated: "2025-09-09"
 
 keywords: DevSecOps, evidence, merge request, pull request, data collection
 
@@ -155,7 +155,7 @@ When the following error occurs in the `prod_start` stage
 
 ##### Solution
 
-Users who possess inventory entries that are not supported by the one-pipeline must add an [ignore file in the inventory](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-inventory#exclude-files-directories-in-the-inventory). This action ensures that those files are not considered for any computations.
+Users who possess inventory entries that are not supported by the one-pipeline must add an [ignore file in the inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory#exclude-files-directories-in-the-inventory). This action ensures that those files are not considered for any computations.
 
 
 

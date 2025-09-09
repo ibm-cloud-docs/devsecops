@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-09-09"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -182,7 +182,7 @@ Configure SonarQube as the static code analysis tool for the toolchain. SonarQub
 
 Configure [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your pull requests or CI pipeline events. You can also add the Slack tool after toolchain creation.
 
-1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://api.slack.com/messaging/webhooks).
+1. Enter your **Slack webhook**. For more information, see [Slack webhook](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/).
 2. Enter your **Slack channel** to post message.
 3. Enter the **Slack team name**. For example, if your team URL` https://team.slack.com`, the team name is `team`.
 4. Choose the events that you want to receive notifications for **Automated Slack Notifications**.
@@ -259,9 +259,9 @@ The application URL can be found at the end of the log of the `run stage` step o
 ### Pipeline customization
 {: #tutorial-ci-toolchain-pipeline-config}
 
-The various pipelines that are provided in the reference continuous integration and continuous deployment toolchains are based on the Continuous Delivery support for Tekton Pipelines. For more information about pipeline customization, see [How do a user customize the pipeline](/docs/devsecops-working?topic=devsecops-working-faq_devsecops#faq-ci-sec-pipeline-customize)?
+The various pipelines that are provided in the reference continuous integration and continuous deployment toolchains are based on the Continuous Delivery support for Tekton Pipelines. For more information about pipeline customization, see [How do a user customize the pipeline](/docs/devsecops?topic=devsecops-faq_devsecops#faq-ci-sec-pipeline-customize)?
 
 ## Next steps
 {: #tutorial-ci-toolchain-next}
 
-You successfully created a DevSecOps CI toolchain, ran `ci-pr pipeline` and `ci-pipeline` to build, test, and deploy your changes to the development environment. Now you're ready explore to [Setting up a CD toolchain](/docs/devsecops-working?topic=devsecops-working-tutorial-cd-toolchain).
+You successfully created a DevSecOps CI toolchain, ran `ci-pr pipeline` and `ci-pipeline` to build, test, and deploy your changes to the development environment. Now you're ready explore to [Setting up a CD toolchain](/docs/devsecops?topic=devsecops-tutorial-cd-toolchain).

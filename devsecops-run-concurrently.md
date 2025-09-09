@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2025
+lastupdated: "2025-09-09"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -42,7 +42,7 @@ To enable concurrency in DevsecOps, take the following steps:
 
 The PR pipeline runs compliance checks on a pull request for a given application repository and acts as a safeguard for merging into the main branch. The PR pipeline is triggered by opening or updating a pull request against the main branch.
 
-For more information, see the [PR pipeline documentation](https://test.cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline)
+For more information, see the [PR pipeline documentation](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline)
 
 | PR Pipeline Stage | Stage Description |
 | ----------------- | ----------------- |
@@ -61,7 +61,7 @@ For more information, see the [PR pipeline documentation](https://test.cloud.ibm
 
 The CI pipeline builds deployable artifacts from application repositories. It scans, tests, and signs built artifacts while also collecting evidence on each stage to be released in the inventory and tracked through the deployment and change management.
 
-For more information, see the [CI pipeline documentation](https://test.cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
+For more information, see the [CI pipeline documentation](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline).
 
 
 | CI Pipeline Stage | Stage Description |
@@ -91,7 +91,7 @@ For more information, see the [CI pipeline documentation](https://test.cloud.ibm
 
 The CD pipeline compiles all the content for evidence and the change request summary. It deploys the build to an environment, such as staging or production, while uploading all evidence to the evidence locker.
 
-For more information, see the [CD pipeline documentation](https://test.cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline)
+For more information, see the [CD pipeline documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline)
 
 | CD Pipeline Stage | Stage Description |
 | ----------------- | ----------------- |
@@ -111,7 +111,7 @@ For more information, see the [CD pipeline documentation](https://test.cloud.ibm
 
 The CC pipeline performs periodic scans on deployed artifacts and their source repositories. It scans the latest deployed state in the inventory and creates or updates incident issues in the incident repository.
 
-For more information, refer to [CC pipeline documentation](https://test.cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-cc-pipeline)
+For more information, refer to [CC pipeline documentation](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline)
 
 | CC Pipeline Stage | Stage Description |
 | ----------------- | ----------------- |

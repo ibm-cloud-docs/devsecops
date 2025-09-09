@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-07-16"
+lastupdated: "2025-09-09"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2452,13 +2452,13 @@ $ cocoa incident update-state \
 
 To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com/products/cloud-object-storage){: external}as well for archiving purposes. It is done automatically when the following environment variables are present:
 
-- `COS_ENDPOINT`: The [endpoint](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
+- `COS_ENDPOINT`: The [endpoint](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
 - `COS_BUCKET_NAME`: The name of the Cloud Object Storage bucket.
-- `COS_API_KEY`: An [IBM Cloud API key](https://cloud.ibm.com/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](https://cloud.ibm.com/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has write access to the Cloud Object Storage bucket.
-- `BACKUP_COS_ENDPOINT`: The [endpoint](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
+- `COS_API_KEY`: An [IBM Cloud API key](/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has write access to the Cloud Object Storage bucket.
+- `BACKUP_COS_ENDPOINT`: The [endpoint](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
 - `BACKUP_COS_BUCKET_NAME`: The name of the BackupCloud Object Storage bucket.
-- `BACKUP_COS_API_KEY`: An [IBM Cloud API key](https://cloud.ibm.com/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](https://cloud.ibm.com/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has reader access to the Cloud Object Storage bucket.
-- `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey&interface=api){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
+- `BACKUP_COS_API_KEY`: An [IBM Cloud API key](/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has reader access to the Cloud Object Storage bucket.
+- `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](/docs/account?topic=account-iamtoken_from_apikey&interface=api){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
 
 
 The evidence locker is a Git repository as **optional locker**.
