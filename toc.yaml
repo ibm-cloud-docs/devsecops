@@ -70,6 +70,7 @@ toc:
           topics:
           - devsecops-tutorial-iac-prereqs.md
           - devsecops-tutorial-iac-ci-toolchain.md
+          - devsecops-tutorial-iac-cd-toolchain.md
       - devsecops-tutorial-tekton-ci-compliance.md
       - devsecops-tutorial-tekton-cd-compliance.md
   - navgroup:
