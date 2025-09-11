@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-09-09"
+lastupdated: "2025-09-11"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -254,4 +254,4 @@ You can continue to learn the following topics.
 
 You successfully created a DevSecOps CI toolchain for Terraform, edited the code in the infrastructure code repository, ran `ci-pipeline` to build, test, and deploy your changes to the development environment.
 
-Now, explore to [Setting up a CD toolchain for Terraform](/docs/devsecops?topic=devsecops-devsecops-tutorial-cd-toolchain-iac-cd).
+Now, explore to [Setting up a CD toolchain for Terraform](/docs/devsecops?topic=devsecops-devsecops-tutorial-iac-cd).
