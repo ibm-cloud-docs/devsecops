@@ -17,7 +17,7 @@ completion-time: 1h
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Part 3: Set up a CD toolchain for Infrastructure as Code
+# Set up a CD toolchain for Infrastructure as Code
 {: #devsecops-tutorial-iac-cd}
 {: toc-content-type="tutorial"}
 {: toc-services="schematics, ContinuousDelivery"}
