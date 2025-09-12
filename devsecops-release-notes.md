@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-09-09"
+lastupdated: "2025-09-12"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -492,15 +492,7 @@ Custom finish stages for promotion and promotion-validation pipelines
 Required Evidence Check Enhancements
 :   Enhanced the `cocoa locker evidence check` command to support version 2 of the config schema. The updated config schema allows users to specify the application environment or service environment by providing the name and region details along with the required set of evidence to be validated for the given application environment or service environment.
 
-Made Code Risk Analyzer scanning optional using environment properties
-:   Three opt-in environment properties have been added as below to provide an option to opt in/out of CRA scans. See [Optout of CRA Scans](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans)
 
-| Name       | Type | Set of values | Required or optional | Pipelines(PR/CI/CD/CC) | Environment property| Default |Description|
-|----------------------------|------|--------|----------|--------|----|---|-|
-| `cra-bom-generate`         | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | Software Bill of Materials(SBOM) generation will be done by CRA only if this value is set to 1 |
-| `cra-vulnerability-scan`   | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA vulnerability scan will be done only if this value is set to 1  and `cra-bom-generate` is set to 1. If this value is set to 1 and `cra-bom-generate` is set to 0, this scan will be marked as failure |
-| `cra-deploy-analysis`      | enum | 0 or 1 | optional |CI/PR/CC|Yes | 1 | CRA deployment analysis will be done only if this value is set to 1|
-{: caption="Environment property parameters" caption-side="bottom"}
 
 ## 09 May 2024
 {: #devsecops-May2024}
