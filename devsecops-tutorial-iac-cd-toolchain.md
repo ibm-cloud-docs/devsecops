@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-09-11"
+lastupdated: "2025-09-12"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -133,7 +133,7 @@ For more information about Git repos, see [Configuring your {{site.data.keyword.
 ### Secrets
 {: ##devsecops-tutorial-iac-cd-secrets}
 
-Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in an IBM-recommended secrets management tool, such as [IBM Key Protect for IBM Cloud](https://www.ibm.com/cloud/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manager){: external}, or [HashiCorp Vault](https://www.vaultproject.io/){: external}. The secrets management tool can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
+Several tools in this toolchain, and possibly in your customizable scripts, require secrets to access privileged resources. An {{site.data.keyword.cloud_notm}} API key is an example of such a secret. Store these secrets securely in an IBM-recommended secrets management tool, such as [IBM Key Protect for IBM Cloud](https://www.ibm.com/cloud/key-protect), [{{site.data.keyword.secrets-manager_full}}](https://www.ibm.com/cloud/secrets-manager){: external}, or [HashiCorp Vault](https://developer.hashicorp.com/vault){: external}. The secrets management tool can be integrated into the toolchain so that you can easily reference the secrets in your Tekton pipeline.
 
 This tutorial uses {{site.data.keyword.secrets-manager_full}} as the vault for secrets.
 
@@ -210,7 +210,7 @@ The CD toolchain can publish the deployment records to an existing DevOps insigh
 
 Configure the [Slack Tool](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) to receive notifications about your PR/CI Pipeline events:
 
-* [Slack webhook](https://api.slack.com/incoming-webhooks){: external}
+* [Slack webhook](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/){: external}
 * Preferred: An existing webhook can be imported from a secrets vault by clicking the **key** icon.
 * Copy and paste an existing webhook.
 * Slack channel: post a message to an existing Slack.
@@ -294,7 +294,7 @@ Add a property of type `Text Value` and name `TF_VAR_key_protect_instance`.
 Set a meaningful value that indicates the delivery to production environment such as `key-protect-production-202210191453`.
 This environment property's value is injected as the value for `key_protect_instance` terraform configuration variable.
 
-You must also configure **IBM Cloud provider for Terraform** with the appropriate `ibmcloud_api_key` that authenticates with the {{site.data.keyword.cloud_notm}} as described in [Configuring the IBM Cloud Provider plug-in](https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-provider-reference#provider-parameter-ov){: external}
+You must also configure **IBM Cloud provider for Terraform** with the appropriate `ibmcloud_api_key` that authenticates with the {{site.data.keyword.cloud_notm}} as described in [Configuring the IBM Cloud Provider plug-in](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-provider-reference#provider-parameter-ov){: external}
 
 Add a property of type `Secure Value` and name `TF_VAR_ibmcloud_api_key`.
 Set the value to the api key to use for {{site.data.keyword.cloud_notm}} resources creation.
