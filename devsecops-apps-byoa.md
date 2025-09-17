@@ -64,7 +64,9 @@ cd hello-containers
 
 export compliance_base_image=$(curl -L https://us-south.git.cloud.ibm.com/open-toolchain/compliance-pipelines/-/raw/open-v10/definitions/ci-trigger.yaml?ref_type=heads | yq '.spec.params[] | select(.name == "compliance-baseimage") | .default')
 
-docker run -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh /src
+# environment variable compliance_base_image should contains a value like icr.io/continuous-delivery/toolchains/devsecops/devsecops-baseimage:3.109.7_commons-1.50.2 or upper
+
+docker run --platform linux/amd64 -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh /src
 ```
 
 
@@ -74,7 +76,7 @@ You can provide specific parameters using `--configuration` options (or `--confi
 The parameters provided will configure the DevSecOps extraction process and the available parameters are described here: [extraction spot configuration](/docs/devsecops?topic=devsecops-devsecops-inferred-pipeline-configuration#devsecops-pipeline-configuration-spot-config)
 
 ```bash
-docker run -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh --configuration hint-npm-unit-testing-script=test-unit --configuration hint-npm-acceptance-testing-script=test-fvt /src
+docker run --platform linux/amd64 -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh --configuration hint-npm-unit-testing-script=test-unit --configuration hint-npm-acceptance-testing-script=test-fvt /src
 ```
 
 ### Outcomes

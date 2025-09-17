@@ -83,7 +83,7 @@ Copyright (C) 2021 g10 Code GmbH
 {: #cd-devsecops-gpg-generate}
 
 
-Leave the passphrase and the field empty if the generate-key command opens a dialog that asks for a passphrase. This is a limitation with the [(skopeo)](https://github.com/containers/skopeo/issues/1261){: external} utility of the image signing where the pipeline cannot accept a private key that is protected with a passphrase. If you provide the passphrase during creation, then your pipeline fails to decode the certificate, and your pipeline fails at the image signing step.
+Leave the passphrase and the field empty if the generate-key command opens a dialog that asks for a passphrase. This is a limitation with the [(skopeo)](https://github.com/containers/skopeo/issues/1261){: external} utility of the image signing where the pipeline cannot accept a private key that is protected with a passphrase. If you provide the passphrase during creation, then your pipeline fails to decode the certificate, and your pipeline fails at the image signing step. Note that this is also applicable to GIT tag signing.
 
 ### Mac OS X and Linux™
 {: #cd-devsecops-gpg-linux}
