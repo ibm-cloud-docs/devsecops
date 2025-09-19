@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-09-18"
 
 keywords: troubleshoot, DevSecOps
 
@@ -231,6 +231,32 @@ The `kubectl` and `jq`  commands must be installed.
 5. Ensure that the file is saved in a directory with write permissions.
 6. Run the script.
 7. Add the contents of `final_dockerconfig.txt` as a secret in the pipeline environment properties for `artifactory-dockerconfigjson`. If you are using Secrets Manager or Key Protect, save the contents of this file by using appropriate techniques.
+
+### CRA or Docker build fails due to missing submodule files
+{: #troubleshoot-submodules-missing}
+{: troubleshoot}
+{: support}
+
+When a pipeline stage such as CRA or Docker build fails, you might see an error message similar to:
+
+```bash
+failed to calculate checksum of ref moby::...: failed to walk /var/lib/docker/tmp/buildkit-mount.../common-dev-assets/module-assets/ci: lstat ... no such file or directory
+```
+{: tsSymptoms}
+
+This error occurs because your repository contains Git submodules, but pipelines do not clone submodules by default. Each pipeline stage runs in its own container and performs a fresh checkout of the repository, so submodule contents are missing unless explicitly initialized.
+{: tsCauses}
+
+To resolve this, you must ensure the Git submodule is initialized in every stage that requires it. For CRA specifically, you can add the submodule initialization to your custom CRA script.
+{: tsResolve}
+
+For example, update your script to include:
+
+```bash
+git submodule update --init --recursive
+```
+
+This guarantees the submodule is available before the CRA build process runs.
 
 ## Image signing issues
 {: #troubleshoot-signing}
