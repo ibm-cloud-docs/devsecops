@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-09-09"
+lastupdated: "2025-09-24"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1973,6 +1973,77 @@ $ cocoa inventory validate \
    --inventory-path "${DIRECTORY_NAME}"
 ```
 {: codeblock}
+
+### cocoa inventory get-delta 
+{: #inventory-get-delta}
+
+Get the delta between commits from the inventory repository. Optionally get peer review commits within the delta between two commits.
+
+Required Environment Variables:
+
+```text
+GHE_ORG=     # Github Organization (required if --org option is not specified).
+GHE_REPO=    # Github Repository (required if --repo option is not specified).
+```
+{: screen}
+
+Required Environment Variables, if you are using GitHub:
+
+```text
+GHE_TOKEN=    # Github Enterprise API Token(Optional if you are using --git-token-path)
+```
+{: screen}
+
+Options for Git:
+
+```text
+--git-token-path    #(Optional) Github Token's path
+--git-api-url           #(Optional) Github API url
+```
+{: screen}
+
+| Option           | Description                                      | Value type | Required or Optional | Possible value(s) / Default value / Remarks |
+| ---------------- | ------------------------------------------------ | ---------- | ------------------------- |------------------------- |
+| from-sha             | The start commit to compute delta from | String | optional | - |
+| from-label             | The tag to be used as the start commit to compute delta from | String | optional | - |
+| to-sha             | The end commit to compute delta upto | String | optional | - |
+| to-environment             | The HEAD commit of the environment branch to compute delta upto | String | optional | - |
+| to-label             | The tag denoting the end commit to compute delta upto | String | optional | - |
+| org              | The GitHub organization that owns the inventory repository. | String | Optional if GHE_ORG environment variable is set| -  |
+| repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
+| git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
+| git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
+| delta             | Flag to compute delta | Boolean | optional | false |
+| delta-deletion             | Flag to compute delta deletions | Boolean | optional | false |
+| inventory-list             | Flag to compute the entire inventory list | Boolean | optional | false |
+| peer-review             | Flag to compute the peer review commits | Boolean | optional | false |
+| inventory-repo-path             | Optional path of the inventory repo. If passed, the inventory repo is not cloned inside the command | String | optional | |
+| inventory-ignore-file-path             | Optional path for the inventory ignore file | String | optional | |
+| previous-inventory-ignore-file-path    | Optional path for the previous deployment inventory ignore file | String | optional | |
+
+{: caption="Options for Git" caption-side="bottom"}
+
+Running the command:
+
+```sh
+$ cocoa inventory get-delta \
+  --git-provider=github \
+  --git-token-path=./git-token \
+  --org=test-org \
+  --repo=compliance-inventory-repo \
+  --git-api-url=https://github.ibm.com/api/v3 \
+  --to-sha 534ff2bbbf0291e10f3b1f6aa409d8de059bbe27 \
+  --from-sha e54b5aa12ccb687020ac04b16d489b5a04f90399 \
+  --inventory-ignore-file-path=/path/to/current/.inventoryignore \
+  --previous-inventory-ignore-file-path=/path/to/previous/.inventoryignore \
+  --delta \
+  --delta-deletion \ 
+  --inventory-list \ 
+  --peer-review
+```
+{: codeblock}
+
 
 ### cocoa inventory update-locations 
 {: #inventory-update-locations}

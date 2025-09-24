@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-08-11"
+lastupdated: "2025-09-24"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -307,6 +307,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			| Unlocked |
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			| Unlocked |
 |`region`		|text		|The target region where the app is deployed.	|Optional			| Unlocked |
+|`regions`		|text		|The target regions where the app is deployed, comma separated. Applicable for `cd-change-request-listener`. Overrides `region` parameter.	|Optional			| Unlocked |
 | `rollback-change-request-id` |text |Change Request ID of the concluded deployment to be rolled back against |Required for CD Rollback pipeline | Unlocked |
 |`rollback-enabled` |text |Flag to set whether inline rollback capability to be enabled or not. Default "0" |Optional | Unlocked |
 |`rollback-limit` |text |integer number which indicates how many deployment backwards, the rollback can be performed. Default "1" |Optional |Unlocked |
