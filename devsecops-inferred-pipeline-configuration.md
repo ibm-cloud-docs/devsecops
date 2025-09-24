@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-09-09"
+lastupdated: "2025-09-24"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -347,7 +347,7 @@ For `deploy` process, the value of `<tool>` can be one of `code-engine`,`helm`, 
 
 For `dynamic-scan` process, the value of `<tool>` can be `trigger-async-zap`.
 
-For `release` process, the value of `<tool>` can be one of `maven` or `semantic-release`.
+For `release` process, the value of `<tool>` can be one of `maven`, `poetry` or `semantic-release`.
 
 Here is some examples:
 - `.env.build.sh` file is associated as environment-setup for process build in code spots. It can be overriden by an environment setup file for a scoped tool (like docker, maven...) such as `.env.docker-build.sh`, `.env.maven-build.sh`, ...
@@ -529,6 +529,8 @@ url = "https://na-public.artifactory.swg-devops.com/artifactory/api/pypi/ip-devo
 secondary = true
 ```
 
+or when **Poetry** is involved (i.e. `pyproject.toml` containing a `build-system` section with `build-backend` equals to `poetry.core.masonry.api` is an identified release spot) then credentials may need to be provided to authenticate to the private registries.
+
 #### Authenticate with Private Repositories in IBM Cloud
 {: #devsecops-pipeline-configuration-poetry-repo-autheticate}
 
@@ -537,6 +539,16 @@ It is required to provide credentials for this `local` source repository. [Poetr
 Use the [environment variable injection](#devsecops-pipeline-configuration-environment-variable-injection) feature, and add the following pipeline environment properties:
 - `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_USERNAME` (text) with the appropriate value
 - `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_PASSWORD` (secured) with the appropriate secured value
+
+### Authenticate to publish to private repositories
+
+When **Poetry** is involved (i.e. `pyproject.toml` containing a `build-system` section with `build-backend` equals to `poetry.core.masonry.api` is an identified release spot), the configuration for token or username can be defined using pipeline environment properties like (for a repository named `local`):
+- `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_USERNAME` (text) with the appropriate value
+- `ENV_GLOBAL_POETRY_HTTP_BASIC_LOCAL_PASSWORD` (secured) with the appropriate secured value
+
+or
+
+- `ENV_GLOBAL_POETRY_PYPI_TOKEN_LOCAL` (secured) with the appropriate secured value corresponding to the token
 
 ### Maven, pom.xml, settings.xml, and Environment Resolution
 {: #devsecops-pipeline-configuration-maven-pom-env}
