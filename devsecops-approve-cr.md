@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-07-29"
+lastupdated: "2025-09-23"
 
 keywords: DevSecOps
 
@@ -45,6 +45,9 @@ You can also change the value of the emergency label from the pipeline's environ
  ![Emergency label variable](images/emergency-label-env.png){: caption="Emergency label variable" caption-side="bottom"}
 
 When the deployment completes, the emergency change request is set to the `Review` state, which indicates that it requires the assigned approvers to review and approve it retroactively.
+
+There is no emergency flow on the CI pipeline side. However, setting a CI pipeline/trigger property `skip-inventory-update-on-failure` to an empty value or `0` will allow the inventory repository to be updated, even if issues are detected in the CI pipeline run. With this updated inventory, an emergency change can be activated.
+{: note}
 
 ## Option 2: Providing a manually pre-approved CR
 {: #cd-devsecops-manual-preapprove}

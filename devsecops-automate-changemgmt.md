@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2024
-lastupdated: "2024-10-09"
+  years: 2021, 2025
+lastupdated: "2025-09-23"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -64,6 +64,9 @@ For more information on change request data, see [Data included in change reques
 Change Request Management supports two types of change: **emergency** or **regular**.
 
 If the current change is an emergency change, add the `emergency` label to the promotion pull request.
+
+There is no emergency flow on the CI pipeline side. However, setting a CI pipeline/trigger property `skip-inventory-update-on-failure` to an empty value or `0` will allow the inventory repository to be updated, even if issues are detected in the CI pipeline run. With this updated inventory, an emergency change can be activated.
+{: note}
 
 ## Creating change requests for changes that require planned downtime
 {: #cd-devsecops-cr-approve}
