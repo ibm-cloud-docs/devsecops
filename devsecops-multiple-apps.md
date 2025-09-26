@@ -34,7 +34,11 @@ Customize your toolchain by adding your toolchain to multiple apps and increase 
 
    * Refer to the documentation pages and best practices to understand if you need these extra repositories for the applications.
 
-   * One inventory and issues repository should be enough. However, you might want to have a different evidence repository for each application to avoid the complexity of the repository structure. And a separate repo helps you to know which application you're looking at.
+   * Each subsystem should follow a 1:1 relationship between inventory and evidence repositories.
+      - For example, a team might group related microservices — such as `auth` and `user profile` — into a subsystem, with its own inventory repository and evidence locker.  
+      - This approach improves clarity, simplifies structure, and allows easier reuse and maintenance.  
+      - The Continuous Delivery service team uses this model to manage microservices at scale.
+
    * The **Application** repos can also serve as its own issues repo. This is applicable only when the GitHub issues option is enabled on the tool integration.
    * The **Inventory** repo must be enough as a single consolidated repository for recording your build records because the records are already divided by the `app-name`, so long as that parameter is different nothing is going to get lost or confused. Though you might want to consult the [inventory documentation](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) for ideas on how to handle this repo because its main function is to help support deployments in the continuous deployment pipeline.
    {: tips}
