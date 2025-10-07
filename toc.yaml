@@ -5,8 +5,8 @@ toc:
     category: dev_ops
     audience: service
     href: /docs/devsecops
-    console-page: "/devops/create"
-    product-page: "https://www.ibm.com/products/continuous-delivery"
+    console-page: /devops/create
+    product-page: https://www.ibm.com/products/continuous-delivery
     path: devsecops
     label: DevSecOps
   entries:
@@ -57,13 +57,13 @@ toc:
           label: Deploy a secure app with DevSecOps
           topics:
           - topic: devsecops-tutorial.md
-            navtitle: "Part 1: Set up prerequisites"
+            navtitle: 'Part 1: Set up prerequisites'
           - topic: devsecops-tutorial-ci-toolchain.md
-            navtitle: "Part 2: Set up a CI toolchain"
+            navtitle: 'Part 2: Set up a CI toolchain'
           - topic: devsecops-tutorial-cd-toolchain.md
-            navtitle: "Part 3: Set up a CD toolchain"
+            navtitle: 'Part 3: Set up a CD toolchain'
           - topic: devsecops-tutorial-cc-toolchain.md
-            navtitle: "Part 4: Set up a CC toolchain"
+            navtitle: 'Part 4: Set up a CC toolchain'
       - include: ../apps/tutorials/tutorial-devsecops-refarch.md
       - topicgroup:
           label: Develop and deploy secure IaC with DevSecOps practices
@@ -126,13 +126,13 @@ toc:
           - devsecops-promote-branches.md
           - devsecops-partition-inventory-cc-pipeline.md
           - topicgroup:
-                label: Using Inventory with DevSecOps
-                topics:
-                - devsecops-force-redeployment.md
-                - devsecops-rollback-deployment.md
+              label: Using Inventory with DevSecOps
+              topics:
+              - devsecops-force-redeployment.md
+              - devsecops-rollback-deployment.md
       - topicgroup:
-         label: Software Bill of Materials
-         topics:
+          label: Software Bill of Materials
+          topics:
           - devsecops-sbom.md
           - devsecops-configuring-cra-sbom-generate.md
       - topicgroup:
@@ -150,7 +150,7 @@ toc:
       - devsecops-build-docker-images.md
       - topicgroup:
           label: Configuring Git repos for DevSecOps
-          topics: 
+          topics:
           - devsecops-config-github-token.md
           - devsecops-config-github.md
           - devsecops-git-submodules.md
@@ -164,13 +164,13 @@ toc:
       - topicgroup:
           label: Enhancing security with Security and Compliance Center
           topics:
-            - include: ../ContinuousDelivery/scc_integration.md
-              navtitle: Configuring your toolchain
-            - topic: devsecops-scc-toolchains.md
-              navtitle: Viewing and understanding results
-            - include: ../security-compliance/getting-started.md
-              navtitle: Managing security and compliance
-            - devsecops-data-security.md
+          - include: ../ContinuousDelivery/scc_integration.md
+            navtitle: Configuring your toolchain
+          - topic: devsecops-scc-toolchains.md
+            navtitle: Viewing and understanding results
+          - include: ../security-compliance/getting-started.md
+            navtitle: Managing security and compliance
+          - devsecops-data-security.md
   - navgroup:
       id: reference
       topics:
@@ -179,10 +179,10 @@ toc:
           topics:
           - devsecops-pipelines-status.md
           - topicgroup:
-                label: Pull request pipeline
-                topics:
-                - devsecops-pr-pipeline.md
-                - devsecops-app-preview-pr-pipeline.md
+              label: Pull request pipeline
+              topics:
+              - devsecops-pr-pipeline.md
+              - devsecops-app-preview-pr-pipeline.md
           - devsecops-ci-pipeline.md
           - devsecops-iac-ci-pipeline.md
           - devsecops-promotion-pipeline.md
