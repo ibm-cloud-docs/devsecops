@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-09-09"
+lastupdated: "2025-10-07"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -147,6 +147,7 @@ Dev mode pipeline structures not production ready.
 
 ## Disabling concurrency in DevsecOps
 {: #devsecops-plz-disable}
+{: deprecated}
 
 To disable concurrency in DevsecOps, take the following steps:
 
