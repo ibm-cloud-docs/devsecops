@@ -95,6 +95,7 @@ toc:
           - devsecops-async-sub-pipelines.md
           - devsecops-async-update-webhook.md
           - devsecops-dev-mode.md
+          - devsecops-pipelines-config.md
           - devsecops-run-concurrently.md
       - devsecops-custom-deployment.md
       - topicgroup:
