@@ -387,7 +387,7 @@ However, if you prefer a different name for the inventory exclusion file, you ca
 
 For example, if your file is named `.custominventoryignore`, add an environment variable `inventory-ignore-file` with the value `custominventoryignore`.
 
-Following is an example content for the `.custominventoryignore` file:
+Following is the example content for the `.custominventoryignore` file in two formats:
 
 ``````bash
 .md
@@ -395,10 +395,21 @@ sample_file
 sample_directory/
 ``````
 
+``````bash
+# Ignore everything
+**
+
+# But keep these artifacts
+!sample_directory/
+!sample_file
+``````
 
 
-In the file before this:
+The following explains the purpose of entries in the example `.custominventoryignore` file:
+
 - `.md`: Excludes all files with the `.md` extension. Do not add `*` at the start, like `*.md`, as regex is not supported.
 - `sample_file`: Excludes the specific file throughout the entire repository.
 - `sample_directory/`: Excludes the entire directory. Avoid adding `*` at the end, use `sample_directory/*`, as regex is not supported.
 - Having a file with no entries, or an empty line will cause all files to be excluded. Please do not leave empty entries or lines in the inventory ignore file.
+- `**`: Ignores everything in the repository.
+- `!sample_directory/` and `!sample_file`: Negates the ignore rule, keeping these specific files or directories even if `**` is present.
