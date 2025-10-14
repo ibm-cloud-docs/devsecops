@@ -5,8 +5,8 @@ toc:
     category: dev_ops
     audience: service
     href: /docs/devsecops
-    console-page: /devops/create
-    product-page: https://www.ibm.com/products/continuous-delivery
+    console-page: "/devops/create"
+    product-page: "https://www.ibm.com/products/continuous-delivery"
     path: devsecops
     label: DevSecOps
   entries:
