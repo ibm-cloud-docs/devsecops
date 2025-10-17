@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-09-24"
+lastupdated: "2025-10-17"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -25,8 +25,14 @@ Once you've added your own application or micro-service to the DevSecOps CI tool
 By using this feature, you can easily onboard your micro-services or applications to DevSecOps pipelines and streamline your DevSecOps adoption.
 {: shortdesc}
 
+
+
+
+
 No additional steps are necessary to configure the Inferred DevSecOps Pipeline Configuration, as it's already integrated into the DevSecOps.
 {: note}
+
+
 
 ## Prerequisites
 {: #devsecops-inferred-pipeline-configuration-prereq}
