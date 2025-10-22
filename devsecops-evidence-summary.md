@@ -83,14 +83,3 @@ For more information, see [Inventory](/docs/devsecops?topic=devsecops-cd-devseco
 For more information on `prod` summarization based on pre-prod evidences, see [Collecting evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-collect).
 
 The `v2` evidence summary is calculated by default. 
-
-## v1 evidence collection 
-{: #evidence-summary-v1}
-{: deprecated}
-Evidence is organized in the locker on a per-pipeline-run basis, that is, every piece of evidence that was collected in a pipeline run is stored next to each other. This organization makes evidence collection easy when you have a pipeline run ID. However, it's difficult to tell which piece of evidence is relevant for an asset, such as evidence that is related to a docker image. This difficulty is because evidence can span across multiple pipeline runs, such as a CI pipeline, a staging CD pipeline, or a production CD pipeline.
-For more information, see [v1 evidence format](/docs/devsecops?topic=devsecops-devsecops-evidence#devsecops-v1-evidence-format).
-
-Because of these difficulties, `v1` evidence is superseded by `v2`.
-
-The v1 evidence collection is the legacy evidence collection. To opt out of v1 evidence collection, see [Turning off legacy v1 evidence collection](/docs/devsecops?topic=devsecops-turn-off-v1-evidence).
-{: important}
