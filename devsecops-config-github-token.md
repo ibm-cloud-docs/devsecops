@@ -55,7 +55,6 @@ Classic tokens are more flexible but less secure because they provide broader ac
 | Scope |
 | --------- |
 | `admin:org` |
+| `admin:repo_hook` |
 | `repo` |
 | `user` |
-
-

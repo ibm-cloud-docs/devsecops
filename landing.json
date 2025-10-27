@@ -33,6 +33,6 @@
     "terraform": "https://registry.terraform.io/providers/IBM-Cloud/ibm/latest"
   },
   "section_updates": {
-      "view_more": "/docs/devsecops?topic=devsecops-release-notes"
-    }
+    "view_more": "/docs/devsecops?topic=devsecops-release-notes"
+  }
 }
