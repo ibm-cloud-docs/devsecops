@@ -64,7 +64,7 @@ toc:
             navtitle: 'Part 3: Set up a CD toolchain'
           - topic: devsecops-tutorial-cc-toolchain.md
             navtitle: 'Part 4: Set up a CC toolchain'
-      - include: ../apps/tutorials/tutorial-devsecops-refarch.md
+      - tutorial-devsecops-refarch.md
       - topicgroup:
           label: Develop and deploy secure IaC with DevSecOps practices
           topics:
