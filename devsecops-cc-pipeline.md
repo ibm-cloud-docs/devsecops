@@ -126,7 +126,6 @@ CC pipeline provides the repos that are found in the inventory for the scanner.
 You can use any of the following methods to add static code to your pipeline:
 
 * Provide an already running SonarQube instance name, URL, and credentials by adding the SonarQube tool to your toolchain. The `static-scan` task runs a scan on the specified repos.
-* By using the `opt-in-contrast` parameter to run the Contrast SAST for the static-scan task. For more information about integrating Contrast SAST with the continuous integration pipeline, see [Configuring Contrast SAST](/docs/devsecops?topic=devsecops-devsecops-contrast-sast-scans).
 * Add your code to the `static-scan` custom stage in your `.pipeline-config.yaml` file for a custom implementation.
 
 ## Dynamic scan
