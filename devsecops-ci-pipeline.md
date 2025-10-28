@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-10-28"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -99,9 +99,16 @@ You can use any of the following methods to add static code to your pipeline:
 
 * If you don't have your own SonarQube instance, the pipeline creates a SonarQube instance during the pipeline run. You can access this instance after the static-scan stage successfully runs.
 
+* By using the `opt-in-contrast` parameter to run the Contrast SAST for the static-scan task.
+
 * By using the `opt-in-gosec` parameter to run the gosec scan for golang security checks.
 
 * Add your own static scan code to the static-scan custom stage in your `.pipeline-config.yaml` file for a custom implementation.
+
+### Adding Contrast SAST scan to your pipelines
+{: #devsecops-ci-pipeline-contrast-sast-info}
+
+For more information about integrating Contrast SAST with the continuous integration pipeline, see [Configuring Contrast SAST](/docs/devsecops?topic=devsecops-devsecops-contrast-sast-scans).
 
 ### Adding SonarQube scan to your pipelines
 {: #devsecops-ci-pipeline-sonarqube-info}
