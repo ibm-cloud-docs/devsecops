@@ -6,9 +6,9 @@ lastupdated: "2024-06-04"
 
 keywords: tekton, pipeline, toolchain, CD, CI, Terraform, template, automate, automation, compliance, secure, compliant, shift-left, shift left, quick start, devsecops tutorial, devsecops
 
-subcollection: apps
+subcollection: devsecops
 content-type: tutorial
-services: schematics, terraform, openshift, containers, ContinuousDelivery, apps
+services: schematics, terraform, openshift, containers, ContinuousDelivery
 account-plan: paid
 deployable: quickstart
 completion-time: 1h
@@ -20,13 +20,13 @@ completion-time: 1h
 # Set up your DevSecOps infrastructure and CI toolchain for deploying a secure app
 {: #tutorial-apps-devsecops}
 {: toc-content-type="tutorial"}
-{: toc-services="schematics, terraform, openshift, containers, ContinuousDelivery, apps"}
+{: toc-services="schematics, terraform, openshift, containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
 Use this tutorial for automated setup and provisioning of the infrastructure for your CI and CD toolchains by using a Terraform-based quick start template. The template uses DevSecOps best practices of compliance and security. The template uses an [{{site.data.keyword.bplong}} workspace](/docs/schematics?topic=schematics-learn-about-schematics), which automates the creation of the required infrastructure for securely deploying your app to either Kubernetes or Red Hat&reg; OpenShift&reg;. The template uses the DevSecOps {{site.data.keyword.contdelivery_full}} toolchain pipeline structure. The toolchain is preconfigured for continuous delivery with inventory integration, change management, evidence collection, and deployment.
 {: shortdesc}
 
-{{site.data.keyword.bplong_notm}} delivers Terraform-as-a-Service so that you can use a high-level scripting language to model the resources that you want in your {{site.data.keyword.cloud_notm}} environment, and enable Infrastructure as Code (IaC). [Terraform](https://www.terraform.io/){: external} is open source software that is developed by HashiCorp. Terraform enables predictable and consistent resource provisioning to rapidly build complex, multitier cloud environments.
+{{site.data.keyword.bplong_notm}} delivers Terraform-as-a-Service so that you can use a high-level scripting language to model the resources that you want in your {{site.data.keyword.cloud_notm}} environment, and enable Infrastructure as Code (IaC). [Terraform](https://developer.hashicorp.com/terraform){: external} is open source software that is developed by HashiCorp. Terraform enables predictable and consistent resource provisioning to rapidly build complex, multitier cloud environments.
 
 In this tutorial, you follow three easy steps to create a {{site.data.keyword.bpshort}} workspace, apply a Terraform execution plan, and update the environment properties value. When you apply the plan, the {{site.data.keyword.bpshort}} workspace sets up your secure infrastructure. This infrastructure is shareable with your team, and it works for the [DevSecOps](#x9892260){: term} CI and CD toolchain templates.
 
@@ -43,7 +43,7 @@ The automated infrastructure setup creates resources that are automatically prov
 
 * To complete this tutorial, use a [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-upgrading-account) where you are the owner or have [full Administrator access](/docs/account?topic=account-assign-access-resources). If you already have an {{site.data.keyword.cloud_notm}} account and need to upgrade it, see [Upgrading your account](/docs/account?topic=account-upgrading-account).
 * [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started) if you want to interact with elements of the toolchain or infrastructure after they are created.
-* Obtain a [GitLab Personal Access Token](https://us-south.git.cloud.ibm.com/-/profile/personal_access_tokens){: external}. Enter a name for your personal access token. Create your token in the same region as your CI toolchain. Be sure to copy and save the token because you need it later, and you cannot access it again.
+* Obtain a [GitLab Personal Access Token](https://us-south.git.cloud.ibm.com/users/sign_in){: external}. Enter a name for your personal access token. Create your token in the same region as your CI toolchain. Be sure to copy and save the token because you need it later, and you cannot access it again.
 * Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Be sure to copy and save or download the API key value because you need it later, and you cannot access it again.
 
 ## Create a {{site.data.keyword.bpshort}} workspace
