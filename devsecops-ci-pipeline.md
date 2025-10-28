@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-09-03"
+lastupdated: "2025-10-28"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
