@@ -631,22 +631,28 @@ This parameter is for the CD pipeline. It describes the target environment.
 This parameter is for the pipelines that use scan artifact stages to run the Sysdig scan by using `sysdig inline scanner` on `icr.io` images.
 
 
-# Locking environment properties
+## Locking environment properties
+{: #devsecops-locking-env-properties}
+
 - Properties can be locked to prevent them from being overridden
 - Attempting to override a locked property at runtime will result in the run request being rejected. Locked properties are not displayed by default in the run side panel but can be displayed read-only by enabling the 'Show all properties' option.
 
-## How to lock a property
+### How to lock a property
+{: #devsecops-how-to-lock-property}
+
 To lock an environment property, click on edit property of environment property and then enable the locked property.
 
-![Locking Property](images/locked-property-artifact.png)
-{: caption="Toolchain enabling" caption-side="bottom"}
+![Locking Property](images/locked-property-artifact.png "Toolchain enabling"){: caption="Toolchain enabling" caption-side="bottom"}
 
-## Effects of locking
+### Effects of locking
+{: #devsecops-effects-of-locking}
+
 After locking a property in the environment property, we cannot change the trigger level. So once a property is locked, those properties cannot be updated in the trigger level.
-![Locking Property](images/locked-property-result.png)
+
+![Locking Property](images/locked-property-result.png "Locked Property"){: caption="Locked Property" caption-side="bottom"}
 
 If you try to put any locked property in the trigger level, it will result in an error.
 
-![Locking Property](images/locked-property-error.png)
+![Locking Property](images/locked-property-error.png "Locked Property Error"){: caption="Locked Property Error" caption-side="bottom"}
 
 If you want to change the variable in the trigger level, we can disable the lock for that variable.
