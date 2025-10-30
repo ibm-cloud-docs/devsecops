@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-10-28"
+lastupdated: "2025-10-30"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -416,11 +416,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. The default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
-
 |`sysdig-url`	|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			|
 |`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			|
 {: caption="Continuous compliance parameters" caption-side="bottom"}
-
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
 {: tab-group="IAM-simple"}
