@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-10-28"
+lastupdated: "2025-10-30"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -416,11 +416,9 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`sysdig-api-token`		|text		|Sysdig API token value. The token is visible from the Sysdig instance's User Profile page. This value is needed for running Sysdig scan.	|Required			|
 |`sysdig-inline-scanner-image`		|text		|Sysdig inline scanner image to be used for the scan. The default value is `quay.io/sysdig/secure-inline-scan:2`	|Optional			|
 |[`sysdig-scan`](#pipeline-param-sysdig-scan)	|select		|Enable Sysdig scan for images. If this value is set to 1, then the Sysdig scan is enabled.	|Required			|
-
 |`sysdig-url`	|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			|
 |`sysdig-url`		|text		|The URL of the Sysdig instance to be used for the scan. The default value is `https://secure.sysdig.com`	|Optional			|
 {: caption="Continuous compliance parameters" caption-side="bottom"}
-
 {: #pipelines-cc-parameters}
 {: tab-title="Continuous compliance parameters"}
 {: tab-group="IAM-simple"}
@@ -633,22 +631,28 @@ This parameter is for the CD pipeline. It describes the target environment.
 This parameter is for the pipelines that use scan artifact stages to run the Sysdig scan by using `sysdig inline scanner` on `icr.io` images.
 
 
-# Locking environment properties
+## Locking environment properties
+{: #devsecops-locking-env-properties}
+
 - Properties can be locked to prevent them from being overridden
 - Attempting to override a locked property at runtime will result in the run request being rejected. Locked properties are not displayed by default in the run side panel but can be displayed read-only by enabling the 'Show all properties' option.
 
-## How to lock a property
+### How to lock a property
+{: #devsecops-how-to-lock-property}
+
 To lock an environment property, click on edit property of environment property and then enable the locked property.
 
-![Locking Property](images/locked-property-artifact.png)
-{: caption="Toolchain enabling" caption-side="bottom"}
+![Locking Property](images/locked-property-artifact.png "Toolchain enabling"){: caption="Toolchain enabling" caption-side="bottom"}
 
-## Effects of locking
+### Effects of locking
+{: #devsecops-effects-of-locking}
+
 After locking a property in the environment property, we cannot change the trigger level. So once a property is locked, those properties cannot be updated in the trigger level.
-![Locking Property](images/locked-property-result.png)
+
+![Locking Property](images/locked-property-result.png "Locked Property"){: caption="Locked Property" caption-side="bottom"}
 
 If you try to put any locked property in the trigger level, it will result in an error.
 
-![Locking Property](images/locked-property-error.png)
+![Locking Property](images/locked-property-error.png "Locked Property Error"){: caption="Locked Property Error" caption-side="bottom"}
 
 If you want to change the variable in the trigger level, we can disable the lock for that variable.
