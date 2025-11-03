@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-02-14"
+lastupdated: "2025-11-03"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -101,6 +101,7 @@ Parameters that are required for configuring ZAP UI scans are as follows.
 |`zap-ui-custom-script`|String|Path to the file that contains the modification logic for the UI scan payload, if required, before the ZAP UI scan is initiated.|Optional|
 |`zap-ui-script-directory`|String|Path to the directory that contains the UI tests and required files to run the UI scan.|Required|
 |`context-file`|String|Path to a custom context file for UI scans provided to ZAP.|Optional|
+|`zap-ui-auth-user`|String|User name to be used to authorize and run zap ui scan as. This requires `context-file` to be provided which should also contain the information of the way to authenticate this user.|Optional|
 |`zap-ui-port`|String|Port to run the ZAP UI scanner when deployed to a cluster, default: `9085`.|Optional|
 |`zap_ui_deployment_name`|String|Name of the ZAP UI scanner deployment, default: `zap-ui-deployment`.|Optional|
 |`zap-proxy-service`|String|Name for the ZAP Proxy service required by the UI scanner, default: `zap-proxy-service`.|Optional|
