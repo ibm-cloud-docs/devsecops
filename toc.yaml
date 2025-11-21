@@ -189,6 +189,7 @@ toc:
           - devsecops-promotion-pipeline.md
           - devsecops-cd-pipeline.md
           - devsecops-cc-pipeline.md
+          - devsecops-simple-pipeline.md
           - devsecops-pipelines-parm.md
           - devsecops-pipelines-hosts.md
       - devsecops-triggers.md
