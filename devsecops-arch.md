@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-10-09"
+  years: 2021, 2025
+lastupdated: "2025-11-19"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -33,12 +33,12 @@ The following diagram shows the implementation workflow and main features of the
 ![Reference implementation workflow](images/cm-arch.png "Reference implementation workflow"){: caption="Reference implementation workflow" caption-side="bottom"}
 
 * Pull or merge request validation uses a specific pull request pipeline that echoes status back to the pull request. This feature allows developers to find problems early in the development cycle.
-* Integration is achieved by using a continuous integration pipeline that implements many controls out of the box and collects normalized evidence for these integrations in an evidence repository (repo). It also writes metadata on the artifacts to deploy into an artifacts inventory repo, which enables GitOps practices.
+* Integration is achieved by using a continuous integration pipeline that implements many controls out of the box and collects normalized evidence for these integrations in an evidence locker (COS bucket). It also writes metadata on the artifacts to deploy into an artifacts inventory repo, which enables GitOps practices.
 * Delivery is performed by using a continuous deployment pipeline to process content from the artifacts inventory and collect evidence to generate a change request for each deployment. It can also record compliance facts in the {{site.data.keyword.compliance_short}}, and these facts can be assessed against a compliance profile.
 
-As part of a continuous deployment staging deployment, continuous integration pipelines typically emit to the inventory master branch by using pull requests to promote the changes to a staging branch. Then, when ready, the changes are promoted again from staging to production with a subsequent branch promotion. To drive a coordinated release deployment, you can have multiple continuous deployment pipelines that output to a shared inventory and evidence repo.
+As part of a continuous deployment staging deployment, continuous integration pipelines typically emit to the inventory master branch by using pull requests to promote the changes to a staging branch. Then, when ready, the changes are promoted again from staging to production with a subsequent branch promotion. To drive a coordinated release deployment, you can have multiple continuous deployment pipelines that output to a shared inventory and evidence locker.
 
 Only one change request is created when multiple artifacts in that inventory are promoted.
 {: tip}
 
-You can have multiple continuous deployment pipelines that pull from a shared inventory and evidence repo, which enables multiple environments to be targeted from the same continuous integration input.
+You can have multiple continuous deployment pipelines that pull from a shared inventory and evidence locker, which enables multiple environments to be targeted from the same continuous integration input.
