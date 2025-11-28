@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-07-29"
+lastupdated: "2025-11-28"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -77,7 +77,6 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 |---------|------------|---------|
 | tflint |Runs `tflint $tflint_args --format=json` from [tflint](https://github.com/terraform-linters/tflint) to warn about deprecated syntax, unused declarations and enforce best practices, naming conventions. |`opt-in-tflint` set to 1 |
 | fmt | Runs `terraform fmt -check` from [fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) to rewrite Terraform configuration files to a canonical format and style. | `opt-in-terraform-fmtvalidate` set to 1 |
-| terraform-validate |Runs `ibmcloud cra terraform-validate` from [terraform-validate](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-command) to warn about specified Terraform plan file for compliance with rules that are specified in IBM Cloud® Security and Compliance Center | `opt-in-terraform-fmtvalidate` set to 1  |
 
 | Name | Type | Default | Description | Required or optional |
 |--|--|--|--|--|
