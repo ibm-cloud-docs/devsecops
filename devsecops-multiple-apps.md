@@ -32,12 +32,12 @@ Customize your toolchain by adding your toolchain to multiple apps and increase 
 1. Add more GitHub integrations for any extra [issue](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-incident-issues){: external}, [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory), and [evidence](/docs/devsecops?topic=devsecops-devsecops-evidence) repositories that can be configured for certain applications.
 
 
-   * Refer to the documentation pages and best practices to understand if you need these extra repositories for the applications.
+  * Refer to the documentation pages and best practices to understand if you need these extra repositories for the applications.
 
-   * Each subsystem should follow a 1:1 relationship between inventory and evidence repositories.
-      - For example, a team might group related microservices — such as `auth` and `user profile` — into a subsystem, with its own inventory repository and evidence locker.  
-      - This approach improves clarity, simplifies structure, and allows easier reuse and maintenance.  
-      - The Continuous Delivery service team uses this model to manage microservices at scale.
+   * A **subsystem** is a group of related services that are dependent on each other and are developed and deployed together.  
+     * Services within a single subsystem **must** share a common inventory repository and evidence locker. Each subsystem must maintain a 1:1 relationship between its inventory repository and evidence locker. Evidence lookups across multiple lockers aren’t supported, as they expand the search space and increase the risk of conflicting data.  
+     * You can also group multiple subsystems to use the same shared inventory and locker.  
+     * **Example:** Group related services (such as `auth` and `user-profile`) into one subsystem. This model supports scalable microservice management in Continuous Delivery environments.
 
    * The **Application** repos can also serve as its own issues repo. This is applicable only when the GitHub issues option is enabled on the tool integration.
    * The **Inventory** repo must be enough as a single consolidated repository for recording your build records because the records are already divided by the `app-name`, so long as that parameter is different nothing is going to get lost or confused. Though you might want to consult the [inventory documentation](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) for ideas on how to handle this repo because its main function is to help support deployments in the continuous deployment pipeline.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-03-04"
+lastupdated: "2025-12-02"
 
 keywords: DevSecOps, pipelinectl
 
@@ -30,6 +30,7 @@ For more information about where this tool is used, see [Adding test and build s
 Available aliases and methods:
 
 - [set_env](#set_env)
+- [set_envc](#set_envc)
 - [get_env](#get_env)
 - [list_env](#list_env)
 - [save_file](#save_file)
@@ -64,8 +65,9 @@ set_env <key> <value>
 ```
 {: codeblock}
 
-If the `<value>` argument is missing, `set_env` reads it from the standard input.
 Saves an arbitrary string that can be retrieved later on with [`get_env`](#get_env).
+
+If the `<value>` argument is missing, `set_env` reads it from the standard input. `set_env` also supports passing multiple key value pairs to be set at once.
 
 Example:
 
@@ -76,6 +78,46 @@ set_env app-name "my-app-name"
 # set value provided via stdin
 echo "my-app-name" | set_env app-name
 set_env my-api-key < /config/my-api-key
+
+# set multiple key value pairs
+set_env key-1 "value-1" \
+  key-2 "value-2" \
+  key-n "value-n"
+```
+{: codeblock}
+
+### set_envc
+{: #set_envc}
+
+```bash
+# <key>: The name of the environment variable e.g. pipeline-namespace, app-name
+# <value>: Value of the key
+set_envc <key> # reads <value> from `stdin`
+set_envc <key> <value>
+```
+{: codeblock}
+
+Saves an immutable arbitrary string that can be retrieved later on with [`get_env`](#get_env). Once saved with `set_envc`, it cannot be altered by further `set_env` / `set_envc` calls.
+
+If the `<value>` argument is missing, `set_envc` reads it from the standard input. `set_envc` also supports passing multiple key value pairs to be set at once.
+
+- Once set with `set_envc`, the key cannot be overwritten with further invocations of `set_envc` or `set_env`.
+- Variables once already set with set_env, cannot be overwritten with `set_envc`. 
+
+Example:
+
+```bash
+# set value provided as argument
+set_envc app-name "my-app-name"
+
+# set value provided via stdin
+echo "my-app-name" | set_envc app-name
+set_envc my-api-key < /config/my-api-key
+
+# set multiple key value pairs
+set_envc key-1 "value-1" \
+  key-2 "value-2" \
+  key-n "value-n"
 ```
 {: codeblock}
 
