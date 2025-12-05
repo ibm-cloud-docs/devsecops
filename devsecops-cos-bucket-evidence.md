@@ -135,6 +135,55 @@ Environment Properties for COS Bucket Configuration
 Configure the same bucket in all your pipelines CI/CD/CC.
 {: tip}
 
+## Migrating from Git Evidence Locker to COS Evidence Locker
+
+To improve build performance, reliability, and scalability, support for Git-based Evidence Lockers has been deprecated. Moving to Cloud Object Storage (COS)–based Evidence Lockers helps reduce dependency on Git operations and avoids rate-limit issues from Git hosting providers.
+
+All users should update their toolchains and pipelines to use a COS Evidence Locker.
+
+### When Your Toolchain Uses Only a Git Evidence Locker
+
+Follow these steps to complete the migration:
+
+  - [Configure a COS Evidence Locker for your toolchain](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence)
+  - Remove the `evidence-repo` environment property from all pipelines.
+  - Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.  
+
+### When Your Toolchain Uses Both Git and COS Evidence Lockers
+
+If you already have both configured:
+
+  - Remove the `evidence-repo` environment property from all pipelines.
+  - Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.
+
+
+### Preparing CD Pipelines for Migration from Git to COS Evidence Locker
+
+If your CI and CD pipelines rely on a Git Evidence Locker, the CD pipelines must be bootstrapped to use the COS Evidence Locker. You can choose one of the following approaches.
+
+#### Approach 1: Bootstrap Using Both Evidence Lockers
+
+In this approach, COS Evidence Locker is enabled while the Git Evidence Locker remains configured. Running both in parallel allows the COS Evidence Locker to be automatically bootstrapped using the Git Evidence Locker.
+
+  - Keep the Git Evidence Locker configuration in place.
+  - Enable the COS Evidence Locker.
+  - Run the CD pipeline using a pipeline definition version **earlier than v10.46.1** (recommended: [v10.45.0](https://cloud.ibm.com/docs/devsecops?topic=devsecops-release-notes#devsecops-open-v10.45.0-open-v9.62.0)).
+  - After the run completes, remove the Git Evidence Locker configuration as described earlier.
+
+#### Approach 2: Bootstrap Without Git Evidence Locker
+
+Use this approach if you prefer a clean migration without relying on Git.
+
+  - Remove the Git Evidence Locker configuration.
+  - Perform a one-time CD pipeline run with the `force-redeploy` parameter set to `true`.
+  - After the run completes, reset `force-redeploy` to `false` or remove the parameter altogether.
+
+This one-time CD pipeline execution ensures that the COS Evidence Locker is populated with all existing inventory assets. Only a single initial execution is needed and you may .
+If you prefer not to trigger an actual deployment, you may skip the deploy and acceptance-test stages to run the CD pipeline without performing any deployment actions.
+
+You may choose to archive the Git evidence locker after the removal, as it would be required for audit purposes. 
+{: tip}
+
 ## Migrating from one COS bucket to Another COS bucket
 {: #cd-devsecops-cos-bucket-migration}
 
@@ -164,3 +213,8 @@ In IBM Toolchains, update the environment variables to include both the old and 
 
 Do not delete the old bucket for 365 days, as it would be required for audit purposes. 
 {: tip}
+
+## Troubleshooting Guide for slow running pipelines
+1. `force-redeploy` should not be set to true, unless its a redeploy of all the enteries.
+2. [Promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline) should be used to promote the right set of delta, so that delat computaion is correct.
+3. If you see lines as , that means CI pipeline is not generating the correct summaries. Go back to the CI pipeline as check if there is any error while creating the mini-summaies into finish step.

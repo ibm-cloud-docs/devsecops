@@ -126,11 +126,6 @@ toc:
           - devsecops-inventory.md
           - devsecops-promote-branches.md
           - devsecops-partition-inventory-cc-pipeline.md
-          - topicgroup:
-              label: Using Inventory with DevSecOps
-              topics:
-              - devsecops-force-redeployment.md
-              - devsecops-rollback-deployment.md
       - topicgroup:
           label: Software Bill of Materials
           topics:

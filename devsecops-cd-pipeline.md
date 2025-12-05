@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-12-30"
+  years: 2021, 2025
+lastupdated: "2025-12-05"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -144,18 +144,256 @@ The details for the deployment are uploaded to the closing summary change task a
 
 For more information about inventory conclude, see [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
 
-## Inline Rollback
+## Redeploy an application
+
+{: #cd-devsecops-manual-redeployment}
+
+### Overview
+
+If an application crashes or behaves unexpectedly after infrastructure changes, you can force a redeployment to resolve the issue.
+
+Use `force-redeploy=true` when triggering a **Manual CD** pipeline run to override the default change-detection behavior. This setting instructs the pipeline to redeploy the full inventory, even when no new changes are detected.
+
+#### Default behavior (without force redeploy)
+
+When `force-redeploy` is not set or is set to `false`, the pipeline deploys only when new changes are detected in the inventory repository for the target environment.
+
+1. The CD pipeline starts and tags the current commit with the pipeline run ID.
+2. The pipeline reads the content of the corresponding environment branch from that tag.
+3. The pipeline calculates the deployment delta between the current commit and the commit associated with the `<target-environment>_latest` tag.
+4. The pipeline evaluates the delta:
+
+   * If the delta is empty, the pipeline stops and no deployment occurs.
+   * If the delta contains changes, the pipeline continues.
+5. The pipeline deploys the changes identified in the delta.
+6. After a successful deployment, the pipeline attaches the `<target-environment>_latest` tag to the new commit.
+
+#### Forced behavior (with force redeploy)
+
+When `force-redeploy` is set to `true`, the pipeline bypasses delta validation and redeploys the complete inventory, regardless of detected changes. This approach ensures that the full application state is reapplied to the deployment target.
+
+1. The CD pipeline starts and tags the current commit with the pipeline run ID.
+2. The pipeline reads the content of the corresponding environment branch from that tag.
+3. The pipeline calculates the deployment delta, which is typically empty in this scenario.
+4. The `force-redeploy=true` setting causes the pipeline to skip the delta check and proceed.
+5. The pipeline redeploys the entire application state from the branch.
+6. After a successful redeployment, the pipeline attaches the `<target-environment>_latest` tag to the commit it just deployed.
+
+### Procedure
+
+1. Start a new **Manual CD** pipeline run.
+
+2. In the pipeline's configuration, set the `force-redeploy` environment variable to `true`.
+
+3. Run the pipeline.
+
+## Rollback a deployment
+
+### Overview
+
+A rollback reverses a previous deployment and restores a known application state when a deployment causes instability, failures, or compliance issues. Rollbacks are typically performed to recover service reliability, enforce configuration consistency, or maintain regulatory alignment.
+
+Three rollback approaches are available, each suited to different recovery scenarios:
+
+* **Full Rollback**: Restores a last known good configuration by referencing a ServiceNow Change Request ID. Recommended for controlled and auditable recovery.
+* **Full Rollback using GitOps**: Restores a previous state by manually reverting commits in the inventory repository. Not recommended due to limited compliance handling.
+* **Inline Rollback**: Reverts a failed deployment within the same pipeline run when execution errors occur.
+
+### Full Rollback
+
+{: #cd-devsecops-full-rollback}
+
+#### Overview of the Rollback Pipeline
+This pipeline allows you to roll back to a previous, known-good configuration by targeting a specific ServiceNow Change Request ID (for example, `CHG-12345`).
+
+This Change Request ID serves as a unique bookmark for a successful deployment and is a required input for the rollback pipeline.
+
+You can find the Change Request ID for a previous deployment in two ways:
+
+* **ServiceNow**: Locate the change request for the deployment you want to restore.
+* **Inventory Repository**: Because the inventory's state is managed in source control, each deployment is uniquely identified by a commit. You can find the commit you want to revert to and identify the `CHG-***` tag associated with that commit.
+
+The rollback pipeline contains the following stages:
+
+* `prod-rollback-start`
+* `prod-setup`
+* `prod-rollback-change-request`
+* `prod-deployment`
+* `prod-acceptance-tests`
+* `prod-rollback-finish`
+
+The pipeline run uses information from the `rollback-change-request-id` environment property to create a new change request.
+
+To maintain compliance, the pipeline reopens issues linked to the previous deployment. These issues are attached to the new change request, and their original due dates remain unchanged. A successful rollback moves the `_latest` tag in the inventory to the previous commit.
+
+#### Create a Rollback Pipeline
+
+Use the `cd-rollback-listener` to trigger a rollback to the last known good version.
+
+1. Go to your CD pipeline.
+2. Add a manual trigger or duplicate the **Manual CD Trigger**.
+3. Edit the trigger and set the listener to `cd-rollback-listener`.
+4. Select **Save**.
+5. Create a separate trigger for each required region and target environment combination.
+
+#### Trigger a Rollback Pipeline
+
+A rollback pipeline run uses the following environment properties:
+
+| Environment property                                                         | Description                                                                                            |
+| :--------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------- |
+| `rollback-change-request-id`                                                 | (Required) The change request ID of the concluded deployment that you want to roll back.               |
+| `rollback-limit`                                                             | The maximum number of deployments you can roll back. The default is 1 (the last completed deployment). |
+| `region`                                                                     | The region for the rollback.                                                                           |
+| `target-environment`                                                         | The target environment for the rollback (for example, stage or prod).                                  |
+| {: caption="Table 1. Rollback environment properties" caption-side="bottom"} |                                                                                                        |
+
+The pipeline terminates unless the following criteria are met:
+
+* `rollback-change-request-id` must be the ID of a concluded deployment for the same region and target-environment.
+* The deployment associated with `rollback-change-request-id` must not be older than the number of deployments specified by rollback-limit.
+  {: important}
+
+The `PIPELINE_NAME` Tekton environment property determines if a run is a deployment or a rollback.
+
+* `cd-rollback-pipeline`: Default value for a rollback.
+* `cd-pipeline`: Default value for a deployment.
+
+You can use this property to customize branching logic.
+
+
+### Full Rollback using GitOps
+
+{: #cd-devsecops-gitops-raw}
+
+#### Overview of Rollback using GitOps
+
+Use the continuous deployment pipeline to deploy a previous version of the inventory to the target environment by using Git operations that revert changes to a specific `commit-id`.
+{: shortdesc}
+
+Because you are reverting commits in the inventory repository directly instead of triggering the rollback pipeline with a ServiceNow Change Request ID, this process does not automatically reopen previous compliance issues or manage their due dates.
+{: note}
+
+When triggered, the CD pipeline completes the following steps for the redeployment:
+
+* The pipeline starts and tags the current commit (the revert commit) with the pipeline run ID.
+* The pipeline reads the content of the corresponding environment branch from that tag.
+* The pipeline calculates the deployment delta between the current commit and the commit associated with the `<target-environment>_latest` tag.
+* After a successful deployment, the `<target-environment>_latest` tag is moved to the new (reverted) commit.
+
+#### Create a Rollback Promotion Pull Request
+
+1. Identify the `commit-id` of the deployment version in the inventory that you want to roll back to.
+2. Revert the repository state to that commit.
+3. Create a pull request to promote the reverted state.
+
+The following example shows this scenario by using `git` commands.
+
+1. List commits and tags to find the commit ID of the last known good state (for example, `refs/tags/8`)
+
+   ```bash
+   # /c/usr/devsecops/compliance-inventory (master)
+   $ git show-ref --tags
+   ...
+   83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8 refs/tags/8
+   ...
+   1914a125e76aa97c497f4bd2c2f455b58cf079b8 refs/tags/prod_latest
+   ```
+
+   {: codeblock}
+
+2. List all commits between the current state (`refs/tags/prod_latest`) and the target state (`refs/tags/8`).
+
+   ```bash
+   # /c/usr/devsecops/compliance-inventory (master)
+   $ git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
+   67cc8babdff3e09c1f0e632f897798c1b5424f38
+   6fab5ce3d60590cd858206424ecfd7d3a8c9ceb4
+   ...
+   ```
+
+   {: codeblock}
+
+3. Revert the inventory state to the target commit (`refs/tags/8`).
+
+   ```bash
+   # /c/usr/devsecops/compliance-inventory (master)
+   $ git revert -n $(git rev-list --no-merges HEAD...83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8)
+   ```
+
+   {: codeblock}
+
+4. Commit the new state.
+
+   ```bash
+   # /c/usr/devsecops/compliance-inventory (master|REVERTING)
+   $ git commit -m "revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8"
+   [master af82538] revert master to 83f7a87ee59185eaeac554bd3abeebfd2c1b4ad8
+   ```
+
+   {: codeblock}
+
+5. Push the update to the master branch.
+
+   ```bash
+   # /c/usr/devsecops/compliance-inventory (master)
+   $ git push --set-upstream origin master
+   ...
+   To [https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git](https://us-south.git.cloud.ibm.com/jaunin.b/compliance-inventory.git)
+     67cc8ba..af82538  master -> master
+   ...
+   ```
+
+   {: codeblock}
+
+
+#### Trigger the Continuous Deployment Pipeline
+
+1. Create a pull request for the rollback promotion changes.
+
+2. Review and merge the pull request.
+
+3. Trigger the **Manual CD** pipeline run in your CD Toolchain.
+
+
+### Inline Rollback
+
 {: #cd-devsecops-inline-rollback}
 
-To run Inline rollback successfully, ensure that the `rollback-enabled` environment property is set to `1` and there is a **failure** in the Deployment or Acceptance test. If a rollback scenario is detected, CD Pipeline runs the segment that is defined against `rollback` inside the `.pipeline-config.yaml` provided by the user. If a `rollback` segment is not inside the `.pipeline-config.yaml` file from the user, a default implementation is provided which prompts the user to supply a rollback script before converting this step to amber state.
+#### Overview of Inline Rollback
 
-### Properties that get set in the inline rollback scenario
+This mode rolls back the current deployment within the context of the same pipeline run. It is required when an error or failure occurs during the Deployment or the Acceptance Test stage, causing the deployment attempt to be marked as a failure.
+
+An inline rollback automatically runs if the `rollback-enabled` environment property is set to `1` and a failure occurs in the Deployment or Acceptance test stage.
+
+If a rollback is triggered, the CD pipeline runs the segment defined for `rollback` in your `.pipeline-config.yaml` file. If a `rollback` segment is not defined in the file, a default implementation runs and prompts you to provide a rollback script.
+
+Example rollback script in `.pipeline-config.yaml`:
+
+```bash
+rollback:
+  image: icr.io/continuous-delivery/pipeline/pipeline-base-image:2.74
+  script: |
+    #!/usr/bin/env bash
+    if [[ "$PIPELINE_DEBUG" == 1 ]]; then
+      trap env EXIT
+      env
+      set -x
+    fi
+    source $WORKSPACE/$PIPELINE_CONFIG_REPO_PATH/scripts/deploy_setup.sh
+    source $WORKSPACE/$PIPELINE_CONFIG_REPO_PATH/scripts/rollback.sh
+```
+
+{: codeblock}
+
+#### Properties set during Inline Rollback
+
 {: #cd-devsecops-inline-rollback-properties}
 
-- `rollback-status` says the status of the rollback step execution. Possible values `[notRun, success, failure]`
-- `rollback-exit-code` is the exit code of the rollback step. This is kept empty if rollback wasn't even run.
-- `default-rollback-executed` is run when the property is set to `true` if the default implementation that prompts user to supply a rollback script. The value of this property is set to empty by default.
-- `pipeline-execution-status` sets the status of the overall pipeline run. Possible values `[successful_deployment, failed_deployment_failed_rollback, failed_deployment_successful_rollback]`
+* `rollback-status`: Indicates the status of the rollback step. Possible values: `[notRun, success, failure]`
+* `rollback-exit-code`: The exit code of the rollback step. This value is empty if the rollback did not run.
+* `default-rollback-executed`: Set to `true` if the default implementation (which prompts for a script) was run. This value is empty by default.
+* `pipeline-execution-status`: Indicates the status of the overall pipeline run. Possible values: `[successful_deployment, failed_deployment_failed_rollback, failed_deployment_successful_rollback]`
 
 
 
@@ -170,3 +408,5 @@ To further support this functionality, if the user wants to provide a specific t
 
 - An existing environment property for a repository-specific token: `git-token-$repo_name-$repo_org`.
 - A new environment property for an organization-specific token: `git-token-$repo_org`.
+
+# 
