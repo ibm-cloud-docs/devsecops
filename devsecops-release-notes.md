@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-09-12"
+lastupdated: "2025-12-08"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -16,11 +16,111 @@ content-type: release-note
 # Release notes for DevSecOps
 {: #release-notes}
 
-The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to `open-v10` branch of this pipeline.
+The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to `open-v10` branch of devsecops pipeline.
+{: deprecated}
+
+Support for Git Evidence Locker feature has been removed - hence Cloud Object Store is now a mandatory Evidence Locker for all devsecops users
 {: deprecated}
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 06 December 2025
+{: #devsecops-Sept2025-01}
+{: release-note}
+
+### Updates for DevSecOps version - open-v10.58.1
+{: #devsecops-open-v10.58.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.58.0
+{: #devsecops-open-v10.58.0}
+
+Pipelinectl enhancements
+:   Added new pipelinectl command to save and retrieve immutable properties using `set_envc`/`get_envc`.
+
+Performance improvements in the CD pipeline
+:   Refactored the CD pipeline to run the pipeline faster.
+
+### Updates for DevSecOps version - open-v10.57.1
+{: #devsecops-open-v10.57.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.57.0
+{: #devsecops-open-v10.57.0}
+
+Reuse of ibmcloud login session
+:   Added ability to reuse ibmcloud session during execution of a pipeline run.
+
+Support private endpoints
+:   Modified ibmcloud login flow to use private end points where supported.
+
+### Updates for DevSecOps version - open-v10.56.1
+{: #devsecops-open-v10.56.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.56.0
+{: #devsecops-open-v10.56.0}
+
+Update gosec to v2.22.10
+:   Updated gosec version to v2.22.10.
+
+Mend scan enhancements
+:   Mend scan now opens a non vulnerability issue in case of not finding any supported programming language.
+
+Authentication support for ZAP UI scan
+:  A new pipeline environment variable option is provided `zap-ui-auth-user` is provided to be used for running zap scan as a specific user. This option is only valid only in the context of the provided `context-file` for the zap ui scan which should also contain the information of the way to authenticate the user provided in `zap-ui-auth-user`.
+
+### Updates for DevSecOps version - open-v10.55.0
+{: #devsecops-open-v10.55.0}
+
+Updated detect secrets version
+:   Detect secrets version used has been updated to 0.13.1.ibm.64.
+
+### Updates for DevSecOps version - open-v10.54.1
+{: #devsecops-open-v10.54.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.54.0
+{: #devsecops-open-v10.54.0}
+
+Performance Improvements
+:   Replatformed pipelinectl command line utility from Typescript to GoLang. This has improved pipeline performance up to 30% in some use cases.
+
+### Updates for DevSecOps version - open-v10.53.0
+{: #devsecops-open-v10.53.0}
+
+Trigger payload for Simple automation pipeline
+:   Added trigger payload to simple automation pipeline for the end users use.
+
+Evidence information in auto generated issues
+:   devsecops now adds evidence information to the auto generated issues as an additional comment. 
+
+Deprecation of `open-v9` version of pipelines
+:   With the `open-v10` version of pipelines providing concurrent execution of tasks and improved pipeline performance, the `open-v9` version of pipelines are now deprecated.
+
+Deprecated `payload` for PR pipelines
+:   Due to inefficiencies in the way payload is handled the payload support has been deprecated from PR pipelines. If any of your workloads are dependent on payload. Please use this snippet:
+```
+PR_BODY=$(curl -s -u "$USER:$TOKEN" "$PR_URL" | jq .body
+```
+
+Deprecation of git evidence lockers
+:   Support for git evidence locker has been removed. Please migrate to Cloud Object Storage lockers. Please follow [Configuring IBM Cloud Object Storage for storing evidence](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) to create COS lockers
+
+### Updates for DevSecOps version - open-v9.68.0 and open-v10.51.0
+{: #devsecops-open-v10.51.0-open-v9.68.0}
+
+Support for CodeEngine `scale-down-delay`
+:   Code engine utilities of devsecops now support `scale-down-delay` property.
 
 ## 01 September 2025
 {: #devsecops-Sept2025-01}
