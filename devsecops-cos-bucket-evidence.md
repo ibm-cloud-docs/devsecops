@@ -145,16 +145,16 @@ All users should update their toolchains and pipelines to use a COS Evidence Loc
 
 Follow these steps to complete the migration:
 
-  - [Configure a COS Evidence Locker for your toolchain](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence)
-  - Remove the `evidence-repo` environment property from all pipelines.
-  - Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.  
+- [Configure a COS Evidence Locker for your toolchain](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence)
+- Remove the `evidence-repo` environment property from all pipelines.
+- Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.  
 
 ### When Your Toolchain Uses Both Git and COS Evidence Lockers
 
 If you already have both configured:
 
-  - Remove the `evidence-repo` environment property from all pipelines.
-  - Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.
+- Remove the `evidence-repo` environment property from all pipelines.
+- Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.
 
 
 ### Preparing CD Pipelines for Migration from Git to COS Evidence Locker
@@ -165,18 +165,18 @@ If your CI and CD pipelines rely on a Git Evidence Locker, the CD pipelines must
 
 In this approach, COS Evidence Locker is enabled while the Git Evidence Locker remains configured. Running both in parallel allows the COS Evidence Locker to be automatically bootstrapped using the Git Evidence Locker.
 
-  - Keep the Git Evidence Locker configuration in place.
-  - Enable the COS Evidence Locker.
-  - Run the CD pipeline using a pipeline definition version **earlier than v10.46.1** (recommended: [v10.45.0](https://cloud.ibm.com/docs/devsecops?topic=devsecops-release-notes#devsecops-open-v10.45.0-open-v9.62.0)).
-  - After the run completes, remove the Git Evidence Locker configuration as described earlier.
+- Keep the Git Evidence Locker configuration in place.
+- Enable the COS Evidence Locker.
+- Run the CD pipeline using a pipeline definition version **earlier than v10.46.1** (recommended: [v10.45.0](https://cloud.ibm.com/docs/devsecops?topic=devsecops-release-notes#devsecops-open-v10.45.0-open-v9.62.0)).
+- After the run completes, remove the Git Evidence Locker configuration as described earlier.
 
 #### Approach 2: Bootstrap Without Git Evidence Locker
 
 Use this approach if you prefer a clean migration without relying on Git.
 
-  - Remove the Git Evidence Locker configuration.
-  - Perform a one-time CD pipeline run with the `force-redeploy` parameter set to `true`.
-  - After the run completes, reset `force-redeploy` to `false` or remove the parameter altogether.
+- Remove the Git Evidence Locker configuration.
+- Perform a one-time CD pipeline run with the `force-redeploy` parameter set to `true`.
+- After the run completes, reset `force-redeploy` to `false` or remove the parameter altogether.
 
 This one-time CD pipeline execution ensures that the COS Evidence Locker is populated with all existing inventory assets. Only a single initial execution is needed and you may .
 If you prefer not to trigger an actual deployment, you may skip the deploy and acceptance-test stages to run the CD pipeline without performing any deployment actions.
@@ -197,9 +197,9 @@ If you are an existing user of the COS evidence locker and need to migrate from 
 **Steps to Migrate:**
 
 **Configure the Backup-COS Bucket:** If you are migrating from an old COS bucket to a new one, ensure that your pipeline is configured to use both the old and new buckets. This allows for smooth migration without disrupting your existing workflows.
-  - Create the New COS Bucket as defined in above steps.
-  - Configure IAM Policies: Ensure that the new COS bucket has the necessary IAM policies for Reader and Object Writer access as required by your pipelines.
-  - Update Environment Variables
+- Create the New COS Bucket as defined in above steps.
+- Configure IAM Policies: Ensure that the new COS bucket has the necessary IAM policies for Reader and Object Writer access as required by your pipelines.
+- Update Environment Variables
 
 In IBM Toolchains, update the environment variables to include both the old and new COS buckets. To configure the old bucket use **backup-** prefix in all COS env properties and use the normal properties to configure new COS bucket.
 
@@ -215,6 +215,7 @@ Do not delete the old bucket for 365 days, as it would be required for audit pur
 {: tip}
 
 ## Troubleshooting Guide for slow running pipelines
+
 1. `force-redeploy` should not be set to true, unless its a redeploy of all the enteries.
 2. [Promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline) should be used to promote the right set of delta, so that delat computaion is correct.
 3. If you see lines as , that means CI pipeline is not generating the correct summaries. Go back to the CI pipeline as check if there is any error while creating the mini-summaies into finish step.
