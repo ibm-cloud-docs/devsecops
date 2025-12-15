@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-10-30"
+lastupdated: "2025-12-15"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -269,6 +269,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`cr-pipeline-version`		|text		|The version of the pipeline that is creating the change request.	|Optional			|Unlocked |
 | `cra-ibmcloud-api-key` | SECRET | Overwrites the `ibmcloud-api-key` that is used by the CRA tasks. | Optional |Unlocked |
 |[`customer-impact`](#pipeline-parm-customer-impact)		|text		|The impact of the change on the customer.	|Optional			|Unlocked |
+|[`deployment-config`](#pipeline-parm-deployment-config)		|text		| JSON string which is an array of deployment configuration objects. Only applicable for `cd-change-request-listener`, to enable multiple deployments, where `region`, `servicenow-crn-mask`, `inventory-ignore-file`, `evidence-checks-config-path`  parameters can be overridden through each of the deployment config objects.	|Optional			| Unlocked |
 |[`deployment-impact`](#pipeline-parm-deployment-impact)		|text		|The impact of the change on the deployment.	|Optional			|Unlocked | 
 |[`deployment-traceability`]    |text    |Set the value to 1 to enable deployment traceability    |Optional    |Unlocked   |
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that gets appended to the Change Request Description.	|Optional			|Unlocked |
@@ -307,7 +308,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			| Unlocked |
 |[`purpose`](#pipeline-parm-purpose)		|text		|The reason why the change is needed.	|Optional			| Unlocked |
 |`region`		|text		|The target region where the app is deployed.	|Optional			| Unlocked |
-|`regions`		|text		|The target regions where the app is deployed, comma separated. Applicable for `cd-change-request-listener`. Overrides `region` parameter.	|Optional			| Unlocked |
 | `rollback-change-request-id` |text |Change Request ID of the concluded deployment to be rolled back against |Required for CD Rollback pipeline | Unlocked |
 |`rollback-enabled` |text |Flag to set whether inline rollback capability to be enabled or not. Default "0" |Optional | Unlocked |
 |`rollback-limit` |text |integer number which indicates how many deployment backwards, the rollback can be performed. Default "1" |Optional |Unlocked |
@@ -498,6 +498,43 @@ This is an optional parameter for the CI and CC pipelines. If you marked an inci
 {: #pipeline-parm-customer-impact}
 
 This parameter is for the promotion pull request. It records the impact of the change request on the customer. By default the parameter is the pipe-separated string `'Critical | High | Moderate | Low | No_Impact'`. Edit the default string to select one of the options.
+
+### deployment-config
+{: #pipeline-parm-deployment-config}
+
+The deployment configuration is supplied through this property, provided as a JSON string. Here is a sample deployment-config:
+
+```
+"deployment-config": [
+  {
+    "region": "region-1",
+    "servicenow-crn-mask": "crn:region-1:kubernetes::::::",
+    "inventory-ignore-file": "filepath/relative/to/the/inventory-repo",
+    "evidence-checks-config-path": "filepath/relative/to/the/pipeline-config-repo",
+    "deployment-prefix": "prefix1",
+    "trace_id": "guid1"
+  }, 
+  {
+    ...
+  }
+]
+```
+Following validation rules are applicable against this property, failure of any of which, results in pipeline termination with appropriate error message:
+- The array must not be empty.
+- All `trace_id` values must be unique.
+- Each element must contain both `region` and `trace_id`.
+- The `deployment-config` property must only be provided for `cd-change-request-listener`
+- Either **all elements** contain `deployment-prefix`, or **none do.**
+- If `deployment-prefix` is present, its value must be **unique across all elements.**
+- If `deployment-prefix` is not present, then the value of `region` must be **unique across all elements.**
+
+For the following fields, if they are not specified per object, global environment variables are used as fallbacks:
+  - `servicenow-crn-mask` → `$(get_env servicenow-crn-mask)`
+  - `inventory-ignore-file` → `$(get_env inventory-ignore-file)`
+  - `evidence-checks-config-path` → `$(get_env evidence-checks-config-path)`
+  
+`deployment-prefix` does not have a global fallback and must be defined explicitly if used.
+{: note}
 
 ### deployment-impact
 {: #pipeline-parm-deployment-impact}

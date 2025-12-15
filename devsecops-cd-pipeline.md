@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-12-05"
+lastupdated: "2025-12-15"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -105,6 +105,8 @@ Use`get_env CHANGE_REQUEST_ID` to leverage the value of Change Request ID in the
 This step creates the change request by attaching the available compliance data based on the [promotion pull request](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelinepr) fields. [Deployment readiness](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt#cd-devsecops-cr-approve) is calculated based on the available evidence in the collected compliance status.
 
 If the pre-prod evidences are captured in the production deployment, pre-prod change requests are linked to the production change request. For more information, see [Data included in change requests](/docs/devsecops?topic=devsecops-cd-devsecops-cr-data).
+
+Multiple change requests can pre-created using a dedicated Change-Request Listener for different [deployment configurations](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#pipeline-parm-deployment-config) including deployments to multiple regions, targets and clusters. These pre-created change requests, after approval, can be passed down to deployment pipeline just-in-time which leverages precomputed information to speed up the actual deployment.
 
 ## Check change request approval
 {: #cd-devsecops-pipeline-checkcr}
