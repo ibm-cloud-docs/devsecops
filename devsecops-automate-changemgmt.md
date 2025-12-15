@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-09-23"
+lastupdated: "2025-12-15"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -85,15 +85,34 @@ You can read the created change request ID from the pipeline logs, wait for appr
 
 If the change is a type of `emergency`, the change request must be retroactively reviewed and approved.
 
-## Rerunning failed deployments by using an existing change request ID
+## Running deployments by using an existing change request ID
 {: #cd-devsecops-cr-existing}
 {: step}
+
+### Running pipeline with a pre-approved change-request 
+You can use a pre-approved change-request(CR) for deployment. Here, two scenarios are possible:
+
+When CD Pipeline recognizes the CR as created by some earlier CD Pipeline run, it fast-paths the deployment by:
+- Reusing the precomputed delta and evidence summary from the CR evidence.
+- Skipping peer review and signature verification steps.
+- Deploying the pre-computed delta. 
+
+Conversely, when CD Pipeline is unable to determine if the CR provided by the user, was not created by an earlier CD Pipeline run, or the provided CR does not match the deployment target of the current run, in such cases:
+- It does not reuse any precomputed delta or evidence summaries.
+- It does not skip peer-review verification or artifact signature verification.
+- Recomputes delta and summary from scratch.
+- The only thing it does not do is mint a new CR, since a CR was already supplied.
+
+### Rerunning pipeline against failed deployment
 
 If you do not want to use automated change management, you can provide a previously created and approved change request instead. Rerun failed deployments in the following scenarios:
 
 * The latest automatically created change request is not ready for deployment and the change request was not auto-approved. You got approval for the change request and must start deployment again by using the change request again.
 * The deployment requires downtime. You created the change request, it was approved, and you followed the required steps in your organization's Change Management Policy.
 * No code or configuration changed. You created the change request, explained what changed (if the change was not in your app code), received approval, and started a deployment by using the approved change request.
+
+The change request(CR) remains open after the end of CD Pipeline.
+{: note}
 
 You can start the DevSecOps reference continuous deployment pipeline by using a pre-approved change request and entering the change request ID for the **change-request-id** property.
 
