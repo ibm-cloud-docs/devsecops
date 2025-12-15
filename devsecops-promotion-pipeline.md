@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2025
-lastupdated: "2025-06-16"
+lastupdated: "2025-12-15"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -179,8 +179,14 @@ The evidence that is collected in the continuous integration pipeline is summari
 {: #cd-devsecops-promotion-validation-pipeline}
 
 Once a promotion PR is opened, you can optionally perform the evidence aggregation and summary generation in the Promotion validation pipeline, and set the evidence statuses on the promotion pull/merge request (PR). The PR may be created by the Promotion pipeline or manually in the inventory repo.
+
 The pipeline enables early validation of the promotion PR before the PR is merged to the target branch (environment). Based on the status of the PR, users can either proceed with the promotion (when all the evidence statuses are green), or choose to fix the problem in the continuous integration pipeline (when the evidence status is red).
-Additionally the validation pipeline also adds the aggregated summary of evidences for one or more apps in the inventory to the promotion pull/merge request as a comment, in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repos, and issues created for each of the apps.
+
+Additionally the validation pipeline also adds the aggregated summary of evidences for one or more applications in the inventory to the promotion pull/merge request as a comment, in a user-friendly tabular format (as shown in Figure 3). The table provides useful links, such as links to pipeline runs, app repositories, and issues created for each of the applications.
+
+By default, each row in the *Detailed evidence status* table corresponds to an application context provided by a source repository used to create artifact(s) referenced in the inventory entries. This application default grouping can be customized based on a group-by value obtained by applying the JSON filter (defined in the property `application-group-by-filter`) on each inventory entry files.
+{: note}
+
 While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation pipeline completes, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
 
 ## How to enable promotion validation?
