@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-10-17"
+lastupdated: "2025-12-16"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -283,8 +283,9 @@ If you are using IBM Cloud Code Engine for deployment, specify the Code Engine p
 * `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of `ibmcloud code-engine buildrun` command.
 * `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
 
-#### Docker build configuration
-* `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
+#### Container image build configuration
+* `container-image-builder`: (Default to `docker`) For Dockerfile related builds, specify the tool to use (`docker` or `podman`) to build the container image.
+* `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker`, `podman` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
 
 #### Golang Configuration
 {: #devsecops-pipeline-configuration-spot-go}
