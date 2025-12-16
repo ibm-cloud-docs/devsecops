@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-12-15"
+lastupdated: "2025-12-16"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -529,9 +529,9 @@ Following validation rules are applicable against this property, failure of any 
 - If `deployment-prefix` is not present, then the value of `region` must be **unique across all elements.**
 
 For the following fields, if they are not specified per object, global environment variables are used as fallbacks:
-  - `servicenow-crn-mask` → `$(get_env servicenow-crn-mask)`
-  - `inventory-ignore-file` → `$(get_env inventory-ignore-file)`
-  - `evidence-checks-config-path` → `$(get_env evidence-checks-config-path)`
+- `servicenow-crn-mask` → `$(get_env servicenow-crn-mask)`
+- `inventory-ignore-file` → `$(get_env inventory-ignore-file)`
+- `evidence-checks-config-path` → `$(get_env evidence-checks-config-path)`
   
 `deployment-prefix` does not have a global fallback and must be defined explicitly if used.
 {: note}
