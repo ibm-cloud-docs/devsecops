@@ -79,6 +79,8 @@ The parameters provided will configure the DevSecOps extraction process and the 
 docker run --platform linux/amd64 -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh --configuration hint-npm-unit-testing-script=test-unit --configuration hint-npm-acceptance-testing-script=test-fvt /src
 ```
 
+
+
 ### Outcomes
 `polyglot-spots.json` and `.pipeline-config.yaml` files are added to the root directory of the source code repository.
 - `polyglot-spots.json` is the cartography of specific spots found in the source code inspection and can be discarded.
