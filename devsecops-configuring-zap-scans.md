@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2025
-lastupdated: "2025-11-03"
+  years: 2022, 2026
+lastupdated: "2026-01-06"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -18,12 +18,19 @@ subcollection: devsecops
 Zed Attack Proxy (ZAP) is a free and open source penetration testing (PEN) tool that is maintained under the umbrella of OWASP. ZAP is a "man-in-the-middle" proxy that sits between the tester's web browser and a web server. ZAP intercepts packets, modifies the content if needed, and forwards those packets to the web server.
 {: shortdesc}
 
+## ZAP scans execution
+{: #zap-scans-execution}
+
+You can create a specific script to start ZAP scans, like `trigger_zap_scans` inside your application repository, at a location of your choice, for example, inside a `scripts` directory and invoke this script in the `dynamic-scan` stage of the pipeline-config file.
+
+You can customize the `trigger_zap_scans` script file to invoke the proper zap scan (api or ui) like described [here](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans#zap-scan-results) and rely on [Common zap scan execution script](/docs/devsecops?topic=devsecops-devsecops-common-scripts-revise) to run a ZAP scan (`ui` or `api`) to run penetration testing on your running app.
+
+An alternate way is to execute zap scan(s) in a sub-pipeline as defined in the reference implementation, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
+
+With this configuration in the pipeline config file, the `dynamic-scan` stage will invoke `trigger-async-zap.sh` script to trigger `owasp-zap` stage to initiate Zed Attack Proxy (ZAP) tool scanning in a dedicated sub-pipeline. It also rely on [Common zap scan execution script](/docs/devsecops?topic=devsecops-devsecops-common-scripts-revise) to run a ZAP scan (`ui` or `api`) to run penetration testing on your running app.
+
 ## Available parameters for ZAP scans
 {: #zap-parameters}
-
-Create a file `trigger_zap_scans` inside your application repository, at a location of your choice, for example, inside a `scripts` directory.
-
-Set the values for the corresponding parameters by adding these lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`. For more information about a reference implementation, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
 
 You can set and customize the following parameters to configure ZAP scans to run penetration testing on your running app.
 
@@ -53,8 +60,6 @@ You can set and customize the following parameters to configure ZAP scans to run
 {: #zap-api-scans}
 
 Inside your application repository, you must have at least one API definition file present, in `json` format. This API definition file needs to be a valid `swagger` or `openapi` definition. These files can be present at any location inside the application repository, for example, inside a `definitions` directory. For clarity, these files are referred to as follows: `definitions1.json`, `definitions2.json`, and so on.
-
-More parameters are required for configuring ZAP API scans. These parameters can be set by adding the following lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`.
 
 |Name |Type	|Description |Required or Optional |
 |:----------|:------------------------------|:------------------|:----------|
@@ -86,10 +91,6 @@ For sensitive information like credentials, you must read these values from a va
 
 ## Configuring ZAP UI scans
 {: #zap-ui-scans}
-
-Similar to configuring ZAP API scans, create or update the file `trigger_zap_scans` inside your application repository, at a location of your choice, for example, inside a `scripts` directory.
-
-Set the values for the corresponding parameters by adding these lines to the `trigger_zap_scans` as follows - `set_env <parameter name> <value>`. For more information about a reference implementation, see [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app).
 
 Set the `zap-ui-scan` parameter to `true` for ZAP UI scan to run.
 {: note}
@@ -124,7 +125,7 @@ For a reference implementation that uses Protractor as the test framework, see [
 
 Based on the value of the parameters `opt-in-dynamic-api-scan` and `opt-in-dynamic-ui-scan`, we can choose to selectively run either the API scan or the UI scan or both.
 
-Inside the `trigger_zap_scans` file, we can trigger individual scans based on the opt-in parameters as follows.
+For instance, inside the `trigger_zap_scans` file, one can trigger individual scans based on the opt-in parameters as follows.
 
 ```bash
 if [ -n "$(get_env opt-in-dynamic-api-scan "")" ]; then
@@ -155,8 +156,6 @@ else
    exit 1
 fi
 ```
-
-A sample implementation can be found in the `trigger_zap_scans` file inside the `scripts/zap` directory inside [this repository](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app){: external}.
 
 ## Configuring ZAP scan for CC pipeline
 {: #zap-scan-for-cc}
