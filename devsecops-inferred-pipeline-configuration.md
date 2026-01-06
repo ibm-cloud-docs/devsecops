@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2025
-lastupdated: "2025-12-16"
+lastupdated: "2025-12-29"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -326,6 +326,13 @@ To configure the Python Poetry version, use the following pipeline environment p
 To configure the Terraform deployment process, use the following pipeline environment properties:
 
 * `terraform-deployment`: (Default: `false`) Disables Schematics as a deployment vehicle in favor of Terraform and Cloud Object Storage for state storage.
+
+#### Helm configuration
+{: #devsecops-pipeline-configuration-spot-helm}
+
+To configure the helm release process, use the following pipeline environment properties:
+
+* `helm-oci-registry-support` : (Default to `false`) Enable helm chart to be pushed to OCI registry in the release step.
 
 #### Artifact Upload
 {: #devsecops-pipeline-configuration-spot-artifact-upload}
