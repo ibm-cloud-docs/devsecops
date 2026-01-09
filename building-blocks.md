@@ -36,9 +36,6 @@ A template that quickly provisions a complete CD solution. The template uses Tek
 * Update pipeline triggers that are provided by the toolchain or add more triggers to your pipelines.
 * Update environment properties for your pipelines or add more properties for your pipelines.
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
-
 ## Continuous Compliance (CC) toolchain - Ensure that you are running a secure and compliant application
 {: #cd-devsecops-reusable-cc}
 

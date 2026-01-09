@@ -182,8 +182,6 @@ Optionally, you can toggle sending notifications with the `slack-notifications` 
 1. Accept or edit the automatically populated settings. For more information, see [{{site.data.keyword.compliance_short}}](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
 2. Click **Continue** to view the Summary page.
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Create the CD toolchain
 {: #tutorial-cd-toolchain-summary}

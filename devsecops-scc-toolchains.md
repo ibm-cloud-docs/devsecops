@@ -60,9 +60,6 @@ Push data model
 
 ![{{site.data.keyword.compliance_short}} additional details view](images/devsecops-scc-moredetails.png){: caption="Security and Compliance Center More Details view" caption-side="bottom"}
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
-
 Each piece of information is evaulated against a control and a status is provided. For each control, you are marked as either **Compliant** or **Noncompliant**. For individual resources, the status might be **Pass** or **Fail** depending on whether the evidence fragment met the control qualification. It might also be **Unable to perform**. This status can be returned when an evaluation is attempted but there isn't any corresponding evidence to evaluate; a task might have been removed or skipped in the CI pipeline or a deployment is performed by using the `CD EMERGENCY` to override evidence failures.
 
 Example control dashboard:

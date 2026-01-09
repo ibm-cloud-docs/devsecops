@@ -203,6 +203,3 @@ interface Summary {
 
 This summary does not perform any result aggregation. It is the raw data of collected v2 evidence, as they were found for assets that are related to a change request.
 {: important}
-
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}

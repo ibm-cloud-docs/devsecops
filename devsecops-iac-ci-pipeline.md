@@ -108,7 +108,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | -------- | ----- | ----------- |
 | `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
 | `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-options). |
-| `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | The [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. <br> Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.{: deprecated} |
+| `cra-tf-scc-instance-name`| Default to the [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration configured in the toolchain | The [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc) tool integration name to be used to fetch profile and attachment to configure `cra terraform validate` command. |
 | `cra-tf-ignore-rules` | | The comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
 | `cra-tf-ignore-rules-file` | | The path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
 | `opt-in-tfsec` | | The flag to run compliance checks by using `tfsec` tool. |
@@ -118,6 +118,9 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `checkov-version` | `` meaning the latest version | `checkov` version to install if not available in the environment. |
 | `checkov-args` | | The `checkov` command arguments. |
 {: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
@@ -143,8 +146,6 @@ Sample content for `cra-tf-ignore-rules-file` file:
 }
 ```
 
-Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Build artifact
 {: #devsecops-iac-ci-pipeline-build}

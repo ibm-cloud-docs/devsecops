@@ -177,8 +177,6 @@ You can add the Slack tool after the toolchain creation.
    The individual toolchain integrations can be configured after the pipeline creation.
    {: tip}
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Explore the CC toolchain
 {: #tutorial-cc-toolchain-explore}
