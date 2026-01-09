@@ -134,6 +134,6 @@ For {{site.data.keyword.bpshort}} troubleshooting information, see [How can I fi
 ## Next steps
 {: #devsecops-next-steps}
 
-Continue to the "[Explore your CI toolchain](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops#devsecops-ci-toolchain-explore)" section of the [next tutorial](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops), and run the CI-PR and CI pipelines. Then, continue through the remainder of the steps in that tutorial to deploy a secure app.
+Continue to the "[Explore your CI toolchain](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain)" section of the [next tutorial](/docs/devsecops?topic=devsecops-tutorial-cd-devsecops), and run the CI-PR and CI pipelines. Then, continue through the remainder of the steps in that tutorial to deploy a secure app.
 
 At any time, you can view all the resources that were created with this tutorial by clicking the **Menu** icon ![Menu icon](../../icons/icon_hamburger.svg) and selecting **Resource list**. You can view your {{site.data.keyword.bpshort}} workspace, cluster, {{site.data.keyword.cos_full_notm}} instance, Secrets Manager service, continuous delivery service, and toolchain.

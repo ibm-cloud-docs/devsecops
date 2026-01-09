@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-10-07"
+  years: 2023, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -54,7 +54,11 @@ For more information, see the [PR pipeline documentation](/docs/devsecops?topic=
 | `code-pr-finish` | Consolidates pipeline status. The stage fails if the previous run compliance checks fail. This stage  is the "fail-safe" behavior to ensure that compliance issues are remediated before a PR can be merged and/or a build can be deployed. |
 {: caption="Stages of PR pipeline structure and descriptions of each stage" caption-side="bottom"}
 
+
+
 ![PR pipeline structure](images/cd-devsecops-pr-in-parallel.svg "PR pipeline structure"){: caption="PR pipeline structure" caption-side="bottom"}
+
+
 
 ### CI pipeline structure
 {: #devsecops-conc-ci-pipeline}
@@ -84,7 +88,12 @@ For more information, see the [CI pipeline documentation](/docs/devsecops?topic=
 {: caption="Stages of CI pipeline structure and descriptions of each stage" caption-side="bottom"}
 
 
+
+
 ![CI pipeline structure](images/cd-devsecops-ci-in-parallel.svg "CI pipeline structure"){: caption="CI pipeline structure" caption-side="bottom"}
+
+
+
 
 ### CD pipeline structure
 {: #devsecops-conc-cd-pipeline}
@@ -104,7 +113,12 @@ For more information, see the [CD pipeline documentation](/docs/devsecops?topic=
 | `prod-finish` | Publish acceptance tests, deploy record, collect CycloneDX SBOM, and close change request.  |
 {: caption="Stages of CD pipeline structure and descriptions of each stage" caption-side="bottom"}
 
+
+
 ![CD pipeline structure](images/cd-devsecops-cd-in-parallel.svg "CD pipeline structure"){: caption="CD pipeline structure" caption-side="bottom"}
+
+
+
 
 ### CC pipeline structure
 {: #devsecops-conc-cc-pipeline}
