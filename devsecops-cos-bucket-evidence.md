@@ -136,12 +136,14 @@ Configure the same bucket in all your pipelines CI/CD/CC.
 {: tip}
 
 ## Migrating from Git Evidence Locker to COS Evidence Locker
+{: #cd-devsecops-migrating-git-cos-locker}
 
 To improve build performance, reliability, and scalability, support for Git-based Evidence Lockers has been deprecated. Moving to Cloud Object Storage (COS)–based Evidence Lockers helps reduce dependency on Git operations and avoids rate-limit issues from Git hosting providers.
 
 All users should update their toolchains and pipelines to use a COS Evidence Locker.
 
 ### When Your Toolchain Uses Only a Git Evidence Locker
+{: #cd-devsecops-cos-only-locker}
 
 Follow these steps to complete the migration:
 
@@ -150,6 +152,7 @@ Follow these steps to complete the migration:
 - Remove the GitHub/GitLab integration associated with the evidence repository in your toolchain.  
 
 ### When Your Toolchain Uses Both Git and COS Evidence Lockers
+{: #cd-devsecops-git-cos-locker}
 
 If you already have both configured:
 
