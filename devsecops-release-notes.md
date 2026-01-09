@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2025
-lastupdated: "2025-12-08"
+  years: 2022, 2026
+lastupdated: "2026-01-09"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -442,7 +442,7 @@ Enhanced evidence collection to branch protection checks
 {: #devsecops-open-v10.22.0-open-v9.41.0}
 
 Rapid Rollback Capability
-:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-devsecops-rollback-deployment) for more details
+:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#rollback-a-deployment) for more details
 
 
 Single Commit Artifact Creation
