@@ -22,9 +22,6 @@ Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. A
 With {{site.data.keyword.compliance_full}}, you can automate the evaluation of your security and compliance posture to detect vulnerabilities. By enabling the {{site.data.keyword.compliance_short}} integration by using DevSecOps templates, you can store evidence and monitor your deployments for compliance.
 {: shortdesc}
 
-Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
-
 Every Continuous Integration (CI) pipeline run creates evidence. The evidence includes the details of the operations that are performed and is saved in either a Git repository or {{site.data.keyword.cos_short}} bucket, which is known as an evidence locker. By default, a Git repository is used, but if you require the evidence to be more durable - for example, you need a longer lifespan, you can configure a {{site.data.keyword.cos_short}} bucket. Similarly, the Continuous Delivery (CD) pipeline collects evidence that provides an audit trail of the tasks performed that pertain to acceptance tests, change requests, and more. Most importantly, the Continuous Compliance (CC) pipeline writers an aggregation of all of the individual evidence fragments to an evidence summary when your deployment is complete. When validation tests are run against pipeline data, you can verify that your various best practices are carried out as part of the application deployment process.
 
 
