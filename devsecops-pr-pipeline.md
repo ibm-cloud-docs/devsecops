@@ -94,6 +94,9 @@ If the PR pieline should consider the changes of the config files/scripts coming
 
 You can use Administrator rights to merge pull requests with failed status checks to the repo. However, these pull requests register a `failure` result in their evidence for the failing task. This result is included in the evidence summary and change request description, and impacts the final compliance score on the Security and Compliance Center.
 
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
+
 ## Enable evidence collection in PR pipeline
 {: #cd-devsecops-pr-evidence-collection}
 

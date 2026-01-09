@@ -32,7 +32,10 @@ The access to DevSecOps pipelines and resources can be granted in two primary ap
   - Access Group based approach
   - Service ID based approach
 
-Both methods support secure access management in IBM Cloud, with API keys mapped to access groups being ideal for centralized role management, while Service ID API keys offer a more flexible and secure way to authenticate automated DevSecOps workflows
+Both methods support secure access management in IBM Cloud, with API keys mapped to access groups being ideal for centralized role management, while Service ID API keys offer a more flexible and secure way to authenticate automated DevSecOps workflows.
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Access Group based approach
 

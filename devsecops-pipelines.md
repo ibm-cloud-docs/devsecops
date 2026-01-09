@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2025
-lastupdated: "2025-02-10"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps
 
@@ -65,11 +65,16 @@ The continuous deployment pipeline generates all of the evidence and change requ
 The continuous compliance pipeline periodically scans the deployed artifacts and their source repositories for newer vulnerabilities since the artifacts were deployed in production. The pipeline also helps to track deviations with due date automatically and provides application awareness into [{{site.data.keyword.compliance_long}}](https://www.ibm.com/products/security-and-compliance-center){: external}.
 For more information, see [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline).
 
+Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Integration with {{site.data.keyword.compliance_short}}
 {: #cd-devsecops-pipelines-scc}
 
 See [Using the {{site.data.keyword.compliance_full}} with DevSecOps toolchains](/docs/devsecops?topic=devsecops-cd-devsecops-scc-toolchains).
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Inventory workflow
 {: #cd-devsecops-pipelines-inventory-workflow}

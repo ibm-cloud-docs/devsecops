@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-09-11"
+  years: 2023, 2026
+lastupdated: "2026-01-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -25,6 +25,9 @@ completion-time: 1h
 
 With this tutorial, you can use the toolchain template for continuous integration (CI) with the {{site.data.keyword.compliance_short}} related practices in DevSecOps for Infrastructure as Code (IaC) Terraform. It is preconfigured for continuous deployment (CD) with inventory integration, change management with {{site.data.keyword.gitrepos}}, evidence collection, and deployment of the infrastructure to {{site.data.keyword.cloud_notm}}.
 {: shortdesc}
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Before you begin
 {: #devsecops-tutorial-iac-ci-prereqs}
@@ -78,7 +81,7 @@ The infrastructure code repository is the project or module that the CI toolchai
 
 Review the default information for the infrastructure code:
 
-1. Accept **Use default sample**. If you want to link an existing IaC repository for the toolchain, select **Bring your own infrastructure code**, and provide as input to the **Repository URL** field. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. For more information, see [Bringing your own infrastructure code to DevSecOps](https://github.ibm.com/one-pipeline/hello-iac-sample/blob/main/README.md){: external}.
+1. Accept **Use default sample**. If you want to link an existing IaC repository for the toolchain, select **Bring your own infrastructure code**, and provide as input to the **Repository URL** field. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
 2. Enter a name for **New repository name**.
 3. Click **Continue**.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2025
-lastupdated: "2025-10-22"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -46,6 +46,9 @@ The following diagram shows how the evidence is handled and how it flows through
  Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
 
 The evidence summary is attached to the change request, which is posted to the change request store. During a manual change request approval, the approver is aware of any issues that are found during the build. Additionally, the summary is submitted to the Security and Compliance Center.
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## v2 evidence (current format)
 {: #devsecops-v2-evidence-current}
@@ -181,104 +184,6 @@ interface Asset {
 
 ```
 
-#### Example
-{: #devsecops-v2-format-example}
-
-##### Example v2 Asset
-{: #devsecops-v2-format-example-asset}
-
-```json
-{
-  "version": "1",
-  "id": "cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb",
-  "uri": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
-  "origin": {
-    "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:fd3f2bf6-00f1-417f-b1a2-7df894223115::",
-    "pipeline_run_id": "a5e89ecc-a413-4dcb-b129-ff870ef3be85",
-    "pipeline_id": "66b583d9-3d1b-4b34-9e3a-cb807bf0c5ab"
-  },
-  "details": {
-    "sha": "8c2a65373cb4fd27bccff646e8bdf63d02cae856",
-    "repository": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git"
-  },
-  "date": "2022-04-20T09:26:46.226Z",
-  "type": "commit",
-  "related": [
-    "26a0f02126461e6505d5001d50ac71e585c280479a01cc70e36397a784440bf8"
-  ]
-}
-```
-
-##### Example v2 evidence
-{: #devsecops-v2-format-example-evidence}
-
-```json
-{
-  "version": "2",
-  "id": "3fd209270fbaf46137ec3966affac2a431a835e750301c7c44d583e0e426e29e",
-  "date": "2022-04-20T09:33:43.782Z",
-  "evidence_type_id": "com.ibm.code_vulnerability_scan",
-  "evidence_type_version": "1.0.0",
-  "details": {
-    "result": "failure",
-    "tool": "cra"
-  },
-  "origin": {
-    "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/779c0808c946b9e15cc2e63013fded8c:68213c68-4794-4d5e-ab50-f33d0d6190e4::",
-    "pipeline_id": "c17f18a6-24dd-4949-abb7-2b374f4691b6",
-    "pipeline_run_id": "d7a88836-72a1-402b-bb28-701439a543ae",
-    "pipeline_run_url": "https://cloud.ibm.com/devops/pipelines/tekton/c17f18a6-24dd-4949-abb7-2b374f4691b6/runs/d7a88836-72a1-402b-bb28-701439a543ae/code-compliance-checks/run-stage/?env_id=ibm:yp:us-south",
-    "scope": "117458e26512b0308d93cf6852958e5e875294a982d2b4ea2e9f463b4551a846"
-  },
-  "assets": [
-    {
-      "hash": "cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb",
-      "uri": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
-      "url": "https://s3.private.us-south.cloud-object-storage.appdomain.cloud/test/assets/cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb/index.json"
-    }
-  ],
-  "issues": [
-    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
-    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
-    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
-  ],
-  "findings": [
-    {
-      "id": "CVE-2022-42011",
-      "due_date": "2024-04-20",
-      "severity": "medium",
-      "first_found": "2024-03-06",
-      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
-      "found_status": "new",
-      "has_exempt": true
-    },
-    {
-      "id": "CVE-2022-42010",
-      "due_date": "2024-04-20",
-      "severity": "medium",
-      "first_found": "2024-03-06",
-      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
-      "found_status": "existing",
-      "has_exempt": false
-    },
-    {
-      "id": "CVE-2023-34969",
-      "due_date": "2024-04-20",
-      "severity": "medium",
-      "first_found": "2024-03-06",
-      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
-      "found_status": "existing",
-      "has_exempt": true
-    }
-  ],
-  "attachments": [
-    {
-      "hash": "9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b",
-      "url": "https://s3.private.us-south.cloud-object-storage.appdomain.cloud/test/assets/9a841ef856a5de813dbe440b102b9bff3ca1831630292cff7323c557704f386b/index.json"
-    }
-  ]
-}
-```
 
 ### v2 evidence summary
 {: #devsecops-v2-evidence-summary}
@@ -298,3 +203,6 @@ interface Summary {
 
 This summary does not perform any result aggregation. It is the raw data of collected v2 evidence, as they were found for assets that are related to a change request.
 {: important}
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}

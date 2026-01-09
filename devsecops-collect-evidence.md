@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-07-16"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -169,6 +169,9 @@ You can set the evidence type by using the `--evidence-type` parameter. You can 
 - `com.ibm.prod_change_request`
 - `com.ibm.close_change_reques`
 
+Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
+
 ## Asset requirements
 {: #collect-evidence-asset}
 
@@ -214,8 +217,6 @@ type
  In collect evidence script, the `asset-type` should be artifact and the type is queried from the artifact. For this process to work, cocoa locker asset add was modified to add asset of any type. Once saved, the  collect evidence script can be called as below:
 
   `collect-evidence --tool-type toolType --evidence-type  artifact --asset-key artifact-1 ...`
-
-  Please refer to our sample application for sample implementation for  `deployment` type https://github.ibm.com/one-pipeline/hello-compliance-app
 
   With these changes, collect-evidence script processes all types of artifacts, including both image and non-image artifacts.
 

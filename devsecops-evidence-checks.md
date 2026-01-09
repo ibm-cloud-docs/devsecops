@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2025
-lastupdated: "2025-07-22"
+  years: 2022, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -29,6 +29,9 @@ You can validate the evidence in one of the following ways:
 {: #evidence-checks-scc}
 
 Use SCC to embed security checks into your everyday workflows to monitor for security and compliance. By monitoring for risks, you can identify security vulnerabilities, work to mitigate the impact, and fix the issues. The toolchain must have SCC integration and `Use profile with attachment` enabled, based on the SCC profile and version. All controls are validated based on the collected evidence for all the resources in the attachment. The toolchain supports both the {{site.data.keyword.cloud}} Security Best Practices with version `1.0.0` or above or the {{site.data.keyword.cloud}} for Financial Services with version `1.2.0` or above profile. If you want a subset of specified controls, create a custom profile using these profiles and select a subset of controls. The toolchain is validated against that profile. For more information, see [Security and Compliance Center](/docs/ContinuousDelivery?topic=ContinuousDelivery-scc).
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Using a config file
 {: #evidence-checks-config-file}
