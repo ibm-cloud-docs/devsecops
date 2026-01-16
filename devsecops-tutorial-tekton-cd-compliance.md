@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-09-09"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -251,6 +251,9 @@ To integrate the toolchain with the {{site.data.keyword.compliance_short}} servi
 3. Accept **Evidence context** as `Continuous Deployment`.
 4. Accept **Use profile with attachment** as `Disabled`. For more information, see [{{site.data.keyword.compliance_short}}](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
 5. Click **Continue** to view the Summary page.
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ### Private worker
 {: #tutorial-tekton-cd-tool-private-worker}

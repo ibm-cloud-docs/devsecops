@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-16"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -442,7 +442,7 @@ Enhanced evidence collection to branch protection checks
 {: #devsecops-open-v10.22.0-open-v9.41.0}
 
 Rapid Rollback Capability
-:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#rollback-a-deployment) for more details
+:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-cd-pipeline#rollback-a-deployment) for more details
 
 
 Single Commit Artifact Creation
@@ -725,6 +725,10 @@ Collection evidences for multiple assets
 
 Support for Security and Compliance Center push API
 :   You can now push results to Security Control Center. For more information please see the [Security and Compliance Center integration docs](/docs/devsecops?topic=devsecops-cd-devsecops-scc-toolchains).
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
+
+
 
 
 ## 08 Dec 2023

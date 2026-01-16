@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-07-11"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, architecture, shift left, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -44,6 +44,9 @@ A template that ensures that your deployed artifacts and their source repositori
 * Integrate more tools supported by the CD Service. For example, update pipeline triggers.
 * Update pipeline triggers provided by the toolchain or adds more triggers to your pipelines
 * Update environment properties for your pipelines or add more properties for your pipelines
+
+Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Compliance Pipelines
 {: #cd-devsecops-reusable-cp}

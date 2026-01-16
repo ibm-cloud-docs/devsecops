@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2025
-lastupdated: "2025-10-22"
+  years: 2021, 2026
+lastupdated: "2026-01-16"
 
 keywords: DevSecOps, compliance evidence, IBM Cloud
 
@@ -46,6 +46,9 @@ The following diagram shows how the evidence is handled and how it flows through
  Each piece of evidence that is collected in the various stages of the DevOps Architecture is stored in auditable evidence lockers. During deployment, this evidence is collected to create an evidence summary that is saved to the evidence locker at the end of the deployment run.
 
 The evidence summary is attached to the change request, which is posted to the change request store. During a manual change request approval, the approver is aware of any issues that are found during the build. Additionally, the summary is submitted to the Security and Compliance Center.
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## v2 evidence (current format)
 {: #devsecops-v2-evidence-current}
@@ -191,7 +194,7 @@ interface Asset {
 {
   "version": "1",
   "id": "cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb",
-  "uri": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
+  "uri": "https://github.com/<org-name>/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
   "origin": {
     "toolchain_crn": "crn:v1:bluemix:public:toolchain:us-south:a/40111714589c4f7099032529b26a7a63:fd3f2bf6-00f1-417f-b1a2-7df894223115::",
     "pipeline_run_id": "a5e89ecc-a413-4dcb-b129-ff870ef3be85",
@@ -199,7 +202,7 @@ interface Asset {
   },
   "details": {
     "sha": "8c2a65373cb4fd27bccff646e8bdf63d02cae856",
-    "repository": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git"
+    "repository": "https://github.com/<org-name>/e2e-hello-compliance-app-20220412084808399.git"
   },
   "date": "2022-04-20T09:26:46.226Z",
   "type": "commit",
@@ -233,14 +236,14 @@ interface Asset {
   "assets": [
     {
       "hash": "cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb",
-      "uri": "https://github.ibm.com/cocoa-test/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
+      "uri": "https://github.com/<org-name>/e2e-hello-compliance-app-20220412084808399.git#8c2a65373cb4fd27bccff646e8bdf63d02cae856",
       "url": "https://s3.private.us-south.cloud-object-storage.appdomain.cloud/test/assets/cdd3ee20188d2f5bfb7f14bdb9c7fa99b22184ca195d9fa0a953dfbe9b1769cb/index.json"
     }
   ],
   "issues": [
-    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
-    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
-    "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
+    "https://github.com/<org-name>/e2e-compliance-incident-issues-20220412084808401/issues/1",
+    "https://github.com/<org-name>/e2e-compliance-incident-issues-20220412084808401/issues/2",
+    "https://github.com/<org-name>/e2e-compliance-incident-issues-20220412084808401/issues/3",
   ],
   "findings": [
     {
@@ -248,7 +251,7 @@ interface Asset {
       "due_date": "2024-04-20",
       "severity": "medium",
       "first_found": "2024-03-06",
-      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/3",
+      "url": "https://github.com/<org-name>/e2e-compliance-incident-issues-20220412084808401/issues/3",
       "found_status": "new",
       "has_exempt": true
     },
@@ -257,7 +260,7 @@ interface Asset {
       "due_date": "2024-04-20",
       "severity": "medium",
       "first_found": "2024-03-06",
-      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/1",
+      "url": "https://github.com/<org-name>/e2e-compliance-incident-issues-20220412084808401/issues/1",
       "found_status": "existing",
       "has_exempt": false
     },
@@ -266,7 +269,7 @@ interface Asset {
       "due_date": "2024-04-20",
       "severity": "medium",
       "first_found": "2024-03-06",
-      "url": "https://github.ibm.com/cocoa-test/e2e-compliance-incident-issues-20220412084808401/issues/2",
+      "url": "https://github.com/<org-name>/e2e-compliance-incident-issues-20220412084808401/issues/2",
       "found_status": "existing",
       "has_exempt": true
     }

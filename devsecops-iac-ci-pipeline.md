@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-11-28"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -119,6 +119,9 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `checkov-args` | | The `checkov` command arguments. |
 {: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
 
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
+
 These scripts are run on all the repos that the pipeline is aware of. To add repos to these scans, use the `pipelinectl` interface that is provided in your setup stage. For more information, see [`pipelinectl`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl).
 
 For more information about the expected output from user script stages, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
@@ -142,6 +145,7 @@ Sample content for `cra-tf-ignore-rules-file` file:
     ]
 }
 ```
+
 
 ## Build artifact
 {: #devsecops-iac-ci-pipeline-build}

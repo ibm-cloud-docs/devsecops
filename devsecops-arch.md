@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-11-19"
+  years: 2021, 2026
+lastupdated: "2026-01-09"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -42,3 +42,6 @@ Only one change request is created when multiple artifacts in that inventory are
 {: tip}
 
 You can have multiple continuous deployment pipelines that pull from a shared inventory and evidence locker, which enables multiple environments to be targeted from the same continuous integration input.
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}

@@ -2,8 +2,8 @@
 
 copyright:
 
-  years: 2022, 2025
-lastupdated: "2025-09-09"
+  years: 2022, 2026
+lastupdated: "2026-01-09"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -28,6 +28,9 @@ This tutorial walks you through how to use the toolchain template for continuous
 {: shortdesc}
 
 You can customize and centrally manage the IAM settings for the accounts in your enterprise to meet the compliance and internal standards.
+
+Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
+{: deprecated}
 
 ## Before you begin
 {: #tutorial-ci-toolchain-prereqs}

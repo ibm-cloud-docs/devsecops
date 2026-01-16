@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2025-09-09"
+lastupdated: "2026-01-16"
 
 keywords: tool integrations, Sonarqube
 
@@ -229,8 +229,8 @@ If you use the SonarQube instance that the pipeline created or a custom SonarQub
          "failure_reason": "tool_detected_vulnerabilities"
       },
       "issues": [
-         "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/14",
-         "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/15"
+         "https://github.com/<org-name>/compliance-issues-20250310111628285/issues/14",
+         "https://github.com/<org-name>/compliance-issues-20250310111628285/issues/15"
       ],
       "findings": [
          {
@@ -238,7 +238,7 @@ If you use the SonarQube instance that the pipeline created or a custom SonarQub
             "due_date": "n/a",
             "severity": "high",
             "first_found": "2025-03-18",
-            "url": "https://github.ibm.com/abcd/compliance-issues-repo/issues/14",
+            "url": "https://github.com/<org-name>/compliance-issues-repo/issues/14",
             "found_status": "existing",
             "has_exempt": false,
             "cvss": "n/a",
@@ -249,7 +249,7 @@ If you use the SonarQube instance that the pipeline created or a custom SonarQub
             "due_date": "n/a",
             "severity": "high",
             "first_found": "2025-03-18",
-            "url": "https://github.ibm.com/abcd/compliance-issues-repo/issues/15",
+            "url": "https://github.com/<org-name>/compliance-issues-repo/issues/15",
             "found_status": "existing",
             "has_exempt": false,
             "cvss": "n/a",
@@ -276,7 +276,7 @@ If you use the SonarQube instance that the pipeline created or a custom SonarQub
       "assets": [
          {
             "hash": "1812f77dfc646c93320794810460acd3e53",
-            "uri": "https://github.ibm.com/abcd/compliance-app-20250310111628285.git#7a06e70001a59032d1",
+            "uri": "https://github.com/<org-name>/abcd/compliance-app-20250310111628285.git#7a06e70001a59032d1",
             "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/assets/1812f77dfc646c93320794810460acd3e/index.json"
          }
       ]
@@ -378,7 +378,7 @@ Example SonarQube failed evidence due to Hotspot detection:
     "failure_reason": "tool_detected_vulnerabilities"
   },
   "issues": [
-    "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/13"
+    "https://github.com/<org-name>/compliance-issues-20250310111628285/issues/13"
   ],
   "findings": [
     {
@@ -386,7 +386,7 @@ Example SonarQube failed evidence due to Hotspot detection:
       "due_date": "n/a",
       "severity": "high",
       "first_found": "2025-03-18",
-      "url": "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/12",
+      "url": "https://github.com/<org-name>/compliance-issues-20250310111628285/issues/12",
       "found_status": "new",
       "has_exempt": false,
       "cvss": "n/a",
@@ -397,7 +397,7 @@ Example SonarQube failed evidence due to Hotspot detection:
       "due_date": "n/a",
       "severity": "high",
       "first_found": "2025-03-18",
-      "url": "https://github.ibm.com/abcd/compliance-issues-20250310111628285/issues/13",
+      "url": "https://github.com/<org-name>/compliance-issues-20250310111628285/issues/13",
       "found_status": "new",
       "has_exempt": false,
       "cvss": "n/a",
@@ -424,7 +424,7 @@ Example SonarQube failed evidence due to Hotspot detection:
   "assets": [
     {
       "hash": "d7391b3273e5e52852f293031d62b9",
-      "uri": "https://github.ibm.com/abcd/compliance-app-20250310111628285.git#4eadaaf7454b8cb0edad927",
+      "uri": "https://github.com/<org-name>/compliance-app-20250310111628285.git#4eadaaf7454b8cb0edad927",
       "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/assets/d7391b3273e5e52852f293031d62b9bf0/index.json"
     }
   ]
@@ -500,4 +500,4 @@ You can modify your `.pipeline-config.yaml` file to add your own custom script t
 ## Learn more about SonarQube
 {: #sonarqube-learn-more}
 
-To learn more about SonarQube, see [Integrate your SonarQube analysis into your toolchain](https://www.ibm.com/blogs/cloud-archive/2017/06/integrate-sonarqube-analysis-into-your-toolchain/){: external}.
+To learn more about SonarQube, see [SonarQube Documentation](https://docs.sonarsource.com/sonarqube/latest/){: external}.
