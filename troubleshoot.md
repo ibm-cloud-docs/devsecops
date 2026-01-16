@@ -106,6 +106,7 @@ You can create a secret manually by running:
 ```bash
 kubectl create secret docker-registry mysecret \
 --dry-run \
+--docker-server=<artifactory-server-domain> \
 --docker-username=<username> \
 --docker-password=<artifactory token> \
 --docker-email=<email> \
