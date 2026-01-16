@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-16"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -217,6 +217,10 @@ type
  In collect evidence script, the `asset-type` should be artifact and the type is queried from the artifact. For this process to work, cocoa locker asset add was modified to add asset of any type. Once saved, the  collect evidence script can be called as below:
 
   `collect-evidence --tool-type toolType --evidence-type  artifact --asset-key artifact-1 ...`
+  
+  
+  Please refer to our sample application for sample implementation for  `deployment` type  https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app
+  
 
   With these changes, collect-evidence script processes all types of artifacts, including both image and non-image artifacts.
 

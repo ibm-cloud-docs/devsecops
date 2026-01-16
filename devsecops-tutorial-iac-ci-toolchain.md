@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-16"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -81,7 +81,7 @@ The infrastructure code repository is the project or module that the CI toolchai
 
 Review the default information for the infrastructure code:
 
-1. Accept **Use default sample**. If you want to link an existing IaC repository for the toolchain, select **Bring your own infrastructure code**, and provide as input to the **Repository URL** field. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories.
+1. Accept **Use default sample**. If you want to link an existing IaC repository for the toolchain, select **Bring your own infrastructure code**, and provide as input to the **Repository URL** field. The toolchain currently supports linking only to existing {{site.data.keyword.gitrepos}} repositories. For more information, see [Bringing your own infrastructure code to DevSecOps](https://us-south.git.cloud.ibm.com/open-toolchain/hello-iac-sample/blob/main/README.md ){: external}.
 2. Enter a name for **New repository name**.
 3. Click **Continue**.
 

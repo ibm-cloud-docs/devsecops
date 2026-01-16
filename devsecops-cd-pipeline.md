@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-12-15"
+  years: 2021, 2026
+lastupdated: "2026-01-16"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -190,6 +190,7 @@ When `force-redeploy` is set to `true`, the pipeline bypasses delta validation a
 3. Run the pipeline.
 
 ## Rollback a deployment
+{: #rollback-a-deployment}
 
 ### Overview
 

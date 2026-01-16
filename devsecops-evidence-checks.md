@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-16"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud, Security and Compliance Center
 
@@ -107,7 +107,7 @@ Supported evidences for gating:
 
 ![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`](images/devsecops-evidence-checks-stage-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`"}
 
-![Config file verison2](images/devsecops-evidence-config-version2-cd.png){: caption="Config file verison2"}
+![Config file version2](images/devsecops-evidence-config-version2-cd.png){: caption="Config file version2"}
 
 #### 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step3}
@@ -119,21 +119,6 @@ Supported evidences for gating:
 ![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
 
 ![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](/images/devsecops-evidence-checks-master-stage-prod-us-east-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
-
-#### 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
-{: #various-deployment-topology-step4}
-
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-us-south-prod.png){: caption="Usecase 4. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
-
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
-
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
-
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
-
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](images/devsecops-evidence-checks-master-stage-prod-us-east-us-south-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
-
-![Config file verison2 with region](images/devsecops-evidence-config-version2-region-cd.png){: caption="Config file verison2 with region"}
 
 ### Result Table for version2 `cocoa locker evidence check`:
 {: #result-table-v2}
