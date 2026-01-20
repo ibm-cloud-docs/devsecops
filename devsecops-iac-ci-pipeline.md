@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-20"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -129,7 +129,7 @@ For more information about the expected output from user script stages, see [Cus
 ### Format for `cra-tf-ignore-rules-file`
 {: #devsecops-iac-ci-pipeline-ignore-rules}
 
-The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. The format is similar to the format (without the `scc_parameters` field) that is in [Example SCC V2 classic profile file for the `terraform-validate` command](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-example-v2-classicprofile).
+The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. The format is similar to the format (without the `scc_parameters` field) that is in [Example SCC V2 classic profile file for the `terraform-validate` command](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-example-v2-classicprofile).
 
 Sample content for `cra-tf-ignore-rules-file` file:
 
