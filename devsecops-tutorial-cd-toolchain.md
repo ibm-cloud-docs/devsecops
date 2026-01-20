@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-20"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -179,7 +179,8 @@ Optionally, you can toggle sending notifications with the `slack-notifications` 
 #### {{site.data.keyword.compliance_short}}
 {: #tutorial-cd-toolchain-scc}
 
-1. Accept or edit the automatically populated settings. For more information, see [{{site.data.keyword.compliance_short}}](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) configuration process.
+1. Accept or edit the automatically populated settings. 
+   
 2. Click **Continue** to view the Summary page.
 
 

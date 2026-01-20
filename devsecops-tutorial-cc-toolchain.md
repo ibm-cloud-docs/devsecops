@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-20"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -165,7 +165,8 @@ You can add the Slack tool after the toolchain creation.
 #### {{site.data.keyword.compliance_short}}
 {: #tutorial-cc-toolchain-scc}
 
-1. Accept or edit the automatically populated settings. For more information, see the [{{site.data.keyword.compliance_short}}](https://cloud.ibm.com/security-compliance/overview){: external} and the [tool integration](/docs/devsecops?topic=devsecops-scc) process.
+1. Accept or edit the automatically populated settings.
+   
 2. Click **Continue** to view the Summary page.
 
 ## Create the CC toolchain
