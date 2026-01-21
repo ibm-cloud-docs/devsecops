@@ -160,8 +160,6 @@ toc:
       - topicgroup:
           label: Enhancing security with Security and Compliance Center
           topics:
-          - include: ../ContinuousDelivery/scc_integration.md
-            navtitle: Configuring your toolchain
           - topic: devsecops-scc-toolchains.md
             navtitle: Viewing and understanding results
           - include: ../security-compliance/getting-started.md

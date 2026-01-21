@@ -16,7 +16,7 @@ subcollection: devsecops
 
 `doi-publish-testrecord` is a script containing helper functions for Devops Insights, using the `ibmcloud doi` CLI plugin to publish a test record to DevOps Insights.  
 
-This script is part of the [Commons Scripts Library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory).
+This script is part of the [Commons Scripts Library documentation](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory).
 
 ## Inputs
 {: #doi-publish-testrecord-inputs}

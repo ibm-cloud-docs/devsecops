@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2025
-lastupdated: "2025-02-20"
+  years: 2024, 2026
+lastupdated: "2026-01-21"
 
 keywords: DevSecOps, common scripts, scripts, pipeline stages, IBM Cloud
 
@@ -70,8 +70,8 @@ This message has three parts:
 
 3. The third part is the default configuration that is used as the config YAML. You can take this YAML snippet and include it in your DevSecOps config YAML file. This action overrides the default config with yours but still uses the default script from the base image. This method is helpful if you want to implement some other checks before the default ones.
 
-This information is displayed to help adopters identify the script and function from the [commons scripts library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory) that are running in stages by default. Eventually, they can inspect the scripts, understand what they do, copy the script into their script collection, and update them to fit their use cases.
 
+This information is displayed to help adopters identify the script and function from the [commons scripts library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory) that are running in stages by default. Eventually, they can inspect the scripts, understand what they do, copy the script into their script collection, and update them to fit their use cases.
 
 ### Customizing using Commons Scripts Library
 {: #devsecops-common-scripts-customize}
