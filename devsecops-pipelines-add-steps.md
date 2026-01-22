@@ -224,8 +224,8 @@ save_artifact <artifact-reference-name> \
     digest="${IMAGE_DIGEST}"
 ```
 
-The preferred format for image name is `image-URL:build-tag`, for example, `wcp-compliance-automation-team-docker-local.artifactory.swg-devops.com/compliance-baseimage:2.8.0`.
-{: important]
+The preferred format for image name is `image-URL:build-tag`.
+{: important}
 
 If you build Docker images, use the `save_artifact` interface to send those images for the default built-in image signing and CR IBM Informix Virtual Appliance scanning tasks.
 

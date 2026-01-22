@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2025
-lastupdated: "2025-12-29"
+  years: 2024, 2026
+lastupdated: "2026-01-21"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -539,7 +539,7 @@ When using Poetry (`pyproject.toml` is identified as a code spot) and an alterna
 ```toml
 [[tool.poetry.source]]
 name = "local"
-url = "https://na-public.artifactory.swg-devops.com/artifactory/api/pypi/ip-devops-team-pypi-virtual/simple"
+url = "<artifactory-url>"
 secondary = true
 ```
 

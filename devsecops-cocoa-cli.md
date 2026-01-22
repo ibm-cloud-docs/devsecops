@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2025
-lastupdated: "2025-12-29"
+  years: 2024, 2026
+lastupdated: "2026-01-22"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1230,7 +1230,7 @@ Options for Git:
 |from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| Optional | Example : `path/to/file.json` |
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
-| git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://<region>.git.cloud.ibm.com/api/v4` |
 | location      | Location for the artifact in other regsirty along with the sha256 | String | Optional | Example: `<environment>#<static_name>:<version>@sha256:<sha256_digest>`. </br> Multiple times this flag can be provided.|
 {: caption="Options for Git" caption-side="bottom"}
 
@@ -1579,7 +1579,7 @@ Options for Git:
 | repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
-| git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://<region>.git.cloud.ibm.com/api/v4` |
 | delta             | Flag to compute delta | Boolean | optional | false |
 | delta-deletion             | Flag to compute delta deletions | Boolean | optional | false |
 | inventory-list             | Flag to compute the entire inventory list | Boolean | optional | false |
@@ -1598,7 +1598,7 @@ $ cocoa inventory get-delta \
   --git-token-path=./git-token \
   --org=test-org \
   --repo=compliance-inventory-repo \
-  --git-api-url=https://github.ibm.com/api/v3 \
+  --git-api-url=<git-api-url> \
   --to-sha 534ff2bbbf0291e10f3b1f6aa409d8de059bbe27 \
   --from-sha e54b5aa12ccb687020ac04b16d489b5a04f90399 \
   --inventory-ignore-file-path=/path/to/current/.inventoryignore \
@@ -1647,7 +1647,7 @@ Options for Git:
 | environment      | The name of the environment where the entry is added. | String | Optional | Default : "master" |
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
-| git-api-url      | Git API URL                                      | String | Optional | Default : `https://github.ibm.com/api/v3` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://<region>.git.cloud.ibm.com/api/v4` |
 | location      | Location for the artifact in other regsirty along with the sha256 | String | Optional | Example: `<environment>#<static_name>:<version>@sha256:<sha256_digest>`. </br> Multiple times this flag can be provided.|
 {: caption="Options for Git" caption-side="bottom"}
 
@@ -1838,7 +1838,7 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
 ```
 {: screen}
 
-If you are using `github` you can use the `--git-token-path` field to set your GitHub token and use the `--git-api-url` field to set the GitHub Enterprise API URL (it defaults to `https://github.ibm.com/api/v3`)  instead of the `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github` you can use the `--git-token-path` field to set your GitHub token and use the `--git-api-url` field to set the GitHub Enterprise API URL (it defaults to `https://<region>.git.cloud.ibm.com/api/v4`)  instead of the `GHE_TOKEN` and `GH_URL` environment variables.
 If the `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` both pairs are both provided, `--git-token-path` and  `--git-api-url` take precedence.
 
 Return values:
@@ -2052,7 +2052,7 @@ To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com
 The evidence locker is a Git repository as **optional locker**.
 The Git provider can be specified by using `--git-provider` (`github` by default).
 For both providers, authentication is required, for GitHub set the `GHE_TOKEN` environment variable or `--git-token-path` field.
-For GitHub, you must also specify where the GitHub instance is located, by using the `GH_URL` environment variable or `--git-api-url` field, but it defaults to `https://github.ibm.com`.
+
 
 The name of the evidence locker repository can be set by using `--org` and `--repo`, or by using the `EVIDENCE_LOCKER_REPO_OWNER` and `EVIDENCE_LOCKER_REPO_NAME` environment variables.
 
@@ -2093,7 +2093,7 @@ The `uri` parameter can be any valid [URI](https://datatracker.ietf.org/doc/html
 
 When `type` is  `image` or `commit`, the URI must match on the following patterns:
 
-- For `commit`, the URI _must_ have a fragment, which _must_ be a 40-character hexadecimal commit sha (for example `https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee`)
+
 - For `image`, the URI _must_ contain the image digest (for example `docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777`)
 
 When `type` is anything other than `image` or `commit`, the `--type` flag must be explicitly passed.
@@ -2118,7 +2118,7 @@ By default, the `id` format (the `--format` flag) prints the internal ID of the 
 Running the command to add a Git commit:
 
 ```sh
-$ cocoa locker asset add 'https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee' \
+$ cocoa locker asset add 'https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee' \
                          --details tag=v1.2.3
 ```
 {: codeblock}
@@ -2135,7 +2135,7 @@ Running the command to add a Docker image:
 ```sh
 $ cocoa locker asset add docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777 \
                          --origin "job_name=my job" \
-                         --related https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
+                         --related https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
                          --format json
 ```
 {: codeblock}
@@ -2228,7 +2228,7 @@ Example output:
    },
    "details": {
     "sha": "aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee",
-    "repository": "https://github.ibm.com/foo/bar.git",
+    "repository": <repository-url>,
     "tag": "v1.2.3"
    },
    "date": "2021-07-15T14:26:06.301Z",
@@ -2258,7 +2258,7 @@ Example output:
    },
    "details": {
     "sha": "aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee",
-    "repository": "https://github.ibm.com/foo/bar.git",
+    "repository": <repository-url>,
     "tag": "v1.2.3"
    },
    "date": "2021-07-15T14:26:06.301Z",
@@ -2270,7 +2270,7 @@ Example output:
 {: codeblock}
 
 ```sh
- cocoa locker asset get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee --format json
+ cocoa locker asset get https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee --format json
 ```
 {: codeblock}
 
@@ -2288,7 +2288,7 @@ Example output:
    },
    "details": {
     "sha": "aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee",
-    "repository": "https://github.ibm.com/foo/bar.git",
+    "repository": <repository-url>,
     "tag": "v1.2.3"
    },
    "date": "2021-07-15T14:26:06.301Z",
@@ -2320,7 +2320,7 @@ Options:
 Run the command:
 
 ```sh
- cocoa locker asset summary get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
+ cocoa locker asset summary get https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
   --scope 11a1aa11-1a11-11a1-aa11-a11a1a1111a1 \
   --environment prod \
   --service-environment prod
@@ -2330,7 +2330,7 @@ Run the command:
 Run the command to fetch the latest evidence summary excluding that of the scope passed-in using `--scope`:
 
 ```sh
- cocoa locker asset summary get https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
+ cocoa locker asset summary get https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee \
   --scope 11a1aa11-1a11-11a1-aa11-a11a1a1111a1 \
   --environment dev \
   --service-environment dev \
@@ -2386,7 +2386,7 @@ Example output:
 ```sh
 release:my-app@v1.2.3
 docker://us.icr.io/foo/bar:v1.2.3@sha256:0000000011111111222222223333333344444444555555556666666677777777
-https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
+https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 ```
 {: codeblock}
 
@@ -2420,7 +2420,7 @@ Some optional flags can be specified as well:
      - `https://<host>/<owner>/<name>/issues/<issue number>` - for `github`
    - Required environment variables to access the issues repository:
      - if the urls point to `github` issues:
-       - `GH_URL`: optional, defaults to `https://github.ibm.com/api/v3`
+       - `GH_URL`: optional, defaults to `https://<region>.git.cloud.ibm.com/api/v4`
        - `GHE_TOKEN`
 
 Label information for an attachment in evidence JSON:
@@ -2453,7 +2453,7 @@ Run the command to save results for [`detect-secrets`](https://github.com/IBM/de
 $ cocoa locker evidence add --evidence-type com.ibm.detect_secrets \
                             --evidence-type-version 1.0.0 \
                             --details result=success \
-                            --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
+                            --asset https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 ```
 {: codeblock}
 
@@ -2463,9 +2463,9 @@ Run the command to save unit test results:
 $ cocoa locker evidence add --evidence-type com.ibm.unit_test \
                             --evidence-type-version 1.0.0 \
                             --details failure \
-                            --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
+                            --asset https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
                             --attachment path/to/results/junit.xml \
-                            --issue https://github.ibm.com/foo/bar/issues/123 \
+                            --issue <issue-link> \
                             --findings-path <path/to/file>
 ```
 {: codeblock}
@@ -2475,8 +2475,8 @@ Run the command to create a new evidence using an attachment that is already exi
 ```sh
 $ cocoa locker evidence add --evidence-type com.ibm.detect_secrets \
                             --evidence-type-version 1.0.0 \
-                            --attachment-url https://github.ibm.com/foo/bar/blob/master/raw/attachments/5aa5555aa55aa55a555aa5a5aa555555aaaa5aa5aa5555a55a5aa5aa5a5aaaaa/content
-                            --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
+                            --attachment-url https://github.com/foo/bar/blob/master/raw/attachments/5aa5555aa55aa55a555aa5a5aa555555aaaa5aa5aa5555a55a5aa5aa5a5aaaaa/content
+                            --asset https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
 ```
 {: codeblock}
 
@@ -2486,8 +2486,8 @@ Run the command to save unit test results and add custom label to the attachment
 $ cocoa locker evidence add --evidence-type com.ibm.unit_test \
                             --evidence-type-version 1.0.0 \
                             --details success \
-                            --asset https://github.ibm.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
-                            --issue https://github.ibm.com/foo/bar/issues/123 \
+                            --asset https://github.com/foo/bar.git#aaaaaaaabbbbbbbbccccccccddddddddeeeeeeee
+                            --issue <issue-link> \
                             --findings-path <path/to/file> \
                             --attachment path/to/results/junit.xml::label=unit-test
 ```
@@ -2549,7 +2549,7 @@ Example output:
    "assets": [
      {
        "hash": "7d930918fbb8be80f3a5100f0313c5b2518eba22cc915194cf971d4daf5170be",
-       "uri": "https://github.ibm.com/one-pipeline/compliance-app-march-2024.git#be44f38ec9b290d4f3d4931b37910effac346441",
+       "uri": <git-uri-to-asset>,
        "url": "https://s3.us-south.cloud-object-storage.appdomain.cloud/cocoa-development/assets/7d930918fbb8be80f3a5100f0313c5b2518eba22cc915194cf971d4daf5170be/index.json"
      }
    ]

@@ -109,6 +109,9 @@ It is recommended that you use `Cross-Region` or `Regional` resiliency, if it ne
 
 Cloud {{site.data.keyword.cos_short}} bucket names must be globally unique and DNS-compliant. Names must be 3 - 63 characters in length and must contain lowercase letters, numbers, and dashes. Bucket names must begin and end with a lowercase letter or number. Names that resemble IP addresses are not allowed. Bucket names be unique across the entire {{site.data.keyword.cos_full_notm}} system and they cannot contain any personal information, such as any part of a name or address, or financial, security accounts, or SSN.
 
+Bucket names must be unique because all buckets in the public cloud share a global namespace. This requirement allows for access to a bucket without needing to provide any service instance or account information. It is also not possible to create a bucket with a name beginning with cosv1- or account- as these prefixes are reserved by the system.
+{: note}
+
 ## Endpoint
 {: #cd-devsecops-cos-bucket-endpoint}
 

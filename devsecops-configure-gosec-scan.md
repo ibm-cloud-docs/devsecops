@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-04-22"
+  years: 2023, 2026
+lastupdated: "2026-01-21"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -43,7 +43,7 @@ Downloading dependencies for repositories can be enabled by providing all of the
 | Name | Type | Description | Required or optional |
 |--|--|--|--|
 | `gosec-private-repository-url`    | text   | (deprecated) Your private repository base URL. | optional |
-| `gosec-private-repository-host`    | text   | Your private repository host.  For example, `github.ibm.com` | optional |
+| `gosec-private-repository-host`    | text   | Your private repository host.  | optional |
 | `gosec-private-repository-ssh-key`     | secret   | The SSH key for the private repository | optional |
 | `gosec-private-repository-user` | text | User for the private repository with https access (default to `x-oauth-basic`) | optional |
 | `gosec-private-repository-token` | secret | The token used for https access to private repository (default to the token configured for the first git integration in the toolchain whose repository URL is hosted on `gosec-private-repository-host`'s value) | optional |

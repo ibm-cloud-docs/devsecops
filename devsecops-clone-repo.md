@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2024, 2025
+  years: 2024, 2026
 lastupdated: "2024-07-29"
 
 keywords: DevSecOps, clone-repo, git, clone, repo, script
@@ -64,7 +64,7 @@ The `clone_repo` function sets several environment variables/properties upon com
 {: #clone_repo-function-call}
 
 ```bash
-clone_repo <repo url e.g. https://github.ibm.com/owner/repo.git> <branch e.g. master> <repo directory e.g. repo_directory> <token path e.g. /path/to/token> <if submodules to be used e.g. 1> <commit id e.g. abcd1234>
+clone_repo <repo url t> <branch e.g. master> <repo directory e.g. repo_directory> <token path e.g. /path/to/token> <if submodules to be used e.g. 1> <commit id e.g. abcd1234>
 ```
 {: codeblock}
 
@@ -112,7 +112,7 @@ The clone_repo v2 function is an improved version of v1, supporting shallow clon
 {: #clone_repo-v2-function-call}
 
 ```bash
-clone_repo_v2 --repository <e.g. https://github.ibm.com/owner/repo.git> --branch <e.g. master> --directory <e.g. repo_directory> --token-path <e.g. /path/to/token> --clone-submodules <if submodules to be used e.g. 1> --force-exit <false/true> --use-lfs <false/true> --depth ''
+clone_repo_v2 --repository <repo_url> --branch <e.g. master> --directory <e.g. repo_directory> --token-path <e.g. /path/to/token> --clone-submodules <if submodules to be used e.g. 1> --force-exit <false/true> --use-lfs <false/true> --depth ''
 ```
 {: codeblock}
 

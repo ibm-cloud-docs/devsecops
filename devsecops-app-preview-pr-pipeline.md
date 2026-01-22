@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2021, 2025
+  years: 2021, 2026
 lastupdated: "2025-05-05"
 
 keywords: DevSecOps, app-preview pr pipeline

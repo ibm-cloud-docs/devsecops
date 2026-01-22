@@ -59,7 +59,6 @@ For any other type of artifact you can choose a type which is a string that appr
 3.	Provenance: Provide a fully qualified domain URL to establish the artifact's origin.
     Example:
         o	us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha256-1
-        o	https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
 
 4.	Digest: Follow the defined regex pattern: Start with 'sha256,' followed by a colon (:), and then the actual SHA256 hash (sha256:<sha256>).
     Example:
@@ -79,7 +78,7 @@ For any other type of artifact you can choose a type which is a string that appr
 
     ```bash
     save_repo app-repo \
-    url=https://github.ibm.com/org/my-app \
+    url= <app_url> \
     path=my-app \
     commit=commit1 \
     branch=master \
@@ -100,7 +99,7 @@ name=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561 
 type=image \
 digest=sha256:sha2561 \
 tags=mytag1 \
-source=https://github.ibm.com/org/my-app/commit-1 \
+source= <source_url> \
 signature=sign-1 \
 provenance=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561
 ```
@@ -114,7 +113,7 @@ name=my-app_IKS_deployment \
 type=deployment \
 signature=sign2 \
 deployment_type=IKS \
-provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml
+provenance= <url>
 ```
 {: codeblock}
 
@@ -157,7 +156,7 @@ Examples:
     --provenance=us.icr.io/my-registry/my-app:20230828074614-master-commit-1@sha256:sha2561\
     --sha256=sha256:sha2561 \
     --type=image \
-    --repository-url=https://github.ibm.com/org/my-app \
+    --repository-url= <repo_url> \
     --commit-sha=commit1 \
     --version=commit1 \
     --build-number=1 \
@@ -166,7 +165,7 @@ Examples:
     --repo=my-inventory-20230421184544472 \
     --git-provider=github \
     --git-token-path=./inventory-token \
-    --git-api-url=https://github.ibm.com/api/v3
+    --git-api-url= <api_url>
     ```
     {: codeblock}
 
@@ -177,10 +176,10 @@ Examples:
     --name=my-app_IKS_deployment \
     --app-artifacts='{ "app": "my-app", "tags": "20230828074614-master-commit1" }' \
     --signature=sign2 \
-    --provenance=https://raw.github.ibm.com/org/my-app/commit-1/deployment_iks.yml \
+    --provenance= <provenance_url> \
     --sha256=sha256:sha2562 \
     --type=deployment \
-    --repository-url=https://github.ibm.com/org/my-app \
+    --repository-url= <repo_url> \
     --commit-sha=commit1 \
     --version=commit1 \
     --build-number=1 \
@@ -189,7 +188,7 @@ Examples:
     --repo=my-inventory-20230421184544472 \
     --git-provider=github \
     --git-token-path=./inventory-token \
-    --git-api-url=https://github.ibm.com/api/v3
+    --git-api-url= <api_url>
     ```
     {: codeblock}
 

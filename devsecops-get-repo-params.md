@@ -89,7 +89,7 @@ It picks the value of (git-token-[repo_name]-[repo_org]) variable from the envir
 {: #get_repo_specific_token_example}
 
 
-let repo_url = "https://github.ibm.com/user_name/compliance-app"
+let repo_url = <repo_git_url>
 where:
 ```bash
 <repo_name> = compliance-app
@@ -126,7 +126,7 @@ The following output is generated:
 
    source "${ONE_PIPELINE_PATH}"/tools/get_repo_params
 
-   repo_url="https://github.ibm.com/user_name/compliance-app"
+   repo_url= <repo_url>
    token=$(get_repo_specific_token "$repo_url")
 
    ### Output
@@ -169,7 +169,7 @@ The function displays the `API URL` value for the given repository.
 
    source "${ONE_PIPELINE_PATH}/tools/get_repo_params"
 
-   repo_url="https://github.ibm.com/user_name/compliance-app"
+   repo_url= <repo_url>
    api_url=$(get_api_url "$repo_url")
 
    echo "API URL for $repo_url is: $api_url"
@@ -181,7 +181,7 @@ The function displays the `API URL` value for the given repository.
 
 1. GitHub Integrated:
    - SCM Type: `github_integrated`
-   - API URL: `https://github.ibm.com/api/v3`
+   - API URL: <api_url>
 
 2. GitHub Consolidated:
    - SCM Type: `githubconsolidated`
@@ -229,7 +229,7 @@ A label indicating the SCM platform, that might be one of the following:
 ```bash
    source "${ONE_PIPELINE_PATH}/tools/get_repo_params"
 
-   repository_url="https://github.ibm.com/user_name/compliance-app"
+   repository_url= <repo_url>
    result=$(get_repo_scm_type "$repository_url")
 
    echo "SCM Type: $result"
@@ -269,7 +269,7 @@ This function extracts the owner or subgroup information from the Git repository
 ```bash
    source "${ONE_PIPELINE_PATH}/tools/get_repo_params"
 
-   repository_url="https://github.ibm.com/user_name/compliance-app"
+   repository_url= <repo_url>
    owner=$(get_repo_owner "$repository_url")
 
    echo "Repository Owner: $owner"
@@ -310,7 +310,7 @@ This function extracts the name of a Git repository from a given repository URL.
 ```bash
    source "${ONE_PIPELINE_PATH}/tools/get_repo_params"
 
-   repository_url="https://github.ibm.com/user_name/compliance-app"
+   repository_url= <repo_url>
    repo_name=$(get_repo_name "$repository_url")
 
    echo "Repository Name: $repo_name"

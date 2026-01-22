@@ -17,7 +17,7 @@ subcollection: devsecops
 
 `doi-publish` is a function designed to download an attachment and publish it as a test record to DevOps Insights.
 
-This function is provided by the [`doi-publish-test-record`](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/doi__doi-publish-testrecord.md) script that is part of the [Commons Scripts Library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory).
+This function is provided by the [`doi-publish-test-record`](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/doi__doi-publish-testrecord.md) script that is part of the [Commons Scripts Library documentation](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#tool-inventory).
 
 The function does the following tasks:
 

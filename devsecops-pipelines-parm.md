@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-01-05"
+lastupdated: "2026-01-21"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -161,8 +161,8 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			| Locked | 
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			| Unlocked | 
 |`gosec-additional-flags` | text | Extra flags to be appended to the start of the `gosec` command. |Optional			| Unlocked | 
-|`gosec-private-repository-url`   |text   | (deprecated) Your private repository base URL. For example, `https://github.ibm.com`. |Optional | Unlocked | 
-| `gosec-private-repository-host`    | text   | Your private repository host. For example, `github.ibm.com` | Optional | Unlocked | 
+|`gosec-private-repository-url`   |text   | (deprecated) Your private repository base URL.  |Optional | Unlocked | 
+| `gosec-private-repository-host`    | text   | Your private repository host.  | Optional | Unlocked | 
 |`gosec-private-repository-ssh-key`     |secret   |The SSH key for the private repository. |Optional | Unlocked | 
 | `gosec-private-repository-user` | text | User for the private repository with https access (default to `x-oauth-basic`) | Optional | Unlocked | 
 | `gosec-private-repository-token` | secret | The token that is used for https access to a private repository (default to the token configured for the first Git integration in the toolchain whose repository URL is hosted on `gosec-private-repository-host`'s value) | Optional | Unlocked | 
