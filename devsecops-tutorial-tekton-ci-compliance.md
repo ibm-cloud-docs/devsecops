@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-21"
+lastupdated: "2026-01-22"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -31,7 +31,8 @@ With this tutorial, you can set up the Tekton continuous integration (CI) pipeli
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure.
 * [Configure {{site.data.keyword.cos_full}}](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
 * [Validate your {{site.data.keyword.iamlong}} (IAM) permissions](/docs/devsecops?topic=devsecops-iam-permissions) that are assigned to the corresponding integrations.
-
+* [Set up the GaraSign artifact signing service](/docs/devsecops?topic=devsecops-devsecops-imagesigning) to sign artifacts.
+* [Get a Service API key for TaaS private worker](https://taas.cloud.ibm.com/getting-started/tekton/tekton-onboarding.md).
 
 
 * View the following video: 
