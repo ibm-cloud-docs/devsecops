@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-01-21"
+lastupdated: "2026-01-22"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1230,6 +1230,7 @@ Options for Git:
 |from-file         | The name of file that contains the details of the inventory entries. Use this flag to upload multiple inventory entries in a single commit to the inventory repo. | string| Optional | Example : `path/to/file.json` |
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://<region>.git.cloud.ibm.com/api/v4` |
 | location      | Location for the artifact in other regsirty along with the sha256 | String | Optional | Example: `<environment>#<static_name>:<version>@sha256:<sha256_digest>`. </br> Multiple times this flag can be provided.|
 {: caption="Options for Git" caption-side="bottom"}
 
@@ -1578,6 +1579,7 @@ Options for Git:
 | repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://<region>.git.cloud.ibm.com/api/v4` |
 | delta             | Flag to compute delta | Boolean | optional | false |
 | delta-deletion             | Flag to compute delta deletions | Boolean | optional | false |
 | inventory-list             | Flag to compute the entire inventory list | Boolean | optional | false |
@@ -1645,6 +1647,7 @@ Options for Git:
 | environment      | The name of the environment where the entry is added. | String | Optional | Default : "master" |
 | git-provider    | The Git version control service provider. | String | Optional | Default : "github"<br>Possible values : ["github","gitlab"]  |
 | git-token-path   | Git token path to read the secret from           | String | Optional if GHE_TOKEN environment variable set  | Example : `path/to/git-token` |
+| git-api-url      | Git API URL                                      | String | Optional | Default : `https://<region>.git.cloud.ibm.com/api/v4` |
 | location      | Location for the artifact in other regsirty along with the sha256 | String | Optional | Example: `<environment>#<static_name>:<version>@sha256:<sha256_digest>`. </br> Multiple times this flag can be provided.|
 {: caption="Options for Git" caption-side="bottom"}
 
@@ -1835,6 +1838,7 @@ GHE_TOKEN=    # Github Enterprise API Token (Optional if using --git-token-path)
 ```
 {: screen}
 
+If you are using `github` you can use the `--git-token-path` field to set your GitHub token and use the `--git-api-url` field to set the GitHub Enterprise API URL (it defaults to `https://<region>.git.cloud.ibm.com/api/v4`)  instead of the `GHE_TOKEN` and `GH_URL` environment variables.
 If the `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` both pairs are both provided, `--git-token-path` and  `--git-api-url` take precedence.
 
 Return values:
@@ -2416,7 +2420,7 @@ Some optional flags can be specified as well:
      - `https://<host>/<owner>/<name>/issues/<issue number>` - for `github`
    - Required environment variables to access the issues repository:
      - if the urls point to `github` issues:
-       - `GH_URL`: optional, defaults to `https://github.com/api/v3`
+       - `GH_URL`: optional, defaults to `https://<region>.git.cloud.ibm.com/api/v4`
        - `GHE_TOKEN`
 
 Label information for an attachment in evidence JSON:
