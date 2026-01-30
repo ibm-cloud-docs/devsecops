@@ -26,7 +26,7 @@ subcollection: devsecops
 # Async, parallel stage runs
 {: #devsecops-async-stages}
 
-You can run a pipeline stage from the pipeline configuration YAML as an async stage in a small parallel pipeline.
+You can run a pipeline stage from the pipeline configuration YAML as an async stage in a lightweight parallel pipeline.
 {: shortdesc}
 
 This feature includes the following potential benefits:
@@ -41,7 +41,7 @@ async stage
 :   A custom pipeline stage defined in the pipeline config YAML, running asynchronously along with the `/parent pipeline/` run.
 
 parallel pipeline
-:   A small pipeline that runs a single async stage along with the `/parent pipeline/` run.
+:   A lightweight pipeline that runs a single async stage along with the `/parent pipeline/` run.
 
 parent pipeline
 :   The pipeline from the async stage that was initiated.

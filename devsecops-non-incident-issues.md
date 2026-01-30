@@ -44,11 +44,11 @@ The [`cocoa incident process-legacy`](/docs/devsecops?topic=devsecops-cd-devseco
 - If the `current-status` is `failure`, the command looks for an open issue of a similar title coming from the same tool against the same subject. If the command finds such an issue, it updates the issue with an additional comment. However, if an existing issue matching the `title-tool-subject` is not found, the command creates an incident, attaches a default severity of `High`, however no due date is set.
 - If the `current-status` is `success`, the command looks for an open issue that matches the `title-tool-subject` combination, and if such an issue is found, it is closed automatically. If such an issue is not found, then the issue is a no-op.
 
-The lifecycle of nonincident issue flow is depicted below.
+The lifecycle of nonincident issue flow is depicted in the following diagram.
 
 ![Lifecycle of nonincident issues](images/issue-mgmt-non-vuln-flow-user-journey.jpg "Lifecycle of nonincident issues"){: caption="Lifecycle of nonincident issues" caption-side="bottom"}
 
-User journey of encountering a nonincident issue and it's resolution for CI and PR pipelines is depicted below.
+User journey of encountering a nonincident issue and it's resolution for CI and PR pipelines is depicted in the following diagram.
 
 ![Nonincident issues lifecycle in CI pipeline](images/issue-mgmt-CI-non-vuln-flow.jpg "Nonincident issues lifecycle in CI pipeline"){: caption="Nonincident issues lifecycle in CI pipeline" caption-side="bottom"}
 

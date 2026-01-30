@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-16"
+lastupdated: "2026-01-30"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -21,7 +21,7 @@ The continuous deployment pipeline generates all of the evidence and change requ
 ## Stages and tasks
 {: #cd-devsecops-pipeline-stages}
 
-The table below lists the tasks run in a CD Pipeline. In addition the table also provides an overview of each of these stages:
+The following table lists the tasks run in a CD Pipeline. In addition the table also provides an overview of each of these stages:
 
 - **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 

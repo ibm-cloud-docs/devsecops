@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-01-30"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -25,7 +25,7 @@ Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. A
 
 ## Stages and tasks
 {: #devsecops-cc-pipeline-stages}
-The table below lists the tasks run in a CC Pipeline. In addition the table also provides an overview of each of these stages:
+The following table lists the tasks run in a CC Pipeline. In addition the table also provides an overview of each of these stages:
 
 - **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 
@@ -56,7 +56,7 @@ For more information about how to customize stages by using the `.pipeline-confi
 ## Stages and evidences
 {: #devsecops-cc-pipeline-evidences}
 
-The table below provides a relationship between various types of evidence and the specific stages within the pipeline where their collection takes place.
+The following table provides a relationship between various types of evidence and the specific stages within the pipeline where their collection takes place.
 
 |Task or stage |Evidence Type |
 |:----------|:------------------------------|

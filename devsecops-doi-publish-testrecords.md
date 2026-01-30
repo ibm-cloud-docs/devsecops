@@ -21,7 +21,7 @@ This script is part of the [Commons Scripts Library documentation](https://us-so
 ## Inputs
 {: #doi-publish-testrecord-inputs}
 
-The below properties are fetched using pipelinectl command `get_env` :
+The following properties are fetched using pipelinectl command `get_env` :
 
 Property | Description
 ---------|------------

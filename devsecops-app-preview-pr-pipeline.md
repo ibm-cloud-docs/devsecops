@@ -81,7 +81,7 @@ These additional stages allow:
 ## Customising pipeline stages and tasks
 {: #devsecops-app-preview-pr-pipeline-stages-tasks}
 
-The table below lists the tasks run in a App-Preview PR Pipeline. In addition the table also provides an overview of each of these stages:
+The following table lists the tasks run in a App-Preview PR Pipeline. In addition the table also provides an overview of each of these stages:
 
 - **Task or Stage**: This refers to the name of the stage as defined within the  `.pipeline-config.yaml`  configuration file.
     
