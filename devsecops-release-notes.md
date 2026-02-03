@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-01-20"
+lastupdated: "2026-02-03"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -26,7 +26,7 @@ Use the release notes to learn about the latest changes to {{site.data.keyword.c
 {: #shortdesc}
 
 ## 06 December 2025
-{: #devsecops-Sept2025-01}
+{: #devsecops-Dec2025-01}
 {: release-note}
 
 ### Updates for DevSecOps version - open-v10.58.1

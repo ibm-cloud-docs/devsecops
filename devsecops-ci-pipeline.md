@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-10-28"
+  years: 2021, 2026
+lastupdated: "2026-01-30"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -24,7 +24,7 @@ Before it builds an artifact, the pipeline checks that the code is scanned and t
 {: #devsecops-ci-pipeline-stages}
 
 
-The table below lists the tasks run in a CI Pipeline. In addition the table also provides an overview of each of these stages:
+The following table lists the tasks run in a CI Pipeline. In addition the table also provides an overview of each of these stages:
 
 - **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 
@@ -61,7 +61,7 @@ For more information about how to customize stages by using the `.pipeline-confi
 ## Stages and evidences
 {: #devsecops-ci-pipeline-evidences}
 
-The table below provides a relationship between various types of evidence and the specific stages within the pipeline where their collection takes place.
+The following table provides a relationship between various types of evidence and the specific stages within the pipeline where their collection takes place.
 
 |Task or stage |Evidence Type |
 |:----------|:------------------------------|

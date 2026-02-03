@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2026-01-16"
+lastupdated: "2026-02-03"
 
 keywords: tool integrations, Sonarqube
 
@@ -127,7 +127,7 @@ SonarQube issue parser supports processing the SonarQube Quality Gate results an
 
 If `opt-in-sonar-quality-gates` is set as `1`, and you are using your [own SonarQube Instance](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-existing) as an integration (with `sonarqube-config` set as `custom`), in order to fetch the Quality Gate name you can generate a **SonarQube User Token** with required permission to access SonarQube Web API  and set pipeline environment property `sonarqube-user-token` with the token as a secret value. For details about required token permission, please refer [SonarQube token permission](/docs/devsecops?topic=devsecops-sonarqube#sonarqube-ci-pipeline-user-token).
 
-If you use the SonarQube instance that the pipeline created or a custom SonarQube tool integration, please follow the below steps to navigate through the SonarQube dashboard:
+If you use the SonarQube instance that the pipeline created or a custom SonarQube tool integration, follow these steps to navigate through the SonarQube dashboard:
 
 1. Go to the SonarQube dashboard that was created by the URL from the pipeline logs in the `static-scan` task.
 
@@ -360,7 +360,7 @@ An example of the hotspots result format which is the reponse of SonarQube API:`
 {: codeblock}
 
 
-In case a `To Review` status hotspot is encountered in the result of the above API, a failure evidence is collected including hotspot information in the `findings` section.
+In case a `To Review` status hotspot is encountered in the result of the preceding API, a failure evidence is collected including hotspot information in the `findings` section.
 
 Example SonarQube failed evidence due to Hotspot detection:
 
@@ -440,11 +440,11 @@ Please ensure to enable `opt-in-sonar-hotspots` in CC in case it is enabled in C
 
 In case of using existing SonarQube instance and to successfully publish the testrecord to Devops Insights and fetch the Quality Gate name for a project, we need to create a **User token** with required permissions and set it as a secret value in env property `sonarqube-user-token` in order to provide permission to access the required Sonarqube enpoints.
 
-To create **User Token**, open SonarQube Dashboard > click on you Profile picture in top right corner > select **My Account** > select **Security** > from the **Type** dropdown select **User Token** > click **Generate**
+To create **User Token**, open SonarQube Dashboard > click on your Profile picture > select **My Account** > select **Security** > from the **Type** dropdown select **User Token** > click **Generate**
 
 ![SonarQube User Token](images/sonar-user-token.png){: caption="SonarQube User Token Generation" caption-side="bottom"}
 
-1. The Devops Insights plugin makes the following API calls to Sonarqube server, as given below:
+1. The Devops Insights plugin makes the following API calls to Sonarqube server:
    - [GET api/qualitygates/project_status](https://next.sonarqube.com/sonarqube/web_api/api/qualitygates/project_status){: external}
 
       Requires one of the following permissions:
@@ -467,7 +467,7 @@ To create **User Token**, open SonarQube Dashboard > click on you Profile pictur
       - 'Administer' at global or project level
       - 'Execute Analysis' at global or project level
 
-2. To fetch the Quality Gate name, the below SonarQube Endpoint is hit:
+2. To fetch the Quality Gate name, the following SonarQube Endpoint is used:
    - [GET api/qualitygates/get_by_project](https://next.sonarqube.com/sonarqube/web_api/api/qualitygates/get_by_project){: external}
 
       Requires one of the following permissions:
@@ -475,7 +475,7 @@ To create **User Token**, open SonarQube Dashboard > click on you Profile pictur
       - 'Administer' rights on the specified project
       - 'Browse' on the specified project
 
-3. To fetch the SonarQube detected Hotspots, the below SonarQube Endpoint is hit:
+3. To fetch the SonarQube detected Hotspots, the following SonarQube Endpoint is used:
    - [GET api/hotspots/search](https://next.sonarqube.com/sonarqube/web_api/api/hotspots/search){: external}
 
       Requires the 'Browse' permission on the specified project(s).

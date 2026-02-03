@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-01-21"
+lastupdated: "2026-02-03"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -30,7 +30,7 @@ By using this feature, you can easily onboard your micro-services or application
 
 
 No additional steps are necessary to configure the Inferred DevSecOps Pipeline Configuration, as it's already integrated into the DevSecOps.
-{: note}
+{: .note}
 
 
 
@@ -39,7 +39,7 @@ No additional steps are necessary to configure the Inferred DevSecOps Pipeline C
 
 1.  Set up your DevSecOps toolchains and integrate [your application's source code repository](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain#tutorial-ci-toolchain-application).
    Do not use the default sample app repository. Instead, onboard your own application's repository.
-   {: #note}
+   {: note}
 
 1.  Review the [basics of DevSecOps pipeline customization](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization) to know more about the different templates that are available, support options, and other important information to get you started with DevSecOps.
 
@@ -49,7 +49,7 @@ No additional steps are necessary to configure the Inferred DevSecOps Pipeline C
 To begin, configure your toolchains to use your own source code repository. Then, **run** your first [DevSecOps CI pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline). This feature is enabled by default, so no additional setup is required. It dynamically infers the DevSecOps pipeline configuration and scripts that are needed to build, test, and deploy your application or service.
 
 To disable this feature, set a `pipeline-config` value that matches an existing file in your repository.
-{: #note}
+{: note}
 
 
 ### Spots with Inferred DevSecOps Pipeline Configuration

@@ -23,7 +23,7 @@ Attempts to merge a pull request into the master branch might be blocked because
 ## Stages and tasks
 {: #cd-devsecops-pipeline-order}
 
-The table below lists the tasks run in a PR Pipeline. In addition, the table also provides an overview of each of these stages:
+The following table lists the tasks run in a PR Pipeline. In addition, the table also provides an overview of each of these stages:
 
 - **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
 

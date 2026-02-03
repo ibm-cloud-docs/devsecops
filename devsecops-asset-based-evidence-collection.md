@@ -13,7 +13,7 @@ keywords: DevSecOps, evidence collection, generic asset, inventory, application,
 # Asset creation and Evidence collection in DevSecOps
 {: #devsecops-asset-evidence-collection}
 
-In the realm of DevSecOps process, asset creation and Evidence collection ensures that security seamlessly integrates with every phase of the software development lifecycle. This approach embodies the concept of "shift-left," where security is not an afterthought but an inherent part of the development process. DevSecOps, with its DevSecOps Continuous Integration and Continuous Delivery (CI/CD), empowers teams to identify vulnerabilities at the earliest stages, facilitating the release of compliant software.
+In the realm of DevSecOps process, asset creation and Evidence collection ensures that security seamlessly integrates with every phase of the software development lifecycle. This approach embodies the concept of shift-left (integrating security earlier in the development process), where security is not an afterthought but an inherent part of the development process. DevSecOps, with its DevSecOps Continuous Integration and Continuous Delivery (CI/CD), empowers teams to identify vulnerabilities at the earliest stages, facilitating the release of compliant software.
 
 Asset creation and evidence collection play a pivotal role in the Onepipeline ecosystem. To remain compliant with security standards, it's imperative to follow the guidelines outlined in this comprehensive guide. By doing so, you can ensure that your software development process is not only efficient but also secure from the ground up.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-02-03"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -25,7 +25,7 @@ The Tekton pipelines provide a framework of custom scripts that you can use to e
 
 You can use the pipelines to deploy to public cloud or hybrid target environments by using Tekton private pipeline workers. The Tekton pipelines run in predefined container images along with some user scripts. You can run anything that can be scripted, within the boundaries of the Tekton pipelines.
 
-## Shift-Left continuous integration, continuous deployment design
+## Shift-left continuous integration, continuous deployment design
 {: #cd-devsecops-design}
 
 The following diagram shows the implementation workflow and main features of the DevSecOps architecture.

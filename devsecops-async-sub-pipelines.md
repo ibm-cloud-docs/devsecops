@@ -84,7 +84,7 @@ get_env <variable-name>
 ```
 {: codeblock}
 
-Only the marked variables are available in the async pipeline. Not everything can be exported because the data might be too large or contain sensitive data.
+Only the marked variables are available in the async pipeline. Not everything can be exported because the data might be too substantial or contain sensitive data.
 {: important}
 
 ### Trigger async pipeline command

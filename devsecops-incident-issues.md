@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2024
-lastupdated: "2024-10-09"
+  years: 2022, 2026
+lastupdated: "2026-01-30"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -58,7 +58,7 @@ The new build introduces a vulnerability, which is not accepted. Deployment is b
 
 ![Vulnerability found in the build](images/vuln-uc-1.svg "Vulnerability found in the build"){: caption="Vulnerability found in the build" caption-side="bottom"}
 
-This build pipeline flow incase of a vulnerability found, and the corresponding user actions has been explained below.
+This build pipeline flow incase of a vulnerability found, and the corresponding user actions is explained in the following diagram.
 
 ![Build pipeline has detected a vulnerability](images/issue-mgmt-CI-flow-vuln.jpg "Build pipeline has detected a vulnerability"){: caption="Build pipeline has detected a vulnerability" caption-side="bottom"}
 
@@ -69,7 +69,7 @@ The new build contains a vulnerability that is also in the currently deployed pr
 
 ![Vulnerability found in the build that is also in production](images/vuln-uc-2.svg "Vulnerability found in the build that is also in production"){: caption="Vulnerability found in the build that is also in production" caption-side="bottom"}
 
-CC pipeline sets the timeline to fix any such vulnerabilities found in production. It will only fail when the timeline to fix the vulnerability has expired. The flow has been outlined below.
+CC pipeline sets the timeline to fix any such vulnerabilities found in production. It will only fail when the timeline to fix the vulnerability has expired. The flow is outlined in the following diagram.
 
 ![Vulnerability found in production](images/issue-mgmt-CC-flow-vuln.jpg "Vulnerability found in production"){: caption="Vulnerability found in production" caption-side="bottom"}
 
