@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2025
-lastupdated: "2025-02-05"
+  years: 2022, 2026
+lastupdated: "2026-02-03"
 
 keywords: IBM Cloud DevOps, DevSecOps
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # DevSecOps with {{site.data.keyword.contdelivery_short}}
 {: #devsecops_intro}
 
-[DevSecOps](https://www.ibm.com/think/topics/devsecops){: external} is an evolution of Agile and DevOps, integrating secure development best practices as early as possible in the software delivery lifecycle (also known as "shift left"). This approach prevents security problems from reaching production systems and failing corporate audits.
+[DevSecOps](https://www.ibm.com/think/topics/devsecops){: external} is an evolution of Agile and DevOps, integrating secure development best practices as early as possible in the software delivery lifecycle (also known as shift-left, which means integrating security earlier in the development process). This approach prevents security problems from reaching production systems and failing corporate audits.
 {: shortdesc}
 
 [DevSecOps](#x9892260){: term} requires automating security and compliance controls as part of continuous integration and continuous delivery processes. Evidence of these controls is also collected to demonstrate to auditors that every change in history meets the necessary controls.
@@ -34,7 +34,7 @@ Like Agile and DevOps, DevSecOps introduces a culture change and removes the tra
 ## Why should I use DevSecOps?
 {: #why-devsecops}
 
-With DevSecOps, developers can continue to deliver updates frequently with a minimal amount of friction. Integration of automated security scans and controls into the DevOps pipelines provides confidence with evidence to the change management process. This integration also supports automated approvals of new deployments to production when all secure criteria are met and specific checks pass. Introducing security and compliance early into the development and deployment process reduces costs and risk by identifying problems early before the software reaches a production environment. This approach is often referred to as "shift-left". Moreover, even if secure best practices are part of the training in every organization, developers might lack deep expertise at the security level. Applying DevSecOps and shift-left to the delivery lifecycle reduces the risk of naively releasing known vulnerabilities into production.
+With DevSecOps, developers can continue to deliver updates frequently with a minimal amount of friction. Integration of automated security scans and controls into the DevOps pipelines provides confidence with evidence to the change management process. This integration also supports automated approvals of new deployments to production when all secure criteria are met and specific checks pass. Introducing security and compliance early into the development and deployment process reduces costs and risk by identifying problems early before the software reaches a production environment. This approach is often referred to as shift-left (integrating security earlier in the development process). Moreover, even if secure best practices are part of the training in every organization, developers might lack deep expertise at the security level. Applying DevSecOps and shift-left to the delivery lifecycle reduces the risk of naively releasing known vulnerabilities into production.
 
 ### Standardization across organizations
 {: #standardization}

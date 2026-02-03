@@ -97,8 +97,8 @@ For more information, see [Continuous Compliance (CC) pipeline](/docs/devsecops?
 | `cc-compliance-checks` | Runs [Code Risk Analyzer (CRA)](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) scan  for vulnerability detection on open source dependencies, and any other compliance checks on application repositories|
 | `cc-scan-artifact`     | Scan the container image with [Vulnerability Advisor](/docs/devsecops?topic=devsecops-cd-devsecops-va-scans)|
 | `cc-finish`            | Collect, create, and upload the logs files, artifacts, and evidence to the evidence locker. If any of the compliance checks previously executed in the CC pipeline fails, this stage fails.|
-{: caption="Continuous Compliance (CC) pipeline" caption-side="bottom"}
-{: #cc-pipeline}
+{: caption="Continuous Compliance (CC) pipeline stages" caption-side="bottom"}
+{: #cc-pipeline-stages-table}
 
 ### Pipeline compliance checks
 {: #cd-devsecops-pipeline-compliance-checks}

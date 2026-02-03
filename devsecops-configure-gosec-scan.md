@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-21"
+lastupdated: "2026-02-03"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -66,7 +66,7 @@ If GOPROXY must be specified, all of the following parameters must be provided.
 
 The `gosec-scan-image` parameter can be used to specify a different gosec image to use, such as a custom image or a specific version of the official gosec image.
 
-Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops-gosec-examples) section below
+Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops-gosec-examples) section
 
 | Parameter name | Default value | Description |
 |-|-|-|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-01-22"
+lastupdated: "2026-02-03"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # DevSecOps CLI
 {: #cd-devsecops-cli}
 
-DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevSecOps reference implementation; for example, the shift-left reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
+DevSecOps CLI adopts compliance solutions under {{site.data.keyword.cloud}} DevSecOps reference implementation; for example, the shift-left (early integration of security) reference pipelines. For more information about the shift-left compliance architecture, see [DevSecOps with {{site.data.keyword.contdelivery_short}}](/docs/devsecops?topic=devsecops-devsecops_intro).
 {: shortdesc}
 
 

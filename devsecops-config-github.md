@@ -244,7 +244,7 @@ After enabling the `Require status checks to pass before merging` option, you ne
 
 The status checks shown must pass before merging a pull request.
 
-The above checks are the default expected pull request status checks in pipeline.
+These checks are the default expected pull request status checks in the pipeline.
 
 #### Setting customized list of compliance checks
 {: #devsecops-config-customized-list}

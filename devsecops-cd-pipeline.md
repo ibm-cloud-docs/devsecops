@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-30"
+lastupdated: "2026-02-03"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 # Continuous deployment pipeline
-{: #cd-devsecops-cd-pipeline}
+{: #cd-devsecops-cd-pipeline-overview}
 
 The continuous deployment pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to an environment, such as staging or production, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker.
 {: shortdesc}
