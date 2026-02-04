@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-03"
+lastupdated: "2026-02-04"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -442,7 +442,7 @@ Enhanced evidence collection to branch protection checks
 {: #devsecops-open-v10.22.0-open-v9.41.0}
 
 Rapid Rollback Capability
-:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#rollback-a-deployment) for more details
+:   You can now perform rollback during emergency situations. See [Rolling back a deployment](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#rollback-a-deployment) for more details
 
 
 Single Commit Artifact Creation
@@ -655,7 +655,7 @@ Support for inline rollback in dev mode cd pipelines
 {: #devsecops-open-v10.6.0-open-v9.25.0}
 
 Support for inline rollback, if there is deployment failure
-:   Continuous Deployment now supports inline rollback when a deployment fails. For more information, see [Inline Rollback](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-inline-rollback).
+:   Continuous Deployment now supports inline rollback when a deployment fails. For more information, see [Inline Rollback](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-inline-rollback).
 
 Deprecated environment property `IAM_ACCESS_TOKEN`
 :   The environment property `IAM_ACCESS_TOKEN` is deprecated. If this token is needed by users, it can be retrieved by using `get_env iam-access-token`.
@@ -715,7 +715,7 @@ Removal of `pipeline.data`
 :   `pipeline.data`, which is used to share environment variables across the pipeline, is no longer available.
 
 Pre-prod evidence collection
-:   According to the FedRAMP requirements, pre-prod change requests must be linked to the production change request and pre-prod evidence should be included in the production change of the request summary. To meet these requirements, we've developed a new feature to collect pre-prod evidence. For more information, see [Collect evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-collect).
+:   According to the FedRAMP requirements, pre-prod change requests must be linked to the production change request and pre-prod evidence should be included in the production change of the request summary. To meet these requirements, we've developed a new feature to collect pre-prod evidence. For more information, see [Collect evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-pipeline-collect).
 
 SLSA attestation
 :   You can now attest images built in CI pipeline with SLSA level 3 attestation. For more information, see [Configuring collection of SLSA attestations for images](/docs/devsecops?topic=devsecops-cd-devsecops-slsa).

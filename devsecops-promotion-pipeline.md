@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2025
-lastupdated: "2025-12-15"
+  years: 2021, 2026
+lastupdated: "2026-02-04"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -262,4 +262,4 @@ The aggregated evidence summary of the evidences (that can be coming from multip
 ## Next step
  {: #devsecops-promotion-pipeline-next}
 
- After the Promotion Pipeline finishes successfully, you can [proceed to the CD Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+ After the Promotion Pipeline finishes successfully, you can [proceed to the CD Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview).

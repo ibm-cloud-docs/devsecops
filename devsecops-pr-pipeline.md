@@ -55,7 +55,7 @@ For more information about how to customize stages by using the `.pipeline-confi
 The [IBM Detect Secrets](https://github.com/IBM/detect-secrets) tool identifies where secrets are visible in app code. More information on setting up your repo for the scan is available [here](/docs/devsecops?topic=devsecops-cd-devsecops-detect-secrets-scans).
 
 ## Scans and checks in compliance checks
-{: #cd-devsecops-cd-pipeline-compliancechecks}
+{: #cd-devsecops-cd-pipeline-overview-compliancechecks}
 
 | Scan or check |  Description |
 |---------|------------|
