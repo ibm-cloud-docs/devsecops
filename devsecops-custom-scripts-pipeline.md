@@ -62,11 +62,11 @@ For more information, see [Continuous Integration (CI) pipeline](/docs/devsecops
 {: #ci-pipeline}
 
 ## Continuous Deployment (CD) pipeline stages
-{: #cd-devsecops-cd-pipeline-stages}
+{: #cd-devsecops-cd-pipeline-overview-stages}
 
 The CD pipeline compiles all the content for evidence and the change request summary. It deploys the build to an environment, such as staging or production, and uploads all of the evidence to the evidence locker.
 
-For more information, see [Continuous Deployment (CD) pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline) documentation.
+For more information, see [Continuous Deployment (CD) pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview) documentation.
 
 | CD pipeline stage       | Description |
 |-------------------------|-------------|

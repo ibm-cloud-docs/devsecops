@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-02-04"
 
 keywords: DevSecOps
 
@@ -57,7 +57,7 @@ The continuous integration pipeline builds the deployable artifacts from the app
 ## Continuous deployment pipeline
 {: #cd-devsecops-pipelines-cd-pipeline}
 
-The continuous deployment pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to a specific environment, such as staging or prod, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker. For more information about the continuous deployment pipeline, see [Continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline).
+The continuous deployment pipeline generates all of the evidence and change request summary content. The pipeline deploys the build artifacts to a specific environment, such as staging or prod, and then collects, creates, and uploads all existing log files, evidence, and artifacts to the evidence locker. For more information about the continuous deployment pipeline, see [Continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview).
 
 ## Continuous compliance pipeline
 {: #cd-devsecops-pipelines-cc-pipeline}

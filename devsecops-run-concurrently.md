@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-09"
+lastupdated: "2026-02-04"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -100,7 +100,7 @@ For more information, see the [CI pipeline documentation](/docs/devsecops?topic=
 
 The CD pipeline compiles all the content for evidence and the change request summary. It deploys the build to an environment, such as staging or production, while uploading all evidence to the evidence locker.
 
-For more information, see the [CD pipeline documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline)
+For more information, see the [CD pipeline documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview)
 
 | CD Pipeline Stage | Stage Description |
 | ----------------- | ----------------- |

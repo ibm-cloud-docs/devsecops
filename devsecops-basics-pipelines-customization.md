@@ -210,7 +210,7 @@ The DevSecOps pipeline provides the path to the root folder of [the commons libr
 source "${COMMONS_PATH}/<script folder in commons>/<script file name>
 ```
 
-Refer to the table [Stages and tasks](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-stages) that summarizes various stages of the CD Pipeline. The table also provide a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection required by the stage execution.
+Refer to the table [Stages and tasks](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-pipeline-stages) that summarizes various stages of the CD Pipeline. The table also provide a consolidated information about whether the stage has a default reference implementation, whether it can be customized or skipped, or whether there is explicit evidence collection required by the stage execution.
 
 ### Environment properties
 {: #pipeline-parameters}

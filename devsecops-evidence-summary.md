@@ -80,6 +80,6 @@ In the CC pipeline, evidence is summarized, based on the following.
     - The current `pipeline_run_id` as the CC pipeline scope.
 
 For more information, see [Inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory).
-For more information on `prod` summarization based on pre-prod evidences, see [Collecting evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline#cd-devsecops-pipeline-collect).
+For more information on `prod` summarization based on pre-prod evidences, see [Collecting evidence summary](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-pipeline-collect).
 
 The `v2` evidence summary is calculated by default. 
