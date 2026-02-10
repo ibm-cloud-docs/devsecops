@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-22"
+lastupdated: "2026-02-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -25,24 +25,27 @@ With this tutorial, you can set up the Tekton continuous integration (CI) pipeli
 ## Before you begin
 {: #tutorial-tekton-ci-prereq}
 
-* [Create a Kubernetes cluster](/docs/containers?topic=containers-getting-started) on the {{site.data.keyword.containerlong}} to deploy your application.
+* [Create a Kubernetes cluster](/docs/containers?topic=containers-getting-started) on the {{site.data.keyword.containerlong}} to deploy your application (*).
 * [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/containers?topic=containers-getting-started) on your operating system to interact with {{site.data.keyword.cloud_notm}} resources.
+
+
 * [Create an artifact signing key](/docs/devsecops?topic=devsecops-devsecops-image-signing) with proper encoding to sign your application docker artifacts.
+
 * [Create toolchain secrets](/docs/devsecops?topic=devsecops-cd-devsecops-toolchains-secrets) to access different integrations and secure.
 * [Configure {{site.data.keyword.cos_full}}](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) as the compliance evidence locker to durably store pipeline run evidence.
 * [Validate your {{site.data.keyword.iamlong}} (IAM) permissions](/docs/devsecops?topic=devsecops-iam-permissions) that are assigned to the corresponding integrations.
-* [Get a Service API key for TaaS private worker](https://taas.cloud.ibm.com/getting-started/tekton/tekton-onboarding.md).
 
 
+(*) Kubernetes cluster: required during setup only - can be changed after Toolchain creation. It is not mandatory to create a dedicated cluster, especially if using a different deployment target (like CodeEngine). You may enter an IBM Cloud API key that is able to access any cluster.
+{: note}
+
+The CI pipeline uses the GaraSign code signing service to sign build artifacts that require registration and on-boarding. GaraSign uses the internal {{site.data.keyword.IBM_notm}} network. Access to this network is available within IBM shared workers that have network access. IBM shared workers with access to the 9.X internal network can be used.
+{: note}
 
 
 * View the following video: 
 
 ![Getting started with DevSecOps in the {{site.data.keyword.cloud_notm}}](https://www.kaltura.com/p/1773841/sp/177384100/embedIframeJs/uiconf_id/27941801/partner_id/1773841?iframeembed=true&entry_id=1_8v84r6wl){: video output="iframe" data-script="none" id="mediacenterplayer" frameborder="0" width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen}
-
-   The CI pipeline uses the GaraSign code signing service to sign build artifacts that require registration and on-boarding. GaraSign uses the internal {{site.data.keyword.IBM_notm}} network. Access to this network is available within IBM shared workers that have network access. IBM shared workers with access to the 9.X internal network can be used.
-   {: note}
-
 
 
 ## Start the CI toolchain setup
