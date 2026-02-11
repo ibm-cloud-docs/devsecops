@@ -128,7 +128,6 @@ The following table includes the default ENV variables for the context of custom
 | `WORKSPACE`                    | The path to the shared workspace. |
 | `PIPELINE_STATUS`              | The status of the pipeline run. Can be "Succeeded", "Failed", or blank. `PIPELINE_STATUS` is available in finish stages only |
 | `INVENTORY_URL`                | The inventory repository url. |
-| `EVIDENCE_LOCKER_URL`          | The evidence repository url. |
 | `INCIDENT_ISSUES_URL`          | The issue's repository url. |
 | `PR_URL`                       | Url of the pull request. It is only relevant when dealing with a PR pipeline when triggered by a new or updated Pull Request.|
 | `PR_HTML_URL`                  | The html url of the pull request.It is only relevant when dealing with a PR pipeline when triggered by a new or updated Pull Request. |

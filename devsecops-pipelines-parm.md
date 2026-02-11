@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-01-21"
+lastupdated: "2026-02-11"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -67,7 +67,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`detect-secrets-image`](#detect-secrets-image) | text | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional | Unlocked |
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional | Unlocked |
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked |
-|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			| Locked |
 |`evidence-reuse`		|text		|Set this flag to `1` to enable reuse of evidences. |Optional | Unlocked |
 |`evidence-reuse-for-failure`		|text		|Set this flag to `1` to enable reuse of failed evidences. |Optional | Unlocked |
 |`evidence-validity-period`		|text		|The validity period(in hours) within which evidences can be reused. Default value: 24 hours. Maximum value: 720 hours (30 days) |Optional | Unlocked |
@@ -154,7 +153,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`doi-logicalappname`		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			| Unlocked | 
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			| Unlocked | 
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			| Locked | 
-|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			| Locked | 
 |`evidence-reuse`		|text		|Set this flag to `1` to enable reuse of evidences. |Optional | Unlocked | 
 |`evidence-reuse-for-failure`		|text		|Set this flag to `1` to enable reuse of failed evidences. |Optional | Unlocked | 
 |`evidence-validity-period`		|text		|The validity period(in hours) within which evidences can be reused. Default value: 24 hours. Maximum value: 720 hours (30 days) |Optional | Unlocked | 
@@ -281,7 +279,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|Unlocked |
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			| Locked |
 |`emergency-label`		|text		|Identifies the pull request as an emergency.	|Optional			| Locked |
-|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			| Locked |
 |`force-redeploy`    |text   |Forces the deployment or redeployment of the app even if the last deployment does not contain a delta in the inventory. Set this parameter to `true` to force a deployment of the app as if it is the first deployment on the specified target environment. By default, this parameter is set to `false`. |Optional |Unlocked |
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			| Locked |
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|Unlocked |
@@ -376,7 +373,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
 |`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |`environment-tag`     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
-|`evidence-repo`		|tool integration		|The evidence repo URL.	|Optional			|
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|
 |`grit-token`		|SECRET		|The {{site.data.keyword.gitrepos}} access token.	|Optional			|
