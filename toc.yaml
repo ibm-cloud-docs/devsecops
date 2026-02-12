@@ -157,6 +157,7 @@ toc:
           - devsecops-managing-secrets-crn.md
       - devsecops-multiple-apps.md
       - devsecops-iam-permissions.md
+      - devsecops-data-security.md
   - navgroup:
       id: reference
       topics:
