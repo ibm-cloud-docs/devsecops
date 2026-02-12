@@ -157,14 +157,7 @@ toc:
           - devsecops-managing-secrets-crn.md
       - devsecops-multiple-apps.md
       - devsecops-iam-permissions.md
-      - topicgroup:
-          label: Enhancing security with Security and Compliance Center
-          topics:
-          - topic: devsecops-scc-toolchains.md
-            navtitle: Viewing and understanding results
-          - include: ../security-compliance/getting-started.md
-            navtitle: Managing security and compliance
-          - devsecops-data-security.md
+      - devsecops-data-security.md
   - navgroup:
       id: reference
       topics:

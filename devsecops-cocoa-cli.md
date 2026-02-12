@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-03"
+lastupdated: "2026-02-11"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2049,15 +2049,6 @@ To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com
 - `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](/docs/account?topic=account-iamtoken_from_apikey&interface=api){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
 
 
-The evidence locker is a Git repository as **optional locker**.
-The Git provider can be specified by using `--git-provider` (`github` by default).
-For both providers, authentication is required, for GitHub set the `GHE_TOKEN` environment variable or `--git-token-path` field.
-
-
-The name of the evidence locker repository can be set by using `--org` and `--repo`, or by using the `EVIDENCE_LOCKER_REPO_OWNER` and `EVIDENCE_LOCKER_REPO_NAME` environment variables.
-
-By default, the CLI on each invocation ensures that you work with an up-to-date version of a Git locker. This behavior can be disabled by setting `COCOA_USE_CACHE` to any value except `0`, `false`, `no`, or `n`. In this case, the CLI uses its internal cache to look up evidence (much faster), but results might be stale.
-
 ### cocoa locker asset add < URI >
 {: #locker-asset-add}
 
@@ -2066,14 +2057,9 @@ Adds an asset to the evidence locker.  It displays the asset information if the 
 Options:
 
 ```text
---org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
---repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --type             # Type of the asset ( All types are supported )
 --version          # Show version number
 --format           # Output format ("id", "json", default: "id")
---git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from
---git-api-url      # Github API url
 --related          # The ID of a related asset (default: [])
 --date             # Asset creation date
 --details          # Additional asset details, as key=value pairs (default: [])
@@ -2196,13 +2182,8 @@ Retrieves an asset from the evidence locker.
 Options:
 
 ```text
---org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
---repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --type             # Type of the asset
 --version          # Show version number
---git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from
---git-api-url      # Github API url
 --format           # Output format ("id", "json", default: "id")
 ```
 {: screen}
@@ -2346,13 +2327,8 @@ Lists the related assets from the evidence locker.
 Options:
 
 ```text
---org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
---repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
 --type             # Type of the asset
 --version          # Show version number
---git-provider     # Git service provider ("github")
---git-token-path   # Git token path to read the secret from
---git-api-url      # Github API url
 --format           # Output format ("id", "json", default: "id")
 ```
 {: screen}
@@ -2501,12 +2477,7 @@ Retrieves a piece of evidence from the locker.
 Options:
 
 ```text
---org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
---repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
---git-provider     # Git service provider ("github")
 --version          # Show version number
---git-token-path   # Git token path to read the secret from
---git-api-url      # Github API url
 --format           # Output format ("json", default: "json")
 ```
 {: screen}
@@ -2604,12 +2575,7 @@ Retrieves an attachment that was previously uploaded with `cocoa locker evidence
 Options:
 
 ```text
---org              # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
---repo             # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
---git-provider     # Git service provider ("github")
 --version          # Show version number
---git-token-path   # Git token path to read the secret from
---git-api-url      # Github API url
 ```
 {: screen}
 
@@ -2705,47 +2671,6 @@ Run the command:
 ```
 {: codeblock}
 
-### cocoa locker evidence publish
-{: #locker-evidence-publish}
-
-Publish the evidence to Git and the Cloud Object Storage (COS) back end (if COS is configured).
-
-`cocoa locker evidence publish` is used for batch processing of evidence.
-
-Required environment variables to configure COS:
-
-```text
-COS_API_KEY=        # Cloud Object Storage API Key
-COS_BUCKET_NAME=    # Bucket Name where the evidence will be uploaded in the COS Instance
-COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket is located
-```
-{: screen}
-
-Options:
-
-```text
-  --version         # Show version number
-  --help            # Show help
-  --git-provider    # Git provider of the evidence locker ("github", "gitlab")
-  --org             # (Required) Owner of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_OWNER`
-  --repo            # (Required) Name of the evidence locker repo, defaults to `EVIDENCE_LOCKER_REPO_NAME`
-  --git-token-path  # Git token path to read the secret from
-  --git-api-url     # Git API URL
-  --evidences-path  # (Required) Use this path to read the evidences to be published
-  --commit-message  # (Optional) Commit message suffix to be used for the commit to the git repository
-```
-{: screen}
-
-Run the command:
-
-```sh
-$ cocoa locker evidence publish \
-      --org=<github-organization> \
-      --repo=<github-repo-name> \
-      --git-provider github \
-      --evidences-path <path/to/file>
-```
-{: codeblock}
 
 ## cocoa tekton commands
 {: #tekton-commands}

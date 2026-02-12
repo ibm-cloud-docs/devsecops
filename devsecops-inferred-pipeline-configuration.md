@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-03"
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -281,6 +281,7 @@ You can ignore specific spots during extraction by using regular expressions. Th
 If you are using IBM Cloud Code Engine for deployment, specify the Code Engine project and configure the build process with the following pipeline environment properties:
 * `code-engine-project`: Specifies the Code Engine project.
 * `code-engine-build-use-native-docker`: (Default: `false`) Indicates whether to use Docker CLI instead of `ibmcloud code-engine buildrun` command.
+* `code-engine-disable-buildpacks-strategy`: (Default `false`) Indicates that the build process should not use `buildpacks` strategy (only valid if `code-engine-project` has been set)
 * `root-as-build-context`: (Default: `false`) indicates that the build context for `Dockerfile` related building tool (like `docker` or `code-engine`) should use the root of the repository as build context and not the folder containing the Dockerfile.
 
 #### Container image build configuration

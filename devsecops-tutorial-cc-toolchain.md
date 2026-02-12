@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-20"
+lastupdated: "2026-02-12"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -26,10 +26,8 @@ completion-time: 1h
 This tutorial walks you through how you can use the toolchain template for continuous compliance (CC) to make sure that your deployed artifacts and their source repositories are always compliant.
 {: shortdesc}
 
-[DevSecOps](#x9892260){: term} integrates a set of {{site.data.keyword.compliance_full}} controls into the [DevOps](https://www.ibm.com/think/topics/devops){: external} processes. This integration allows organizations to deliver rapidly and often to maintain a strong security posture and a continuous state of audit-readiness.
 
-Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
+
 
 ## Before you begin
 {: #tutorial-cc-toolchain-prereqs}
@@ -162,12 +160,6 @@ You can add the Slack tool after the toolchain creation.
 
  Optionally, you can toggle sending notifications with the `slack-notifications` Environment property in your CD pipeline by using `0 = off, and 1 = on`.
 
-#### {{site.data.keyword.compliance_short}}
-{: #tutorial-cc-toolchain-scc}
-
-1. Accept or edit the automatically populated settings.
-   
-2. Click **Continue** to view the Summary page.
 
 ## Create the CC toolchain
 {: #tutorial-cc-toolchain-summary}

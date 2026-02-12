@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-16"
+lastupdated: "2026-02-11"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -223,21 +223,6 @@ type
   
 
   With these changes, collect-evidence script processes all types of artifacts, including both image and non-image artifacts.
-
-
-
-## Batched evidence collection
-{: #batched-evidence-collection}
-
-Every piece of evidence collection involves network calls to create or retrieve an asset. The evidence is stored inside the evidence repo and the {{site.data.keyword.cos_full_notm}} bucket, if configured. That could potentially lead to hitting rate limits on the Git server. To minimize the need for network calls, evidences can now be saved onto the file system until the end of the pipeline and collected in bulk by using [cocoa locker evidence publish](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-publish).
-At the time of evidence collection, the evidence is not saved in the evidence locker, but written to a local cache to be retrieved and saved to the locker at a later point. Due to this the evidence cannot be viewed using the `cocoa locker evidence get` command at this point.
-However the attachments (if any) are saved to the evidence locker during evidence collection and can be viewed using the attachment URL or `cocoa locker attachment get` command.
-
-This feature is controlled by the flag `batched-evidence-collection` and is enabled by default in CI, CD, and CC pipelines. You can disable it by setting the environment property `batched-evidence-collection` to 0.
-
-When the flag is enabled, ensure that your stage images contain `git` because the `git` CLI holds the evidences inside the file system until its published.
-{: note}
-
 
 ## Multiple assets in collect-evidence
 {: #multi-asset-evidence-collection}

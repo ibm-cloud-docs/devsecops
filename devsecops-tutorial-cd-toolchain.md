@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-01-20"
+lastupdated: "2026-02-12"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -23,11 +23,9 @@ completion-time: 1h
 {: toc-services="containers, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-With this tutorial, you can use the toolchain template for continuous deployment (CD) with {{site.data.keyword.compliance_short}} related practices in DevSecOps. The template is preconfigured with the settings. You can validate and provide your configuration to complete the tutorial.
+With this tutorial, you can use the toolchain template for continuous deployment (CD). The template is preconfigured with the settings. You can validate and provide your configuration to complete the tutorial.
 {: shortdesc}
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Before you begin
 {: #tutorial-cd-toolchain-prereqs}
@@ -175,13 +173,6 @@ Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) t
 5. Click **Continue**.
 
 Optionally, you can toggle sending notifications with the `slack-notifications` environment property in your CD pipeline by using `0 = off, and 1 = on`.
-
-#### {{site.data.keyword.compliance_short}}
-{: #tutorial-cd-toolchain-scc}
-
-1. Accept or edit the automatically populated settings. 
-   
-2. Click **Continue** to view the Summary page.
 
 
 ## Create the CD toolchain

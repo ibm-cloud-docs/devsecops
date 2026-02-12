@@ -15,7 +15,8 @@ subcollection: devsecops
 # Managing IAM access for cloud resources accessed by the DevSecOps Toolchains
 {: #iam-permissions}
 
-{{site.data.keyword.cloud}} Identity and Access Management (IAM) enables administrators to assign specific roles such as Viewer, Editor, Operator, and Administrator to users and service identities. This defines their access levels to resources like Continuous Delivery, Secrets Manager, Container Registry, Cloud Object Storage, Security and Compliance Center, as well as deployment targets such as Kubernetes clusters and Code Engine.
+{{site.data.keyword.cloud}} Identity and Access Management (IAM) enables administrators to assign specific roles such as Viewer, Editor, Operator, and Administrator to users and service identities. This defines their access levels to resources like Continuous Delivery, Secrets Manager, Container Registry, Cloud Object Storage, as well as deployment targets such as Kubernetes clusters and Code Engine.
+
 In IBM Cloud DevSecOps pipelines, different sets of IAM permissions are required based on the actor's role. Broadly, roles in IBM Cloud DevSecOps pipelines can be categorized into two main types:
 
 - **Pipeline Administrators**
@@ -33,9 +34,6 @@ The access to DevSecOps pipelines and resources can be granted in two primary ap
   - Service ID based approach
 
 Both methods support secure access management in IBM Cloud, with API keys mapped to access groups being ideal for centralized role management, while Service ID API keys offer a more flexible and secure way to authenticate automated DevSecOps workflows.
-
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Access Group based approach
 
