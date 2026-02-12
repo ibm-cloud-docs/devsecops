@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-30"
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps, cc pipeline, continuous compliance pipeline,
 
@@ -18,10 +18,8 @@ subcollection: devsecops
 The continuous compliance pipeline (CC pipeline) periodically scans the deployed artifacts and their source repositories.
 {: shortdesc}
 
-The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) repo by using the `environment-tag` value to determine which is the latest deployed state to look at. After scanning and running checks on artifacts and source repositories, the pipeline creates a new incident issue or updates the existing incident issues in the incident repository. Finally, using these issues and the results, the pipeline collects evidence and summarizes the evidence, so the [Security and Compliance Center](https://cloud.ibm.com/security-compliance/overview){: external} can update the compliance status of the found artifacts.
+The CC pipeline processes the entries from the [inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory) repo by using the `environment-tag` value to determine which is the latest deployed state to look at. After scanning and running checks on artifacts and source repositories, the pipeline creates a new incident issue or updates the existing incident issues in the incident repository. Finally, using these issues and the results, the pipeline collects evidence and summarizes the evidence to update the compliance status of the found artifacts.
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Stages and tasks
 {: #devsecops-cc-pipeline-stages}

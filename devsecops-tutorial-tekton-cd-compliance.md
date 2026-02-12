@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-11"
+lastupdated: "2026-02-12"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -241,21 +241,7 @@ Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) t
 4. Choosing the events for which you want to receive notifications for **Automated Slack Notifications**.
 5. Click **Continue**.
 
-### Security and Compliance
-{: #tutorial-tekton-cd-tool-sec}
 
-To integrate the toolchain with the {{site.data.keyword.compliance_short}} service, you need to provide a name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector. 
-   
-
-1. Enter a **Name** to verify the {{site.data.keyword.compliance_short}} posture of the toolchain.
-2. Enter an **Evidence repository name or URL**. 
-3. Accept **Evidence context** as `Continuous Deployment`.
-4. Accept **Use profile with attachment** as `Disabled`. 
-   
-5. Click **Continue** to view the Summary page.
-
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ### Private worker
 {: #tutorial-tekton-cd-tool-private-worker}

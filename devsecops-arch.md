@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-03"
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps, architecture, compliance, secure, CI, CD, CC, IBM Cloud
 
@@ -34,7 +34,7 @@ The following diagram shows the implementation workflow and main features of the
 
 * Pull or merge request validation uses a specific pull request pipeline that echoes status back to the pull request. This feature allows developers to find problems early in the development cycle.
 * Integration is achieved by using a continuous integration pipeline that implements many controls out of the box and collects normalized evidence for these integrations in an evidence locker (COS bucket). It also writes metadata on the artifacts to deploy into an artifacts inventory repo, which enables GitOps practices.
-* Delivery is performed by using a continuous deployment pipeline to process content from the artifacts inventory and collect evidence to generate a change request for each deployment. It can also record compliance facts in the {{site.data.keyword.compliance_short}}, and these facts can be assessed against a compliance profile.
+* Delivery is performed by using a continuous deployment pipeline to process content from the artifacts inventory and collect evidence to generate a change request for each deployment. It can also record compliance facts, and these facts can be assessed against a compliance profile.
 
 As part of a continuous deployment staging deployment, continuous integration pipelines typically emit to the inventory master branch by using pull requests to promote the changes to a staging branch. Then, when ready, the changes are promoted again from staging to production with a subsequent branch promotion. To drive a coordinated release deployment, you can have multiple continuous deployment pipelines that output to a shared inventory and evidence locker.
 
@@ -42,6 +42,3 @@ Only one change request is created when multiple artifacts in that inventory are
 {: tip}
 
 You can have multiple continuous deployment pipelines that pull from a shared inventory and evidence locker, which enables multiple environments to be targeted from the same continuous integration input.
-
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-11"
+lastupdated: "2026-02-12"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -222,21 +222,6 @@ You can add the Slack Tool after toolchain creation.
 
 After you create your toolchain, toggle sending notifications with the `slack-notifications` environment property in your CD pipeline (0 = off, 1 = on)
 
-#### Security and Compliance
-{: #devsecops-tutorial-iac-cd-scc}
-
-To integrate the toolchain with {{site.data.keyword.compliance_short}}, you must provide the following information:
-
-* A name and the evidence locker repository name for the {{site.data.keyword.compliance_short}} data collector.
-* The evidence namespace for the type of the toolchain, which is either **Continuous Deployment** or **Continuous Compliance**.
-
-Use the {{site.data.keyword.cloud_notm}} Framework for Financial Services profile for DevSecOps toolchains.
-{: tip}
-
-
-
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Create the CD toolchain
 {: #devsecops-tutorial-iac-cd-summary}

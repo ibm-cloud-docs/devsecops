@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-02-11"
+lastupdated: "2026-02-12"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -23,11 +23,9 @@ completion-time: 1h
 {: toc-services="schematics, ContinuousDelivery"}
 {: toc-completion-time="1h"}
 
-With this tutorial, you can use the toolchain template for continuous integration (CI) with the {{site.data.keyword.compliance_short}} related practices in DevSecOps for Infrastructure as Code (IaC) Terraform. It is preconfigured for continuous deployment (CD) with inventory integration, change management with {{site.data.keyword.gitrepos}}, evidence collection, and deployment of the infrastructure to {{site.data.keyword.cloud_notm}}.
+With this tutorial, you can use the toolchain template for continuous integration (CI) in DevSecOps for Infrastructure as Code (IaC) Terraform. It is preconfigured for continuous deployment (CD) with inventory integration, change management with {{site.data.keyword.gitrepos}}, evidence collection, and deployment of the infrastructure to {{site.data.keyword.cloud_notm}}.
 {: shortdesc}
 
-Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
 
 ## Before you begin
 {: #devsecops-tutorial-iac-ci-prereqs}
