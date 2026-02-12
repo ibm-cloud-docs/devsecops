@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2025, 2025
-lastupdated: "2025-11-21"
+  years: 2025, 2026
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -66,8 +66,7 @@ Git triggers are used to run the Simple Automation Pipeline in response to event
 
 Depending on the Git event selected, the following variables are passed to the stages:
 
-- [ ] When a pull request is opened or updated
-- [ ] When a pull request is closed
+**When a pull request is opened or updated:**
 
 | Variable      | Description                                   |
 |---------------|-----------------------------------------------|
@@ -79,7 +78,7 @@ Depending on the Git event selected, the following variables are passed to the s
 | `base-sha`    | Commit SHA of the PR base branch.             |
 | `pr-url`      | API URL of the pull request.                  |
 
-- [ ] When a commit is pushed:
+**When a commit is pushed:**
 
 | Variable     | Description                          |
 |--------------|--------------------------------------|

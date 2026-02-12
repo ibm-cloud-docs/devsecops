@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-10-27"
+  years: 2023, 2026
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps pipeline definitions, pipeline version, pipeline variant, devsecops templates, devsecops template
 
@@ -18,7 +18,7 @@ subcollection: devsecops
 Different versions of pipeline definitions are available to use with DevSecOps templates. You might need to use a specific version, depending on your needs.
 {: shortdesc}
 
-The following table lists the different versions of pipeline definitions that are used by DevSecOps templates:
+The following table lists the different versions of pipeline definitions that are used by DevSecOps templates. Refer to the table for version details:
 
 |Version |Description |
 |:----------|:------------------------------|

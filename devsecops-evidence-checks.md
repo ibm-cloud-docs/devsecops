@@ -64,7 +64,7 @@ Evidence can be declared as:
 *  recommended(default)
 *  required
 
-Below diagram shows how the evidence aggregation works:
+The following diagram shows how the evidence aggregation works:
 
  ![evidence aggregation](images/Evidence-collection.png)
  {: caption="Evidence aggregation" caption-side="bottom"}
@@ -82,7 +82,7 @@ Supported evidences for gating:
 ### Various deployment topologies:
 {: #various-deployment-topology}
 
-#### 1. Promotion from `master` to `prod`
+#### Promotion from `master` to `prod`
 {: #various-deployment-topology-step1}
 
  ![master to prod Promotion](images/devsecops-evidence-checks-master-prod.png){: caption="Usecase 1. Promotion from `master` to `prod`" caption-side="bottom"}
@@ -91,7 +91,7 @@ Supported evidences for gating:
 ![Properties for `Manual Promotion Trigger` and `Manual CD Trigger`](images/devsecops-evidence-checks-master-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger`"}
 
 
-#### 2. Promotion from `master` to `stage` and then to `prod`
+#### Promotion from `master` to `stage` and then to `prod`
 {: #various-deployment-topology-step2}
 
  ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-prod.png){: caption="Usecase 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
@@ -103,7 +103,7 @@ Supported evidences for gating:
 
 ![Config file version2](images/devsecops-evidence-config-version2-cd.png){: caption="Config file version2"}
 
-#### 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
+#### Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step3}
 
  ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-south-prod.png){: caption="Usecase 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}

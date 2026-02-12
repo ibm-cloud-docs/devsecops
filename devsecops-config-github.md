@@ -76,7 +76,7 @@ On clicking the green button **New Branch RuleSet**, a page to fill in the Rules
 
 ![Select Target branches](images/devsecops_configure-branch-protection_github_targetbranch_ruleset.png){: caption="Select Target branches" caption-side="bottom"}
 
-3. Configure Bypass permissions under **Bypass list** by clicking on **Add bypass**. You can add the required roles who can bypass the checks. You can leave the list empty (this is equivalent to enabling **Do not allow bypassing the above settings** in traditional Branch protection settings).
+3. Configure Bypass permissions under **Bypass list** by clicking on **Add bypass**. You can add the required roles who can bypass the checks. You can leave the list empty (this is equivalent to enabling **Do not allow bypassing these settings** in traditional Branch protection settings).
 
 ![Add bypass actors](images/devsecops_configure-branch-protection_github_bypass_ruleset.png){: caption="Add bypass actors" caption-side="bottom"}
 
@@ -114,7 +114,7 @@ After enabling the `Require status checks to pass before merging` option, you ne
 - `tekton/code-unit-tests`
 - `tekton/code-vulnerability-scan`
 
-The above checks are the default expected pull request status checks in pipeline.
+These checks are the default expected pull request status checks in pipeline.
 
 ![Status checks](images/devsecops_configure-branch-protection_github_checks_ruleset.png){: caption="Status checks" caption-side="bottom"}
 
@@ -201,11 +201,11 @@ If no existing rules are set up, click on the **Add rule** button and enter the 
 
 ![Branch protection rules](images/devsecops_configure-branch-protection_branch_protection_rule.png){: caption="Branch protection rules" caption-side="bottom"}
 
-4. Enable the option **Do not allow bypassing the above settings** to **prevent** administrators and custom roles with the "bypass branch protections" permission to bypass the required branch protection checks.
+4. Enable the option **Do not allow bypassing the settings** to **prevent** administrators and custom roles with the **bypass branch protections** permission from bypassing the required branch protection checks.
 
 ![Branch protection rules](images/branch_protection_dont_allow_bypass.png){: caption="Do not allow bypassing the above settings" caption-side="bottom"}
 
-Currently, warnings are floated in logs if the `Do not allow bypassing the above settings` check is not enabled. It will not fail the branch protection check till the check is made mandatory by mid March. Please enable the check by mid March to prevent failure of pipeline.
+Currently, warnings are floated in logs if the `Do not allow bypassing these settings` check is not enabled. It will not fail the branch protection check till the check is made mandatory by mid March. Please enable the check by mid March to prevent failure of pipeline.
 {: note}
 
 
@@ -244,7 +244,7 @@ After enabling the `Require status checks to pass before merging` option, you ne
 
 The status checks shown must pass before merging a pull request.
 
-These checks are the default expected pull request status checks in the pipeline.
+These checks are the default expected pull request status checks in pipeline.
 
 #### Setting customized list of compliance checks
 {: #devsecops-config-customized-list}

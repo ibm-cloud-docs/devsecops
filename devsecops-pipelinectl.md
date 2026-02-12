@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2025
-lastupdated: "2025-12-02"
+  years: 2021, 2026
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps, pipelinectl
 
@@ -616,8 +616,9 @@ The following code saves all the repositories, all the artifacts and `<env_varia
 pipelinectl serialize --all-repos --all-artifacts <env_variable1> <env_variable2> > foo.json
 ```
 {: codeblock}
+This command is not an alias. You need `pipelinectl` explicitly.
+{: note}
 
-> This command is not an alias. You need `pipelinectl` explicitly
 
 ### deserialize
 {: #deserialize}
@@ -630,8 +631,9 @@ Example:
 pipelinectl deserialize ./foo.json
 ```
 {: codeblock}
+This command is not an alias, need `pipelinectl` explicitly.
+{: note}
 
-> This command is not an alias, need `pipelinectl` explicitly
 
 ## Low-level methods
 {: #low-level-methods}

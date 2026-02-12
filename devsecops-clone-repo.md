@@ -82,7 +82,7 @@ clone_repo <repo url t> <branch e.g. master> <repo directory e.g. repo_directory
   - If not set or set to any other value, the submodules will be cloned using the default local paths provided in the `.gitmodules` file of the parent repository.
 
 ### Important Notes:
-- `Retry Mechanism` : The script retries the clone command up to 5 times with a 2-second delay between attempts if a "Connection timed out" error occurs.
+- `Retry Mechanism` : The script retries the clone command up to 5 times with a 2-second delay between attempts if a **Connection timed out** error occurs.
 - `Error Handling` : If authentication or other critical errors occur, the script exits with a non-zero status and provides guidance on resolving common issues.
 - `Error Message Sanitisation`: The script sanitizes error messages to ensure sensitive information, such as authentication tokens, are not exposed in the output. This is done using sed to replace the sensitive parts of URLs with placeholders.
 
