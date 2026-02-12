@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-11"
+lastupdated: "2026-02-12"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -180,6 +180,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			| Unlocked | 
 |`incident-repo`  	|tool integration		|The incident issues the repo URL.	|Optional			| Locked | 
 |`inventory-repo`		|tool integration		|The inventory repo URL.	|Optional			| Locked | 
+|`inventory-repo-branch`   |text  |The branch of the inventory repo. |Optional    | Locked |
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked | 
 |`opt-in-gosec`		|text		|Enables the `gosec` static scan.	|Optional			| Locked | 
 |`one-pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			| Unlocked | 
