@@ -147,7 +147,8 @@ Ensure that:
 
 ## Setting up App-Preview PR Pipeline
 
-### 1. Setting up trigger
+### Setting up trigger
+{: #devsecops-app-preview-pr-pipeline-setup-trigger}
 
 To configure the pipeline trigger:
 
@@ -171,7 +172,7 @@ Alternatively, create a new trigger:
 
 Now, when a new pull request is created, the `app-preview` trigger will be activated.
 
-### 2. Required Environment Properties
+### Required Environment Properties
 
 
 In addition to the required environment properties for the PR pipeline, the following properties have been correctly configured in your pipeline setup to ensure the App Preview PR Pipeline runs successfully.

@@ -30,17 +30,17 @@ To update the async webhook token in the pipeline, for example, to update a secr
 {: shortdesc}
 
 1. Search for the async webhook trigger.
-    Your async webhook trigger is added to the triggers of your pipeline, named `Subpipeline Webhook Trigger`. Therefore, we must generate a new secret key from this trigger to use it with the async webhook trigger. {: note}
+    Your async webhook trigger is added to the triggers of your pipeline, named **Subpipeline Webhook Trigger**. Therefore, we must generate a new secret key from this trigger to use it with the async webhook trigger. {: note}
 
 1. Update the "Secret" value of the trigger. Copy this value and save the trigger.
 1. In your desired pipeline's **Environment properties**, replace the value with the new generated secret value (value copied in the previous step ) to the secret `subpipeline-webhook-token`.
 
 The pipeline run now picks up the new secret value on the next new run, and triggers your async stages. The triggering scripts searches in the content.
 
-Do not change the following default varaiable names :
-- Trigger name "Subpipeline Webhook Trigger" and the
+Do not change the following default variable names :
+- Trigger name **Subpipeline Webhook Trigger** and the
 - Header name `x-async-stage-token` in the trigger
--  pipeline variable `subpipeline-webhook-token`
+- Pipeline variable `subpipeline-webhook-token`
 {: important}
 
 You can change the webhook URL and the worker of the trigger as well, if necessary, also any trigger parameters added to the Subpipeline Webhook Trigger will be available in the async stage.

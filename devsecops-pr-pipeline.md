@@ -131,7 +131,7 @@ Create a new Git Trigger or duplicate an existing one. Keep all default settings
 - `Trigger on`: select `CEL filter`
   - `CEL filter`: enter `body.action == 'checks_requested'`
 
-Merge Queue PR's use ephemeral branches - created "on the fly" when the original PR is added to the Merge Queue - from which the Merge Queue PR is created. As a consequence, corresponding Git event payload (that triggers the Pull Request pipeline) does not contain any information about PR URL or HTML URL.
+Merge Queue PR's use ephemeral branches - created dynamically when the original PR is added to the Merge Queue - from which the Merge Queue PR is created. As a consequence, corresponding Git event payload (that triggers the Pull Request pipeline) does not contain any information about PR URL or HTML URL.
 {: note}
 
 Irrelevant in Merge Queue context, the following DevSecOps features must be disabled by adding corresponding text properties:

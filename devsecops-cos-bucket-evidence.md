@@ -222,6 +222,6 @@ Do not delete the old bucket for 365 days, as it would be required for audit pur
 
 ## Troubleshooting Guide for slow running pipelines
 
-1. `force-redeploy` should not be set to true, unless its a redeploy of all the enteries.
-2. [Promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline) should be used to promote the right set of delta, so that delat computaion is correct.
-3. If you see lines as , that means CI pipeline is not generating the correct summaries. Go back to the CI pipeline as check if there is any error while creating the mini-summaies into finish step.
+1. `force-redeploy` should not be set to true, unless its a redeploy of all the entries.
+2. [Promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline) should be used to promote the correct set of delta, so that delta computation is correct.
+3. If you see such lines, that means CI pipeline is not generating the correct summaries. Return to the CI pipeline and check if there is any error while creating the mini-summaries into finish step.
