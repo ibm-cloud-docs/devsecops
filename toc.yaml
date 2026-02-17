@@ -136,7 +136,10 @@ toc:
           topics:
           - devsecops-list-supported-scan-tools.md
           - devsecops-configuring-detect-secrets-scan.md
-          - devsecops-configuring-zap-scans.md
+          - topicgroup:
+              label: Configuring ZAP scan
+              topics:
+              - devsecops-configuring-zap-scans-v1.md
           - devsecops-configure-gosec-scan.md
           - devsecops-configuring-sonarqube-scan.md
           - devsecops-configuring-sysdig-scan.md
