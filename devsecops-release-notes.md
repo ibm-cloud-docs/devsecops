@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-02-17"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -16,14 +16,39 @@ content-type: release-note
 # Release notes for DevSecOps
 {: #release-notes}
 
-The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to `open-v10` branch of devsecops pipeline.
+The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to the `open-v10` branch of the DevSecOps pipeline.
 {: deprecated}
 
-Support for Git Evidence Locker feature has been removed - hence Cloud Object Store is now a mandatory Evidence Locker for all devsecops users
+Support for Git Evidence Locker feature has been removed - hence Cloud Object Store is now a mandatory Evidence Locker for all DevSecOps users
 {: deprecated}
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 14 February 2026
+{: #devsecops-Feb2026-14}
+{: release-note}
+
+### Updates for DevSecOps version - open-v10.60.0
+{: #devsecops-open-v10.60.0}
+
+Pipeline run optimizations
+:   Log processing in pipeline runs is now optimized to reduce the time taken to complete the run.
+
+Removal of git evidence locker
+:   As previously announced - support for Git Evidence Locker feature has been removed - hence Cloud Object Store is now a mandatory Evidence Locker for all DevSecOps users.
+
+Batch processing of evidence collection
+:   Since the support of Git Evidence Locker feature has been removed, the requirement of batch processing of evidence collection has been removed.
+
+Update to ZAP 2.17.0
+:   Updated to ZAP 2.17.0 to address the security vulnerabilities.
+
+### Updates for DevSecOps version - open-v10.59.0
+{: #devsecops-open-v10.59.0}
+
+Author information against the pull-requests in change request
+:   Change request summary now contains the list of pull-requests along with the author information
 
 ## 06 December 2025
 {: #devsecops-Dec2025-01}
@@ -42,7 +67,7 @@ Pipelinectl enhancements
 :   Added new pipelinectl command to save and retrieve immutable properties using `set_envc`/`get_envc`.
 
 Performance improvements in the CD pipeline
-:   Refactored the CD pipeline to run the pipeline faster.
+:   Refactored the CD pipeline to run faster.
 
 ### Updates for DevSecOps version - open-v10.57.1
 {: #devsecops-open-v10.57.1}
@@ -57,7 +82,7 @@ Reuse of ibmcloud login session
 :   Added ability to reuse ibmcloud session during execution of a pipeline run.
 
 Support private endpoints
-:   Modified ibmcloud login flow to use private end points where supported.
+:   Modified ibmcloud login flow to use private endpoints where supported.
 
 ### Updates for DevSecOps version - open-v10.56.1
 {: #devsecops-open-v10.56.1}
@@ -72,10 +97,10 @@ Update gosec to v2.22.10
 :   Updated gosec version to v2.22.10.
 
 Mend scan enhancements
-:   Mend scan now opens a non vulnerability issue in case of not finding any supported programming language.
+:   Mend scan now opens a non-vulnerability issue in case of not finding any supported programming language.
 
 Authentication support for ZAP UI scan
-:  A new pipeline environment variable option is provided `zap-ui-auth-user` is provided to be used for running zap scan as a specific user. This option is only valid only in the context of the provided `context-file` for the zap ui scan which should also contain the information of the way to authenticate the user provided in `zap-ui-auth-user`.
+:  A new pipeline environment variable option `zap-ui-auth-user` is provided to be used for running zap scan as a specific user. This option is only valid in the context of the provided `context-file` for the zap ui scan which should also contain the information on how to authenticate the user provided in `zap-ui-auth-user`.
 
 ### Updates for DevSecOps version - open-v10.55.0
 {: #devsecops-open-v10.55.0}
@@ -99,16 +124,16 @@ Performance Improvements
 {: #devsecops-open-v10.53.0}
 
 Trigger payload for Simple automation pipeline
-:   Added trigger payload to simple automation pipeline for the end users use.
+:   Added trigger payload to simple automation pipeline for the end user use.
 
 Evidence information in auto generated issues
-:   devsecops now adds evidence information to the auto generated issues as an additional comment. 
+:   DevSecOps now adds evidence information to the auto generated issues as an additional comment.
 
 Deprecation of `open-v9` version of pipelines
 :   With the `open-v10` version of pipelines providing concurrent execution of tasks and improved pipeline performance, the `open-v9` version of pipelines are now deprecated.
 
 Deprecated `payload` for PR pipelines
-:   Due to inefficiencies in the way payload is handled the payload support has been deprecated from PR pipelines. If any of your workloads are dependent on payload. Please use this snippet:
+:   Due to inefficiencies in the way payload is handled the payload support has been deprecated from PR pipelines. If any of your workloads are dependent on payload, please use this snippet:
 ```
 PR_BODY=$(curl -s -u "$USER:$TOKEN" "$PR_URL" | jq .body
 ```
@@ -120,7 +145,7 @@ Deprecation of git evidence lockers
 {: #devsecops-open-v10.51.0-open-v9.68.0}
 
 Support for CodeEngine `scale-down-delay`
-:   Code engine utilities of devsecops now support `scale-down-delay` property.
+:   Code engine utilities of DevSecOps now support `scale-down-delay` property.
 
 ## 01 September 2025
 {: #devsecops-Sept2025-01}
@@ -130,13 +155,13 @@ Support for CodeEngine `scale-down-delay`
 {: #devsecops-open-v10.50.0-open-v9.67.0}
 
 Selective deployment using inventory filtering
-:   Enhanced inventory filtering to deploy previously filtered inventories
+:   Enhanced inventory filtering to deploy previously filtered inventories.
 
 Update to gosec version
-:   Updated gosec tool to v2.22.8
+:   Updated gosec tool to v2.22.8.
 
 Update to detect secrets tool
-:   Added --word-list option to filter out potential false positives
+:   Added --word-list option to filter out potential false positives.
 
 ## 22 August 2025
 {: #devsecops-Aug2025-22}
@@ -146,7 +171,7 @@ Update to detect secrets tool
 {: #devsecops-open-v10.49.0-open-v9.66.0}
 
 Update to gosec version
-:   Updated gosec tool to v2.22.7
+:   Updated gosec tool to v2.22.7.
 
 ### Updates for DevSecOps version - open-v9.65.1 and open-v10.48.1
 {: #devsecops-open-v10.48.1-open-v9.65.1}
@@ -164,19 +189,19 @@ Simple tekton pipeline for operational tasks
 {: #devsecops-open-v10.47.0-open-v9.64.0}
 
 Set branch protection settings
-:   Developed a new utility to set recommended branch protection settings to all the repositories saved in the pipeline run
+:   Developed a new utility to set recommended branch protection settings to all the repositories saved in the pipeline run.
 
 ### Updates for DevSecOps version - open-v9.63.1 and open-v10.46.1
 {: #devsecops-open-v10.46.1-open-v9.63.1}
 
 Sonarqube analysis with community edition
-:   Stop sonarqube analysis in case of community edition as sonarqube analysis is not available in community edition
+:   Stop sonarqube analysis in case of community edition as sonarqube analysis is not available in community edition.
 
 ### Updates for DevSecOps version - open-v9.62.0 and open-v10.45.0
 {: #devsecops-open-v10.45.0-open-v9.62.0}
 
 Enhanced sonarqube configuration
-:   Enahanced sonarqube configuration for multi branch projects
+:   Enhanced sonarqube configuration for multi branch projects.
 
 ### Updates for DevSecOps version - open-v9.61.0 and open-v10.44.0
 {: #devsecops-open-v10.44.0-open-v9.61.0}
@@ -188,16 +213,16 @@ Bug fix release
 {: #devsecops-open-v10.42.0-open-v9.60.0}
 
 Support for Rulesets in github
-:   Added support for rulesets to validate branch protection checks
+:   Added support for rulesets to validate branch protection checks.
 
 Git clone enhancements
-:   Added support for user provided optimization flags
+:   Added support for user provided optimization flags.
 
 Support for github merge queues
-:   Added support for github merge queues
+:   Added support for github merge queues.
 
 Creation of Change request evidence in CD pipeline
-:   Added creation of evidence for creation of change request
+:   Added creation of evidence for creation of change request.
 
 ## 10 August 2025
 {: #devsecops-Aug2025-10}
@@ -236,7 +261,7 @@ Support for `payload` will end on September 30, 2025.
 As part of ongoing efforts to improve build efficiency and stability, we are officially ending the support for Git based evidence lockers.
 
 #### Why this change?
-We are dropping git based evidence lockers to reduce usage of git and avoid rate limits imposed by git servers. Recommending users to migrate to Cloud object storage bucket as evidence lockers
+We are dropping git based evidence lockers to reduce usage of git and avoid rate limits imposed by git servers. We recommend that users migrate to Cloud object storage bucket as evidence lockers.
 
 #### What you need to do:
 To ensure continued compatibility with GitHub Enterprise, please take the following steps to configure your toolchains/pipelines:
@@ -257,7 +282,7 @@ Support for Github/GitLab evidence lockers will end on September 30, 2025.
 ### Updates for DevSecOps version - open-v9.59.0 and open-v10.41.0
 {: #devsecops-open-v10.41.0-open-v9.59.0}
 
-Enahanced reporting of CVE in pr validation
+Enhanced reporting of CVE in pr validation
 :   CVEs found in the pr validation are reported in the PR as a comment.
 
 ### Updates for DevSecOps version - open-v9.58.0 and open-v10.40.0
@@ -308,7 +333,7 @@ Enhancements to required evidence checks
 :   The required Evidence check config file version2 now supports use of environment variables in the config file as below:
   - "source_environments": `[ { "name": "$source"  } ]` - `$source` is an environment variable, specify the exact source branch name.
   - "target_environments": `[ { "name": "$target"  } ]` - On same lines `$target` refers to the exact target branch name.
-  - pipelinerun will substitute the environment variables as set in devsecops environment properties in this config v2 file before consuming.
+  - The pipelinerun will substitute the environment variables as set in DevSecOps environment properties in this config v2 file before consuming.
   - This makes the required evidence check config v2 file branch agnostic.
 
 
@@ -323,10 +348,10 @@ Separation of debug and info logs
   - banner()
   - debug()
 
-    The debug log is disabled by default and can be turned on by setting the environment property pipeline-log-level to DEBUG. The debugging level provides more fine-grained/granular logging for troubleshooting purposes.
+    The debug log is disabled by default and can be turned on by setting the environment property pipeline-log-level to DEBUG. The debugging level provides more fine-grained logging for troubleshooting purposes.
 
 Support to use an additional COS bucket
-:   This feature enables support for an additional COS configuration which is required when a user needs to migrate from their existing COS bucket to another COS bucket, please specify the folllowing properties with the existing COS bucket information which will be read only.
+:   This feature enables support for an additional COS configuration which is required when a user needs to migrate from their existing COS bucket to another COS bucket, please specify the following properties with the existing COS bucket information which will be read only.
   - backup-cos-api-key
   - backup-cos-bucket-name
   - backup-cos-endpoint
@@ -341,7 +366,7 @@ Support to use an additional COS bucket
 Log improvements
 :   Enhanced logging for the custom run stage, designed for customizable run stages.
 
-Availabity of detect-secrets log
+Availability of detect-secrets log
 :   `detect-secrets` markdown output is now accessible for further use in a pipeline run.
 
 ### Updates for DevSecOps version - open-v9.49.1 and open-v10.30.1
@@ -397,13 +422,13 @@ Bug fix release
 {: #devsecops-open-v10.27.0-open-v9.46.0}
 
 Updated images for gosec and zap scans
-:   Updated gosec scanner to support newer go versions and zap scanner images have been updated to fix vulnurerabilities
+:   Updated gosec scanner to support newer go versions and zap scanner images have been updated to fix vulnerabilities
 
 ### Updates for DevSecOps version - open-v9.45.0 and open-v10.26.0
 {: #devsecops-open-v10.26.0-open-v9.45.0}
 
 `sbom-utility` update
-:   `sbom-utility` dependency verion is updated to 0.16.0 to support schema version 1.6
+:   `sbom-utility` dependency version is updated to 0.16.0 to support schema version 1.6
 
 Logging improvements
 :   Reused evidence is presented in tabular format
@@ -422,7 +447,7 @@ Standardized Slack Notifications for CD Pipelines
 {: #devsecops-open-v10.24.0-open-v9.43.0}
 
 Enhancement to Branch Protection Checks improving security for Code Branches
-:   The issue management system now lists the failed Branch Protection Checks as Issue Comments to to identify the failed branch protection causes faster.
+:   The issue management system now lists the failed Branch Protection Checks as Issue Comments to identify the failed branch protection causes faster.
 
 Validate Inventory with `cocoa inventory validate` command
 :   Validate existing inventory repositories and entries using the new `cocoa inventory validate` command.
@@ -495,8 +520,8 @@ Bug fix release for `open-v10`
 ### Updates for DevSecOps version - open-v9.37.0 and open-v10.18.0
 {: #devsecops-open-v10.18.0-open-v9.37.0}
 
-Transition to Cloud Object Storage(COS) as evidence locker
-:   `devsecops` started transition to Cloud Object Storage(COS) as primary evidence locker. Also sends slack notifications informing users to migrate to COS as primary evidence locker.
+Transition to Cloud Object Storage (COS) as evidence locker
+:   `devsecops` started transition to Cloud Object Storage (COS) as primary evidence locker. Also sends slack notifications informing users to migrate to COS as primary evidence locker.
 
 `yq` upgrade
 :   `devsecops` now creates `yq` version 3 and version 4 as `yq3` and `yq4` respectively.
@@ -514,7 +539,7 @@ Bug fix release
 {: #devsecops-open-v10.17.0-open-v9.36.0}
 
 Logging of evidence collection data
-:   Improved pipeline logs to show relavant data in tabular format
+:   Improved pipeline logs to show relevant data in tabular format
 
 ## 16 July 2024
 {: #devsecops-July2024-16}
@@ -546,7 +571,7 @@ Bug fix release
 {: #devsecops-open-v10.15.0-open-v9.34.0}
 
 Warning on invalid baseline during secrets detection
-:   Checks added to fail detect secrets scan if an corrupt / incompatible baseline file is provided. An issue will now be created if the detect secrets scan finds a baseline file that would not work with the scanner, users would need to rectify the same to proceed with the scan
+:   Checks added to fail detect secrets scan if a corrupt / incompatible baseline file is provided. An issue will now be created if the detect secrets scan finds a baseline file that would not work with the scanner, users would need to rectify the same to proceed with the scan
 
 ### Updates for DevSecOps version - open-v9.33.0 and open-v10.14.0
 {: #devsecops-open-v10.14.0-open-v9.33.0}
@@ -561,7 +586,7 @@ Enhancements for “Required Evidence Check” Feature in the CD/CC Pipeline
 :   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](/docs/devsecops?topic=devsecops-evidence-checks-validation#evidence-checks-config-filev2) for documentation using the new schema.
 
 Performance improvements
-:   Improved pipeline performance when Cloud Object Storage(COS) as the evidence locker for one pipeline evidences
+:   Improved pipeline performance when Cloud Object Storage (COS) is used as the evidence locker for one pipeline evidences.
 
 Support for Sysdig policies
 :   Added the support for Sysdig policies. Issues are created based on the applied policies.
@@ -584,7 +609,7 @@ Partial promotion of inventory artifacts
 {: #devsecops-open-v10.11.0-open-v9.30.0}
 
 Pipeline-run name can be customized
-:   Its now possible to use custom names for pipeline-run name. Customized pipeline-run name can be provided using environment property `pipeline-display-name`
+:   It's now possible to use custom names for pipeline-run name. Customized pipeline-run name can be provided using environment property `pipeline-display-name`
 
 Custom finish stages for promotion and promotion-validation pipelines
 :   Added custom finish stages for promotion and promotion validation pipelines, where user provided script can be executed in finish stage for the purpose of cleanup. This works similar to finish stages in CI, PR, CD, CC pipelines
@@ -640,7 +665,7 @@ Incorrect behavior with CD finish task
 {: #devsecops-open-v10.6.2-open-v9.25.1}
 
 Environment property `IAM_ACCESS_TOKEN` has been removed
-:   Environment property `IAM_ACCESS_TOKEN` has been depreceated in this release.
+:   Environment property `IAM_ACCESS_TOKEN` has been deprecated in this release.
 
 Failed evidence will be collected if verification certificate is not available
 :   During the artifact verification stage, if the verification certificate is not available- DevsecOps collects failed evidence.
@@ -720,7 +745,7 @@ Pre-prod evidence collection
 SLSA attestation
 :   You can now attest images built in CI pipeline with SLSA level 3 attestation. For more information, see [Configuring collection of SLSA attestations for images](/docs/devsecops?topic=devsecops-cd-devsecops-slsa).
 
-Collection evidences for multiple assets
+Collecting evidence for multiple assets
 :   You can now collect evidence for multiple assets. For more information, see [Multiple assets in collect-evidence](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#multi-asset-evidence-collection).
 
 Support for Security and Compliance Center push API
@@ -733,7 +758,7 @@ Support for Security and Compliance Center push API
 {: #devsecops-Dec2023}
 {: release-note}
 
-- **Amber status for deployment with errors** - Deployment of manually-approved CR with red evidence now shows amber status.
+- **Amber status for deployment with errors** - Deployment of manually approved CR with red evidence now shows amber status.
 
 - **Batch processing of evidence collection** - During a pipeline run, all the evidences are collected locally to the pipeline and proceed at the end of the pipeline run. This process results in performance improvement. For more information, see [Batched evidence collection](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#batched-evidence-collection).
 
@@ -763,7 +788,7 @@ Support for Security and Compliance Center push API
 
 - **Customizable finish stage** - Modified the last stage of the pipeline to run always irrespective of pipeline status, and added ability to have a customizable step in the last stage for the use of housekeeping in case of a pipeline failure. For more information, see [Custom finish stages](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
 
-- **Added new pipeline to perform inventory PR validation** - A new pipeline has been created to seperate out inventory PR validation in CD toolchain. For more information, see [How to opt-in into promotion validation?](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-opt-in)
+- **Added new pipeline to perform inventory PR validation** - A new pipeline has been created to separate inventory PR validation in CD toolchain. For more information, see [How to opt-in into promotion validation?](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-opt-in)
 
 - **Auto remediation of vulnerabilities using CRA in CC Pipeline** - Added ability to auto remediate vulnerabilities using CRA. For more information, see [Automatically remediating vulnerabilities](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#cd-devsecops-auto-remediate)
 
@@ -825,7 +850,7 @@ DevSecOps Continuous Integration for Infrastructure as Code is available as a To
 {: release-note}
 
 - Use the native due date field in GitLab for managing issues.
-- Added `custom-exempt-label` as an environment property that so pipelines are not marked as failed if they have the matching exempt label.
+- Added `custom-exempt-label` as an environment property so that pipelines are not marked as failed if they have the matching exempt label.
 - Fixed Cloud Object Storage as an evidence locker for CC pipeline.
 
 ## 25 July 2022
