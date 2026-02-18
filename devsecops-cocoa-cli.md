@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-02-18"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2661,6 +2661,7 @@ Options:
 --source           # (Applies to config file version 2) If present, is tupple of branch:region information(with region as optional) which will be used to filter the rules against `source_environments` field.
 --target           # (Applies to config file version 2) If present, is tupple of branch:region information(with region as optional) which will be used to filter the rules against `target_environments` field.
 --pipeline-run-id  # (Applies to config file version 2) If present, is current pipeline_run_id will be used for checking evidences.
+--output-config-path # optional path to create a more suitable file based on the current config file
 ```
 {: screen}
 
