@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-01-21"
+lastupdated: "2026-02-17"
 
 keywords: DevSecOps, common scripts, scripts, pipeline stages, IBM Cloud
 
@@ -76,9 +76,11 @@ This information is displayed to help adopters identify the script and function 
 ### Customizing using Commons Scripts Library
 {: #devsecops-common-scripts-customize}
 
-The commons library can also serves as a source to copy code from and customize for specific edge cases. Use the library as a starting point to create custom scripts according to various requirements.
+The commons library can also serve as a source to copy code from and customize for specific edge cases. Use the library as a starting point to create custom scripts according to various requirements.
 
 Refer [here](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) to learn more about pipeline customization
+
+
 
 ## Best Practices
 {: #devsecops-common-scripts-best-practices}
