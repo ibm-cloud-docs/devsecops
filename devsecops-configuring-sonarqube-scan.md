@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2024
-lastupdated: "2026-02-03"
+lastupdated: "2026-02-19"
 
 keywords: tool integrations, Sonarqube
 
@@ -52,7 +52,7 @@ The instance used is available only during the run. Therefore,  you can't access
 
 - To verify if a vulnerability is checked in community edition, refer to [thread in Sonarqube community question](https://community.sonarsource.com/t/sonarqube-community-edition/39879)
 
-- The default implementation which is the SonarQube community Edition instance registered with CISO is not an ITSS-approved edition.SonarQube Enterprise Edition is the only ITSS-approved edition.
+
 
 To download SonarQube, refer [SonarQube Downloads](https://www.sonarsource.com/products/sonarqube/downloads/)
 
