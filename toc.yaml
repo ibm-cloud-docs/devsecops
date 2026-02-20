@@ -111,6 +111,7 @@ toc:
           - devsecops-automate-changemgmt.md
           - devsecops-approve-cr.md
           - devsecops-change-mgmt-data.md
+          - devsecops-changemgmt-systems.md
       - topicgroup:
           label: Managing evidence
           topics:
