@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-18"
+lastupdated: "2026-02-20"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2672,6 +2672,357 @@ Run the command:
 ```
 {: codeblock}
 
+
+### cocoa locker evidence collect
+{: #locker-evidence-collect}
+
+Collect evidence and store it in the locker. This command is the underlying implementation for the `collect-evidence` shell script.
+
+#### Usage
+{: #locker-evidence-collect-usage}
+
+```bash
+cocoa locker evidence collect [OPTIONS]
+```
+
+#### Required Parameters
+{: #locker-evidence-collect-required}
+
+- `--tool-type <string>`
+   Tool identifier (e.g., "sonarqube", "cra", "owasp-zap", "detect-secrets")
+
+- `--evidence-type <string>`
+   Evidence type (e.g., "com.ibm.static_scan", "com.ibm.unit_tests", "com.ibm.detect_secrets")
+
+- `--assets <key:type>`
+   Asset specifications in format "key:type". Can be specified multiple times for multiple assets.
+   Example: `--assets app-repo:repo` or `--assets my-image:artifact`
+
+- `--status <string>`
+   Evidence status: `success` | `failure` | `pending`
+
+- `--pipeline-run-id <string>`
+   Pipeline run identifier
+
+- `--pipeline-namespace <string>`
+   Pipeline namespace: `pr` | `ci` | `cd` | `cc`
+
+- `--incident-org <string>`
+   Git organization for incident repository
+
+- `--incident-repo <string>`
+   Incident repository name
+
+##### Required Parameters for tekton platform.
+
+- `--pipeline-id <string>`
+   Identifier of the pipeline
+
+- `--task-name <string>`
+   Name of the task within the pipeline
+
+- `--step-name <string>`
+   Name of the step within the task
+
+#### Optional Parameters
+{: #locker-evidence-collect-optional}
+
+- `--attachment <path>`
+   Attachment files such as scan results (can be specified multiple times)
+
+- `--attachment-url <url>`
+   URLs of pre-uploaded attachments (can be specified multiple times)
+
+- `--meta <key=value>`
+   Metadata key=value pairs (can be specified multiple times)
+
+- `--additional-comment <string>`
+   Additional comment to include in incident issues
+
+- `--dry-run`
+   Preview without saving to locker
+
+- `--cache-mode`
+   Add attachments only, skip evidence itself
+
+- `--evidence-reuse`
+   Enable evidence reuse feature
+
+- `--evidence-per-asset`
+   Create evidence for each asset separately
+
+- `--upload-logs <boolean>`
+   Upload logs as attachments if no other attachments provided (default: true)
+
+- `--incident-git-provider <string>`
+   Git provider: `github` | `gitlab` (default: github)
+
+- `--incident-git-token-path <path>`
+   Path to Git token for authentication
+
+- `--incident-git-api-url <url>`
+   Custom Git API base URL
+
+- `--incident-labels <string>`
+   Labels to apply to incident issues (can be specified multiple times)
+
+- `--incident-assignees <string>`
+   GitHub/GitLab usernames to assign to incidents (can be specified multiple times)
+
+- `--comment-on-issues`
+   Link the added evidence on incident issues
+
+- `--pr-issue-management`
+   Enable pull request to issue linking and management
+
+- `--opt-in-auto-close`
+   Enable automatic closure of incidents if resolved
+
+- `--opt-out-nonvulnerability-issue-collection`
+   Exclude non-vulnerability-related incidents from collection
+
+- `--custom-exempt-label <string>`
+   Label indicating exemption from compliance requirements
+
+- `--platform <string>`
+   Platform used to fetch logs: `tekton` | `github-actions` (default: tekton)
+
+- `--root-pipeline-run-id <string>`
+   Identifier of the root pipeline run
+
+- `--toolchain-crn <string>`
+   Cloud Resource Name (CRN) of the toolchain
+
+- `--deployment-prefix <string>`
+   The deployment prefix
+
+- `--target-environment <string>`
+   Target environment (default: prod)
+
+- `--target-environment-purpose <string>`
+   Target environment purpose
+
+- `--collect-evidence-in-pr <string>`
+   Collect evidence in PR context: `none` | `success` | `all`
+
+- `--pr-html-url <string>`
+   URL to the associated pull request
+
+- `--base-branch <string>`
+   Base branch for the pull request
+
+- `--branch <string>`
+   Branch name
+
+- `--gh-org <string>`
+   GitHub organization where the pipeline runs ( specific to github actions platform ).
+
+- `--gh-repo <string>`
+   GitHub repository where the pipeline runs ( specific to github actions platform ).
+
+- `--gh-server-url <string>`
+   GitHub Actions: Server URL ( specific to github actions platform ).
+
+- `--gh-repository-url <string>`
+   GitHub Actions: Full repository URL ( specific to github actions platform ).
+
+- `--gh-run-attempt <string>`
+   GitHub Actions: Workflow run attempt number ( specific to github actions platform ).
+
+- `--run-id <string>`
+   Run identifier
+
+- `--xforce-api-key <string>`
+   API key for IBM X-Force Exchange
+
+- `--xforce-password <string>`
+   API password for IBM X-Force Exchange
+
+- `--xforce-url <string>`
+   IBM X-Force Exchange API URL
+
+#### Example
+{: #locker-evidence-collect-example}
+
+```bash
+cocoa locker evidence collect \
+  --tool-type "sonarqube" \
+  --evidence-type "com.ibm.static_scan" \
+  --assets "app-repo:repo" \
+  --status "success" \
+  --attachment ./sonarqube-result.json \
+  --pipeline-run-id "abc123" \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues" \
+  --meta "environment=staging"
+```
+{: codeblock}
+
+### cocoa locker evidence reuse
+{: #locker-evidence-reuse}
+
+Find and reuse existing evidence for the given asset. This command is the underlying implementation for the `check-evidence-for-reuse` shell script.
+
+#### Usage
+{: #locker-evidence-reuse-usage}
+
+```bash
+cocoa locker evidence reuse [OPTIONS]
+```
+
+#### Required Parameters
+{: #locker-evidence-reuse-required}
+
+- `--tool-type <string>`
+   Tool identifier (e.g., "sonarqube", "cra", "owasp-zap")
+
+- `--evidence-type <string>`
+   Evidence type (e.g., "com.ibm.static_scan", "com.ibm.unit_tests")
+
+- `--assets <key:type>`
+   Asset specifications in format "key:type"
+
+- `--pipeline-run-id <string>`
+   Pipeline run identifier
+
+- `--pipeline-namespace <string>`
+   Pipeline namespace: `pr` | `ci`
+
+- `--incident-org <string>`
+   Git organization for incident repository
+
+- `--incident-repo <string>`
+   Incident repository name
+
+##### Required Parameters for tekton platform.
+
+- `--task-name <string>`
+   Name of the task within the pipeline
+
+- `--step-name <string>`
+   Name of the step within the task\
+
+- `--pipeline-id <string>`
+   Identifier of the pipeline
+   
+#### Optional Parameters
+{: #locker-evidence-reuse-optional}
+
+- `--meta <key=value>`
+   Metadata for validation against the evidence found for reuse (can be specified multiple times)
+
+- `--evidence-validity-period <number>`
+   Validity period in hours (default: 24, max: 720 hours / 30 days)
+
+- `--evidence-reuse-for-failure`
+   Enable reuse of failed evidence (default: false)
+
+- `--dry-run`
+   Preview mode without actually reusing evidence
+
+- `--format <string>`
+   Output format: `json` (default: json)
+
+- `--incident-git-provider <string>`
+   Git provider: `github` | `gitlab` (default: github)
+
+- `--incident-git-token-path <path>`
+   Path to Git token for authentication
+
+- `--incident-git-api-url <url>`
+   Custom Git API base URL
+
+- `--incident-assignees <string>`
+   GitHub/GitLab usernames to assign to incidents (can be specified multiple times)
+
+- `--custom-exempt-label <string>`
+   Label indicating exemption from compliance requirements
+
+- `--deployment-prefix <string>`
+   The deployment prefix
+
+- `--root-pipeline-run-id <string>`
+   Identifier of the root pipeline run
+
+- `--toolchain-crn <string>`
+   Cloud Resource Name (CRN) of the toolchain
+
+- `--platform <string>`
+   Platform used to fetch logs: `tekton` | `github-actions` (default: tekton)
+
+- `--gh-org <string>`
+   GitHub organization where the pipeline runs ( specific to github actions platform )
+
+- `--gh-repo <string>`
+   GitHub repository where the pipeline runs ( specific to github actions platform )
+
+- `--run-id <string>`
+   Run identifier
+
+- `--environment <string>`
+   Environment (default: dev)
+
+- `--serviceEnvironment <string>`
+   Service environment (default: dev)
+
+#### Example
+{: #locker-evidence-reuse-example}
+
+Basic usage:
+
+```bash
+cocoa locker evidence reuse \
+  --tool-type "sonarqube" \
+  --evidence-type "com.ibm.static_scan" \
+  --assets "app-repo:repo" \
+  --pipeline-run-id "abc123" \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues" \
+  --format "json"
+```
+{: codeblock}
+
+With custom validity period and metadata validation:
+
+```bash
+cocoa locker evidence reuse \
+  --tool-type "cra" \
+  --evidence-type "com.ibm.code_vulnerability_scan" \
+  --assets "app-repo:repo" \
+  --pipeline-run-id "xyz789" \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues" \
+  --evidence-validity-period 48 \
+  --meta "tool-version=1.2.3" \
+  --meta "base-image=ubuntu:22.04" \
+  --format "json"
+```
+{: codeblock}
+
+Reuse failed evidence:
+
+```bash
+cocoa locker evidence reuse \
+  --tool-type "owasp-zap" \
+  --evidence-type "com.ibm.dynamic_scan" \
+  --assets "my-app:artifact" \
+  --pipeline-run-id "xxx-001" \
+  --pipeline-namespace "cd" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues" \
+  --evidence-reuse-for-failure \
+  --format "json"
+```
+{: codeblock}
+
+#### Exit Code
+{: #locker-evidence-reuse-exit}
+
+- `0`: Evidence found and reused successfully
+- `1`: No reusable evidence found or validation failed
 
 ## cocoa tekton commands
 {: #tekton-commands}

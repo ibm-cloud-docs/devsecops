@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-16"
+lastupdated: "2026-02-20"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -34,6 +34,24 @@ The `collect-evidence` script is provided by the pipeline. It does not need to b
 - `libgcc` shared library
 
 Make sure that the dependencies are installed in the base image that uses this tool for reporting evidence.
+
+## CLI Command Architecture
+{: #collect-evidence-cli-architecture}
+
+The `collect-evidence` functionality is available through two interfaces:
+
+1. **Shell Script Wrapper** (`collect-evidence`): Traditional bash script interface that provides backward compatibility
+2. **Direct CLI Command** (`cocoa locker evidence collect`): Native CLI interface with full feature access
+
+### Version Toggle
+{: #collect-evidence-version-toggle}
+
+The `collect-evidence` shell script supports two implementation versions that can be toggled using the `collect-evidence-version` environment property:
+
+| Version | Implementation | Status | Description |
+|---------|---------------|--------|-------------|
+| `v1` | Legacy | Available | Original bash-based implementation with full backward compatibility |
+| `v2` | CLI-based | Default | Modern implementation that wraps `cocoa locker evidence collect` CLI command |
 
 ## Usage
 {: #collect-evidence-usage}
@@ -89,6 +107,63 @@ echo $status # success
 {: codeblock}
 
 
+#### Switching to v2 (CLI-based implementation)
+{: #switch-to-v2}
+
+To use the new CLI-based implementation, set the environment property in your pipeline:
+
+```bash
+collect-evidence-version=v2
+```
+{: codeblock}
+
+### Using the CLI Command Directly
+{: #collect-evidence-cli-direct}
+
+```bash
+cocoa locker evidence collect \
+  --tool-type "sonarqube" \
+  --evidence-type "com.ibm.static_scan" \
+  --assets "app-repo:repo" \
+  --status "success" \
+  --attachment ./sonarqube-result.json \
+  --pipeline-run-id "${PIPELINE_RUN_ID}" \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues"
+```
+{: codeblock}
+
+```bash
+cocoa locker evidence collect \
+  --tool-type "detect-secrets" \
+  --evidence-type "com.ibm.detect_secrets" \
+  --assets "app-repo:repo" \
+  --status "success" \
+  --pipeline-run-id "${PIPELINE_RUN_ID}" \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues"
+```
+{: codeblock}
+
+```bash
+cocoa locker evidence collect \
+  --tool-type "va" \
+  --evidence-type "com.ibm.cloud.image_vulnerability_scan" \
+  --assets "image-0:artifact" \
+  --status "success" \
+  --pipeline-run-id "${PIPELINE_RUN_ID}" \
+  --attachment image-0_va-report.json \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues"
+```
+{: codeblock}
+
+
+For complete CLI command reference and all available parameters, see [cocoa locker evidence collect](/docs/devsecops?topic=devsecops-cd-devsecops-cli#locker-evidence-collect).
+
 ### Example usage
 {: #collect-evidence-usage-example}
 
@@ -117,6 +192,22 @@ collect-evidence \
   --meta environment=production
 ```
 {: codeblock}
+
+You can use the `cocoa locker evidence collect` command directly:
+
+```bash
+cocoa locker evidence collect \
+  --tool-type "sonarqube" \
+  --evidence-type "com.ibm.static_scan" \
+  --assets "app-repo:repo" \
+  --status "success" \
+  --attachment ./sonarqube-result.json \
+  --pipeline-run-id "${PIPELINE_RUN_ID}" \
+  --pipeline-namespace "ci" \
+  --incident-org "my-org" \
+  --incident-repo "compliance-issues"
+
+  {: codeblock}
 
 ## Supported tool formats
 {: #collect-evidence-tool-formats}
