@@ -288,6 +288,7 @@ As your pipeline runs security scans and tests, collect evidence that links the 
 
 Use the [`collect-evidence`](/docs/devsecops?topic=devsecops-devsecops-collect-evidence) command after each scan or test. The `asset-key` parameter must match the key used when saving the asset with `save_artifact` or `save_repo`.
 For detailed information about the `collect-evidence` command, including all parameters, supported tool formats, and CLI usage, see [collect-evidence script](/docs/devsecops?topic=devsecops-devsecops-collect-evidence).
+
 **Example: Collecting evidence for tests on source code**
 
 For tests run against the source code repository:
@@ -346,9 +347,9 @@ In CD pipelines, use the `provenance` field to download artifacts rather than th
 
 Now that you understand asset-based evidence collection, you can:
 - [Configure evidence validation in CD pipelines](/docs/devsecops?topic=devsecops-evidence-checks-validation)
-- [Set up automated change management](/docs/devsecops?topic=devsecops-devsecops-automate-changemgmt)
+- [Set up automated change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt)
 - [Explore evidence types and compliance checks](/docs/devsecops?topic=devsecops-devsecops-evidence)
-- [Learn about inventory management](/docs/devsecops?topic=devsecops-devsecops-inventory)
+- [Learn about inventory management](/docs/devsecops?topic=devsecops-devsecops-asset-inventory)
 
 ### Evidence reuse for optimized pipeline execution
 {: #evidence-reuse-for-assets}
