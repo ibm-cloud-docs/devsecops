@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-20"
+lastupdated: "2026-02-25"
 
 keywords: troubleshoot, DevSecOps
 
@@ -51,7 +51,6 @@ Pipelines internally use Git API requests (set Git statuses, create / update iss
 {: tsCauses}
 
 To overcome this Git rate limiting issue:
-1. Ensure environment property `batched-evidence-collection` to `1`. See corresponding section in the [IBM Cloud documentation](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#batched-evidence-collection).
 1. Migrate from Git evidence locker to COS evidence locker (also known as COS only). See corresponding section in the [IBM Cloud documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence#cd-devsecops-cos-only-locker).
 1. Use different Git tokens for Pipelines and/or triggers.
 {: tsResolve}

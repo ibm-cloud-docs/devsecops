@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-17"
+lastupdated: "2026-02-25"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -760,7 +760,7 @@ Support for Security and Compliance Center push API
 
 - **Amber status for deployment with errors** - Deployment of manually approved CR with red evidence now shows amber status.
 
-- **Batch processing of evidence collection** - During a pipeline run, all the evidences are collected locally to the pipeline and proceed at the end of the pipeline run. This process results in performance improvement. For more information, see [Batched evidence collection](/docs/devsecops?topic=devsecops-devsecops-collect-evidence#batched-evidence-collection).
+- **Batch processing of evidence collection** - During a pipeline run, all the evidences are collected locally to the pipeline and proceed at the end of the pipeline run. This process results in performance improvement.
 
 ## 30 October 2023
 {: #devsecops-oct2023}
