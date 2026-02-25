@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-20"
+lastupdated: "2026-02-25"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -403,6 +403,48 @@ $ cocoa change-request create \
   --type=<change-type> \
 ```
 {: codeblock}
+
+### cocoa change-request update
+{: #change-request-update}
+
+Update an existing Change Request using ServiceNow v3 API and print it to the console.
+
+
+Required Environment Variables for ServiceNow v3:
+
+```text
+SERVICENOW_URL=       # ServiceNow API URL
+CHANGE_REQUEST_ID=    # ID of the Change Request
+```
+{: codeblock}
+
+Additional Environment Variables for ServiceNow v3:
+
+```text
+PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provided, falls back to IAM_ACCESS_TOKEN
+IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
+```
+{: codeblock}
+
+Options:
+
+```text
+--close-notes                    # (Optional) Any pertinent notes to add to change request closure.
+--close-category                 # (Optional) Change request close notes (choices:  'successful', 'successful_issues', 'unsuccessful', 'cancelled')
+--description                    # (Optional) Description of the change
+```
+{: screen}
+
+Running the command:
+
+```sh
+# Update Change Request with sample close-notes, close category and description.
+$ cocoa change-request update --close-notes="sample close-note" --close-category="successful" --description="sample change description"
+```
+{: codeblock}
+
+When the description option is used, the command replaces the existing description with the new description. In case the user wants to append content to the original description, they'll need to extract the existing description and append it manually before using this command.
+{: note}
 
 ### cocoa change-request change-state-to-implement
 {: #change-request-change-state-to-implement}
