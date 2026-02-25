@@ -349,7 +349,7 @@ Now that you understand asset-based evidence collection, you can:
 - [Configure evidence validation in CD pipelines](/docs/devsecops?topic=devsecops-evidence-checks-validation)
 - [Set up automated change management](/docs/devsecops?topic=devsecops-cd-devsecops-automate-changemgmt)
 - [Explore evidence types and compliance checks](/docs/devsecops?topic=devsecops-devsecops-evidence)
-- [Learn about inventory management](/docs/devsecops?topic=devsecops-devsecops-asset-inventory)
+- [Learn about inventory management](/docs/devsecops?topic=devsecops-devsecops-asset-evidence-collection#devsecops-asset-inventory)
 
 ### Evidence reuse for optimized pipeline execution
 {: #evidence-reuse-for-assets}
