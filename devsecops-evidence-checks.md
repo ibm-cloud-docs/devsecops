@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-19"
+lastupdated: "2026-02-26"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud
 
@@ -43,66 +43,64 @@ Config file mode provides a flexible and customizable framework for evidence val
 This mode allows you to:
 - Define specific evidence requirements per environment (dev, stage, prod)
 - Set evidence declaration levels to control deployment behavior:
-  - `recommended` (default) - Pipeline logs warnings if evidence is missing/pending/failed, but does not block deployment
-  - `required` - Evidence must be present in `success` state; deployment is blocked if evidence is missing, pending, or failed
-  - `required_if_present` - Evidence must be in `success` state if it exists; fails only if evidence status is `failure`; passes if evidence is `success`, `pending`, or `missing`
+  - `recommended` 
+  - `required`
+  - `required_if_present`
 - Configure different validation rules for different asset types (such as images, commits, or artifacts)
+- Control how evidence from multiple environments is evaluated during promotion
+
+### Understanding evidence declaration levels
+{: #understanding-evidence-declaration-levels}
+
+**1. Recommended mode:**
+
+When compliance checks are marked as "recommended," they serve as warnings rather than blockers. This means:
+- The pipeline execution continues even when checks fail
+- The pipeline provides visibility into compliance status but doesn't enforce automatic failure
+- You are responsible for investigating and resolving all flagged issues
+- All failing or missing compliance checks must be addressed and fixed during your CI process
+
+This approach emphasizes a **shared responsibility model**: the pipeline provides compliance visibility and recommendations, but teams must actively ensure their CI processes generate required evidence and address any gaps before production deployment.
+
+**2. Required mode:**
+
+Evidence must be present in `success` state. Deployment is blocked if evidence is missing, pending, or failed.
+
+**3. Required if present mode:**
+
+Evidence must be in `success` state if it exists. This mode:
+- Fails only if evidence status is `failure`
+- Passes if evidence is `success`, `pending`, or `missing`
+- Useful for optional scans that must pass when they run
+
+### Evidence aggregation
+{: #evidence-aggregation}
+
+Evidence aggregation is the process of collecting and evaluating compliance evidence across multiple service environments (dev, stage, prod) to determine overall application-level compliance. During CI/CD pipeline runs, various compliance tools collect evidence for different asset types (images, commits, artifacts). Evidence is tracked separately for each service environment, and the system aggregates results based on rules defined in your configuration file. Overall compliance status is determined by evaluating all collected evidence against configured requirements.
+
+**Key benefits:**
+
+- **Environment-Specific Validation**: Different environments can have different evidence requirements (e.g., stage may require fewer checks than prod)
+- **Flexible Configuration**: Customize which evidence types are required, recommended, or conditionally required for each environment
+- **Promotion Gating**: Block deployments to production if required evidence is missing or failed in previous environments
+- **Audit Trail**: Maintain complete evidence history across all environments for compliance reporting
+
+The following diagram illustrates how evidence flows through environments and how aggregation determines deployment readiness:
+![evidence aggregation](images/Evidence-collection.png){: caption="Evidence aggregation and gating across environments" caption-side="bottom"}
+
+### Config file Sections
+{: #config-file-sections}
 
 **Pre-deployment checks:**
 - Validate evidence produced by the CI pipeline
 - Gate deployment based on these checks
 - Auto-approve change request if all checks pass
 - Block deployment if checks fail (except for `emergency` change requests)
-- Config file is part of the change request
+- Add Config file as part of the change request
 
 **Post-deployment checks:**
 - Validate evidence produced by the CD pipeline
 - Evaluate the pipeline based on these checks
-
-**Finishing step:**
-- Validates post-deployment evidence checks
-- Evaluates the CD pipeline
-- Stores checks in the evidence locker beside the `summary.json` file
-
-Different asset types (such as container images, source code commits, or deployment artifacts) require different types of evidence. The configuration file allows you to specify which evidence types must be collected for each asset type, and the system validates that the appropriate evidence has been gathered by the corresponding tools.
-
-### Configure configuration file and enable evidence validation
-{: #configure-evidence-checks-config-file}
-
-To implement configuration file mode in your toolchain, follow these configuration steps:
-
-To define the configuration file path, set `evidence-checks-config-path` to the file path present in the `pipeline-config-repo`; otherwise, the default configuration file is used. Different deployment environments may have different configuration files. For example, `stage` may have evidence checks that differ from the production evidence checks. If `evidence-checks-config-path` is not defined, the system searches for a file with the name `<region>.<target>.validation.json`, `<target>.validation.JSON`, or `validation.json` in the `pipeline-config-repo`.
-
-To enable validation of evidence in your toolchain, set the environment variable `opt-in-evidence-checks` to `1` in the CD and CC toolchains.
-
-### Configuration file Version 2
-{: #evidence-checks-config-filev2}
-
-During CI/CD/CC pipeline runs, various pieces of evidence are collected by different tools for different service environments.
-
-**Service environments:**
-- `dev` - Development
-- `stage` - Pre-production (recently supported)
-- `prod` - Production
-
-**Evidence aggregation:**
-- Results are aggregated to determine overall application-level compliance for each service environment
-- Users can configure rules to control how result aggregation is performed
-- Configuration file version 2 allows users to customize evidence evaluation per service environment
-
-The following diagram shows how evidence aggregation works:
-
-![evidence aggregation](images/Evidence-collection.png)
-{: caption="Evidence aggregation" caption-side="bottom"}
-
-### Evidence evaluation and gating
-{: #evidence-evaluation-gating}
-
-When the required application compliance level is not met, deployment is gated in the CD pipeline run.
-
-**Supported evidence types for gating:**
-- `pre-deployment` - Evidence list checked before deployment
-- `post-deployment` - Evidence list checked after deployment
 
 ### Configuration file rule structure
 {: #config-file-rule-structure}
@@ -126,59 +124,343 @@ The configuration file uses the following JSON structure to define validation ru
     - **recommended** - Pipeline logs warnings if evidence is missing/pending/failed; does not block deployment
       - **Tool** - Tool type for evidence collection (e.g., `SonarQube`, `owasp-zap`, `*`)
 
+Evidence collected in the CI pipeline should have its origin field set to `ci-pipeline` in the configuration file.
+{: tip}
+
 For detailed explanations of evidence declaration levels (required, required_if_present, recommended), see the [Config file mode](#config-file-gating-mode) section.
+
+### Evidence validation using config file
+{: #evidence-validation-using-config-file}
+
+To implement configuration file mode in your toolchain, follow these configuration steps:
+
+**Step 1: Enable evidence validation**
+
+In your CD and CC pipeline environment properties, set the following variable to enable the evidence validation feature in your deployment pipelines:
+```
+opt-in-evidence-checks=1
+```
+
+**Step 2: Configure the validation file path**
+
+Set the path to your configuration file in the `pipeline-config-repo`:
+```
+evidence-checks-config-path=validation.json
+```
+
+If `evidence-checks-config-path` is not defined, the system automatically searches for a file with the name `<region>.<target>.validation.json`, `<target>.validation.json`, or `validation.json` in the `pipeline-config-repo`.
+
+**Step 3: Verify configuration**
+
+Once the pipeline is running, verify that evidence validation based on the config file is enabled by following these steps:
+
+1. **Access Pipeline** - Navigate to the specific CD pipeline run associated with your change
+2. **Locate Task** - Find the task labeled `prod-change-request` and select the `change-request` step
+3. **Review Tables** - Locate two critical tables by searching for these keywords:
+   - **Asset Scope Table**: Search for `Current pipeline scope` (first table)
+   - **Evidence Check Table**: Search for `PRE-DEPLOYMENT` (second table)
+
+If you can see these tables, it confirms that evidence validation based on the config file is enabled.
+
+**Note:** Pipeline evaluation will also occur when the check is enabled in both the CD and CC pipelines, utilizing the configuration file.
 
 ### Various deployment topologies
 {: #various-deployment-topology}
 
 The following examples demonstrate how evidence validation works across different deployment topologies. Each topology shows how evidence collected in one environment is validated when promoting to subsequent environments.
 
+**Service environments:**
+- `master` or `dev` - Development
+- `stage` - Pre-production (recently supported)
+- `prod` - Production
+
 #### Promotion from `master` to `prod`
 {: #various-deployment-topology-step1}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-prod.png){: caption="Use case 1. Promotion from `master` to `prod`" caption-side="bottom"}
+![master to prod Promotion](images/devsecops-evidence-checks-master-prod.png)
+{: caption="Use case 1. Promotion from `master` to `prod`" caption-side="bottom"}
 
+**Properties for `Manual Promotion Trigger` and `Manual CD Trigger`**
+| Name | value |
+|:-----------------|:-----------------------|
+| `source-environment` | `master` |
+| `target-environment` | `prod` |
+| `target-environment-purpose` | `production` |
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger`](images/devsecops-evidence-checks-master-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger`"}
+#### Sample configuration rule: 
 
+```
+{
+  "evidence_type_id": "com.ibm.acceptance_tests",
+  "rules": [
+    {
+      "asset_type": "image",
+      "source_environments": [
+        {
+          "name": "ci-pipeline"
+        }
+      ],
+      "target_environments": [
+        {
+          "name": "prod"
+        }
+      ],
+      "required": [],
+      "required_if_present": [
+        {
+          "name": "tool",
+          "values": [
+            "*"
+          ],
+          "description": "Acceptance tests must pass if they are run"
+        }
+      ],
+      "recommended": []
+    }
+  ]
+}
+```
 
 #### Promotion from `master` to `stage` and then to `prod`
 {: #various-deployment-topology-step2}
 
- ![master to prod Promotion](/images/devsecops-evidence-checks-master-stage-prod.png){: caption="Use case 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
+![master to prod Promotion](images/devsecops-evidence-checks-master-stage-prod.png){: caption="Use case 2. Promotion from `master` to `stage` to `prod`" caption-side="bottom"}
 
+**Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`**
+| Name | value |
+|:-----------------|:-----------------------|
+| `source-environment` | `master` |
+| `target-environment` | `stage` |
+| `target-environment-purpose` | `pre_prod` |
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`](images/devsecops-evidence-checks-master-stage-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage`"}
+**Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`**
+| Name | value |
+|:-----------------|:-----------------------|
+| `source-environment` | `stage` |
+| `target-environment` | `prod` |
+| `target-environment-purpose` | `production` |
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`](images/devsecops-evidence-checks-stage-prod-properties-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod`"}
+#### Sample configuration rule: 
 
-![Configuration file version 2](images/devsecops-evidence-config-version2-cd.png){: caption="Configuration file version 2"}
+```
+{
+  "evidence_type_id": "com.ibm.acceptance_tests",
+  "rules": [
+    {
+      "asset_type": "image",
+      "source_environments": [
+        {
+          "name": "ci-pipeline"
+        },
+        {
+          "name": "stage"
+        }
+      ],
+      "target_environments": [
+        {
+          "name": "stage"
+        },
+        {
+          "name": "prod"
+        }
+      ],
+      "required": [],
+      "required_if_present": [
+        {
+          "name": "tool",
+          "values": [
+            "*"
+          ],
+          "description": "Acceptance tests must pass if they are run"
+        }
+      ],
+      "recommended": []
+    }
+  ]
+}
+```
 
 #### Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`
 {: #various-deployment-topology-step3}
 
- ![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-south-prod.png){: caption="Use case 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
+![master to prod Promotion](images/devsecops-evidence-checks-master-stage-us-east-south-prod.png)
+{: caption="Use case 3. Promotion from `master` to `stage(us-east)` to `stage(us-south)` and then to `prod(us-south)`" caption-side="bottom"}
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`](images/devsecops-evidence-checks-master-stage-us-east-prod-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`"}
+**Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-east)`**
+| Name | value |
+|:-----------------|:-----------------------|
+| `source-environment` | `master` |
+| `target-environment` | `stage` |
+| `target-environment-purpose` | `pre_prod` |
+| `region` | `us-east` |
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`](images/devsecops-evidence-checks-master-stage-us-south-prod.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`"}
+**Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `stage(us-south)`**
+| Name | value |
+|:-----------------|:-----------------------|
+| `source-environment` | `master` |
+| `target-environment` | `stage` |
+| `target-environment-purpose` | `pre_prod` |
+| `region` | `us-south` |
 
-![Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`](/images/devsecops-evidence-checks-master-stage-prod-us-east-cd.png){: caption="Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`"}
+**Properties for `Manual Promotion Trigger` and `Manual CD Trigger` environment `prod(us-south)`**
+| Name | value |
+|:-----------------|:-----------------------|
+| `source-environment` | `master` |
+| `target-environment` | `stage` |
+| `target-environment-purpose` | `production` |
+| `region` | `us-south` |
+| `source-regions`|`us-south`|
 
-### Result table for version 2 `cocoa locker evidence check`
-{: #result-table-v2}
+#### Sample configuration rule: 
 
-![`cocoa locker evidence check` version2 command output](images/devsecops-evidence-result-table-cd.png)
-{: caption="cocoa locker evidence check version 2 command output"}
+```
+{
+  "evidence_type_id": "com.ibm.acceptance_tests",
+  "rules": [
+    {
+      "asset_type": "image",
+      "source_environments": [
+        {
+          "name": "ci-pipeline"
+        },
+        {
+          "name": "stage",
+          "region": "us-south"
+        }
+      ],
+      "target_environments": [
+        {
+          "name": "stage",
+          "region": "us-south"
+        },
+        {
+          "name": "stage",
+          "region": "us-east"
+        },
+        {
+          "name": "prod",
+          "region": "us-south"
+        }
+      ],
+      "required": [],
+      "required_if_present": [
+        {
+          "name": "tool",
+          "values": [
+            "*"
+          ],
+          "description": "Acceptance tests must pass if they are run"
+        }
+      ],
+      "recommended": []
+    }
+  ]
+}
+```
 
+### Default tool values for DevSecOps stages
+{: #default-supported-tool-in-evidence-checks-config-file}
 
+Different asset types (such as container images, source code commits, or deployment artifacts) require different types of evidence. The configuration file allows you to specify which evidence types must be collected for each asset type, and the system validates that the appropriate evidence has been gathered by the corresponding tools.
 
-**Note:** Pipeline evaluation will also occur when the check is enabled in both the CD and CC pipelines, utilizing the configuration file.
+| Evidence type ID | Default supported tool | Artifact Type|
+|:-----------------|:-----------------------|:-----------------------|
+| `com.ibm.branch_protection` | `cocoa-branch-protection` | repo (commit) |
+| `com.ibm.unit_tests` | `jest` | repo (commit)|
+| `com.ibm.detect_secrets` | `detect-secrets` | repo (commit)|
+| `com.ibm.code_vulnerability_scan` | **For apps:** `cra-tf`, `cra`, `mend`<br>**For IaC:** `tfsec`, `checkov` | repo(commit) |
+| `com.ibm.code_bom_check` | `cra-bom`, `mend-bom` |repo(commit) |
+| `com.ibm.code_cis_check` | `cra-cis` |repo(commit) |
+| `com.ibm.peer_review` | `peer-review` |repo(commit) |
+| `com.ibm.static_scan` | **For apps:** `sonarqube`, `gosec`<br>**For IaC:** `terraform-fmt`, `terraform-validate`, `tflint` |repo(commit) |
+| `com.ibm.cloud.image_signing` | `artifact-signing` | Artifact (image)|
+| `com.ibm.acceptance_tests` | `jest` | Artifact (helm, image or chart) |
+| `com.ibm.dynamic_scan` | `owasp-zap`, `owasp-zap-ui` | Artifact (image) |
+| `com.ibm.cloud.image_vulnerability_scan` | `va`, `sysdig`, `xray` | Artifact |
+| `com.ibm.prod_change_request` | `gitlab` | Artifact (helm, image or chart) |
+| `com.ibm.close_change_request` | `gitlab` | Artifact (helm, image or chart) |
 
-Evidence collected in the CI pipeline should have its origin field set to `ci-pipeline` in the configuration file.
-{: tip}
+| `com.ibm.cloud.slsa` | `tekton-chains` | Artifact (helm, image or chart) |
+{: caption="Supported tools for evidence collection" caption-side="top"}
 
-### Sample configuration file version 2
+## Frequently Asked Questions
+{: #evidence-checks-config-file-faq}
+
+### My deployment is blocked - how do I find out why?
+{: #deployment-blocked-why}
+
+If your deployment is blocked, follow these steps to identify the issue:
+
+1. **Access Pipeline** - Navigate to the specific CD pipeline run associated with your change
+2. **Locate Task** - Find the task labeled `prod-change-request` and select the `change-request` step
+3. **Review Tables** - Locate two critical tables by searching for these keywords:
+   - **Asset Scope Table**: Search for `Current pipeline scope` (first table)
+   - **Evidence Check Table**: Search for `PRE-DEPLOYMENT` (second table)
+
+The Evidence Check Table shows which evidence items are `missing` or `failed`, causing your deployment to be blocked.
+
+### Understanding the Evidence Check Table
+{: #understanding-evidence-check-table}
+
+The Evidence Check Table displays the validation status of evidence for each asset. Understanding its structure helps you troubleshoot compliance issues.
+
+**Asset Table Structure:**
+- **ID Column**: Primary key identifying each asset
+- **Full_id**: Complete asset id.
+- **type**: Type of the asset
+- **URI Column**: The actual asset (image, artifact, etc.) being validated
+- **Relationship**: Asset ID serves as the foreign key (`AssetId`) in the Evidence Check Table
+
+![Asset Table](images/devsecops-asset-table-cd.png){: caption="cocoa locker evidence check command output"}
+
+**Evidence Check Table Structure:**
+- **AssetId Column**: foreign key identifying each asset
+- **EvidenceTypeId**: Specifies which compliance evidence is required (e.g., vulnerability scan, unit tests, peer review)
+- **Evidence Origin**: Indicates where evidence should come from (typically `ci-pipeline`)
+- **Status**: Shows whether evidence is present, missing, or failed for each asset
+
+![Evidence Check Table](images/devsecops-evidence-result-table-cd.png){: caption="cocoa locker evidence check command output"}
+
+**Evidence Summary Table Structure:**
+
+This table displays the compliance evidence summary for all assets and shows how many evidence items are missing, successful, failed, or pending.
+
+![Evidence Summary Table](images/devsecops-evidence-summary-table-cd.png){: caption="Evidence summary output"}
+
+### How do I fix missing or failed evidence?
+{: #fix-missing-failed-evidence}
+
+Once you've identified the missing or failed evidence from the Evidence Check Table, use this decision tree to resolve the issue. Note the specific evidence type (e.g., `com.ibm.static_scan`) and asset type (e.g., `image`, `commit`).
+
+**Question: "Have I configured my CI pipeline to collect [evidence type] for [asset type]?"**
+
+**If NO (you haven't collected it):**
+- Ask: "Is this a valid compliance requirement for my service?"
+  - **YES, it's valid**: Implement evidence collection in your CI pipeline
+    - Add necessary scanning tools or scripts
+    - Configure proper evidence reporting mechanisms
+    - Ensure evidence is linked to the correct asset
+    - See the [Asset Evidence Collection Guide](/docs/devsecops?topic=devsecops-devsecops-asset-evidence-collection) for implementation details
+  - **NO, it's not applicable**: Document justification and escalate
+    - Contact your security focal point
+    - Explain why this check doesn't apply to your service
+    - Provide clear justification
+    - Remove the check from your configuration file after approval
+
+**If YES (you have collected this evidence previously):**
+- Investigate why it's showing as missing in the Evidence Check Table
+- Potential issues to check:
+  - Is evidence being generated correctly in your CI pipeline?
+  - Is it being reported to the correct location?
+  - Is the asset ID properly linked to the evidence?
+  - Are there timing or synchronization issues between CI and CD pipelines?
+  - Is the evidence format compatible with the validation requirements?
+  - Check pipeline logs for error messages related to evidence collection or reporting
+
+## Reference
+{: #evidence-checks-reference}
+
+### Sample configuration file
 {: #evidence-checks-samp-config-file}
 
 ```cmd
@@ -204,15 +486,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Change request must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -241,15 +524,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Acceptance tests must pass if they are run"
             }
-          ]
+          ],
+          "recommended": []
         },
         {
           "asset_type": "image",
@@ -267,15 +551,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Acceptance tests must pass if they are run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -298,15 +583,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Branch protection must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -329,15 +615,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "SLSA attestation must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -360,13 +647,22 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
+          "required_if_present": [
+            {
+              "name": "tool",
+              "values": [
+                "owasp-zap"
+              ],
+              "description": "Dynamic scan must pass if OWASP ZAP is run"
+            }
+          ],
           "recommended": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Other dynamic scan tools are recommended"
             }
           ]
         }
@@ -394,15 +690,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Signature verification must pass if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -425,15 +722,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Image vulnerability scan must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -459,15 +757,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Peer review must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -490,15 +789,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Unit tests must pass if they are run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -521,15 +821,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Static scan must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -552,15 +853,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Detect secrets scan must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -583,15 +885,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Code vulnerability scan must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -614,15 +917,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "CIS check must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -645,15 +949,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "BOM check must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -676,15 +981,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Network compliance check must pass if run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -707,15 +1013,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Pipeline run data must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -738,15 +1045,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Pipeline logs must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     }
@@ -771,15 +1079,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Change request must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -805,15 +1114,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Acceptance tests must pass if they are run"
             }
-          ]
+          ],
+          "recommended": []
         },
         {
           "asset_type": "image",
@@ -834,15 +1144,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Acceptance tests must pass if they are run"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -868,15 +1179,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Pipeline run data must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     },
@@ -902,15 +1214,16 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
             }
           ],
           "required": [],
-          "recommended": [
+          "required_if_present": [
             {
               "name": "tool",
               "values": [
                 "*"
               ],
-              "description": "The tool that collected the evidence"
+              "description": "Pipeline logs must be successful if present"
             }
-          ]
+          ],
+          "recommended": []
         }
       ]
     }
@@ -919,95 +1232,7 @@ Evidence collected in the CI pipeline should have its origin field set to `ci-pi
 
 ```
 
-### Default tool values for DevSecOps stages
-{: #default-supported-tool-in-evidence-checks-config-file}
+## Related information
+{: #evidence-checks-related}
 
-| Evidence type ID | Default supported tool | Artifact Type|
-|:-----------------|:-----------------------|:-----------------------|
-| `com.ibm.branch_protection` | `cocoa-branch-protection` | repo (commit) |
-| `com.ibm.unit_tests` | `jest` | repo (commit)|
-| `com.ibm.detect_secrets` | `detect-secrets` | repo (commit)|
-| `com.ibm.code_vulnerability_scan` | **For apps:** `cra-tf`, `cra`, `mend`<br>**For IaC:** `tfsec`, `checkov` | repo(commit) |
-| `com.ibm.code_bom_check` | `cra-bom`, `sbom-utility` |repo(commit) |
-| `com.ibm.code_cis_check` | `cra-cis` |repo(commit) |
-| `com.ibm.peer_review` | `peer-review` |repo(commit) |
-| `com.ibm.static_scan` | **For apps:** `sonarqube`, `gosec`<br>**For IaC:** `terraform-fmt`, `terraform-validate`, `tflint` |repo(commit) |
-| `com.ibm.cloud.image_signing` | `artifact-signing` | Artifact (image)|
-| `com.ibm.acceptance_tests` | `jest` | Artifact (helm, image or chart) |
-| `com.ibm.dynamic_scan` | `owasp-zap`, `owasp-zap-ui` | Artifact (image) |
-| `com.ibm.cloud.image_vulnerability_scan` | `va`, `sysdig`, `xray` | Artifact |
-| `com.ibm.prod_change_request` | `gitlab` | Artifact (helm, image or chart) |
-| `com.ibm.close_change_request` | `gitlab` | Artifact (helm, image or chart) |
-
-| `com.ibm.cloud.slsa` | `tekton-chains` | Artifact (helm, image or chart) |
-{: caption="Supported tools for evidence collection" caption-side="top"}
-
-### FAQ: Compliance checks in CD pipelines
-{: #evidence-checks-config-file-faq}
-{: faq}
-{: support}
-
-#### What does "all checks are set to recommended" mean?
-{: #faq-recommended-checks}
-
-When compliance checks are marked as "recommended," they serve as warnings rather than blockers. This means:
-- The pipeline execution continues even when checks fail
-- The pipeline provides visibility into compliance status but doesn't enforce automatic failure
-- You are responsible for investigating and resolving all flagged issues
-- All failing or missing compliance checks must be addressed and fixed during your CI process
-
-This approach emphasizes a **shared responsibility model**: the pipeline provides compliance visibility and recommendations, but teams must actively ensure their CI processes generate required evidence and address any gaps before production deployment.
-
-#### How to check if all the compliance checks are met?
-{: #faq-check-compliance}
-
-Follow these steps to verify compliance status:
-
-1. **Access Pipeline** - Navigate to the specific CD pipeline run associated with your change
-2. **Locate Task** - Find the task labeled `prod-change-request` and select the `change-request` step.
-3. **Review Tables** - Locate two critical tables by searching for these keywords:
-   - **Asset Scope Table**: Search for `Current pipeline scope` (first table)
-   - **Pre-Deployment Evidence Table**: Search for `PRE-DEPLOYMENT` (second table)
-
-#### Understanding the tables
-{: #faq-understanding-tables}
-
-**Asset Table Structure:**
-- **ID Column**: Primary key identifying each asset
-- **URI Column**: The actual asset (image, artifact, etc.) being validated
-- **Relationship**: Asset ID serves as the foreign key (`AssetId`) in the Evidence Check table
-
-**Evidence Check Table Structure:**
-- **EvidenceTypeId**: Specifies which compliance evidence is required (e.g., vulnerability scan, unit tests, peer review)
-- **Evidence Origin**: Indicates where evidence should come from (typically `ci-pipeline`)
-- **Status**: Shows whether evidence is present, missing, or failed for each asset
-
-#### What to do when you see entries in the Evidence Check Table as missing or failed?
-{: #faq-missing-failed-evidence}
-
-Use this decision tree to troubleshoot missing or failed evidence. First, identify the specific evidence type (e.g., `com.ibm.static_scan`) and asset type (e.g., `image`, `commit`) from the Evidence Check table.
-
-**Question: "Have I configured my CI pipeline to collect [evidence type] for [asset type]?"**
-
-**If NO (you haven't collected it):**
-- Ask: "Is this a valid compliance requirement for my service?"
-  - **YES, it's valid**: Implement evidence collection in your CI pipeline
-    - Add necessary scanning tools or scripts
-    - Configure proper evidence reporting mechanisms
-    - Ensure evidence is linked to the correct asset
-    - See the [Asset Evidence Collection Guide](/docs/devsecops?topic=devsecops-devsecops-asset-evidence-collection) for implementation details
-  - **NO, it's not applicable**: Document justification and escalate
-    - Contact your security focal point
-    - Explain why this check doesn't apply to your service
-    - Provide clear justification
-    - Remove the check from your configuration file after approval
-
-**If YES (you have collected this evidence previously):**
-- Investigate why it's showing as missing in the Evidence Check table
-- Potential issues to check:
-  - Is evidence being generated correctly in your CI pipeline?
-  - Is it being reported to the correct location?
-  - Is the asset ID properly linked to the evidence?
-  - Are there timing or synchronization issues between CI and CD pipelines?
-  - Is the evidence format compatible with the validation requirements?
-  - Check pipeline logs for error messages related to evidence collection or reporting
+- [Asset creation and Evidence collection in DevSecOps](/docs/devsecops?topic=devsecops-devsecops-asset-evidence-collection)
