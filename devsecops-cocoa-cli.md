@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-25"
+lastupdated: "2026-02-27"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1259,7 +1259,7 @@ Options for Git:
 | repository-url   | The URL pointing to the source code repository of the application (of github or GRIT/gitlab repos)               | String | Required | This should be a valid source code repository (like github / gitlab) and not a docker repository (like artifactory) |
 | pipeline-run-id  | The id of the pipeline run.                       | String | Required | This is used to scope evidences. Should be the pipeline run id or uuid. (Example value : `f21321af-9084-4af3-80b8-4fb34143b7d9` ) |
 | commit-sha       | The commit of the application repository from which the artifact is built. | String | Required | Should be a long format commit sha (40 character lowercase) |
-| name             | The name of the application the artifact belongs to | String | Required | - |
+| name             | The name of the application the artifact belongs to | String | Required | It is a unique field. We can use subdirectories, like `name=subdir/foo`, which can make your inventory repository better organized. |
 | build-number     | The number of the build.                         | number | Required | Build number is used to correlate build artifact and deploy artifact |
 | org              | The GitHub organization that owns the inventory repository. | String | Optional if GHE_ORG environment variable is set| -  |
 | repo             | The name of the inventory repository.            | String | Optional if GHE_REPO environment variable is set | - |
@@ -1322,6 +1322,55 @@ $ cocoa inventory add --from-file multi-artifacts.json \
   --repo=repository
 ```
 {: codeblock}
+
+#### Using --from-file option
+
+When using the `--from-file` option, the command supports adding multiple entries in a single commit.  This option expects a JSON file containing an array of objects, where each object in the array should have the same fields as described in the options table above. The field requirements (mandatory vs optional) remain the same as when using individual command-line options. The only difference is that instead of providing these fields as command-line arguments, they are read from the JSON file.
+
+The `--environment`, `--org`, and `--repo` options have to be provided on the command line and will apply to all entries in the file.
+{: note}
+
+**Example JSON file structure:**
+
+```json
+[
+  {
+    "artifact": "us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0",
+    "type": "image",
+    "sha256": "sha256:786800e8e48938664fe2397ca14ab8dabd48f34656ef5cfda4143b4519cb714f",
+    "name": "hello-compliance-app",
+    "repository-url": "https://github.com/test-org/compliance-app-20201211",
+    "commit-sha": "8e86dc4647ce28632103dce46b756c70d339349a",
+    "version": "v4",
+    "build-number": 33,
+    "pipeline-run-id": "f21321af-9084-4af3-80b8-4fb34143b7d9",
+    "provenance": "us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0",
+    "signature": "owFNUX1IE3EY3vwAEy0VyoSJdkVWtu0+d3eTjNIIi0jETCSU3353cz+83V23myi2BlFgYiUFqSmZLciUzCJkRYJp9IEWFWXB0hAyrBQxEjIIuhFSf70vL8/7vM/zPi3JsaYEc+TnbqG8qrnTPDZ8w2WqiqwtacCghnQEgYQ5GzAkiLKO9PpoLyiwRtSsmugWNVGGIubE/D4bgpoNKXag60gCdo8oSYoVKl5VQsDAWIGqOkmcxAmSYHGO4AjC6gU+3eBxcYxICTRLijyEFOOiSR5SvMhBys2LLpIjWYqDJA6wwHYMeUG1+J8GL5CRW/TpVgFVG8VQ4vMAknE4BUA5OIoQGIKhKZwFkIeAdnECj+OCmxQADh2QoFmG5lkWUiTN8gJ0kDxPuxiWJAU8ekyvV6PegK54EcyGiqwDJItatg9Vy0D3a2IUpKg6UuS/T4KaaIC1fzuMDbfhmMGEvIY64FUxJ+Ew3PMU5SADgdNmKs5kTjBlrtsQ99iyY49nns8o6jsXWgkjPiYahClxVcrK5Flngumz2j7YdmD0ecutytsvxxNPHflKlRV2RyqD69NjC6Smji9XuukFyZ+lvM18gUr7F4NXge9YyZPik411tc1n9bKO/hDz7oGaX/ur94OnNHiwOG6n5ZsrsCsvtyvmkH4zOWlrRWuL7fzgj9zlcCTAhtu2LbeGLNfv3Ju0Jc9PZPk7Pm3Ov2CW+2xj8ReX6ooGamZ610yqRM/+8Qo2XnOeyZzbVKgs+f2+9unpJOve4Tmla+PdqftDWkHPm9Vq3nsyZ2DUkmP/nTb7qNw5l2SfWtiSemJx9nLaYOpx6amlOT18aeIwJQhHg1XOjJF9r18NXQvPuL9rH5tSQqbGhyN/AA==",
+    "app-artifacts": "{\"app\": \"test\", \"some_value\": \"value\"}",
+    "locations": {
+      "stage":"stage-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0",
+      "prod":"prod-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0"
+   },
+  },
+  {
+    "artifact": "foo-helm-chart/foo/chart.yaml",
+    "repository-url": "https://github.com/test-org/compliance-app-20201211",
+    "provenance": "https://github.com/test-org/compliance-app-20201211/foo-helm-chart/foo/chart.yaml",
+    "commit-sha": "786800e8e48938664fe2397ca14ab8dabd48f34656ef5cfda4143b4519cb714f",
+    "build-number": 34,
+    "pipeline-run-id": "f21321af-9084-4af3-80b8-4fb34143b7d9",
+    "version": "v4",
+    "name": "foo-app-helm-chart",
+    "sha256": "sha256:9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894",
+    "signature": "9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894",
+    "type": "helm-chart",
+  }
+]
+```
+{: codeblock}
+
+When using `--from-file`, it is possible to provide locations for the artifact in other registry. The command expects the `locations` field to be an object where key is `<environment>` and value is `<static_name>:<version>@sha256:<sha256_digest>` in this format.
+{: note}
 
 ### cocoa inventory get
 {: #inventory-get}
