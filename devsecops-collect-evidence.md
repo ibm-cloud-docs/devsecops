@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-23"
+lastupdated: "2026-03-02"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -214,24 +214,26 @@ cocoa locker evidence collect \
 
 The current implementation currently supports the following tools (provided as the `--tool-type` parameter):
 
-- `cra` IBM Code Risk Analyzer
-- `va` Vulnerability Advisor for IBM Cloud Container Registry
-- `gosec` GoLang Security Scanner
-- `xray` JFrog Xray - Vulnerability Scanning & Container Security
-- `owasp-zap` OWASP Zed Attack Proxy (ZAP)
-- `owasp-zap-ui` OWASP Zed Attack Proxy UI (ZAP UI)
-- `sonarqube` SonarQube scan
-- `peer-review` Peer Review Scan
-- `twistlock` TwistLock
-- `mend` Mend Scan
-- `checkov` Checkov Scan
-- `cra-tf` Code Risk Analyzer for Terraform
-- `tfsec` Terraform Security Scanner
-- `fips-scanner` Fips (Federal Information Processing Standards) Scanner
-- `detect-secrets` Detect Secrets
-- `ciso-code-signing` CISO Code Signing Tool
-- `sysdig` Sysdig Scan
-- `cyclonedx` CycloneDX format. Tool detection for issue management will be performed based on the CycloneDX metadata [here](https://cyclonedx.org/docs/1.4/json/#metadata_tools_items_name).
+| Tool Name | Description |
+|--------|-------------------------|
+| `cra` | IBM Code Risk Analyzer |
+| `va` | Vulnerability Advisor for IBM Cloud Container Registry |
+| `gosec` | GoLang Security Scanner |
+| `xray` | JFrog Xray – Vulnerability Scanning & Container Security |
+| `owasp-zap` | OWASP Zed Attack Proxy (ZAP) |
+| `owasp-zap-ui` | OWASP Zed Attack Proxy UI (ZAP UI) |
+| `sonarqube` | SonarQube scan |
+| `peer-review` | Peer Review Scan |
+| `twistlock` | TwistLock |
+| `mend` | Mend Scan |
+| `checkov` | Checkov Scan |
+| `cra-tf` | Code Risk Analyzer for Terraform |
+| `tfsec` | Terraform Security Scanner |
+| `fips-scanner` | FIPS (Federal Information Processing Standards) Scanner |
+| `detect-secrets` | Detect Secrets |
+| `ciso-code-signing` | CISO Code Signing Tool |
+| `sysdig` | Sysdig Scan |
+| `cyclonedx` | CycloneDX format. Tool detection for issue management will be performed based on the CycloneDX metadata [here](https://cyclonedx.org/docs/1.4/json/#metadata_tools_items_name) |
 
  CycloneDX metadata is
  Tool detection for issue management
@@ -260,8 +262,32 @@ You can set the evidence type by using the `--evidence-type` parameter. You can 
 - `com.ibm.prod_change_request`
 - `com.ibm.close_change_reques`
 
-Effective 15 Dec 2025, IBM Cloud® Security and Compliance Center is deprecated. Any existing service instances are non-functional.
-{: deprecated}
+## Evidence type collection and tool mapping
+| Evidence type ID | Default supported tool | Origin | Ownership | Recommended asset | Issues |
+|:----------|:------------------------------| ---- | ---- | ------- | ------ |
+|`com.ibm.branch_protection`| `cocoa-branch-protection` | CI | Platform | repo | Non incident issues |
+|`com.ibm.unit_tests`| `jest` | PR/CI | User | repo | Non incident issues |
+|`com.ibm.detect_secrets`| `detect-secrets` | PR/CI/CC | Platform | repo | Incident / Non incident issues |
+|`com.ibm.code_vulnerability_scan`| `cra-tf`, `cra`, `mend` </br>For infrastructure as code: `tfsec`, `checkov`| CI | Platform | repo | Incident / Non incident issues |
+|`com.ibm.code_bom_check`| `cra-bom`, `sbom-utility` | PR/CI/CC | Platform | repo | Incident / Non incident issues |
+|`com.ibm.code_cis_check`| `cra-cis` | PR/CI/CC | Platform | repo | Non incident issues |
+|`com.ibm.peer_review`| `peer-review` | CI | Platform | repo | Non incident issues |
+|`com.ibm.static_scan`| `sonarqube`, `gosec` </br> For infrastructure as code: `terraform-fmt`, `terraform-validate`, `tflint` | CI/CC | Platform | repo | Incident / Non incident issues |
+|`com.ibm.cloud.image_signing`| `artifact-signing` | CI | Platform | repo | Non incident issues |
+|`com.ibm.acceptance_tests`| `jest` | CI | User | artifact | Non incident issues |
+|`com.ibm.dynamic_scan`| `owasp-zap`, `owasp-zap-ui` | CI | Platform | artifact | Incident / Non incident issues |
+|`com.ibm.cloud.image_vulnerability_scan`| `va`, `sysdig`, `xray` | CI/CC | Platform | artifact | Incident / Non incident issues |
+|`com.ibm.prod_change_request`|  `gitlab` | CD | Platform | artifact | Non incident issues |
+|`com.ibm.close_change_request`|  `gitlab` | CD | Platform | artifact | Non incident issues |
+|`com.ibm.cloud.slsa`| `tekton-chains` | CI | Platform | artifact | Non incident issues |
+|`com.ibm.cloud.verify_signature`| `ciso-code-signing` | CD | Platform | artifact | Non incident issues |
+|`com.ibm.pipeline_logs`| NA | CI/CD/CC | Platform | NA | NA |
+|`com.ibm.pipeline_run_data`| NA | CI/CD/CC | Platform | NA | NA |
+|`com.ibm.network_compliance`|  | CI | Platform | repo | Incident / Non incident issues |
+{: caption="Supported tool for evidence" caption-side="top"}
+
+When a scan fails or when attachments cannot be parsed, the tool automatically creates a non-incident issue to track the failure.
+{: note}
 
 ## Asset requirements
 {: #collect-evidence-asset}
