@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-02-03"
+lastupdated: "2026-03-02"
 
 keywords: DevSecOps, gosec, IBM Cloud
 
@@ -72,6 +72,7 @@ Usage of the `gosec-additional-flags` flag is shown in the [examples](#devsecops
 |-|-|-|
 | `gosec-additional-flags` | text | Additional flags to be appended to the start of the gosec command. |
 | `gosec-scan-image` | text | Specifies an alternative gosec image, including custom images or specific versions of the official image. |
+| `gosec-repo-path-$repo_owner-$repo_name` | text | Subdirectory path within the repository where the Go module root is located. To be used on a per repo basis when `go.mod` is not at the repository root. |
 {: caption="gosec optional parameters" caption-side="top"}
 
 ### Examples
@@ -83,6 +84,13 @@ Define the value of `gosec-additional-flags` as `-exclude-dir=<your_folder_1> -e
 ./gosec -exclude-dir=<your_folder_1> -exclude-dir=<your_folder_2> -nosec=true -no-fail -fmt=json -out=gosec-results.json -stdout -verbose=text ./...
 ```
 {: codeblock}
+
+To scan a Go module located in a subdirectory, set the `gosec-repo-path-$repo_owner-$repo_name` parameter. For example, if your repository owner is `myorg`, repository name is `myrepo`, and the Go module is in the `cmd/myapp` directory, define the parameter as:
+
+- Parameter name: `gosec-repo-path-myorg-myrepo`
+- Parameter value: `cmd/myapp`
+
+This will scan the Go code starting from `cmd/myapp` path instead of the repository root.
 
 ### Using your own configuration file
 {: #devsecops-gosec-config-file}
