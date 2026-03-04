@@ -52,9 +52,9 @@ The automated infrastructure setup creates resources that are automatically prov
 
 1. Click one of the following options for the cluster deployment target. This action takes you to the Deploy to {{site.data.keyword.cloud_notm}} page where you create a {{site.data.keyword.bpshort}} workspace. Complete the required fields on that page, and then click **Next**.
 
-   [![Deploy to Kubernetes on IBM Cloud](images/Deploy_to_kube_Secured.svg)](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/shift-left-compliance-module/tree/master/terraform/secure-kube)
+   [![Deploy to Kubernetes on IBM Cloud](/images/Deploy_to_kube_Secured.svg)](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/shift-left-compliance-module/tree/master/terraform/secure-kube)
 
-   [![Deploy to OpenShift on IBM Cloud](images/Deploy_to_Openshift_Secured.svg)](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/shift-left-compliance-module/tree/master/terraform/secure-openshift)
+   [![Deploy to OpenShift on IBM Cloud](/images/Deploy_to_Openshift_Secured.svg)](https://cloud.ibm.com/schematics/workspaces/create?repository=https://github.com/IBM-Cloud/shift-left-compliance-module/tree/master/terraform/secure-openshift)
 
    Based on which option you select, the corresponding Terraform template from this repository is automatically imported into the new {{site.data.keyword.bpshort}} workspace.
    {: note}
@@ -106,7 +106,7 @@ The pr-pipeline in the ci-toolchain is triggered. Verify that the pipeline is ru
 1. Return to your CI toolchain, and click the **Delivery Pipeline** tile for your `pr-pipeline`. On the pr-pipeline Dashboard page, you can see the pr-pipeline running.
 1. To view the progress, click the `pr-pipeline` link.
 
-   ![pr-pipeline](images/pr-pipeline-run.png){: caption="Figure 1. pr-pipeline Dashboard" caption-side="bottom"}
+   ![pr-pipeline](/images/pr-pipeline-run.png){: caption="Figure 1. pr-pipeline Dashboard" caption-side="bottom"}
 
 Notes:
 1. If any vulnerabilities are found, then the code-pr-finish step fails.
