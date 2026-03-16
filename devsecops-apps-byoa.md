@@ -66,7 +66,10 @@ export compliance_base_image=$(curl -L https://us-south.git.cloud.ibm.com/open-t
 
 # environment variable compliance_base_image should contains a value like icr.io/continuous-delivery/toolchains/devsecops/devsecops-baseimage:3.109.7_commons-1.50.2 or upper
 
-docker run --platform linux/amd64 -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh /src
+# define hint for unit-test and acceptance-test configuration properties as the hello-containers
+# sample has specific npm script entries for it
+
+docker run --platform linux/amd64 -v.:/src --rm -it $compliance_base_image /opt/one-pipeline/polyglot/tools/enable-devsecops.sh --configuration hint-npm-unit-testing-script=test-unit --configuration hint-npm-acceptance-testing-script=test-fvt /src
 ```
 
 

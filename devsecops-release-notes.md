@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-25"
+lastupdated: "2026-03-16"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -793,8 +793,6 @@ Support for Security and Compliance Center push API
 - **Auto remediation of vulnerabilities using CRA in CC Pipeline** - Added ability to auto remediate vulnerabilities using CRA. For more information, see [Automatically remediating vulnerabilities](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#cd-devsecops-auto-remediate)
 
 - **Generation of SBOM in cyclonedx format and its validation** - Added ability to generate and merge SBOM using cyclonedx format and also the bom is validated using `sbom-utility` tool. For more information, see [Generating the software bill of materials (SBOM) in cyclonedx format](/docs/devsecops?topic=devsecops-generate-cyclonedx-sbom)
-
-- **Evidence pruner** - A new tool has been developed to prune older evidences before a specific time.
 
 
 ## 31 January 2023
