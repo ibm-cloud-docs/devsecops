@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-25"
+lastupdated: "2026-03-23"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -583,7 +583,7 @@ Bug fix release
 {: #devsecops-open-v10.13.0-open-v9.32.0}
 
 Enhancements for “Required Evidence Check” Feature in the CD/CC Pipeline
-:   Released new schema (v2) for the required evidence validation configuration file. Please refer [here](/docs/devsecops?topic=devsecops-evidence-checks-validation#evidence-checks-config-filev2) for documentation using the new schema.
+:   Released new schema (v2) for the required evidence validation configuration file. Please refer to the documentation using the new schema.
 
 Performance improvements
 :   Improved pipeline performance when Cloud Object Storage (COS) is used as the evidence locker for one pipeline evidences.
@@ -793,8 +793,6 @@ Support for Security and Compliance Center push API
 - **Auto remediation of vulnerabilities using CRA in CC Pipeline** - Added ability to auto remediate vulnerabilities using CRA. For more information, see [Automatically remediating vulnerabilities](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#cd-devsecops-auto-remediate)
 
 - **Generation of SBOM in cyclonedx format and its validation** - Added ability to generate and merge SBOM using cyclonedx format and also the bom is validated using `sbom-utility` tool. For more information, see [Generating the software bill of materials (SBOM) in cyclonedx format](/docs/devsecops?topic=devsecops-generate-cyclonedx-sbom)
-
-- **Evidence pruner** - A new tool has been developed to prune older evidences before a specific time.
 
 
 ## 31 January 2023

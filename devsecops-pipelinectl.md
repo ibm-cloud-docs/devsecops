@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-03-16"
 
 keywords: DevSecOps, pipelinectl
 
@@ -33,6 +33,10 @@ Available aliases and methods:
 - [set_envc](#set_envc)
 - [get_env](#get_env)
 - [list_env](#list_env)
+- [set_secret](#set_secret)
+- [get_secret](#get_secret)
+- [list_secrets](#list_secrets)
+- [remove_secret](#remove_secret)
 - [save_file](#save_file)
 - [load_file](#load_file)
 - [save_repo](#save_repo)
@@ -160,6 +164,93 @@ Example:
 list_env
 ```
 {: codeblock}
+
+### set_secret
+{: #set_secret}
+
+```bash
+# <key>: The name of the secret e.g. artifactory-token, (short-lived) iam-token
+# <value>: Value of the secret
+set_secret <key> # reads <value> from `stdin`
+set_secret <key> <value>
+```
+{: codeblock}
+
+Saves a secret that can be retrieved later on with [`get_secret`](#get_secret).
+
+If the `<value>` argument is missing, `set_secret` reads it from the standard input.
+
+- Unlike `set_env`, `set_secret` does **not** support passing multiple key value pairs to be set at once.
+- The content set by `set_secret` does not get serialized, hence it will not be available across sub-pipelines / async pipelineruns .
+- It is recommended to disable debug logging around this invocation, to ensure that the saved secret content does not show up even in debug logs.
+- Ensure that scripts and any logic do not depend on any output of `set_secret` (there is a print statement done to mask the secret value utilising the [::add-mask:: functionality](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security&interface=ui#cd_add_mask_command))
+
+Example:
+
+```bash
+# set value provided as argument
+set_secret app-name "my-app-name"
+
+# set value provided via stdin
+echo "my-secret-content" | set_secret my-secret
+set_secret my-api-key < /config/my-api-key
+```
+{: codeblock}
+
+### get_secret
+{: #get_secret}
+
+```bash
+# <key>: The name of the secret set with set_secret or set as Secure Value in pipeline UI
+get_secret <key> [default]
+```
+{: codeblock}
+
+Retrieve the stored secret value (in this order):
+
+* If `set_secret` was used previously with `key`, it retrieves that value
+* It tries to read the file `$SECRET_CONFIG_DIR/$key` (`SECRET_CONFIG_DIR` defaults to `/config/secure-properties`)
+* It prints the specified default value (if there's any)
+* It prints an error message, and returns a nonzero exit code
+
+Example:
+
+```bash
+get_secret cookie-token "default-token"
+```
+{: codeblock}
+
+```bash
+get_secret specific-account-ibmcloud-api-key "$(get_secret ibmcloud-api-key "")"
+```
+{: codeblock}
+
+### list_secrets
+{: #list_secrets}
+
+```bash
+list_secrets
+```
+{: codeblock}
+
+Displays the saved keys from the `set_secret` process and Secure Value type environment variables in the pipeline UI.
+
+Example:
+
+```bash
+list_secrets
+```
+{: codeblock}
+
+### remove_secret
+{: #remove_secret}
+
+```bash
+remove_secret <key>
+```
+
+This command unsets the secret stored inside the pipelinectl, which were saved using `set_secret`.
+
 
 ### save_file
 {: #save_file}
