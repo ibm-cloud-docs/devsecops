@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2026
-lastupdated: "2026-02-04"
+lastupdated: "2026-03-31"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -189,6 +189,11 @@ By default, each row in the *Detailed evidence status* table corresponds to an a
 
 While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation pipeline completes, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
 
+## How to opt-in into promotion validation?
+{: #cd-devsecops-promotion-validation-pipeline-opt-in}
+
+[Deprecated]{: tag-deprecated} The `opt-in-promotion-validation` option that was used to automatically kick-off the promotion validation pipeline on a pull request is `deprecated` in favor of the `Git Promotion Validation trigger`. If you have this property in the environment settings, you will see the deprecation notice in the pipeline logs and Slack notification.
+
 ## How to enable promotion validation?
 {: #cd-devsecops-promotion-validation-pipeline-enable}
 For all new CD toolchains, Git Promotion Validation trigger is automatically created and set to enabled.
@@ -205,11 +210,6 @@ To enable the Git Promotion Validation trigger on an existing pipeline, you can 
     - Check the box for the field **When a pull request is opened or updated**.
  4. Click **Add**.
  5. Set the trigger to **On**.
-
-## How to opt-in into promotion validation?
-{: #cd-devsecops-promotion-validation-pipeline-opt-in}
-
-[Deprecated]{: tag-deprecated} The `opt-in-promotion-validation` option used to automatically kick-off the promotion validation pipeline on a pull request is deprecated in favor of the Git Promotion Validation trigger. If you have this property in the environment settings, you will see the deprecation notice in the pipeline logs and Slack notification.
 
 ## Inputs
 {: #cd-devsecops-promotion-pipelineinputs}
@@ -258,6 +258,8 @@ You must edit and modify the pull/merge request if the optional parameters were 
 
 The aggregated evidence summary of the evidences (that can be coming from multiple apps in the inventory) is displayed in tabular format as a comment in the PR.
 ![Optional aggregated evidence summary captured in a comment on promotion pull and merge request](images/promotion-pull-request-summary.png){: caption="Aggregated evidence summary in promotion pull and merge request" caption-side="bottom"}
+
+
 
 ## Next step
  {: #devsecops-promotion-pipeline-next}
