@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-27"
+lastupdated: "2026-04-02"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -967,6 +967,148 @@ $ cocoa change-request attachment update
 $ cat data.txt | cocoa change-request attachment update --change-request-id='CHGXXXXXXX' --change-attachment-id='CTASKXXXXXXX' --data='@/dev/stdin'
 
 $ cocoa change-request attachment update --change-request-id='CHGXXXXXXX' --change-attachment-id='CTASKXXXXXXX' --data='@<path/to/file>'
+```
+
+### cocoa change-request comment add
+{: #change-request-comment-add}
+
+Adds a comment to a specific Change Request.
+
+Options:
+
+```text
+--comment          # Comment to add [string] [required]
+--provider         # (Optional) Change Management service provider (choices: 'servicenow-v3', 'gitlab', 'github-enterprise', default: 'servicenow-v3')
+--git-api-url      # (Optional) Git API URL [string]
+--git-token-path   # (Optional) Git token path to read the secret from [string]
+```
+{: screen}
+
+Required Environment Variables, if you are using ServiceNow v3 provider:
+
+```text
+SERVICENOW_URL=       # ServiceNow API URL
+```
+{: screen}
+
+Additional Environment Variables, if you are using ServiceNow v3 provider:
+
+```text
+PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provided, falls back to IAM_ACCESS_TOKEN
+IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
+```
+{: screen}
+
+Required Environment Variables for GitLab provider:
+
+```text
+GITLAB_TOKEN=    # Gitlab Token
+GITLAB_URL=      # Gitlab API URL
+GITLAB_ORG=      # Gitlab ORG
+GITLAB_REPO=     # Gitlab REPO Name
+```
+{: screen}
+
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=                        # Github Enterprise API Token
+GITHUB_CHANGE_MANAGEMENT_ORG=     # The owner of the repository
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name
+```
+{: screen}
+
+Running the command:
+
+```sh
+$ cocoa change-request comment add "CHGXXXXXXX" \
+        --comment='This is a comment for the change request'
+
+$ cocoa change-request comment add "CHGXXXXXXX" \
+        --comment='Adding comment using GitLab provider' \
+        --provider='gitlab'
+```
+
+### cocoa change-request comment list
+{: #change-request-comment-list}
+
+Lists all comments for a specific Change Request.
+
+Options:
+
+```text
+--provider         # (Optional) Change Management service provider (choices: 'servicenow-v3', 'gitlab', 'github-enterprise', default: 'servicenow-v3')
+--git-api-url      # (Optional) Git API URL [string]
+--git-token-path   # (Optional) Git token path to read the secret from [string]
+--last             # (Optional) Retrieve only the last n comments [number]
+--before           # (Optional) Filter comments created before this date (ISO 8601 format, e.g., YYYY-MM-DDTHH:MM:SSZ) [string]
+--after            # (Optional) Filter comments created after this date (ISO 8601 format, e.g., YYYY-MM-DDTHH:MM:SSZ) [string]
+```
+{: screen}
+
+**Note:**
+- The `--last` parameter must be a non-negative number.
+- The `--before` and `--after` parameters accept dates in ISO 8601 format and cannot be in the future.
+- When using both `--before` and `--after`, the `--before` date must be greater than the `--after` date.
+- Filters are applied in the following order: date filters (`--before`, `--after`) first, then `--last` to limit results.
+
+Required Environment Variables, if you are using ServiceNow v3 provider:
+
+```text
+SERVICENOW_URL=       # ServiceNow API URL
+```
+{: screen}
+
+Additional Environment Variables, if you are using ServiceNow v3 provider:
+
+```text
+PNP_IBMCLOUD_API_KEY= # API Key to access ServiceNow v3 endpoints, if not provided, falls back to IAM_ACCESS_TOKEN
+IAM_ACCESS_TOKEN=     # Access token obtained from the IAM service
+```
+{: screen}
+
+Required Environment Variables for GitLab provider:
+
+```text
+GITLAB_TOKEN=    # Gitlab Token
+GITLAB_URL=      # Gitlab API URL
+GITLAB_ORG=      # Gitlab ORG
+GITLAB_REPO=     # Gitlab REPO Name
+```
+{: screen}
+
+Required Environment Variables for GitHub Enterprise provider:
+
+```text
+GHE_TOKEN=                        # Github Enterprise API Token
+GITHUB_CHANGE_MANAGEMENT_ORG=     # The owner of the repository
+GITHUB_CHANGE_MANAGEMENT_REPO=    # The repository name
+```
+{: screen}
+
+Running the command:
+
+```sh
+# List all comments for a change request
+$ cocoa change-request comment list "CHGXXXXXXX"
+
+# List comments using GitHub Enterprise provider
+$ cocoa change-request comment list "CHGXXXXXXX" --provider='github-enterprise'
+
+# Get only the last 5 comments
+$ cocoa change-request comment list "CHGXXXXXXX" --last=5
+
+# Get comments created before a specific date
+$ cocoa change-request comment list "CHGXXXXXXX" --before="2026-03-20T10:00:00Z"
+
+# Get comments created after a specific date
+$ cocoa change-request comment list "CHGXXXXXXX" --after="2026-03-15T08:00:00Z"
+
+# Get comments within a date range
+$ cocoa change-request comment list "CHGXXXXXXX" --after="2026-03-15T08:00:00Z" --before="2026-03-20T10:00:00Z"
+
+# Get the last 10 comments within a date range
+$ cocoa change-request comment list "CHGXXXXXXX" --after="2026-03-15T08:00:00Z" --before="2026-03-20T10:00:00Z" --last=10
 ```
 
 ## cocoa evidence commands
