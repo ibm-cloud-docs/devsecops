@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2026
-lastupdated: "2026-01-30"
+lastupdated: "2026-04-02"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -143,11 +143,11 @@ The pipeline calculates the grace period according to the following table:
 
 | Severity      | Grace Period |
 | :-----------: | :----------: |
-| Informational | 90 days      |
-| Low           | 45 days      |
-| Medium        | 45 days      |
-| High          | 15 days      |
-| Critical      | 15 days      |
+| Informational | 180 days      |
+| Low           | 180 days      |
+| Medium        | 90 days      |
+| High          | 30 days      |
+| Critical      | 30 days      |
 {: caption="Default grace periods" caption-side="bottom"}
 
 To change the default configuration, create a new property in the CC pipeline's environment properties named `grace-period-configuration`. This environment property must be a JSON string and match the following format:
