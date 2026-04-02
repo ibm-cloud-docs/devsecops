@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-03-16"
+lastupdated: "2026-04-02"
 
 keywords: DevSecOps, pipelinectl
 
@@ -39,6 +39,8 @@ Available aliases and methods:
 - [remove_secret](#remove_secret)
 - [save_file](#save_file)
 - [load_file](#load_file)
+- [list_files](#list_files)
+- [remove_file](#remove_file)
 - [save_repo](#save_repo)
 - [list_repos](#list_repos)
 - [load_repo](#load_repo)
@@ -252,6 +254,8 @@ remove_secret <key>
 This command unsets the secret stored inside the pipelinectl, which were saved using `set_secret`.
 
 
+
+
 ### save_file
 {: #save_file}
 
@@ -274,6 +278,8 @@ save_file some_config ./config.yaml
 ```
 {: codeblock}
 
+
+
 ### load_file
 {: #load_file}
 
@@ -291,6 +297,56 @@ Example:
 load_file some_config > some_config.yaml
 ```
 {: codeblock}
+
+
+
+
+
+### list_files
+{: #list_files}
+
+Lists all stored files saved via `save_file`, optionally filtered by a key prefix.
+
+```bash
+# <prefix>:  (optional): Filter results to keys starting with this prefix
+list_files <prefix>
+```
+{: codeblock}
+
+Prints the saved file to `stdout`.
+
+Example:
+
+```bash
+list_files # lists all saved files
+
+list_files saved-reports- # lists files with "saved-reports-" prefix
+```
+{: codeblock}
+
+
+
+
+
+### remove_file
+{: #remove_file}
+
+Lists all stored files saved via `save_file`, optionally filtered by a key prefix.
+
+```bash
+# <key>:  Identifier of file to remove
+remove_file <key>
+```
+{: codeblock}
+
+Example:
+
+```bash
+remove_file my-report
+```
+
+
+
 
 ### save_repo
 {: #save_repo}
