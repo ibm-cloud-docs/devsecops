@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-04-06"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -424,12 +424,24 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional | Locked or Unlocked |
 |:----------|:------------------------------|:------------------|:----------|:----------|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked |
-|inventory-ignore-file 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked |
-|inventory-include 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		| Unlocked |
-|inventory-exclude 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		| Unlocked |
+|`inventory-ignore-file` 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked |
+|`inventory-include` 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		| Unlocked |
+|`inventory-exclude` 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		| Unlocked |
+|[`source-environment`](#pipeline-parm-source-environment)	|text		|The source inventory branch of the promotion.	|Required			|Locked |
+|[`target-environment`](#pipeline-parm-target-environment)	|text		|The source inventory branch of the promotion.	|Required			|Locked |
 {: caption="Promotion parameters" caption-side="bottom"}
 {: #pipelines-promotion-parameters}
 {: tab-title="Promotion parameters"}
+{: tab-group="IAM-simple"}
+{: class="simple-tab-table"}
+
+|Name |Type	|Description |Required or Optional | Locked or Unlocked |
+|:----------|:------------------------------|:------------------|:----------|:----------|
+|[`source-environment`](#pipeline-parm-source-environment)	|text		|The source inventory branch of the promotion.	|Required			|Locked |
+|`promotion-validation-scope`	|text		|Define the scope of validation. By default, the validation runs against the delta. It can be set to `full-inventory`, if you wish to validate against all inventory items.	|Optional			|Unlocked |
+{: caption="Promotion validation parameters" caption-side="bottom"}
+{: #pipelines-promotion-validation-parameters}
+{: tab-title="Promotion validation parameters"}
 {: tab-group="IAM-simple"}
 {: class="simple-tab-table"}
 
