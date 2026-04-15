@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-04-14"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -38,8 +38,10 @@ No additional steps are necessary to configure the Inferred DevSecOps Pipeline C
 {: #devsecops-inferred-pipeline-configuration-prereq}
 
 1.  Set up your DevSecOps toolchains and integrate [your application's source code repository](/docs/devsecops?topic=devsecops-tutorial-ci-toolchain#tutorial-ci-toolchain-application).
-   Do not use the default sample app repository. Instead, onboard your own application's repository.
-   {: note}
+
+
+    Do not use the default sample app repository. Instead, onboard your own application's repository.
+    {: note}
 
 1.  Review the [basics of DevSecOps pipeline customization](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization) to know more about the different templates that are available, support options, and other important information to get you started with DevSecOps.
 
