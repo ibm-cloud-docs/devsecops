@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-03-23"
+lastupdated: "2026-04-21"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -24,6 +24,75 @@ Support for Git Evidence Locker feature has been removed - hence Cloud Object St
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 20 April 2026
+{: #devsecops-Apr2026-20}
+{: release-note}
+
+### Updates for DevSecOps version - open-v10.66.0
+{: #devsecops-open-v10.66.0}
+
+Issue management timelines
+:   The issue remediation timelines have been updated as
+- Informational: 180 days
+- Low: 180 days
+- Medium: 90 days
+- High: 30 days
+- Critical: 30 days
+
+### Updates for DevSecOps version - open-v10.65.0
+{: #devsecops-open-v10.65.0}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.64.1
+{: #devsecops-open-v10.64.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.64.0
+{: #devsecops-open-v10.64.0}
+
+Pipelinectl enhancements:
+:   Introduced new commands `set_secret` and `get_secret` to handle secrets in the pipeline. They work on the similar lines as `set_env` and `get_env`. Any string set as a secret using `set_secret` command will be redacted in the logs automatically.
+
+
+
+### Updates for DevSecOps version - open-v10.63.0
+{: #devsecops-open-v10.63.0}
+
+Changes to mandatory checks
+:   Removed configuration of `cra-cis` check as mandatory check in the pipelines
+
+Enhancement to gosec scan
+:   Enhaced gosec scan to supprt scanning from a folder
+
+### Updates for DevSecOps version - open-v10.62.0
+{: #devsecops-open-v10.62.0}
+
+Performance optimizations
+:   Improved performance of collect-evidence call by utilizing v2 version of collect-evidence.
+
+Deadlock fix
+:   Fixed a deadlock issue in log processing.
+
+Auto close in PR pipeline
+:   Fixed incorrect closure of issues during the PR pipeline even though they exist in main branch
+
+### Updates for DevSecOps version - open-v10.61.0
+{: #devsecops-open-v10.61.0}
+
+Misleading warnings
+:   Optimized display of warnings about evidence locker.
+
+Gosec image update
+:   Updated Gosec image to 2.22.11 to address the security vulnerabilities.
+
+Performance optimizations
+:   Clone operation for cloning pipeline config repo now uses shallow clone to improve performance.
+
 
 ## 14 February 2026
 {: #devsecops-Feb2026-14}
