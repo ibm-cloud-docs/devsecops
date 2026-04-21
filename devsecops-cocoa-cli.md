@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-04-02"
+lastupdated: "2026-04-21"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2275,11 +2275,11 @@ To upload evidence and attachments to [Cloud Object Storage](https://www.ibm.com
 
 - `COS_ENDPOINT`: The [endpoint](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
 - `COS_BUCKET_NAME`: The name of the Cloud Object Storage bucket.
-- `COS_API_KEY`: An [IBM Cloud API key](/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has write access to the Cloud Object Storage bucket.
+- `COS_API_KEY`: An [IBM Cloud API key](/docs/iam?topic=iam-userapikey&interface=ui#userapikey){: external}or [Service ID API key](/docs/iam?topic=iam-serviceidapikeys&interface=ui){: external}that has write access to the Cloud Object Storage bucket.
 - `BACKUP_COS_ENDPOINT`: The [endpoint](/docs/cloud-object-storage?topic=cloud-object-storage-endpoints){: external}where the Cloud Object Storage bucket can be accessed.
 - `BACKUP_COS_BUCKET_NAME`: The name of the BackupCloud Object Storage bucket.
-- `BACKUP_COS_API_KEY`: An [IBM Cloud API key](/docs/account?topic=account-userapikey#userapikey){: external}or [Service ID API key](/docs/account?topic=account-serviceidapikeys&interface=ui){: external}that has reader access to the Cloud Object Storage bucket.
-- `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](/docs/account?topic=account-iamtoken_from_apikey&interface=api){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
+- `BACKUP_COS_API_KEY`: An [IBM Cloud API key](/docs/iam?topic=iam-userapikey&interface=ui#userapikey){: external}or [Service ID API key](/docs/iam?topic=iam-serviceidapikeys&interface=ui){: external}that has reader access to the Cloud Object Storage bucket.
+- `IBM_AUTH_ENDPOINT`: The endpoint where the API key can be used to generate an [IAM token](/docs/iam?topic=iam-iamtoken_from_apikey){: external}(defaults to `https://iam.cloud.ibm.com/identity/token`){: external}.
 
 
 ### cocoa locker asset add < URI >

@@ -41,7 +41,7 @@ The automated infrastructure setup creates resources that are automatically prov
 ## Before you begin
 {: #apps-devsecops-prereqs}
 
-* To complete this tutorial, use a [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-upgrading-account) where you are the owner or have [full Administrator access](/docs/account?topic=account-assign-access-resources). If you already have an {{site.data.keyword.cloud_notm}} account and need to upgrade it, see [Upgrading your account](/docs/account?topic=account-upgrading-account).
+* To complete this tutorial, use a [Pay-As-You-Go or Subscription {{site.data.keyword.cloud_notm}} account](/docs/account?topic=account-upgrading-account) where you are the owner or have [full Administrator access](/docs/iam?topic=iam-assign-access-resources&interface=ui). If you already have an {{site.data.keyword.cloud_notm}} account and need to upgrade it, see [Upgrading your account](/docs/account?topic=account-upgrading-account).
 * [Install the {{site.data.keyword.cloud_notm}} CLI](/docs/cli?topic=cli-getting-started) if you want to interact with elements of the toolchain or infrastructure after they are created.
 * Obtain a [GitLab Personal Access Token](https://us-south.git.cloud.ibm.com/users/sign_in){: external}. Enter a name for your personal access token. Create your token in the same region as your CI toolchain. Be sure to copy and save the token because you need it later, and you cannot access it again.
 * Create an [{{site.data.keyword.cloud_notm}} API key](https://cloud.ibm.com/iam/apikeys){: external}. Be sure to copy and save or download the API key value because you need it later, and you cannot access it again.
