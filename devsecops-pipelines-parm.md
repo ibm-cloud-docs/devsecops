@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-04-06"
+lastupdated: "2026-04-21"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -87,6 +87,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			| Locked |
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			| Unlocked |
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked |
+|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
 |`slack-notifications`		|text		|The switch that turns the Slack integration on or off.	|Optional			| Locked |
 |`[slack-notifications]`(#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		| Unlocked |
 |`opt-in-sonar-pr-analysis`		|Text		|Allowing Sonarqube scan to do the pull request analysis (This option will work only if the PR is not contributed from a forked repository).This parameter is only valid for `App-preview PR pipeline`.|Optional			| Unlocked |
@@ -200,6 +201,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	| Unlocked | 
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			| Locked | 
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked |
+|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
 |`registry-namespace`		|text		|The Container Registry namespace for the image.	|Required			| Locked |
 |`registry-region`		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|Locked |
 | `repository` |text |The URL of your application's source code repository. | Optional |Unlocked |
@@ -402,6 +404,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
+|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			|
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  |
 |`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
@@ -424,6 +427,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional | Locked or Unlocked |
 |:----------|:------------------------------|:------------------|:----------|:----------|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked |
+|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
 |`inventory-ignore-file` 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked |
 |`inventory-include` 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		| Unlocked |
 |`inventory-exclude` 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		| Unlocked |
@@ -438,6 +442,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional | Locked or Unlocked |
 |:----------|:------------------------------|:------------------|:----------|:----------|
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source inventory branch of the promotion.	|Required			|Locked |
+|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
 |`promotion-validation-scope`	|text		|Define the scope of validation. By default, the validation runs against the delta. It can be set to `full-inventory`, if you wish to validate against all inventory items.	|Optional			|Unlocked |
 {: caption="Promotion validation parameters" caption-side="bottom"}
 {: #pipelines-promotion-validation-parameters}
