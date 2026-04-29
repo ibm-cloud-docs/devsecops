@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-04-21"
+lastupdated: "2026-04-28"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -87,7 +87,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			| Locked |
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional			| Unlocked |
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked |
-|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
+|[`pipeline-display-name`](#pipeline-parm-pipeline-display-name)		|text		|Customizes the display name of pipeline runs and their associated task runs.	|Optional			| Unlocked |
 |`slack-notifications`		|text		|The switch that turns the Slack integration on or off.	|Optional			| Locked |
 |`[slack-notifications]`(#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		| Unlocked |
 |`opt-in-sonar-pr-analysis`		|Text		|Allowing Sonarqube scan to do the pull request analysis (This option will work only if the PR is not contributed from a forked repository).This parameter is only valid for `App-preview PR pipeline`.|Optional			| Unlocked |
@@ -201,7 +201,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional	| Unlocked | 
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			| Locked | 
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			| Unlocked |
-|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
+|[`pipeline-display-name`](#pipeline-parm-pipeline-display-name)		|text		|Customizes the display name of pipeline runs and their associated task runs.	|Optional			| Unlocked |
 |`registry-namespace`		|text		|The Container Registry namespace for the image.	|Required			| Locked |
 |`registry-region`		|text		|The {{site.data.keyword.cloud_notm}} region for the image registry.	|Required			|Locked |
 | `repository` |text |The URL of your application's source code repository. | Optional |Unlocked |
@@ -404,7 +404,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
 |[`pipeline-debug`](#pipeline-parm-pipeline-debug)		|select		|The pipeline debug mode switch.  |Optional			|
 |`pipeline-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that pulls images from a private registry.	|Optional	  	|
-|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			|
+|[`pipeline-display-name`](#pipeline-parm-pipeline-display-name)		|text		|Customizes the display name of pipeline runs and their associated task runs.	|Optional			|
 |`publish-retry-duration`| text		|Specifies the duration, in seconds, to wait before initiating the next publish evidence attempt.	|Optional			|
 |`region-prefix`  |text  |Region name as prefix for the `latest` tag for the target environment. Example: `us-south`   |Optional  |
 |`repo-url` 		|text 		|The URL of your application repository.			|Required, if same inventory is used to store multiple application artifacts.			|
@@ -427,7 +427,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional | Locked or Unlocked |
 |:----------|:------------------------------|:------------------|:----------|:----------|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked |
-|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
+|[`pipeline-display-name`](#pipeline-parm-pipeline-display-name)		|text		|Customizes the display name of pipeline runs and their associated task runs.	|Optional			| Unlocked |
 |`inventory-ignore-file` 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked |
 |`inventory-include` 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		| Unlocked |
 |`inventory-exclude` 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		| Unlocked |
@@ -442,7 +442,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |Name |Type	|Description |Required or Optional | Locked or Unlocked |
 |:----------|:------------------------------|:------------------|:----------|:----------|
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source inventory branch of the promotion.	|Required			|Locked |
-|`pipeline-display-name`		|text		|Customizes the display name of pipeline runs and their associated task runs. For more information, see [Customizing pipeline run names](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-display-name).	|Optional			| Unlocked |
+|[`pipeline-display-name`](#pipeline-parm-pipeline-display-name)		|text		|Customizes the display name of pipeline runs and their associated task runs.	|Optional			| Unlocked |
 |`promotion-validation-scope`	|text		|Define the scope of validation. By default, the validation runs against the delta. It can be set to `full-inventory`, if you wish to validate against all inventory items.	|Optional			|Unlocked |
 {: caption="Promotion validation parameters" caption-side="bottom"}
 {: #pipelines-promotion-validation-parameters}
@@ -595,6 +595,48 @@ This parameter is for the promotion pull request. Additional notes on what this 
 {: #pipeline-parm-pipeline-debug}
 
 If this parameter is set to 1, the pipeline runs in debug mode, and the logs show more information. By default, it is set to 0.
+
+### pipeline-display-name
+{: #pipeline-parm-pipeline-display-name}
+
+The `pipeline-display-name` custom property allows you to customize the display name of pipeline runs. This feature provides better visibility and traceability for your pipeline executions.
+
+#### How it works
+{: #pipeline-parm-pipeline-display-name-how-it-works}
+
+When you pass the `pipeline-display-name` property in the trigger payload or set it as an environment property, the pipeline run name is modified to use your custom name.
+
+**Task display name behavior**: When a custom pipeline run name is set, individual task display names within the pipeline are also modified:
+* **Running tasks**: Task names are prefixed with your custom `pipeline-display-name` value
+* **Tasks that haven't started**: Task names retain their default naming convention and only display the custom name once the task begins execution
+
+#### Examples
+{: #pipeline-parm-pipeline-display-name-examples}
+
+Setting `pipeline-display-name` to `prod-deployment-v2.1.0`:
+
+* **Pipeline run name**: `prod-deployment-v2.1.0`
+* **Task names**: Prefixed with `prod-deployment-v2.1.0` followed by system identifiers and task-specific suffixes
+
+![Pipeline display name example](images/devsecops-pipeline-display-name.png){: caption="Figure 1. Pipeline run with custom display name" caption-side="bottom"}
+
+#### Best practices
+{: #pipeline-parm-pipeline-display-name-requirements}
+
+Custom names must follow Kubernetes RFC 1123 naming rules:
+* Use only lowercase letters (a-z), numbers (0-9), hyphens (-), or dots (.)
+* Start and end with an alphanumeric character
+* Maximum 63 characters
+* No spaces or uppercase letters
+
+**Invalid**: `CI pipeline for app-repo 1` (contains spaces and uppercase)
+
+**Valid**: `ci-pipeline-for-app-repo-1`
+
+#### Limitations
+{: #pipeline-parm-pipeline-display-name-limitations}
+
+* Task names are only modified for tasks that have started. Tasks that haven't started yet will show default names until execution begins.
 
 ### priority
 {: #pipeline-parm-priority}
