@@ -85,14 +85,43 @@ Setting `incident-assigness` and `incident-labels` at the pipeline or trigger le
 ### {{site.data.keyword.cos_full_notm}} considerations
 {: #cos-bucket-considerations}
 
-If you are using a shared inventory repository and a shared issues repository, you can use a shared instance of {{site.data.keyword.cos_full}} as well. Complete the following steps:
+If you are using a shared inventory repository, you can use a shared instance of {{site.data.keyword.cos_full}} as well. Complete the following steps:
 
 1. Create an [instance of {{site.data.keyword.cos_full_notm}}](/docs/cloud-object-storage?topic=cloud-object-storage-provision) to use across toolchains and pipelines.
-1. Within that shared {{site.data.keyword.cos_full_notm}} instance, create one {{site.data.keyword.cos_short}} bucket per microservice.
 1. Set up pipelines and triggers, if applicable, to use the {{site.data.keyword.cos_full_notm}} bucket by setting the `cos-bucket-name` environment property.
 
 All microservices within the same CI, CD, and CC pipelines share one {{site.data.keyword.cos_short}} bucket, regardless of the deployment environment. The {{site.data.keyword.cos_short}} bucket functions similarly to the evidence repository, but without the performance issues that can occur with a substantial evidence repository. Because performance issues don't occur with a substantial {{site.data.keyword.cos_short}} bucket, you don't need to prune evidence from {{site.data.keyword.cos_short}} buckets.
 {: important}
+
+#### {{site.data.keyword.cos_short}} bucket granularity
+{: #cos-bucket-granularity}
+
+DevSecOps pipelines are not opinionated about the granularity of {{site.data.keyword.cos_short}} buckets. Technically, you could use a single {{site.data.keyword.cos_short}} bucket across your entire organization. However, the granularity should not be smaller than an inventory, since the inventory is the smallest logical grouping of microservices that can move together.
+
+In practice, the granularity comes down to the operating model your compliance team wants for managing compliance data:
+- If the compliance team is comfortable managing multiple {{site.data.keyword.cos_short}} buckets with compartmentalized data, that is a viable model.
+- If they prefer managing a single larger {{site.data.keyword.cos_short}} bucket with uncompartmentalized data, that is also possible.
+
+A key consideration: the {{site.data.keyword.cos_short}} bucket (evidence locker) is intended to be system-readable, not human-readable. It does not, and for the foreseeable future will not, support folder structures organized by repository, microservice, product, or organization. It remains a flattened structure of assets and evidences.
+
+#### Security and access considerations
+{: #cos-security-considerations}
+
+Less granular {{site.data.keyword.cos_short}} buckets increase blast radius in the event of a security breach (for example, exposure of a {{site.data.keyword.cos_short}} API key). It can also create cross-visibility concerns, where one product vertical could potentially read another's compliance data if they share the same bucket.
+
+#### Migration considerations
+{: #cos-migration-considerations}
+
+There are ways to migrate across {{site.data.keyword.cos_short}} buckets if needed. This typically involves configuring certain environment properties for a backup {{site.data.keyword.cos_short}} bucket, and rebuilding CI components. Refer to this [documentation](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence#cd-devsecops-cos-bucket-migration) for more information. However, those operations are intended to be one-off migration activities, not something designed to be part of daily operational workflows.
+
+#### Recommended approach
+{: #cos-recommended-approach}
+
+Use one {{site.data.keyword.cos_short}} bucket per logical product grouping whose compliance data needs to move together. For example:
+- Service Team A (including all squads within it) shares {{site.data.keyword.cos_short}} Bucket A
+- Service Team B (including all squads within it) shares {{site.data.keyword.cos_short}} Bucket B
+
+This approach balances operational simplicity with security and access control requirements.
 
 ### Deploying to multiple environments
 {: #deploy-multi-envs}

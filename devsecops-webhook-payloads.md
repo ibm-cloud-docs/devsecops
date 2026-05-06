@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2025
-lastupdated: "2025-03-06"
+  years: 2022, 2026
+lastupdated: "2026-05-06"
 
 keywords: DevSecOps
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Accessing arguments from webhook payloads 
 {: #cd-devsecops-webhook-payloads}
 
-Your scripts can access the full trigger webhook payload that started the current pipeline run. They are located in the file under the `/trigger-payload/payload.json` path.
+Your scripts can access the full trigger webhook payload that started the current pipeline run. They are located in the file whose path is defined in the `TRIGGER_PAYLOAD_PATH` environment variable.
 {: shortdesc}
 
 The option to use the `TRIGGER_PAYLOAD` environment variable is deprecated.
@@ -25,7 +25,7 @@ The following code snippet shows how to access the webhook trigger payload and p
 It reads the author of the recent commit that triggered the pipeline and saves it for the toolchain to use later.
 
 ```bash
-AUTHOR_EMAIL="$(jq '.head_commit.author.email' '/trigger-payload/payload.json')"
+AUTHOR_EMAIL="$(jq '.head_commit.author.email' $TRIGGER_PAYLOAD_PATH)"
 
 set_env author-email $AUTHOR_EMAIL
 
