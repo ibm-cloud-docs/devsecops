@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2021, 2025
-lastupdated: "2025-09-23"
+  years: 2021, 2026
+lastupdated: "2026-05-11"
 
 keywords: DevSecOps
 
@@ -43,6 +43,8 @@ You can set the value of the emergency label (`default: EMERGENCY`) that the con
 You can also change the value of the emergency label from the pipeline's environment variables:
 
  ![Emergency label variable](images/emergency-label-env.png){: caption="Emergency label variable" caption-side="bottom"}
+
+This label indicated by the value set by the `emergency-label` environment property, needs to be added to the promotion pull request to indicate to the CD pipeline that the change is an emergency change. 
 
 When the deployment completes, the emergency change request is set to the `Review` state, which indicates that it requires the assigned approvers to review and approve it retroactively.
 
