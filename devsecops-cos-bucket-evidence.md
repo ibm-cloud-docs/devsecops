@@ -36,7 +36,7 @@ A dedicated Cloud {{site.data.keyword.cos_short}} instance must be created befor
 
 To configure your Cloud {{site.data.keyword.cos_short}} bucket to act as a compliance evidence locker as part of a continuous integration or continuous deployment pipeline, you can use the following information as a guide. The pipeline or toolchain template scripts do not set up the locker in Cloud {{site.data.keyword.cos_short}}.
 
-Refer to this [page](/docs/cloud-object-storage?topic=/docs/devsecops?topic=cd-devsecops-advanced-pipelines-customization#cos-bucket-considerations) for more information about considerations (granularity, security, ...) for using Cloud {{site.data.keyword.cos_short}} for compliance evidence.
+Refer to this [page](/docs/devsecops?topic=devsecops-cd-devsecops-advanced-pipelines-customization&q=Continuous+Deployment+&tags=devsecops#cos-bucket-considerations) for more information about considerations (granularity, security, ...) for using Cloud {{site.data.keyword.cos_short}} for compliance evidence.
 {: note}
 
 ### Retention policy
