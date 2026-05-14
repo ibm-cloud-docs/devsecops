@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-02-04"
+lastupdated: "2026-05-14"
 
 keywords: DevSecOps, parallelization, IBM Cloud, task parallelization, concurrency, concurrent execution
 
@@ -55,10 +55,7 @@ For more information, see the [PR pipeline documentation](/docs/devsecops?topic=
 {: caption="Stages of PR pipeline structure and descriptions of each stage" caption-side="bottom"}
 
 
-
 ![PR pipeline structure](images/cd-devsecops-pr-in-parallel.svg "PR pipeline structure"){: caption="PR pipeline structure" caption-side="bottom"}
-
-
 
 ### CI pipeline structure
 {: #devsecops-conc-ci-pipeline}
@@ -88,11 +85,7 @@ For more information, see the [CI pipeline documentation](/docs/devsecops?topic=
 {: caption="Stages of CI pipeline structure and descriptions of each stage" caption-side="bottom"}
 
 
-
-
 ![CI pipeline structure](images/cd-devsecops-ci-in-parallel.svg "CI pipeline structure"){: caption="CI pipeline structure" caption-side="bottom"}
-
-
 
 
 ### CD pipeline structure
@@ -113,12 +106,7 @@ For more information, see the [CD pipeline documentation](/docs/devsecops?topic=
 | `prod-finish` | Publish acceptance tests, deploy record, collect CycloneDX SBOM, and close change request.  |
 {: caption="Stages of CD pipeline structure and descriptions of each stage" caption-side="bottom"}
 
-
-
 ![CD pipeline structure](images/cd-devsecops-cd-in-parallel.svg "CD pipeline structure"){: caption="CD pipeline structure" caption-side="bottom"}
-
-
-
 
 ### CC pipeline structure
 {: #devsecops-conc-cc-pipeline}
