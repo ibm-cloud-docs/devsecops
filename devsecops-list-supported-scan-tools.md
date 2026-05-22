@@ -20,6 +20,7 @@ The following table lists the various scanning tools that are integrated into De
 
 | Tool | Scan | Description | Scan type |
 |-|-|-|-|
+| [Syft and Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) | Syft and Grype analyze your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of PR app preview/CI/CC pipelines | Dependency scan |
 | [IBM Cloud Code Risk Analyzer](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) | Code Risk Analyzer (CRA) analyzes your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of CI/CC pipelines | Dependency scan |
 | [Gosec](/docs/devsecops?topic=devsecops-devsecops-gosec) | Gosec scan can be used to inspect Golang source code in your scanned repositories. | `static scan` stage of CI/CC pipelines | Static scan |
 | [Sonarqube](/docs/devsecops?topic=devsecops-sonarqube) | SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. | `static scan` stage of CI/CC pipelines | Static scan |

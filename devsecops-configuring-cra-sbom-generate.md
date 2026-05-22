@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2025, 2025
-lastupdated: "2025-06-05"
+  years: 2025, 2026
+lastupdated: "2026-05-22"
 
 keywords: DevSecOps, IBM Cloud, compliance,CRA, SBOM
 
@@ -11,6 +11,8 @@ subcollection: devsecops
 ---
 
 {{site.data.keyword.attribute-definition-list}}
+
+
 
 # Configuring CRA SBOM Generation
 {: #devsecops-cra-sbom-generate}
