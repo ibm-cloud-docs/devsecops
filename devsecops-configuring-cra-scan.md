@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-08-05"
+  years: 2023, 2026
+lastupdated: "2026-05-22"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -11,6 +11,8 @@ subcollection: devsecops
 ---
 
 {{site.data.keyword.attribute-definition-list}}
+
+
 
 # Configuring IBM Cloud Code Risk Analyzer scans
 {: #cd-devsecops-cra-scans}
