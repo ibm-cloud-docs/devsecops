@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-04-21"
+lastupdated: "2026-05-27"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -2972,6 +2972,9 @@ cocoa locker evidence collect [OPTIONS]
 - `--additional-comment <string>`
    Additional comment to include in incident issues
 
+- `--show-table`
+   Display the details of the evidence in a table format
+   
 - `--dry-run`
    Preview without saving to locker
 
@@ -3153,6 +3156,9 @@ cocoa locker evidence reuse [OPTIONS]
 
 - `--dry-run`
    Preview mode without actually reusing evidence
+
+- `--show-table`
+   Display the details of the evidence in a table format
 
 - `--format <string>`
    Output format: `json` (default: json)
