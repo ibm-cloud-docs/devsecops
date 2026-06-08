@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-04-02"
+lastupdated: "2026-06-08"
 
 keywords: DevSecOps, pipelinectl
 
@@ -20,7 +20,183 @@ subcollection: devsecops
 
 For more information about where this tool is used, see [Adding test and build steps to pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-add-pipeline-steps).
 
+## Cloud Object Storage configuration for pipeline data
+{: #devsecops-pipelinectl-cos-config}
 
+Cloud Object Storage (COS) provides unlimited, persistent storage for pipeline data such as build artifacts, test reports, and intermediate files. Unlike the default local storage, COS-backed files persist across pipeline runs and can be shared between different pipelines.
+
+The data COS bucket must be separate from your evidence locker bucket due to audit and compliance requirements.
+{: important}
+
+### Configure COS for pipeline data
+{: #devsecops-pipelinectl-cos-setup}
+
+To use COS with pipelinectl file operations, complete the following configuration steps:
+
+1. **Create a data bucket**
+
+- You can use an existing Cloud Object Storage instance or create a new one. Follow the instructions in [Configuring Cloud Object Storage](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) to:
+- Create a data bucket (must be separate from your evidence locker bucket)
+- Create a service credential for the bucket
+
+2. **Configure IAM permissions**
+
+Assign the following roles to your service credential for the data bucket: **Writer**, **Object Writer**, **Reader**, and **Content Reader**.
+
+For detailed instructions, see [Bucket access permissions](/docs/devsecops?topic=devsecops-cd-devsecops-cos-bucket-evidence#cd-devsecops-cos-bucket-permissions).
+
+3. **Configure environment properties**
+
+Add the following environment properties to your DevSecOps pipeline:
+
+| Property | Type | Value | Description |
+|----------|------|-------|-------------|
+| `data-cos-api-key` | Secure | Your COS API key | API key from the service credential |
+| `data-cos-bucket-name` | Text | Your bucket name | Name of your data bucket |
+| `data-cos-endpoint` | Text | COS endpoint URL | Endpoint for your bucket's region |
+
+To find your COS endpoint URL, go to your bucket's **Configuration** page and copy the endpoint for your bucket's region (for example, `s3.us-south.cloud-object-storage.appdomain.cloud`). Use the direct or private endpoint when possible for better performance and security.
+
+Store the API key as a secure property to protect sensitive credentials.
+{: important}
+
+4. **Configure bucket lifecycle (recommended)**
+
+Set a lifecycle policy to automatically delete old pipeline data. A 7-day expiration rule is recommended for most pipeline data. For instructions, see [Lifecycle policies](/docs/cloud-object-storage?topic=cloud-object-storage-expiry).
+
+### Understanding COS data scope
+{: #devsecops-pipelinectl-cos-scope}
+
+Unlike `save_result` and `set_env` commands, which are automatically scoped to individual pipeline runs, file operations using the COS backend (`--storage=cos`) operate on a shared bucket that persists across all pipeline runs.
+{: important}
+
+Key behaviors:
+
+**No automatic run isolation** : Files saved with the same key from different pipeline runs overwrite each other.
+
+**Shared bucket namespace** : All pipeline runs using the same COS configuration share the same bucket namespace.
+
+**Persistent storage** : Files remain in COS until explicitly deleted or expired by bucket lifecycle rules.
+
+**Scope comparison:**
+
+| Command | Scope | Persistence |
+|---------|-------|-------------|
+| `save_result` | Single pipeline run | Run-specific |
+| `set_env` | Single pipeline run | Run-specific |
+| `save_file` (local) | Single pipeline run | Run-specific |
+| `save_file --storage=cos` | **Shared across all runs** | **Persistent** |
+{: caption="Table 1. Command scope comparison" caption-side="bottom"}
+
+When you use `list_files --storage=cos`, the command returns ALL files in the configured bucket, not just files from the current pipeline run. Use prefix filtering to narrow results.
+{: note}
+
+### Best practices for COS file operations
+{: #devsecops-pipelinectl-cos-best-practices}
+
+Follow these best practices to organize and manage files effectively in Cloud Object Storage and avoid unintended data overwrites.
+
+#### Avoiding conflicts
+
+To prevent data overwrites and conflicts:
+
+- Include unique identifiers in keys (for example, pipeline run ID, timestamp)
+- Use hierarchical key patterns: `project/component/run-id/filename`
+- Avoid generic keys like `build-artifact` without qualifiers
+
+Example of conflict:
+
+```bash
+# Pipeline Run 1
+save_file --storage=cos build-artifact ./dist/app-v1.0.0.tar.gz
+
+# Pipeline Run 2 (overwrites Run 1's file!)
+save_file --storage=cos build-artifact ./dist/app-v2.0.0.tar.gz
+```
+{: codeblock}
+
+Example of safe usage:
+
+```bash
+# Pipeline Run 1
+save_file --storage=cos "build-artifact-${PIPELINE_RUN_ID}" ./dist/app-v1.0.0.tar.gz
+
+# Pipeline Run 2 (separate key, no conflict)
+save_file --storage=cos "build-artifact-${PIPELINE_RUN_ID}" ./dist/app-v2.0.0.tar.gz
+```
+{: codeblock}
+
+#### Key naming conventions
+
+Use hierarchical patterns
+
+Organize files with descriptive, hierarchical key names:
+
+```bash
+# Good: Organized, descriptive
+save_file --storage=cos "artifacts/build/${PIPELINE_RUN_ID}/app.tar.gz" ./dist/app.tar.gz
+save_file --storage=cos "reports/security/${BUILD_NUMBER}/scan.json" ./scan-results.json
+
+# Avoid: Flat, generic
+save_file --storage=cos "artifact" ./dist/app.tar.gz
+```
+{: codeblock}
+
+Include unique identifiers
+
+Use variables to make keys unique per pipeline run:
+
+- Pipeline run ID: `${PIPELINE_RUN_ID}`
+- Build number: `${BUILD_NUMBER}`
+- Timestamp: `$(date +%Y%m%d-%H%M%S)`
+- Git commit SHA: `${GIT_COMMIT}`
+
+Use descriptive names
+
+Choose clear, meaningful names that indicate the file's purpose:
+
+```bash
+# Good: Clear purpose
+save_file --storage=cos "ui-service-image-${VERSION}" ./image.tar
+
+# Avoid: Ambiguous
+save_file --storage=cos "img" ./image.tar
+```
+{: codeblock}
+
+#### Avoid reserved prefixes
+
+Do NOT use keys starting with `devsecops-pipeline-data/` (for example, `devsecops-pipeline-data/path/to/file`). The `devsecops-pipeline-data/` prefix is reserved for internal pipeline operations. Using reserved prefixes may cause data corruption or pipeline failures.
+{: important}
+
+#### Filtering and retrieval
+
+Use prefix-based filtering to narrow results when listing files:
+
+```bash
+# List all artifacts for a specific project
+list_files --storage=cos "myproject/artifacts/"
+
+# List security reports for a specific date
+list_files --storage=cos "reports/security/2024-01-15"
+```
+{: codeblock}
+
+Explicitly remove temporary files
+
+When files are no longer needed, remove them explicitly:
+
+```bash
+remove_file --storage=cos "temp/build-${PIPELINE_RUN_ID}/cache.tar"
+```
+{: codeblock}
+
+### Security considerations
+{: #devsecops-pipelinectl-cos-security}
+
+- **API Key Management**: Always store the `data-cos-api-key` as a secure property. Never hardcode API keys in scripts or configuration files.
+- **Least Privilege**: Grant only the minimum required IAM permissions listed above.
+- **Bucket Separation**: Use a dedicated bucket for pipeline data, separate from your evidence locker bucket.
 
 ## Usage
 {: #pipelinectl-usage}
@@ -253,16 +429,13 @@ remove_secret <key>
 
 This command unsets the secret stored inside the pipelinectl, which were saved using `set_secret`.
 
-
-
-
 ### save_file
 {: #save_file}
 
 ```bash
-# <key>:  File name
-# <value>: Path, where the file will be stored
-save_file <key> <value>
+# <identifier>: Name used to store and retrieve the file (for example, 'build-artifact', 'my-report')
+# <path>: Path to the file on the local filesystem (for example, './dist/app.tar.gz')
+save_file <identifier> <path>
 ```
 {: codeblock}
 
@@ -271,36 +444,69 @@ Saves an arbitrary file that can be retrieved later on with [`load_file`](#load_
 Directories are not supported.
 {: note}
 
-Example:
+**Local Storage (Default):**
+
+Files are stored in the pipeline workspace and are scoped to the current pipeline run.
 
 ```bash
 save_file some_config ./config.yaml
 ```
 {: codeblock}
 
+**COS Storage:**
 
+Files are stored in Cloud Object Storage and persist across pipeline runs. See [Data Scope and Persistence](#devsecops-pipelinectl-file-scope) for important information about shared bucket behavior.
+
+Prerequisites: Ensure COS is configured. See [Cloud Object Storage configuration](#devsecops-pipelinectl-cos-config).
+{: note}
+
+```bash
+# Save with run-specific key
+save_file --storage=cos "build-artifact-${PIPELINE_RUN_ID}" ./dist/app-v1.2.3.tar.gz
+
+# Save with hierarchical key
+save_file --storage=cos "artifacts/ui-service/${BUILD_NUMBER}/image.tar" ./image.tar
+
+# Save report with timestamp
+save_file --storage=cos "reports/security/$(date +%Y%m%d)/scan.json" ./scan-results.json
+```
+{: codeblock}
 
 ### load_file
 {: #load_file}
 
 ```bash
-# <key>:  File name
-load_file <key>
+# <identifier>: Name of the file to retrieve (for example, 'build-artifact', 'my-report')
+load_file <identifier>
 ```
 {: codeblock}
 
 Prints the saved file to `stdout`.
 
-Example:
+**Local Storage (Default):**
+
+Retrieves files stored in the pipeline workspace for the current run.
 
 ```bash
 load_file some_config > some_config.yaml
 ```
 {: codeblock}
 
+**COS Storage:**
 
+Retrieves files from Cloud Object Storage.
 
+Prerequisites: Ensure COS is configured. See [Cloud Object Storage configuration](#devsecops-pipelinectl-cos-config).
+{: note}
 
+```bash
+# Load file and print to stdout
+load_file --storage=cos "build-artifact-${PIPELINE_RUN_ID}"
+
+# Load file and save to local filesystem
+load_file --storage=cos "artifacts/ui-service/${BUILD_NUMBER}/image.tar" > ./downloaded-image.tar
+```
+{: codeblock}
 
 ### list_files
 {: #list_files}
@@ -308,14 +514,16 @@ load_file some_config > some_config.yaml
 Lists all stored files saved via `save_file`, optionally filtered by a key prefix.
 
 ```bash
-# <prefix>:  (optional): Filter results to keys starting with this prefix
+# <prefix>: (optional) Filter results to keys starting with this prefix
 list_files <prefix>
 ```
 {: codeblock}
 
-Prints the saved file to `stdout`.
+Prints the list of file keys to `stdout`.
 
-Example:
+**Local Storage (Default):**
+
+Lists files stored in the pipeline workspace for the current run.
 
 ```bash
 list_files # lists all saved files
@@ -324,29 +532,61 @@ list_files saved-reports- # lists files with "saved-reports-" prefix
 ```
 {: codeblock}
 
+**COS Storage:**
 
+Lists files from Cloud Object Storage. Returns ALL files in the configured bucket, not just files from the current pipeline run. Use the optional prefix parameter to filter results and narrow down to specific files.
+{: important}
 
+Prerequisites: Ensure COS is configured. See [Cloud Object Storage configuration](#devsecops-pipelinectl-cos-config).
+{: note}
 
+```bash
+# List all files in bucket (may include files from multiple runs)
+list_files --storage=cos
+
+# List files with specific prefix to narrow results
+list_files --storage=cos "artifacts/ui-service/"
+
+# List files for specific date
+list_files --storage=cos "reports/security/20240115"
+```
+{: codeblock}
 
 ### remove_file
 {: #remove_file}
 
-Lists all stored files saved via `save_file`, optionally filtered by a key prefix.
+Removes a stored file.
 
 ```bash
-# <key>:  Identifier of file to remove
-remove_file <key>
+# <identifier>: Name of the file to remove (for example, 'build-artifact', 'my-report')
+remove_file <identifier>
 ```
 {: codeblock}
 
-Example:
+**Local Storage (Default):**
+
+Removes files from the pipeline workspace for the current run.
 
 ```bash
 remove_file my-report
 ```
+{: codeblock}
 
+**COS Storage:**
 
+Removes files from Cloud Object Storage.
 
+Prerequisites: Ensure COS is configured. See [Cloud Object Storage configuration](#devsecops-pipelinectl-cos-config).
+{: note}
+
+```bash
+# Remove specific file
+remove_file --storage=cos "build-artifact-${PIPELINE_RUN_ID}"
+
+# Remove temporary file
+remove_file --storage=cos "temp/cache-${BUILD_NUMBER}.tar"
+```
+{: codeblock}
 
 ### save_repo
 {: #save_repo}
