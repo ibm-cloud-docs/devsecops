@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-09"
+lastupdated: "2026-06-09"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -162,7 +162,7 @@ Configure the inventory target and Kubernetes cluster where the application is d
 ### Artifact signing
 {: #tutorial-tekton-ci-image-signing}
 
-The artifacts are built by the toolchain and recorded in the inventory and must be signed before deployed to production. The pipeline uses [Skopeo](https://github.com/containers/skopeo){: external} as the default tool to provide artifact signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-devsecops-image-signing).
+The artifacts are built by the toolchain and recorded in the inventory and must be signed before deployed to production. The pipeline uses [Skopeo](https://github.com/podman-container-tools/skopeo){: external} as the default tool to provide artifact signing capability. You can use an existing GPG Key or create a new [GPG Key Pair](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 
 1. Enter the **GnuPG Private Key**. Alternatively you can create a new GPG key by clicking **NEW**. For more information, see [Generating a GPG key](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 2. Click **Continue**.

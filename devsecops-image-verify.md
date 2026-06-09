@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2026
-lastupdated: "2026-06-08"
+lastupdated: "2026-06-09"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -65,7 +65,7 @@ A new `prod-verify-artifact` stage verifies the signature of an image in the Con
    ```
    {: codeblock}
 
-3. Retrieves the list of artifacts for each artifact by using [Skopeo](https://github.com/containers/skopeo){: external} to pull the image with the container policy.
+3. Retrieves the list of artifacts for each artifact by using [Skopeo](https://github.com/podman-container-tools/skopeo){: external} to pull the image with the container policy.
 
     ```bash
         skopeo copy docker://"${image}" dir:"${tmp_sign_dir}" --src-creds iamapikey:"${ibmcloud_api_key}"

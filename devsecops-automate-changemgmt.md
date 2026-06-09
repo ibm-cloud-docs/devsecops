@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2026
-lastupdated: "2026-05-12"
+lastupdated: "2026-06-09"
 
 keywords: DevSecOps, automate change management, change management, ibm cloud
 
@@ -172,7 +172,7 @@ Once a CIE is declared and the scope of the incident is understood, there are tw
 
 If a last-known-good configuration exists — that is, a previously deployed state that is confirmed stable — the fastest path to service restoration is a full rollback. This uses a dedicated rollback listener that is purpose-built for this scenario and does not require a new build or promotion.
 
-For step-by-step instructions and the parameters to configure, see [Full rollback using the dedicated rollback listener](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#full-rollback).
+For step-by-step instructions and the parameters to configure, see [Full rollback using the dedicated rollback listener](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-full-rollback).
 
 **Path 2: Fix-forward as an emergency change**
 

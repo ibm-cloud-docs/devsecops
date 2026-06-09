@@ -16,7 +16,7 @@ subcollection: devsecops
 # Generating a GPG key
 {: #devsecops-image-signing}
 
-Artifacts that are built by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration toolchain and recorded in the inventory must be signed before they are deployed to production. The continuous integration pipeline uses [Skopeo](https://github.com/containers/skopeo){: external} as the default tool to provide artifact signing capability.
+Artifacts that are built by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration toolchain and recorded in the inventory must be signed before they are deployed to production. The continuous integration pipeline uses [Skopeo](https://github.com/podman-container-tools/skopeo){: external} as the default tool to provide artifact signing capability.
 
 
 Create and store a GPG key that is used by the DevSecOps continuous integration pipeline either automatically or manually.
@@ -83,7 +83,7 @@ Copyright (C) 2021 g10 Code GmbH
 {: #cd-devsecops-gpg-generate}
 
 
-Leave the passphrase and the field empty if the generate-key command opens a dialog that asks for a passphrase. This is a limitation with the [(skopeo)](https://github.com/containers/skopeo/issues/1261){: external} utility of the image signing where the pipeline cannot accept a private key that is protected with a passphrase. If you provide the passphrase during creation, then your pipeline fails to decode the certificate, and your pipeline fails at the image signing step. Note that this is also applicable to GIT tag signing.
+Leave the passphrase and the field empty if the generate-key command opens a dialog that asks for a passphrase. This is a limitation with the [skopeo](https://github.com/podman-container-tools/skopeo){: external} utility of the image signing where the pipeline cannot accept a private key that is protected with a passphrase. If you provide the passphrase during creation, then your pipeline fails to decode the certificate, and your pipeline fails at the image signing step. Note that this is also applicable to GIT tag signing.
 
 ### Mac OS X and Linux™
 {: #cd-devsecops-gpg-linux}
