@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-04-21"
+lastupdated: "2026-06-09"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -16,7 +16,7 @@ subcollection: devsecops
 {: #devsecops-inferred-pipeline-configuration}
 
 
-Once you've added your own application or micro-service to the DevSecOps CI toolchain, you can use the Inferred DevSecOps Pipeline Configuration feature to get started quickly. This feature:
+Once you've added your own application or micro-service to the DevSecOps Continuous Integration (CI) toolchain, you can use the Inferred DevSecOps Pipeline Configuration feature to get started quickly. This feature:
 
 -  Infers the content of the `.pipeline-config.yaml`  DevSecOps pipeline configuration file for you
 -  Identifies the scripts that are needed to build, test, and deploy your code
@@ -33,6 +33,14 @@ No additional steps are necessary to configure the Inferred DevSecOps Pipeline C
 {: .note}
 
 
+
+
+DevSecOps Continuous Deployment (CD) toolchain is also having a default pipeline configuration. It enables adopters who use Inferred DevSecOps Configuration on the CI side to safely extend the same approach to their CD pipelines. The deployment actions are determined based on `app_artifacts` metadata from inventory entries.
+{:note}
+
+
+DevSecOps Continuous Compliance (CC) toolchain can also benefit from Inferred DevSecOps Configuration. The pipeline configuration is inferred based on the content of the repositories present in the inventory entries.
+{:note}
 
 ## Prerequisites
 {: #devsecops-inferred-pipeline-configuration-prereq}
