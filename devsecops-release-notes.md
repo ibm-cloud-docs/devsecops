@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-04-21"
+lastupdated: "2026-06-09"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -24,6 +24,55 @@ Support for Git Evidence Locker feature has been removed - hence Cloud Object St
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 10 June 2026
+{: #devsecops-Jun2026-10}
+{: release-note}
+
+### Updates for DevSecOps version - open-v10.70.0
+{: #devsecops-open-v10.70.0}
+
+Support signing of OCI format images:
+:   OCI format images can now be signed using the same signing process as container images.
+
+### Updates for DevSecOps version - open-v10.69.1
+{: #devsecops-open-v10.69.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.69.0
+{: #devsecops-open-v10.69.0}
+
+Update 3rd party tools
+:   The following 3rd party tools have been updated to their latest versions:
+    - base image to ubi 9.8
+		- Python: 3.11 → 3.12
+		- jq: 1.7.1 → 1.8.1
+		- yq4: v4.44.2 → v4.53.2
+		- cyclonedx-cli: v0.27.2 → v0.31.0
+		- sbom-utility: v0.17.0 → v0.19.0
+		- cosign: v2.2.1 → v3.0.6
+		- git-lfs: v3.4.0/v3.6.1 → v3.7.1
+    - Go: 1.24.4 → 1.26.3
+
+### Updates for DevSecOps version - open-v10.68.0
+{: #devsecops-open-v10.68.0}
+
+Signing enhancements
+:   The default implementation of signing stage has been updated to sign images and artifacts. Earliers users were expected to provide custom signing stage impelementation. 
+
+### Updates for DevSecOps version - open-v10.67.1
+{: #devsecops-open-v10.67.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.67.0
+{: #devsecops-open-v10.67.0}
+
+Security updates
+:   Devsecops tool has been updated with security updates.
 
 ## 20 April 2026
 {: #devsecops-Apr2026-20}
