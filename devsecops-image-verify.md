@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2023
-lastupdated: "2023-12-06"
+  years: 2023, 2026
+lastupdated: "2026-06-09"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -22,10 +22,11 @@ Maintain the integrity of images that are built in the Continuous Integration (C
 ## Before you begin
 {: #devsecops-image-verify-before}
 
-Before you start working with image verification, be sure that you have the following prerequistes.
+Before you start working with image verification, be sure that you have the following prerequisites.
 
 * You must have the GPG public key. For help generating your GPG key, see [the documentation](/docs/devsecops?topic=devsecops-devsecops-publickey).
-* You must add the environment variable `code-signing-certificate` with the base 64-encoded GPG public key. 
+* You must add the environment variable `code-signing-certificate` with the base 64-encoded GPG public key.
+* You must configure registry credentials for accessing container images during verification (see [Configuring registry credentials](#devsecops-verify-registry-credentials)).
 
 ## Verifying images
 {: #devsecops-image-verify-verify}
@@ -64,7 +65,7 @@ A new `prod-verify-artifact` stage verifies the signature of an image in the Con
    ```
    {: codeblock}
 
-3. Retrieves the list of artifacts for each artifact by using [Skopeo](https://github.com/containers/skopeo){: external} to pull the image with the container policy.  
+3. Retrieves the list of artifacts for each artifact by using [Skopeo](https://github.com/podman-container-tools/skopeo){: external} to pull the image with the container policy.
 
     ```bash
         skopeo copy docker://"${image}" dir:"${tmp_sign_dir}" --src-creds iamapikey:"${ibmcloud_api_key}"
@@ -72,6 +73,112 @@ A new `prod-verify-artifact` stage verifies the signature of an image in the Con
     {: codeblock}
 
 If the signature is valid and verified by the public key that is provided by the user, the image pull is successful.
+
+## Configuring registry credentials for verification
+{: #devsecops-verify-registry-credentials}
+
+When verifying container image signatures, the pipeline needs credentials to authenticate with the container registry and access the signed images. The DevSecOps pipeline supports dynamic credential resolution at runtime, allowing you to configure credentials in multiple ways with automatic fallback mechanisms.
+
+### Credential resolution hierarchy
+{: #devsecops-verify-credential-hierarchy}
+
+The pipeline dynamically resolves both username and API key credentials at runtime using the following hierarchy:
+
+#### API Key Resolution Order:
+1. **Namespace-specific API key**: `signing-token-apikey-{registry}-{namespace}` (secret)
+2. **Registry-specific API key**: `signing-token-apikey-{registry}` (secret)
+3. **Docker config JSON**: `signing-dockerconfigjson` (secret)
+4. **ICR-specific fallbacks**:
+   - `ciso-ibmcloud-api-key` (secret)
+   - `ibmcloud-api-key` (secret)
+
+#### Username Resolution Order:
+1. **Namespace-specific username**: `signing-token-username-{registry}-{namespace}` (environment variable)
+2. **Registry-specific username**: `signing-token-username-{registry}` (environment variable)
+3. **Default**: `iamapikey` (if no username is configured)
+
+Where:
+- `{registry}` is the registry hostname (e.g., `us.icr.io`, `de.icr.io`)
+- `{namespace}` is the full namespace path with slashes and dots replaced by underscores (e.g., `my_namespace_path`)
+
+### Configuring namespace-specific credentials
+{: #devsecops-verify-namespace-credentials}
+
+For fine-grained access control, you can configure credentials specific to a registry namespace:
+
+**API Key (Secret)**: `signing-token-apikey-{registry}-{namespace}`
+
+**Username (Environment Variable)**: `signing-token-username-{registry}-{namespace}`
+
+**Example**: For image `us.icr.io/my-namespace/my-app:latest`
+- Registry: `us.icr.io`
+- Namespace: `my-namespace`
+- API Key secret: `signing-token-apikey-us.icr.io-my_namespace`
+- Username environment variable: `signing-token-username-us.icr.io-my_namespace`
+- If username is not provided, defaults to: `iamapikey`
+
+### Configuring registry-specific credentials
+{: #devsecops-verify-registry-credentials-config}
+
+For broader access across all namespaces in a registry:
+
+**API Key (Secret)**: `signing-token-apikey-{registry}`
+
+**Username (Environment Variable)**: `signing-token-username-{registry}`
+
+**Example**: For any image in `us.icr.io`
+- API Key secret: `signing-token-apikey-us.icr.io`
+- Username environment variable: `signing-token-username-us.icr.io`
+- If username is not provided, defaults to: `iamapikey`
+
+### Configuring Docker config JSON
+{: #devsecops-verify-dockerconfig}
+
+You can provide a base64-encoded Docker config JSON that contains credentials for multiple registries:
+
+**Secret name**: `signing-dockerconfigjson`
+
+**Format**: Base64-encoded JSON matching Docker's config.json format:
+
+```json
+{
+  "auths": {
+    "us.icr.io": {
+      "username": "iamapikey",
+      "password": "your-api-key"
+    },
+    "us.icr.io/my-namespace": {
+      "username": "iamapikey",
+      "password": "namespace-specific-key"
+    }
+  }
+}
+```
+
+The pipeline matches the most specific path first, allowing namespace-level overrides within the Docker config.
+
+### Example configuration
+{: #devsecops-verify-credential-example}
+
+For an image `us.icr.io/production/my-app:v1.0.0`:
+
+**Option 1: Namespace-specific (recommended for production)**
+- API Key secret: `signing-token-apikey-us.icr.io-production` = `your-namespace-api-key`
+- Username environment variable (optional): `signing-token-username-us.icr.io-production` = `iamapikey`
+- If username is not specified, it defaults to `iamapikey`
+
+**Option 2: Registry-wide**
+- API Key secret: `signing-token-apikey-us.icr.io` = `your-registry-api-key`
+- Username environment variable (optional): `signing-token-username-us.icr.io` = `iamapikey`
+- If username is not specified, it defaults to `iamapikey`
+
+**Option 3: Docker config JSON**
+- Secret: `signing-dockerconfigjson` = `base64-encoded-docker-config`
+- Username is extracted from the Docker config JSON
+
+**Option 4: IBM Cloud default (automatic for ICR)**
+- API Key secret: `ibmcloud-api-key` = `your-ibmcloud-api-key`
+- Username defaults to `iamapikey`
 
 
 
@@ -141,4 +248,3 @@ gpg --verify  "${signature}" "${artifactName}"
 {: codeblock}
 
 If the signature is valid and verified using the provided public key, the stage will record the evidence and mark the stage as successful.
-

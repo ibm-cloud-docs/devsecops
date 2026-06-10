@@ -206,7 +206,7 @@ Add a `.pipeline-config.yaml` configuration file that contains the following pro
     {: codeblock}
 
 `sign-artifact` {: #byoa-sign-artifact}
-:   By default the DevSecOps CI toolchain signs all the images that are built during the containerizing stage. GPG keys that are provided during the setup of the toolchain are used to [sign the images](https://github.com/containers/skopeo/blob/main/docs/skopeo-copy.1.md). If you want to customize the image signing process, then add the following stage definition in your `.pipeline-config.yaml`:
+:   By default the DevSecOps CI toolchain signs all the images that are built during the containerizing stage. GPG keys that are provided during the setup of the toolchain are used to [sign the images](https://github.com/podman-container-tools/skopeo/blob/main/docs/skopeo-copy.1.md). If you want to customize the image signing process, then add the following stage definition in your `.pipeline-config.yaml`:
 
     ```bash
     sign-artifact:

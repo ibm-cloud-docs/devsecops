@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-05-27"
+lastupdated: "2026-06-09"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1931,7 +1931,7 @@ Currently supported scan result files:
 - Detect Secrets (option `--type detect-secrets`)
 - Sysdig (option `--type sysdig`)
 
-For more information on Container Registry VA and result format, see [Vulnerability Advisor for IBM Cloud Container Registry](https://cloud.ibm.com/apidocs/container-registry/va){: external}.
+For more information on Container Registry VA and result format, see [Vulnerability Advisor for IBM Cloud Container Registry](/docs/Registry?topic=Registry-va_index){: external}.
 For more information on the CRA Vulnerability scanner, see the [Configuring Code Risk Analyzer](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin){: external}documentation.
 
 Usage:

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-04-28"
+lastupdated: "2026-06-08"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -428,7 +428,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |:----------|:------------------------------|:------------------|:----------|:----------|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			| Unlocked |
 |[`pipeline-display-name`](#pipeline-parm-pipeline-display-name)		|text		|Customizes the display name of pipeline runs and their associated task runs.	|Optional			| Unlocked |
-|`inventory-ignore-file` 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked |
+|[`inventory-ignore-file`](#pipeline-parm-inventory-ignore-file) 		|text		|Custom filename for .inventoryignore file, this file contains list of files / folders to ignore on every partial-promotion run.   	|Optional		| Unlocked |
 |`inventory-include` 		|text		|Inventory entries to selectively promote in partial promotion.   	|Optional		| Unlocked |
 |`inventory-exclude` 		|text		|Inventory entries to exclude in partial promotion.   	|Optional		| Unlocked |
 |[`source-environment`](#pipeline-parm-source-environment)	|text		|The source inventory branch of the promotion.	|Required			|Locked |
@@ -723,6 +723,12 @@ This parameter is for the CD pipeline. It describes the target environment.
 
 This parameter is for the pipelines that use scan artifact stages to run the Sysdig scan by using `sysdig inline scanner` on `icr.io` images.
 
+### inventory-ignore-file
+{: #pipeline-parm-inventory-ignore-file}
+
+This parameter specifies a custom filename for the inventory ignore file. By default, the pipeline looks for a file named `.inventoryignore` at the root of the inventory repository. This file contains a list of files and folders to exclude from inventory operations.
+
+The parameter supports various use cases including branch-specific ignore files, multiple deployment configurations, and region-specific exclusions. For detailed information about the ignore file format, use cases, and best practices, see [How to Exclude Files and Directories in the inventory](/docs/devsecops?topic=devsecops-cd-devsecops-inventory#exclude-files-directories-in-the-inventory).
 
 ## Locking environment properties
 {: #devsecops-locking-env-properties}

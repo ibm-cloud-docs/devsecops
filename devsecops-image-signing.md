@@ -16,7 +16,7 @@ subcollection: devsecops
 # Generating a GPG key
 {: #devsecops-image-signing}
 
-Artifacts that are built by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration toolchain and recorded in the inventory must be signed before they are deployed to production. The continuous integration pipeline uses [Skopeo](https://github.com/containers/skopeo){: external} as the default tool to provide artifact signing capability.
+Artifacts that are built by the {{site.data.keyword.cloud_notm}} DevSecOps continuous integration toolchain and recorded in the inventory must be signed before they are deployed to production. The continuous integration pipeline uses [Skopeo](https://github.com/podman-container-tools/skopeo){: external} as the default tool to provide artifact signing capability.
 
 
 Create and store a GPG key that is used by the DevSecOps continuous integration pipeline either automatically or manually.
@@ -83,7 +83,7 @@ Copyright (C) 2021 g10 Code GmbH
 {: #cd-devsecops-gpg-generate}
 
 
-Leave the passphrase and the field empty if the generate-key command opens a dialog that asks for a passphrase. This is a limitation with the [(skopeo)](https://github.com/containers/skopeo/issues/1261){: external} utility of the image signing where the pipeline cannot accept a private key that is protected with a passphrase. If you provide the passphrase during creation, then your pipeline fails to decode the certificate, and your pipeline fails at the image signing step. Note that this is also applicable to GIT tag signing.
+Leave the passphrase and the field empty if the generate-key command opens a dialog that asks for a passphrase. This is a limitation with the [skopeo](https://github.com/podman-container-tools/skopeo){: external} utility of the image signing where the pipeline cannot accept a private key that is protected with a passphrase. If you provide the passphrase during creation, then your pipeline fails to decode the certificate, and your pipeline fails at the image signing step. Note that this is also applicable to GIT tag signing.
 
 ### Mac OS X and Linux™
 {: #cd-devsecops-gpg-linux}
@@ -297,3 +297,111 @@ gpg --export-secret-key <Email Address> | base64
 ```bash
 gpg --export-secret-key <Email Address> | base64 -w0
 ```
+
+## Configuring registry credentials for signing
+{: #cd-devsecops-signing-registry-credentials}
+
+When signing container images, the pipeline needs credentials to authenticate with the container registry. The DevSecOps pipeline supports dynamic credential resolution at runtime, allowing you to configure credentials in multiple ways with automatic fallback mechanisms.
+
+### Credential resolution hierarchy
+{: #cd-devsecops-signing-credential-hierarchy}
+
+The pipeline dynamically resolves both username and API key credentials at runtime using the following hierarchy.
+
+When a signing destination override is configured using `gara-destination-registry` and `gara-destination-namespace`, and `gara-destination-apikey` is also provided, the pipeline gives highest priority to `gara-destination-apikey` for authenticating to the destination registry. Otherwise, it falls back to the below credential resolution for the destination image.
+
+#### API Key Resolution Order:
+1. **Namespace-specific API key**: `signing-token-apikey-{registry}-{namespace}` (secret)
+2. **Registry-specific API key**: `signing-token-apikey-{registry}` (secret)
+3. **Docker config JSON**: `signing-dockerconfigjson` (secret)
+4. **ICR-specific fallbacks**:
+   - `ciso-ibmcloud-api-key` (secret)
+   - `ibmcloud-api-key` (secret)
+
+#### Username Resolution Order:
+1. **Namespace-specific username**: `signing-token-username-{registry}-{namespace}` (environment variable)
+2. **Registry-specific username**: `signing-token-username-{registry}` (environment variable)
+3. **Default**: `iamapikey` (if no username is configured)
+
+Where:
+- `{registry}` is the registry hostname (e.g., `us.icr.io`, `de.icr.io`)
+- `{namespace}` is the full namespace path with slashes and dots replaced by underscores (e.g., `my_namespace_path`)
+
+### Configuring namespace-specific credentials
+{: #cd-devsecops-signing-namespace-credentials}
+
+For fine-grained access control, you can configure credentials specific to a registry namespace:
+
+**API Key (Secret)**: `signing-token-apikey-{registry}-{namespace}`
+
+**Username (Environment Variable)**: `signing-token-username-{registry}-{namespace}`
+
+**Example**: For image `us.icr.io/my-namespace/my-app:latest`
+- Registry: `us.icr.io`
+- Namespace: `my-namespace`
+- API Key secret: `signing-token-apikey-us.icr.io-my_namespace`
+- Username environment variable: `signing-token-username-us.icr.io-my_namespace`
+- If username is not provided, defaults to: `iamapikey`
+
+### Configuring registry-specific credentials
+{: #cd-devsecops-signing-registry-credentials}
+
+For broader access across all namespaces in a registry:
+
+**API Key (Secret)**: `signing-token-apikey-{registry}`
+
+**Username (Environment Variable)**: `signing-token-username-{registry}`
+
+**Example**: For any image in `us.icr.io`
+- API Key secret: `signing-token-apikey-us.icr.io`
+- Username environment variable: `signing-token-username-us.icr.io`
+- If username is not provided, defaults to: `iamapikey`
+
+### Configuring Docker config JSON
+{: #cd-devsecops-signing-dockerconfig}
+
+You can provide a base64-encoded Docker config JSON that contains credentials for multiple registries:
+
+**Secret name**: `signing-dockerconfigjson`
+
+**Format**: Base64-encoded JSON matching Docker's config.json format:
+
+```json
+{
+  "auths": {
+    "us.icr.io": {
+      "username": "iamapikey",
+      "password": "your-api-key"
+    },
+    "us.icr.io/my-namespace": {
+      "username": "iamapikey",
+      "password": "namespace-specific-key"
+    }
+  }
+}
+```
+
+The pipeline matches the most specific path first, allowing namespace-level overrides within the Docker config.
+
+### Example configuration
+{: #cd-devsecops-signing-credential-example}
+
+For an image `us.icr.io/production/my-app:v1.0.0`:
+
+**Option 1: Namespace-specific (recommended for production)**
+- API Key secret: `signing-token-apikey-us.icr.io-production` = `your-namespace-api-key`
+- Username environment variable (optional): `signing-token-username-us.icr.io-production` = `iamapikey`
+- If username is not specified, it defaults to `iamapikey`
+
+**Option 2: Registry-wide**
+- API Key secret: `signing-token-apikey-us.icr.io` = `your-registry-api-key`
+- Username environment variable (optional): `signing-token-username-us.icr.io` = `iamapikey`
+- If username is not specified, it defaults to `iamapikey`
+
+**Option 3: Docker config JSON**
+- Secret: `signing-dockerconfigjson` = `base64-encoded-docker-config`
+- Username is extracted from the Docker config JSON
+
+**Option 4: IBM Cloud default (automatic for ICR)**
+- API Key secret: `ibmcloud-api-key` = `your-ibmcloud-api-key`
+- Username defaults to `iamapikey`
