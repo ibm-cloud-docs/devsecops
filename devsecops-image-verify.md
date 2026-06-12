@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2023, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-06-12"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -208,7 +208,7 @@ Before you can work with image verification, be sure that you have the following
 
 2. Download the artifact and store it in the pipeline runtime.
 
-   Before invoking the `verify-artifact` stage, download and store the required artifacts in the Cocoa runtime. By default, all artifacts listed in teh `list_artifacts` collection are verified. The following sample code demonstrates how to download an artifact from Cloud Object Storage and save it in the Cocoa runtime:
+   Before invoking the `verify-artifact` stage, download and store the required artifacts in the Cocoa runtime. By default, all artifacts listed in the `list_artifacts` collection are verified. Use `skip-sign-artifact-type` text property to skip image signing verification for the given artifact types (e.g: log;report;documentation). The following sample code demonstrates how to download an artifact from Cloud Object Storage and save it in the Cocoa runtime:
 
    ```bash
    #!/usr/bin/env bash

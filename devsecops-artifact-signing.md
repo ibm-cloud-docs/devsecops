@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2025
-lastupdated: "2025-01-31"
+  years: 2023, 2026
+lastupdated: "2026-06-12"
 
 keywords: DevSecOps, IBM Cloud, public key, private key, GPG
 
@@ -15,7 +15,7 @@ subcollection: devsecops
 # Signing non-image artifacts
 {: #devsecops-artifacts-verify}
 
-The DevSecOps toolchain provides the capability to sign non-image artifacts, restricted to file formats such as `tar` and `zip`. This process involves using a script in conjunction with the default signing script. If you need to sign artifacts other than `tar` and `zip` files, you must provide a customized implementation of the script.
+The DevSecOps toolchain provides the capability to sign non-image artifacts, restricted to file formats such as `tar` and `zip`. This process involves using a script in conjunction with the default signing script. If you need to sign artifacts other than `tar` and `zip` files, you must provide a customized implementation of the script. Use `skip-sign-artifact-type` text property to skip image signing for the given artifact types (e.g: log;report;documentation).
 {: shortdesc}
 
 The required runtime environment must be available within the image to support the signing process. 

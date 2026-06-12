@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-06-08"
+lastupdated: "2026-06-12"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -208,6 +208,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`repository-integration`		|text		|The integration name for the repo.	|Optional			| Unlocked |
 |`sbom-validation-collect-evidence`   |text   | Enable evidence collection for sbom validation scan for cyclonedx sbom. If this value is set to 1, then the sbom validation collects evidence.  |Optional     |Unlocked |
 |[`signing-key`](#pipeline-parm-signing-key)		|SECRET		|The base64-encoded private key for signing images by using `.pfx` file data.	|Required			|Unlocked |
+|`skip-sign-artifact-type`	|text		|Skip image signing for the given list of artifact types (e.g. `log;report;documentation`).	|Optional			|Unlocked |
 |`skip-inventory-update-on-failure`	|text		|The switch that stops inventory update on a failed CI run.  |Optional			|Unlocked |
 |[`slack-notifications`](#pipeline-parm-slack-notifications)		|text		|The switch that turns the Slack integration on or off |Optional		| Locked |
 |`slsa-attestation`	|select		|The switch that enables SLSA attestations.  |Optional			|Unlocked |
