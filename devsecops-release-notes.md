@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-06-12"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -25,14 +25,20 @@ Support for Git Evidence Locker feature has been removed - hence Cloud Object St
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
 
-## 10 June 2026
-{: #devsecops-Jun2026-10}
+## 12 June 2026
+{: #devsecops-Jun2026-12}
 {: release-note}
+
+### Updates for DevSecOps version - open-v10.70.1
+{: #devsecops-open-v10.70.1}
+
+Bug fix release
+:   This release includes only bug fixes.
 
 ### Updates for DevSecOps version - open-v10.70.0
 {: #devsecops-open-v10.70.0}
 
-Support signing of OCI format images:
+Support signing of OCI format images
 :   OCI format images can now be signed using the same signing process as container images.
 
 ### Updates for DevSecOps version - open-v10.69.1
