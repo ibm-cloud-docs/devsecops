@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2022, 2025
-lastupdated: "2025-07-21"
+  years: 2022, 2026
+lastupdated: "2026-06-12"
 
 keywords: DevSecOps
 
@@ -75,3 +75,108 @@ A pipeline can be triggered by using the IBM Cloud CLI or a API.
 With the CLI, you can start a pipeline by providing the toolchain and pipeline IDs. Using the API, you can send a POST request with the right authentication and headers to trigger the pipeline.
 
 For more information , see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines&interface=api#using-triggers)
+
+## What environment property is used for cloning Git repositories?
+{: #faq-clone-git-repo}
+{: faq}
+{: support}
+
+The DevSecOps pipelines use a hierarchical token system to authenticate Git repository operations, including cloning. The `git-token` environment property serves as the default token, but you can override it with more specific tokens for better security and access control.
+
+### Token Priority Order
+
+The pipeline resolves Git authentication tokens in the following priority order (highest to lowest):
+
+1. **Personal Access Token (PAT)** specified in the toolchain integration for a specific repository
+2. **Repository-specific token**: `git-token-[repo_name]-[repo_org]`
+3. **Organization-specific token**: `git-token-[repo_org]`
+4. **Default token**: `git-token`
+5. **OAuth token** from toolchain integration (if using OAuth instead of PAT)
+
+### Token Naming Examples
+
+For a repository at `https://github.com/my-org/my-app`:
+- Repository-specific: `git-token-my-app-my-org`
+- Organization-specific: `git-token-my-org`
+
+### Important Considerations
+
+- If the same `git-token` is used for both reading repositories (cloning) and writing operations (setting PR/CI status, updating inventory), **read-only access is not sufficient**. The token must have write permissions.
+- Using repository or organization-specific tokens allows you to apply the principle of least privilege by granting only the necessary permissions for each repository.
+
+For more information about repository token functions, see [Retrieving repository information and tokens](/docs/devsecops?topic=devsecops-devsecops-get_repo_params).
+
+## How to test changes to OnePipeline configuration?
+{: #faq-test-onepipeline-config}
+{: faq}
+{: support}
+
+Testing changes to your OnePipeline configuration requires a systematic approach to avoid disrupting production pipelines while validating customizations.
+
+### Understanding OnePipeline Components
+
+OnePipeline consists of two main customizable components:
+
+- **Tekton Pipeline Definitions**: Centrally managed pipeline definitions for PR, CI, CD, and CC workflows, available in the [compliance-pipelines repository](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-pipelines)). New versions are published every 2-week sprint.
+  - **v10**: Stable version with limited concurrency
+  - **v11**: Next-generation version with maximum customizability and concurrency
+  
+- **Pipeline Configuration (`.pipeline-config.yaml`)**: Custom configuration file that overrides default pipeline behaviors, including pipeline images, scripts, architectures, and properties. This file can be stored in your application repository or in a centralized configuration repository.
+
+### Testing Approach 1: Using a Test Configuration File
+
+This is the recommended approach for testing configuration changes without affecting production pipelines.
+
+1. **Create a test branch**
+   - Create a branch in the repository containing your `.pipeline-config.yaml` file
+   - Make your configuration changes in this branch
+
+2. **Set up a test trigger**
+   - Duplicate the existing pipeline trigger in your toolchain
+   - Name it clearly (for example, `Manual-Test-Config`)
+   - Update the trigger properties to point to your test configuration:
+     - `pipeline-config`: Filename of your configuration file
+     - `pipeline-config-branch`: Your test branch name
+     - `pipeline-config-repo`: Repository URL containing the configuration
+
+3. **Test in development mode**
+   - Enable [development mode](/docs/devsecops?topic=devsecops-devsecops-devmode) in the trigger properties
+   - Run the pipeline to validate your custom scripts
+   - Development mode skips evidence collection, compliance issue creation, and inventory updates, making it ideal for rapid iteration
+   - **Important**: Development mode is not suitable for production workloads
+
+4. **Test with compliance checks**
+   - After validating scripts in development mode, disable `dev-mode`
+   - Keep inventory updates disabled during testing
+   - Run a full pipeline with evidence collection and issue management
+   - Verify all compliance checks pass as expected
+
+5. **Promote to production**
+   - When testing is satisfactory, create a pull request to merge your changes to the main branch
+   - The changes will automatically apply to production triggers
+   - If issues arise, you can quickly revert the changes
+
+### Testing Approach 2: Modifying Pipeline Layout
+
+For v11 pipelines, you can extensively modify the pipeline layout using Matrix Strategy and other features (e.g. `runAfter` and `from`):
+- Leverage the [matrixing capability](/docs/devsecops?topic=devsecops-devsecops-pipeline-config-v2#devsecops-pipeline-config-v2-matrix-strategy) in `.pipeline-config.yaml`
+- Test using Approach 1 after making layout changes
+
+**Forking Pipeline Definitions** (Advanced)
+- Fork the [compliance-pipelines repository](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-pipelines))
+- Develop and test changes in your fork
+- Add the forked repository as a Git integration in your toolchain
+- Temporarily update the pipeline definition to reference your fork
+- Configure a [development mode](/docs/devsecops?topic=devsecops-devsecops-devmode) trigger to test the new pipeline definition
+- Follow the testing steps from Approach 1
+
+### Best Practices
+
+- Always test in development mode first to catch script errors quickly
+- Use descriptive names for test triggers to avoid confusion
+- Document your configuration changes in commit messages
+- Keep test triggers disabled or delete them after testing to prevent accidental runs
+- Consider creating a dedicated test toolchain for major pipeline changes
+- Review pipeline logs carefully to ensure all stages execute as expected
+
+For more information about customizing pipelines, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline configuration v2](/docs/devsecops?topic=devsecops-devsecops-pipeline-config-v2).
