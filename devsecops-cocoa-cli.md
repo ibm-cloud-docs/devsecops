@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-06-30"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -3014,8 +3014,6 @@ cocoa locker evidence collect [OPTIONS]
 - `--opt-in-auto-close`
    Enable automatic closure of incidents if resolved
 
-- `--opt-out-nonvulnerability-issue-collection`
-   Exclude non-vulnerability-related incidents from collection
 
 - `--custom-exempt-label <string>`
    Label indicating exemption from compliance requirements

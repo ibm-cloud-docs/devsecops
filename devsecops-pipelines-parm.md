@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-06-12"
+lastupdated: "2026-06-30"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -193,7 +193,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-sonar-hotspots`		|text		| Allows hotspot detection in Sonarqube scans.	|Optional			| Unlocked | 
 |`opt-in-sonar-quality-gates`		|Text		|Allowing Sonarqube scan to detect quality gate failures.	|Optional			| Unlocked |
 |`opt-out-ci-set-commit-status` 		|text		| If this parameter has any value, the commit status value of the source code repository is not set by the CI pipeline according to the CI pipeline execution's result (success or failure).	|Optional			| Unlocked | 
-|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			| Unlocked | 
 |`peer-review-compliance`		|text		|Set the `peer-review-compliance` environment variable to 1 in your CI and CD Pipeline to activate the peer-review check. Similarly, in the CD pipeline, this configuration runs peer review validation for all pull requests linked to your current deployment. |Optional			| Locked | 
 |`peer-review-collection`		|text		|To retrieve a list of pull requests and their associated titles for your ongoing deployment, Set this value to 1	|Optional			| Unlocked | 
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			| Locked | 
@@ -298,7 +297,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`incident-label`		|text		|The label for new incident issues.	|Optional			| Unlocked |
 |`incident-labels`		|text		|The labels for new incident issues. `incident-labels` can be one or more labels that are separated by a comma.	|Optional			|Unlocked |
 |`opt-in-pr-collection`		|text		|Add any value to enable PR collection.	|Optional			| Unlocked |
-|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			| Unlocked |
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			| Locked |
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			| Locked |
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			| Locked |
@@ -399,7 +397,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`opt-in-dynamic-ui-scan`		|text	|To enable the OWASP Zap UI scan.	 |Optional			|
 |`opt-in-sonar`		|text		|The Sonarqube scan integration.	|Optional			|
 |`opt-in-sonar-hotspots`		|text		|Allows hotspot detection in sonarqube scans.	|Optional			|
-|`opt-out-nonvulnerability-issue-collection`		|text		|Add any value to opt out of nonvulnerability related issue collection.	|Optional			|
 |`pipeline-config`		|text		|The configuration file that customizes pipeline behavior.	|Required			|
 |`pipeline-config-branch`		|text		|The branch of the DevSecOps pipeline configuration.	|Optional			|
 |`pipeline-config-repo`		|text		|The repo URL of the DevSecOps pipeline configuration location.	|Optional			|
