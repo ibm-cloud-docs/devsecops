@@ -124,6 +124,9 @@ An opt-in flag `opt-in-pr-updates`, is available to enable / disable this featur
 
 A Merge Queue is a Github feature that helps increase velocity by automating pull request merges into a busy branch and ensuring the branch is never broken by incompatible changes. More on setting-up and using Github Merge Queue [here](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#about-merge-queues).
 
+Though the purpose of Merge Queue is to increase velocity, it is important to consider that for a given Git PR, the PR pipeline will be executed twice: execute the "standard" PR first. Once completed, execute the Merge Queue PR.
+{: note}
+
 ### Create a new Git Trigger
 Create a new Git Trigger or duplicate an existing one. Keep all default settings, only override the following properties:
 - `Name`: prefer to have a trigger name that reflects Merge Queue context - ex: `PR - Merge Queue`
@@ -150,6 +153,13 @@ Save the trigger.
   - If successful, PR is merged with comment like `Merged via the queue into main with commit abcdefg`
   - If not successful (ex: failed compliance check), PR will not be auto-merged, and removed from Merge Queue.
 
+## Merge Queue PR's and evidence reuse
+To optimize pipeline execution time and resource usage, evidence can be collected in PR's to be reused in CI's. See [Reuse of evidences across PR and CI pipelines](/docs/devsecops?topic=devsecops-devsecops-evidence-reuse#devsecops-evidence-reuse).
+
+Elements to consider when using Merge Queue and evidence reuse:
+- evidence **can not** be reused between originating PR and Merge Queue PR (as merge queue creates a ephemeral branch on the fly)
+- evidence can be reused between Merge Queue PR and CI (if the feature is enabled)
+- ensure [collect evidence in PR feature](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pr-evidence-collection) is enabled and correctly set.
 ---
 
 ## PR Payload Overview
