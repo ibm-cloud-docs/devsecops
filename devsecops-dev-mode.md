@@ -1,8 +1,8 @@
 ---
 
 copyright: 
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2026
+lastupdated: "2026-07-01"
 
 keywords: DevSecOps, development mode, IBM Cloud, pipelines
 
@@ -25,6 +25,7 @@ Develop, implement, and test changes made to the `.pipeline-config.yaml` file by
 
 * Runs the various stages of the `.pipeline-config.yaml` file only.
 * Skips the compliance and security-related tasks to optimize the time to run your code.
+* Does not collect any evidence. No evidence uploaded to COS evidence storage.
 
 ## Prerequisites
 {: #devsecops-devmode-preq}
