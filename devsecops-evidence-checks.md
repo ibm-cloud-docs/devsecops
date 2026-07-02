@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-26"
+lastupdated: "2026-06-30"
 
 keywords: DevSecOps, compliance evidence, evidence checks, IBM Cloud
 
@@ -48,6 +48,8 @@ This mode allows you to:
   - `required_if_present`
 - Configure different validation rules for different asset types (such as images, commits, or artifacts)
 - Control how evidence from multiple environments is evaluated during promotion
+
+Now the config file mode also supports evaluation using OPA (Open Policy Agent) policies. For more information, see [Deployment Gating using OPA](/docs/devsecops?topic=devsecops-devsecops-evidence-checks-opa).
 
 ### Understanding evidence declaration levels
 {: #understanding-evidence-declaration-levels}

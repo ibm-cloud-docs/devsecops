@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-05-22"
+lastupdated: "2026-07-01"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -12,6 +12,9 @@ subcollection: devsecops
 
 {{site.data.keyword.attribute-definition-list}}
 
+
+With Code Risk Analyzer (CRA) being [deprecated](https://cloud.ibm.com/status/announcement?component=continuous-delivery&query=cra),  [Syft and Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) scans are alternatives scans are alternatives that provide most of the CRA features. Refer to [Opting out of Code Risk Analyzer scans](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans) to disable CRA features.
+{: note}
 
 
 # Configuring IBM Cloud Code Risk Analyzer scans
@@ -139,3 +142,25 @@ To start automatically remediating vulnerabilities, set the following optional e
 | `opt-in-cra-auto-remediation-force` | Forces a major package update as part of the pull request that is opened. | `false`  \n To force a major package update, set this variable to `true`. |
 | `opt-in-cra-auto-remediation-enabled-repos` | Specifies specific repos where you want to enable auto-remediation. | Enabled for all repositories that are returned when `list_repos` is called. To specify specific repos, provide a comma-separated list of repo names. |
 {: caption="Supported ecosystems" caption-side="bottom"}
+
+
+
+## Opting out of Code Risk Analyzer scans
+{: #optout-cra-scans}
+
+Set the following environment variables to opt out of Code Risk Analyzer scans.
+
+| Variable | Type | Required or optional | opt-out value | Default value | Alternative |
+|-----|-----|-----|-----|-----|-----|
+| `cra-bom-generate` | Enum | Optional | `0` | `1` |  [Syft](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) | 
+| `cra-vulnerability-scan` | Enum | Optional | `0` | `1` |  [Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans)  |
+| `cra-deploy-analysis` | Enum | Optional | `0` | `1` | None yet |
+
+The vulnerability scan and the deployment analysis scan are set as required checks for branch protection by default. If you want to opt out of either of these scans, make sure that you [customize compliance checks](/docs/devsecops?topic=devsecops-cd-devsecops-config-github#devsecops-config-customized-list) and [configure branch protection rules](/docs/devsecops?topic=devsecops-cd-devsecops-config-github#devsecops-config-github-rules).
+{: tip}
+
+## Related links
+{: #cra-links}
+
+   - [Debugging the Code Risk Analyzer](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin)
+   - [FAQ on Code Risk Analyzer](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#faq)
