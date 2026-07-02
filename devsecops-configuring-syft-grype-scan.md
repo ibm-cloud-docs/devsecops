@@ -18,7 +18,7 @@ subcollection: devsecops
 ## Overview
 {: #cd-devsecops-syft-gryp-overview}
 
-With Code Risk Analyzer (CRA) being [deprecated](https://cloud.ibm.com/status/announcement?component=continuous-delivery&query=cra), Syft and Grype scans are alternatives that provide most of the CRA features.
+With Code Risk Analyzer (CRA) being [deprecated](https://cloud.ibm.com/status/announcement?component=continuous-delivery&query=cra), Syft and Grype scans are alternative that provide most of the CRA features.
 
 This scan is part of the compliance checks stage available in the PR (app-preview), CI and CC pipelines.
 {: note}
@@ -113,4 +113,3 @@ You can access your scan results by using the following method:
 * [Syft](https://oss.anchore.com/docs/guides/sbom/getting-started/){: external}
 * [Grype](https://oss.anchore.com/docs/guides/vulnerability/getting-started/){: external}
 * [Opting out of Code Risk Analyzer scans](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans)
-
