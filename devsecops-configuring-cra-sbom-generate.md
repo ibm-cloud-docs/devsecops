@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025, 2026
-lastupdated: "2026-07-01"
+lastupdated: "2026-07-02"
 
 keywords: DevSecOps, IBM Cloud, compliance,CRA, SBOM
 
@@ -13,7 +13,7 @@ subcollection: devsecops
 {{site.data.keyword.attribute-definition-list}}
 
 
-With Code Risk Analyzer (CRA) being [deprecated](https://cloud.ibm.com/status/announcement?component=continuous-delivery&query=cra),  [Syft and Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) scans are alternatives to generate SBOM. Refer to [Opting out of Code Risk Analyzer scans](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans) to disable CRA BOM generation.
+With Code Risk Analyzer (CRA) being [deprecated](https://cloud.ibm.com/status/announcement?component=continuous-delivery&query=cra),  [Syft and Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) scans are alternative to generate SBOM. Refer to [Opting out of Code Risk Analyzer scans](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans#optout-cra-scans) to disable CRA BOM generation.
 {: note}
 
 
