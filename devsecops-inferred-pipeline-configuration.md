@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-07-07"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -344,6 +344,7 @@ To configure the Terraform deployment process, use the following pipeline enviro
 To configure the helm release process, use the following pipeline environment properties:
 
 * `helm-oci-registry-support` : (Default to `false`) Enable helm chart to be pushed to OCI registry in the release step.
+* `configuration-file-pattern-<config_file_type>`: Define a pattern to identify configuration file(s) of a given type. For instance `configuration-file-pattern-dev-config=chart/dev-values.yaml` will select file(s) `chart/dev-values.yaml` as artifact of type `dev-config`.
 
 #### Artifact Upload
 {: #devsecops-pipeline-configuration-spot-artifact-upload}
