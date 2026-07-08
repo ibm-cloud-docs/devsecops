@@ -118,6 +118,7 @@ toc:
           - devsecops-evidence.md
           - devsecops-evidence-summary.md
           - devsecops-evidence-checks.md
+          - devsecops-evidence-checks-opa.md
           - devsecops-opt-out-legacy-evidence-collection.md
           - devsecops-how-to-generate-cyclonedx-sbom.md
           - devsecops-cos-configure.md
