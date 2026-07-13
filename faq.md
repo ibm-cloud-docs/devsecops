@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2026
-lastupdated: "2026-06-12"
+lastupdated: "2026-07-09"
 
 keywords: DevSecOps
 
@@ -66,12 +66,51 @@ However, this native support comes with some **limitations** and recommendations
     - scanning, as the various scanning tool images may not have multi-arch support.
     - image signing, as multi-arch support is not available (work in progress).
 
+## How can I build a custom multi-architecture base image?
+{: #faq-build-multiarch-image}
+{: faq}
+{: support}
+
+One Pipeline provides an official multi-architecture base image that supports the following platforms:
+
+- `linux/amd64`
+- `linux/ppc64le`
+- `linux/s390x`
+
+For most use cases, we recommend using the official base image directly:
+
+```
+icr.io/continuous-delivery/toolchains/devsecops/baseimage:<version>
+```
+
+If your application requires additional operating system packages, language runtimes, or other custom dependencies, you can build your own custom multi-architecture base image as part of your CI pipeline.
+
+Use Docker Buildx with the `--platform` option in your `build-artifact` step:
+
+```bash
+docker buildx build \
+  --platform linux/amd64,linux/ppc64le,linux/s390x \
+  -t <registry>/<namespace>/<image>:<tag> \
+  --push .
+```
+
+This builds architecture-specific images and publishes them as a single multi-architecture image manifest. Container runtimes automatically pull the appropriate image for the target platform.
+
+### Recommended approach
+
+1. Use the One Pipeline base image as the `FROM` image in your Dockerfile.
+2. Add only the additional packages or dependencies required by your application.
+3. Build and publish the image using Docker Buildx in your CI pipeline.
+4. Verify the published image using `docker buildx imagetools inspect` or `skopeo inspect`.
+
+For more information about multi-arch support and limitations, see [Multi-arch image for s390x and Power platforms limitations](#faq-ci-sec-pipeline-power-limitation).
+
 ## Triggering pipeline using CLI
 {: #faq-trigger-pipeline-cli}
 {: faq}
 {: support}
 
-A pipeline can be triggered by using the IBM Cloud CLI or a API. 
+A pipeline can be triggered by using the IBM Cloud CLI or a API.
 With the CLI, you can start a pipeline by providing the toolchain and pipeline IDs. Using the API, you can send a POST request with the right authentication and headers to trigger the pipeline.
 
 For more information , see [Using Triggers](/docs/ContinuousDelivery?topic=ContinuousDelivery-tekton-pipelines&interface=api#using-triggers)
