@@ -1,8 +1,8 @@
 ---
 
-copyright: 
-  years: 2022, 2026
-lastupdated: "2026-04-02"
+copyright:
+  years: 2022, 2025
+lastupdated: "2025-02-25"
 keywords: DevSecOps, IBM Cloud
 
 subcollection: devsecops
@@ -80,12 +80,12 @@ The vulnerability in production does not prevent PRs from merging.
 
 ![Vulnerability found in production allows PRs](images/vuln-uc-2a.svg "Vulnerability found in production allows PRs"){: caption="Vulnerability found in production allows PRs" caption-side="bottom"}
 
-### Use case 3: false positives
+### Use case 3: false positives and exemptions
 {: #incident-issue-uc3}
 
-If the team categorizes an issue as false positive,  the issue can be labeled as **Exempted**. The issue can then be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
+If the team categorizes an issue as false positive or receives a security exception for a vulnerability, the issue can be labeled as **Exempted**. The issue can then be handled as a nonblocking issue. To maintain an audit trail, change requests keep the issues visible.
 
-![False positives](images/vuln-uc-3.svg "False positives"){: caption="False positives" caption-side="bottom"}
+![False positives and exemptions](images/vuln-uc-3.svg "False positives and exemptions"){: caption="False positives and exemptions" caption-side="bottom"}
 
 ### Use case 4: automatically closing fixed issues
 {: #incident-issue-uc4}
@@ -98,12 +98,21 @@ The following diagram explains the flowchart of CC pipeline detecting which issu
 
 ![CC pipeline automatically closing fixed issues](images/issue-mgmt-CC-flow-vuln-autoclosing.jpg "CC pipeline automatically closing fixed issues"){: caption="CC pipeline automatically closing fixed issues" caption-side="bottom"}
 
-## Setting the due date for incident issues
+## Managing due dates for incident issues
 {: #incident-issue-due-date-setting}
 
-If the incident issues are found in production, the `Due Date` property might be added to the issue to specify the grace period in which it must be fixed. The duration of the grace period is determined by the severity of the found vulnerability.
+When incident issues are found in production, the `Due Date` property is automatically added to specify the grace period in which the issue must be fixed. The duration of the grace period is determined by the severity of the found vulnerability.
 
-For more information about customizing the grace periods, see [Configuring custom grace periods on the CC pipeline](/docs/devsecops?topic=devsecops-incident-issues#configure-custom-grace-period).
+### Common due date scenarios
+{: #due-date-scenarios}
+
+The following scenarios describe how due dates are managed:
+
+- **Initial due date assignment**: When the CC pipeline finds an issue in production, it automatically calculates and sets a due date based on the issue's severity.
+- **Due date extension**: If you need more time to fix an issue, you can extend the due date after obtaining approval from a security focal. See [Postponing the due date](#due-date-postpone) for details.
+- **Overdue issues**: Even when issues become overdue, CI pipelines can still proceed with deployments as long as the new build does not make the production environment worse (pure risk management approach). This allows teams to continue delivering features while working to resolve security issues.
+
+For more information about customizing the grace periods, see [Configuring custom grace periods on the CC pipeline](#configure-custom-grace-period).
 
 ## Labeling incident issues
 {: #label-incident-issues}
@@ -221,15 +230,7 @@ For example, if `CVE-2022-001` is found by two separate tools, the process creat
 #### Supported tools
 {: #due-date-supported-tools}
 
-Currently, the following tools are supported for issue processing:
-
-* CRA
-* VA
-* Gosec
-* Detect secrets
-* OWASP-ZAP API scanner
-* OWASP-ZAP UI scanner
-* SonarQube
+The incident issue processing supports results from various scanning tools integrated into the DevSecOps pipelines. For the current list of supported scanning tools and their capabilities, see [Supported scanning tools](/docs/devsecops?topic=devsecops-cd-devsecops-supported-scanning-tools).
 
 #### Unsupported tools or result formats
 {: #due-date-unsupported-tools-formats}
@@ -250,19 +251,29 @@ For issues that are created on {{site.data.keyword.gitrepos}}, the due date is s
 
 The issue description contains the timestamp when the issue was first discovered. For example, `First found on 2022-04-07.` The date is in `YYYY-MM-DD` format. The locations where the problem occurs are listed in the comments of the issue.
 
-## Postponing the due date of an incident issue
+## Extending the due date of an incident issue
 {: #due-date-postpone}
 
-If you want to postpone the due date of an incident issue, you can ask for a review from a security focal. Depending on the review, you can postpone the due date by modifying the `Due date` field in the {{site.data.keyword.gitrepos}} incident issues meta fields. 
+You can extend the due date of an incident issue when additional time is needed to implement a fix. This requires approval from a security focal to ensure proper oversight of security vulnerabilities.
+
+### Process for extending due dates
+{: #due-date-extension-process}
+
+1. Request a review from your security focal, explaining why the extension is needed.
+2. After receiving approval, update the due date:
+   - For {{site.data.keyword.gitrepos}}: Modify the `Due date` field in the incident issue's metadata fields.
+   - For GitHub Enterprise: Edit the `Due date` field in the issue description.
+3. Reference the security focal's approval in the issue by adding a comment with a link to the review or approval documentation.
 
 ![Setting and updating due date on {{site.data.keyword.gitrepos}}](images/devsecops-native-due-date.png){: caption="Setting and updating due date on {{site.data.keyword.gitrepos}}" caption-side="bottom"}
 
 Be sure to reference the security-focal review in the issue, such as providing a link to it in a comment.
 {: important}
 
+### Security exceptions
+{: #due-date-security-exceptions}
 
-
-
+If you have an issue with a security exception, you can extend the due date to align with the exception's expiration date. This ensures that evidence collection and compliance tracking continue appropriately until the exception expires.
 
 ## Slack alerts for pending and overdue issues for CC pipeline
 {: #devsecops-cc-pipeline-slack-alerts}

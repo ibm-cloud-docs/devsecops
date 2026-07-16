@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-01-30"
+lastupdated: "2026-07-16"
 
 keywords: DevSecOps, scan, inventory, compliance, dynamic scan, zap,
 
@@ -46,6 +46,7 @@ The following table lists the tasks run in a CI Pipeline. In addition the table 
 |`test`		|Run unit tests and application tests on application code. 		|Yes		| No | **User** | Yes |
 |`static-scan`		|Run static scan code on the application code.		|Yes		|  Yes | Pipeline | Yes |
 |`compliance-checks` 		|Run Code Risk Analyzer scans and other compliance checks on app repos.   	|Yes			|  Yes | Pipeline | Yes |
+|`peer-review` 		|Collect compliance data on peer reviews for merged pull requests.   	|Yes			|  Yes | Pipeline | Yes |
 |`containerize` 		|Build the artifacts. 		|Yes			| No | NA | No |
 |`sign-artifact` 		|Sign the built artifacts.   	|Yes			|  Yes | Pipeline | No |
 |`deploy`		|Deploy the built artifacts to the dev environment. 		|Yes		|  No | NA | No |
@@ -71,6 +72,7 @@ The following table provides a relationship between various types of evidence an
 |`test`		|  `com.ibm.unit_tests`|
 |`static-scan`		|`com.ibm.static_scan` |
 |`compliance-checks` 		| `com.ibm.code_bom_check`, `com.ibm.code_cis_check`, `com.ibm.code_vulnerability_scan`, `com.ibm.branch_protection` |
+|`peer-review` 		| `com.ibm.peer_review` |
 |`containerize` 		| NA |
 |`sign-artifact` 		| `com.ibm.cloud.image_signing`|
 |`deploy`		| NA |
