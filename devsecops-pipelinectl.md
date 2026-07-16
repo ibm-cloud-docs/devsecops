@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-06-08"
+lastupdated: "2026-07-13"
 
 keywords: DevSecOps, pipelinectl
 
@@ -367,11 +367,17 @@ Example:
 
 ```bash
 # set value provided as argument
-set_secret app-name "my-app-name"
+set_secret my-secret-key "my-secret-content"
 
 # set value provided via stdin
 echo "my-secret-content" | set_secret my-secret
 set_secret my-api-key < /config/my-api-key
+
+# set multiple key value pairs
+set_secret secret-key-1 "value-1" \
+  secret-key-2 "value-2" \
+  secret-key-n "value-n"
+
 ```
 {: codeblock}
 
