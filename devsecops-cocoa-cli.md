@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-30"
+lastupdated: "2026-07-17"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1916,20 +1916,25 @@ Currently supported scan result files:
 
 - Container Registry VA scan (option `--type va`)
 - CRA Vulnerability scan (option `--type cra`)
+- CRA CIS scan (option `--type cra-cis`)
 - Xray (option `--type xray`)
 - OWASP ZAP (option `--type owasp-zap`)
 - OWASP ZAP UI (option `--type owasp-zap-ui`)
 - Twistlock (option `--type twistlock`)
+- Container Image Multi-Scanner (CIMS) scans (option `--type cims`)
 - Peer Review Scan (option `--type peer-review`)
 - GoLang Security Scan (option `--type gosec`)
 - SonarQube Scan (option `--type sonarqube`)
 - Mend Scan (option `--type mend`)
+- Mend SAST Scan (option `--type mend-sast`)
 - Checkov (option `--type checkov`)
 - CRA Vulnerability scan for Terraform (option `--type cra-tf`)
 - Terraform Security Scan (option `--type tfsec`)
 - Fips Scanner (option `--type fips-scanner`)
 - Detect Secrets (option `--type detect-secrets`)
 - Sysdig (option `--type sysdig`)
+- CycloneDX (option `--type cyclonedx`)
+- Grype (option `--type grype`)
 
 For more information on Container Registry VA and result format, see [Vulnerability Advisor for IBM Cloud Container Registry](/docs/Registry?topic=Registry-va_index){: external}.
 For more information on the CRA Vulnerability scanner, see the [Configuring Code Risk Analyzer](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin){: external}documentation.
@@ -1946,7 +1951,7 @@ $ cocoa incident process \
 Options:
 
 ```text
---type             # (Required) Scan type [cra | va]
+--type             # (Required) Scan type [choices: "cra", "va", "xray", "peer-review", "gosec","owasp-zap", "owasp-zap-ui", "sonarqube", "twistlock", "cims", "mend","mend-sast", "checkov", "cra-tf", "tfsec", "fips-scanner", "contrast-sast","detect-secrets", "sysdig", "cyclonedx", "grype", "cra-cis"]
 --subject          # (Required) Subject of scans (repo, or image name)
 --drilldown-url    # (Required) URL to the point where the incident was found (can be a pipeline run, a commit hash or an image URL with digest)
 --set-grace-period # Should the created incidents have Grace period set

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-03-02"
+lastupdated: "2026-07-17"
 
 keywords: DevSecOps, collect-evidence, script
 
@@ -217,6 +217,7 @@ The current implementation currently supports the following tools (provided as t
 | Tool Name | Description |
 |--------|-------------------------|
 | `cra` | IBM Code Risk Analyzer |
+| `cra-cis` | IBM Code Risk Analyzer CIS |
 | `va` | Vulnerability Advisor for IBM Cloud Container Registry |
 | `gosec` | GoLang Security Scanner |
 | `xray` | JFrog Xray – Vulnerability Scanning & Container Security |
@@ -225,7 +226,9 @@ The current implementation currently supports the following tools (provided as t
 | `sonarqube` | SonarQube scan |
 | `peer-review` | Peer Review Scan |
 | `twistlock` | TwistLock |
+| `cims` | Container Image Multi-Scanner (CIMS) |
 | `mend` | Mend Scan |
+| `mend-sast` | Mend SAST Scan |
 | `checkov` | Checkov Scan |
 | `cra-tf` | Code Risk Analyzer for Terraform |
 | `tfsec` | Terraform Security Scanner |
@@ -234,9 +237,9 @@ The current implementation currently supports the following tools (provided as t
 | `ciso-code-signing` | CISO Code Signing Tool |
 | `sysdig` | Sysdig Scan |
 | `cyclonedx` | CycloneDX format. Tool detection for issue management will be performed based on the CycloneDX metadata [here](https://cyclonedx.org/docs/1.4/json/#metadata_tools_items_name) |
+| `grype` | Grype Scan |
 
- CycloneDX metadata is
- Tool detection for issue management
+ CycloneDX metadata is using tool detection for issue management.
 
 If the `collect-evidence` script is called with a tool type that is not supported, the script doesn't attempt to process the attachments. Additionally, the issue handling is skipped, and the evidence collection is not stopped.
 
