@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-07-13"
+lastupdated: "2026-07-27"
 
 keywords: DevSecOps, pipelinectl
 
@@ -406,6 +406,42 @@ get_secret cookie-token "default-token"
 
 ```bash
 get_secret specific-account-ibmcloud-api-key "$(get_secret ibmcloud-api-key "")"
+```
+{: codeblock}
+
+#### Always quote variables that hold secret values
+{: #get_secret-quoting}
+
+When you store a secret value in a shell variable and then use that variable, always wrap it in double quotes. Without quotes, the shell can break the value across multiple words before passing it to a command.
+
+Do not use unquoted variables with secret values.
+{: important}
+
+```bash
+export API_KEY=$(get_secret my-api-key)
+
+# Unsafe: a multi-line secret value is not passed intact.
+# Parts of the secret may appear unmasked in the pipeline log.
+some-cli login --apikey $API_KEY
+```
+{: codeblock}
+
+Always quote the variable to keep the value intact.
+
+```bash
+export API_KEY=$(get_secret my-api-key)
+
+# Safe: the value is passed as a single, intact string.
+some-cli login --apikey "$API_KEY"
+```
+{: codeblock}
+
+The same rule applies wherever the variable is used - in command arguments, string interpolation, or when writing values to a file.
+
+```bash
+# Safe
+curl -H "Authorization: Bearer $API_KEY" https://example.com/api
+echo "$API_KEY" > /tmp/credentials.txt
 ```
 {: codeblock}
 

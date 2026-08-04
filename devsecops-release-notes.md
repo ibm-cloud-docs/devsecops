@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-06-12"
+lastupdated: "2026-08-04"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -24,6 +24,56 @@ Support for Git Evidence Locker feature has been removed - hence Cloud Object St
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 31 July 2026
+{: #devsecops-Jul2026-31}
+{: release-note}
+
+### Updates for DevSecOps version - open-v10.75.0
+{: #devsecops-open-v10.75.0}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.74.0
+{: #devsecops-open-v10.74.0}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+
+### Updates for DevSecOps version - open-v10.73.0
+{: #devsecops-open-v10.73.0}
+
+Removal of `opt-out-nonvulnerability-issue-collection` environment property
+:   The `opt-out-nonvulnerability-issue-collection` environment property and the `set-grace-period` flag in the CLI have been removed. Pipelines that set this property must remove it.
+
+Collect evidence and reuse evidence flows migrated to v2
+:   The collect evidence and reuse evidence flows are now routed to the v2 implementation. The v1 code paths have been removed.
+
+Support for OPA format for evidences
+:   One-pipeline now supports the OPA (Open Policy Agent) format for evidences.
+
+### Updates for DevSecOps version - open-v10.72.0
+{: #devsecops-open-v10.72.0}
+
+DinD image upgrade
+:   The DinD image has been updated to `icr.io/continuous-delivery/base-images/multiarch-dind:v1.26.0`. Due to the change in the Docker engine version, images that are built will now be in OCI format.
+
+Update to event payload bindings
+:   With the GitHub Enterprise upgrade to 3.19.7, the `repository.url` field in the GitHub payload now returns a URL that can be used with REST API calls. Use `repository.html_url` to achieve the earlier behavior. Users who reference `repository.url` from the event payload must update their code accordingly.
+
+Support for HTML report in DAST UI scan
+:   Set the `dast-html-plus-report` pipeline environment variable to `1` to generate an HTML report for both ZAP API and UI scans. A zip file containing all the HTML content is uploaded to the COS bucket. Download and unzip the file to view the HTML report.
+
+`list_env` and `list_secrets` enhancements
+:   `list_env` and `list_secrets` commands now list values from the `/config` mount points as well.
+
+### Updates for DevSecOps version - open-v10.71.0
+{: #devsecops-open-v10.71.0}
+
+Bug fix release
+:   This release includes only bug fixes.
 
 ## 12 June 2026
 {: #devsecops-Jun2026-12}
