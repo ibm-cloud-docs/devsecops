@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2026
-lastupdated: "2026-03-31"
+lastupdated: "2026-08-05"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -17,6 +17,30 @@ subcollection: devsecops
 
 The promotion pipeline promotes inventory entries from one environment to another and creates a promotion pull/merge request.
 {: shortdesc}
+
+## Separation of Duties during Promotions
+{: #cd-devsecops-separation-of-duties}
+
+- Promotions achieved primarily through **Pull Request workflow**
+  - → Create promotion PR (e.g. from source to target env branch)
+  - → Review/edit PR (including PR validation status check)
+  - → Merge PR into target env branch
+  - → Run CD deployment pipeline (on commit, timer or manual trigger)
+  - → Rinse and repeat for next environment branch
+  - → Can have arbitrary number of environment branches
+
+- Roles
+  - **Developer** : Commit code, resulting in CI pipeline updating main (non-prod) inventory
+  - **Promotion Ops / Release Manager** : Trigger promotion pipeline (main→staging and/or staging→prod), creating PR with status check for gating (enforced by toolchain ACL, and inventory branch protections)
+  - **Production Ops / Approver** : Review and merge promotion PR into prod branch. Run prod pipelines. (enforced by inventory branch protection)
+
+- Leverage **distinct CD toolchains for staging and production** workloads (distinct Ops)
+
+- This means a developer can prepare a change, but cannot unilaterally place it in production if branch protection requires a separate approver.
+
+- The **promotion PR becomes the formal change approval record**, and the merge history provides auditable evidence of who approved the production promotion and when.
+
+
 
 ## Promotion pipeline steps
 {: #cd-devsecops-promotion-pipelinesteps}
