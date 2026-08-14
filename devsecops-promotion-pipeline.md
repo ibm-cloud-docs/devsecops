@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2026
-lastupdated: "2026-08-05"
+lastupdated: "2026-08-14"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -51,6 +51,31 @@ The promotion pipeline promotes inventory entries from one environment to anothe
 4. Optional. Set the evidence statuses, and add the aggregated evidence summary to the promotion pull/merge request.
 5. Merge the pull/merge request.
 6. Send a Slack notification if the feature is turned on.
+
+## Stages and tasks
+{: #cd-devsecops-promotion-pipeline-stages}
+
+The following table lists the tasks run in a Promotion pipeline. In addition, the table also provides an overview of each of these stages:
+
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
+
+- **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
+
+- **Customisation permissible**: This indicates whether users have the flexibility to modify or replace the default behavior of the stage by inserting a custom script in the `.pipeline-config.yaml` file.
+
+- **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
+
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps Pipeline provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if user choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection.
+
+- **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
+
+|Task or stage |Short description	|Customisation permissible in `.pipeline-config.yaml` | Default Reference Implementation |Evidence Collection |Skip permissible |
+|:----------|:------------------------------|:------------------|:------------------|:------------------|:------------------|
+|`inventory-promotion` 		|Create pull request for the promotion. 		|No		| Yes | NA | No |
+|`inventory-finish`		|Collect and upload log files, artifact, and evidence to the evidence locker.		|Yes			| No | NA | No |
+{: caption="Promotion pipeline stages and tasks" caption-side="top"}
+
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
 ## Running the promotion pipeline
 {: #cd-devsecops-promotion-pipelinerun}
@@ -212,6 +237,32 @@ By default, each row in the *Detailed evidence status* table corresponds to an a
 {: note}
 
 While the validation is in progress, merging of the promotion pull/merge request is blocked. Once the validation pipeline completes, the evidence status is set on the pull/merge request. Clicking on each entry in the status takes the user to the specific stage in the corresponding CI pipeline run.
+
+
+## Stages and tasks
+{: #cd-devsecops-promotion-validation-pipeline-stages}
+
+The following table lists the tasks run in a Promotion Validation Pipeline. In addition the table also provides an overview of each of these stages:
+
+- **Task or Stage**: This refers to the name of the stage as defined within the `.pipeline-config.yaml` configuration file.
+
+- **Short description**: This provides a concise explanation of the actions performed during the execution of the stage.
+
+- **Customisation permissible**: This indicates whether users have the flexibility to modify or replace the default behavior of the stage by inserting a custom script in the `.pipeline-config.yaml` file.
+
+- **Default Reference Implementation**: This indicates whether the DevSecOps pipelines come with a pre-defined or default implementation for the stage. Notably, for certain stages like `unit-tests` or `setup`, the DevSecOps pipeline doesn't offer any out-of-the-box implementation. Instead, users are required to provide custom scripts or code tailored to their application's requirements.
+
+- **Evidence Collection**: This indicates whether the stage performs the collection of standard evidence. When DevSecOps Pipeline provide a reference implementation for a stage, evidence collection is performed out-of-the-box. However, if user choose to modify or replace these predefined stages, they must ensure that their custom implementations include appropriate evidence collection. The same responsibility falls on users for stages where the DevSecOps pipeline doesn't provide an out-of-the-box implementation, necessitating them to perform evidence collection. The column indicates the entity (**User/Pipeline**) responsible for carrying out the evidence collection.
+
+- **Skip permissible (applicable to version >= v10)**: This indicates whether users can opt out of running this stage by setting the skip property to true in the `.pipeline-config.yaml`. However, caution is advised when using this feature, especially for stages designed to collect evidence. Skipping such stages might lead to missing essential evidences for the build.
+
+|Task or stage |Short description	|Customisation permissible in `.pipeline-config.yaml` | Default Reference Implementation |Evidence Collection |Skip permissible |
+|:----------|:------------------------------|:------------------|:------------------|:------------------|:------------------|
+|`inventory-validation` 		|Validates the pull request raised for the promotion. 		|No		| Yes | NA | No |
+|`validation-finish`		|Collect and upload log files, artifact, and evidence to the evidence locker.		|Yes			| No | NA | No |
+{: caption="Promotion validation pipeline stages and tasks" caption-side="top"}
+
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm) lists.
 
 ## How to opt-in into promotion validation?
 {: #cd-devsecops-promotion-validation-pipeline-opt-in}
