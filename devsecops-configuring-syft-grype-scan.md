@@ -81,7 +81,6 @@ The pipeline environment properties that are listed in the following table are u
 
 | Parameter name | Description |
 |-|-|
-| `grype-fail-on-severity` | Set the return code to 1 if a vulnerability is found with a severity greater than or equal to the given severity level. Valid values: `negligible`, `low`, `medium`, `high`, `critical`. Default: `low`. |
 | `grype-<XXX>` | Any pipeline or trigger text property prefixed with `grype-` (except the reserved properties above) is exported as a Grype Configuration Environment variable `GRYPE_XXX`. For example, `grype-db-auto-update` becomes `GRYPE_DB_AUTO_UPDATE`. See [Grype Configuration](https://oss.anchore.com/docs/reference/configuration/#using-environment-variables) for available options. |
 {: caption="Grype parameters" caption-side="top"}
 
