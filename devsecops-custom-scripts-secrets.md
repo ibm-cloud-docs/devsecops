@@ -87,6 +87,10 @@ You can access repos, artifacts, files, and environment variables by using the `
 
 To support user script compatibility with an earlier version, these values are copied to `/config/`. Because the availability of these files depends on the pipeline context, make sure that they are available before you use their value.
 
+These values are phased out and replaced by the stage I/O interface by way of pipelinectl [get_env](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#get_env) for non-secured properties and [get_secret](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#get_secret) for secured properties.
+{: deprecated}
+
+
 | Path                            | Description |
 |---------------------------------|-------------|
 | `/config/api-key`               | The value of `ibmcloud-api-key` copied, for script compatibility with an earlier version.|
@@ -103,8 +107,6 @@ To support user script compatibility with an earlier version, these values are c
 | `/config/signature`             | The image artifact signature. |
 {: caption="'config' Values" caption-side="top"}
 
-These values are phased out and replaced by the stage I/O interface by way of pipelinectl.
-{: deprecated}
 
 #### Environment variables
 {: #cd-devsecops-scripts-envvar}

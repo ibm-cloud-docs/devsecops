@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-07-27"
+lastupdated: "2026-09-01"
 
 keywords: DevSecOps, pipelinectl
 
@@ -24,6 +24,12 @@ For more information about where this tool is used, see [Adding test and build s
 {: #devsecops-pipelinectl-cos-config}
 
 Cloud Object Storage (COS) provides unlimited, persistent storage for pipeline data such as build artifacts, test reports, and intermediate files. Unlike the default local storage, COS-backed files persist across pipeline runs and can be shared between different pipelines.
+
+`pipelinectl` commands that support COS bucket as explicit persistent storage are:
+- [save_file](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_file)
+- [load_file](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#load_file)
+- [list_files](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_files)
+- [remove_file](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#remove_file)
 
 The data COS bucket must be separate from your evidence locker bucket due to audit and compliance requirements.
 {: important}
@@ -358,9 +364,8 @@ Saves a secret that can be retrieved later on with [`get_secret`](#get_secret).
 
 If the `<value>` argument is missing, `set_secret` reads it from the standard input.
 
-- Unlike `set_env`, `set_secret` does **not** support passing multiple key value pairs to be set at once.
 - The content set by `set_secret` does not get serialized, hence it will not be available across sub-pipelines / async pipelineruns .
-- It is recommended to disable debug logging around this invocation, to ensure that the saved secret content does not show up even in debug logs.
+- Disable debug logging around invocation of this command, to ensure that the saved secret content does not show up even in debug logs.
 - Ensure that scripts and any logic do not depend on any output of `set_secret` (there is a print statement done to mask the secret value utilising the [::add-mask:: functionality](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security&interface=ui#cd_add_mask_command))
 
 Example:
