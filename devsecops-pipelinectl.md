@@ -364,9 +364,8 @@ Saves a secret that can be retrieved later on with [`get_secret`](#get_secret).
 
 If the `<value>` argument is missing, `set_secret` reads it from the standard input.
 
-- Unlike `set_env`, `set_secret` does **not** support passing multiple key value pairs to be set at once.
 - The content set by `set_secret` does not get serialized, hence it will not be available across sub-pipelines / async pipelineruns .
-- It is recommended to disable debug logging around this invocation, to ensure that the saved secret content does not show up even in debug logs.
+- Disable debug logging around invocation of this command, to ensure that the saved secret content does not show up even in debug logs.
 - Ensure that scripts and any logic do not depend on any output of `set_secret` (there is a print statement done to mask the secret value utilising the [::add-mask:: functionality](/docs/ContinuousDelivery?topic=ContinuousDelivery-cd_data_security&interface=ui#cd_add_mask_command))
 
 Example:
