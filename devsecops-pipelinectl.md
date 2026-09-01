@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-07-27"
+lastupdated: "2026-09-01"
 
 keywords: DevSecOps, pipelinectl
 
@@ -24,6 +24,12 @@ For more information about where this tool is used, see [Adding test and build s
 {: #devsecops-pipelinectl-cos-config}
 
 Cloud Object Storage (COS) provides unlimited, persistent storage for pipeline data such as build artifacts, test reports, and intermediate files. Unlike the default local storage, COS-backed files persist across pipeline runs and can be shared between different pipelines.
+
+`pipelinectl` commands that support COS bucket as explicit persistent storage are:
+- [save_file](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#save_file)
+- [load_file](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#load_file)
+- [list_files](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#list_files)
+- [remove_file](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#remove_file)
 
 The data COS bucket must be separate from your evidence locker bucket due to audit and compliance requirements.
 {: important}
