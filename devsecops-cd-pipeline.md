@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-05-13"
+lastupdated: "2026-09-03"
 
 keywords: DevSecOps, IBM Cloud, deployment delta
 
@@ -168,7 +168,7 @@ When `force-redeploy` is not set or is set to `false`, the pipeline deploys only
    * If the delta is empty, the pipeline stops and no deployment occurs.
    * If the delta contains changes, the pipeline continues.
 5. The pipeline deploys the changes identified in the delta.
-6. After a successful deployment, the pipeline attaches the `<target-environment>_latest` tag to the new commit.
+6. When the deployment stage or task completes successfully, the pipeline attaches the `<target-environment>_latest` tag to the new commit.
 
 #### Forced behavior (with force redeploy)
 
@@ -282,7 +282,7 @@ When triggered, the CD pipeline completes the following steps for the redeployme
 * The pipeline starts and tags the current commit (the revert commit) with the pipeline run ID.
 * The pipeline reads the content of the corresponding environment branch from that tag.
 * The pipeline calculates the deployment delta between the current commit and the commit associated with the `<target-environment>_latest` tag.
-* After a successful deployment, the `<target-environment>_latest` tag is moved to the new (reverted) commit.
+* When the deployment stage or task completes successfully, the `<target-environment>_latest` tag is moved to the new (reverted) commit.
 
 #### Create a Rollback Promotion Pull Request
 
@@ -370,6 +370,8 @@ This mode rolls back the current deployment within the context of the same pipel
 An inline rollback automatically runs if the `rollback-enabled` environment property is set to `1` and a failure occurs in the Deployment or Acceptance test stage.
 
 If a rollback is triggered, the CD pipeline runs the segment defined for `rollback` in your `.pipeline-config.yaml` file. If a `rollback` segment is not defined in the file, a default implementation runs and prompts you to provide a rollback script.
+
+When an inline rollback is invoked during the pipeline execution, the `<target-environment>_latest` tag is not moved. The tag remains pointing to the last successfully deployed commit, preserving the known-good state in the inventory.
 
 Example rollback script in `.pipeline-config.yaml`:
 

@@ -58,7 +58,7 @@ Depending on the trigger settings of your continuous deployment pipeline [trigge
 
 The pipeline starts and tags the current commit in the inventory repo with the Pipeline Run ID. The pipeline uses that tag to pick up the content from the target branch (prod) and calculates the deployment delta between the current commit and the content of the last successful deployment. The delta is marked by the `<target-environment>_latest` tag, where `target-environment` is the value that is set in your continuous deployment pipeline properties, such as `prod_latest`.
 
-The pipeline attempts to deploy the content. During the deployment, the change request ID is attached to the commit that the pipeline works with as a tag. A successful deployment concludes by attaching the `<target-environment>_latest` tag to the commit that you promoted.
+The pipeline attempts to deploy the content. During the deployment, the change request ID is attached to the commit that the pipeline works with as a tag. When the deployment stage or task completes successfully, the pipeline concludes by attaching the `<target-environment>_latest` tag to the commit that you promoted.
 
 ![{{site.data.keyword.gitrepos}} repo tags](images/grit-repo-tags.png){: caption="{{site.data.keyword.gitrepos}} repo tags" caption-side="bottom"}
 
