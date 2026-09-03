@@ -63,3 +63,65 @@ The pipeline attempts to deploy the content. During the deployment, the change r
 ![{{site.data.keyword.gitrepos}} repo tags](images/grit-repo-tags.png){: caption="{{site.data.keyword.gitrepos}} repo tags" caption-side="bottom"}
 
 For more information about the inventory workflow, see [Understanding DevSecOps pipelines](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines#cd-devsecops-pipelines-inventory-workflow).
+
+## Updating the image location in the inventory
+{: #cd-devsecops-update-image-location}
+
+After an image is promoted to the target container registry, update the image location in the inventory to reference the promoted image.
+
+Use the `cocoa inventory update-locations` command to update the artifact location in the inventory repository.
+
+```bash
+cocoa inventory update-locations \
+  --name="${inventory_image_type}/inventory.json" \
+  --org="<org>" \
+  --repo="<repo-name>" \
+  --location="prod#${inventory_target_name}@${DIGEST}" \
+  --environment="master"
+```
+
+For example:
+
+```bash
+cocoa inventory update-locations \
+  --name="<inventory-entry-name>/inventory.json" \
+  --org="<org-name>" \
+  --repo="<repo-name>" \
+  --location="prod#icr.io/.../baseimage:4.x.y@sha256:..." \
+  --environment="master"
+```
+
+The `--location` parameter specifies the target image location and its SHA-256 digest. The location has the following format:
+
+```text
+<environment>#<image>:<tag>@sha256:<digest>
+```
+
+For example:
+
+```text
+prod#icr.io/<namespace>/<repository>/baseimage:4.x.y@sha256:<digest>
+```
+
+## Image promotion and signing
+{: #cd-devsecops-image-promotion-signing}
+
+The image must be copied to the target registry and have a valid signature for the destination image reference before the inventory is updated.
+
+For information about copying an image between registries, removing the source signature, and signing the promoted image for the destination registry, see [Image promotion and signature transfer](/docs/devsecops?topic=devsecops-devsecops-garasign#devsecops-garasign-signature-transfer).
+
+After the image is promoted and signed, obtain the digest of the image in the target registry and use that digest with `cocoa inventory update-locations`.
+{: important}
+Run `cocoa inventory update-locations` after the image has been promoted and signed. The inventory must reference the image in the target registry and the corresponding image digest.
+
+## Promotion workflow
+{: #cd-devsecops-promotion-workflow}
+
+The release workflow is:
+
+1. Promote the image from the source registry to the target registry.
+2. Remove the source signature and sign the image for the destination image reference as described in [Image promotion and signature transfer](/docs/devsecops?topic=devsecops-devsecops-garasign#devsecops-garasign-signature-transfer).
+3. Obtain the digest of the promoted image in the target registry.
+4. Run `cocoa inventory update-locations` with the target image location and digest.
+
+The `cocoa inventory update-locations` command updates the **inventory metadata**. It does not copy or sign the container image.
