@@ -144,6 +144,7 @@ toc:
               - devsecops-configuring-zap-scans-v1.md
           - devsecops-configure-gosec-scan.md
           - devsecops-configuring-sonarqube-scan.md
+          - devsecops-configuring-checkov-scan.md
           - devsecops-configuring-syft-grype-scan.md
           - devsecops-configuring-sysdig-scan.md
           - devsecops-configuring-cra-scan.md
