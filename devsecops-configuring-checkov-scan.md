@@ -47,7 +47,7 @@ These scripts automatically install Checkov if it is not already present in the 
 The pipeline environment properties and secrets listed in the following table are used to customize the Checkov scans.
 
 | Parameter name | Description |
-| |-|-|
+|-|-|
 | `checkov-args` | Additional arguments provided directly to the `checkov` command. |
 | `tf-dir` | Location or path in the source repository where `main.tf` is located. (Defaults to `.`) |
 | `checkov-version` | Checkov version to install if not already available in the environment. (Defaults to installing the latest version) |
