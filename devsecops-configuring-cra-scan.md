@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-07-02"
+lastupdated: "2026-09-07"
 
 keywords: DevSecOps, IBM Cloud, compliance, cra
 
@@ -154,7 +154,8 @@ Set the following environment variables to opt out of Code Risk Analyzer scans.
 |-----|-----|-----|-----|-----|-----|
 | `cra-bom-generate` | Enum | Optional | `0` | `1` |  [Syft](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) | 
 | `cra-vulnerability-scan` | Enum | Optional | `0` | `1` |  [Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans)  |
-| `cra-deploy-analysis` | Enum | Optional | `0` | `1` | None yet |
+| `cra-deploy-analysis` | Enum | Optional | `0` | `1` | [Checkov](/docs/devsecops?topic=devsecops-cd-devsecops-checkov-scans) |
+| `opt-in-cra-tf-validate` | Enum | Optional | `0` | `1` | [Checkov](/docs/devsecops?topic=devsecops-cd-devsecops-checkov-scans) |
 
 The vulnerability scan and the deployment analysis scan are set as required checks for branch protection by default. If you want to opt out of either of these scans, make sure that you [customize compliance checks](/docs/devsecops?topic=devsecops-cd-devsecops-config-github#devsecops-config-customized-list) and [configure branch protection rules](/docs/devsecops?topic=devsecops-cd-devsecops-config-github#devsecops-config-github-rules).
 {: tip}
