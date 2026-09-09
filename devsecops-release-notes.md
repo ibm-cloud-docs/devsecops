@@ -22,9 +22,6 @@ content-type: release-note
 The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to the `open-v10` branch of the DevSecOps pipeline.
 {: deprecated}
 
-The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to the `open-v10` branch of the DevSecOps pipeline.
-{: deprecated}
-
 Support for Git Evidence Locker feature has been removed - hence Cloud Object Store is now a mandatory Evidence Locker for all DevSecOps users
 {: deprecated}
 
