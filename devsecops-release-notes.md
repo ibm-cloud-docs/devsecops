@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-08-04"
+lastupdated: "2026-09-09"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -15,6 +15,9 @@ content-type: release-note
 
 # Release notes for DevSecOps
 {: #release-notes}
+
+`get_env` Secure Value Support is removed in the `open-v10.76.0` release. `get_env` will only work for non-sensitive environment variables. Any attempt to use it to retrieve a Secure Property defined from the pipeline or trigger properties will fail. All secure values must go through [`get_secret`](/docs/devsecops?topic=devsecops-devsecops-pipelinectl#get_secret) (available since `open-v10.64.0`).
+{: deprecated}
 
 The `open-v9` branch of the DevSecOps pipelines will no longer be supported from September 30, 2025. Please migrate to the `open-v10` branch of the DevSecOps pipeline.
 {: deprecated}

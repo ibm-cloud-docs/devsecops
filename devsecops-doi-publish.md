@@ -1,10 +1,10 @@
 ---
 
 copyright: 
-  years: 2024
-lastupdated: "2024-08-09"
+  years: 2024, 2025, 2026
+lastupdated: "2026-09-09"
 
-keywords: DevSecOps, doi publish
+keywords: DevSecOps, doi publish, deprecated
 
 subcollection: devsecops
 
@@ -14,6 +14,9 @@ subcollection: devsecops
 
 # doi-publish
 {: #doi-publish}
+
+The DevOps Insights feature of IBM Cloud Continuous Delivery will be permanently discontinued on August 31, 2026. As such this helper should not be used anymore. [Learn more](https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-faq_region_feature_consolidation#doi_cra_accessible)
+{: deprecated}
 
 `doi-publish` is a function designed to download an attachment and publish it as a test record to DevOps Insights.
 

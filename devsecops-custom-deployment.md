@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-07-29"
+  years: 2023, 2026
+lastupdated: "2026-09-09"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, cloud object storage, satellite , Push based deployment , Pull based deployment
 
@@ -40,7 +40,6 @@ deploy:
     source scripts/deploy_setup.sh
     source scripts/deploy.sh
     export DEPLOY_EXIT=$?
-    source scripts/doi-publish-deploy.sh
 ```
 {: codeblock}
 
@@ -98,7 +97,6 @@ deploy:
     source scripts/deploy_setup.sh
     source scripts/deploy.sh
     export DEPLOY_EXIT=$?
-    source scripts/doi-publish-deploy.sh
 ```
 {: codeblock}
 
