@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-09-09"
+lastupdated: "2026-09-16"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -316,7 +316,7 @@ PR_BODY=$(curl -s -u "$USER:$TOKEN" "$PR_URL" | jq .body
 ```
 
 Deprecation of git evidence lockers
-:   Support for git evidence locker has been removed. Please migrate to Cloud Object Storage lockers. Please follow [Configuring IBM Cloud Object Storage for storing evidence](https://cloud.ibm.com/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) to create COS lockers
+:   Support for git evidence locker has been removed. Please migrate to Cloud Object Storage lockers. Please follow [Configuring IBM Cloud Object Storage for storing evidence](/docs/devsecops?topic=devsecops-cd-devsecops-cos-config) to create COS lockers
 
 ### Updates for DevSecOps version - open-v9.68.0 and open-v10.51.0
 {: #devsecops-open-v10.51.0-open-v9.68.0}
@@ -415,7 +415,7 @@ The `open-v9` pipelines follow a sequential task execution model, resulting in l
 - `open-v10` introduced concurrent task execution, significantly improving pipeline performance and reducing overall build time.
 
 #### What you need to do:
-Please migrate your pipelines to the `open-v10` at the earliest. See [Improving compliance pipeline performance in DevSecOps](https://cloud.ibm.com/docs/devsecops?topic=devsecops-devsecops-conc) for migration instructions.
+Please migrate your pipelines to the `open-v10` at the earliest. See [Improving compliance pipeline performance in DevSecOps](/docs/devsecops?topic=devsecops-devsecops-conc) for migration instructions.
 Support for `open-v9` will end on September 30, 2025.
 
 ### Deprecation of `payload` Support in PR Pipeline

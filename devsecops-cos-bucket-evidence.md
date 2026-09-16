@@ -176,7 +176,7 @@ In this approach, COS Evidence Locker is enabled while the Git Evidence Locker r
 
 - Keep the Git Evidence Locker configuration in place.
 - Enable the COS Evidence Locker.
-- Run the CD pipeline using a pipeline definition version **earlier than v10.46.1** (recommended: [v10.45.0](https://cloud.ibm.com/docs/devsecops?topic=devsecops-release-notes#devsecops-open-v10.45.0-open-v9.62.0)).
+- Run the CD pipeline using a pipeline definition version **earlier than v10.46.1** (recommended: [v10.45.0](/docs/devsecops?topic=devsecops-release-notes#devsecops-open-v10.45.0-open-v9.62.0)).
 - After the run completes, remove the Git Evidence Locker configuration as described earlier.
 
 #### Approach 2: Bootstrap Without Git Evidence Locker

@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2022, 2026
-lastupdated: "2026-07-09"
+lastupdated: "2026-09-16"
 
 keywords: DevSecOps
 
@@ -197,9 +197,7 @@ This is the recommended approach for testing configuration changes without affec
 
 ### Testing Approach 2: Modifying Pipeline Layout
 
-For v11 pipelines, you can extensively modify the pipeline layout using Matrix Strategy and other features (e.g. `runAfter` and `from`):
-- Leverage the [matrixing capability](/docs/devsecops?topic=devsecops-devsecops-pipeline-config-v2#devsecops-pipeline-config-v2-matrix-strategy) in `.pipeline-config.yaml`
-- Test using Approach 1 after making layout changes
+
 
 **Forking Pipeline Definitions** (Advanced)
 - Fork the [compliance-pipelines repository](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-pipelines))
@@ -218,4 +216,4 @@ For v11 pipelines, you can extensively modify the pipeline layout using Matrix S
 - Consider creating a dedicated test toolchain for major pipeline changes
 - Review pipeline logs carefully to ensure all stages execute as expected
 
-For more information about customizing pipelines, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline configuration v2](/docs/devsecops?topic=devsecops-devsecops-pipeline-config-v2).
+For more information about customizing pipelines, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and 

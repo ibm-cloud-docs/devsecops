@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-07-08"
+lastupdated: "2026-09-16"
 
 keywords: DevSecOps, OPA, Open Policy Agent, Rego, deployment gating, evidence validation, compliance, IBM Cloud
 
@@ -132,8 +132,8 @@ Each block in the configuration defines exactly what evidence is expected, where
 * **The Evidence Type ID (`com.ibm.prod_change_request`):** The top-level key dictates the specific category of evidence being evaluated. Common examples include `com.ibm.static-scan`, `com.ibm.unit-tests`, or `com.ibm.image_signing`.
 * **`asset_type`:** Defines the type of artifact this rule applies to. For example, it might only apply to an `image` or a `repo`. Using `["*"]` applies the rule to all asset types.
 * **`source` (Source Environments):** Defines where the evidence originates. This could be a specific branch or a pipeline environment (e.g., `ci-pipeline`, `stage`, `prod`).
-* **`target` (Target Environments):** Defines the destination environment where this evidence is being validated for deployment (e.g., `stage`, `prod`) More details about source and target can be found [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-evidence-checks-validation#various-deployment-topology).
-* **`gating mode`**: Last fields contains which gating mode you want to apply for the evidence type. More information on the supported gating modes can be found [here](https://cloud.ibm.com/docs/devsecops?topic=devsecops-evidence-checks-validation#understanding-evidence-declaration-levels).
+* **`target` (Target Environments):** Defines the destination environment where this evidence is being validated for deployment (e.g., `stage`, `prod`) More details about source and target can be found [here](/docs/devsecops?topic=devsecops-evidence-checks-validation#various-deployment-topology).
+* **`gating mode`**: Last fields contains which gating mode you want to apply for the evidence type. More information on the supported gating modes can be found [here](/docs/devsecops?topic=devsecops-evidence-checks-validation#understanding-evidence-declaration-levels).
 
 **Note** : All the pre-deployment checks must be defined `pre_deployment :{}` array and all the post-deployment checks must be defined `post_deployment :{}` array. Also if you are using default policy path then use must inlcude import of `one_pipeline.config` packagae in your data validation rego file.
 
