@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-09-01"
+lastupdated: "2026-09-16"
 
 keywords: DevSecOps, pipelinectl
 
@@ -502,7 +502,7 @@ save_file some_config ./config.yaml
 
 **COS Storage:**
 
-Files are stored in Cloud Object Storage and persist across pipeline runs. See [Data Scope and Persistence](#devsecops-pipelinectl-file-scope) for important information about shared bucket behavior.
+Files are stored in Cloud Object Storage and persist across pipeline runs. See [Data Scope and Persistence](#devsecops-pipelinectl-cos-scope) for important information about shared bucket behavior.
 
 Prerequisites: Ensure COS is configured. See [Cloud Object Storage configuration](#devsecops-pipelinectl-cos-config).
 {: note}

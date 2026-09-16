@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-09-07"
+lastupdated: "2026-09-16"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -104,10 +104,12 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `checkov`| Use the [Checkov](https://www.checkov.io){: external} tool to find misconfigurations and create compliance issues. | `opt-in-checkov` set to `1` |
 {: caption="IaC additional compliance scans and checks" caption-side="top"}
 
+
+
+
 | Property | Default | Description |
 | -------- | ----- | ----------- |
 | `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
-| `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-options). |
 | `cra-tf-ignore-rules` | | The comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
 | `cra-tf-ignore-rules-file` | | The path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
 | `opt-in-tfsec` | | The flag to run compliance checks by using `tfsec` tool. |
@@ -117,6 +119,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `checkov-version` | `` meaning the latest version | `checkov` version to install if not available in the environment. |
 | `checkov-args` | | The `checkov` command arguments. |
 {: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
+
 
 Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
 {: deprecated}
@@ -128,7 +131,7 @@ For more information about the expected output from user script stages, see [Cus
 ### Format for `cra-tf-ignore-rules-file`
 {: #devsecops-iac-ci-pipeline-ignore-rules}
 
-The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. The format is similar to the format (without the `scc_parameters` field) that is in [Example V2 classic profile file for the `terraform-validate` command](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-example-v2-classicprofile).
+The expected format for the file that is defined by the `cra-tf-ignore-rules-file format`. 
 
 Sample content for `cra-tf-ignore-rules-file` file:
 

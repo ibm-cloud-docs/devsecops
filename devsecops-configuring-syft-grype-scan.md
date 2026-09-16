@@ -46,7 +46,7 @@ Vulnerability scanning is the process of identifying known security vulnerabilit
 
 To enable Syft SBOM generation and Grype SBOM validation, add `opt-in-syft-grype` as a text property to your pipeline or trigger properties, with a value set to a non-empty string (except `0`).
 
-Enabling this feature runs both [Syft](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/blob/master/syft-grype/run-syft.sh) and [Grype](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/blob/master/syft-grype/run-grype.sh) scripts triggered from the compliance checks script [Commons Scripts Library documentation](https://us-south.git.cloud.ibm.com/open-toolchain/blob/eabe91b937279a6d3b83ad57e4511791c9ec179d/compliance-checks/run.sh#L201). The scripts automatically install Syft and Grype if not already present.
+Enabling this feature runs both [Syft](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/blob/master/syft-grype/run-syft.sh) and [Grype](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/blob/master/syft-grype/run-grype.sh) scripts triggered from the compliance checks script [Commons Scripts Library documentation](https://us-south.git.cloud.ibm.com/users/sign_in#L201). The scripts automatically install Syft and Grype if not already present.
 
 #### Syft parameters
 {: #cd-devsecops-syft-params}

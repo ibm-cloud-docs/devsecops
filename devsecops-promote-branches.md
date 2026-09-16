@@ -108,7 +108,7 @@ prod#icr.io/<namespace>/<repository>/baseimage:4.x.y@sha256:<digest>
 
 The image must be copied to the target registry and have a valid signature for the destination image reference before the inventory is updated.
 
-For information about copying an image between registries, removing the source signature, and signing the promoted image for the destination registry, see [Image promotion and signature transfer](/docs/devsecops?topic=devsecops-devsecops-garasign#devsecops-garasign-signature-transfer).
+
 
 After the image is promoted and signed, obtain the digest of the image in the target registry and use that digest with `cocoa inventory update-locations`.
 {: important}
@@ -120,8 +120,7 @@ Run `cocoa inventory update-locations` after the image has been promoted and sig
 The release workflow is:
 
 1. Promote the image from the source registry to the target registry.
-2. Remove the source signature and sign the image for the destination image reference as described in [Image promotion and signature transfer](/docs/devsecops?topic=devsecops-devsecops-garasign#devsecops-garasign-signature-transfer).
-3. Obtain the digest of the promoted image in the target registry.
-4. Run `cocoa inventory update-locations` with the target image location and digest.
+1. Obtain the digest of the promoted image in the target registry.
+1. Run `cocoa inventory update-locations` with the target image location and digest.
 
 The `cocoa inventory update-locations` command updates the **inventory metadata**. It does not copy or sign the container image.

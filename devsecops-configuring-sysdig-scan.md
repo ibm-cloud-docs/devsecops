@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2025
-lastupdated: "2025-06-05"
+  years: 2023, 2026
+lastupdated: "2026-09-16"
 
 keywords: DevSecOps, sysdig, vulnerability advisor, IBM Cloud, workload protection
 
@@ -34,7 +34,7 @@ The script runs the Sysdig cli scanner image scan on the image and uploads the r
 If there are any policies created in the Sysdig Dashboard with the **Always apply** toggle on, the issues will only be created for vulnerabilities that fail these policies. The `sysdig-policies` variable can also be used to evaluate the results based on specified policies, but the policies with "always apply" will be used regardless to evaluate the results.
 
 
-To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_short}}](/docs/workload-protection?topic=workload-protection-provision).
+To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.keyword.cloud}}, see [Provisioning an instance of {{site.data.keyword.sysdigsecure_short}}](/docs/workload-protection?topic=workload-protection-getting-started#setup).
 
 ## Required Sysdig scan parameters
 {: #sysdig-scan-params-req}
@@ -55,7 +55,7 @@ To create an instance of {{site.data.keyword.sysdigsecure_full}} in {{site.data.
 | `sysdig-policies` | | Comma separated values of sysdig policies identifier. You can find policy identifier under section `How to scan Images with this policy` (look for the name after `--policy` tag)|
 {: caption="Optional Sysdig scan parameters" caption-side="top"}
 
-The various `sysdig-url` values to be used, while using [IBM Cloud Workload Protection service](/docs/workload-protection?topic=workload-protection-getting-started) are provided [here](/docs/workload-protection?topic=workload-protection-endpoints).
+The various `sysdig-url` values to be used, while using [IBM Cloud Workload Protection service](/docs/workload-protection?topic=workload-protection-getting-started) are provided [here](/docs/workload-protection?topic=workload-protection-supported-endpoints).
 External Sysdig secure instances also can be used, such as `https://secure.sysdig.com`. Appropriate `sysdig-url` value needs to be provided.
 
 
@@ -95,5 +95,5 @@ You can access your scan results by using any of the following methods:
 ## Related links
 {: #sysdig-links}
 
-   - [Navigating to the web UI for {{site.data.keyword.sysdigsecure_full_notm}}](/docs/workload-protection?topic=workload-protection-launch)
-   - [Sysdig Secure documentation](/docs/workload-protection?topic=workload-protection-sysdig_doc)
+   - [Navigating to the web UI for {{site.data.keyword.sysdigsecure_full_notm}}](/docs/workload-protection?topic=workload-protection-cspm-implement)
+   - [Sysdig Secure documentation](https://docs.sysdig.com/en/sysdig-secure.html)
