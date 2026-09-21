@@ -14,7 +14,7 @@ subcollection: devsecops
 # doi-publish-testrecord
 {: #doi-publish-testrecord-script}
 
-The DevOps Insights feature of IBM Cloud Continuous Delivery will be permanently discontinued on August 31, 2026. As such this helper should not be used anymore. [Learn more](https://cloud.ibm.com/docs/ContinuousDelivery?topic=ContinuousDelivery-faq_region_feature_consolidation#doi_cra_accessible)
+The DevOps Insights feature of IBM Cloud Continuous Delivery will be permanently discontinued on August 31, 2026. As such this helper should not be used anymore. [Learn more](/docs/ContinuousDelivery?topic=ContinuousDelivery-faq_region_feature_consolidation#doi_cra_accessible)
 {: deprecated}
 
 `doi-publish-testrecord` is a script containing helper functions for Devops Insights, using the `ibmcloud doi` CLI plugin to publish a test record to DevOps Insights.  
