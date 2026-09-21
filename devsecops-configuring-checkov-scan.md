@@ -37,7 +37,7 @@ You can run Checkov scans using two different frameworks:
 
 Enabling these features runs the following scripts from the compliance checks stage:
 - [Checkov Scan](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/blob/master/compliance-checks/compliance-check-scans/checkov-scan.sh) (runs Terraform plan scan)
-- [Checkov Kubernetes Scan]( https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/tree/master) (runs Kubernetes scan)
+- [Checkov Kubernetes Scan](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/tree/master) (runs Kubernetes scan)
 
 These scripts automatically install Checkov if it is not already present in the environment.
 
