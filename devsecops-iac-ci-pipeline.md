@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-09-16"
+lastupdated: "2026-09-21"
 
 keywords: DevSecOps, scan, inventory, compliance, infrastructure as code, iac
 
@@ -38,8 +38,7 @@ Before it builds artifacts, the pipeline checks that the code is scanned and tes
 |`finish` |Collects, creates, and uploads the logs files, artifacts, and evidence to the evidence locker.   |No|
 {: caption="Continuous integration for IaC stages and tasks" caption-side="top"}
 
-For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize).
-e) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
+For more information about how to customize stages by using the `.pipeline-config.yaml` file, see [Custom scripts](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize) and [Pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-pipeline-parm#cd-ci-parameters) lists.
 
 ## Parameters to configure Terraform context and variables
 {: #devsecops-iac-ci-terra-var}
@@ -76,7 +75,7 @@ The IaC continuous integration pipeline defines more tools that are enabled by u
 | Scan or check |  Description | Enablement |
 |---------|------------|---------|
 | tflint |Runs `tflint $tflint_args --format=json` from [tflint](https://github.com/terraform-linters/tflint) to warn about deprecated syntax, unused declarations and enforce best practices, naming conventions. |`opt-in-tflint` set to 1 |
-| fmt | Runs `terraform fmt -check` from [fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) to rewrite Terraform configuration files to a canonical format and style. | `opt-in-terraform-fmtvalidate` set to 1 |
+| fmt and validate | Runs `terraform fmt -check` from [fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) to check Terraform configuration files for formatting consistency, and `terraform validate` to verify configuration validity. | `opt-in-terraform-fmt-validate` set to 1 |
 
 | Name | Type | Default | Description | Required or optional |
 |--|--|--|--|--|
@@ -101,7 +100,7 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 |---------|------------|---------|
 | `cra-tf` | Use the `ibmcloud cra terraform-validate` command from [IBM Cloud CRA tool](/docs/code-risk-analyzer-cli-plugin){: external} to analyze a Terraform plan for compliance | `opt-in-cra-tf-validate` set to `1`. |
 | `tfsec`| Use the [TFsec](https://aquasecurity.github.io/tfsec){: external} tool to find potential misconfigurations and create compliance issues. | `opt-in-tfsec` set to `1` |
-| `checkov`| Use the [Checkov](https://www.checkov.io){: external} tool to find misconfigurations and create compliance issues. | `opt-in-checkov` set to `1` |
+| `checkov` (Terraform plan)| Use the [Checkov](https://www.checkov.io){: external} tool to scan the computed Terraform plan for misconfigurations and compliance issues. | `opt-in-checkov` set to `1` |
 {: caption="IaC additional compliance scans and checks" caption-side="top"}
 
 
@@ -110,13 +109,14 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | Property | Default | Description |
 | -------- | ----- | ----------- |
 | `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
+| `cra-tf-policy-file` | | The path to policy profile file. For more information, see [Terraform command options](/docs/ContinuousDelivery?topic=ContinuousDelivery-cra-cli-plugin#terraform-options). |
 | `cra-tf-ignore-rules` | | The comma-separated list of rules to ignore from the `ibmcloud cra terraform-validate` report. |
 | `cra-tf-ignore-rules-file` | | The path to the JSON file that contains the list of rules to ignore from the `ibmcloud cra terraform-validate` report. For more information on the file format, see [Format for cra-tf-ignore-rules-file](#devsecops-iac-ci-pipeline-ignore-rules).  |
 | `opt-in-tfsec` | | The flag to run compliance checks by using `tfsec` tool. |
-| `tfsec-version` | `v1.21.0`` | The `tfsec` version to use. |
+| `tfsec-version` | `v1.21.0` | The `tfsec` version to use. |
 | `tfsec-args` | | The `tfsec` command arguments. |
-| `opt-in-checkov` | | The flag to run compliance checks by using the [checkov](/docs/devsecops?topic=devsecops-cd-devsecops-checkov-scans) tool. |
-| `checkov-version` | `` meaning the latest version | `checkov` version to install if not available in the environment. |
+| `opt-in-checkov` | | The flag to run compliance checks by using the [checkov](/docs/devsecops?topic=devsecops-cd-devsecops-checkov-scans) tool with the Terraform plan framework. |
+| `checkov-version` | empty value meaning the latest version | `checkov` version to install if not available in the environment. |
 | `checkov-args` | | The `checkov` command arguments. |
 {: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
 
