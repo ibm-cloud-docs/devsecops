@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2025
-lastupdated: "2025-02-25"
+lastupdated: "2026-09-21"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -24,10 +24,13 @@ The following table lists the various scanning tools that are integrated into De
 | Tool | Scan | Description | Scan type |
 |-|-|-|-|
 | [IBM Cloud Code Risk Analyzer](/docs/devsecops?topic=devsecops-cd-devsecops-cra-scans) | Code Risk Analyzer (CRA) analyzes your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of CI/CC pipelines | Dependency scan |
-| [Checkov](/docs/devsecops?topic=devsecops-cd-devsecops-checkov-scans) | Checkov analyze your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of PR app preview/CI/CC pipelines | Dependency scan |
+| [Checkov](/docs/devsecops?topic=devsecops-cd-devsecops-checkov-scans) | Checkov is a static analysis tool for Infrastructure-as-Code (IaC). It scans Terraform plans, Kubernetes manifests, Helm charts, and Dockerfiles for security misconfigurations and compliance violations. | `compliance checks` stage of PR app preview/CI/CC pipelines | Infrastructure-as-Code scan |
 | [Syft and Grype](/docs/devsecops?topic=devsecops-cd-devsecops-syft-gryp-scans) | Syft and Grype analyze your code for vulnerabilities and compliance with certain rules. | `compliance checks` stage of PR app preview/CI/CC pipelines | Dependency scan |
 | [Gosec](/docs/devsecops?topic=devsecops-devsecops-gosec) | Gosec scan can be used to inspect Golang source code in your scanned repositories. | `static scan` stage of CI/CC pipelines | Static scan (SAST) |
 | [SonarQube](/docs/devsecops?topic=devsecops-sonarqube) | SonarQube provides an overview of the overall health and quality of your source code and highlights issues that are found in new code. | `static scan` stage of CI/CC pipelines | Static scan (SAST) |
+| [TFSec](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-pipeline-static-codescan) | TFSec is a static analysis security scanner for Terraform code. It detects security misconfigurations and compliance issues in Terraform infrastructure definitions. | `compliance checks` stage of CI/CC pipelines | Infrastructure-as-Code scan |
+| [TFLint](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-pipeline-static-codescan) | TFLint is a Terraform linter that detects errors, deprecated syntax, and cloud provider-specific issues in Terraform configurations. | `static scan` stage of CI/CC pipelines | Infrastructure-as-Code scan |
+| [Terraform format and validate](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-pipeline-static-codescan) | Terraform format and validate checks Terraform configuration files for formatting consistency and configuration validity. | `static scan` stage of CI/CC pipelines | Infrastructure-as-Code scan |
 | [OWASP ZAP](/docs/devsecops?topic=devsecops-cd-devsecops-zap-scans) | Zed Attack Proxy (ZAP) is a free and open source penetration testing tool that is maintained under the umbrella of OWASP. | `owasp zap` sub-pipeline in CI pipeline and `dynamic scan` stage of CI/CC pipelines | Dynamic scan (DAST) |
 | [IBM Cloud Vulnerability Advisor](/docs/devsecops?topic=devsecops-cd-devsecops-va-scans) | The DevSecOps pipeline uses the Vulnerability Advisor (VA) to identify vulnerabilities (CVEs) within Docker images. | `scan artifact` stage of CI/CC pipelines | Containerized image scan |
 | [Sysdig](/docs/devsecops?topic=devsecops-cd-devsecops-sysdig-scans) | Sysdig scan uses the Sysdig inline scanner to identify vulnerabilities (CVEs) within Docker images. | `scan artifact` stage of CI/CC pipelines | Containerized image scan |

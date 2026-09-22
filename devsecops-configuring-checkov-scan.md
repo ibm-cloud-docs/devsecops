@@ -29,17 +29,17 @@ This scan is part of the compliance checks stage available in the PR (app-previe
 ### Enabling and configuring Checkov scans
 {: #cd-devsecops-enabling-configuring-checkov-scans}
 
-You can run Checkov scans using two different frameworks:
+You can run Checkov scans using the following frameworks:
 - **Terraform Plan**: Run Checkov scan on a computed Terraform plan. To enable this, add `opt-in-checkov` as a text property to your pipeline or trigger properties, with a value set to a non-empty string (except `0`).
-- **Kubernetes**: Run Checkov scan on Kubernetes manifests. To enable this, add `opt-in-checkov-kubernetes` as a text property to your pipeline or trigger properties, with a value set to a non-empty string (except `0`). 
+- **Kubernetes**: Run Checkov scan on Kubernetes manifests. To enable this, add `opt-in-checkov-kubernetes` as a text property to your pipeline or trigger properties, with a value set to a non-empty string (except `0`).
 **Note**: With Code Risk Analyzer (CRA) being [deprecated](https://cloud.ibm.com/status/announcement?component=continuous-delivery&query=cra), Checkov Kubernetes scan is an alternative for `cra-deploy-analysis` that produces `com.ibm.code_cis_check` evidences.
+- **Helm**: Run Checkov scan on Helm charts. To enable this, add `opt-in-checkov-helm` as a text property to your pipeline or trigger properties, with a value set to a non-empty string (except `0`).
+**Note**: When both `opt-in-checkov-kubernetes` and `opt-in-checkov-helm` are enabled, a single Checkov invocation is run with both frameworks (`--framework kubernetes,helm`). Both produce `com.ibm.code_cis_check` evidence.
+- **Dockerfile**: Run Checkov scan on Dockerfiles. To enable this, add `opt-in-checkov-dockerfile` as a text property to your pipeline or trigger properties, with a value set to a non-empty string (except `0`).
 
+Enabling these features runs the [run-checkov script](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/blob/master/doc/checkov__run-checkov.md) from the compliance checks stage.
 
-Enabling these features runs the following scripts from the compliance checks stage:
-- [Checkov Scan](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/blob/master/compliance-checks/compliance-check-scans/checkov-scan.sh) (runs Terraform plan scan)
-- [Checkov Kubernetes Scan](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons/-/tree/master) (runs Kubernetes scan)
-
-These scripts automatically install Checkov if it is not already present in the environment.
+This script automatically install Checkov if it is not already present in the environment.
 
 #### Checkov parameters
 {: #cd-devsecops-checkov-params}
@@ -48,8 +48,12 @@ The pipeline environment properties and secrets listed in the following table ar
 
 | Parameter name | Description |
 |-|-|
+| `opt-in-checkov` | Set to a non-empty string (except `0`) to enable the Terraform Plan Checkov scan. |
+| `opt-in-checkov-kubernetes` | Set to a non-empty string (except `0`) to enable the Kubernetes Checkov scan. |
+| `opt-in-checkov-helm` | Set to a non-empty string (except `0`) to enable the Helm Checkov scan. Can be combined with `opt-in-checkov-kubernetes` for a single combined invocation. |
+| `opt-in-checkov-dockerfile` | Set to a non-empty string (except `0`) to enable the Dockerfile Checkov scan. |
 | `checkov-args` | Additional arguments provided directly to the `checkov` command. |
-| `tf-dir` | Location or path in the source repository where `main.tf` is located. (Defaults to `.`) |
+| `tf-dir` | Location or path in the source repository where `main.tf` is located. Applies to the Terraform Plan framework only. (Defaults to `.`) |
 | `checkov-version` | Checkov version to install if not already available in the environment. (Defaults to installing the latest version) |
 | `checkov-prisma-api-url` | The Prisma Cloud API URL. Must be a `*.prismacloud.io`, `*.prismacloud.cn` or `*.bridgecrew.cloud` domain. |
 | `checkov-bc-api-key` | Bridgecrew API key or Prisma Cloud Access Key. Retrieve this using `get_secret`. |
@@ -85,6 +89,32 @@ The following table lists the evidence details for the Kubernetes checkov scan.
 | `asset type`    | `repo` |
 | `attachments`   | Checkov results JSON file |
 {: caption="Checkov Kubernetes evidence fields and values" caption-side="top"}
+
+##### Checkov Helm Evidence
+{: #cd-devsecops-checkov-helm-evidence}
+
+The following table lists the evidence details for the Helm checkov scan.
+
+| Field | Value |
+| ----- | ----- |
+| `tool type`     | `checkov` |
+| `evidence type` | `com.ibm.code_cis_check` |
+| `asset type`    | `repo` |
+| `attachments`   | Checkov results JSON file |
+{: caption="Checkov Helm evidence fields and values" caption-side="top"}
+
+##### Checkov Dockerfile Evidence
+{: #cd-devsecops-checkov-dockerfile-evidence}
+
+The following table lists the evidence details for the Dockerfile checkov scan.
+
+| Field | Value |
+| ----- | ----- |
+| `tool type`     | `checkov` |
+| `evidence type` | `com.ibm.code_vulnerability_scan` |
+| `asset type`    | `repo` |
+| `attachments`   | Checkov results JSON file |
+{: caption="Checkov Dockerfile evidence fields and values" caption-side="top"}
 
 ## Accessing your scan results
 {: #cd-devsecops-checkov-results}
