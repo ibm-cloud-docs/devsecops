@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2021, 2026
-lastupdated: "2026-08-14"
+lastupdated: "2026-10-06"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -334,7 +334,86 @@ You must edit and modify the pull/merge request if the optional parameters were 
 The aggregated evidence summary of the evidences (that can be coming from multiple apps in the inventory) is displayed in tabular format as a comment in the PR.
 ![Optional aggregated evidence summary captured in a comment on promotion pull and merge request](images/promotion-pull-request-summary.png){: caption="Aggregated evidence summary in promotion pull and merge request" caption-side="bottom"}
 
+## Auto-merge feature for promotion pull requests
+{: #devsecops-promotion-pipeline-auto-merge}
 
+The auto-merge feature automatically merges promotion pull requests when all status checks from the Promotion Validation Pipeline are successful. This optional feature streamlines the promotion workflow by eliminating the need for manual merge operations after validation completes.
+
+### Prerequisites
+{: #devsecops-promotion-pipeline-auto-merge-prereqs}
+
+Before you enable the auto-merge feature, ensure that the following requirements are met:
+
+1. **Security analysis**: Consider confirming with your security team that they are comfortable with the risk of having auto-approval and not requiring peer review of promotion pull requests. It is up to each organization to decide if they are comfortable with the security risk. 
+
+2. **Promotion pipeline parameters**: Verify that the [Promotion pipeline parameters](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipelineinputs) are configured with appropriate default values.
+
+3. **Promotion Validation pipeline**: Ensure that the Promotion Validation pipeline is [enabled](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-enable) and configured to run on pull request events.
+
+The following requirements apply to Github inventory repository:
+
+4. **GitHub repository settings**: Enable auto-merge at the GitHub repository level. For more information, see [Managing auto-merge for pull requests in your repository](https://docs.github.com/en/enterprise-server@3.17/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-auto-merge-for-pull-requests-in-your-repository){: external}.
+
+5. **Branch protection rules**: Configure the target branch of the inventory repository with appropriate branch protection rules to support auto-merge. For more information, see [Automatically merging a pull request](https://docs.github.com/en/enterprise-server@3.17/pull-requests/how-tos/merge-and-close-pull-requests/automatically-merging-a-pull-request){: external}.
+
+### Enabling auto-merge
+{: #devsecops-promotion-pipeline-auto-merge-enable}
+
+To enable the auto-merge feature for your promotion pipeline:
+
+1. Navigate to your CD Promotion pipeline in the {{site.data.keyword.cloud_notm}} console.
+2. Click **Environment properties** to edit the pipeline or a specific trigger.
+3. Add a new text property with the following values:
+   - **Name**: `enable-auto-merge`
+   - **Value**: `true`
+
+Any value other than `true` is ignored, and auto-merge remains disabled.
+{: note}
+
+### How auto-merge works
+{: #devsecops-promotion-pipeline-auto-merge-workflow}
+
+When you run the Promotion pipeline with auto-merge enabled, the following workflow occurs:
+
+1. The Promotion pipeline creates a promotion pull request in the inventory repository.
+2. The Promotion Validation pipeline is automatically triggered when the pull request is created.
+3. Auto-merge is enabled for the pull request, pending successful validation.
+4. The Promotion Validation pipeline runs compliance checks and sets status checks on the pull request.
+5. If all compliance checks pass, the pull request is automatically merged.
+6. If any compliance check fails, the pull request remains open and requires manual intervention.
+
+You can monitor the status of the auto-merge process in the pull request page on GitHub, where you can see the pending checks and the auto-merge status.
+
+### Important considerations when using the auto-merge feature
+{: #devsecops-promotion-pipeline-auto-merge-considerations}
+
+Enabling the auto-merge feature for promotion to `prod` means that there is no manual gating to prevent changes from flowing from the previous environment to the `prod` environment. Therefore, it is important to establish a process to prevent promotion to the `prod` environment before the previous environment has been successfully validated. Until you have that mechanism enabled, consider not enabling auto-merge on your production environment and only using it for your other environments like `staging`.
+
+#### Special consideration for Git Repos and Issue Tracking (GRIT) and promotion validation pipeline
+{: #devsecops-promotion-pipeline-auto-merge-grit}
+
+The Git Promotion Validation trigger when configured to a Git Repos and Issue Tracking (GRIT)/GitLab inventory repository needs a special configuration for __trigger on event__. When enabling auto-merge on a given Merge Request, an update event is created that will (re)trigger the promotion validation pipeline. This default needs to be prevented by configuring the trigger using a CEL expression like the one below that is configured to react to events from the `staging` branch:
+
+```
+header['x-gitlab-event'] == 'Merge Request Hook' && body.object_attributes.target_branch.matchesGlob('staging')
+ && (body.object_attributes.action == 'open' || body.object_attributes.action == 'update' || body.object_attributes.action == 'reopen')
+&& (body.object_attributes.source_project_id == body.object_attributes.target_project_id) && !(body.object_attributes.action == 'update' && !body.changes.merge_when_pipeline_succeeds.previous && body.changes.merge_when_pipeline_succeeds.current)
+```
+
+#### Mandatory steps
+{: #devsecops-promotion-pipeline-auto-merge-mandatory}
+
+1. Disable the promotion Git trigger from the previous stage to `prod`.
+2. Create a manual pipeline trigger to promote changes from the previous stage to the `prod` environment with `enable-auto-merge` set to `true`.
+
+#### Optional implementation approaches
+{: #devsecops-promotion-pipeline-auto-merge-options}
+
+Various solutions can be implemented. The following are two recommended approaches:
+
+- **Finish stage validation**: In the previous environment CD pipeline (for example, pre-prod), use the [`prod-finish`](/docs/devsecops?topic=devsecops-cd-devsecops-scripts-stages#cd-devsecops-cd-pipeline-overview-stages) stage to verify that either `prod-change-request` or `prod-acceptance-tests` (or both) completed successfully. Then, trigger the Promotion pipeline to `prod` by using the Pipeline API.
+
+- **Pre-prod evidence collection**: Enforce [pre-prod evidence collection](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-pipeline-collect) to gate the deployment to `prod` if failures are found in pre-prod evidence (for example, acceptance test failures).
 
 ## Next step
  {: #devsecops-promotion-pipeline-next}

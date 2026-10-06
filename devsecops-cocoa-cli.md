@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-07-17"
+lastupdated: "2026-10-06"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -106,7 +106,7 @@ Options:
 ```
 {: screen}
 
-If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
@@ -136,7 +136,7 @@ GHE_REPO=               # The repository name
 ```
 {: screen}
 
-If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using GitHub, you can use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 To specify the output file path for the *Branch Protection settings*, use the `--branch-protection-settings-output-path` option. When the branch is protected, the JSON representation of the repository branch protection settings will be saved in this specified path.
@@ -340,7 +340,7 @@ Example file:
   "outageduration": "0 00:00:00",
   "plannedstart": "2020-10-05 14:48:00",
   "plannedend": "2020-10-05 14:49:00",
-  "deploymentready": "yes",
+  "deploymentready": "yes"
 }
 ```
 {: screen}
@@ -1230,7 +1230,7 @@ COS_ENDPOINT=       # The COS API Endpoint matching the region where the bucket 
 ```
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
@@ -1302,7 +1302,7 @@ BACKUP_COS_ENDPOINT=       # The COS API Endpoint matching the region where the 
 ```
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
@@ -1341,7 +1341,7 @@ GHE_TOKEN=    # Github token (Optional if you are using --git-token-path)
 {: screen}
 
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 Options for Git:
@@ -1492,7 +1492,7 @@ The `--environment`, `--org`, and `--repo` options have to be provided on the co
     "locations": {
       "stage":"stage-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0",
       "prod":"prod-us.icr.io/namespace/hello-compliance-app:20201217081811-master-b85e3d472e9cc35b429c39e8c3f9eb282738c20a@sha256:da36831d5154307ac9ca4b8d900df2da0c6c14754977c32479dc62994b5722d0"
-   },
+   }
   },
   {
     "artifact": "foo-helm-chart/foo/chart.yaml",
@@ -1505,7 +1505,7 @@ The `--environment`, `--org`, and `--repo` options have to be provided on the co
     "name": "foo-app-helm-chart",
     "sha256": "sha256:9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894",
     "signature": "9106cdf8c0f5c110f1cdf65825edd195927cdb439db8767791ac2011c2d41894",
-    "type": "helm-chart",
+    "type": "helm-chart"
   }
 ]
 ```
@@ -1534,7 +1534,7 @@ Options for Git:
 ```
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 
 By default, the CLI on each invocation ensures that you work with an up-to-date version of a Git locker. This behavior can be disabled by setting `COCOA_USE_CACHE` to any value except `0`, `false`, `no`, or `n`. In this case, the CLI uses its internal cache to look up evidence (much faster), but results might be stale.
@@ -1579,7 +1579,7 @@ Options for Git:
 ```
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
@@ -1639,7 +1639,7 @@ Options for Git:
 ```
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both `GHE_TOKEN` `GH_URL` and `--git-token-path` `--git-api-url` pairs are provided, then `--git-token-path` and `--git-api-url` take precedence.
 {: screen}
 
@@ -1710,7 +1710,7 @@ Options for Git:
 --git-api-url           #(Optional) Github API url
 ```
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both of them are provided `--git-token-path` and `--git-api-url` take precedence.
 
 Running the command:
@@ -1983,7 +1983,7 @@ GHE_TOKEN=                # Github Enterprise API Token (Optional if you are usi
 ```
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Return values:
@@ -1994,11 +1994,11 @@ Return values:
 - If format==json - The command prints a JSON containing an array of findings objects(additional issue information) for each of the issues found, created and auto-closed according to the result file and subject.
 - Structure of findings JSON object corresponding to an issue:
 
-```json
+```javascript
 {
  "id": string,
  "due_date": string,
- "severity": ("high", "medium", "low", "critical, "informational"),
+ "severity": ("high", "medium", "low", "critical", "informational"),
  "first_found": "string" (optional),
  "url": string,
  "found_status": ("new", "existing", "autoclosed", "readonly"),
@@ -2090,11 +2090,11 @@ Return values:
 - If format==json - The command prints a JSON containing an array of findings objects(additional issue information) for each of the issues found, created and auto-closed according to the result file and subject.
 - Structure of findings JSON object corresponding to an issue:
 
-```json
+```javascript
 {
  "id": string,
  "due_date": string,
- "severity": ("high", "medium", "low", "critical, "informational"),
+ "severity": ("high", "medium", "low", "critical", "informational"),
  "first_found": "string" (optional),
  "url": string,
  "found_status": ("new", "existing", "autoclosed", "readonly"),
@@ -2164,7 +2164,7 @@ GHE_TOKEN=                # Github Enterprise API Token (Optional if you are usi
 
 {: screen}
 
-If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the # GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
+If you are using `github`, use `--git-token-path` field to set your GitHub Token and `--git-api-url` field to set the GitHub Enterprise API URL instead of `GHE_TOKEN` and `GH_URL` environment variables.
 If both of them are provided, `--git-token-path` and `--git-api-url` take precedence.
 
 Return values:
