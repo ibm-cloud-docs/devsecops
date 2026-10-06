@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2023, 2024
-lastupdated: "2024-10-09"
+  years: 2023, 2026
+lastupdated: "2026-10-06"
 
 keywords: DevSecOps, IBM Cloud, compliance
 
@@ -103,10 +103,16 @@ The `detect-secrets-image` parameter can be used to specify a different detect-s
 
 The `detect-secrets-verbose` parameter, when set to 1, logs the name of the current file that is being scanned.
 
+The `detect-secrets-word-list` parameter specifies a word-list file (of exclusions) that will be used while scanning.
+
+The `detect-secrets-keyword-exclude` parameter specifes a regex to exclude false positives found by KeywordDetector plugin.
+
 |Name | Type |Description |Required or Optional |
 |:----------|:---------|:------------------------------|:------------------|
 | `detect-secrets-baseline-filename` | String |The name of the baseline file in your app repository. Defaults to `.secrets.baseline`. | Required if your baseline file is not the default name `.secrets.baseline`. |
 | `detect-secrets-exclusion-list` | String | A regex list of files to be excluded in the detect-secrets scan. Defaults to `requirements.txt\|go.mod\|go.sum\|pom.xml\|build.gradle\|package-lock.json`. | Optional, This file list overrides the general exclusion list only when there is no `.secrets.baseline` file present. |
 |`detect-secrets-image` | String | Specifies an alternative detect-secrets image, including custom images or specific versions of the official image. | Optional |
 | `detect-secrets-verbose` | String | Outputs the name of the file that is currently that is being scanned. Defaults to `0`.  | Optional, Debug flag 0 - off, 1 - on. | 
+| `detect-secrets-word-list` | String | Specifies a regex to exclude false positives found by KeywordDetector plugin. | Optional |
+| `detect-secrets-keyword-exclude` | String | Specifies a regex to exclude false positives found by KeywordDetector plugin. | Optional |
 {: caption="Secrets-scan parameters" caption-side="top"}
