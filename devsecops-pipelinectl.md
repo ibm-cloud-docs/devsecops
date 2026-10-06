@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-09-16"
+lastupdated: "2026-10-06"
 
 keywords: DevSecOps, pipelinectl
 
@@ -197,10 +197,11 @@ remove_file --storage=cos "temp/build-${PIPELINE_RUN_ID}/cache.tar"
 ```
 {: codeblock}
 
-### Security considerations
-{: #devsecops-pipelinectl-cos-security}
+## Security considerations
+{: #devsecops-pipelinectl-security}
 
-- **API Key Management**: Always store the `data-cos-api-key` as a secure property. Never hardcode API keys in scripts or configuration files.
+- **Secure property retrieval**: Use [`get_secret`](#get_secret) to read any `Secure value` type property, whether it was set in the pipeline UI or stored in Secrets Manager. For `Text value` type properties, use [`get_env`](#get_env) instead.
+- **API Key Management**: Always store `data-cos-api-key` as a secure property when using COS for pipeline data. Never hardcode API keys in scripts or configuration files.
 - **Least Privilege**: Grant only the minimum required IAM permissions listed above.
 - **Bucket Separation**: Use a dedicated bucket for pipeline data, separate from your evidence locker bucket.
 
