@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-09-16"
+lastupdated: "2026-10-07"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -27,6 +27,156 @@ Support for Git Evidence Locker feature has been removed - hence Cloud Object St
 
 Use the release notes to learn about the latest changes to {{site.data.keyword.cloud_notm}} DevSecOps.
 {: #shortdesc}
+
+## 09 October 2026
+{: #devsecops-Oct2026-09}
+{: release-note}
+
+### Updates for DevSecOps version - open-v10.81.1
+{: #devsecops-open-v10.81.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.81.0
+{: #devsecops-open-v10.81.0}
+
+PR Pipeline security vulnerability for public GitHub repositories
+:   Fixed a security vulnerability in the PR pipeline affecting public GitHub repositories.
+
+Implement enable-auto-merge Promotion MergeRequest (GRIT/GitLab)
+:   Implemented `enable-auto-merge` support for Promotion MergeRequests on GRIT/GitLab.
+
+CI-start notice for CRA deprecation should mention checkov opt-ins
+:   Updated the CI-start deprecation notice for CRA to mention the available checkov opt-in options.
+
+Verification of images on CD side changes due to OCI manifest signing
+:   Updated image verification on the CD side to account for changes introduced by OCI manifest signing.
+
+`detect-secrets` does not take into account settings in `.secrets.baseline` (keyword-exclude)
+:   Fixed `detect-secrets` to correctly apply `keyword-exclude` settings from the `.secrets.baseline` file.
+
+tflint installation broken
+:   Fixed a broken tflint installation.
+
+### Updates for DevSecOps version - open-v10.80.0
+{: #devsecops-open-v10.80.0}
+
+checkov `--framework dockerfile` as complementary check on Dockerfile
+:   Added support for using checkov with `--framework dockerfile` as a complementary check on Dockerfiles.
+
+Compliance checks scans for Helm charts
+:   Added compliance check scan support for Helm charts.
+
+checkov cocoa incident parser must accept JSON output when multiple frameworks are used
+:   Updated the checkov cocoa incident parser to accept JSON output when multiple frameworks are used.
+
+Better error messages when missing COS data
+:   Improved error messages when COS data is missing.
+
+Build artifact (non-image) should use `save_file` for proper signature
+:   Updated non-image build artifacts to use `save_file` for proper signature handling.
+
+`load_file --store=cos` should be a fallback when `load_file` does not honor file key
+:   Updated `load_file` so that `--store=cos` is used as a fallback when the file key is not honored.
+
+### Updates for DevSecOps version - open-v10.79.0
+{: #devsecops-open-v10.79.0}
+
+Update gosec to v2.29.0
+:   Updated gosec to version v2.29.0.
+
+cocoa checkov parser - failing on failed check without guideline
+:   Fixed an issue where the cocoa checkov parser failed on a check that had no guideline.
+
+
+fetch-inventory-artifact failure as sourcing git clone helper may raise error
+:   Fixed a failure in `fetch-inventory-artifact` caused by an error raised when sourcing the git clone helper.
+
+Improve error logging in the set commit status command
+:   Improved error logging in the `set commit status` command.
+
+Simple Trigger Webhook Trigger failing the Subpipeline mandating Evidence Locker and Inventory
+:   Fixed an issue where Simple Trigger webhook triggers were failing the subpipeline by incorrectly mandating an Evidence Locker and Inventory.
+
+Rebuild Tooling Images to Ensure ICR Images Are Signed
+:   Rebuilt tooling images to ensure all ICR images are properly signed.
+
+Support image signing where different with retagging across different locations
+:   Added support for image signing in scenarios where retagging occurs across different locations.
+
+checkov `--framework kubernetes` as CRA deploy-analysis replacement
+:   Added support for using checkov with `--framework kubernetes` as a replacement for CRA deploy-analysis.
+
+checkov scanner is not including severity if no `--bc-api-key` is provided
+:   Fixed an issue where the checkov scanner did not include severity information when no `--bc-api-key` was provided.
+
+Fix: grype helper should not allow severity level filter configuration
+:   Fixed the grype helper to prevent severity level filter configuration.
+
+Mend SBOM status check is marked failure on PR if SBOM validation is failing
+:   Fixed an issue where the Mend SBOM status check was incorrectly marked as failed on PR when SBOM validation failed.
+
+For event notification Slack message if link is empty add a proper fallback
+:   Added a proper fallback in Slack event notification messages when the link is empty.
+
+### Updates for DevSecOps version - open-v10.78.0
+{: #devsecops-open-v10.78.0}
+
+Fix: ZAP logging should stop when the scan stops
+:   Fixed an issue where ZAP logging continued after the scan had stopped.
+
+### Updates for DevSecOps version - open-v10.77.0
+{: #devsecops-open-v10.77.0}
+
+"Only an image manifest can be inspected. Get the manifest instead." seen during scan-artifact
+:   Fixed an error seen during scan-artifact when inspecting non-image manifests.
+
+
+Pipeline incorrectly succeeds (Exit Code 0) when image signing fails
+:   Fixed an issue where the pipeline returned exit code 0 even when image signing failed.
+
+Occasional failures during fetch git token, jq parse error
+:   Fixed intermittent failures caused by jq parse errors during git token fetch.
+
+cocoa CLI does not implement native support for GitHub/GRIT API pagination
+:   Added native support for GitHub/GRIT API pagination in the cocoa CLI.
+
+### Updates for DevSecOps version - open-v10.76.2
+{: #devsecops-open-v10.76.2}
+
+Fix: use `get_secret` in custom SonarQube scan
+:   Updated the custom SonarQube scan to use `get_secret` instead of `get_env` for retrieving sensitive credentials.
+
+### Updates for DevSecOps version - open-v10.76.1
+{: #devsecops-open-v10.76.1}
+
+Bug fix release
+:   This release includes only bug fixes.
+
+### Updates for DevSecOps version - open-v10.76.0
+{: #devsecops-open-v10.76.0}
+
+Slack message shows task failure in dev mode though the result was a success
+:   Fixed an issue where Slack notifications incorrectly reported task failures in dev mode even when the pipeline run was successful.
+
+Migrate `get_env` to retrieve env properties only
+:   `get_env` has been updated to retrieve only non-sensitive environment properties. Any attempt to use `get_env` to retrieve a Secure Property defined from the pipeline or trigger properties will fail. All secure values must go through `get_secret`.
+
+Update pip, npm and go to latest
+:   Updated pip, npm, and Go to their latest versions.
+
+VA Scan failing intermittently
+:   Fixed an intermittent failure in VA scan.
+
+syft & grype scan failing PR even if CVE was already identified by CC pipeline
+:   Fixed an issue where syft and grype scans were failing PR pipelines even when the CVE had already been identified by the CC pipeline.
+
+Bug in `start_xray_scan` function at xray_scan caller level
+:   Fixed a bug in the `start_xray_scan` function at the xray_scan caller level.
+
+`translate-pipeline-config` helper should use new async stage support and app-preview sign artifact
+:   Updated `translate-pipeline-config` helper to use the new async stage support and app-preview sign artifact.
 
 ## 31 July 2026
 {: #devsecops-Jul2026-31}
