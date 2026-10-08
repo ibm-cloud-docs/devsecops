@@ -123,9 +123,22 @@ These checks are the default expected pull request status checks in pipeline.
 
 This CURL command sets up both the default required status checks and pull request review settings.
 
+
+
 ``` bash
-curl -H "Authorization: Bearer $(cat ${APP_TOKEN_PATH})" "${APP_API_URL}/repos/${APP_REPO_OWNER}/${APP_REPO_NAME}/rulesets" \
-    -XPUT -d '{
+GITHUB_TOKEN=$(cat /mnt/src/github_ibm_token.txt)
+
+REPO_OWNER="cd-jumpstart"
+
+REPO_NAME="hello-compliance-app"
+
+GITHUB_REST_API=...
+
+# HTTP POST will create ruleset
+# HTTP PUT will update existing ruleset
+
+curl -H "Authorization: Bearer ${GITHUB_TOKEN}" "${GITHUB_REST_API}/repos/${REPO_OWNER}/${REPO_NAME}/rulesets" \
+  -X POST -d '{
   "name": "Branch Protection Equivalent Ruleset",
   "target": "branch",
   "enforcement": "active",
@@ -301,10 +314,39 @@ These additional settings are optional and can be customized based on your speci
 ### Adding All Branch Protection Rules (Complete Configuration)
 {: #devsecops-config-github-add-all-rules}
 
-Branch protection rules could also be set by the following curl command, after replacing the `$GH_TOKEN`, `$OWNER`, `$APP_API_URL` `$REPO`, `$BRANCH` variables.
+Branch protection rules could also be set by the following curl command, after replacing the `$GITHUB_TOKEN`, `$REPO_OWNER`, `$REPO_NAME` and `$BRANCH` variables.
+
+
 
 ``` bash
-curl -u ":$GH_TOKEN" $APP_API_URL/repos/$OWNER/$REPO/branches/$BRANCH/protection -XPUT -d '{"required_pull_request_reviews":{"dismiss_stale_reviews":true},"required_status_checks":{"strict":true,"contexts":["tekton/code-branch-protection","tekton/code-unit-tests","tekton/code-cis-check","tekton/code-vulnerability-scan","tekton/code-detect-secrets"]},"enforce_admins":null,"restrictions":null}'
+GITHUB_TOKEN=$(cat /mnt/src/github_ibm_token.txt)
+
+REPO_OWNER="cd-jumpstart"
+
+REPO_NAME="hello-compliance-app"
+
+BRANCH="master"
+
+GITHUB_REST_API=...
+
+curl -H "Authorization: Bearer ${GITHUB_PAT}" "${GITHUB_REST_API}/repos/${REPO_OWNER}/${REPO_NAME}/branches/$BRANCH/protection" \
+ -X PUT -d '{
+    "required_pull_request_reviews": {
+        "dismiss_stale_reviews": true
+    },
+    "required_status_checks": {
+        "strict": true,
+        "contexts": [
+            "tekton/code-branch-protection",
+            "tekton/code-unit-tests",
+            "tekton/code-cis-check",
+            "tekton/code-vulnerability-scan",
+            "tekton/code-detect-secrets"
+        ]
+    },
+    "enforce_admins": null,
+    "restrictions": null
+}'
 ```
 
 This CURL command sets up both the required status checks and pull request review settings.
@@ -317,8 +359,34 @@ Once these settings have been configured, any attempt to merge a pull request to
 If you only want to configure the required status checks, you can use the following CURL command as a reference:
 
 ``` bash
-curl -H "Authorization: Bearer $(cat ${APP_TOKEN_PATH})" "${APP_API_URL}/repos/${APP_REPO_OWNER}/${APP_REPO_NAME}/branches/master/protection" \
-    -XPUT -d '{"required_pull_request_reviews":{"dismiss_stale_reviews":true},"required_status_checks":{"strict":true,"contexts":["tekton/code-branch-protection","tekton/code-unit-tests","tekton/code-cis-check","tekton/code-vulnerability-scan","tekton/code-detect-secrets"]},"enforce_admins":null,"restrictions":null}'
+GITHUB_TOKEN=$(cat /mnt/src/github_ibm_token.txt)
+
+REPO_OWNER="cd-jumpstart"
+
+REPO_NAME="hello-compliance-app"
+
+BRANCH="master"
+
+GITHUB_REST_API=...
+
+curl -H "Authorization: Bearer ${GITHUB_PAT}" "${GITHUB_REST_API}/repos/${REPO_OWNER}/${REPO_NAME}/branches/$BRANCH/protection" \
+ -X PUT -d '{
+    "required_pull_request_reviews": {
+        "dismiss_stale_reviews": true
+    },
+    "required_status_checks": {
+        "strict": true,
+        "contexts": [
+            "tekton/code-branch-protection",
+            "tekton/code-unit-tests",
+            "tekton/code-cis-check",
+            "tekton/code-vulnerability-scan",
+            "tekton/code-detect-secrets"
+        ]
+    },
+    "enforce_admins": null,
+    "restrictions": null
+}'
 ```
 
 In our reference implementation, we have already provided a sample configuration for the [hello-compliance-app](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/tree/master#L23) repository, so you can use it as a starting point and customize it according to your needs.
