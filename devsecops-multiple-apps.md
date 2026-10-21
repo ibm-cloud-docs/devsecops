@@ -62,14 +62,14 @@ Customize your CI and PR pipeline by configuring them using the following steps:
    * Copy the  existing triggers to save some tedium when you create triggers.
    * Make sure each of the triggers is pointing to the required GitHub repository and branch.
    * Make sure that the following trigger properties are set:
-      * `app-name` (text): App names must be unique across the different applications. This is because the app name is used in the inventory, DevOps insights, and others as a unique identifier when placed and recorded with artifacts.
+      * `app-name` (text): App names must be unique across the different applications. This is because the app name is used in the inventory, and others as a unique identifier when placed and recorded with artifacts.
       * `cos-bucket-name` (text): The name of the {{site.data.keyword.cos_short}} bucket the applications evidence is placed in.
    {: note}
 
 1. Environment property changes for each application.
 
    * This is a list of the possible environment properties that need to be changed to a different value for each of the applications. This can be accomplished by using the trigger properties on the pipeline triggers; which overrides the environmental properties with your own chosen values.
-      * `app-name` (text): App names always need to be unique across the different applications because the app name is used in the inventory, DevOps insights, and so on, as a unique identifier when placing and recording artifacts.
+      * `app-name` (text): App names always need to be unique across the different applications because the app name is used in the inventory, and so on, as a unique identifier when placing and recording artifacts.
       * `cos-bucket-name` (text): The name of the {{site.data.keyword.cos_short}} bucket the applications evidence is placed in.
       * `repository` (text): This parameter controls what application repo gets cloned to the pipeline and serves as the target for the CI and PR pipelines for the various compliance and security tasks.
       * Optional: `evidence-repo` (text): URL of the repo that serves as an evidence locker for the application.

@@ -3,7 +3,7 @@
 copyright:
 
   years: 2022, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-10-21"
 
 keywords: tekton, pipeline, toolchain, cd, cd, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -159,13 +159,6 @@ The artifacts are built by the toolchain and recorded in the inventory must be s
 1. Enter the **GnuPG Private Key**. Alternatively you can create a new GPG key by clicking **NEW**. For more information, see [Generating a GPG key](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 2. Click **Continue**.
 
-### {{site.data.keyword.DRA_short}}
-{: #tutorial-ci-toolchain-insights}
-
-The [{{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the toolchain. View your pipeline test results for every build, from every deployment and environment.
-
-1. Accept the default configuration.
-2. Click **Continue**.
 
 ### SonarQube
 {: #tutorial-ci-toolchain-sonarqube}
@@ -243,12 +236,6 @@ In this tutorial, the CI pipeline was triggered after you merged your code chang
 
    ![DevSecOps CI Pipeline Successful](images/devsecops-ci-explore-pipeline-success.png){: caption="DevSecOps CI pipeline" caption-side="bottom"}
 
-4. Click the **{{site.data.keyword.DRA_short}}** tile to review the collected evidence on the **Quality Dashboard** page, as shown in the screen capture.
-
-   ![DevSecOps CI Evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI evidence" caption-side="bottom"}
-
-   You can also review the evidence if {{site.data.keyword.cos_full_notm}} bucket is enabled during setup. To evaluate if you have any failures in your pipeline run, you need to check the final step of your pipeline, which has a pipeline evaluator.
-   {: note}
 
 ### Viewing the running application
 {: #tutorial-ci-toolchain-view-app}

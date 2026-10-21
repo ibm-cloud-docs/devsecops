@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-10-21"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure toolchain, infrastructure-as-code, terraform, schematics, compliance
 
@@ -200,32 +200,6 @@ When the API Key field is filled, the registry and cluster related fields are fi
 
 1. Select {{site.data.keyword.cloud_notm}} hosted **{{site.data.keyword.gitrepos}}** repository to manage the change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-management).
 2. Click **Continue**.
-
-### {{site.data.keyword.DRA_short}} toolchain
-{: #tutorial-tekton-cd-insights}
-
-Link an existing {{site.data.keyword.DRA_short}} instance from another toolchain to this pipeline, so that all the build, deploy, and test records from the CI and CD toolchain pipelines can be collected in the same place.
-
-The CD toolchain can publish the deployment records to an existing {{site.data.keyword.DRA_short}} instance. To enable this feature, provide the ID of the toolchain that contains the existing {{site.data.keyword.DRA_short}} instance by selecting in the {{site.data.keyword.DRA_short}} toolchain ID list.
-
-1. Provide your **{{site.data.keyword.DRA_short}} {{site.data.keyword.cloud_notm}} API Key**.
-2. Accept the default configuration. 
-3. Verify your **Region**, **Resource group**, **{{site.data.keyword.DRA_short}} toolchain ID**, and **{{site.data.keyword.DRA_short}} target environment** fields where your target environment is created.
-4. Click **Continue**.
-
-### Link to existing {{site.data.keyword.DRA_short}} toolchain
-{: #tutorial-tekton-cd-link-toolchain}
-
-{{site.data.keyword.DRA_short}} can optionally be included in the created toolchain and after each compliance check evidence is published. The toolchain can use an existing {{site.data.keyword.DRA_short}} instance to publish the deployment records to insights. You can link {{site.data.keyword.DRA_short}} integration from another toolchain by providing the integration ID.
-
-1. Accept the **Current Toolchain**.
-2. Click **Continue**.
-
-You can copy the toolchain ID from the URL of your toolchain.
-A toolchain's URL follows this pattern: `https://cloud.ibm.com/devops/toolchains/<toolchain-ID-comes-here>?env_id=ibm:yp:us-south`. If the URL is: `https://cloud.ibm.com/devops/toolchains/aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?env_id=ibm:yp:us-south` then the toolchain's ID is: `aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`. _Include the ID only, not the full URL._
-{: note}
-
-You can also set a target environment for the {{site.data.keyword.DRA_short}} interactions. This parameter is optional, which is used instead of the target environment from the inventory.
 
 ### Optional tools
 {: #cd-devsecops-optional-tools}

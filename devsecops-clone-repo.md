@@ -64,7 +64,7 @@ The `clone_repo` function sets several environment variables/properties upon com
 {: #clone_repo-function-call}
 
 ```bash
-clone_repo <repo url t> <branch e.g. master> <repo directory e.g. repo_directory> <token path e.g. /path/to/token> <if submodules to be used e.g. 1> <commit id e.g. abcd1234>
+clone_repo <repo url> <branch e.g. master> <repo directory e.g. repo_directory> <token path e.g. /path/to/token> <if submodules to be used e.g. 1> <commit id e.g. abcd1234>
 ```
 {: codeblock}
 
@@ -85,6 +85,13 @@ clone_repo <repo url t> <branch e.g. master> <repo directory e.g. repo_directory
 - `Retry Mechanism` : The script retries the clone command up to 5 times with a 2-second delay between attempts if a **Connection timed out** error occurs.
 - `Error Handling` : If authentication or other critical errors occur, the script exits with a non-zero status and provides guidance on resolving common issues.
 - `Error Message Sanitisation`: The script sanitizes error messages to ensure sensitive information, such as authentication tokens, are not exposed in the output. This is done using sed to replace the sensitive parts of URLs with placeholders.
+
+### Example
+
+```bash
+source "${ONE_PIPELINE_PATH}/git/clone_repo" <your repository url> <your branch>
+```
+{: codeblock}
 
 
 ## clone_repo v2() function
@@ -135,3 +142,10 @@ The following environment properties allow customization of the Git cloning proc
 
 
 The clone_repo v2 function introduces a more efficient and flexible approach to repository cloning, optimizing performance with features like shallow cloning, Git LFS support, and customizable Git options.
+
+### Example
+
+```bash
+source "${ONE_PIPELINE_PATH}/git/clone_repo_v2" --repository <your repository url> --branch <your branch>
+```
+{: codeblock}

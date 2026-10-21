@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-10-06"
+lastupdated: "2026-10-21"
 
 keywords: DevSecOps, cli, IBM Cloud
 
@@ -1177,7 +1177,7 @@ $ cocoa evidence markdown-summary --input=raw-summary.json --output=markdown-sum
 ### cocoa artifact upload
 {: #artifact-upload}
 
-Uploads an artifact to the specified backends. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}}, GitHub or {{site.data.keyword.DRA_short}}. Different lockers require different parameters to be provided.
+Uploads an artifact to the specified backends. Backends can be different evidence locker types, for example {{site.data.keyword.cos_short}} or GitHub. Different lockers require different parameters to be provided.
 
 Options:
 
@@ -1252,7 +1252,7 @@ CLI options can be also set from environment variables except for `backend` and 
 ### Retrieving an Artifact
 {: #artifact-get}
 
-You can retrieve artifacts from various evidence lockers, such as {{site.data.keyword.cos_short}}, GitHub, or {{site.data.keyword.DRA_short}}, using the cocoa artifact get command. This command allows you to fetch artifacts from different locker types, each requiring specific parameters.
+You can retrieve artifacts from various evidence lockers, such as {{site.data.keyword.cos_short}}, GitHub, using the cocoa artifact get command. This command allows you to fetch artifacts from different locker types, each requiring specific parameters.
 
 The `cocoa artifact get` command retrieves an artifact from the specified backends. Different lockers require different parameters to be provided.
 Options:
