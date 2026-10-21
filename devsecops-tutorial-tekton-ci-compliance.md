@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-10-21"
 
 keywords: tekton, pipeline, toolchain, cd, ci, cc, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, devops, shift-left, shift left, secure devops, infrastructure-as-code, terraform, schematics
 
@@ -167,13 +167,6 @@ The artifacts are built by the toolchain and recorded in the inventory and must 
 1. Enter the **GnuPG Private Key**. Alternatively you can create a new GPG key by clicking **NEW**. For more information, see [Generating a GPG key](/docs/devsecops?topic=devsecops-devsecops-image-signing).
 2. Click **Continue**.
 
-### {{site.data.keyword.DRA_short}}
-{: #tutorial-tekton-tool-integration-insights}
-
-The [{{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the toolchain. View your pipeline test results for every build, from every deployment and environment.
-
-1. Accept the default configuration.
-2. Click **Continue**.
 
 ### Optional tools
 {: #tutorial-tekton-ci-option-tools}
@@ -188,25 +181,6 @@ Configure the [Slack](/docs/ContinuousDelivery?topic=ContinuousDelivery-slack) t
 3. Enter the **Slack team name**. For example, if your team URL `https://team.slack.com`, the team name is `team`.
 4. Choosing the events for which you want to receive notifications for **Automated Slack Notifications**.
 5. Click **Continue**.
-
-#### Common {{site.data.keyword.DRA_short}} toolchain
-{: #cd-devsecops-insights-toolchain-ci}
-
-{{site.data.keyword.DRA_short}} can optionally be included in the created toolchain and after each compliance check evidence is published. The toolchain can use an existing {{site.data.keyword.DRA_short}} instance to publish the deployment records to insights. You can link {{site.data.keyword.DRA_short}} integration from another toolchain by providing the integration ID.
-
-1. Accept the **Current Toolchain**.
-2. Click **Continue**.
-
-You can copy the toolchain ID from the URL of your toolchain.
-A toolchain's URL follows this pattern: `https://cloud.ibm.com/devops/toolchains/<toolchain-ID-comes-here>?env_id=ibm:yp:us-south`. If the URL is: `https://cloud.ibm.com/devops/toolchains/aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?env_id=ibm:yp:us-south` then the toolchain's ID is: `aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`. _Include the ID only, not the full URL._
-{: note}
-
-You can also set a target environment for the {{site.data.keyword.DRA_short}} interactions. This parameter is optional, which is used instead of the target environment from the inventory.
-
-#### {{site.data.keyword.DRA_short}}
-{: #cd-devsecops-devops-insights-ci}
-
-You can create an instance of {{site.data.keyword.DRA_short}} to be used for the toolchain. If No configuration is required, the CI pipeline automatically uses the insights instance that is included in the toolchain.
 
 #### Delivery pipeline private worker
 {: #ci-tool-integration-private-worker}
@@ -298,8 +272,6 @@ In the DevSecOps CI pipeline flow of tasks, the utility tasks are omitted. For e
 ![DevSecOps CI Tasks](images/devsecops-ci-tasks-flow.png){: caption="5. Figure DevSecOps CI Tasks" caption-side="bottom"}
 
 Evidence is collected from all compliance checks in the CI pipeline, to the evidence-locker repository that was provided during toolchain setup. Evidence from CI is stored under `raw/ci/<pipeline-run-id>/*.json`.
-
-Evidence is published to the {{site.data.keyword.DRA_short}} instance inside the toolchain. You can navigate by clicking the {{site.data.keyword.DRA_short}} tool card in the toolchain. You can review the collected evidence on the Quality Dashboard page.
 
 ![DevSecOps CI evidence](images/devsecops-ci-explore-evidence.png){: caption="DevSecOps CI evidence" caption-side="bottom"}
 

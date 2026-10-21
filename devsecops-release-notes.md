@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-10-07"
+lastupdated: "2026-10-21"
 
 keywords: IBM Cloud DevSecOps release notes, Cloud DevSecOps changes, Cloud DevSecOps updates
 
@@ -1194,8 +1194,8 @@ DevSecOps Continuous Integration for Infrastructure as Code is available as a To
 If you have an existing CC toolchain, you can set the [`doi-toolchain-id`](/docs/devsecops?topic=devsecops-tutorial-cc-toolchain#tutorial-cc-toolchain-insights) and `doi-environment` properties by linking an existing Insights tool integration from your DevSecOps continuous integration (CI) toolchain.
 {: note}
 
-- Added [tags](/docs/ContinuousDelivery?topic=ContinuousDelivery-CLI_devops-insights) to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
-- Surfaced dynamic scan results in the [Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-aggregating-multiple-sources#devops-data-aggregation).
+- Added tags to DevSecOps pipeline scripts to visualize Continuous Compliance scan results in the Insights user interface.
+- Surfaced dynamic scan results in the Insights quality dashboard.
 - Improved message logging for the pipeline evaluator task so that users can better understand what failed or succeeded for a pipeline run.
 
 ## 17 June 2022

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-10-21"
 
 keywords: tekton, pipeline, toolchain, CD, CI, CC, automate, automation, continuous delivery, continuous integration, continuous compliance, devsecops tutorial, devsecops, DevOps, shift-left, shift left, secure DevOps, IBM Cloud, infrastructure-as-code, terraform, schematics
 
@@ -195,12 +195,6 @@ Save the newly generated API key to a secrets vault.
 
 Use an {{site.data.keyword.cloud_notm}}-hosted {{site.data.keyword.gitrepos}} repository to manage change requests. For more information, see [Automating change management](/docs/devsecops?topic=devsecops-cd-devsecops-change-management).
 
-### DevOps insights toolchain
-{: #devsecops-tutorial-iac-cd-insights}
-
-Link an existing DevOps insights instance from another toolchain to this pipeline so that all the build, deploy, and test records from the CI and CD toolchain pipelines are collected in the same place.
-
-The CD toolchain can publish the deployment records to an existing DevOps insights instance. To enable this feature, provide the ID of the toolchain that contains the existing DevOps Insights instance by selecting it in the DevOps insights toolchain ID drop-down.
 
 ### Optional tools
 {: #devsecops-tutorial-iac-cd-optional-tools}

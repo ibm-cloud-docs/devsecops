@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-10-21"
 
 keywords: tekton, pipeline, toolchain, cc, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, continuous compliance, compliance, devops, secure DevOps, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -127,17 +127,6 @@ The pipeline configuration repository contains YAML files and scripts for deploy
 2. Provide your Service API key to write to a Cloud Object Storage instance.
 3. Click **Continue**.
 
-### {{site.data.keyword.DRA_short}} toolchain
-{: #tutorial-cc-toolchain-insights}
-
-1. Enter your {{site.data.keyword.DRA_short}} {{site.data.keyword.cloud_notm}} API Key.
-2. Accept the default configuration.
-
-    You can link to an existing {{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}} toolchain instance from the CI toolchain for **{{site.data.keyword.DRA_short}} toolchain ID**. For example, if the URL is `https://cloud.ibm.com/devops/toolchains/aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee?env_id=ibm:yp:us-south` then the toolchain's ID is `aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`.
-    {: note}
-
-3. Click **Continue**.
-
 ### SonarQube
 {: #tutorial-cc-toolchain-sonarqube}
 
@@ -208,15 +197,13 @@ During CC pipeline execution, incident issues such as vulnerability, CVE are cre
 
 ![DevSecOps sample incident issue](images/devsecops-cc-toolcain-explore-sample-issue.png){: caption="DevSecOps sample incident issue created with CC pipeline" caption-side="bottom"}
 
-### Explore DevOps Insights
-{: #tutorial-cc-toolchain-insights-explore}
+### Explore evidence
+{: #tutorial-cc-toolchain-evidence-explore}
 
 In the following places, the evidence from the compliance checks are uploaded.
 
 - Evidence locker repository.
 - {{site.data.keyword.cos_short}} bucket.
-- DevOps Insights - From the toolchain click **{{site.data.keyword.DRA_short}}**.
-- [DevOps Insights quality dashboard](/docs/ContinuousDelivery?topic=ContinuousDelivery-aggregating-multiple-sources#devops-data-aggregation) as displayed in the screen capture.
 
 ![DevSecOps CC evidence](images/devsecops-cc-explore-evidence.png){: caption="DevSecOps CC evidence" caption-side="bottom"}
 

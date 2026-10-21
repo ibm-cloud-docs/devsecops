@@ -4,7 +4,7 @@ copyright:
   years: 2024
 lastupdated: "2024-08-09"
 
-keywords: DevSecOps, doi publish
+keywords: DevSecOps
 
 subcollection: devsecops
 

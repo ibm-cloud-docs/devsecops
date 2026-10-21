@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-06-30"
+lastupdated: "2026-10-21"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -147,13 +147,7 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`detect-secrets-verbose`](#detect-secrets-verbose) | text | Outputs the name of the file that is currently being scanned. | Optional | Unlocked | 
 |`dev-cluster-namespace`		|text		|The Kubernetes cluster namespace where the Docker engine is hosted and deployed.	|Required			|  Locked | 
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster.	|Required			| Locked | 
-|`dev-resource-group`		|text		|The cluster resource group.	|Required			| Locked | 
-|`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			| Unlocked | 
-|`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			| Locked | 
-|`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional | Locked | 
-|`doi-logicalappname`		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			| Unlocked | 
-|`doi-tags`		|text		|Comma-separated custom tags.	|Optional			| Unlocked | 
-|`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			| Locked | 
+|`dev-resource-group`		|text		|The cluster resource group.	|Required			| Locked |  
 |`evidence-reuse`		|text		|Set this flag to `1` to enable reuse of evidences. |Optional | Unlocked | 
 |`evidence-reuse-for-failure`		|text		|Set this flag to `1` to enable reuse of failed evidences. |Optional | Unlocked | 
 |`evidence-validity-period`		|text		|The validity period(in hours) within which evidences can be reused. Default value: 24 hours. Maximum value: 720 hours (30 days) |Optional | Unlocked | 
@@ -275,12 +269,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |[`deployment-traceability`]    |text    |Set the value to 1 to enable deployment traceability    |Optional    |Unlocked   |
 |[`description`](#pipeline-parm-description)		|text		|The description of the change that gets appended to the Change Request Description.	|Optional			|Unlocked |
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|Unlocked |
-|`doi-buildnumber`		|text		|The build number value to use as the `--buildnumber` flag in `ibmcloud doi` commands.	|Optional			|Unlocked |
-|`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			| Locked |
-|`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional | Locked |
-|`doi-logicalappname`		|text		|The app name to use as the `--logicalappname` flag in `ibmcloud doi` commands	|Optional			|Unlocked |
-|`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|Unlocked |
-|`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			| Locked |
 |`emergency-label`		|text		|Identifies the pull request as an emergency.	|Optional			| Locked |
 |`force-redeploy`    |text   |Forces the deployment or redeployment of the app even if the last deployment does not contain a delta in the inventory. Set this parameter to `true` to force a deployment of the app as if it is the first deployment on the specified target environment. By default, this parameter is set to `false`. |Optional |Unlocked |
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			| Locked |
@@ -370,10 +358,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`dev-region`		|text		|The {{site.data.keyword.cloud_notm}} region that hosts the cluster. Required for default static and dynamic scans. |Required			|
 |`dev-resource-group`		|text		|The cluster resource group.	|Required			|
 |[`dind-image`](#dind-image)		|text		|Base image to run sidecars.	|Optional			|
-|`doi-environment`		|text		|The {{site.data.keyword.DRA_short}} target environment.	|Optional			|
-|`doi-ibmcloud-api-key`  |SECRET  | The {{site.data.keyword.cloud_notm}} API key that interacts with the DevOps Insights instance where DOI records are uploaded. |Optional  |
-|`doi-tags`		|text		|Comma-separated custom tags.	|Optional			|
-|`doi-toolchain-id`		|text		|The {{site.data.keyword.DRA_short}} instance toolchain ID.	|Optional			|
 |`environment-tag`     |text   |Tag name that represents the target environment in the inventory. Example: `prod_latest`    |Required           |
 |`git-token`		|SECRET		|The Git repo access token.	|Optional			|
 |`github-token`		|SECRET		|The GitHub repo access token.	|Optional			|

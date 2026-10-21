@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-10-21"
 
 keywords: tekton, pipeline, toolchain, cd, ci, automate, automation, continuous delivery, continuous integration, devsecops tutorial, devsecops, devops, secure devops, satellite, custom target, multiple clusters, shift-left, shift left
 
@@ -144,19 +144,6 @@ The pipeline configuration repository contains YAML files and scripts that are n
 3. Set the **Target Environment purpose** as `Production`.
 4. Set the **Target Environment detail**.
 5. Click **Continue**.
-
-### {{site.data.keyword.DRA_short}} toolchain
-{: #tutorial-cd-toolchain-insights}
-
-Link an existing {{site.data.keyword.DRA_short}} instance from another toolchain to this pipeline, so that all the build, deploy, and test records from the CI and CD toolchain pipelines can be collected in the same place.
-
-The CD toolchain can publish the deployment records to an existing {{site.data.keyword.DRA_short}} instance. To enable this feature, provide the ID of the toolchain that contains the existing {{site.data.keyword.DRA_short}} instance by selecting in the {{site.data.keyword.DRA_short}} toolchain ID list.
-
-The [{{site.data.keyword.cloud_notm}} {{site.data.keyword.DRA_short}}](/docs/ContinuousDelivery?topic=ContinuousDelivery-di_working) is included in the toolchain. View your pipeline test results for every build, from every deployment and environment.
-
-1. Provide your **{{site.data.keyword.DRA_short}} {{site.data.keyword.cloud_notm}} API Key**.
-2. Accept the default configuration.
-3. Click **Continue**.
 
 ### Optional tools
 {: #tutorial-cd-toolchain-optional-tools}
