@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024
-lastupdated: "2024-05-24"
+  years: 2024, 2026
+lastupdated: "2026-10-22"
 
 keywords: DevSecOps, inventory model, inventory, IBM Cloud
 
@@ -22,12 +22,12 @@ Custom scripts control the pipeline stages. You can use a configuration file (`.
 
 When any of the custom scripts are started, the complete URL of the custom script file, including the file name and the commit hash, is printed at the beginning of the pipeline logs as follows: `The custom script can be viewed using the following link: 'https://<source repo url>/<organization name>/<repository name>/blob/<commit hash>/.pipeline-config.yaml'`. This positioning improves traceability.
 
-For more information, refer [Customizing DevSecOps pipelines for beginners](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization).
+For more information, refer to [Customizing DevSecOps pipelines for beginners](/docs/devsecops?topic=devsecops-cd-devsecops-basics-pipelines-customization).
 
 ## Configuration in `.pipeline-config.yaml`
 {: #cd-devsecops-scripts-config}
 
- Use a `.pipeline-config.yaml` configuration file to extend pipeline behavior.
+Use a `.pipeline-config.yaml` configuration file to extend pipeline behavior.
 
 ## File location
 {: #cd-devsecops-scripts-location}
@@ -72,7 +72,7 @@ test:
     * `config-name`: The direct configmap name syntax. The stage runner tries to access and mount the configmap named `config-name`.
     * `$prop-name`: The indirect configmap name syntax. The configmap name is looked up from the environment-properties configmap, which contains every environment value that is set on the pipeline UI. For example, if there is a prop `my-config` entry in the environment properties, then `my-config` is used for `$prop`.
 
-* `secret`: Pull key-value pairs from a provided configmap that is accessible by `PipelineRun`. The following values are supported:
+* `secret`: Pull key-value pairs from a provided secret that is accessible by `PipelineRun`. The following values are supported:
 
     * `secret-name`: The direct Secret name syntax. The stage runner tries to access and mount the Secret named `secret-name`.
 
@@ -80,18 +80,7 @@ test:
 
 * `runAfter`: Run the current stage after the stage that specified in this property completes. Set the value with the stage name that you used in `.pipeline-config.yaml`. Use this property sparingly and confirm that the stage that is specified by this property exists in the pipeline. If the stage does not exist, the pipeline can go into a deadlock.
 
-* `skip`: If set to `true`, bypass the current stage, if possible, in v10 pipelines. Not all stages can be bypassed. The following table lists the stages that can be skipped during the pipeline run.
-
-| Pipeline                | Stages |
-|-------------------------|--------|
-| PR pipeline             |`code-unit-tests`, `code-compliance-tests`, and `code-pr-finish`|
-| CI pipeline             |`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `code-dynamic-scan`, `deploy-acceptance-tests`, `deploy-release`, and `code-ci-finish`|
-| CD pipeline             |`prod-verify-artifact`, `prod-acceptance-tests`, and `prod-finish`|
-| CC pipeline             |`cc-static-scan`, `cc-dynamic-scan`, `cc-compliance-checks`, `cc-scan-artifact`, and `cc-finish`|
-| App-preview PR pipeline |`code-unit-tests`, `code-static-scan`, `code-compliance-checks`, `build-scan-artifact`, `deploy-acceptance-tests`, and `app-preview-pr-finish` |
-| Dev-mode CI pipeline    |`code-unit-tests`, `code-static-scan`, `deploy-release`, and `code-ci-finish`|
-| Dev-mode CD pipeline    |`prod-acceptance-tests` and `prod-finish`|
-{: caption="Stages that can be skipped in pipeline runs" caption-side="top"}
+* `skip`: If set to `true`, bypass the current stage, if possible, in v10 pipelines. Not all stages can be bypassed. See [Pipelines stages & tasks references for customisation](/docs/devsecops?topic=devsecops-cd-devsecops-pipelines-custom-customize#cd-devsecops-scripts-pipeline-references) for sections in the documentation listing the stages that can be skipped during the pipeline run.
 
 ### Example configuration
 {: #cd-devsecops-scripts-sample-config}
@@ -166,3 +155,20 @@ acceptance-test:
     ...
 ```
 To view the `.pipeline-config.yaml` configuration file that is used by default for the example app in the reference pipeline template, see [configuration for pull requests and continuous integration](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-app/-/blob/master/.pipeline-config.yaml){: external} and [configuration for continuous deployment](https://us-south.git.cloud.ibm.com/open-toolchain/hello-compliance-deployment/-/blob/master/.pipeline-config.yaml){: external}.
+
+
+
+
+### Pipelines stages & tasks references for customisation
+{: #cd-devsecops-scripts-pipeline-references}
+The following list provides links to each pipeline documentation section describing the stages & tasks and if customisation is permissible for a given stage/task.
+
+- [Pull Request Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-pr-pipeline#cd-devsecops-pipeline-order)
+- [App-preview Pull Request (PR) pipeline](/docs/devsecops?topic=devsecops-app-preview-pull-request-pr-pipeline#devsecops-app-preview-pr-pipeline-stages-tasks)
+- [Continuous integration pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-ci-pipeline#devsecops-ci-pipeline-stages)
+- [Continuous integration pipeline for Infrastructure as Code](/docs/devsecops?topic=devsecops-cd-devsecops-iac-ci-pipeline#devsecops-iac-ci-pipeline-stages)
+- [Promotion pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-pipeline-stages)
+- [Promotion validation Pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-promotion-pipeline#cd-devsecops-promotion-validation-pipeline-stages)
+- [Continuous deployment pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#cd-devsecops-pipeline-stages)
+- [Rollback pipeline](/docs/devsecops?topic=devsecops-cd-devsecops-cd-pipeline-overview#full-rollback)
+- [Continuous compliance pipeline](/docs/devsecops?topic=devsecops-devsecops-cc-pipeline#devsecops-cc-pipeline-stages)
