@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2026
-lastupdated: "2026-10-21"
+lastupdated: "2026-10-22"
 
 keywords: DevSecOps, IBM Cloud, maximum retry time, scans
 
@@ -105,7 +105,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan. |Optional			| Unlocked |
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan.	|Optional			| Unlocked |
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required for the Code Risk Analyzer scan.			|Optional			| Unlocked |
-|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional| Unlocked |
 |[`branch`](#pipeline-parm-branch)		|text		|The Git repo branch of the repository that contains the source code of your application. Default value:	`master` |Optional			|  Unlocked |
 |`repository` |text |The Git repository URL where your source code is stored. This must be a cloneable Git URL, typically ending in .git. |Required |Unlocked | 
 |`branch-protection-rules-path`		|text		|Set the path to a JSON file containing the customized list of the required compliance checks, relative to the integrated app repository.			|Optional			|  Unlocked |
@@ -238,7 +237,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`artifactory-dockerconfigjson`		|SECRET		|The base64-encoded Docker `config.json` file that stores credential information for artifactory.			|Optional			|Unlocked |
 |[`assignee`](#pipeline-parm-assignee)		|text		|The assignee of the change request.			|Optional			| Unlocked |
 |[`backout-plan`](#pipeline-parm-backout-plan)	|text		|Plan of how the change will be rolled back if there is a failure.			|Optional			|Unlocked |
-|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional|Unlocked |
 | `ciso-ibmcloud-api-key` | SECRET | Overrides `ibmcloud-api-key` for image signing and signature verification. | Optional |Unlocked |
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |Unlocked |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |Unlocked |
@@ -320,7 +318,6 @@ Tables 1 to 5 list and describe the pull request, continuous integration, contin
 |`baseimage-auth-host`		|text		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan. |Optional			|
 |`baseimage-auth-password`		|SECRET		|The credentials for the application Dockerfile base image that is required for the Code Risk Analyzer scan.	|Optional			|
 |`baseimage-auth-user`		|text		|The user credential for the base image of the application Dockerfile, required for the Code Risk Analyzer scan.			|Optional			|
-|`batched-evidence-collection`|text|Set this flag to enable evidence collection in batch mode, which minimizes the network calls. Default `1`|Optional|
 |`branch`		|text		|The Git repo branch of the repository that contains the source code of your application. Default value: `master`. |Optional			|
 | `cocoa-config-retry-status-code` | text   | The response status code for an API call that needs to be retried in the cocoa CLI. For example: `500,404`.  Default value: `500` | Optional |
 | `cocoa-config-max-retry-attempts`| text   | The number of times that the cocoa CLI can retry the API call. For example: `5`. Default value: `3` | Optional |

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-07-07"
+lastupdated: "2026-10-22"
 
 keywords: DevSecOps, polyglot, inferred devsecops, spots
 
@@ -28,11 +28,8 @@ By using this feature, you can easily onboard your micro-services or application
 
 
 
-
 No additional steps are necessary to configure the Inferred DevSecOps Pipeline Configuration, as it's already integrated into the DevSecOps.
 {: .note}
-
-
 
 
 DevSecOps Continuous Deployment (CD) toolchain is also having a default pipeline configuration. It enables adopters who use Inferred DevSecOps Configuration on the CI side to safely extend the same approach to their CD pipelines. The deployment actions are determined based on `app_artifacts` metadata from inventory entries.
