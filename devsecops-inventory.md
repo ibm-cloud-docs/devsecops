@@ -399,6 +399,8 @@ sample_directory/
 !sample_file
 ``````
 
+You can use the inventory ignore file to achieve selective deployment. By listing specific files or directories in the ignore file,  DevSecOps will exclude them from the inventory during deployment. This allows you to deploy only the desired artifacts or directories while preventing unnecessary or temporary files from being deployed.
+
 
 The following explains the purpose of entries in the example `.custominventoryignore` file:
 

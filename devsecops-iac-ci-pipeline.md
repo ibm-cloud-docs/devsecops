@@ -103,9 +103,6 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `checkov` (Terraform plan)| Use the [Checkov](https://www.checkov.io){: external} tool to scan the computed Terraform plan for misconfigurations and compliance issues. | `opt-in-checkov` set to `1` |
 {: caption="IaC additional compliance scans and checks" caption-side="top"}
 
-
-
-
 | Property | Default | Description |
 | -------- | ----- | ----------- |
 | `opt-in-cra-tf-validate` | | The flag to run compliance checks by using the `ibmcloud cra terraform-validate` tool. |
@@ -119,7 +116,6 @@ The IaC CI pipeline defines more tools that are enabled by using the `opt-in-` p
 | `checkov-version` | empty value meaning the latest version | `checkov` version to install if not available in the environment. |
 | `checkov-args` | | The `checkov` command arguments. |
 {: caption="IaC compliance scans and checks configuration parameters" caption-side="top"}
-
 
 Effective 15 Dec 2025, IBM Cloud Security and Compliance Center is deprecated. Any existing service instances are non-functional.
 {: deprecated}
