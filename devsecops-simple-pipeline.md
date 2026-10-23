@@ -2,7 +2,7 @@
 
 copyright: 
   years: 2025, 2026
-lastupdated: "2026-02-12"
+lastupdated: "2026-10-22"
 
 keywords: DevSecOps, IBM Cloud
 
@@ -177,29 +177,4 @@ execute:
     
     cat $TRIGGER_PAYLOAD_PATH
     source $WORKSPACE/$PIPELINE_CONFIG_REPO_PATH/scripts/dummy_script.sh
-```
-
-### Example Pipeline Configuration for v11
-
-Below is a sample `pipeline-config.yaml` for a Simple Automation Pipeline using **v11**:
-
-- The **simple-execute** task **must** be defined.
-- The **execute** step is **required** within the task.
-- Use the **image** field to specify the container image for running the script.
-- The **script** field lists the shell commands to execute inside the container.
-    - The script sources **dummy_script.sh** from the configured pipeline configuration repository.
-
-```yaml
-version: '2'
-
-tasks:
-  simple-execute:
-    steps:
-      - name: execute
-        image: icr.io/continuous-delivery/base-images/base:v1.19.0
-        script: |
-          echo "Hello World!"
-          
-          cat $TRIGGER_PAYLOAD_PATH
-          source $WORKSPACE/$PIPELINE_CONFIG_REPO_PATH/scripts/dummy_script.sh
 ```
