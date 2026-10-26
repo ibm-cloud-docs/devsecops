@@ -2,7 +2,7 @@
 
 copyright:
   years: 2023, 2026
-lastupdated: "2026-09-09"
+lastupdated: "2026-10-26"
 
 keywords: DevSecOps, COS, secure toolchain, compliance, ibm cloud, cloud object storage, satellite , Push based deployment , Pull based deployment
 
@@ -21,7 +21,7 @@ You can deploy your application on one of three targets: Push-based deployment, 
 ## Deploying using Push-based deployment
 {: #custom-deployment-push-based-deployment}
 
-You can select `Push based deployment` as the deployment target when you want to deploy your application on Red Hat&reg; OpenShift&reg; on {{site.data.keyword.cloud_notm}}. [DevSecOps](#x9892260){: term} provides scripts to deploy your application on the cluster. You might need to customize these scripts according to your application and cluster requirements.
+You can select `Push based deployment` as the deployment target when you want to deploy your application on Red Hat&reg; OpenShift&reg; on {{site.data.keyword.cloud_notm}}. [DevSecOps](#x9892260){: term} provides helper scripts to deploy your application on the cluster refered to as [commons library](https://us-south.git.cloud.ibm.com/open-toolchain/compliance-commons#deploy-stage---tools). You might need to customize these scripts according to your application and cluster requirements.
 
 These scripts are located in the deployment repo and are specified in the `pipeline-config.yml` file.
 

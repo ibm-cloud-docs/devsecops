@@ -30,10 +30,7 @@ toc:
           - devsecops-peer-review.md
           - devsecops-cos-bucket-evidence.md
           - devsecops-push-pull-based-deployment.md
-          - devsecops-bp-secure-app.md
-          - devsecops-bp-ci-toolchain.md
-          - devsecops-bp-ci-iac.md
-          - devsecops-bp-cc-toolchain.md
+          - devsecops-bp-toolchains.md
       - topicgroup:
           label: Adopting DevSecOps for your own application or microservice
           topics:
